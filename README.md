@@ -127,7 +127,7 @@ $product = $product->filter(
 
 Тело для `POST` и `PUT` запросов можно передавать в любом поддерживаемом формате (массив, объект, json-строка).
 
-### Вспомогательные методы:
+#### Дополнительные методы:
 
 * `getGenerator()` - метод для итерируемых сущностей. Возвращает генератор, перебирающий массив `rows` с
   текущего `offset` и до последнего элемента (с отправкой новых запросов, если это необходимо). Пагинация осуществляется
@@ -174,5 +174,25 @@ object(stdClass)#28 (5) {
   }
   ["body"]=>
   string(0) ""
+}
+```
+
+## Вспомогательный инструментарий
+
+Находится в классе `Evgeek\Moysklad\Tools`.
+
+* `extractGuid()` - извлекает все id (guid) из строки и возвращает ввиде массива:
+```php
+$product = $ms->entity()->product()->byId('001a65d9-540c-11e6-7a69-93a70022a686')->get();
+var_dump($product->meta->uuidHref);
+$uuidHref = \Evgeek\Moysklad\Tools::extractGuid($product->meta->uuidHref);
+var_dump($uuidHref);
+```
+
+```bash
+string(81) "https://online.moysklad.ru/app/#good/edit?id=001a5fbb-540c-11e6-7a69-93a70022a684"
+array(1) {
+  [0]=>
+  string(36) "001a5fbb-540c-11e6-7a69-93a70022a684"
 }
 ```
