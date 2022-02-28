@@ -177,22 +177,23 @@ object(stdClass)#28 (5) {
 }
 ```
 
-## Вспомогательный инструментарий
+## Вспомогательные классы
 
-Находится в классе `Evgeek\Moysklad\Tools`.
-
-* `extractGuid()` - извлекает все id (guid) из строки и возвращает ввиде массива:
+* `\Evgeek\Moysklad\Tools\Guid` - предназначен для работы с id (guid/uuid) сущностей:
 ```php
-$product = $ms->entity()->product()->byId('001a65d9-540c-11e6-7a69-93a70022a686')->get();
-var_dump($product->meta->uuidHref);
-$uuidHref = \Evgeek\Moysklad\Tools::extractGuid($product->meta->uuidHref);
-var_dump($uuidHref);
+$url = 'https://online.moysklad.ru/api/remap/1.2/entity/customerorder/00001c03-5227-11e8-9ff4-315000132d57/positions/00002107-5227-11e8-9ff4-315000132d58';
+var_dump(\Evgeek\Moysklad\Tools\Guid::extractAll($url));
+var_dump(\Evgeek\Moysklad\Tools\Guid::extractFirst($url));
+var_dump(\Evgeek\Moysklad\Tools\Guid::extractLast($url));
 ```
 
 ```bash
-string(81) "https://online.moysklad.ru/app/#good/edit?id=001a5fbb-540c-11e6-7a69-93a70022a684"
-array(1) {
+array(2) {
   [0]=>
-  string(36) "001a5fbb-540c-11e6-7a69-93a70022a684"
+  string(36) "00001c03-5227-11e8-9ff4-315000132d57"
+  [1]=>
+  string(36) "00002107-5227-11e8-9ff4-315000132d58"
 }
+string(36) "00001c03-5227-11e8-9ff4-315000132d57"
+string(36) "00002107-5227-11e8-9ff4-315000132d58"
 ```
