@@ -136,7 +136,7 @@ $product = $product->filter(
 ```php
 $generator = $ms->entity()->product()->limit(100)->search('orange')->getGenerator();
 foreach ($generator as $product) {
-    ...
+    //...
 }
 ```
 
