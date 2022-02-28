@@ -9,7 +9,7 @@ class Tools
     /**
      * Returns array with all guids from string
      */
-    public static function extractGuid(string $url)
+    public static function extractGuid(string $url): array
     {
         $pattern = '/({)?[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}(})?/';
         preg_match_all($pattern, $url, $resultArr);
