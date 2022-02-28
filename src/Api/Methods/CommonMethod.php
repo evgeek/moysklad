@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Methods;
 
 use Evgeek\Moysklad\Api\Traits\Crud\CreateTrait;
+use Evgeek\Moysklad\Api\Traits\Crud\GetGeneratorTrait;
 use Evgeek\Moysklad\Api\Traits\Crud\GetTrait;
 use Evgeek\Moysklad\Api\Traits\Crud\MassDeleteTrait;
 use Evgeek\Moysklad\Api\Traits\Methods\AttributesTrait;
@@ -25,6 +26,7 @@ use SplQueue;
 class CommonMethod extends AbstractMethod
 {
     use GetTrait;
+    use GetGeneratorTrait;
     use CreateTrait;
     use MassDeleteTrait;
     use ParamTrait;

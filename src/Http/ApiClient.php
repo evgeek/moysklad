@@ -7,9 +7,12 @@ namespace Evgeek\Moysklad\Http;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\ConfigException;
 use Evgeek\Moysklad\Exceptions\FormatException;
+use Evgeek\Moysklad\Exceptions\GeneratorException;
 use Evgeek\Moysklad\Handlers\Format\ArrayFormatHandler;
 use Evgeek\Moysklad\Handlers\Format\FormatHandlerInterface;
+use Evgeek\Moysklad\Handlers\Format\ObjectFormatHandler;
 use Evgeek\Moysklad\Services\Url;
+use Generator;
 use GuzzleHttp\Psr7\Request;
 use SplQueue;
 use Throwable;
@@ -62,22 +65,7 @@ class ApiClient
      */
     public function send(SplQueue $payloadList): object|array|string
     {
-        /** @var Payload $payload */
-        $payload = $payloadList->top();
-
-        $body = $payload->body === null ? '' : $this->formatter::encode($payload->body);
-        $request = new Request($payload->method->name, Url::make($payloadList), $this->headers, $body);
-
-        try {
-            $content = $this->requestSender
-                ->send($request)
-                ->getBody()
-                ->getContents();
-        } catch (Throwable $e) {
-            throw new ApiException($e->getMessage(), $e->getCode());
-        }
-
-        return $this->formatter::decode($content);
+        return $this->formatter::decode($this->sendRequest($payloadList));
     }
 
     /**
@@ -98,5 +86,59 @@ class ApiClient
         ];
 
         return $this->formatter::decode($debug);
+    }
+
+    /**
+     * @throws FormatException
+     * @throws GeneratorException
+     * @throws ApiException
+     */
+    public function getGenerator(SplQueue $payloadList): Generator
+    {
+        do {
+            $content = ArrayFormatHandler::decode($this->sendRequest($payloadList));
+            if(!array_key_exists('rows', $content)) {
+                throw new GeneratorException("Response is non-iterable (missed 'rows' property)");
+            }
+
+            foreach ($content['rows'] as $row) {
+                yield $this->formatter::decode(ArrayFormatHandler::encode($row));
+            }
+
+            $limit = $content['meta']['limit'] ?? null;
+            $offset = $content['meta']['offset'] ?? null;
+            if($limit === null || $offset === null) {
+                throw new GeneratorException("Response is non-iterable (missed 'limit' or 'offset' property)");
+            }
+            $next = $content['meta']['nextHref'] ?? null;
+
+            /** @var Payload $payload */
+            $payload = $payloadList->pop();
+            $params = $payload->params;
+            $params['offset'] = $offset + $limit;
+            $payloadList->push(new Payload($payload->method, $payload->path, $params, $payload->body));
+        } while ($next !== null);
+    }
+
+    /**
+     * @throws FormatException
+     * @throws ApiException
+     */
+    private function sendRequest(SplQueue $payloadList): string
+    {
+        /** @var Payload $payload */
+        $payload = $payloadList->top();
+
+        $body = $payload->body === null ? '' : $this->formatter::encode($payload->body);
+        $request = new Request($payload->method->name, Url::make($payloadList), $this->headers, $body);
+
+        try {
+            return $this->requestSender
+                ->send($request)
+                ->getBody()
+                ->getContents();
+        } catch (Throwable $e) {
+            throw new ApiException($e->getMessage(), $e->getCode());
+        }
     }
 }

@@ -7,9 +7,11 @@ namespace Evgeek\Moysklad\Api\Methods;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
+use Evgeek\Moysklad\Exceptions\GeneratorException;
 use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\Payload;
+use Generator;
 use JetBrains\PhpStorm\Pure;
 use SplQueue;
 
@@ -49,7 +51,7 @@ abstract class AbstractMethods
      */
     protected function apiSend(SplQueue $payloadList): object|array|string
     {
-        return $this->api->send($this->payloadList);
+        return $this->api->send($payloadList);
     }
 
     /**
@@ -57,7 +59,18 @@ abstract class AbstractMethods
      */
     protected function apiDebug(SplQueue $payloadList): object|array|string
     {
-        return $this->api->debug($this->payloadList);
+        return $this->api->debug($payloadList);
+    }
+
+
+    /**
+     * @throws FormatException
+     * @throws GeneratorException
+     * @throws ApiException
+     */
+    protected function apiGetGenerator(SplQueue $payloadList): Generator
+    {
+        return $this->api->getGenerator($payloadList);
     }
 
     /**
