@@ -224,14 +224,13 @@ object(stdClass)#19 (3) {
 Meta::setFormat(Format::ARRAY);
 $order = [
     'name' => 'test_order',
-    'organization' => ['meta' => Meta::organization('ec008e5b-f5ab-11e5-7a69-970f0019fa50')],
+    'organization' => ['meta' => Meta::create(['entity', 'organization', 'ec008e5b-f5ab-11e5-7a69-970f0019fa50'], 'organization')],
     'agent' => ['meta' => Meta::entity(['counterparty', '918e0c83-483c-11e7-7a69-93a700ee9dbd'], 'counterparty')],
-    'store' => ['meta' => Meta::create(['entity', 'store', 'fb835734-7ef5-11e3-b16b-002590a28eca'], 'store')],
 ];
 var_dump($order);
 ```
 ```bash
-array(4) {
+array(3) {
   ["name"]=>
   string(10) "test_order"
   ["organization"]=>
@@ -254,18 +253,6 @@ array(4) {
       string(97) "https://online.moysklad.ru/api/remap/1.2/entity/counterparty/918e0c83-483c-11e7-7a69-93a700ee9dbd"
       ["type"]=>
       string(12) "counterparty"
-      ["mediaType"]=>
-      string(16) "application/json"
-    }
-  }
-  ["store"]=>
-  array(1) {
-    ["meta"]=>
-    array(3) {
-      ["href"]=>
-      string(90) "https://online.moysklad.ru/api/remap/1.2/entity/store/fb835734-7ef5-11e3-b16b-002590a28eca"
-      ["type"]=>
-      string(5) "store"
       ["mediaType"]=>
       string(16) "application/json"
     }
