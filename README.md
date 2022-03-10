@@ -180,6 +180,7 @@ object(stdClass)#28 (5) {
 ## Вспомогательные классы
 
 * `\Evgeek\Moysklad\Tools\Guid` - предназначен для работы с id (guid/uuid) сущностей:
+
 ```php
 $url = 'https://online.moysklad.ru/api/remap/1.2/entity/customerorder/00001c03-5227-11e8-9ff4-315000132d57/positions/00002107-5227-11e8-9ff4-315000132d58';
 var_dump(\Evgeek\Moysklad\Tools\Guid::extractAll($url));
@@ -196,4 +197,78 @@ array(2) {
 }
 string(36) "00001c03-5227-11e8-9ff4-315000132d57"
 string(36) "00002107-5227-11e8-9ff4-315000132d58"
+```
+
+* `\Evgeek\Moysklad\Tools\Meta` - помогает формировать метадату для создания новых объектов:
+
+```php
+var_dump(Meta::organization('ec008e5b-f5ab-11e5-7a69-970f0019fa50'));
+```
+
+```bash
+object(stdClass)#19 (3) {
+  ["href"]=>
+  string(97) "https://online.moysklad.ru/api/remap/1.2/entity/organization/ec008e5b-f5ab-11e5-7a69-970f0019fa50"
+  ["type"]=>
+  string(12) "organization"
+  ["mediaType"]=>
+  string(16) "application/json"
+}
+```
+
+Форматирование можно задать при помощи метода `Meta::setFormat()`. Помимо небольшого набора предопределённых сущностей,
+можно сформировать любую мету при помощи универсального метода ```Meta::create()``` (и более
+узкого ```Meta::entity()```). Примеры:
+
+```php
+Meta::setFormat(Format::ARRAY);
+$order = [
+    'name' => 'test_order',
+    'organization' => ['meta' => Meta::organization('ec008e5b-f5ab-11e5-7a69-970f0019fa50')],
+    'agent' => ['meta' => Meta::entity(['counterparty', '918e0c83-483c-11e7-7a69-93a700ee9dbd'], 'counterparty')],
+    'store' => ['meta' => Meta::create(['entity', 'store', 'fb835734-7ef5-11e3-b16b-002590a28eca'], 'store')],
+];
+var_dump($order);
+```
+```bash
+array(4) {
+  ["name"]=>
+  string(10) "test_order"
+  ["organization"]=>
+  array(1) {
+    ["meta"]=>
+    array(3) {
+      ["href"]=>
+      string(97) "https://online.moysklad.ru/api/remap/1.2/entity/organization/ec008e5b-f5ab-11e5-7a69-970f0019fa50"
+      ["type"]=>
+      string(12) "organization"
+      ["mediaType"]=>
+      string(16) "application/json"
+    }
+  }
+  ["agent"]=>
+  array(1) {
+    ["meta"]=>
+    array(3) {
+      ["href"]=>
+      string(97) "https://online.moysklad.ru/api/remap/1.2/entity/counterparty/918e0c83-483c-11e7-7a69-93a700ee9dbd"
+      ["type"]=>
+      string(12) "counterparty"
+      ["mediaType"]=>
+      string(16) "application/json"
+    }
+  }
+  ["store"]=>
+  array(1) {
+    ["meta"]=>
+    array(3) {
+      ["href"]=>
+      string(90) "https://online.moysklad.ru/api/remap/1.2/entity/store/fb835734-7ef5-11e3-b16b-002590a28eca"
+      ["type"]=>
+      string(5) "store"
+      ["mediaType"]=>
+      string(16) "application/json"
+    }
+  }
+}
 ```

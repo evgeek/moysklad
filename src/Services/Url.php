@@ -10,7 +10,7 @@ use SplQueue;
 
 class Url
 {
-    private const URL = 'https://online.moysklad.ru/api/remap/1.2';
+    public const URL = 'https://online.moysklad.ru/api/remap/1.2';
 
     public static function make(SplQueue $payloadList): string
     {
