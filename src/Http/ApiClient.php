@@ -100,16 +100,16 @@ class ApiClient
             if(!array_key_exists('rows', $content)) {
                 throw new GeneratorException("Response is non-iterable (missed 'rows' property)");
             }
-
-            foreach ($content['rows'] as $row) {
-                yield $this->formatter::decode(ArrayFormatHandler::encode($row));
-            }
-
             $limit = $content['meta']['limit'] ?? null;
             $offset = $content['meta']['offset'] ?? null;
             if($limit === null || $offset === null) {
                 throw new GeneratorException("Response is non-iterable (missed 'limit' or 'offset' property)");
             }
+
+            foreach ($content['rows'] as $row) {
+                yield $this->formatter::decode(ArrayFormatHandler::encode($row));
+            }
+
             $next = $content['meta']['nextHref'] ?? null;
 
             /** @var Payload $payload */
