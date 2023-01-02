@@ -20,6 +20,7 @@ class MassDelete extends AbstractNamedMethod
     public function massDelete(string|array|object $body): object|array|string
     {
         $payloadList = $this->addPayloadToList(HttpMethod::POST, $body);
+
         return $this->apiSend($payloadList);
     }
 
@@ -29,6 +30,7 @@ class MassDelete extends AbstractNamedMethod
     public function massDeleteDebug(string|array|object $body): object|array|string
     {
         $payloadList = $this->addPayloadToList(HttpMethod::POST, $body);
+
         return $this->apiDebug($payloadList);
     }
 }
