@@ -20,6 +20,7 @@ trait MetadataTrait
     public function metadata(): Metadata
     {
         $this->addPayloadToList();
+
         return new Metadata($this->api, $this->payloadList);
     }
 }

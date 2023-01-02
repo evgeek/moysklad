@@ -17,11 +17,11 @@ trait PositionsTrait
      *      ->positions()
      *      ->get();
      * </code>
-     * @return Positions
      */
     public function positions(): Positions
     {
         $this->addPayloadToList();
+
         return new Positions($this->api, $this->payloadList);
     }
 }
