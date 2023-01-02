@@ -20,6 +20,7 @@ trait LimitOffsetTrait
     public function limit(int $limit): static
     {
         $this->params['limit'] = $limit;
+
         return $this;
     }
 
@@ -37,6 +38,7 @@ trait LimitOffsetTrait
     public function offset(int $offset): static
     {
         $this->params['offset'] = $offset;
+
         return $this;
     }
 }

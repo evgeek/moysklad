@@ -10,14 +10,14 @@ trait ExpandTrait
 {
     /**
      * Expand nested entity
-     *
-     * @link https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-zamena-ssylok-ob-ektami-s-pomosch-u-expand
      * <code>
      * $product = $ms->entity()
      *      ->product()
      *      ->expand('group', 'images')
      *      ->get();
      * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-zamena-ssylok-ob-ektami-s-pomosch-u-expand
      */
     public function expand(string ...$fields): static
     {
