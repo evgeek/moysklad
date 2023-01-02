@@ -18,14 +18,14 @@ use SplQueue;
 
 class CommonEndpoint extends AbstractEndpoint
 {
-    use SendTrait;
-    use GetTrait;
-    use DebugTrait;
-    use ParamTrait;
-    use FilterTrait;
-    use LimitOffsetTrait;
-    use CommonMethodTrait;
     use CommonMethodByIdTrait;
+    use CommonMethodTrait;
+    use DebugTrait;
+    use FilterTrait;
+    use GetTrait;
+    use LimitOffsetTrait;
+    use ParamTrait;
+    use SendTrait;
 
     #[Pure]
     public function __construct(

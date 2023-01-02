@@ -12,8 +12,8 @@ use SplQueue;
 
 abstract class AbstractNamedMethod extends AbstractMethod
 {
-    use ParamTrait;
     use CommonMethodTrait;
+    use ParamTrait;
 
     protected const PATH = '';
     protected readonly string $path;
