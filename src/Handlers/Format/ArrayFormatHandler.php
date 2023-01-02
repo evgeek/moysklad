@@ -27,8 +27,8 @@ class ArrayFormatHandler extends AbstractFormatHandler
             }
             $result = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
         } catch (Throwable $e) {
-            throw new FormatException("Can't convert " . gettype($content) . " to array. " .
-                "Message: {$e->getMessage()}" . PHP_EOL . " Content:" . PHP_EOL . $content);
+            throw new FormatException("Can't convert " . gettype($content) . ' to array. ' .
+                "Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content);
         }
 
         return $result;

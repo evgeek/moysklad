@@ -18,6 +18,7 @@ return $config
         'global_namespace_import' => false,
         'explicit_string_variable' => false,
         'yoda_style' => false,
+        'concat_space' => false,
 //        'strict_param' => true,
 //        'array_syntax' => ['syntax' => 'short'],
     ])

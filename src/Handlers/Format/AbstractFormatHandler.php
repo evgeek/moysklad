@@ -21,8 +21,8 @@ abstract class AbstractFormatHandler implements FormatHandlerInterface
         try {
             $content = json_encode($content, JSON_THROW_ON_ERROR);
         } catch (Throwable $e) {
-            throw new FormatException("Can't convert " . gettype($content) . " to string. " .
-                "Message: {$e->getMessage()}" . PHP_EOL . " Content:" . PHP_EOL . $content);
+            throw new FormatException("Can't convert " . gettype($content) . ' to string. ' .
+                "Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content);
         }
 
         return $content;

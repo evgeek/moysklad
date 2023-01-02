@@ -28,8 +28,8 @@ class ObjectFormatHandler extends AbstractFormatHandler
             }
             $result = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
         } catch (Throwable $e) {
-            throw new FormatException("Can't convert " . gettype($content) . " to object. " .
-                "Message: {$e->getMessage()}" . PHP_EOL . " Content:" . PHP_EOL . $content);
+            throw new FormatException("Can't convert " . gettype($content) . ' to object. ' .
+                "Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content);
         }
 
         return $result;
