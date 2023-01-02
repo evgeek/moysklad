@@ -28,8 +28,7 @@ class ApiClient
         array $credentials,
         private readonly FormatHandlerInterface $formatter,
         private readonly RequestSenderInterface $requestSender,
-    )
-    {
+    ) {
         $this->addCredentialsToHeaders($credentials);
     }
 
@@ -97,12 +96,12 @@ class ApiClient
     {
         do {
             $content = ArrayFormatHandler::decode($this->sendRequest($payloadList));
-            if(!array_key_exists('rows', $content)) {
+            if (!array_key_exists('rows', $content)) {
                 throw new GeneratorException("Response is non-iterable (missed 'rows' property)");
             }
             $limit = $content['meta']['limit'] ?? null;
             $offset = $content['meta']['offset'] ?? null;
-            if($limit === null || $offset === null) {
+            if ($limit === null || $offset === null) {
                 throw new GeneratorException("Response is non-iterable (missed 'limit' or 'offset' property)");
             }
 

@@ -8,7 +8,6 @@ use Evgeek\Moysklad\Api\Methods\Special\Debug;
 
 trait DebugTrait
 {
-
     /**
      * Set it before the CRUD method to generate debug information for the request
      * <code>
