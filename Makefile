@@ -9,7 +9,7 @@ help: ## This help
 
 #LINTERS
 lint-csf: ## php-cs-fixer fix all (p= for additional params)
-	php ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix -v $(p)
+	php ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix -v --allow-risky=yes $(p)
 lint-csf-fix: ## php-cs-fixer fix all
 	make lint-csf p="--diff"
 lint-csf-fix-step: ## php-cs-fixer fix by step

@@ -6,9 +6,14 @@ $finder = PhpCsFixer\Finder::create()
 
 $config = new PhpCsFixer\Config();
 return $config
-//    ->setRules([
-//        '@PSR12' => true,
+    ->setRules([
+        '@PSR12' => true,
+        '@PSR12:risky' => true,
+        '@PHP80Migration:risky' => true,
+        '@PHP81Migration' => true,
+        '@PHPUnit84Migration:risky' => true,
+        '@PhpCsFixer' => true,
 //        'strict_param' => true,
 //        'array_syntax' => ['syntax' => 'short'],
-//    ])
+    ])
     ->setFinder($finder);
