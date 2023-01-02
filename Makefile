@@ -14,7 +14,9 @@ lint-csf-fix: ## php-cs-fixer fix all
 	make lint-csf p="--diff"
 lint-csf-fix-step: ## php-cs-fixer fix by step
 	make lint-csf p="--diff --stop-on-violation"
-lint-csf-dry: ## php-cs-fixer dry run all
+lint-csf-dry: ## php-cs-fixer dry run all without diff
 	make lint-csf p="--diff --dry-run"
+lint-csf-dry-list: ## php-cs-fixer dry run by step
+	make lint-csf p="--dry-run"
 lint-csf-dry-step: ## php-cs-fixer dry run by step
 	make lint-csf p="--diff --dry-run --stop-on-violation"
