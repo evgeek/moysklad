@@ -29,6 +29,7 @@ trait ParamTrait
 
         if ($separator === '') {
             $this->params[$key] = $value;
+
             return $this;
         }
 
@@ -38,6 +39,7 @@ trait ParamTrait
         $this->params[$key] .= $this->params[$key] === '' ?
             $value :
             $separator . $value;
+
         return $this;
     }
 }
