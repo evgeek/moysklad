@@ -10,7 +10,6 @@ use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\GeneratorException;
 use Evgeek\Moysklad\Handlers\Format\ArrayFormatHandler;
 use Evgeek\Moysklad\Handlers\Format\FormatHandlerInterface;
-use Evgeek\Moysklad\Handlers\Format\ObjectFormatHandler;
 use Evgeek\Moysklad\Services\Url;
 use Generator;
 use GuzzleHttp\Psr7\Request;
@@ -30,32 +29,6 @@ class ApiClient
         private readonly RequestSenderInterface $requestSender,
     ) {
         $this->addCredentialsToHeaders($credentials);
-    }
-
-    /**
-     * @param array $credentials
-     * @return void
-     * @throws ConfigException
-     */
-    private function addCredentialsToHeaders(array $credentials): void
-    {
-        if (!array_is_list($credentials)) {
-            throw new ConfigException('Credentials must be a list array');
-        }
-
-        $count = count($credentials);
-        if ($count === 1) {
-            $this->headers['Authorization'] = 'Bearer '.$credentials[0];
-            return;
-        }
-
-        if ($count === 2) {
-            $this->headers['Authorization'] = 'Basic '.base64_encode($credentials[0].':'.$credentials[1]);
-            return;
-        }
-
-        throw new ConfigException("The size of the credential array must be equal to 1 for a token " .
-            "or 2 for a login-password. $count provided.");
     }
 
     /**
@@ -139,5 +112,31 @@ class ApiClient
         } catch (Throwable $e) {
             throw new ApiException($e->getMessage(), $e->getCode());
         }
+    }
+
+    /**
+     * @throws ConfigException
+     */
+    private function addCredentialsToHeaders(array $credentials): void
+    {
+        if (!array_is_list($credentials)) {
+            throw new ConfigException('Credentials must be a list array');
+        }
+
+        $count = count($credentials);
+        if ($count === 1) {
+            $this->headers['Authorization'] = 'Bearer '.$credentials[0];
+
+            return;
+        }
+
+        if ($count === 2) {
+            $this->headers['Authorization'] = 'Basic '.base64_encode($credentials[0].':'.$credentials[1]);
+
+            return;
+        }
+
+        throw new ConfigException('The size of the credential array must be equal to 1 for a token ' .
+            "or 2 for a login-password. $count provided.");
     }
 }

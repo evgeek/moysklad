@@ -19,6 +19,7 @@ return $config
         'explicit_string_variable' => false,
         'yoda_style' => false,
         'concat_space' => false,
+        'multiline_whitespace_before_semicolons' => false,
 //        'strict_param' => true,
 //        'array_syntax' => ['syntax' => 'short'],
     ])
