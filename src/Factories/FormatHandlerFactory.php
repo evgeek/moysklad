@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Factories;
 
 use Evgeek\Moysklad\Enums\Format;
-use Evgeek\Moysklad\Exceptions\FactoryException;
 use Evgeek\Moysklad\Handlers\Format\ArrayFormatHandler;
 use Evgeek\Moysklad\Handlers\Format\FormatHandlerInterface;
 use Evgeek\Moysklad\Handlers\Format\ObjectFormatHandler;

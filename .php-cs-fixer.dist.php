@@ -13,6 +13,7 @@ return $config
         '@PHP81Migration' => true,
         '@PHPUnit84Migration:risky' => true,
         '@PhpCsFixer' => true,
+        'phpdoc_summary' => false,
 //        'strict_param' => true,
 //        'array_syntax' => ['syntax' => 'short'],
     ])
