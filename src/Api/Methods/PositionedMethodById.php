@@ -12,7 +12,7 @@ use Evgeek\Moysklad\Api\Traits\Params\ExpandTrait;
 class PositionedMethodById extends AbstractMethodById
 {
     use DeleteTrait;
-    use UpdateTrait;
     use ExpandTrait;
     use PositionsTrait;
+    use UpdateTrait;
 }

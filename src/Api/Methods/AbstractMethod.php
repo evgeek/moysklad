@@ -9,6 +9,6 @@ use Evgeek\Moysklad\Api\Traits\Crud\SendTrait;
 
 abstract class AbstractMethod extends AbstractMethods
 {
-    use SendTrait;
     use DebugTrait;
+    use SendTrait;
 }
