@@ -2,6 +2,7 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__ . '/src')
+    ->exclude('Enums')
 ;
 
 $config = new PhpCsFixer\Config();
@@ -14,6 +15,9 @@ return $config
         '@PHPUnit84Migration:risky' => true,
         '@PhpCsFixer' => true,
         'phpdoc_summary' => false,
+        'global_namespace_import' => false,
+        'explicit_string_variable' => false,
+        'yoda_style' => false,
 //        'strict_param' => true,
 //        'array_syntax' => ['syntax' => 'short'],
     ])

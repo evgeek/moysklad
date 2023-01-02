@@ -107,7 +107,7 @@ class Meta
 
         $href = Url::URL;
         foreach ($path as $slug) {
-            $href .= "/{$slug}";
+            $href .= "/$slug";
         }
 
         return static::$formatter::decode([

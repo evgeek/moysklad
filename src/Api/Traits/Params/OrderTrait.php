@@ -19,7 +19,7 @@ trait OrderTrait
      * <code>
      * $product = $ms->entity()
      *      ->product()
-     *      ->param('expand', 'group')
+     *      ->order('updated', 'desc')
      *      ->get();
      * </code>
      * @throws InputException
