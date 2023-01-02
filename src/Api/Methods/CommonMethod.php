@@ -25,29 +25,28 @@ use SplQueue;
 
 class CommonMethod extends AbstractMethod
 {
-    use GetTrait;
-    use GetGeneratorTrait;
-    use CreateTrait;
-    use MassDeleteTrait;
-    use ParamTrait;
-    use LimitOffsetTrait;
-    use FilterTrait;
-    use SearchTrait;
-    use OrderTrait;
-    use ExpandTrait;
-    use CommonMethodTrait;
-    use PositionedMethodByIdTrait;
-    use MetadataTrait;
-    use PositionsTrait;
     use AttributesTrait;
+    use CommonMethodTrait;
+    use CreateTrait;
+    use ExpandTrait;
+    use FilterTrait;
+    use GetGeneratorTrait;
+    use GetTrait;
+    use LimitOffsetTrait;
+    use MassDeleteTrait;
+    use MetadataTrait;
+    use OrderTrait;
+    use ParamTrait;
+    use PositionedMethodByIdTrait;
+    use PositionsTrait;
+    use SearchTrait;
 
     #[Pure]
     public function __construct(
         ApiClient $api,
         ?SplQueue $payloadList,
         protected readonly string $path,
-    )
-    {
+    ) {
         parent::__construct($api, $payloadList ?? new SplQueue());
     }
 }

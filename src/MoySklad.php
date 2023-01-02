@@ -22,9 +22,10 @@ class MoySklad
     private ApiClient $api;
 
     /**
-     * @param array $credentials ['login', 'password'] or ['token']
-     * @param Format $format object, array or string
+     * @param array                  $credentials   ['login', 'password'] or ['token']
+     * @param Format                 $format        object, array or string
      * @param RequestSenderInterface $requestSender PSR-7 client
+     *
      * @throws ConfigException
      */
     public function __construct(
@@ -51,14 +52,14 @@ class MoySklad
 
     /**
      * Entities and documents endpoint
-     *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti +
-     * https://dev.moysklad.ru/doc/api/remap/1.2/documents/
      * <code>
      * $products = $ms->entity()
      *      ->product()
      *      ->get();
      * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/
      */
     #[Pure]
     public function entity(): Entity
@@ -69,7 +70,7 @@ class MoySklad
     /**
      * Reports endpoint
      *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/reports/#otchety
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/reports/#otchety
      */
     #[Pure]
     public function report(): Report
@@ -80,7 +81,7 @@ class MoySklad
     /**
      * Audit endpoint
      *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/other/#audit
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/other/#audit
      */
     #[Pure]
     public function audit(): Audit
@@ -91,7 +92,7 @@ class MoySklad
     /**
      * Notifications endpoint
      *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/other/#uwedomleniq
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/other/#uwedomleniq
      */
     #[Pure]
     public function notification(): Notification

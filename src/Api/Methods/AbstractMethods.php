@@ -24,25 +24,14 @@ abstract class AbstractMethods
     public function __construct(
         protected readonly ApiClient $api,
         protected readonly SplQueue $payloadList = new SplQueue()
-    )
-    {
+    ) {
     }
 
     protected function addPayloadToList(?HttpMethod $method = null, string|array|object|null $body = null): SplQueue
     {
         $this->payloadList->push($this->makePayload($method, $body));
-        return $this->payloadList;
-    }
 
-    #[Pure]
-    private function makePayload(?HttpMethod $method, string|array|object|null $body = null): Payload
-    {
-        return new Payload(
-            method: $method,
-            path: $this->path,
-            params: $this->params,
-            body: $body,
-        );
+        return $this->payloadList;
     }
 
     /**
@@ -61,7 +50,6 @@ abstract class AbstractMethods
     {
         return $this->api->debug($payloadList);
     }
-
 
     /**
      * @throws FormatException
@@ -84,10 +72,20 @@ abstract class AbstractMethods
 
         $enumMethod = HttpMethod::tryFrom($method);
         if ($enumMethod === null) {
-            throw new InputException("'$method' is not valid HTTP method. " .
-                "CheckEnums\HttpMethod");
+            throw new InputException("'$method' is not valid HTTP method. Check " . HttpMethod::class);
         }
 
         return $enumMethod;
+    }
+
+    #[Pure]
+    private function makePayload(?HttpMethod $method, string|array|object|null $body = null): Payload
+    {
+        return new Payload(
+            method: $method,
+            path: $this->path,
+            params: $this->params,
+            body: $body,
+        );
     }
 }

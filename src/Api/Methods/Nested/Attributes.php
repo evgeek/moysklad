@@ -14,12 +14,12 @@ use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 
 class Attributes extends AbstractNamedMethod
 {
-    use GetTrait;
-    use GetGeneratorTrait;
-    use CreateTrait;
-    use MassDeleteTrait;
-    use LimitOffsetTrait;
     use CommonMethodByIdTrait;
+    use CreateTrait;
+    use GetGeneratorTrait;
+    use GetTrait;
+    use LimitOffsetTrait;
+    use MassDeleteTrait;
 
     protected const PATH = 'attributes';
 }

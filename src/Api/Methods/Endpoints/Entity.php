@@ -13,47 +13,53 @@ class Entity extends AbstractNamedEndpoint
     protected const PATH = 'entity';
 
     /**
-     * Products -
-     * https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
+     * Products
      * <code>
      * $products = $ms->entity()
      *      ->product()
      *      ->get();
      * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
      */
     public function product(): Product
     {
         $this->addPayloadToList();
+
         return new Product($this->api, $this->payloadList);
     }
 
     /**
      * Customer orders
-     * https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
      * <code>
      * $customerOrders = $ms->entity()
      *      ->customerorder()
      *      ->get();
      * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
      */
     public function customerorder(): Customerorder
     {
         $this->addPayloadToList();
+
         return new Customerorder($this->api, $this->payloadList);
     }
 
     /**
      * Assortments
-     * https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-assortiment
      * <code>
      * $assortments = $ms->entity()
      *      ->assortment()
      *      ->get();
      * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-assortiment
      */
     public function assortment(): Assortment
     {
         $this->addPayloadToList();
+
         return new Assortment($this->api, $this->payloadList);
     }
 }

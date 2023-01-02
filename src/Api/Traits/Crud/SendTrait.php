@@ -19,6 +19,7 @@ trait SendTrait
      *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
      *      ->send('PUT', ['name' => 'orange']);
      * </code>
+     *
      * @throws FormatException
      * @throws ApiException
      * @throws InputException
@@ -27,6 +28,7 @@ trait SendTrait
     {
         $method = $this->getEnumMethod($method);
         $payloadList = $this->addPayloadToList($method, $body);
+
         return $this->apiSend($payloadList);
     }
 }

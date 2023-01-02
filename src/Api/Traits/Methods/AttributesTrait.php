@@ -21,6 +21,7 @@ trait AttributesTrait
     public function attributes(): Attributes
     {
         $this->addPayloadToList();
+
         return new Attributes($this->api, $this->payloadList);
     }
 }

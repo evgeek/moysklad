@@ -19,6 +19,7 @@ trait CommonMethodTrait
     public function method(string $entity): CommonMethod
     {
         $this->addPayloadToList();
+
         return new CommonMethod($this->api, $this->payloadList, $entity);
     }
 }

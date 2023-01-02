@@ -22,6 +22,7 @@ trait GetGeneratorTrait
      *      ...
      * }
      * </code>
+     *
      * @throws FormatException
      * @throws ApiException
      * @throws GeneratorException
@@ -29,6 +30,7 @@ trait GetGeneratorTrait
     public function getGenerator(): Generator
     {
         $payloadList = $this->addPayloadToList(HttpMethod::GET);
+
         return $this->apiGetGenerator($payloadList);
     }
 }

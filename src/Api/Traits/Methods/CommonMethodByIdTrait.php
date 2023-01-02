@@ -17,11 +17,13 @@ trait CommonMethodByIdTrait
      *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
      *      ->get();
      * </code>
+     *
      * @return CommonMethodById
      */
     public function byId(string $guid): AbstractMethodById
     {
         $this->addPayloadToList();
+
         return new CommonMethodById($this->api, $this->payloadList, $guid);
     }
 }

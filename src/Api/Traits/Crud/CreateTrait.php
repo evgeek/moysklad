@@ -17,12 +17,14 @@ trait CreateTrait
      *      ->product()
      *      ->create(['name' => 'orange']);
      * </code>
+     *
      * @throws FormatException
      * @throws ApiException
      */
     public function create(string|array|object $body): object|array|string
     {
         $payloadList = $this->addPayloadToList(HttpMethod::POST, $body);
+
         return $this->apiSend($payloadList);
     }
 }

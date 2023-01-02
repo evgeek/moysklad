@@ -15,13 +15,13 @@ use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 
 class Positions extends AbstractNamedMethod
 {
-    use GetTrait;
-    use GetGeneratorTrait;
-    use CreateTrait;
-    use MassDeleteTrait;
-    use ExpandTrait;
-    use LimitOffsetTrait;
     use CommonMethodByIdTrait;
+    use CreateTrait;
+    use ExpandTrait;
+    use GetGeneratorTrait;
+    use GetTrait;
+    use LimitOffsetTrait;
+    use MassDeleteTrait;
 
     protected const PATH = 'positions';
 }

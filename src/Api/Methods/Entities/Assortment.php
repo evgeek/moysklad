@@ -16,12 +16,12 @@ use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
 
 class Assortment extends AbstractNamedMethod
 {
-    use GetTrait;
-    use GetGeneratorTrait;
-    use MassDeleteTrait;
     use ExpandTrait;
     use FilterTrait;
+    use GetGeneratorTrait;
+    use GetTrait;
     use LimitOffsetTrait;
+    use MassDeleteTrait;
     use OrderTrait;
     use SearchTrait;
 

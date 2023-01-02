@@ -19,12 +19,13 @@ trait PositionedMethodByIdTrait
      *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
      *      ->get();
      * </code>
-     * @param string $guid
+     *
      * @return PositionedMethodById
      */
     public function byId(string $guid): AbstractMethodById
     {
         $this->addPayloadToList();
+
         return new PositionedMethodById($this->api, $this->payloadList, $guid);
     }
 }

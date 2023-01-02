@@ -21,11 +21,13 @@ class Debug extends AbstractNamedMethod
      *      ->debug()
      *      ->get();
      * </code>
+     *
      * @throws FormatException
      */
     public function get(): object|array|string
     {
         $payloadList = $this->addPayloadToList(HttpMethod::GET);
+
         return $this->apiDebug($payloadList);
     }
 
@@ -37,11 +39,13 @@ class Debug extends AbstractNamedMethod
      *      ->debug()
      *      ->create(['name' => 'orange']);
      * </code>
+     *
      * @throws FormatException
      */
     public function create(string|array|object $body): object|array|string
     {
         $payloadList = $this->addPayloadToList(HttpMethod::POST, $body);
+
         return $this->apiDebug($payloadList);
     }
 
@@ -54,11 +58,13 @@ class Debug extends AbstractNamedMethod
      *      ->debug()
      *      ->update(['name' => 'orange']);
      * </code>
+     *
      * @throws FormatException
      */
     public function update(string|array|object $body): object|array|string
     {
         $payloadList = $this->addPayloadToList(HttpMethod::PUT, $body);
+
         return $this->apiDebug($payloadList);
     }
 
@@ -71,21 +77,25 @@ class Debug extends AbstractNamedMethod
      *      ->debug()
      *      ->delete();
      * </code>
+     *
      * @throws FormatException
      */
     public function delete(): object|array|string
     {
         $payloadList = $this->addPayloadToList(HttpMethod::DELETE);
+
         return $this->apiDebug($payloadList);
     }
 
     /**
      * Debug Mass Delete request
+     *
      * @throws FormatException
      */
     public function massDelete(string|array|object $body): object|array|string
     {
         $payloadList = $this->addPayloadToList();
+
         return (new MassDelete($this->api, $payloadList))->massDeleteDebug($body);
     }
 
@@ -98,6 +108,7 @@ class Debug extends AbstractNamedMethod
      *      ->debug()
      *      ->send('PUT', ['name' => 'orange']);
      * </code>
+     *
      * @throws FormatException
      * @throws InputException
      */
@@ -105,6 +116,7 @@ class Debug extends AbstractNamedMethod
     {
         $method = $this->getEnumMethod($method);
         $payloadList = $this->addPayloadToList($method, $body);
+
         return $this->apiDebug($payloadList);
     }
 }

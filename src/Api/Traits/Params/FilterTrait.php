@@ -11,8 +11,6 @@ trait FilterTrait
 {
     /**
      * Filter results
-     *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-fil-traciq-wyborki-s-pomosch-u-parametra-filter
      * <code>
      * $product = $ms->entity()
      *   ->product()
@@ -23,6 +21,8 @@ trait FilterTrait
      *   )
      *   ->get();
      * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-fil-traciq-wyborki-s-pomosch-u-parametra-filter
      */
     public function filter(Filter $filter): static
     {
@@ -36,6 +36,7 @@ trait FilterTrait
         $this->params[QueryParams::FILTER->value] .= $this->params[QueryParams::FILTER->value] === '' ?
             $filterString :
             QueryParams::FILTER->separator() . $filterString;
+
         return $this;
     }
 }

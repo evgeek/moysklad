@@ -18,12 +18,14 @@ trait UpdateTrait
      *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
      *      ->update(['name' => 'orange']);
      * </code>
+     *
      * @throws FormatException
      * @throws ApiException
      */
     public function update(string|array|object $body): object|array|string
     {
         $payloadList = $this->addPayloadToList(HttpMethod::PUT, $body);
+
         return $this->apiSend($payloadList);
     }
 }

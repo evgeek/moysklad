@@ -16,20 +16,19 @@ use SplQueue;
 
 abstract class AbstractMethodById extends AbstractMethods
 {
-    use SendTrait;
-    use GetTrait;
-    use DebugTrait;
-    use ParamTrait;
-    use CommonMethodTrait;
     use CommonMethodByIdTrait;
+    use CommonMethodTrait;
+    use DebugTrait;
+    use GetTrait;
+    use ParamTrait;
+    use SendTrait;
 
     #[Pure]
     public function __construct(
         ApiClient $api,
         SplQueue $payloadList,
         protected readonly string $path,
-    )
-    {
+    ) {
         parent::__construct($api, $payloadList);
     }
 }

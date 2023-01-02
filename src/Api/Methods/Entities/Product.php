@@ -19,17 +19,17 @@ use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
 
 class Product extends AbstractNamedMethod
 {
-    use GetTrait;
-    use GetGeneratorTrait;
+    use CommonMethodByIdTrait;
     use CreateTrait;
-    use MassDeleteTrait;
     use ExpandTrait;
     use FilterTrait;
+    use GetGeneratorTrait;
+    use GetTrait;
     use LimitOffsetTrait;
+    use MassDeleteTrait;
+    use MetadataTrait;
     use OrderTrait;
     use SearchTrait;
-    use CommonMethodByIdTrait;
-    use MetadataTrait;
 
     protected const PATH = 'product';
 }

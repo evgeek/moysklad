@@ -12,10 +12,10 @@ use Evgeek\Moysklad\Api\Traits\Params\ExpandTrait;
 
 class Metadata extends AbstractNamedMethod
 {
-    use GetTrait;
-    use ExpandTrait;
     use AttributesTrait;
     use CommonMethodByIdTrait;
+    use ExpandTrait;
+    use GetTrait;
 
     protected const PATH = 'metadata';
 }

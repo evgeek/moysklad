@@ -13,12 +13,12 @@ use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 
 class Notification extends AbstractNamedEndpoint
 {
-    use SendTrait;
-    use GetTrait;
-    use DebugTrait;
-    use ParamTrait;
-    use LimitOffsetTrait;
     use CommonMethodByIdTrait;
+    use DebugTrait;
+    use GetTrait;
+    use LimitOffsetTrait;
+    use ParamTrait;
+    use SendTrait;
 
     protected const PATH = 'notification';
 }

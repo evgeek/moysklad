@@ -8,7 +8,6 @@ use Evgeek\Moysklad\Api\Methods\Special\Debug;
 
 trait DebugTrait
 {
-
     /**
      * Set it before the CRUD method to generate debug information for the request
      * <code>
@@ -23,6 +22,7 @@ trait DebugTrait
     public function debug(): Debug
     {
         $payloadList = $this->addPayloadToList();
+
         return new Debug($this->api, $payloadList);
     }
 }

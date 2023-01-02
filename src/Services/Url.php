@@ -31,11 +31,11 @@ class Url
     {
         $params = $payload->params;
         $paramsString = http_build_query($params);
+
         return $paramsString === '' ? '' : "?$paramsString";
     }
 
     /**
-     * @param SplQueue $payloadList
      * @return Generator<Payload>
      */
     private static function payloadsGenerator(SplQueue $payloadList): Generator

@@ -12,8 +12,8 @@ use SplQueue;
 
 abstract class AbstractNamedMethod extends AbstractMethod
 {
-    use ParamTrait;
     use CommonMethodTrait;
+    use ParamTrait;
 
     protected const PATH = '';
     protected readonly string $path;
@@ -22,8 +22,7 @@ abstract class AbstractNamedMethod extends AbstractMethod
     public function __construct(
         ApiClient $api,
         ?SplQueue $payloadList,
-    )
-    {
+    ) {
         parent::__construct($api, $payloadList ?? new SplQueue());
 
         $this->path = static::PATH;

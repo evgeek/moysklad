@@ -22,6 +22,7 @@ class Filter
     public function eq(string $key, string $value): static
     {
         $this->addFilter($key, $value, FilterSigns::EQ);
+
         return $this;
     }
 
@@ -29,6 +30,7 @@ class Filter
     public function neq(string $key, string $value): static
     {
         $this->addFilter($key, $value, FilterSigns::NEQ);
+
         return $this;
     }
 
@@ -36,6 +38,7 @@ class Filter
     public function gt(string $key, string $value): static
     {
         $this->addFilter($key, $value, FilterSigns::GT);
+
         return $this;
     }
 
@@ -43,6 +46,7 @@ class Filter
     public function lt(string $key, string $value): static
     {
         $this->addFilter($key, $value, FilterSigns::LT);
+
         return $this;
     }
 
@@ -50,6 +54,7 @@ class Filter
     public function gte(string $key, string $value): static
     {
         $this->addFilter($key, $value, FilterSigns::GTE);
+
         return $this;
     }
 
@@ -57,6 +62,7 @@ class Filter
     public function lte(string $key, string $value): static
     {
         $this->addFilter($key, $value, FilterSigns::LTE);
+
         return $this;
     }
 
@@ -64,6 +70,7 @@ class Filter
     public function like(string $key, string $value): static
     {
         $this->addFilter($key, $value, FilterSigns::LIKE);
+
         return $this;
     }
 
@@ -71,6 +78,7 @@ class Filter
     public function prefix(string $key, string $value): static
     {
         $this->addFilter($key, $value, FilterSigns::PREFIX);
+
         return $this;
     }
 
@@ -78,6 +86,7 @@ class Filter
     public function postfix(string $key, string $value): static
     {
         $this->addFilter($key, $value, FilterSigns::POSTFIX);
+
         return $this;
     }
 

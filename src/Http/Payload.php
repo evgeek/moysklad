@@ -13,7 +13,6 @@ class Payload
         public readonly string $path,
         public readonly array $params,
         public readonly string|array|object|null $body,
-    )
-    {
+    ) {
     }
 }

@@ -14,13 +14,13 @@ use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 
 class Audit extends AbstractNamedEndpoint
 {
-    use SendTrait;
-    use GetTrait;
-    use DebugTrait;
-    use ParamTrait;
-    use FilterTrait;
-    use LimitOffsetTrait;
     use CommonMethodByIdTrait;
+    use DebugTrait;
+    use FilterTrait;
+    use GetTrait;
+    use LimitOffsetTrait;
+    use ParamTrait;
+    use SendTrait;
 
     protected const PATH = 'audit';
 }
