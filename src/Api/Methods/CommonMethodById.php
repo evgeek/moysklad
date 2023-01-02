@@ -11,6 +11,6 @@ use Evgeek\Moysklad\Api\Traits\Params\ExpandTrait;
 class CommonMethodById extends AbstractMethodById
 {
     use DeleteTrait;
-    use UpdateTrait;
     use ExpandTrait;
+    use UpdateTrait;
 }

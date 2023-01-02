@@ -16,12 +16,12 @@ use SplQueue;
 
 abstract class AbstractMethodById extends AbstractMethods
 {
-    use SendTrait;
-    use GetTrait;
-    use DebugTrait;
-    use ParamTrait;
-    use CommonMethodTrait;
     use CommonMethodByIdTrait;
+    use CommonMethodTrait;
+    use DebugTrait;
+    use GetTrait;
+    use ParamTrait;
+    use SendTrait;
 
     #[Pure]
     public function __construct(
