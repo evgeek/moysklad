@@ -19,7 +19,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    #[ArrayShape(['href' => "string", 'type' => "string", 'mediaType' => "string"])]
+    #[ArrayShape(['href' => 'string', 'type' => 'string', 'mediaType' => 'string'])]
     public static function state(string $guid): object|array|string
     {
         return static::entity(['customerorder', 'metadata', 'states', $guid], 'state');
@@ -28,7 +28,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    #[ArrayShape(['href' => "string", 'type' => "string", 'mediaType' => "string"])]
+    #[ArrayShape(['href' => 'string', 'type' => 'string', 'mediaType' => 'string'])]
     public static function service(string $guid): object|array|string
     {
         return static::entity(['service', $guid], 'service');
@@ -37,7 +37,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    #[ArrayShape(['href' => "string", 'type' => "string", 'mediaType' => "string"])]
+    #[ArrayShape(['href' => 'string', 'type' => 'string', 'mediaType' => 'string'])]
     public static function product(string $guid): object|array|string
     {
         return static::entity(['product', $guid], 'product');
@@ -46,7 +46,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    #[ArrayShape(['href' => "string", 'type' => "string", 'mediaType' => "string"])]
+    #[ArrayShape(['href' => 'string', 'type' => 'string', 'mediaType' => 'string'])]
     public static function saleschannel(string $guid): object|array|string
     {
         return static::entity(['saleschannel', $guid], 'saleschannel');
@@ -55,7 +55,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    #[ArrayShape(['href' => "string", 'type' => "string", 'mediaType' => "string"])]
+    #[ArrayShape(['href' => 'string', 'type' => 'string', 'mediaType' => 'string'])]
     public static function currency(string $guid): object|array|string
     {
         return static::entity(['currency', $guid], 'currency');
@@ -64,7 +64,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    #[ArrayShape(['href' => "string", 'type' => "string", 'mediaType' => "string"])]
+    #[ArrayShape(['href' => 'string', 'type' => 'string', 'mediaType' => 'string'])]
     public static function store(string $guid): object|array|string
     {
         return static::entity(['store', $guid], 'store');
@@ -73,7 +73,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    #[ArrayShape(['href' => "string", 'type' => "string", 'mediaType' => "string"])]
+    #[ArrayShape(['href' => 'string', 'type' => 'string', 'mediaType' => 'string'])]
     public static function counterparty(string $guid): object|array|string
     {
         return static::entity(['counterparty', $guid], 'counterparty');
@@ -82,7 +82,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    #[ArrayShape(['href' => "string", 'type' => "string", 'mediaType' => "string"])]
+    #[ArrayShape(['href' => 'string', 'type' => 'string', 'mediaType' => 'string'])]
     public static function organization(string $guid): object|array|string
     {
         return static::entity(['organization', $guid], 'organization');
@@ -91,7 +91,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    #[ArrayShape(['href' => "string", 'type' => "string", 'mediaType' => "string"])]
+    #[ArrayShape(['href' => 'string', 'type' => 'string', 'mediaType' => 'string'])]
     public static function entity(array $path, string $type): object|array|string
     {
         return static::create(['entity', ...$path], $type);
@@ -100,14 +100,14 @@ class Meta
     /**
      * @throws FormatException
      */
-    #[ArrayShape(['href' => "string", 'type' => "string", 'mediaType' => "string"])]
+    #[ArrayShape(['href' => 'string', 'type' => 'string', 'mediaType' => 'string'])]
     public static function create(array $path, string $type): object|array|string
     {
         static::$formatter = static::$formatter ?? FormatHandlerFactory::create(static::$format);
 
         $href = Url::URL;
         foreach ($path as $slug) {
-            $href .= "/$slug";
+            $href .= "/{$slug}";
         }
 
         return static::$formatter::decode([
