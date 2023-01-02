@@ -17,12 +17,14 @@ trait GetTrait
      *      ->product()
      *      ->get();
      * </code>
+     *
      * @throws FormatException
      * @throws ApiException
      */
     public function get(): object|array|string
     {
         $payloadList = $this->addPayloadToList(HttpMethod::GET);
+
         return $this->apiSend($payloadList);
     }
 }

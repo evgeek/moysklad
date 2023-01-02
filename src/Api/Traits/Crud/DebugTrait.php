@@ -22,6 +22,7 @@ trait DebugTrait
     public function debug(): Debug
     {
         $payloadList = $this->addPayloadToList();
+
         return new Debug($this->api, $payloadList);
     }
 }
