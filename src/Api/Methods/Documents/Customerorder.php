@@ -19,17 +19,17 @@ use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
 
 class Customerorder extends AbstractNamedMethod
 {
-    use GetTrait;
-    use GetGeneratorTrait;
     use CreateTrait;
-    use MassDeleteTrait;
     use ExpandTrait;
     use FilterTrait;
+    use GetGeneratorTrait;
+    use GetTrait;
     use LimitOffsetTrait;
-    use OrderTrait;
-    use SearchTrait;
+    use MassDeleteTrait;
     use MetadataTrait;
+    use OrderTrait;
     use PositionedMethodByIdTrait;
+    use SearchTrait;
 
     protected const PATH = 'customerorder';
 }

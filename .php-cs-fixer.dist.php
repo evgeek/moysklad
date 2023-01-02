@@ -14,12 +14,15 @@ return $config
         '@PHP81Migration' => true,
         '@PHPUnit84Migration:risky' => true,
         '@PhpCsFixer' => true,
+        '@PhpCsFixer:risky' => true,
+
         'phpdoc_summary' => false,
         'global_namespace_import' => false,
         'explicit_string_variable' => false,
         'yoda_style' => false,
         'concat_space' => false,
         'multiline_whitespace_before_semicolons' => false,
+        'native_function_invocation' => false,
 //        'strict_param' => true,
 //        'array_syntax' => ['syntax' => 'short'],
     ])
