@@ -11,7 +11,7 @@ trait ExpandTrait
     /**
      * Expand nested entity
      *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-zamena-ssylok-ob-ektami-s-pomosch-u-expand
+     * @link https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-zamena-ssylok-ob-ektami-s-pomosch-u-expand
      * <code>
      * $product = $ms->entity()
      *      ->product()

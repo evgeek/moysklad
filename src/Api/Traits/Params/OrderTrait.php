@@ -15,7 +15,7 @@ trait OrderTrait
     /**
      * Sorts result by field
      *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-sortirowka-ob-ektow
+     * @link https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-sortirowka-ob-ektow
      * <code>
      * $product = $ms->entity()
      *      ->product()

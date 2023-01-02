@@ -12,7 +12,7 @@ trait FilterTrait
     /**
      * Filter results
      *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-fil-traciq-wyborki-s-pomosch-u-parametra-filter
+     * @link https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-fil-traciq-wyborki-s-pomosch-u-parametra-filter
      * <code>
      * $product = $ms->entity()
      *   ->product()

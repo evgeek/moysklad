@@ -14,7 +14,7 @@ class Entity extends AbstractNamedEndpoint
 
     /**
      * Products -
-     * https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
+     * @link https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
      * <code>
      * $products = $ms->entity()
      *      ->product()
@@ -29,7 +29,7 @@ class Entity extends AbstractNamedEndpoint
 
     /**
      * Customer orders
-     * https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
+     * @link https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
      * <code>
      * $customerOrders = $ms->entity()
      *      ->customerorder()
@@ -44,7 +44,7 @@ class Entity extends AbstractNamedEndpoint
 
     /**
      * Assortments
-     * https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-assortiment
+     * @link https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-assortiment
      * <code>
      * $assortments = $ms->entity()
      *      ->assortment()

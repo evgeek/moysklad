@@ -52,8 +52,8 @@ class MoySklad
     /**
      * Entities and documents endpoint
      *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti +
-     * https://dev.moysklad.ru/doc/api/remap/1.2/documents/
+     * @link https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti
+     * @link https://dev.moysklad.ru/doc/api/remap/1.2/documents/
      * <code>
      * $products = $ms->entity()
      *      ->product()
@@ -69,7 +69,7 @@ class MoySklad
     /**
      * Reports endpoint
      *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/reports/#otchety
+     * @link https://dev.moysklad.ru/doc/api/remap/1.2/reports/#otchety
      */
     #[Pure]
     public function report(): Report
@@ -80,7 +80,7 @@ class MoySklad
     /**
      * Audit endpoint
      *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/other/#audit
+     * @link https://dev.moysklad.ru/doc/api/remap/1.2/other/#audit
      */
     #[Pure]
     public function audit(): Audit
@@ -91,7 +91,7 @@ class MoySklad
     /**
      * Notifications endpoint
      *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/other/#uwedomleniq
+     * @link https://dev.moysklad.ru/doc/api/remap/1.2/other/#uwedomleniq
      */
     #[Pure]
     public function notification(): Notification

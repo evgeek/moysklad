@@ -9,7 +9,7 @@ trait SearchTrait
     /**
      * Context search
      *
-     * https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-kontextnyj-poisk
+     * @link https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-kontextnyj-poisk
      * <code>
      * $product = $ms->entity()
      *      ->product()
