@@ -23,7 +23,5 @@ return $config
         'concat_space' => false,
         'multiline_whitespace_before_semicolons' => false,
         'native_function_invocation' => false,
-//        'strict_param' => true,
-//        'array_syntax' => ['syntax' => 'short'],
     ])
     ->setFinder($finder);
