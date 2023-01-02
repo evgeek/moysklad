@@ -12,12 +12,14 @@ trait MassDeleteTrait
 {
     /**
      * Mass delete entity (POST http request to /delete)
+     *
      * @throws FormatException
      * @throws ApiException
      */
     public function massDelete(string|array|object $body): object|array|string
     {
         $payloadList = $this->addPayloadToList();
+
         return (new MassDelete($this->api, $payloadList))->massDelete($body);
     }
 }
