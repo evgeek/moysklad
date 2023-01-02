@@ -20,9 +20,9 @@ class Meta
      * @throws FormatException
      */
     #[ArrayShape(['href' => 'string', 'type' => 'string', 'mediaType' => 'string'])]
-    public static function state(string $guid): object|array|string
+    public static function state(string $guid, string $entity): object|array|string
     {
-        return static::entity(['customerorder', 'metadata', 'states', $guid], 'state');
+        return static::entity([$entity, 'metadata', 'states', $guid], 'state');
     }
 
     /**
