@@ -32,8 +32,7 @@ class CommonEndpoint extends AbstractEndpoint
         ApiClient $api,
         ?SplQueue $payloadList,
         protected readonly string $path,
-    )
-    {
+    ) {
         parent::__construct($api, $payloadList ?? new SplQueue());
     }
 }

@@ -22,8 +22,7 @@ abstract class AbstractNamedMethod extends AbstractMethod
     public function __construct(
         ApiClient $api,
         ?SplQueue $payloadList,
-    )
-    {
+    ) {
         parent::__construct($api, $payloadList ?? new SplQueue());
 
         $this->path = static::PATH;

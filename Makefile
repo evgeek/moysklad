@@ -9,10 +9,12 @@ help: ## This help
 
 #LINTERS
 lint-csf: ## php-cs-fixer fix all (p= for additional params)
-	php ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix -v --diff $(p)
-lint-csf-step: ## php-cs-fixer fix by step
-	make lint-csf p="--stop-on-violation"
-lint-csf-dry: ## php-cs-fixer dry run
-	make lint-csf p="--dry-run"
+	php ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix -v $(p)
+lint-csf-fix: ## php-cs-fixer fix all
+	make lint-csf p="--diff"
+lint-csf-fix-step: ## php-cs-fixer fix by step
+	make lint-csf p="--diff --stop-on-violation"
+lint-csf-dry: ## php-cs-fixer dry run all
+	make lint-csf p="--diff --dry-run"
 lint-csf-dry-step: ## php-cs-fixer dry run by step
-	make lint-csf p="--dry-run --stop-on-violation"
+	make lint-csf p="--diff --dry-run --stop-on-violation"

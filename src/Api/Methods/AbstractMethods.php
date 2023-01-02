@@ -24,8 +24,7 @@ abstract class AbstractMethods
     public function __construct(
         protected readonly ApiClient $api,
         protected readonly SplQueue $payloadList = new SplQueue()
-    )
-    {
+    ) {
     }
 
     protected function addPayloadToList(?HttpMethod $method = null, string|array|object|null $body = null): SplQueue

@@ -46,8 +46,7 @@ class CommonMethod extends AbstractMethod
         ApiClient $api,
         ?SplQueue $payloadList,
         protected readonly string $path,
-    )
-    {
+    ) {
         parent::__construct($api, $payloadList ?? new SplQueue());
     }
 }

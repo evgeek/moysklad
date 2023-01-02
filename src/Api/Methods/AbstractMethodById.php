@@ -28,8 +28,7 @@ abstract class AbstractMethodById extends AbstractMethods
         ApiClient $api,
         SplQueue $payloadList,
         protected readonly string $path,
-    )
-    {
+    ) {
         parent::__construct($api, $payloadList);
     }
 }

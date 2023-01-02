@@ -9,5 +9,4 @@ namespace Evgeek\Moysklad\Exceptions;
  */
 class FormatException extends AbstractException
 {
-
 }
