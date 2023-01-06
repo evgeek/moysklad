@@ -1,0 +1,9 @@
+parameters:
+	level: 1
+	paths:
+		- src
+#		- tests
+
+#	exceptions:
+#		implicitThrows: false
+	phpVersion: 80100

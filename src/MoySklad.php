@@ -15,7 +15,6 @@ use Evgeek\Moysklad\Factories\FormatHandlerFactory;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\GuzzleSender;
 use Evgeek\Moysklad\Http\RequestSenderInterface;
-use JetBrains\PhpStorm\Pure;
 
 class MoySklad
 {
@@ -44,7 +43,6 @@ class MoySklad
      *      ->get();
      * </code>
      */
-    #[Pure]
     public function endpoint(string $endpoint): CommonEndpoint
     {
         return new CommonEndpoint($this->api, null, $endpoint);
@@ -61,7 +59,6 @@ class MoySklad
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/
      */
-    #[Pure]
     public function entity(): Entity
     {
         return new Entity($this->api, null);
@@ -72,7 +69,6 @@ class MoySklad
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/reports/#otchety
      */
-    #[Pure]
     public function report(): Report
     {
         return new Report($this->api, null);
@@ -83,7 +79,6 @@ class MoySklad
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/other/#audit
      */
-    #[Pure]
     public function audit(): Audit
     {
         return new Audit($this->api, null);
@@ -94,7 +89,6 @@ class MoySklad
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/other/#uwedomleniq
      */
-    #[Pure]
     public function notification(): Notification
     {
         return new Notification($this->api, null);

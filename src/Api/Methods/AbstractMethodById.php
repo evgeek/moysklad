@@ -11,7 +11,6 @@ use Evgeek\Moysklad\Api\Traits\Methods\CommonMethodByIdTrait;
 use Evgeek\Moysklad\Api\Traits\Methods\CommonMethodTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Http\ApiClient;
-use JetBrains\PhpStorm\Pure;
 use SplQueue;
 
 abstract class AbstractMethodById extends AbstractMethods
@@ -23,7 +22,6 @@ abstract class AbstractMethodById extends AbstractMethods
     use ParamTrait;
     use SendTrait;
 
-    #[Pure]
     public function __construct(
         ApiClient $api,
         SplQueue $payloadList,

@@ -20,7 +20,6 @@ use Evgeek\Moysklad\Api\Traits\Params\OrderTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
 use Evgeek\Moysklad\Http\ApiClient;
-use JetBrains\PhpStorm\Pure;
 use SplQueue;
 
 class CommonMethod extends AbstractMethod
@@ -41,7 +40,6 @@ class CommonMethod extends AbstractMethod
     use PositionsTrait;
     use SearchTrait;
 
-    #[Pure]
     public function __construct(
         ApiClient $api,
         ?SplQueue $payloadList,
