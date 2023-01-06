@@ -13,7 +13,6 @@ use Evgeek\Moysklad\Api\Traits\Params\FilterTrait;
 use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Http\ApiClient;
-use JetBrains\PhpStorm\Pure;
 use SplQueue;
 
 class CommonEndpoint extends AbstractEndpoint
@@ -27,7 +26,6 @@ class CommonEndpoint extends AbstractEndpoint
     use ParamTrait;
     use SendTrait;
 
-    #[Pure]
     public function __construct(
         ApiClient $api,
         ?SplQueue $payloadList,

@@ -7,7 +7,6 @@ namespace Evgeek\Moysklad\Api\Methods;
 use Evgeek\Moysklad\Api\Traits\Methods\CommonMethodTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Http\ApiClient;
-use JetBrains\PhpStorm\Pure;
 use SplQueue;
 
 abstract class AbstractNamedMethod extends AbstractMethod
@@ -18,7 +17,6 @@ abstract class AbstractNamedMethod extends AbstractMethod
     protected const PATH = '';
     protected readonly string $path;
 
-    #[Pure]
     public function __construct(
         ApiClient $api,
         ?SplQueue $payloadList,

@@ -9,11 +9,9 @@ use Evgeek\Moysklad\Handlers\Format\ArrayFormatHandler;
 use Evgeek\Moysklad\Handlers\Format\FormatHandlerInterface;
 use Evgeek\Moysklad\Handlers\Format\ObjectFormatHandler;
 use Evgeek\Moysklad\Handlers\Format\StringFormatHandler;
-use JetBrains\PhpStorm\Pure;
 
 class FormatHandlerFactory
 {
-    #[Pure]
     public static function create(Format $format): FormatHandlerInterface
     {
         return match ($format) {

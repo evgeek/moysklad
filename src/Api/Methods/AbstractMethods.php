@@ -12,7 +12,6 @@ use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\Payload;
 use Generator;
-use JetBrains\PhpStorm\Pure;
 use SplQueue;
 
 abstract class AbstractMethods
@@ -20,7 +19,6 @@ abstract class AbstractMethods
     protected readonly string $path;
     protected array $params = [];
 
-    #[Pure]
     public function __construct(
         protected readonly ApiClient $api,
         protected readonly SplQueue $payloadList = new SplQueue()
@@ -78,7 +76,6 @@ abstract class AbstractMethods
         return $enumMethod;
     }
 
-    #[Pure]
     private function makePayload(?HttpMethod $method, string|array|object|null $body = null): Payload
     {
         return new Payload(
