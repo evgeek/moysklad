@@ -23,5 +23,10 @@
             "Evgeek\\Moysklad\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Evgeek\\Tests\\": "tests/"
+        }
+    },
     "minimum-stability": "dev"
 }

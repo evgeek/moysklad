@@ -50,7 +50,7 @@ class ApiClient
 
         $url = Url::make($payloadList);
         $debug = [
-            'method' => $payload->method,
+            'method' => $payload->method->value,
             'url' => urldecode($url),
             'url_encoded' => $url,
             'headers' => $this->headers,
@@ -125,13 +125,13 @@ class ApiClient
 
         $count = count($credentials);
         if ($count === 1) {
-            $this->headers['Authorization'] = 'Bearer '.$credentials[0];
+            $this->headers['Authorization'] = 'Bearer ' . $credentials[0];
 
             return;
         }
 
         if ($count === 2) {
-            $this->headers['Authorization'] = 'Basic '.base64_encode($credentials[0].':'.$credentials[1]);
+            $this->headers['Authorization'] = 'Basic ' . base64_encode($credentials[0] . ':' .$credentials[1]);
 
             return;
         }

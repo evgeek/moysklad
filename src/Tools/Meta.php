@@ -94,7 +94,7 @@ class Meta
     {
         static::$formatter = static::$formatter ?? FormatHandlerFactory::create(static::$format);
 
-        $href = Url::URL;
+        $href = Url::API;
         foreach ($path as $slug) {
             $href .= "/$slug";
         }
