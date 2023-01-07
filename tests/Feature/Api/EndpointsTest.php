@@ -1,11 +1,12 @@
 <?php
 
-namespace Evgeek\Tests\Feature;
+namespace Evgeek\Tests\Feature\Api;
 
 use Evgeek\Moysklad\Enums\Format;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\Url;
+use Evgeek\Tests\Feature\FeatureTestCase;
 
 class EndpointsTest extends FeatureTestCase
 {
@@ -18,6 +19,10 @@ class EndpointsTest extends FeatureTestCase
 
         $this->ms = new MoySklad([static::TOKEN], Format::ARRAY);
     }
+
+    /**
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\EndpointCommon
+     */
     public function testEndpoint(): void
     {
         $endpoint = 'test_endpoint';
@@ -27,21 +32,33 @@ class EndpointsTest extends FeatureTestCase
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Entity
+     */
     public function testEntity(): void
     {
         $this->assertNamedEndpointSame('entity');
     }
 
+    /**
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Report
+     */
     public function testReport(): void
     {
         $this->assertNamedEndpointSame('report');
     }
 
+    /**
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Audit
+     */
     public function testAudit(): void
     {
         $this->assertNamedEndpointSame('audit');
     }
 
+    /**
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Notification
+     */
     public function testNotification(): void
     {
         $this->assertNamedEndpointSame('notification');

@@ -7,7 +7,7 @@ help: ## This help
 
 .DEFAULT_GOAL := help
 
-#PHP CS Fixer
+## PHP CS Fixer
 lint-csf: ## php-cs-fixer fix all (p= for additional params)
 	php ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix -v --allow-risky=yes $(p)
 lint-csf-fix: ## php-cs-fixer fix all
@@ -21,6 +21,12 @@ lint-csf-dry-list: ## php-cs-fixer dry run by step
 lint-csf-dry-step: ## php-cs-fixer dry run by step
 	make lint-csf p="--diff --dry-run --stop-on-violation"
 
-#PHPStan
+## PHPStan
 phpstan: # Run PHPStan
 	vendor/bin/phpstan analyse --xdebug
+
+## PHPUnit
+test: # Run tests
+	./vendor/bin/phpunit tests
+test-coverage: # Run tests with coverage report
+	XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text tests
