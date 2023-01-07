@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Methods\Documents;
 
-use Evgeek\Moysklad\Api\Methods\AbstractNamedMethod;
+use Evgeek\Moysklad\Api\Methods\MethodNamed;
 use Evgeek\Moysklad\Api\Traits\Crud\CreateTrait;
 use Evgeek\Moysklad\Api\Traits\Crud\GetGeneratorTrait;
 use Evgeek\Moysklad\Api\Traits\Crud\GetTrait;
@@ -17,7 +17,7 @@ use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Params\OrderTrait;
 use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
 
-class Customerorder extends AbstractNamedMethod
+class Customerorder extends MethodNamed
 {
     use CreateTrait;
     use ExpandTrait;

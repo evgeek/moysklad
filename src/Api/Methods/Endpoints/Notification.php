@@ -11,7 +11,7 @@ use Evgeek\Moysklad\Api\Traits\Methods\CommonMethodByIdTrait;
 use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 
-class Notification extends AbstractNamedEndpoint
+class Notification extends EndpointNamed
 {
     use CommonMethodByIdTrait;
     use DebugTrait;

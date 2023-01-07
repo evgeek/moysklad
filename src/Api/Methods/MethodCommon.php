@@ -22,7 +22,7 @@ use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
 use Evgeek\Moysklad\Http\ApiClient;
 use SplQueue;
 
-class CommonMethod extends AbstractMethod
+class MethodCommon extends Method
 {
     use AttributesTrait;
     use CommonMethodTrait;

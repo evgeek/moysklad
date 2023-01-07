@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Methods;
 
-use Evgeek\Moysklad\Api\Methods\AbstractMethodById;
-use Evgeek\Moysklad\Api\Methods\PositionedMethodById;
+use Evgeek\Moysklad\Api\Methods\ById;
+use Evgeek\Moysklad\Api\Methods\ByIdPositioned;
 
 trait PositionedMethodByIdTrait
 {
@@ -20,12 +20,12 @@ trait PositionedMethodByIdTrait
      *      ->get();
      * </code>
      *
-     * @return PositionedMethodById
+     * @return ByIdPositioned
      */
-    public function byId(string $guid): AbstractMethodById
+    public function byId(string $guid): ById
     {
         $this->addPayloadToList();
 
-        return new PositionedMethodById($this->api, $this->payloadList, $guid);
+        return new ByIdPositioned($this->api, $this->payloadList, $guid);
     }
 }

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Methods;
 
-use Evgeek\Moysklad\Api\Methods\AbstractMethodById;
-use Evgeek\Moysklad\Api\Methods\CommonMethodById;
+use Evgeek\Moysklad\Api\Methods\ById;
+use Evgeek\Moysklad\Api\Methods\ByIdCommon;
 
 trait CommonMethodByIdTrait
 {
@@ -18,12 +18,12 @@ trait CommonMethodByIdTrait
      *      ->get();
      * </code>
      *
-     * @return CommonMethodById
+     * @return ByIdCommon
      */
-    public function byId(string $guid): AbstractMethodById
+    public function byId(string $guid): ById
     {
         $this->addPayloadToList();
 
-        return new CommonMethodById($this->api, $this->payloadList, $guid);
+        return new ByIdCommon($this->api, $this->payloadList, $guid);
     }
 }

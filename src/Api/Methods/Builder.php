@@ -14,7 +14,7 @@ use Evgeek\Moysklad\Http\Payload;
 use Generator;
 use SplQueue;
 
-abstract class AbstractBuilder
+abstract class Builder
 {
     protected readonly string $path;
     protected array $params = [];

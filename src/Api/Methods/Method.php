@@ -7,7 +7,7 @@ namespace Evgeek\Moysklad\Api\Methods;
 use Evgeek\Moysklad\Api\Traits\Crud\DebugTrait;
 use Evgeek\Moysklad\Api\Traits\Crud\SendTrait;
 
-abstract class AbstractMethod extends AbstractBuilder
+abstract class Method extends Builder
 {
     use DebugTrait;
     use SendTrait;

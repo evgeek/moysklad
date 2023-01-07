@@ -12,7 +12,7 @@ use Evgeek\Moysklad\Api\Traits\Params\FilterTrait;
 use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 
-class Audit extends AbstractNamedEndpoint
+class Audit extends EndpointNamed
 {
     use CommonMethodByIdTrait;
     use DebugTrait;

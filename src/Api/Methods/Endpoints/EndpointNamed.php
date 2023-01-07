@@ -2,17 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\Api\Methods;
+namespace Evgeek\Moysklad\Api\Methods\Endpoints;
 
 use Evgeek\Moysklad\Api\Traits\Methods\CommonMethodTrait;
-use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Http\ApiClient;
 use SplQueue;
 
-abstract class AbstractNamedMethod extends AbstractMethod
+abstract class EndpointNamed extends Endpoint
 {
     use CommonMethodTrait;
-    use ParamTrait;
 
     protected const PATH = '';
     protected readonly string $path;

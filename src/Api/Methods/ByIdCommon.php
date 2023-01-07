@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Api\Traits\Crud\DeleteTrait;
 use Evgeek\Moysklad\Api\Traits\Crud\UpdateTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ExpandTrait;
 
-class CommonMethodById extends AbstractMethodById
+class ByIdCommon extends ById
 {
     use DeleteTrait;
     use ExpandTrait;

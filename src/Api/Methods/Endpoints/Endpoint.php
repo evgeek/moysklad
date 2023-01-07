@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Methods\Endpoints;
 
-class Report extends EndpointNamed
+use Evgeek\Moysklad\Api\Methods\Builder;
+
+abstract class Endpoint extends Builder
 {
-    protected const PATH = 'report';
 }

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Methods\Special;
 
-use Evgeek\Moysklad\Api\Methods\AbstractNamedMethod;
+use Evgeek\Moysklad\Api\Methods\MethodNamed;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\InputException;
 
-class Debug extends AbstractNamedMethod
+class Debug extends MethodNamed
 {
     protected const PATH = 'debug';
 

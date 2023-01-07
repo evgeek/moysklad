@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Api\Methods\Documents\Customerorder;
 use Evgeek\Moysklad\Api\Methods\Entities\Assortment;
 use Evgeek\Moysklad\Api\Methods\Entities\Product;
 
-class Entity extends AbstractNamedEndpoint
+class Entity extends EndpointNamed
 {
     protected const PATH = 'entity';
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Methods;
 
-use Evgeek\Moysklad\Api\Methods\CommonMethod;
+use Evgeek\Moysklad\Api\Methods\MethodCommon;
 
 trait CommonMethodTrait
 {
@@ -16,10 +16,10 @@ trait CommonMethodTrait
      *      ->get();
      * </code>
      */
-    public function method(string $entity): CommonMethod
+    public function method(string $entity): MethodCommon
     {
         $this->addPayloadToList();
 
-        return new CommonMethod($this->api, $this->payloadList, $entity);
+        return new MethodCommon($this->api, $this->payloadList, $entity);
     }
 }

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Methods\Special;
 
-use Evgeek\Moysklad\Api\Methods\AbstractNamedMethod;
+use Evgeek\Moysklad\Api\Methods\MethodNamed;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
 
-class MassDelete extends AbstractNamedMethod
+class MassDelete extends MethodNamed
 {
     protected const PATH = 'delete';
 
