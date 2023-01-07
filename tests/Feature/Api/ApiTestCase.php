@@ -10,8 +10,8 @@ use PHPUnit\Framework\TestCase;
 
 class ApiTestCase extends TestCase
 {
-    protected MoySklad $ms;
     protected const TOKEN = 'fake_token';
+    protected MoySklad $ms;
 
     protected function setUp(): void
     {
