@@ -7,7 +7,7 @@ help: ## This help
 
 .DEFAULT_GOAL := help
 
-## PHP CS Fixer
+# PHP CS Fixer
 lint-csf: ## php-cs-fixer fix all (p= for additional params)
 	php ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix -v --allow-risky=yes $(p)
 lint-csf-fix: ## php-cs-fixer fix all
@@ -21,16 +21,26 @@ lint-csf-dry-list: ## php-cs-fixer dry run by step
 lint-csf-dry-step: ## php-cs-fixer dry run by step
 	make lint-csf p="--diff --dry-run --stop-on-violation"
 
-## PHPStan
+# PHPStan
 phpstan: # Run PHPStan
 	vendor/bin/phpstan analyse --xdebug
 
-## PHPUnit
-test: # Run tests
-	./vendor/bin/phpunit tests
-test-coverage: # Run tests with text coverage report
-	XDEBUG_MODE=coverage ./vendor/bin/phpunit tests
-test-coverage-clover: # Run tests with clover coverage report
-	XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-clover .phpunit.cache/clover.xml tests
-test-coverage-html: # Run tests with html coverage report
-	XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html .phpunit.cache/htmlreport tests
+# PHPUnit
+test-run: ## Run all tests
+	@make mk-test-run t=all
+test-coverage: ## Run all tests with coverage report
+	@make mk-test-coverage t=all
+test-unit-run: ## Run unit tests
+	@make mk-test-run t=unit
+test-unit-coverage: ## Run unit tests with coverage report
+	@make mk-test-coverage t=unit p="--strict-coverage"
+test-feature-run: ## Run feature tests
+	@make mk-test-run t=feature
+test-feature-coverage: ## Run feature tests with coverage report
+	@make mk-test-coverage t=feature
+
+# Inner commands
+mk-test-run: ## Run testsuite tests
+	./vendor/bin/phpunit --testsuite $(t) $(p)
+mk-test-coverage: ## Run testsuite coverage
+	XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text --coverage-clover .phpunit.cache/clover.xml --coverage-html .phpunit.cache/htmlreport --testsuite $(t) $(p)
