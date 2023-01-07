@@ -13,7 +13,7 @@ use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Http\ApiClient;
 use SplQueue;
 
-abstract class AbstractMethodById extends AbstractMethods
+abstract class AbstractMethodById extends AbstractBuilder
 {
     use CommonMethodByIdTrait;
     use CommonMethodTrait;
