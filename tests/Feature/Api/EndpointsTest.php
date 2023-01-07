@@ -2,6 +2,7 @@
 
 namespace Evgeek\Tests\Feature\Api;
 
+use Evgeek\Moysklad\Api\Methods\Endpoints\Endpoint;
 use Evgeek\Moysklad\Enums\Format;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\MoySklad;
@@ -33,6 +34,7 @@ class EndpointsTest extends FeatureTestCase
     }
 
     /**
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\EndpointNamed
      * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Entity
      */
     public function testEntity(): void
@@ -41,6 +43,7 @@ class EndpointsTest extends FeatureTestCase
     }
 
     /**
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\EndpointNamed
      * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Report
      */
     public function testReport(): void
@@ -49,6 +52,7 @@ class EndpointsTest extends FeatureTestCase
     }
 
     /**
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\EndpointNamed
      * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Audit
      */
     public function testAudit(): void
@@ -57,6 +61,7 @@ class EndpointsTest extends FeatureTestCase
     }
 
     /**
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\EndpointNamed
      * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Notification
      */
     public function testNotification(): void
