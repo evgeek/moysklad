@@ -22,7 +22,7 @@ class EndpointsTest extends FeatureTestCase
     }
 
     /**
-     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\EndpointCommon
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\EndpointCommon<extended>
      */
     public function testEndpoint(): void
     {
@@ -34,8 +34,7 @@ class EndpointsTest extends FeatureTestCase
     }
 
     /**
-     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\EndpointNamed
-     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Entity
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Entity<extended>
      */
     public function testEntity(): void
     {
@@ -43,8 +42,7 @@ class EndpointsTest extends FeatureTestCase
     }
 
     /**
-     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\EndpointNamed
-     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Report
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Report<extended>
      */
     public function testReport(): void
     {
@@ -52,8 +50,7 @@ class EndpointsTest extends FeatureTestCase
     }
 
     /**
-     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\EndpointNamed
-     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Audit
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Audit<extended>
      */
     public function testAudit(): void
     {
@@ -61,8 +58,7 @@ class EndpointsTest extends FeatureTestCase
     }
 
     /**
-     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\EndpointNamed
-     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Notification
+     * @covers \Evgeek\Moysklad\Api\Methods\Endpoints\Notification<extended>
      */
     public function testNotification(): void
     {
