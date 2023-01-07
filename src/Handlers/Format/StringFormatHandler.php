@@ -7,7 +7,7 @@ namespace Evgeek\Moysklad\Handlers\Format;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Throwable;
 
-class StringFormatHandler extends AbstractFormatHandler
+class StringFormatHandler extends FormatHandler
 {
     /**
      * @throws FormatException
