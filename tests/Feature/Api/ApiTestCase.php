@@ -34,7 +34,7 @@ class ApiTestCase extends TestCase
     protected function assertNamedBuilderDebugSame(array $path): void
     {
         /** @var Method $ms */
-        $ms = array_reduce($path, static fn(MoySklad|Builder $builder, string $method) => $builder->{$method}(), $this->ms);
+        $ms = array_reduce($path, static fn (MoySklad|Builder $builder, string $method) => $builder->{$method}(), $this->ms);
         $actual = $ms->debug()->get();
         $expected = $this->makeExpectedDebug($path);
 
@@ -46,7 +46,7 @@ class ApiTestCase extends TestCase
         /** @var Method $ms */
         $ms = array_reduce(
             $path,
-            static fn(Builder $builder, string $method) => $builder->{$method}(),
+            static fn (Builder $builder, string $method) => $builder->{$method}(),
             $this->ms->endpoint($endpoint)->method($method)
         );
         $actual = $ms->debug()->get();
