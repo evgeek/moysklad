@@ -1,8 +1,8 @@
 parameters:
-	level: 1
+	level: 2
 	paths:
 		- src
-#		- tests
+		- tests
 
 #	exceptions:
 #		implicitThrows: false

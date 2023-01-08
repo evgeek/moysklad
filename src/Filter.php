@@ -6,7 +6,7 @@ namespace Evgeek\Moysklad;
 
 use Evgeek\Moysklad\Enums\FilterSigns;
 
-class Filter
+final class Filter
 {
     private const FILTER_DELIMITER = ';';
     private const FILTER_ESCAPED_DELIMITER = '\;';
@@ -99,6 +99,6 @@ class Filter
 
     private function prepareFiltered(string $value): string
     {
-        return str_replace(static::FILTER_DELIMITER, static::FILTER_ESCAPED_DELIMITER, $value);
+        return str_replace(self::FILTER_DELIMITER, self::FILTER_ESCAPED_DELIMITER, $value);
     }
 }
