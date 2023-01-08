@@ -7,20 +7,28 @@ help: ## This help
 
 .DEFAULT_GOAL := help
 
-#PHP CS Fixer
-lint-csf: ## php-cs-fixer fix all (p= for additional params)
+# PHP CS Fixer
+lint-fix: ## php-cs-fixer fix all
+	make lint p="--diff"
+lint-fix-step: ## php-cs-fixer fix by step
+	make lint p="--diff --stop-on-violation"
+lint-dry: ## php-cs-fixer dry run all without diff
+	make lint p="--diff --dry-run"
+lint-dry-list: ## php-cs-fixer dry run by step
+	make lint p="--dry-run"
+lint-dry-step: ## php-cs-fixer dry run by step
+	make lint p="--diff --dry-run --stop-on-violation"
+lint: ## php-cs-fixer fix all (p= for additional params)
 	php ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix -v --allow-risky=yes $(p)
-lint-csf-fix: ## php-cs-fixer fix all
-	make lint-csf p="--diff"
-lint-csf-fix-step: ## php-cs-fixer fix by step
-	make lint-csf p="--diff --stop-on-violation"
-lint-csf-dry: ## php-cs-fixer dry run all without diff
-	make lint-csf p="--diff --dry-run"
-lint-csf-dry-list: ## php-cs-fixer dry run by step
-	make lint-csf p="--dry-run"
-lint-csf-dry-step: ## php-cs-fixer dry run by step
-	make lint-csf p="--diff --dry-run --stop-on-violation"
 
-#PHPStan
+# PHPStan
 phpstan: # Run PHPStan
 	vendor/bin/phpstan analyse --xdebug
+
+# PHPUnit
+test: ## Run all tests
+	./vendor/bin/phpunit tests
+test-testdox: ## Run all tests with verbose testdox output
+	./vendor/bin/phpunit --testdox tests
+test-coverage: ## Run all tests with coverage report
+	XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text --coverage-clover .phpunit.cache/clover.xml --coverage-html .phpunit.cache/htmlreport tests

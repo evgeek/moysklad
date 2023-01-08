@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Crud;
 
-use Evgeek\Moysklad\Api\Methods\Special\Debug;
+use Evgeek\Moysklad\Api\Builders\Methods\Special\Debug;
 
 trait DebugTrait
 {

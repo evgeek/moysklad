@@ -14,7 +14,7 @@ trait ParamTrait
      * <code>
      * $order = $ms->entity()
      *      ->customerorder()
-     *      ->order('updated', 'desc')
+     *      ->param('limit', '10')
      *      ->get();
      * </code>
      */

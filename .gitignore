@@ -1,5 +1,9 @@
 .idea
 .php-cs-fixer.cache
 phpstan.neon
+
+.phpunit.result.cache
+phpunit.xml.dist
 /vendor
 /test.php
+/.phpunit.cache

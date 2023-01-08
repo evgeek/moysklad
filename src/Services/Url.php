@@ -10,14 +10,14 @@ use SplQueue;
 
 class Url
 {
-    public const URL = 'https://online.moysklad.ru/api/remap/1.2';
+    public const API = 'https://online.moysklad.ru/api/remap/1.2';
 
     public static function make(SplQueue $payloadList): string
     {
         /** @var Payload $payload */
         $payload = $payloadList->bottom();
 
-        $url = static::URL;
+        $url = static::API;
         foreach (static::payloadsGenerator($payloadList) as $payload) {
             $url .= "/$payload->path";
         }

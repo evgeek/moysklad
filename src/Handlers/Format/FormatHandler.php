@@ -7,12 +7,12 @@ namespace Evgeek\Moysklad\Handlers\Format;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Throwable;
 
-class StringFormatHandler extends FormatHandler
+abstract class FormatHandler implements FormatHandlerInterface
 {
     /**
      * @throws FormatException
      */
-    public static function decode(string|array|object $content): string
+    public static function encode(string|array|object $content): string
     {
         if (is_string($content)) {
             return $content;
@@ -21,8 +21,8 @@ class StringFormatHandler extends FormatHandler
         try {
             $content = json_encode($content, JSON_THROW_ON_ERROR);
         } catch (Throwable $e) {
-            throw new FormatException("Can't convert ".gettype($content).' to string. '.
-                "Message: {$e->getMessage()}".PHP_EOL.' Content:'.PHP_EOL.$content);
+            throw new FormatException("Can't convert " . gettype($content) . ' to string. ' .
+                "Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content);
         }
 
         return $content;

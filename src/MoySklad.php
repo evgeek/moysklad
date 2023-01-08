@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad;
 
-use Evgeek\Moysklad\Api\Methods\Endpoints\Audit;
-use Evgeek\Moysklad\Api\Methods\Endpoints\CommonEndpoint;
-use Evgeek\Moysklad\Api\Methods\Endpoints\Entity;
-use Evgeek\Moysklad\Api\Methods\Endpoints\Notification;
-use Evgeek\Moysklad\Api\Methods\Endpoints\Report;
+use Evgeek\Moysklad\Api\Builders\Endpoints\Audit;
+use Evgeek\Moysklad\Api\Builders\Endpoints\EndpointCommon;
+use Evgeek\Moysklad\Api\Builders\Endpoints\Entity;
+use Evgeek\Moysklad\Api\Builders\Endpoints\Notification;
+use Evgeek\Moysklad\Api\Builders\Endpoints\Report;
 use Evgeek\Moysklad\Enums\Format;
 use Evgeek\Moysklad\Exceptions\ConfigException;
 use Evgeek\Moysklad\Factories\FormatHandlerFactory;
@@ -43,9 +43,9 @@ class MoySklad
      *      ->get();
      * </code>
      */
-    public function endpoint(string $endpoint): CommonEndpoint
+    public function endpoint(string $endpoint): EndpointCommon
     {
-        return new CommonEndpoint($this->api, null, $endpoint);
+        return new EndpointCommon($this->api, null, $endpoint);
     }
 
     /**

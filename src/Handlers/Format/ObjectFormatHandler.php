@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Exceptions\FormatException;
 use stdClass;
 use Throwable;
 
-class ObjectFormatHandler extends AbstractFormatHandler
+class ObjectFormatHandler extends FormatHandler
 {
     /**
      * @throws FormatException
