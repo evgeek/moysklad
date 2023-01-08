@@ -28,5 +28,7 @@ phpstan: # Run PHPStan
 # PHPUnit
 test: ## Run all tests
 	./vendor/bin/phpunit tests
+test-testdox: ## Run all tests with verbose testdox output
+	./vendor/bin/phpunit --testdox tests
 test-coverage: ## Run all tests with coverage report
 	XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text --coverage-clover .phpunit.cache/clover.xml --coverage-html .phpunit.cache/htmlreport tests
