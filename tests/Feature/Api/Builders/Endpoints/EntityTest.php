@@ -19,7 +19,7 @@ class EntityTest extends ApiTestCase
      */
     public function testProductBuilder(): void
     {
-        $actual = $this->ms->entity()->product()->debug()->get();
+        $actual = $this->query->entity()->product()->debug()->get();
         $expected = $this->makeExpectedDebug(['entity', 'product']);
 
         $this->assertSame($expected, $actual);
@@ -30,7 +30,7 @@ class EntityTest extends ApiTestCase
      */
     public function testCustomerorderBuilder(): void
     {
-        $actual = $this->ms->entity()->customerorder()->debug()->get();
+        $actual = $this->query->entity()->customerorder()->debug()->get();
         $expected = $this->makeExpectedDebug(['entity', 'customerorder']);
 
         $this->assertSame($expected, $actual);
@@ -41,7 +41,7 @@ class EntityTest extends ApiTestCase
      */
     public function testAssortmentBuilder(): void
     {
-        $actual = $this->ms->entity()->assortment()->debug()->get();
+        $actual = $this->query->entity()->assortment()->debug()->get();
         $expected = $this->makeExpectedDebug(['entity', 'assortment']);
 
         $this->assertSame($expected, $actual);

@@ -12,7 +12,8 @@ trait FilterTrait
     /**
      * Filter results
      * <code>
-     * $product = $ms->entity()
+     * $product = $ms->query()
+     *    ->entity()
      *   ->product()
      *   ->filter(
      *       (new \Evgeek\Moysklad\Filter())

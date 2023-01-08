@@ -9,7 +9,8 @@ trait SearchTrait
     /**
      * Context search
      * <code>
-     * $product = $ms->entity()
+     * $product = $ms->query()
+     *      ->entity()
      *      ->product()
      *      ->search('orange')
      *      ->get();

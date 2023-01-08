@@ -13,7 +13,7 @@ class ObjectFormatHandler extends FormatHandler
     /**
      * @throws FormatException
      */
-    public static function decode(string|array|object $content): object|array
+    public static function decode(stdClass|array|string $content): stdClass|array
     {
         if (is_object($content)) {
             return $content;

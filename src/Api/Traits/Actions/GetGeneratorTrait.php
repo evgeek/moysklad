@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\Api\Traits\Crud;
+namespace Evgeek\Moysklad\Api\Traits\Actions;
 
-use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\GeneratorException;
@@ -15,7 +14,8 @@ trait GetGeneratorTrait
     /**
      * Create generator from request (only for iterable entities: with rows array and meta->limit/meta->offset fields)
      * <code>
-     * $generator = $ms->entity()
+     * $generator = $ms->query()
+     *      ->entity()
      *      ->product()
      *      ->getGenerator();
      * foreach ($generator as $product) {
@@ -29,8 +29,6 @@ trait GetGeneratorTrait
      */
     public function getGenerator(): Generator
     {
-        $payloadList = $this->addPayloadToList(HttpMethod::GET);
-
-        return $this->apiGetGenerator($payloadList);
+        return $this->apiGetGenerator();
     }
 }

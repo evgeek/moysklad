@@ -11,7 +11,8 @@ trait ExpandTrait
     /**
      * Expand nested entity
      * <code>
-     * $product = $ms->entity()
+     * $product = $ms->query()
+     *      ->entity()
      *      ->product()
      *      ->expand('group', 'images')
      *      ->get();

@@ -11,7 +11,8 @@ trait AttributesTrait
     /**
      * Attributes
      * <code>
-     * $product = $ms->entity()
+     * $product = $ms->query()
+     *      ->entity()
      *      ->product()
      *      ->metadata()
      *      ->attributes()
@@ -20,8 +21,6 @@ trait AttributesTrait
      */
     public function attributes(): Attributes
     {
-        $this->addPayloadToList();
-
-        return new Attributes($this->api, $this->payloadList);
+        return $this->resolveNamedBuilder(Attributes::class);
     }
 }

@@ -12,7 +12,7 @@ class ByIdCommonTest extends ApiTestCase
     public function testBuilder(): void
     {
         $testGuid = 'test_guid';
-        $actual = $this->ms->entity()->product()->byId($testGuid)->debug()->get();
+        $actual = $this->query->entity()->product()->byId($testGuid)->debug()->get();
         $expected = $this->makeExpectedDebug(['entity', 'product', $testGuid]);
 
         $this->assertSame($expected, $actual);

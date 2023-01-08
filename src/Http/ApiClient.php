@@ -13,7 +13,7 @@ use Evgeek\Moysklad\Handlers\Format\FormatHandlerInterface;
 use Evgeek\Moysklad\Services\Url;
 use Generator;
 use GuzzleHttp\Psr7\Request;
-use SplQueue;
+use stdClass;
 use Throwable;
 
 class ApiClient
@@ -35,20 +35,17 @@ class ApiClient
      * @throws FormatException
      * @throws ApiException
      */
-    public function send(SplQueue $payloadList): object|array|string
+    public function send(Payload $payload): stdClass|array|string
     {
-        return $this->formatter::decode($this->sendRequest($payloadList));
+        return $this->formatter::decode($this->sendRequest($payload));
     }
 
     /**
      * @throws FormatException
      */
-    public function debug(SplQueue $payloadList): object|array|string
+    public function debug(Payload $payload): stdClass|array|string
     {
-        /** @var Payload $payload */
-        $payload = $payloadList->pop();
-
-        $url = Url::make($payloadList);
+        $url = Url::make($payload);
         $debug = [
             'method' => $payload->method->value,
             'url' => urldecode($url),
@@ -65,10 +62,10 @@ class ApiClient
      * @throws GeneratorException
      * @throws ApiException
      */
-    public function getGenerator(SplQueue $payloadList): Generator
+    public function getGenerator(Payload $payload): Generator
     {
         do {
-            $content = ArrayFormatHandler::decode($this->sendRequest($payloadList));
+            $content = ArrayFormatHandler::decode($this->sendRequest($payload));
             if (!array_key_exists('rows', $content)) {
                 throw new GeneratorException("Response is non-iterable (missed 'rows' property)");
             }
@@ -84,11 +81,9 @@ class ApiClient
 
             $next = $content['meta']['nextHref'] ?? null;
 
-            /** @var Payload $payload */
-            $payload = $payloadList->pop();
             $params = $payload->params;
             $params['offset'] = $offset + $limit;
-            $payloadList->push(new Payload($payload->method, $payload->path, $params, $payload->body));
+            $payload = new Payload($payload->method, $payload->url, $params, $payload->body);
         } while ($next !== null);
     }
 
@@ -96,13 +91,10 @@ class ApiClient
      * @throws FormatException
      * @throws ApiException
      */
-    private function sendRequest(SplQueue $payloadList): string
+    private function sendRequest(Payload $payload): string
     {
-        /** @var Payload $payload */
-        $payload = $payloadList->top();
-
         $body = $payload->body === null ? '' : $this->formatter::encode($payload->body);
-        $request = new Request($payload->method->value, Url::make($payloadList), $this->headers, $body);
+        $request = new Request($payload->method->value, Url::make($payload), $this->headers, $body);
 
         try {
             return $this->requestSender

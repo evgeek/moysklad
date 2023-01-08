@@ -2,18 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\Api\Traits\Crud;
+namespace Evgeek\Moysklad\Api\Traits\Actions;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
+use stdClass;
 
 trait DeleteTrait
 {
     /**
      * Delete entity (DELETE http request)
      * <code>
-     * $ms->entity()
+     * $ms->query()
+     *      ->entity()
      *      ->product()
      *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
      *      ->delete();
@@ -22,10 +24,8 @@ trait DeleteTrait
      * @throws FormatException
      * @throws ApiException
      */
-    public function delete(): object|array|string
+    public function delete(): stdClass|array|string
     {
-        $payloadList = $this->addPayloadToList(HttpMethod::DELETE);
-
-        return $this->apiSend($payloadList);
+        return $this->apiSend(HttpMethod::DELETE);
     }
 }

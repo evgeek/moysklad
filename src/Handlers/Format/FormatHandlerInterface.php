@@ -5,16 +5,17 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Handlers\Format;
 
 use Evgeek\Moysklad\Exceptions\FormatException;
+use stdClass;
 
 interface FormatHandlerInterface
 {
     /**
      * @throws FormatException
      */
-    public static function decode(string|array|object $content): string|array|object;
+    public static function decode(stdClass|array|string $content): stdClass|array|string;
 
     /**
      * @throws FormatException
      */
-    public static function encode(string|array|object $content): string;
+    public static function encode(stdClass|array|string $content): string;
 }

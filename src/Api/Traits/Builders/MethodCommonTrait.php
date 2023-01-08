@@ -11,15 +11,14 @@ trait MethodCommonTrait
     /**
      * Nested URL path
      * <code>
-     * $product = $ms->entity()
+     * $product = $ms->query()
+     *      ->entity()
      *      ->method('product')
      *      ->get();
      * </code>
      */
     public function method(string $entity): MethodCommon
     {
-        $this->addPayloadToList();
-
-        return new MethodCommon($this->api, $this->payloadList, $entity);
+        return $this->resolveCommonBuilder(MethodCommon::class, $entity);
     }
 }

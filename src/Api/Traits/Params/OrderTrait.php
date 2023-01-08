@@ -15,7 +15,8 @@ trait OrderTrait
     /**
      * Sorts result by field
      * <code>
-     * $product = $ms->entity()
+     * $product = $ms->query()
+     *      ->entity()
      *      ->product()
      *      ->order('updated', 'desc')
      *      ->get();

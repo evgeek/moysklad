@@ -2,19 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\Api\Traits\Crud;
+namespace Evgeek\Moysklad\Api\Traits\Actions;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\InputException;
+use stdClass;
 
 trait SendTrait
 {
     /**
      * Generic HTTP request
      * <code>
-     * $product = $ms->entity()
+     * $product = $ms->query()
+     *      ->entity()
      *      ->product()
      *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
      *      ->send('PUT', ['name' => 'orange']);
@@ -24,11 +26,8 @@ trait SendTrait
      * @throws ApiException
      * @throws InputException
      */
-    public function send(HttpMethod|string $method, string|array|object|null $body = null): object|array|string
+    public function send(HttpMethod|string $method, stdClass|array|string|null $body = null): stdClass|array|string
     {
-        $method = $this->getEnumMethod($method);
-        $payloadList = $this->addPayloadToList($method, $body);
-
-        return $this->apiSend($payloadList);
+        return $this->apiSend($this->getEnumMethod($method), $body);
     }
 }

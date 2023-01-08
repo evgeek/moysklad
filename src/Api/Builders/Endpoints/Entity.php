@@ -15,7 +15,8 @@ class Entity extends EndpointNamed
     /**
      * Products
      * <code>
-     * $products = $ms->entity()
+     * $products = $ms->query()
+     *      ->entity()
      *      ->product()
      *      ->get();
      * </code>
@@ -24,15 +25,14 @@ class Entity extends EndpointNamed
      */
     public function product(): Product
     {
-        $this->addPayloadToList();
-
-        return new Product($this->api, $this->payloadList);
+        return $this->resolveNamedBuilder(Product::class);
     }
 
     /**
      * Customer orders
      * <code>
-     * $customerOrders = $ms->entity()
+     * $customerOrders = $ms->query()
+     *      ->entity()
      *      ->customerorder()
      *      ->get();
      * </code>
@@ -41,15 +41,14 @@ class Entity extends EndpointNamed
      */
     public function customerorder(): Customerorder
     {
-        $this->addPayloadToList();
-
-        return new Customerorder($this->api, $this->payloadList);
+        return $this->resolveNamedBuilder(Customerorder::class);
     }
 
     /**
      * Assortments
      * <code>
-     * $assortments = $ms->entity()
+     * $assortments = $ms->query()
+     *      ->entity()
      *      ->assortment()
      *      ->get();
      * </code>
@@ -58,8 +57,6 @@ class Entity extends EndpointNamed
      */
     public function assortment(): Assortment
     {
-        $this->addPayloadToList();
-
-        return new Assortment($this->api, $this->payloadList);
+        return $this->resolveNamedBuilder(Assortment::class);
     }
 }

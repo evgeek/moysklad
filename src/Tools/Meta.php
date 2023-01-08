@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Tools;
 
+use Evgeek\Moysklad\Api\Builders\Query;
 use Evgeek\Moysklad\Enums\Format;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Factories\FormatHandlerFactory;
 use Evgeek\Moysklad\Handlers\Format\FormatHandlerInterface;
-use Evgeek\Moysklad\Services\Url;
+use stdClass;
 
 class Meta
 {
@@ -18,7 +19,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    public static function state(string $guid, string $entity): object|array|string
+    public static function state(string $guid, string $entity): stdClass|array|string
     {
         return static::entity([$entity, 'metadata', 'states', $guid], 'state');
     }
@@ -26,7 +27,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    public static function service(string $guid): object|array|string
+    public static function service(string $guid): stdClass|array|string
     {
         return static::entity(['service', $guid], 'service');
     }
@@ -34,7 +35,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    public static function product(string $guid): object|array|string
+    public static function product(string $guid): stdClass|array|string
     {
         return static::entity(['product', $guid], 'product');
     }
@@ -42,7 +43,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    public static function saleschannel(string $guid): object|array|string
+    public static function saleschannel(string $guid): stdClass|array|string
     {
         return static::entity(['saleschannel', $guid], 'saleschannel');
     }
@@ -50,7 +51,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    public static function currency(string $guid): object|array|string
+    public static function currency(string $guid): stdClass|array|string
     {
         return static::entity(['currency', $guid], 'currency');
     }
@@ -58,7 +59,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    public static function store(string $guid): object|array|string
+    public static function store(string $guid): stdClass|array|string
     {
         return static::entity(['store', $guid], 'store');
     }
@@ -66,7 +67,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    public static function counterparty(string $guid): object|array|string
+    public static function counterparty(string $guid): stdClass|array|string
     {
         return static::entity(['counterparty', $guid], 'counterparty');
     }
@@ -74,7 +75,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    public static function organization(string $guid): object|array|string
+    public static function organization(string $guid): stdClass|array|string
     {
         return static::entity(['organization', $guid], 'organization');
     }
@@ -82,7 +83,7 @@ class Meta
     /**
      * @throws FormatException
      */
-    public static function entity(array $path, string $type): object|array|string
+    public static function entity(array $path, string $type): stdClass|array|string
     {
         return static::create(['entity', ...$path], $type);
     }
@@ -90,11 +91,11 @@ class Meta
     /**
      * @throws FormatException
      */
-    public static function create(array $path, string $type): object|array|string
+    public static function create(array $path, string $type): stdClass|array|string
     {
         static::$formatter = static::$formatter ?? FormatHandlerFactory::create(static::$format);
 
-        $href = Url::API;
+        $href = Query::API;
         foreach ($path as $slug) {
             $href .= "/$slug";
         }

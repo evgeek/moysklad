@@ -9,7 +9,8 @@ trait LimitOffsetTrait
     /**
      * Maximum entities in response
      * <code>
-     * $product = $ms->entity()
+     * $product = $ms->query()
+     *      ->entity()
      *      ->product()
      *      ->limit(100)
      *      ->offset(0)

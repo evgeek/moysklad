@@ -12,7 +12,8 @@ trait ParamTrait
     /**
      * Generic query param
      * <code>
-     * $order = $ms->entity()
+     * $order = $ms->query()
+     *      ->entity()
      *      ->customerorder()
      *      ->param('limit', '10')
      *      ->get();

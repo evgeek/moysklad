@@ -11,7 +11,8 @@ trait PositionsTrait
     /**
      * Entity positions
      * <code>
-     * $order = $ms->entity()
+     * $order = $ms->query()
+     *      ->entity()
      *      ->customerorder()
      *      ->byId('efe3944b-980d-11ec-0a80-0d180027c266')
      *      ->positions()
@@ -20,8 +21,6 @@ trait PositionsTrait
      */
     public function positions(): Positions
     {
-        $this->addPayloadToList();
-
-        return new Positions($this->api, $this->payloadList);
+        return $this->resolveNamedBuilder(Positions::class);
     }
 }

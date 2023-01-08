@@ -12,7 +12,7 @@ final class EndpointCommonTest extends ApiTestCase
     public function testEndpointBuilder(): void
     {
         $endpoint = 'test_endpoint';
-        $actual = $this->ms->endpoint($endpoint)->debug()->get();
+        $actual = $this->query->endpoint($endpoint)->debug()->get();
         $expected = $this->makeExpectedDebug([$endpoint]);
 
         $this->assertSame($expected, $actual);

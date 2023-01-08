@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Builders\Methods\Entities;
 
 use Evgeek\Moysklad\Api\Builders\Methods\MethodNamed;
-use Evgeek\Moysklad\Api\Traits\Crud\GetGeneratorTrait;
-use Evgeek\Moysklad\Api\Traits\Crud\GetTrait;
-use Evgeek\Moysklad\Api\Traits\Crud\MassDeleteTrait;
+use Evgeek\Moysklad\Api\Traits\Actions\GetGeneratorTrait;
+use Evgeek\Moysklad\Api\Traits\Actions\GetTrait;
+use Evgeek\Moysklad\Api\Traits\Actions\MassDeleteTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ExpandTrait;
 use Evgeek\Moysklad\Api\Traits\Params\FilterTrait;
 use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Params\OrderTrait;
 use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
 
-class Assortment extends MethodNamed
+final class Assortment extends MethodNamed
 {
     use ExpandTrait;
     use FilterTrait;
@@ -25,5 +25,5 @@ class Assortment extends MethodNamed
     use OrderTrait;
     use SearchTrait;
 
-    protected const PATH = 'assortment';
+    public const PATH = 'assortment';
 }

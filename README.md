@@ -39,7 +39,8 @@ $ms = new \Evgeek\Moysklad\MoySklad(
 можно реализовать так:
 
 ```php
-$ms->entity()
+$ms->query()
+    ->entity()
     ->customerorder()
     ->byId('00001c03-5227-11e8-9ff4-315000132d57')
     ->positions()
@@ -50,7 +51,8 @@ $ms->entity()
 Или так:
 
 ```php
-$a = $ms->endpoint('entity')
+$a = $ms->query()
+    ->endpoint('entity')
     ->method('customerorder')
     ->byId('00001c03-5227-11e8-9ff4-315000132d57')
     ->method('positions')
@@ -83,7 +85,7 @@ $a = $ms->endpoint('entity')
   . Можно использовать несколькими способами:
 
 ```php
-$product = $ms->entity()->product()->limit(1);
+$product = $ms->query()->entity()->product()->limit(1);
 $product = $product->expand('group,images');
 $product = $product->expand('group', 'images');
 $expand = ['group', 'images'];
@@ -99,7 +101,7 @@ $result = $product->get();
   . Формируется при помощи объекта `Evgeek\Moysklad\Filer`:
 
 ```php
-$product = $ms->entity()->product()->limit(1);
+$product = $ms->query()->entity()->product()->limit(1);
 $product = $product->filter(
     (new \Evgeek\Moysklad\Filter())
         ->eq('archived', 'false')
@@ -134,7 +136,7 @@ $product = $product->filter(
   с шагом `limit`.
 
 ```php
-$generator = $ms->entity()->product()->limit(100)->search('orange')->getGenerator();
+$generator = $ms->query()->entity()->product()->limit(100)->search('orange')->getGenerator();
 foreach ($generator as $product) {
     //...
 }
@@ -144,7 +146,9 @@ foreach ($generator as $product) {
   отправлен:
 
 ```php
-$product = $ms->entity()
+$product = $ms
+    ->query()
+    ->entity()
     ->product()
     ->limit(1)
     ->filter(

@@ -11,7 +11,8 @@ trait MetadataTrait
     /**
      * Entity metadata
      * <code>
-     * $product = $ms->entity()
+     * $product = $ms->query()
+     *      ->entity()
      *      ->product()
      *      ->metadata()
      *      ->get();
@@ -19,8 +20,6 @@ trait MetadataTrait
      */
     public function metadata(): Metadata
     {
-        $this->addPayloadToList();
-
-        return new Metadata($this->api, $this->payloadList);
+        return $this->resolveNamedBuilder(Metadata::class);
     }
 }

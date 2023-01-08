@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Handlers\Format;
 
 use Evgeek\Moysklad\Exceptions\FormatException;
+use stdClass;
 use Throwable;
 
 class StringFormatHandler extends FormatHandler
@@ -12,7 +13,7 @@ class StringFormatHandler extends FormatHandler
     /**
      * @throws FormatException
      */
-    public static function decode(string|array|object $content): string
+    public static function decode(stdClass|array|string $content): string
     {
         if (is_string($content)) {
             return $content;

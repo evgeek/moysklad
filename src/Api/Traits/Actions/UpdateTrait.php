@@ -2,18 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\Api\Traits\Crud;
+namespace Evgeek\Moysklad\Api\Traits\Actions;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
+use stdClass;
 
 trait UpdateTrait
 {
     /**
      * Update entity (PUT http request)
      * <code>
-     * $product = $ms->entity()
+     * $product = $ms->query()
+     *      ->entity()
      *      ->product()
      *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
      *      ->update(['name' => 'orange']);
@@ -22,10 +24,8 @@ trait UpdateTrait
      * @throws FormatException
      * @throws ApiException
      */
-    public function update(string|array|object $body): object|array|string
+    public function update(stdClass|array|string $body): stdClass|array|string
     {
-        $payloadList = $this->addPayloadToList(HttpMethod::PUT, $body);
-
-        return $this->apiSend($payloadList);
+        return $this->apiSend(HttpMethod::PUT, $body);
     }
 }
