@@ -94,9 +94,9 @@ class Debug extends MethodNamed
      */
     public function massDelete(string|array|object $body): object|array|string
     {
-        $payloadList = $this->addPayloadToList();
+        $debugPayload = $this->makePayload(HttpMethod::POST, $body);
 
-        return (new MassDelete($this->api, $payloadList))->massDeleteDebug($body);
+        return (new MassDelete($this->api, $this->payloadList))->massDeleteDebug($debugPayload);
     }
 
     /**

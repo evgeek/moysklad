@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Methods\MethodNamed;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
+use Evgeek\Moysklad\Http\Payload;
 
 class MassDelete extends MethodNamed
 {
@@ -27,9 +28,10 @@ class MassDelete extends MethodNamed
     /**
      * @throws FormatException
      */
-    public function massDeleteDebug(string|array|object $body): object|array|string
+    public function massDeleteDebug(Payload $debugPayload): object|array|string
     {
-        $payloadList = $this->addPayloadToList(HttpMethod::POST, $body);
+        $payloadList = $this->addPayloadToList(HttpMethod::POST);
+        $this->payloadList->push($debugPayload);
 
         return $this->apiDebug($payloadList);
     }

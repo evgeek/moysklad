@@ -76,7 +76,7 @@ abstract class Builder
         return $enumMethod;
     }
 
-    private function makePayload(?HttpMethod $method, string|array|object|null $body = null): Payload
+    protected function makePayload(?HttpMethod $method, string|array|object|null $body = null): Payload
     {
         return new Payload(
             method: $method,

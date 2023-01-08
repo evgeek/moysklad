@@ -102,7 +102,7 @@ class ApiClient
         $payload = $payloadList->top();
 
         $body = $payload->body === null ? '' : $this->formatter::encode($payload->body);
-        $request = new Request($payload->method->name, Url::make($payloadList), $this->headers, $body);
+        $request = new Request($payload->method->value, Url::make($payloadList), $this->headers, $body);
 
         try {
             return $this->requestSender

@@ -29,19 +29,19 @@ class ApiTestCase extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    protected function makeExpectedDebug(array $path, HttpMethod $method = HttpMethod::GET): array
+    protected function makeExpectedDebug(array $path, HttpMethod $method = HttpMethod::GET, ?array $body = null): array
     {
         $url = array_reduce($path, static fn (string $carry, string $item) => $carry .= '/' . $item, Url::API);
 
         return [
             'method' => $method->value,
-            'url' => $url,
+            'url' => urldecode($url),
             'url_encoded' => $url,
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Authorization' => 'Bearer ' . static::TOKEN,
             ],
-            'body' => '',
+            'body' => $body ?? '',
         ];
     }
 }
