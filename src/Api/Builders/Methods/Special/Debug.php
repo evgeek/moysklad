@@ -10,7 +10,7 @@ use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\InputException;
 use stdClass;
 
-class Debug extends Builder
+final class Debug extends Builder
 {
     /**
      * Debug read request
