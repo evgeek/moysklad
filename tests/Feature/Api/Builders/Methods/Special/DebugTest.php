@@ -1,8 +1,9 @@
 <?php
 
-namespace Evgeek\Tests\Feature\Api\Methods\Special;
+namespace Evgeek\Tests\Feature\Api\Builders\Methods\Special;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
+use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Tests\Feature\Api\ApiTestCase;
 
 /**
@@ -13,7 +14,7 @@ class DebugTest extends ApiTestCase
     /**
      * @covers ::get
      */
-    public function testGet(): void
+    public function testGetReturns(): void
     {
         $this->assertDebugMethod('get', HttpMethod::GET);
     }
@@ -21,7 +22,7 @@ class DebugTest extends ApiTestCase
     /**
      * @covers ::create
      */
-    public function testCreate(): void
+    public function testCreateReturns(): void
     {
         $this->assertDebugMethod('create', HttpMethod::POST, withBody: true);
     }
@@ -29,7 +30,7 @@ class DebugTest extends ApiTestCase
     /**
      * @covers ::update
      */
-    public function testUpdate(): void
+    public function testUpdateReturns(): void
     {
         $this->assertDebugMethod('update', HttpMethod::PUT, withBody: true);
     }
@@ -37,15 +38,16 @@ class DebugTest extends ApiTestCase
     /**
      * @covers ::delete
      */
-    public function testDelete(): void
+    public function testDeleteReturns(): void
     {
         $this->assertDebugMethod('delete', HttpMethod::DELETE);
     }
 
     /**
      * @covers ::massDelete
+     * @covers \Evgeek\Moysklad\Api\Builders\Methods\Special\MassDelete::massDeleteDebug
      */
-    public function testMassDelete(): void
+    public function testMassDeleteReturns(): void
     {
         $this->assertDebugMethod('massDelete', HttpMethod::POST, withBody: true, isMassDelete: true);
     }
@@ -53,9 +55,18 @@ class DebugTest extends ApiTestCase
     /**
      * @covers ::send
      */
-    public function testSend(): void
+    public function testSendReturns(): void
     {
         $this->assertDebugMethod('send', HttpMethod::CONNECT, withBody: true, isSend: true);
+    }
+
+    /**
+     * @covers ::send
+     */
+    public function testSendWithWrongMethod(): void
+    {
+        $this->expectException(InputException::class);
+        $this->ms->endpoint('test_endpoint')->debug()->send('WRONG_METHOD');
     }
 
     private function assertDebugMethod(

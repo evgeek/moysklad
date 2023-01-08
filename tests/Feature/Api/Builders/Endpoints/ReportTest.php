@@ -1,6 +1,6 @@
 <?php
 
-namespace Evgeek\Tests\Feature\Api\Methods\Endpoints;
+namespace Evgeek\Tests\Feature\Api\Builders\Endpoints;
 
 use Evgeek\Tests\Feature\Api\ApiTestCase;
 
