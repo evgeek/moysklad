@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad;
 
-use Evgeek\Moysklad\Api\Builders\Endpoints\Entity;
 use Evgeek\Moysklad\Api\Builders\Query;
 use Evgeek\Moysklad\Enums\Format;
 use Evgeek\Moysklad\Exceptions\ConfigException;
