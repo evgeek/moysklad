@@ -15,7 +15,7 @@ final class Query extends Builder
 {
     public function __construct(ApiClient $api)
     {
-        parent::__construct($api, []);
+        parent::__construct($api, [], []);
     }
 
     /**

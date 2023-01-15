@@ -96,7 +96,7 @@ final class Debug extends Builder
      */
     public function massDelete(stdClass|array|string $body): stdClass|array|string
     {
-        return (new MassDelete($this->api, $this->path))->massDeleteDebug($body);
+        return (new MassDelete($this->api, $this->path, $this->params))->massDeleteDebug($body);
     }
 
     /**

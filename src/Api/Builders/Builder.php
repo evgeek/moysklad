@@ -21,11 +21,11 @@ abstract class Builder
     use DebugTrait;
 
     protected array $path;
-    protected array $params = [];
 
     public function __construct(
         protected readonly ApiClient $api,
-        protected readonly array $prevPath
+        protected readonly array $prevPath,
+        protected array $params
     ) {
         $this->path = $this->makeCurrentPath();
     }
@@ -99,7 +99,7 @@ abstract class Builder
             throw new RuntimeException('Common builder resolving error');
         }
 
-        return new $builderClass($this->api, $this->path, $path);
+        return new $builderClass($this->api, $this->path, $this->params, $path);
     }
 
     /**
@@ -115,6 +115,6 @@ abstract class Builder
             throw new RuntimeException('Named builder resolving error');
         }
 
-        return new $builderClass($this->api, $this->path);
+        return new $builderClass($this->api, $this->path, $this->params);
     }
 }

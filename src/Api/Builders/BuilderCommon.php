@@ -12,9 +12,10 @@ abstract class BuilderCommon extends Builder
     public function __construct(
         ApiClient $api,
         array $prevPath,
+        array $params,
         protected readonly string $segment
     ) {
-        parent::__construct($api, $prevPath);
+        parent::__construct($api, $prevPath, $params);
     }
 
     protected function makeCurrentPath(): array
