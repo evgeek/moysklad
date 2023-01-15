@@ -7,7 +7,6 @@ namespace Evgeek\Moysklad\Api\Traits\Actions;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
-use stdClass;
 
 trait GetTrait
 {
@@ -23,7 +22,7 @@ trait GetTrait
      * @throws FormatException
      * @throws ApiException
      */
-    public function get(): stdClass|array|string
+    public function get()
     {
         return $this->apiSend(HttpMethod::GET);
     }

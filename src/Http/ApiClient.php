@@ -8,12 +8,11 @@ use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\ConfigException;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\GeneratorException;
-use Evgeek\Moysklad\Handlers\Format\ArrayFormatHandler;
-use Evgeek\Moysklad\Handlers\Format\FormatHandlerInterface;
+use Evgeek\Moysklad\Formatters\ArrayFormat;
+use Evgeek\Moysklad\Formatters\JsonFormatter;
 use Evgeek\Moysklad\Services\Url;
 use Generator;
 use GuzzleHttp\Psr7\Request;
-use stdClass;
 use Throwable;
 
 class ApiClient
@@ -25,7 +24,7 @@ class ApiClient
      */
     public function __construct(
         array $credentials,
-        private readonly FormatHandlerInterface $formatter,
+        private readonly JsonFormatter $formatter,
         private readonly RequestSenderInterface $requestSender,
     ) {
         $this->addCredentialsToHeaders($credentials);
@@ -35,15 +34,15 @@ class ApiClient
      * @throws FormatException
      * @throws ApiException
      */
-    public function send(Payload $payload): stdClass|array|string
+    public function send(Payload $payload)
     {
-        return $this->formatter::decode($this->sendRequest($payload));
+        return $this->formatter::encode($this->sendRequest($payload));
     }
 
     /**
      * @throws FormatException
      */
-    public function debug(Payload $payload): stdClass|array|string
+    public function debug(Payload $payload)
     {
         $url = Url::make($payload);
         $debug = [
@@ -51,10 +50,10 @@ class ApiClient
             'url' => urldecode($url),
             'url_encoded' => $url,
             'headers' => $this->headers,
-            'body' => $payload->body === null ? '' : ArrayFormatHandler::decode($payload->body),
+            'body' => ArrayFormat::encode($this->formatter::decode($payload->body)),
         ];
 
-        return $this->formatter::decode($debug);
+        return $this->formatter::encode(ArrayFormat::decode($debug));
     }
 
     /**
@@ -65,7 +64,7 @@ class ApiClient
     public function getGenerator(Payload $payload): Generator
     {
         do {
-            $content = ArrayFormatHandler::decode($this->sendRequest($payload));
+            $content = ArrayFormat::encode($this->sendRequest($payload));
             if (!array_key_exists('rows', $content)) {
                 throw new GeneratorException("Response is non-iterable (missed 'rows' property)");
             }
@@ -76,7 +75,7 @@ class ApiClient
             }
 
             foreach ($content['rows'] as $row) {
-                yield $this->formatter::decode(ArrayFormatHandler::encode($row));
+                yield $this->formatter::encode(ArrayFormat::decode($row));
             }
 
             $next = $content['meta']['nextHref'] ?? null;
@@ -93,7 +92,7 @@ class ApiClient
      */
     private function sendRequest(Payload $payload): string
     {
-        $body = $payload->body === null ? '' : $this->formatter::encode($payload->body);
+        $body = $payload->body === null ? '' : $this->formatter::decode($payload->body);
         $request = new Request($payload->method->value, Url::make($payload), $this->headers, $body);
 
         try {

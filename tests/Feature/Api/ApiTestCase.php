@@ -4,8 +4,8 @@ namespace Evgeek\Tests\Feature\Api;
 
 use Evgeek\Moysklad\Api\Builders\Builder;
 use Evgeek\Moysklad\Api\Builders\Query;
-use Evgeek\Moysklad\Enums\Format;
 use Evgeek\Moysklad\Enums\HttpMethod;
+use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\Url;
 use PHPUnit\Framework\TestCase;
@@ -19,7 +19,7 @@ class ApiTestCase extends TestCase
     {
         parent::setUp();
 
-        $this->query = (new MoySklad([static::TOKEN], Format::ARRAY))->query();
+        $this->query = (new MoySklad([static::TOKEN], ArrayFormat::class))->query();
     }
 
     protected function assertNamedEndpointBuilder(string $endpoint): void
@@ -65,7 +65,7 @@ class ApiTestCase extends TestCase
                 'Content-Type' => 'application/json',
                 'Authorization' => 'Bearer ' . static::TOKEN,
             ],
-            'body' => $body ?? '',
+            'body' => $body ?? [],
         ];
     }
 }

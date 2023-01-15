@@ -17,13 +17,13 @@ $ms = new \Evgeek\Moysklad\MoySklad(['token']);
 //С подробностями
 $ms = new \Evgeek\Moysklad\MoySklad(
     credentials: ['login', 'password'],
-    format: \Evgeek\Moysklad\Enums\Format::OBJECT,
+    formatter: \Evgeek\Moysklad\Formatters\StdClassFormat::class,
     requestSender: new \Evgeek\Moysklad\Http\GuzzleSender()
 );
 ```
 
 * `credentials` - массив с учётными данными. Можно использовать либо токен, либо логин/пароль.
-* `format` - формат ответа. Поддерживается `object` (по умолчанию), `array`, и `string`. Инициализируется через перечисление `Enums\Format`. Тело запроса можно передавать в любом из этих форматов, вне зависимости от формата ответа.
+* `formatter` - имя класса, преобразующего json-строку ответа от API в нужный формат, и наоборот - передаваемый payload в json-строку. Должен имплементировать интерфейс `\Evgeek\Moysklad\Formatters\StdClassFormat`. Встроенные форматтеры - `StdClassFormat` (по умолчанию), `ArrayFormat`, и `StringFormat`. Все встроенные форматтеры могут принимать в качестве payload `stdClass`, `array` и `string`.
 * `requestSender` - объект для отправки http-запросов. В библиотеке используется `Guzzle` - но можно использовать любой объект, реализующий простой `PSR-7` совместимый интерфейс `Evgeek\Moysklad\Http\RequestSenderInterface`.
 
 ## Базовое использование
@@ -198,7 +198,7 @@ object(stdClass)#19 (3) {
 }
 ```
 
-Форматирование можно задать при помощи метода `Meta::setFormat()`. Помимо небольшого набора предопределённых сущностей, можно сформировать любую мету при помощи универсального метода ```Meta::create()``` (и более узкого ```Meta::entity()```). Примеры:
+Форматирование можно задать передав в метод `Meta::setFormat()` имя класса, реализующего интерфейс `Evgeek\Moysklad\Formatters\JsonFormatter`. По умолчанию используется `StdClassFormat`. Помните, что формат меты и формат ответа от API задаются в разных местах. Помимо небольшого набора предопределённых сущностей, можно сформировать любую мету при помощи универсального метода `Meta::create()` (и более узкого `Meta::entity()`). Примеры:
 
 ```php
 Meta::setFormat(Format::ARRAY);

@@ -7,7 +7,6 @@ namespace Evgeek\Moysklad\Api\Traits\Actions;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
-use stdClass;
 
 trait DeleteTrait
 {
@@ -24,7 +23,7 @@ trait DeleteTrait
      * @throws FormatException
      * @throws ApiException
      */
-    public function delete(): stdClass|array|string
+    public function delete()
     {
         return $this->apiSend(HttpMethod::DELETE);
     }

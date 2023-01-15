@@ -5,30 +5,30 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad;
 
 use Evgeek\Moysklad\Api\Builders\Query;
-use Evgeek\Moysklad\Enums\Format;
 use Evgeek\Moysklad\Exceptions\ConfigException;
-use Evgeek\Moysklad\Factories\FormatHandlerFactory;
+use Evgeek\Moysklad\Formatters\JsonFormatter;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\GuzzleSender;
 use Evgeek\Moysklad\Http\RequestSenderInterface;
+use Evgeek\Moysklad\Services\Formatter;
 
 class MoySklad
 {
     private ApiClient $api;
 
     /**
-     * @param array                  $credentials   ['login', 'password'] or ['token']
-     * @param Format                 $format        object, array or string
-     * @param RequestSenderInterface $requestSender PSR-7 client
+     * @param array                       $credentials   ['login', 'password'] or ['token']
+     * @param class-string<JsonFormatter> $formatter     API response formatter - class name that implements JsonFormatter
+     * @param RequestSenderInterface      $requestSender PSR-7 client
      *
      * @throws ConfigException
      */
     public function __construct(
         array $credentials,
-        Format $format = Format::OBJECT,
+        string $formatter = Formatter::DEFAULT,
         RequestSenderInterface $requestSender = new GuzzleSender(),
     ) {
-        $this->api = new ApiClient($credentials, FormatHandlerFactory::create($format), $requestSender);
+        $this->api = new ApiClient($credentials, Formatter::resolve($formatter), $requestSender);
     }
 
     /**

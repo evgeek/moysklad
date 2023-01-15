@@ -7,7 +7,6 @@ namespace Evgeek\Moysklad\Api\Traits\Actions;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
-use stdClass;
 
 trait UpdateTrait
 {
@@ -24,7 +23,7 @@ trait UpdateTrait
      * @throws FormatException
      * @throws ApiException
      */
-    public function update(stdClass|array|string $body): stdClass|array|string
+    public function update(mixed $body)
     {
         return $this->apiSend(HttpMethod::PUT, $body);
     }

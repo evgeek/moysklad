@@ -8,7 +8,6 @@ use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\InputException;
-use stdClass;
 
 trait SendTrait
 {
@@ -26,7 +25,7 @@ trait SendTrait
      * @throws ApiException
      * @throws InputException
      */
-    public function send(HttpMethod|string $method, stdClass|array|string|null $body = null): stdClass|array|string
+    public function send(HttpMethod|string $method, mixed $body = null)
     {
         return $this->apiSend($this->getEnumMethod($method), $body);
     }

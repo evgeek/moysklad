@@ -14,7 +14,6 @@ use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\Payload;
 use Generator;
 use RuntimeException;
-use stdClass;
 
 abstract class Builder
 {
@@ -36,7 +35,7 @@ abstract class Builder
      * @throws FormatException
      * @throws ApiException
      */
-    protected function apiSend(HttpMethod $method, stdClass|array|string|null $body = null): stdClass|array|string
+    protected function apiSend(HttpMethod $method, mixed $body = null)
     {
         return $this->api->send($this->makePayload($method, $body));
     }
@@ -44,7 +43,7 @@ abstract class Builder
     /**
      * @throws FormatException
      */
-    protected function apiDebug(HttpMethod $method, stdClass|array|string|null $body = null): stdClass|array|string
+    protected function apiDebug(HttpMethod $method, mixed $body = null)
     {
         return $this->api->debug($this->makePayload($method, $body));
     }
@@ -76,7 +75,7 @@ abstract class Builder
         return $enumMethod;
     }
 
-    protected function makePayload(HttpMethod $method, stdClass|array|string|null $body = null): Payload
+    protected function makePayload(HttpMethod $method, mixed $body = null): Payload
     {
         return new Payload(
             method: $method,

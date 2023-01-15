@@ -8,7 +8,6 @@ use Evgeek\Moysklad\Api\Builders\Builder;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\InputException;
-use stdClass;
 
 final class Debug extends Builder
 {
@@ -24,7 +23,7 @@ final class Debug extends Builder
      *
      * @throws FormatException
      */
-    public function get(): stdClass|array|string
+    public function get()
     {
         return $this->apiDebug(HttpMethod::GET);
     }
@@ -41,7 +40,7 @@ final class Debug extends Builder
      *
      * @throws FormatException
      */
-    public function create(stdClass|array|string $body): stdClass|array|string
+    public function create(mixed $body)
     {
         return $this->apiDebug(HttpMethod::POST, $body);
     }
@@ -59,7 +58,7 @@ final class Debug extends Builder
      *
      * @throws FormatException
      */
-    public function update(stdClass|array|string $body): stdClass|array|string
+    public function update(mixed $body)
     {
         return $this->apiDebug(HttpMethod::PUT, $body);
     }
@@ -77,7 +76,7 @@ final class Debug extends Builder
      *
      * @throws FormatException
      */
-    public function delete(): stdClass|array|string
+    public function delete()
     {
         return $this->apiDebug(HttpMethod::DELETE);
     }
@@ -94,7 +93,7 @@ final class Debug extends Builder
      *
      * @throws FormatException
      */
-    public function massDelete(stdClass|array|string $body): stdClass|array|string
+    public function massDelete(mixed $body)
     {
         return (new MassDelete($this->api, $this->path, $this->params))->massDeleteDebug($body);
     }
@@ -113,7 +112,7 @@ final class Debug extends Builder
      * @throws FormatException
      * @throws InputException
      */
-    public function send(HttpMethod|string $method, stdClass|array|string|null $body = null): stdClass|array|string
+    public function send(HttpMethod|string $method, mixed $body = null)
     {
         return $this->apiDebug($this->getEnumMethod($method), $body);
     }

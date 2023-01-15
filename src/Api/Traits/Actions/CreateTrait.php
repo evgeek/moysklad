@@ -7,7 +7,6 @@ namespace Evgeek\Moysklad\Api\Traits\Actions;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
-use stdClass;
 
 trait CreateTrait
 {
@@ -23,7 +22,7 @@ trait CreateTrait
      * @throws FormatException
      * @throws ApiException
      */
-    public function create(stdClass|array|string $body): stdClass|array|string
+    public function create(mixed $body)
     {
         return $this->apiSend(HttpMethod::POST, $body);
     }

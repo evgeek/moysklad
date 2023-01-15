@@ -7,7 +7,6 @@ namespace Evgeek\Moysklad\Api\Traits\Actions;
 use Evgeek\Moysklad\Api\Builders\Methods\Special\MassDelete;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
-use stdClass;
 
 trait MassDeleteTrait
 {
@@ -23,7 +22,7 @@ trait MassDeleteTrait
      * @throws FormatException
      * @throws ApiException
      */
-    public function massDelete(stdClass|array|string $body): stdClass|array|string
+    public function massDelete(mixed $body)
     {
         return (new MassDelete($this->api, $this->path, $this->params))->massDelete($body);
     }

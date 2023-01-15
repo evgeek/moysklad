@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Http;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
-use stdClass;
 
 class Payload
 {
@@ -13,7 +12,7 @@ class Payload
         public readonly HttpMethod $method,
         public readonly array $path,
         public readonly array $params,
-        public readonly stdClass|array|string|null $body,
+        public readonly mixed $body,
     ) {
     }
 }
