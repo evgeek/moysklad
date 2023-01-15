@@ -25,5 +25,5 @@ final class Assortment extends MethodNamed
     use OrderTrait;
     use SearchTrait;
 
-    public const PATH = 'assortment';
+    public const NAME = 'assortment';
 }

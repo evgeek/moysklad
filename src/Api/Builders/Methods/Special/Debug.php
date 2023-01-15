@@ -96,7 +96,7 @@ final class Debug extends Builder
      */
     public function massDelete(stdClass|array|string $body): stdClass|array|string
     {
-        return (new MassDelete($this->api, $this->url))->massDeleteDebug($body);
+        return (new MassDelete($this->api, $this->path))->massDeleteDebug($body);
     }
 
     /**
@@ -118,8 +118,8 @@ final class Debug extends Builder
         return $this->apiDebug($this->getEnumMethod($method), $body);
     }
 
-    protected function makeCurrentUrl(): string
+    protected function makeCurrentPath(): array
     {
-        return $this->prevUrl;
+        return $this->prevPath;
     }
 }

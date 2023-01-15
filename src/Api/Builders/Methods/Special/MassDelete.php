@@ -12,7 +12,7 @@ use stdClass;
 
 class MassDelete extends MethodNamed
 {
-    protected const PATH = 'delete';
+    protected const NAME = 'delete';
 
     /**
      * @throws FormatException

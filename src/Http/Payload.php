@@ -11,7 +11,7 @@ class Payload
 {
     public function __construct(
         public readonly HttpMethod $method,
-        public readonly string $url,
+        public readonly array $path,
         public readonly array $params,
         public readonly stdClass|array|string|null $body,
     ) {

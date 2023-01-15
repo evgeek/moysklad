@@ -8,17 +8,14 @@ use RuntimeException;
 
 abstract class BuilderNamed extends Builder
 {
-    protected const PATH = '';
+    protected const NAME = '';
 
-    protected function makeCurrentUrl(): string
+    protected function makeCurrentPath(): array
     {
-        if (!$this->prevUrl) {
-            throw new RuntimeException('$this->prevUrl variable cannot be empty');
-        }
-        if (!static::PATH) {
-            throw new RuntimeException('PATH constant cannot be empty');
+        if (!static::NAME) {
+            throw new RuntimeException('NAME constant cannot be empty');
         }
 
-        return $this->prevUrl . '/' . static::PATH;
+        return [...$this->prevPath, static::NAME];
     }
 }

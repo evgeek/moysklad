@@ -11,21 +11,18 @@ abstract class BuilderCommon extends Builder
 {
     public function __construct(
         ApiClient $api,
-        string $prevUrl,
-        protected readonly string $path
+        array $prevPath,
+        protected readonly string $segment
     ) {
-        parent::__construct($api, $prevUrl);
+        parent::__construct($api, $prevPath);
     }
 
-    protected function makeCurrentUrl(): string
+    protected function makeCurrentPath(): array
     {
-        if (!$this->prevUrl) {
-            throw new RuntimeException('$this->prevUrl variable cannot be empty');
-        }
-        if (!$this->path) {
-            throw new RuntimeException('$this->path variable cannot be empty');
+        if (!$this->segment) {
+            throw new RuntimeException('$this->segment variable cannot be empty');
         }
 
-        return $this->prevUrl . '/' . $this->path;
+        return [...$this->prevPath, $this->segment];
     }
 }

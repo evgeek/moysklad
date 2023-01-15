@@ -31,5 +31,5 @@ final class Customerorder extends MethodNamed
     use OrderTrait;
     use SearchTrait;
 
-    public const PATH = 'customerorder';
+    public const NAME = 'customerorder';
 }

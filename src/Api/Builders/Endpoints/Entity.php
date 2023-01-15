@@ -10,7 +10,7 @@ use Evgeek\Moysklad\Api\Builders\Methods\Entities\Product;
 
 class Entity extends EndpointNamed
 {
-    protected const PATH = 'entity';
+    protected const NAME = 'entity';
 
     /**
      * Products

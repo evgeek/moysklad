@@ -13,11 +13,9 @@ use Evgeek\Moysklad\Http\ApiClient;
 
 final class Query extends Builder
 {
-    public const API = 'https://online.moysklad.ru/api/remap/1.2';
-
     public function __construct(ApiClient $api)
     {
-        parent::__construct($api, '');
+        parent::__construct($api, []);
     }
 
     /**
@@ -81,8 +79,8 @@ final class Query extends Builder
         return $this->resolveNamedBuilder(Notification::class);
     }
 
-    protected function makeCurrentUrl(): string
+    protected function makeCurrentPath(): array
     {
-        return self::API;
+        return $this->prevPath;
     }
 }

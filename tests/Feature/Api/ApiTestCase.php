@@ -7,6 +7,7 @@ use Evgeek\Moysklad\Api\Builders\Query;
 use Evgeek\Moysklad\Enums\Format;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\MoySklad;
+use Evgeek\Moysklad\Services\Url;
 use PHPUnit\Framework\TestCase;
 
 class ApiTestCase extends TestCase
@@ -54,7 +55,7 @@ class ApiTestCase extends TestCase
 
     protected function makeExpectedDebug(array $path, HttpMethod $method = HttpMethod::GET, ?array $body = null): array
     {
-        $url = array_reduce($path, static fn (string $carry, string $item) => $carry . '/' . $item, Query::API);
+        $url = array_reduce($path, static fn (string $carry, string $item) => $carry . '/' . $item, Url::API);
 
         return [
             'method' => $method->value,

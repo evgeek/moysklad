@@ -23,5 +23,5 @@ final class Positions extends MethodNamed
     use LimitOffsetTrait;
     use MassDeleteTrait;
 
-    public const PATH = 'positions';
+    public const NAME = 'positions';
 }

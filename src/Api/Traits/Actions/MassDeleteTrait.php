@@ -25,6 +25,6 @@ trait MassDeleteTrait
      */
     public function massDelete(stdClass|array|string $body): stdClass|array|string
     {
-        return (new MassDelete($this->api, $this->url))->massDelete($body);
+        return (new MassDelete($this->api, $this->path))->massDelete($body);
     }
 }

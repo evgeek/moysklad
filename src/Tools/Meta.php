@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Tools;
 
-use Evgeek\Moysklad\Api\Builders\Query;
 use Evgeek\Moysklad\Enums\Format;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Factories\FormatHandlerFactory;
 use Evgeek\Moysklad\Handlers\Format\FormatHandlerInterface;
+use Evgeek\Moysklad\Services\Url;
 use stdClass;
 
 class Meta
@@ -95,7 +95,7 @@ class Meta
     {
         static::$formatter = static::$formatter ?? FormatHandlerFactory::create(static::$format);
 
-        $href = Query::API;
+        $href = Url::API;
         foreach ($path as $slug) {
             $href .= "/$slug";
         }

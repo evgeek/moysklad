@@ -8,14 +8,20 @@ use Evgeek\Moysklad\Http\Payload;
 
 class Url
 {
+    public const API = 'https://online.moysklad.ru/api/remap/1.2';
+
     public static function make(Payload $payload): string
     {
-        return $payload->url . static::prepareQueryParams($payload);
+        return self::prepareUrl($payload->path) . static::prepareQueryParams($payload->params);
     }
 
-    private static function prepareQueryParams(Payload $payload): string
+    private static function prepareUrl(array $path): string
     {
-        $params = $payload->params;
+        return static::API . '/' . implode('/', $path);
+    }
+
+    private static function prepareQueryParams(array $params): string
+    {
         $paramsString = http_build_query($params);
 
         return $paramsString === '' ? '' : "?$paramsString";

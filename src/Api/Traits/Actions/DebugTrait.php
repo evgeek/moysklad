@@ -22,6 +22,6 @@ trait DebugTrait
      */
     public function debug(): Debug
     {
-        return new Debug($this->api, $this->url);
+        return new Debug($this->api, $this->path);
     }
 }
