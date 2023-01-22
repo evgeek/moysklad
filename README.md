@@ -131,7 +131,7 @@ foreach ($generator as $product) {
 }
 ```
 
-* `debug()` - можно разместить перед любым `CRUD` методом, чтобы увидеть в подробностях, какой именно запрос будетотправлен:
+* `debug()` - можно разместить перед любым `CRUD` методом, чтобы увидеть в подробностях, какой именно запрос будет отправлен:
 
 ```php
 $product = $ms
@@ -139,10 +139,10 @@ $product = $ms
     ->entity()
     ->product()
     ->limit(1)
-    ->filters(
-        ['archived', 'false'],
+    ->filters([
+        ['archived', false],
         ['name', '!=', 'tangerine'],
-    )
+    ])
     ->debug()
     ->get();
 var_dump($product);
