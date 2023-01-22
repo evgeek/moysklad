@@ -9,10 +9,10 @@ use Evgeek\Moysklad\Enums\HttpMethod;
 class Payload
 {
     public function __construct(
-        public readonly ?HttpMethod $method,
-        public readonly string $path,
+        public readonly HttpMethod $method,
+        public readonly array $path,
         public readonly array $params,
-        public readonly string|array|object|null $body,
+        public readonly mixed $body,
     ) {
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\Api\Traits\Crud;
+namespace Evgeek\Moysklad\Api\Traits\Actions;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
@@ -13,18 +13,17 @@ trait CreateTrait
     /**
      * Create entity (GET http request)
      * <code>
-     * $product = $ms->entity()
-     *      ->product()
-     *      ->create(['name' => 'orange']);
+     * $product = $ms->query()
+     *  ->entity()
+     *  ->product()
+     *  ->create(['name' => 'orange']);
      * </code>
      *
      * @throws FormatException
      * @throws ApiException
      */
-    public function create(string|array|object $body): object|array|string
+    public function create(mixed $body)
     {
-        $payloadList = $this->addPayloadToList(HttpMethod::POST, $body);
-
-        return $this->apiSend($payloadList);
+        return $this->apiSend(HttpMethod::POST, $body);
     }
 }

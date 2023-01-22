@@ -11,17 +11,16 @@ trait AttributesTrait
     /**
      * Attributes
      * <code>
-     * $product = $ms->entity()
-     *      ->product()
-     *      ->metadata()
-     *      ->attributes()
-     *      ->get();
+     * $product = $ms->query()
+     *  ->entity()
+     *  ->product()
+     *  ->metadata()
+     *  ->attributes()
+     *  ->get();
      * </code>
      */
     public function attributes(): Attributes
     {
-        $this->addPayloadToList();
-
-        return new Attributes($this->api, $this->payloadList);
+        return $this->resolveNamedBuilder(Attributes::class);
     }
 }

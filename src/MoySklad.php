@@ -4,93 +4,44 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad;
 
-use Evgeek\Moysklad\Api\Builders\Endpoints\Audit;
-use Evgeek\Moysklad\Api\Builders\Endpoints\EndpointCommon;
-use Evgeek\Moysklad\Api\Builders\Endpoints\Entity;
-use Evgeek\Moysklad\Api\Builders\Endpoints\Notification;
-use Evgeek\Moysklad\Api\Builders\Endpoints\Report;
-use Evgeek\Moysklad\Enums\Format;
+use Evgeek\Moysklad\Api\Builders\Query;
 use Evgeek\Moysklad\Exceptions\ConfigException;
-use Evgeek\Moysklad\Factories\FormatHandlerFactory;
+use Evgeek\Moysklad\Formatters\JsonFormatter;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\GuzzleSender;
 use Evgeek\Moysklad\Http\RequestSenderInterface;
+use Evgeek\Moysklad\Services\Formatter;
 
 class MoySklad
 {
     private ApiClient $api;
 
     /**
-     * @param array                  $credentials   ['login', 'password'] or ['token']
-     * @param Format                 $format        object, array or string
-     * @param RequestSenderInterface $requestSender PSR-7 client
+     * @param array                       $credentials   ['login', 'password'] or ['token']
+     * @param class-string<JsonFormatter> $formatter     API response formatter - class name that implements JsonFormatter
+     * @param RequestSenderInterface      $requestSender PSR-7 client
      *
      * @throws ConfigException
      */
     public function __construct(
         array $credentials,
-        Format $format = Format::OBJECT,
+        string $formatter = Formatter::DEFAULT,
         RequestSenderInterface $requestSender = new GuzzleSender(),
     ) {
-        $this->api = new ApiClient($credentials, FormatHandlerFactory::create($format), $requestSender);
+        $this->api = new ApiClient($credentials, Formatter::resolve($formatter), $requestSender);
     }
 
     /**
-     * Generic endpoint method
+     * Query builder
      * <code>
-     * $products = $ms->endpoint('entity')
-     *      ->product()
-     *      ->get();
+     * $products = $ms->query()
+     *  ->endpoint('entity')
+     *  ->product()
+     *  ->get();
      * </code>
      */
-    public function endpoint(string $endpoint): EndpointCommon
+    public function query(): Query
     {
-        return new EndpointCommon($this->api, null, $endpoint);
-    }
-
-    /**
-     * Entities and documents endpoint
-     * <code>
-     * $products = $ms->entity()
-     *      ->product()
-     *      ->get();
-     * </code>
-     *
-     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti
-     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/
-     */
-    public function entity(): Entity
-    {
-        return new Entity($this->api, null);
-    }
-
-    /**
-     * Reports endpoint
-     *
-     * @see https://dev.moysklad.ru/doc/api/remap/1.2/reports/#otchety
-     */
-    public function report(): Report
-    {
-        return new Report($this->api, null);
-    }
-
-    /**
-     * Audit endpoint
-     *
-     * @see https://dev.moysklad.ru/doc/api/remap/1.2/other/#audit
-     */
-    public function audit(): Audit
-    {
-        return new Audit($this->api, null);
-    }
-
-    /**
-     * Notifications endpoint
-     *
-     * @see https://dev.moysklad.ru/doc/api/remap/1.2/other/#uwedomleniq
-     */
-    public function notification(): Notification
-    {
-        return new Notification($this->api, null);
+        return new Query($this->api);
     }
 }

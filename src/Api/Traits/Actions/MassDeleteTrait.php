@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\Api\Traits\Crud;
+namespace Evgeek\Moysklad\Api\Traits\Actions;
 
 use Evgeek\Moysklad\Api\Builders\Methods\Special\MassDelete;
 use Evgeek\Moysklad\Exceptions\ApiException;
@@ -13,18 +13,17 @@ trait MassDeleteTrait
     /**
      * Mass delete entity (POST http request to /delete)
      * <code>
-     * $products = $ms->entity()
-     *      ->customerorder()
-     *      ->massDelete($body);
+     * $products = $ms->query()
+     *  ->entity()
+     *  ->customerorder()
+     *  ->massDelete($body);
      * </code>
      *
      * @throws FormatException
      * @throws ApiException
      */
-    public function massDelete(string|array|object $body): object|array|string
+    public function massDelete(mixed $body)
     {
-        $payloadList = $this->addPayloadToList();
-
-        return (new MassDelete($this->api, $payloadList))->massDelete($body);
+        return (new MassDelete($this->api, $this->path, $this->params))->massDelete($body);
     }
 }

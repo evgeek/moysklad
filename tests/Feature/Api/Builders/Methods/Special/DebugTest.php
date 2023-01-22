@@ -66,7 +66,7 @@ class DebugTest extends ApiTestCase
     public function testSendWithWrongMethod(): void
     {
         $this->expectException(InputException::class);
-        $this->ms->endpoint('test_endpoint')->debug()->send('WRONG_METHOD');
+        $this->query->endpoint('test_endpoint')->debug()->send('WRONG_METHOD');
     }
 
     private function assertDebugMethod(
@@ -78,7 +78,7 @@ class DebugTest extends ApiTestCase
     ): void {
         $endpoint = 'test_endpoint';
         $body = ['test_body' => 'ok'];
-        $debug = $this->ms->endpoint($endpoint)->debug();
+        $debug = $this->query->endpoint($endpoint)->debug();
 
         $params = [];
         $isSend && $params[] = $httpMethod;

@@ -13,7 +13,7 @@ class ByIdPositionedTest extends ApiTestCase
     {
         $testGuidFirst = 'test_guid_first';
         $testGuidSecond = 'test_guid_second';
-        $actual = $this->ms->entity()->customerorder()->byId($testGuidFirst)->positions()->byId($testGuidSecond)->debug()->get();
+        $actual = $this->query->entity()->customerorder()->byId($testGuidFirst)->positions()->byId($testGuidSecond)->debug()->get();
         $expected = $this->makeExpectedDebug(['entity', 'customerorder', $testGuidFirst, 'positions', $testGuidSecond]);
 
         $this->assertSame($expected, $actual);

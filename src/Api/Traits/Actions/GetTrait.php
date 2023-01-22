@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\Api\Traits\Crud;
+namespace Evgeek\Moysklad\Api\Traits\Actions;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
@@ -13,18 +13,17 @@ trait GetTrait
     /**
      * Read single entity or list (GET http request)
      * <code>
-     * $products = $ms->entity()
-     *      ->product()
-     *      ->get();
+     * $products = $ms->query()
+     *  ->entity()
+     *  ->product()
+     *  ->get();
      * </code>
      *
      * @throws FormatException
      * @throws ApiException
      */
-    public function get(): object|array|string
+    public function get()
     {
-        $payloadList = $this->addPayloadToList(HttpMethod::GET);
-
-        return $this->apiSend($payloadList);
+        return $this->apiSend(HttpMethod::GET);
     }
 }

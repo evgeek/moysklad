@@ -4,25 +4,14 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Builders\Methods;
 
+use Evgeek\Moysklad\Api\Builders\BuilderNamed;
+use Evgeek\Moysklad\Api\Traits\Actions\SendTrait;
 use Evgeek\Moysklad\Api\Traits\Builders\MethodCommonTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
-use Evgeek\Moysklad\Http\ApiClient;
-use SplQueue;
 
-abstract class MethodNamed extends Method
+abstract class MethodNamed extends BuilderNamed
 {
     use MethodCommonTrait;
     use ParamTrait;
-
-    protected const PATH = '';
-    protected readonly string $path;
-
-    public function __construct(
-        ApiClient $api,
-        ?SplQueue $payloadList,
-    ) {
-        parent::__construct($api, $payloadList ?? new SplQueue());
-
-        $this->path = static::PATH;
-    }
+    use SendTrait;
 }

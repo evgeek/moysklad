@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Builders;
 
+use Evgeek\Moysklad\Api\Traits\Actions\DebugTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
@@ -12,41 +13,39 @@ use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\Payload;
 use Generator;
-use SplQueue;
+use RuntimeException;
 
 abstract class Builder
 {
-    protected readonly string $path;
-    protected array $params = [];
+    use DebugTrait;
+
+    protected array $path;
 
     public function __construct(
         protected readonly ApiClient $api,
-        protected readonly SplQueue $payloadList = new SplQueue()
+        protected readonly array $prevPath,
+        protected array $params
     ) {
+        $this->path = $this->makeCurrentPath();
     }
 
-    protected function addPayloadToList(?HttpMethod $method = null, string|array|object|null $body = null): SplQueue
-    {
-        $this->payloadList->push($this->makePayload($method, $body));
-
-        return $this->payloadList;
-    }
+    abstract protected function makeCurrentPath(): array;
 
     /**
      * @throws FormatException
      * @throws ApiException
      */
-    protected function apiSend(SplQueue $payloadList): object|array|string
+    protected function apiSend(HttpMethod $method, mixed $body = null)
     {
-        return $this->api->send($payloadList);
+        return $this->api->send($this->makePayload($method, $body));
     }
 
     /**
      * @throws FormatException
      */
-    protected function apiDebug(SplQueue $payloadList): object|array|string
+    protected function apiDebug(HttpMethod $method, mixed $body = null)
     {
-        return $this->api->debug($payloadList);
+        return $this->api->debug($this->makePayload($method, $body));
     }
 
     /**
@@ -54,9 +53,9 @@ abstract class Builder
      * @throws GeneratorException
      * @throws ApiException
      */
-    protected function apiGetGenerator(SplQueue $payloadList): Generator
+    protected function apiGetGenerator(): Generator
     {
-        return $this->api->getGenerator($payloadList);
+        return $this->api->getGenerator($this->makePayload(HttpMethod::GET));
     }
 
     /**
@@ -76,7 +75,7 @@ abstract class Builder
         return $enumMethod;
     }
 
-    protected function makePayload(?HttpMethod $method, string|array|object|null $body = null): Payload
+    protected function makePayload(HttpMethod $method, mixed $body = null): Payload
     {
         return new Payload(
             method: $method,
@@ -84,5 +83,37 @@ abstract class Builder
             params: $this->params,
             body: $body,
         );
+    }
+
+    /**
+     * @template T of BuilderCommon
+     *
+     * @psalm-param class-string<T> $builderClass
+     *
+     * @return T
+     */
+    protected function resolveCommonBuilder(string $builderClass, string $path): BuilderCommon
+    {
+        if (!is_a($builderClass, BuilderCommon::class, true)) {
+            throw new RuntimeException('Common builder resolving error');
+        }
+
+        return new $builderClass($this->api, $this->path, $this->params, $path);
+    }
+
+    /**
+     * @template T of BuilderNamed
+     *
+     * @psalm-param class-string<T> $builderClass
+     *
+     * @return T
+     */
+    protected function resolveNamedBuilder(string $builderClass): BuilderNamed
+    {
+        if (!is_a($builderClass, BuilderNamed::class, true)) {
+            throw new RuntimeException('Named builder resolving error');
+        }
+
+        return new $builderClass($this->api, $this->path, $this->params);
     }
 }

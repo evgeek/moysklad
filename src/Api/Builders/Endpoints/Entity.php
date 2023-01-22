@@ -10,56 +10,53 @@ use Evgeek\Moysklad\Api\Builders\Methods\Entities\Product;
 
 class Entity extends EndpointNamed
 {
-    protected const PATH = 'entity';
+    protected const NAME = 'entity';
 
     /**
      * Products
      * <code>
-     * $products = $ms->entity()
-     *      ->product()
-     *      ->get();
+     * $products = $ms->query()
+     *  ->entity()
+     *  ->product()
+     *  ->get();
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
      */
     public function product(): Product
     {
-        $this->addPayloadToList();
-
-        return new Product($this->api, $this->payloadList);
+        return $this->resolveNamedBuilder(Product::class);
     }
 
     /**
      * Customer orders
      * <code>
-     * $customerOrders = $ms->entity()
-     *      ->customerorder()
-     *      ->get();
+     * $customerOrders = $ms->query()
+     *  ->entity()
+     *  ->customerorder()
+     *  ->get();
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
      */
     public function customerorder(): Customerorder
     {
-        $this->addPayloadToList();
-
-        return new Customerorder($this->api, $this->payloadList);
+        return $this->resolveNamedBuilder(Customerorder::class);
     }
 
     /**
      * Assortments
      * <code>
-     * $assortments = $ms->entity()
-     *      ->assortment()
-     *      ->get();
+     * $assortments = $ms->query()
+     *  ->entity()
+     *  ->assortment()
+     *  ->get();
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-assortiment
      */
     public function assortment(): Assortment
     {
-        $this->addPayloadToList();
-
-        return new Assortment($this->api, $this->payloadList);
+        return $this->resolveNamedBuilder(Assortment::class);
     }
 }

@@ -4,125 +4,121 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Builders\Methods\Special;
 
-use Evgeek\Moysklad\Api\Builders\Methods\MethodNamed;
+use Evgeek\Moysklad\Api\Builders\Builder;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\InputException;
 
-class Debug extends MethodNamed
+final class Debug extends Builder
 {
-    protected const PATH = 'debug';
-
     /**
      * Debug read request
      * <code>
-     * $debug = $ms->entity()
-     *      ->product()
-     *      ->debug()
-     *      ->get();
+     * $debug = $ms->query
+     *  ->entity()
+     *  ->product()
+     *  ->debug()
+     *  ->get();
      * </code>
      *
      * @throws FormatException
      */
-    public function get(): object|array|string
+    public function get()
     {
-        $payloadList = $this->addPayloadToList(HttpMethod::GET);
-
-        return $this->apiDebug($payloadList);
+        return $this->apiDebug(HttpMethod::GET);
     }
 
     /**
      * Debug create request
      * <code>
-     * $debug = $ms->entity()
-     *      ->product()
-     *      ->debug()
-     *      ->create(['name' => 'orange']);
+     * $debug = $ms->query
+     *  ->entity()
+     *  ->product()
+     *  ->debug()
+     *  ->create(['name' => 'orange']);
      * </code>
      *
      * @throws FormatException
      */
-    public function create(string|array|object $body): object|array|string
+    public function create(mixed $body)
     {
-        $payloadList = $this->addPayloadToList(HttpMethod::POST, $body);
-
-        return $this->apiDebug($payloadList);
+        return $this->apiDebug(HttpMethod::POST, $body);
     }
 
     /**
      * Debug update request
      * <code>
-     * $debug = $ms->entity()
-     *      ->product()
-     *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
-     *      ->debug()
-     *      ->update(['name' => 'orange']);
+     * $debug = $ms->query
+     *  ->entity()
+     *  ->product()
+     *  ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
+     *  ->debug()
+     *  ->update(['name' => 'orange']);
      * </code>
      *
      * @throws FormatException
      */
-    public function update(string|array|object $body): object|array|string
+    public function update(mixed $body)
     {
-        $payloadList = $this->addPayloadToList(HttpMethod::PUT, $body);
-
-        return $this->apiDebug($payloadList);
+        return $this->apiDebug(HttpMethod::PUT, $body);
     }
 
     /**
      * Debug delete request
      * <code>
-     * $debug = $ms->entity()
-     *      ->product()
-     *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
-     *      ->debug()
-     *      ->delete();
+     * $debug = $ms->query
+     *  ->entity()
+     *  ->product()
+     *  ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
+     *  ->debug()
+     *  ->delete();
      * </code>
      *
      * @throws FormatException
      */
-    public function delete(): object|array|string
+    public function delete()
     {
-        $payloadList = $this->addPayloadToList(HttpMethod::DELETE);
-
-        return $this->apiDebug($payloadList);
+        return $this->apiDebug(HttpMethod::DELETE);
     }
 
     /**
      * Debug Mass Delete request
      * <code>
-     * $debug = $ms->entity()
-     *      ->customerorder()
-     *      ->debug()
-     *      ->massDelete($body);
+     * $debug = $ms->query
+     *  ->entity()
+     *  ->customerorder()
+     *  ->debug()
+     *  ->massDelete($body);
      * </code>
      *
      * @throws FormatException
      */
-    public function massDelete(string|array|object $body): object|array|string
+    public function massDelete(mixed $body)
     {
-        $debugPayload = $this->makePayload(HttpMethod::POST, $body);
-
-        return (new MassDelete($this->api, $this->payloadList))->massDeleteDebug($debugPayload);
+        return (new MassDelete($this->api, $this->path, $this->params))->massDeleteDebug($body);
     }
 
     /**
      * Debug general request
      * <code>
-     * $debug = $ms->entity()
-     *      ->product()
-     *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
-     *      ->debug()
-     *      ->send('PUT', ['name' => 'orange']);
+     * $debug = $ms->query
+     *  ->entity()
+     *  ->product()
+     *  ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
+     *  ->debug()
+     *  ->send('PUT', ['name' => 'orange']);
      * </code>
      *
      * @throws FormatException
      * @throws InputException
      */
-    public function send(HttpMethod|string $method, string|array|object|null $body = null): object|array|string
+    public function send(HttpMethod|string $method, mixed $body = null)
     {
-        $method = $this->getEnumMethod($method);
-        $payloadList = $this->addPayloadToList($method, $body);
+        return $this->apiDebug($this->getEnumMethod($method), $body);
+    }
 
-        return $this->apiDebug($payloadList);
+    protected function makeCurrentPath(): array
+    {
+        return $this->prevPath;
     }
 }

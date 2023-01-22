@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Enums;
 
-enum FilterSigns: string
+enum FilterSign: string
 {
     case EQ         = '=';
     case NEQ        = '!=';

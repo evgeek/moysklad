@@ -6,5 +6,5 @@ namespace Evgeek\Moysklad\Api\Builders\Endpoints;
 
 class Report extends EndpointNamed
 {
-    protected const PATH = 'report';
+    protected const NAME = 'report';
 }

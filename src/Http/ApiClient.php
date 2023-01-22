@@ -8,12 +8,11 @@ use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\ConfigException;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\GeneratorException;
-use Evgeek\Moysklad\Handlers\Format\ArrayFormatHandler;
-use Evgeek\Moysklad\Handlers\Format\FormatHandlerInterface;
+use Evgeek\Moysklad\Formatters\ArrayFormat;
+use Evgeek\Moysklad\Formatters\JsonFormatter;
 use Evgeek\Moysklad\Services\Url;
 use Generator;
 use GuzzleHttp\Psr7\Request;
-use SplQueue;
 use Throwable;
 
 class ApiClient
@@ -25,7 +24,7 @@ class ApiClient
      */
     public function __construct(
         array $credentials,
-        private readonly FormatHandlerInterface $formatter,
+        private readonly JsonFormatter $formatter,
         private readonly RequestSenderInterface $requestSender,
     ) {
         $this->addCredentialsToHeaders($credentials);
@@ -35,29 +34,26 @@ class ApiClient
      * @throws FormatException
      * @throws ApiException
      */
-    public function send(SplQueue $payloadList): object|array|string
+    public function send(Payload $payload)
     {
-        return $this->formatter::decode($this->sendRequest($payloadList));
+        return $this->formatter::encode($this->sendRequest($payload));
     }
 
     /**
      * @throws FormatException
      */
-    public function debug(SplQueue $payloadList): object|array|string
+    public function debug(Payload $payload)
     {
-        /** @var Payload $payload */
-        $payload = $payloadList->pop();
-
-        $url = Url::make($payloadList);
+        $url = Url::make($payload);
         $debug = [
             'method' => $payload->method->value,
             'url' => urldecode($url),
             'url_encoded' => $url,
             'headers' => $this->headers,
-            'body' => $payload->body === null ? '' : ArrayFormatHandler::decode($payload->body),
+            'body' => ArrayFormat::encode($this->formatter::decode($payload->body)),
         ];
 
-        return $this->formatter::decode($debug);
+        return $this->formatter::encode(ArrayFormat::decode($debug));
     }
 
     /**
@@ -65,10 +61,10 @@ class ApiClient
      * @throws GeneratorException
      * @throws ApiException
      */
-    public function getGenerator(SplQueue $payloadList): Generator
+    public function getGenerator(Payload $payload): Generator
     {
         do {
-            $content = ArrayFormatHandler::decode($this->sendRequest($payloadList));
+            $content = ArrayFormat::encode($this->sendRequest($payload));
             if (!array_key_exists('rows', $content)) {
                 throw new GeneratorException("Response is non-iterable (missed 'rows' property)");
             }
@@ -79,16 +75,14 @@ class ApiClient
             }
 
             foreach ($content['rows'] as $row) {
-                yield $this->formatter::decode(ArrayFormatHandler::encode($row));
+                yield $this->formatter::encode(ArrayFormat::decode($row));
             }
 
             $next = $content['meta']['nextHref'] ?? null;
 
-            /** @var Payload $payload */
-            $payload = $payloadList->pop();
             $params = $payload->params;
             $params['offset'] = $offset + $limit;
-            $payloadList->push(new Payload($payload->method, $payload->path, $params, $payload->body));
+            $payload = new Payload($payload->method, $payload->url, $params, $payload->body);
         } while ($next !== null);
     }
 
@@ -96,13 +90,10 @@ class ApiClient
      * @throws FormatException
      * @throws ApiException
      */
-    private function sendRequest(SplQueue $payloadList): string
+    private function sendRequest(Payload $payload): string
     {
-        /** @var Payload $payload */
-        $payload = $payloadList->top();
-
-        $body = $payload->body === null ? '' : $this->formatter::encode($payload->body);
-        $request = new Request($payload->method->value, Url::make($payloadList), $this->headers, $body);
+        $body = $payload->body === null ? '' : $this->formatter::decode($payload->body);
+        $request = new Request($payload->method->value, Url::make($payload), $this->headers, $body);
 
         try {
             return $this->requestSender

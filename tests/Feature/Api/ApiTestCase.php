@@ -3,9 +3,9 @@
 namespace Evgeek\Tests\Feature\Api;
 
 use Evgeek\Moysklad\Api\Builders\Builder;
-use Evgeek\Moysklad\Api\Builders\Methods\Method;
-use Evgeek\Moysklad\Enums\Format;
+use Evgeek\Moysklad\Api\Builders\Query;
 use Evgeek\Moysklad\Enums\HttpMethod;
+use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\Url;
 use PHPUnit\Framework\TestCase;
@@ -13,19 +13,19 @@ use PHPUnit\Framework\TestCase;
 class ApiTestCase extends TestCase
 {
     protected const TOKEN = 'fake_token';
-    protected MoySklad $ms;
+    protected Query $query;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->ms = new MoySklad([static::TOKEN], Format::ARRAY);
+        $this->query = (new MoySklad([static::TOKEN], ArrayFormat::class))->query();
     }
 
     protected function assertNamedEndpointBuilder(string $endpoint): void
     {
         $method = 'test_method';
-        $actual = $this->ms->{$endpoint}()->method($method)->debug()->get();
+        $actual = $this->query->{$endpoint}()->method($method)->debug()->get();
         $expected = $this->makeExpectedDebug([$endpoint, $method]);
 
         $this->assertSame($expected, $actual);
@@ -33,9 +33,8 @@ class ApiTestCase extends TestCase
 
     protected function assertNamedBuilderDebugSame(array $path): void
     {
-        /** @var Method $ms */
-        $ms = array_reduce($path, static fn (MoySklad|Builder $builder, string $method) => $builder->{$method}(), $this->ms);
-        $actual = $ms->debug()->get();
+        $query = array_reduce($path, static fn (Builder $builder, string $method) => $builder->{$method}(), $this->query);
+        $actual = $query->debug()->get();
         $expected = $this->makeExpectedDebug($path);
 
         $this->assertSame($expected, $actual);
@@ -43,13 +42,12 @@ class ApiTestCase extends TestCase
 
     protected function assertCommonBuilderDebugSame(string $endpoint, string $method, array $path = []): void
     {
-        /** @var Method $ms */
-        $ms = array_reduce(
+        $query = array_reduce(
             $path,
             static fn (Builder $builder, string $method) => $builder->{$method}(),
-            $this->ms->endpoint($endpoint)->method($method)
+            $this->query->endpoint($endpoint)->method($method)
         );
-        $actual = $ms->debug()->get();
+        $actual = $query->debug()->get();
         $expected = $this->makeExpectedDebug([$endpoint, $method, ...$path]);
 
         $this->assertSame($expected, $actual);
@@ -57,7 +55,7 @@ class ApiTestCase extends TestCase
 
     protected function makeExpectedDebug(array $path, HttpMethod $method = HttpMethod::GET, ?array $body = null): array
     {
-        $url = array_reduce($path, static fn (string $carry, string $item) => $carry .= '/' . $item, Url::API);
+        $url = array_reduce($path, static fn (string $carry, string $item) => $carry . '/' . $item, Url::API);
 
         return [
             'method' => $method->value,
@@ -67,7 +65,7 @@ class ApiTestCase extends TestCase
                 'Content-Type' => 'application/json',
                 'Authorization' => 'Bearer ' . static::TOKEN,
             ],
-            'body' => $body ?? '',
+            'body' => $body ?? [],
         ];
     }
 }

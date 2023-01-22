@@ -15,10 +15,11 @@ trait OrderTrait
     /**
      * Sorts result by field
      * <code>
-     * $product = $ms->entity()
-     *      ->product()
-     *      ->order('updated', 'desc')
-     *      ->get();
+     * $product = $ms->query()
+     *  ->entity()
+     *  ->product()
+     *  ->order('updated', 'desc')
+     *  ->get();
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-sortirowka-ob-ektow
