@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Traits\Params;
 
 use Evgeek\Moysklad\Enums\QueryParams;
+use Evgeek\Moysklad\Services\UrlParam;
 use Throwable;
 
 trait ParamTrait
@@ -15,12 +16,14 @@ trait ParamTrait
      * $order = $ms->query()
      *      ->entity()
      *      ->customerorder()
-     *      ->param('limit', '10')
+     *      ->param('limit', 10)
      *      ->get();
      * </code>
      */
-    public function param(string $key, string $value): static
+    public function param(string $key, string|int|float|bool $value): static
     {
+        $value = UrlParam::convertMixedValueToString($value);
+
         try {
             $queryParam = QueryParams::from($key);
             $separator = $queryParam->separator();

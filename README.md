@@ -1,4 +1,4 @@
-# SDK для работы с API v1.2 Моего Склада
+# SDK для работы с API v1.2 сервиса "Мой Склад"
 
 Идея этой библиотеки - максимально лёгкий и гибкий SDK, позволяющий работать с [API 1.2](https://dev.moysklad.ru/doc/api/remap/1.2) и `PHP 8.1+`.
 
@@ -82,21 +82,29 @@ $product = $product
 $result = $product->get();
 ```
 
-* `filter()` - фильтрация результатов выдачи ([doc](https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-fil-traciq-wyborki-s-pomosch-u-parametra-filter)). Формируется при помощи объекта `Evgeek\Moysklad\Filer`:
+* `filter()` - фильтрация результатов выдачи ([doc](https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-fil-traciq-wyborki-s-pomosch-u-parametra-filter)). В метод можно передать три параметра (ключ, знак и значение), или только два (ключ и значение, в качестве знака по умолчанию будет использовано `=`). В качестве знака можно использовать строку (`'='`, `'!='`) или `Evgeek\Moysklad\Enums\FilterSign` (`FilterSign::EQ`, `FilterSign::NEQ`):
 
 ```php
-$product = $ms->query()->entity()->product()->limit(1);
-$product = $product->filter(
-    (new \Evgeek\Moysklad\Filter())
-        ->eq('archived', 'false')
-        ->neq('name', 'мандарин')
-);
+$product = $ms->query()->entity()->product()->limit(1)
+    ->filter('archived', false)
+    ->filter('name', '=', 'tangerine')
+    ->filter('code', FilterSign::NEQ, 123);
+```
+
+* `filters()` - для передачи сразу нескольких фильтров в одном методе. Передаваемый параметр должен состоять из массивов с 2 или 3 элементами (логика аналогична `filter()`):
+```php
+$product = $ms->query()->entity()->product()->limit(1)
+    ->filters([
+        ['archived', false],
+        ['name', '=', 'tangerine'],
+        ['code', FilterSign::NEQ, 123],
+    ]);
 ```
 
 Нюансы:
 
-* И `param()`, и специализированные методы поддерживают дозапись в параметрах, где это возможно (`filter`, `expand`, `order`). В остальных параметрах ранее установленное значение перезаписывается.
-* `filter()` автоматом экранирует `;`. `param()` - нет.
+* И `param()`, и специализированные методы поддерживают дозапись в параметрах, где это возможно (`filter`, `filters`, `expand`, `order`). В остальных параметрах ранее установленное значение перезаписывается.
+* `filter()` и `filters()` автоматом экранируют `;`. `param()` - нет.
 
 ## Отправка запросов
 
@@ -129,10 +137,9 @@ $product = $ms
     ->entity()
     ->product()
     ->limit(1)
-    ->filter(
-        (new \Evgeek\Moysklad\Filter())
-            ->eq('archived', 'false')
-            ->neq('name', 'мандарин')
+    ->filters(
+        ['archived', 'false'],
+        ['name', '!=', 'tangerine'],
     )
     ->debug()
     ->get();
@@ -144,18 +151,19 @@ object(stdClass)#28 (5) {
   ["method"]=>
   string(3) "GET"
   ["url"]=>
-  string(108) "https://online.moysklad.ru/api/remap/1.2/entity/product?limit=1&filter=archived=false;name!=мандарин"
+  string(101) "https://online.moysklad.ru/api/remap/1.2/entity/product?limit=1&filter=archived=false;name!=tangerine"
   ["url_encoded"]=>
-  string(148) "https://online.moysklad.ru/api/remap/1.2/entity/product?limit=1&filter=archived%3Dfalse%3Bname%21%3D%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D0%B8%D0%BD"
+  string(109) "https://online.moysklad.ru/api/remap/1.2/entity/product?limit=1&filter=archived%3Dfalse%3Bname%21%3Dtangerine"
   ["headers"]=>
-  object(stdClass)#27 (2) {
+  object(stdClass)#29 (2) {
     ["Content-Type"]=>
     string(16) "application/json"
     ["Authorization"]=>
-    string(38) "Basic #################################"
+    string(38) "Basic YWRtaW5AdGF0dG9vdG9vbHM6dFVMcVNU"
   }
   ["body"]=>
-  string(0) ""
+  array(0) {
+  }
 }
 ```
 
