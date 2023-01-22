@@ -201,7 +201,7 @@ object(stdClass)#19 (3) {
 Форматирование можно задать передав в метод `Meta::setFormat()` имя класса, реализующего интерфейс `Evgeek\Moysklad\Formatters\JsonFormatter`. По умолчанию используется `StdClassFormat`. Помните, что формат меты и формат ответа от API задаются в разных местах. Помимо небольшого набора предопределённых сущностей, можно сформировать любую мету при помощи универсального метода `Meta::create()` (и более узкого `Meta::entity()`). Примеры:
 
 ```php
-Meta::setFormat(Format::ARRAY);
+Meta::setFormat(ArrayFormat::class);
 $order = [
     'name' => 'test_order',
     'organization' => ['meta' => Meta::create(['entity', 'organization', 'ec008e5b-f5ab-11e5-7a69-970f0019fa50'], 'organization')],
