@@ -1,20 +1,6 @@
 # Upgrade guide
 
-## v0.6.0 
-
-### Инициализация билдера
-
-До:
-
-```php
-$ms->entity()->product();
-```
-
-После:
-
-```php
-$ms->query()->entity()->product();
-```
+## v0.6.0
 
 ### Настройка форматирования
 
@@ -36,6 +22,20 @@ $ms = new \Evgeek\Moysklad\MoySklad(
     formatter: \Evgeek\Moysklad\Formatters\StdClassFormat::class,
 );
 Meta::setFormat(\Evgeek\Moysklad\Formatters\ArrayFormat::class);
+```
+
+### Инициализация билдера
+
+До:
+
+```php
+$ms->entity()->product();
+```
+
+После:
+
+```php
+$ms->query()->entity()->product();
 ```
 
 ### Фильтрация результатов
