@@ -1,6 +1,6 @@
 # Upgrade guide
 
-## v0.6.0
+## v0.6.0 
 
 ### Инициализация билдера
 
@@ -11,6 +11,7 @@ $ms->entity()->product();
 ```
 
 После:
+
 ```php
 $ms->query()->entity()->product();
 ```
@@ -51,6 +52,7 @@ $product = $ms->entity()->product()->limit(1)->filter(
 ```
 
 После:
+
 ```php
 $product = $ms->entity()->product()->limit(1)
     ->filter('archived', false)
@@ -77,6 +79,7 @@ Meta::state($guid);
 ```
 
 После:
+
 ```php
 Meta::state($guid, 'customerorder');
 ```

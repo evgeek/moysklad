@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.6.0 [[Upgrade guide](/UPGRADE.md)]
+## v0.6.0 [[Upgrade guide](/UPGRADE.md#v060)]
 
 Ряд изменений билдера запросов:
 
@@ -14,6 +14,6 @@
 
 Добавлен PHPUnit и базовые тесты.
 
-## v0.5.1
+## v0.5.1 [[Upgrade guide](/UPGRADE.md#v051)]
 
 Переработан метод `Meta::state()`. Ранее он создавал мету только для `customerorder`, теперь - для любой переданной сущности.
