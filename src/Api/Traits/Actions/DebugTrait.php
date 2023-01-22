@@ -12,12 +12,12 @@ trait DebugTrait
      * Set it before the CRUD method to generate debug information for the request
      * <code>
      * $products = $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->limit(100)
-     *      ->offset(0)
-     *      ->debug()
-     *      ->get();
+     *  ->entity()
+     *  ->product()
+     *  ->limit(100)
+     *  ->offset(0)
+     *  ->debug()
+     *  ->get();
      * </code>
      */
     public function debug(): Debug

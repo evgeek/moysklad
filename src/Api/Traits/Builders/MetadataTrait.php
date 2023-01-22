@@ -12,10 +12,10 @@ trait MetadataTrait
      * Entity metadata
      * <code>
      * $product = $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->metadata()
-     *      ->get();
+     *  ->entity()
+     *  ->product()
+     *  ->metadata()
+     *  ->get();
      * </code>
      */
     public function metadata(): Metadata

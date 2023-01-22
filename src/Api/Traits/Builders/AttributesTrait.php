@@ -12,11 +12,11 @@ trait AttributesTrait
      * Attributes
      * <code>
      * $product = $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->metadata()
-     *      ->attributes()
-     *      ->get();
+     *  ->entity()
+     *  ->product()
+     *  ->metadata()
+     *  ->attributes()
+     *  ->get();
      * </code>
      */
     public function attributes(): Attributes

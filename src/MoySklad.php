@@ -35,9 +35,9 @@ class MoySklad
      * Query builder
      * <code>
      * $products = $ms->query()
-     *      ->endpoint('entity')
-     *      ->product()
-     *      ->get();
+     *  ->endpoint('entity')
+     *  ->product()
+     *  ->get();
      * </code>
      */
     public function query(): Query

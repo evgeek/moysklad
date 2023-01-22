@@ -14,10 +14,10 @@ trait DeleteTrait
      * Delete entity (DELETE http request)
      * <code>
      * $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
-     *      ->delete();
+     *  ->entity()
+     *  ->product()
+     *  ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
+     *  ->delete();
      * </code>
      *
      * @throws FormatException

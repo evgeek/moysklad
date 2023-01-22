@@ -15,10 +15,10 @@ trait SendTrait
      * Generic HTTP request
      * <code>
      * $product = $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
-     *      ->send('PUT', ['name' => 'orange']);
+     *  ->entity()
+     *  ->product()
+     *  ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
+     *  ->send('PUT', ['name' => 'orange']);
      * </code>
      *
      * @throws FormatException

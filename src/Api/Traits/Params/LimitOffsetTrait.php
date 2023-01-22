@@ -10,12 +10,12 @@ trait LimitOffsetTrait
      * Maximum entities in response
      * <code>
      * $product = $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->limit(100)
-     *      ->offset(0)
-     *      ->debug()
-     *      ->get();
+     *  ->entity()
+     *  ->product()
+     *  ->limit(100)
+     *  ->offset(0)
+     *  ->debug()
+     *  ->get();
      * </code>
      */
     public function limit(int $limit): static
@@ -29,11 +29,11 @@ trait LimitOffsetTrait
      * Offset for pagination
      * <code>
      * $product = $ms->entity()
-     *      ->product()
-     *      ->limit(100)
-     *      ->offset(0)
-     *      ->debug()
-     *      ->get();
+     *  ->product()
+     *  ->limit(100)
+     *  ->offset(0)
+     *  ->debug()
+     *  ->get();
      * </code>
      */
     public function offset(int $offset): static

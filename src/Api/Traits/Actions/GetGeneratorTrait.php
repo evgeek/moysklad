@@ -15,9 +15,9 @@ trait GetGeneratorTrait
      * Create generator from request (only for iterable entities: with rows array and meta->limit/meta->offset fields)
      * <code>
      * $generator = $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->getGenerator();
+     *  ->entity()
+     *  ->product()
+     *  ->getGenerator();
      * foreach ($generator as $product) {
      *      ...
      * }

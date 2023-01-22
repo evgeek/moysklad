@@ -15,10 +15,10 @@ final class Debug extends Builder
      * Debug read request
      * <code>
      * $debug = $ms->query
-     *      ->entity()
-     *      ->product()
-     *      ->debug()
-     *      ->get();
+     *  ->entity()
+     *  ->product()
+     *  ->debug()
+     *  ->get();
      * </code>
      *
      * @throws FormatException
@@ -32,10 +32,10 @@ final class Debug extends Builder
      * Debug create request
      * <code>
      * $debug = $ms->query
-     *      ->entity()
-     *      ->product()
-     *      ->debug()
-     *      ->create(['name' => 'orange']);
+     *  ->entity()
+     *  ->product()
+     *  ->debug()
+     *  ->create(['name' => 'orange']);
      * </code>
      *
      * @throws FormatException
@@ -49,11 +49,11 @@ final class Debug extends Builder
      * Debug update request
      * <code>
      * $debug = $ms->query
-     *      ->entity()
-     *      ->product()
-     *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
-     *      ->debug()
-     *      ->update(['name' => 'orange']);
+     *  ->entity()
+     *  ->product()
+     *  ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
+     *  ->debug()
+     *  ->update(['name' => 'orange']);
      * </code>
      *
      * @throws FormatException
@@ -67,11 +67,11 @@ final class Debug extends Builder
      * Debug delete request
      * <code>
      * $debug = $ms->query
-     *      ->entity()
-     *      ->product()
-     *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
-     *      ->debug()
-     *      ->delete();
+     *  ->entity()
+     *  ->product()
+     *  ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
+     *  ->debug()
+     *  ->delete();
      * </code>
      *
      * @throws FormatException
@@ -85,10 +85,10 @@ final class Debug extends Builder
      * Debug Mass Delete request
      * <code>
      * $debug = $ms->query
-     *      ->entity()
-     *      ->customerorder()
-     *      ->debug()
-     *      ->massDelete($body);
+     *  ->entity()
+     *  ->customerorder()
+     *  ->debug()
+     *  ->massDelete($body);
      * </code>
      *
      * @throws FormatException
@@ -102,11 +102,11 @@ final class Debug extends Builder
      * Debug general request
      * <code>
      * $debug = $ms->query
-     *      ->entity()
-     *      ->product()
-     *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
-     *      ->debug()
-     *      ->send('PUT', ['name' => 'orange']);
+     *  ->entity()
+     *  ->product()
+     *  ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
+     *  ->debug()
+     *  ->send('PUT', ['name' => 'orange']);
      * </code>
      *
      * @throws FormatException

@@ -16,9 +16,9 @@ class Entity extends EndpointNamed
      * Products
      * <code>
      * $products = $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->get();
+     *  ->entity()
+     *  ->product()
+     *  ->get();
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
@@ -32,9 +32,9 @@ class Entity extends EndpointNamed
      * Customer orders
      * <code>
      * $customerOrders = $ms->query()
-     *      ->entity()
-     *      ->customerorder()
-     *      ->get();
+     *  ->entity()
+     *  ->customerorder()
+     *  ->get();
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
@@ -48,9 +48,9 @@ class Entity extends EndpointNamed
      * Assortments
      * <code>
      * $assortments = $ms->query()
-     *      ->entity()
-     *      ->assortment()
-     *      ->get();
+     *  ->entity()
+     *  ->assortment()
+     *  ->get();
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-assortiment

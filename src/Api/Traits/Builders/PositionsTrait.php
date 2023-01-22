@@ -12,11 +12,11 @@ trait PositionsTrait
      * Entity positions
      * <code>
      * $order = $ms->query()
-     *      ->entity()
-     *      ->customerorder()
-     *      ->byId('efe3944b-980d-11ec-0a80-0d180027c266')
-     *      ->positions()
-     *      ->get();
+     *  ->entity()
+     *  ->customerorder()
+     *  ->byId('efe3944b-980d-11ec-0a80-0d180027c266')
+     *  ->positions()
+     *  ->get();
      * </code>
      */
     public function positions(): Positions

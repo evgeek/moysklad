@@ -14,9 +14,9 @@ trait CreateTrait
      * Create entity (GET http request)
      * <code>
      * $product = $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->create(['name' => 'orange']);
+     *  ->entity()
+     *  ->product()
+     *  ->create(['name' => 'orange']);
      * </code>
      *
      * @throws FormatException

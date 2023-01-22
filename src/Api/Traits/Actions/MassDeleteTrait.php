@@ -14,9 +14,9 @@ trait MassDeleteTrait
      * Mass delete entity (POST http request to /delete)
      * <code>
      * $products = $ms->query()
-     *      ->entity()
-     *      ->customerorder()
-     *      ->massDelete($body);
+     *  ->entity()
+     *  ->customerorder()
+     *  ->massDelete($body);
      * </code>
      *
      * @throws FormatException

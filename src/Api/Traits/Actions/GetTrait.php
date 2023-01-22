@@ -14,9 +14,9 @@ trait GetTrait
      * Read single entity or list (GET http request)
      * <code>
      * $products = $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->get();
+     *  ->entity()
+     *  ->product()
+     *  ->get();
      * </code>
      *
      * @throws FormatException

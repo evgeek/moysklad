@@ -14,10 +14,10 @@ trait ParamTrait
      * Generic query param
      * <code>
      * $order = $ms->query()
-     *      ->entity()
-     *      ->customerorder()
-     *      ->param('limit', 10)
-     *      ->get();
+     *  ->entity()
+     *  ->customerorder()
+     *  ->param('limit', 10)
+     *  ->get();
      * </code>
      */
     public function param(string $key, string|int|float|bool $value): static

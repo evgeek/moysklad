@@ -12,9 +12,9 @@ trait MethodCommonTrait
      * Nested URL path
      * <code>
      * $product = $ms->query()
-     *      ->entity()
-     *      ->method('product')
-     *      ->get();
+     *  ->entity()
+     *  ->method('product')
+     *  ->get();
      * </code>
      */
     public function method(string $entity): MethodCommon

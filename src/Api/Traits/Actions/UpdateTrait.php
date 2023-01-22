@@ -14,10 +14,10 @@ trait UpdateTrait
      * Update entity (PUT http request)
      * <code>
      * $product = $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
-     *      ->update(['name' => 'orange']);
+     *  ->entity()
+     *  ->product()
+     *  ->byId('fb72fc83-7ef5-11e3-ad1c-002590a28eca')
+     *  ->update(['name' => 'orange']);
      * </code>
      *
      * @throws FormatException

@@ -12,10 +12,10 @@ trait ExpandTrait
      * Expand nested entity
      * <code>
      * $product = $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->expand('group', 'images')
-     *      ->get();
+     *  ->entity()
+     *  ->product()
+     *  ->expand('group', 'images')
+     *  ->get();
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-zamena-ssylok-ob-ektami-s-pomosch-u-expand

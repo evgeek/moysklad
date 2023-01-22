@@ -22,9 +22,9 @@ final class Query extends Builder
      * Generic endpoint method
      * <code>
      * $products = $ms->query()
-     *      ->endpoint('entity')
-     *      ->product()
-     *      ->get();
+     *  ->endpoint('entity')
+     *  ->product()
+     *  ->get();
      * </code>
      */
     public function endpoint(string $endpoint): EndpointCommon
@@ -36,9 +36,9 @@ final class Query extends Builder
      * Entities and documents endpoint
      * <code>
      * $products = $ms->query()
-     *      ->entity()
-     *      ->product()
-     *      ->get();
+     *  ->entity()
+     *  ->product()
+     *  ->get();
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti
