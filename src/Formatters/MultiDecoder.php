@@ -23,7 +23,7 @@ abstract class MultiDecoder implements JsonFormatter
         try {
             $decodedContent = json_encode($content, JSON_THROW_ON_ERROR);
         } catch (Throwable $e) {
-            throw new FormatException("Can't convert " . gettype($decodedContent) . ' content to json string. ' .
+            throw new FormatException("Can't convert " . gettype($content) . ' content to json string. ' .
                 "Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content);
         }
 

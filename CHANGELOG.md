@@ -17,3 +17,8 @@
 ## v0.5.1 [[Upgrade guide](/UPGRADE.md#v051)]
 
 Переработан метод `Meta::state()`. Ранее он создавал мету только для `customerorder`, теперь - для любой переданной сущности.
+
+## v0.5.0
+* Добавлен, настроен и запущен [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
+* Добавлен и настроен [PHPStan](https://github.com/phpstan/phpstan), поправлены ошибки первого уровня
+* Добавлен `Makefile` с алиасами команд для быстрого запуска
