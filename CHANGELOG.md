@@ -4,7 +4,7 @@
 
 Небольшие фиксы документации.
 
-## v0.6.0 [[Upgrade guide](/UPGRADE.md#v060)]
+## v0.6.0 [[Upgrade guide](/UPGRADE.md#v060-changelog)]
 
 * Формат ответа задаётся теперь не через `\Evgeek\Moysklad\Enums\Format::class`, а через имя любого класса-форматтера, имплементирующего `Evgeek\Moysklad\Formatters\JsonFormatter`. Как и раньше, библиотека включает в себя три стандартных форматтера: `StdClassFormat` (по умолчанию), `ArrayFormat` и `StringFormat`, но теперь при желании можно реализовать свой собственный.
 * Билдер запросов теперь инициализируется не напрямую из `\Evgeek\Moysklad\MoySklad::class`, а через метод `MoySklad::query()`.
@@ -16,7 +16,7 @@
 
 Добавлен PHPUnit и базовые тесты.
 
-## v0.5.1 [[Upgrade guide](/UPGRADE.md#v051)]
+## v0.5.1 [[Upgrade guide](/UPGRADE.md#v051-changelog)]
 
 Переработан метод `Meta::state()`. Ранее он создавал мету только для `customerorder`, теперь - для любой переданной сущности.
 

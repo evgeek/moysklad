@@ -1,6 +1,6 @@
 # Upgrade guide
 
-## v0.6.0
+## v0.6.0 [[Changelog](/CHANGELOG.md#v060-upgrade-guide)]
 
 ### Настройка форматирования
 
@@ -68,7 +68,7 @@ $product = $ms->query()->entity()->product()->limit(1)
     ]);
 ```
 
-## v0.5.1
+## v0.5.1 [[Changelog](/CHANGELOG.md#v051-upgrade-guide)]
 
 ### `Meta::state()`
 
