@@ -94,10 +94,6 @@ abstract class Builder
      */
     protected function resolveCommonBuilder(string $builderClass, string $path): BuilderCommon
     {
-        if (!is_a($builderClass, BuilderCommon::class, true)) {
-            throw new RuntimeException('Common builder resolving error');
-        }
-
         return new $builderClass($this->api, $this->path, $this->params, $path);
     }
 
@@ -110,10 +106,6 @@ abstract class Builder
      */
     protected function resolveNamedBuilder(string $builderClass): BuilderNamed
     {
-        if (!is_a($builderClass, BuilderNamed::class, true)) {
-            throw new RuntimeException('Named builder resolving error');
-        }
-
         return new $builderClass($this->api, $this->path, $this->params);
     }
 }
