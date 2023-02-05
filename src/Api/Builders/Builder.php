@@ -13,7 +13,6 @@ use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\Payload;
 use Generator;
-use RuntimeException;
 
 abstract class Builder
 {

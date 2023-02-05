@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 /** @mixin TestCase */
 trait ApiClientMocker
 {
-    private MockObject|ApiClient $api;
+    protected MockObject|ApiClient $api;
 
     protected function createMockApiClient(): void
     {
@@ -20,12 +20,12 @@ trait ApiClientMocker
             ->getMock();
     }
 
-    private function expectsApiSendCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null): void
+    protected function expectsApiSendCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null): void
     {
         $this->mockApiClientMethodExpectsPayload('send', $httpMethod, $path, $params, $body);
     }
 
-    private function expectsApiDebugCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null): void
+    protected function expectsApiDebugCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null): void
     {
         $this->mockApiClientMethodExpectsPayload('debug', $httpMethod, $path, $params, $body);
     }
@@ -35,11 +35,10 @@ trait ApiClientMocker
         $this->api->expects($this->once())
             ->method($method)
             ->with($this->callback(
-                fn(Payload $payload) =>
-                    $payload->method === $httpMethod &&
-                    $payload->path === $path &&
-                    $payload->params === $params &&
-                    $payload->body === $body
+                fn (Payload $payload) => $payload->method === $httpMethod
+                    && $payload->path === $path
+                    && $payload->params === $params
+                    && $payload->body === $body
             ));
     }
 }

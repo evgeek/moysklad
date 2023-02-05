@@ -2,61 +2,40 @@
 
 namespace Evgeek\Tests\Unit\Api\Builders\Methods\Special;
 
-use Evgeek\Moysklad\Api\Builders\Builder;
-use Evgeek\Moysklad\Api\Builders\Endpoints\Entity;
-use Evgeek\Moysklad\Api\Builders\Methods\MethodNamed;
-use Evgeek\Moysklad\Api\Builders\Methods\Special\Debug;
 use Evgeek\Moysklad\Api\Builders\Methods\Special\MassDelete;
 use Evgeek\Moysklad\Enums\HttpMethod;
-use Evgeek\Moysklad\Http\ApiClient;
-use Evgeek\Moysklad\Http\Payload;
-use Evgeek\Tests\Traits\ApiClientMocker;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
+use Evgeek\Tests\Unit\Api\ApiTestCase;
 
 /** @covers \Evgeek\Moysklad\Api\Builders\Methods\Special\MassDelete<extended> */
-class MassDeleteTest extends TestCase
+class MassDeleteTest extends ApiTestCase
 {
-    use ApiClientMocker;
-
-    private MassDelete $builder;
-
-    private const PREV_PATH = [
-        'test_endpoint',
-        'test_method',
-    ];
     private const PATH = [
         'test_endpoint',
         'test_method',
         'delete',
     ];
-    private const PARAMS = [
-        'limit=1',
-        'archived=false',
-    ];
-    private const BODY = [
-        'name' => 'tangerine',
-        'code' => '123456',
-    ];
+    private MassDelete $builder;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
         $this->createMockApiClient();
 
-        $this->builder = new MassDelete($this->api, self::PREV_PATH, self::PARAMS);
+        $this->builder = new MassDelete($this->api, static::PREV_PATH, static::PARAMS);
     }
 
     public function testMassDelete(): void
     {
-        $this->expectsApiSendCalledWith(HttpMethod::POST, self::PATH, self::PARAMS, self::BODY);
-        $this->builder->massDelete(self::BODY);
+        $this->expectsApiSendCalledWith(HttpMethod::POST, static::PATH, static::PARAMS, static::BODY);
+
+        $this->builder->massDelete(static::BODY);
     }
 
     public function testMassDeleteDebug(): void
     {
-        $this->expectsApiDebugCalledWith(HttpMethod::POST, self::PATH, self::PARAMS, self::BODY);
-        $this->builder->massDeleteDebug(self::BODY);
+        $this->expectsApiDebugCalledWith(HttpMethod::POST, static::PATH, static::PARAMS, static::BODY);
+
+        $this->builder->massDeleteDebug(static::BODY);
     }
 }
