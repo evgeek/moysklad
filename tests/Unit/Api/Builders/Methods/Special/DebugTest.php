@@ -9,14 +9,16 @@ use Evgeek\Moysklad\Api\Builders\Methods\Special\Debug;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\Payload;
+use Evgeek\Tests\Traits\ApiClientMocker;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /** @covers \Evgeek\Moysklad\Api\Builders\Methods\Special\Debug<extended> */
 class DebugTest extends TestCase
 {
+    use ApiClientMocker;
+
     private Debug $builder;
-    private MockObject $api;
 
     private const PATH = [
         'test_endpoint',
@@ -35,9 +37,7 @@ class DebugTest extends TestCase
     {
         parent::setUp();
 
-        $this->api = $this->getMockBuilder(ApiClient::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $this->createMockApiClient();
 
         $this->builder = new Debug($this->api, self::PATH, self::PARAMS);
     }
@@ -81,15 +81,8 @@ class DebugTest extends TestCase
     private function expectsApiDebugCalled(HttpMethod $method, bool $withBody = false, ?string $additionalPath = null): void
     {
         $path = $additionalPath ? array_merge(self::PATH, [$additionalPath]) : self::PATH;
+        $body = $withBody ? self::BODY : null;
 
-        $this->api->expects($this->once())
-            ->method('debug')
-            ->with($this->callback(
-                fn(Payload $payload) =>
-                    $payload->method === $method &&
-                    $payload->path === $path &&
-                    $payload->params === self::PARAMS &&
-                    $payload->body === ($withBody ? self::BODY : null)
-            ));
+        $this->expectsApiDebugCalledWith($method, $path, self::PARAMS, $body);
     }
 }
