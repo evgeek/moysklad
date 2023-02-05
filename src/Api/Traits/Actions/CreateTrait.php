@@ -11,7 +11,7 @@ use Evgeek\Moysklad\Exceptions\FormatException;
 trait CreateTrait
 {
     /**
-     * Create entity (GET http request)
+     * Create entity (POST http request)
      * <code>
      * $product = $ms->query()
      *  ->entity()

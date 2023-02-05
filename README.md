@@ -1,8 +1,8 @@
 # SDK для работы с API v1.2 сервиса "Мой Склад"
 
-Идея этой библиотеки - максимально лёгкий и гибкий SDK, позволяющий работать с [API 1.2](https://dev.moysklad.ru/doc/api/remap/1.2) и `PHP 8.1+`.
+Минималистичная библиотека, позволяющая работать с [API 1.2](https://dev.moysklad.ru/doc/api/remap/1.2) и `PHP 8.1+`. Пакет является "тонким" конструктором запросов, не перегруженным дополнительной логикой. Такой подход подразумевает, что для начала работы достаточно понимания принципов работы API Моего Склада, без необходимости долго вникать в нюансы работы самой библиотеки. Этой же цели служит тщательное документирование в PHPDoc: каждый публичный метод fluent-билдера содержит пример кода и ссылку на соответствующий раздел документации.
 
-Библиотека находится в разработке, версии до `v1.0.0` могут не обладать обратной совместимостью. Список изменений можно найти в [Changelog](CHANGELOG.md). Инструкция по обновлению для версий, не поддерживающих обратную совместимость - [Upgrade guide](UPGRADE.md).
+Проект находится в разработке, версии до `v1.0.0` могут не обладать обратной совместимостью. Список изменений можно найти в [Changelog](CHANGELOG.md). Инструкция по обновлению для версий, не поддерживающих обратную совместимость - [Upgrade guide](UPGRADE.md).
 
 ## Установка
 
@@ -45,7 +45,7 @@ $ms->query()
 Или так:
 
 ```php
-$a = $ms->query()
+$ms->query()
     ->endpoint('entity')
     ->method('customerorder')
     ->byId('00001c03-5227-11e8-9ff4-315000132d57')
@@ -175,9 +175,9 @@ object(stdClass)#28 (5) {
 
 ```php
 $url = 'https://online.moysklad.ru/api/remap/1.2/entity/customerorder/00001c03-5227-11e8-9ff4-315000132d57/positions/00002107-5227-11e8-9ff4-315000132d58';
-var_dump(\Evgeek\Moysklad\Tools\Guid::extractAll($url));
-var_dump(\Evgeek\Moysklad\Tools\Guid::extractFirst($url));
-var_dump(\Evgeek\Moysklad\Tools\Guid::extractLast($url));
+var_dump(Guid::extractAll($url));
+var_dump(Guid::extractFirst($url));
+var_dump(Guid::extractLast($url));
 ```
 
 ```bash
