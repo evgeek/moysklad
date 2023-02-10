@@ -82,7 +82,7 @@ class ApiClient
 
             $params = $payload->params;
             $params['offset'] = $offset + $limit;
-            $payload = new Payload($payload->method, $payload->url, $params, $payload->body);
+            $payload = new Payload($payload->method, $payload->path, $params, $payload->body);
         } while ($next !== null);
     }
 

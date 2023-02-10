@@ -15,7 +15,12 @@ use Throwable;
  */
 class StdClassFormat extends MultiDecoder
 {
-    public static function encode(string $content): stdClass
+    /**
+     * @return array<stdClass>|stdClass
+     *
+     * @throws FormatException
+     */
+    public static function encode(string $content): stdClass|array
     {
         if ($content === '') {
             return new stdClass();
