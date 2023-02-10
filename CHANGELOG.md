@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.6.3
+
+Починен метод `Evgeek\Moysklad\Http\ApiClient::getGenerator()`.
+
 ## v0.6.2
 
 Фикс форматтера `StdClassFormat`: теперь он может обрабатывать не только объекты, но и массивы объектов.
