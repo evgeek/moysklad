@@ -161,7 +161,7 @@ object(stdClass)#28 (5) {
     ["Content-Type"]=>
     string(16) "application/json"
     ["Authorization"]=>
-    string(38) "Basic YWRtaW5AdGF0dG9vdG9vbHM6dFVMcVNU"
+    string(38) "Basic ###############################"
   }
   ["body"]=>
   array(0) {
