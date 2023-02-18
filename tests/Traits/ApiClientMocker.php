@@ -20,14 +20,19 @@ trait ApiClientMocker
             ->getMock();
     }
 
-    protected function expectsApiSendCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null): void
+    protected function expectsSendCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null): void
     {
         $this->mockApiClientMethodExpectsPayload('send', $httpMethod, $path, $params, $body);
     }
 
-    protected function expectsApiDebugCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null): void
+    protected function expectsDebugCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null): void
     {
         $this->mockApiClientMethodExpectsPayload('debug', $httpMethod, $path, $params, $body);
+    }
+
+    protected function expectsGetGeneratorCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null): void
+    {
+        $this->mockApiClientMethodExpectsPayload('getGenerator', $httpMethod, $path, $params, $body);
     }
 
     private function mockApiClientMethodExpectsPayload(string $method, HttpMethod $httpMethod, array $path, array $params, mixed $body): void

@@ -17,7 +17,7 @@ class CreateTraitTest extends TraitTestCase
             protected const NAME = 'test_segment';
         };
 
-        $this->expectsApiSendCalledWith(HttpMethod::POST, static::PATH, static::PARAMS, static::BODY);
+        $this->expectsSendCalledWith(HttpMethod::POST, static::PATH, static::PARAMS, static::BODY);
         $builder->create(static::BODY);
     }
 }

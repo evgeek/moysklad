@@ -5,20 +5,21 @@ namespace Evgeek\Tests\Unit\Api\Traits\Actions;
 use Evgeek\Moysklad\Api\Builders\BuilderNamed;
 use Evgeek\Moysklad\Api\Traits\Actions\CreateTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\DeleteTrait;
+use Evgeek\Moysklad\Api\Traits\Actions\GetGeneratorTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
-/** @covers \Evgeek\Moysklad\Api\Traits\Actions\DeleteTrait */
-class DeleteTraitTest extends TraitTestCase
+/** @covers \Evgeek\Moysklad\Api\Traits\Actions\GetGeneratorTrait */
+class GetGeneratorTraitTest extends TraitTestCase
 {
-    public function testDelete(): void
+    public function testGetGenerator(): void
     {
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
-            use DeleteTrait;
+            use GetGeneratorTrait;
             protected const NAME = 'test_segment';
         };
 
-        $this->expectsSendCalledWith(HttpMethod::DELETE, static::PATH, static::PARAMS);
-        $builder->delete();
+        $this->expectsGetGeneratorCalledWith(HttpMethod::GET, static::PATH, static::PARAMS);
+        $builder->getGenerator();
     }
 }

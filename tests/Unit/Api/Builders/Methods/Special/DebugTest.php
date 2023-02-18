@@ -65,6 +65,6 @@ class DebugTest extends ApiTestCase
         $path = $additionalPath ? array_merge(static::PREV_PATH, [$additionalPath]) : static::PREV_PATH;
         $body = $withBody ? static::BODY : null;
 
-        $this->expectsApiDebugCalledWith($method, $path, static::PARAMS, $body);
+        $this->expectsDebugCalledWith($method, $path, static::PARAMS, $body);
     }
 }
