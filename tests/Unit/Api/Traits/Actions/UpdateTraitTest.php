@@ -2,7 +2,7 @@
 
 namespace Evgeek\Tests\Unit\Api\Traits\Actions;
 
-use Evgeek\Moysklad\Api\Builders\BuilderNamed;
+use Evgeek\Moysklad\Api\Segments\SegmentNamed;
 use Evgeek\Moysklad\Api\Traits\Actions\UpdateTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
@@ -12,7 +12,7 @@ class UpdateTraitTest extends TraitTestCase
 {
     public function testCallsApiClientWithCorrectPayload(): void
     {
-        $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
+        $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends SegmentNamed {
             use UpdateTrait;
             protected const SEGMENT = 'test_segment';
         };

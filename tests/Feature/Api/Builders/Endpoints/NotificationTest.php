@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\ApiTestCase;
 class NotificationTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Builders\Endpoints\Notification<extended>
+     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\Notification<extended>
      */
     public function testEndpointBuilder(): void
     {

@@ -2,8 +2,8 @@
 
 namespace Evgeek\Tests\Unit;
 
-use Evgeek\Moysklad\Api\Builders\Builder;
-use Evgeek\Moysklad\Api\Builders\Query;
+use Evgeek\Moysklad\Api\Builder;
+use Evgeek\Moysklad\Api\Query;
 use Evgeek\Moysklad\MoySklad;
 use PHPUnit\Framework\TestCase;
 

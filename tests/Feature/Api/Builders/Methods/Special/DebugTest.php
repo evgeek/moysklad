@@ -7,7 +7,7 @@ use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Tests\Feature\Api\ApiTestCase;
 
 /**
- * @coversDefaultClass \Evgeek\Moysklad\Api\Builders\Methods\Special\Debug
+ * @coversDefaultClass \Evgeek\Moysklad\Api\Debug
  */
 class DebugTest extends ApiTestCase
 {
@@ -45,7 +45,7 @@ class DebugTest extends ApiTestCase
 
     /**
      * @covers ::massDelete
-     * @covers \Evgeek\Moysklad\Api\Builders\Methods\Special\MassDelete::massDeleteDebug
+     * @covers \Evgeek\Moysklad\Api\Segments\Special\MassDelete::massDeleteDebug
      */
     public function testMassDeleteReturns(): void
     {

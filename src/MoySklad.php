@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad;
 
-use Evgeek\Moysklad\Api\Builders\Query;
+use Evgeek\Moysklad\Api\Query;
 use Evgeek\Moysklad\Exceptions\ConfigException;
 use Evgeek\Moysklad\Formatters\JsonFormatter;
 use Evgeek\Moysklad\Http\ApiClient;

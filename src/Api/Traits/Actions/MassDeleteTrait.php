@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Actions;
 
-use Evgeek\Moysklad\Api\Builders\Methods\Special\MassDelete;
+use Evgeek\Moysklad\Api\Segments\Special\MassDelete;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
 
