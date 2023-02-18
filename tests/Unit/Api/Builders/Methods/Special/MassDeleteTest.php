@@ -10,8 +10,7 @@ use Evgeek\Tests\Unit\Api\ApiTestCase;
 class MassDeleteTest extends ApiTestCase
 {
     private const PATH = [
-        'test_endpoint',
-        'test_method',
+        ...self::PREV_PATH,
         'delete',
     ];
     private MassDelete $builder;

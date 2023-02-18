@@ -35,7 +35,8 @@ trait ApiClientMocker
         $this->api->expects($this->once())
             ->method($method)
             ->with($this->callback(
-                fn (Payload $payload) => $payload->method === $httpMethod
+                fn (Payload $payload) =>
+                    $payload->method === $httpMethod
                     && $payload->path === $path
                     && $payload->params === $params
                     && $payload->body === $body
