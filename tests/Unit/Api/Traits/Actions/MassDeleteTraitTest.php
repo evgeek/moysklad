@@ -3,8 +3,6 @@
 namespace Evgeek\Tests\Unit\Api\Traits\Actions;
 
 use Evgeek\Moysklad\Api\Builders\BuilderNamed;
-use Evgeek\Moysklad\Api\Traits\Actions\CreateTrait;
-use Evgeek\Moysklad\Api\Traits\Actions\GetTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\MassDeleteTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;

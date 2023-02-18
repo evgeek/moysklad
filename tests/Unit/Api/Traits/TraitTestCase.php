@@ -9,6 +9,6 @@ abstract class TraitTestCase extends ApiTestCase
     protected const SEGMENT = 'test_segment';
     protected const PATH = [
         ...self::PREV_PATH,
-        self::SEGMENT
+        self::SEGMENT,
     ];
 }

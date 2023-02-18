@@ -3,7 +3,6 @@
 namespace Evgeek\Tests\Unit\Api\Traits\Actions;
 
 use Evgeek\Moysklad\Api\Builders\BuilderNamed;
-use Evgeek\Moysklad\Api\Traits\Actions\CreateTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\SendTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\InputException;
@@ -45,7 +44,7 @@ class SendTraitTest extends TraitTestCase
         };
 
         $this->expectException(InputException::class);
-        $this->expectExceptionMessage("'WRONG-METHOD' is not valid HTTP method. Check Evgeek\Moysklad\Enums\HttpMethod");
+        $this->expectExceptionMessage("'WRONG-METHOD' is not valid HTTP method. Check Evgeek\\Moysklad\\Enums\\HttpMethod");
         $builder->send('wrong-method', static::BODY);
     }
 }
