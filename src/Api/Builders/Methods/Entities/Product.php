@@ -31,5 +31,5 @@ final class Product extends MethodNamed
     use OrderTrait;
     use SearchTrait;
 
-    public const NAME = 'product';
+    public const SEGMENT = 'product';
 }

@@ -31,5 +31,5 @@ final class Customerorder extends MethodNamed
     use OrderTrait;
     use SearchTrait;
 
-    public const NAME = 'customerorder';
+    public const SEGMENT = 'customerorder';
 }

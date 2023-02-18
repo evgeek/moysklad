@@ -11,7 +11,7 @@ use Evgeek\Moysklad\Exceptions\FormatException;
 
 class MassDelete extends MethodNamed
 {
-    protected const NAME = 'delete';
+    protected const SEGMENT = 'delete';
 
     /**
      * @throws FormatException

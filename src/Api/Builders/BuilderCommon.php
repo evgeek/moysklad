@@ -21,7 +21,7 @@ abstract class BuilderCommon extends Builder
     protected function makeCurrentPath(): array
     {
         if (!$this->segment) {
-            throw new RuntimeException('$this->segment variable cannot be empty');
+            throw new RuntimeException('Passed $segment cannot be empty');
         }
 
         return [...$this->prevPath, $this->segment];

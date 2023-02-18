@@ -8,14 +8,14 @@ use RuntimeException;
 
 abstract class BuilderNamed extends Builder
 {
-    protected const NAME = '';
+    protected const SEGMENT = '';
 
     protected function makeCurrentPath(): array
     {
-        if (!static::NAME) {
-            throw new RuntimeException('NAME constant cannot be empty');
+        if (!static::SEGMENT) {
+            throw new RuntimeException('SEGMENT constant cannot be empty');
         }
 
-        return [...$this->prevPath, static::NAME];
+        return [...$this->prevPath, static::SEGMENT];
     }
 }

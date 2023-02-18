@@ -23,5 +23,5 @@ final class Positions extends MethodNamed
     use LimitOffsetTrait;
     use MassDeleteTrait;
 
-    public const NAME = 'positions';
+    public const SEGMENT = 'positions';
 }

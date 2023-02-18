@@ -66,6 +66,7 @@ abstract class Builder
             return $method;
         }
 
+        $method = strtoupper($method);
         $enumMethod = HttpMethod::tryFrom($method);
         if ($enumMethod === null) {
             throw new InputException("'$method' is not valid HTTP method. Check " . HttpMethod::class);

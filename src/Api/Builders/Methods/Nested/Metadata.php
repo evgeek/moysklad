@@ -17,5 +17,5 @@ final class Metadata extends MethodNamed
     use ExpandTrait;
     use GetTrait;
 
-    public const NAME = 'metadata';
+    public const SEGMENT = 'metadata';
 }

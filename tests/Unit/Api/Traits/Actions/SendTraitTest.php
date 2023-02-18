@@ -1,0 +1,51 @@
+<?php
+
+namespace Evgeek\Tests\Unit\Api\Traits\Actions;
+
+use Evgeek\Moysklad\Api\Builders\BuilderNamed;
+use Evgeek\Moysklad\Api\Traits\Actions\CreateTrait;
+use Evgeek\Moysklad\Api\Traits\Actions\SendTrait;
+use Evgeek\Moysklad\Enums\HttpMethod;
+use Evgeek\Moysklad\Exceptions\InputException;
+use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
+
+/**
+ * @covers \Evgeek\Moysklad\Api\Builders\Builder
+ * @covers \Evgeek\Moysklad\Api\Traits\Actions\SendTrait
+ */
+class SendTraitTest extends TraitTestCase
+{
+    public function testSendWithEnum(): void
+    {
+        $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
+            use SendTrait;
+            protected const SEGMENT = 'test_segment';
+        };
+
+        $this->expectsSendCalledWith(HttpMethod::CONNECT, static::PATH, static::PARAMS, static::BODY);
+        $builder->send(HttpMethod::CONNECT, static::BODY);
+    }
+
+    public function testSendWithString(): void
+    {
+        $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
+            use SendTrait;
+            protected const SEGMENT = 'test_segment';
+        };
+
+        $this->expectsSendCalledWith(HttpMethod::HEAD, static::PATH, static::PARAMS, static::BODY);
+        $builder->send('head', static::BODY);
+    }
+
+    public function testSendWithWrongString(): void
+    {
+        $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
+            use SendTrait;
+            protected const SEGMENT = 'test_segment';
+        };
+
+        $this->expectException(InputException::class);
+        $this->expectExceptionMessage("'WRONG-METHOD' is not valid HTTP method. Check Evgeek\Moysklad\Enums\HttpMethod");
+        $builder->send('wrong-method', static::BODY);
+    }
+}

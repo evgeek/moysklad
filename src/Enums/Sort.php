@@ -6,6 +6,6 @@ namespace Evgeek\Moysklad\Enums;
 
 enum Sort: string
 {
-    case NAME = 'order';
+    case SEGMENT = 'order';
     case ORDER_SEPARATOR = ',';
 }

@@ -18,5 +18,5 @@ class Notification extends EndpointNamed
     use ParamTrait;
     use SendTrait;
 
-    protected const NAME = 'notification';
+    protected const SEGMENT = 'notification';
 }

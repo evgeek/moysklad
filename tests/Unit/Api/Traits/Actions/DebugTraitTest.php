@@ -15,7 +15,7 @@ class DebugTraitTest extends TraitTestCase
     {
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
             use DebugTrait;
-            protected const NAME = 'test_segment';
+            protected const SEGMENT = 'test_segment';
         };
         $debug = $builder->debug();
 

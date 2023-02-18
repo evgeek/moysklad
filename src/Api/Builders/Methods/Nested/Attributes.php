@@ -21,5 +21,5 @@ final class Attributes extends MethodNamed
     use LimitOffsetTrait;
     use MassDeleteTrait;
 
-    public const NAME = 'attributes';
+    public const SEGMENT = 'attributes';
 }

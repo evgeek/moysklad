@@ -38,12 +38,12 @@ trait OrderTrait
         }
         $direction = $direction->value;
 
-        if (!array_key_exists(Sort::NAME->value, $this->params)) {
-            $this->params[Sort::NAME->value] = '';
+        if (!array_key_exists(Sort::SEGMENT->value, $this->params)) {
+            $this->params[Sort::SEGMENT->value] = '';
         }
 
         $sort = $field . Sort::ORDER_SEPARATOR->value . $direction;
-        $this->params[Sort::NAME->value] .= $this->params[Sort::NAME->value] === '' ?
+        $this->params[Sort::SEGMENT->value] .= $this->params[Sort::SEGMENT->value] === '' ?
             $sort :
             QueryParams::ORDER->separator() . $sort;
 

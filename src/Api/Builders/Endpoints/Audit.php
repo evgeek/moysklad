@@ -20,5 +20,5 @@ class Audit extends EndpointNamed
     use ParamTrait;
     use SendTrait;
 
-    protected const NAME = 'audit';
+    protected const SEGMENT = 'audit';
 }
