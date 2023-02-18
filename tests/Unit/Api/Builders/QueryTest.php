@@ -24,47 +24,47 @@ class QueryTest extends ApiTestCase
         $this->builder = new Query($this->api);
     }
 
-    public function testEndpoint(): void
+    public function testEndpointReturnsCorrectClass(): void
     {
-        $endpoint = $this->builder->endpoint('test');
+        $builder = $this->builder->endpoint('test');
 
-        $this->assertInstanceOf(EndpointCommon::class, $endpoint);
-        $this->assertInstanceOf(Builder::class, $endpoint);
+        $this->assertInstanceOf(EndpointCommon::class, $builder);
+        $this->assertInstanceOf(Builder::class, $builder);
     }
 
-    public function testEntity(): void
+    public function testEntityReturnsCorrectClass(): void
     {
-        $entity = $this->builder->entity();
+        $builder = $this->builder->entity();
 
-        $this->assertInstanceOf(Entity::class, $entity);
-        $this->assertInstanceOf(EndpointNamed::class, $entity);
-        $this->assertInstanceOf(Builder::class, $entity);
+        $this->assertInstanceOf(Entity::class, $builder);
+        $this->assertInstanceOf(EndpointNamed::class, $builder);
+        $this->assertInstanceOf(Builder::class, $builder);
     }
 
-    public function testReport(): void
+    public function testReportReturnsCorrectClass(): void
     {
-        $report = $this->builder->report();
+        $builder = $this->builder->report();
 
-        $this->assertInstanceOf(Report::class, $report);
-        $this->assertInstanceOf(EndpointNamed::class, $report);
-        $this->assertInstanceOf(Builder::class, $report);
+        $this->assertInstanceOf(Report::class, $builder);
+        $this->assertInstanceOf(EndpointNamed::class, $builder);
+        $this->assertInstanceOf(Builder::class, $builder);
     }
 
-    public function testAudit(): void
+    public function testAuditReturnsCorrectClass(): void
     {
-        $audit = $this->builder->audit();
+        $builder = $this->builder->audit();
 
-        $this->assertInstanceOf(Audit::class, $audit);
-        $this->assertInstanceOf(EndpointNamed::class, $audit);
-        $this->assertInstanceOf(Builder::class, $audit);
+        $this->assertInstanceOf(Audit::class, $builder);
+        $this->assertInstanceOf(EndpointNamed::class, $builder);
+        $this->assertInstanceOf(Builder::class, $builder);
     }
 
-    public function testNotification(): void
+    public function testNotificationReturnsCorrectClass(): void
     {
-        $notification = $this->builder->notification();
+        $builder = $this->builder->notification();
 
-        $this->assertInstanceOf(Notification::class, $notification);
-        $this->assertInstanceOf(EndpointNamed::class, $notification);
-        $this->assertInstanceOf(Builder::class, $notification);
+        $this->assertInstanceOf(Notification::class, $builder);
+        $this->assertInstanceOf(EndpointNamed::class, $builder);
+        $this->assertInstanceOf(Builder::class, $builder);
     }
 }

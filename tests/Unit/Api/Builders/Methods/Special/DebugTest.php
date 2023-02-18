@@ -9,55 +9,55 @@ use Evgeek\Tests\Unit\Api\ApiTestCase;
 /** @covers \Evgeek\Moysklad\Api\Builders\Methods\Special\Debug<extended> */
 class DebugTest extends ApiTestCase
 {
-    private Debug $builder;
+    private Debug $debug;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->builder = new Debug($this->api, static::PREV_PATH, static::PARAMS);
+        $this->debug = new Debug($this->api, static::PREV_PATH, static::PARAMS);
     }
 
-    public function testGet(): void
+    public function testGetCallsApiClientWithCorrectPayload(): void
     {
         $this->expectsApiDebugCalled(HttpMethod::GET);
 
-        $this->builder->get();
+        $this->debug->get();
     }
 
-    public function testCreate(): void
+    public function testCreateCallsApiClientWithCorrectPayload(): void
     {
         $this->expectsApiDebugCalled(HttpMethod::POST, true);
 
-        $this->builder->create(static::BODY);
+        $this->debug->create(static::BODY);
     }
 
-    public function testUpdate(): void
+    public function testUpdateCallsApiClientWithCorrectPayload(): void
     {
         $this->expectsApiDebugCalled(HttpMethod::PUT, true);
 
-        $this->builder->update(static::BODY);
+        $this->debug->update(static::BODY);
     }
 
-    public function testDelete(): void
+    public function testDeleteCallsApiClientWithCorrectPayload(): void
     {
         $this->expectsApiDebugCalled(HttpMethod::DELETE);
 
-        $this->builder->delete();
+        $this->debug->delete();
     }
 
-    public function testMassDelete(): void
+    public function testMassDeleteCallsApiClientWithCorrectPayload(): void
     {
         $this->expectsApiDebugCalled(HttpMethod::POST, true, 'delete');
 
-        $this->builder->massDelete(static::BODY);
+        $this->debug->massDelete(static::BODY);
     }
 
-    public function testSend(): void
+    public function testSendCallsApiClientWithCorrectPayload(): void
     {
         $this->expectsApiDebugCalled(HttpMethod::POST, true);
 
-        $this->builder->send(HttpMethod::POST, static::BODY);
+        $this->debug->send(HttpMethod::POST, static::BODY);
     }
 
     private function expectsApiDebugCalled(HttpMethod $method, bool $withBody = false, ?string $additionalPath = null): void

@@ -11,14 +11,15 @@ use RuntimeException;
 /** @covers \Evgeek\Moysklad\Api\Builders\BuilderCommon */
 class BuilderCommonTest extends ApiTestCase
 {
-    public function testEmptySegmentPassed(): void
+    public function testCannotConstructWithEmptySegmentPassed(): void
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Passed $segment cannot be empty');
+
         new class($this->api, static::PREV_PATH, static::PARAMS, '') extends BuilderCommon {};
     }
 
-    public function testNotEmptySegmentPassed(): void
+    public function testCannotConstructWithNotEmptySegmentPassed(): void
     {
         $segment = 'test-segment';
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS, $segment) extends BuilderCommon {
@@ -27,6 +28,7 @@ class BuilderCommonTest extends ApiTestCase
 
         $path = [...static::PREV_PATH, $segment];
         $this->expectsSendCalledWith(HttpMethod::GET, $path, static::PARAMS);
+
         $builder->get();
     }
 }

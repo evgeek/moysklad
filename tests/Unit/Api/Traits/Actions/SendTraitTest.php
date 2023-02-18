@@ -14,7 +14,7 @@ use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
  */
 class SendTraitTest extends TraitTestCase
 {
-    public function testSendWithEnum(): void
+    public function testSendWithEnumHttpMethod(): void
     {
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
             use SendTrait;
@@ -25,7 +25,7 @@ class SendTraitTest extends TraitTestCase
         $builder->send(HttpMethod::CONNECT, static::BODY);
     }
 
-    public function testSendWithString(): void
+    public function testSendWithStringHttpMethod(): void
     {
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
             use SendTrait;
@@ -36,7 +36,7 @@ class SendTraitTest extends TraitTestCase
         $builder->send('head', static::BODY);
     }
 
-    public function testSendWithWrongString(): void
+    public function testSendWithWrongStringHttpMethod(): void
     {
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
             use SendTrait;

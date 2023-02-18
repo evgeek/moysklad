@@ -10,7 +10,7 @@ use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 /** @covers \Evgeek\Moysklad\Api\Traits\Actions\DeleteTrait */
 class DeleteTraitTest extends TraitTestCase
 {
-    public function testDelete(): void
+    public function testCallsApiClientWithCorrectPayload(): void
     {
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
             use DeleteTrait;

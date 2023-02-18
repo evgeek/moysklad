@@ -9,10 +9,13 @@ use RuntimeException;
 /** @covers \Evgeek\Moysklad\Api\Builders\BuilderNamed */
 class BuilderNamedTest extends ApiTestCase
 {
-    public function testEmptySegmentConstant(): void
+    public function testCannotConstructWithEmptySegmentConstant(): void
     {
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('SEGMENT constant cannot be empty');
-        new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {};
+
+        new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
+            protected const SEGMENT = '';
+        };
     }
 }

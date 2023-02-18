@@ -11,15 +11,14 @@ use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 /** @covers \Evgeek\Moysklad\Api\Traits\Actions\DebugTrait */
 class DebugTraitTest extends TraitTestCase
 {
-    public function testCreate(): void
+    public function testReturnsCorrectClass(): void
     {
-        $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
+        $builder = (new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
             use DebugTrait;
             protected const SEGMENT = 'test_segment';
-        };
-        $debug = $builder->debug();
+        })->debug();
 
-        $this->assertInstanceOf(Debug::class, $debug);
-        $this->assertInstanceOf(Builder::class, $debug);
+        $this->assertInstanceOf(Debug::class, $builder);
+        $this->assertInstanceOf(Builder::class, $builder);
     }
 }

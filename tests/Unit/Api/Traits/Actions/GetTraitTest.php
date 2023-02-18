@@ -10,7 +10,7 @@ use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 /** @covers \Evgeek\Moysklad\Api\Traits\Actions\GetTrait */
 class GetTraitTest extends TraitTestCase
 {
-    public function testGet(): void
+    public function testCallsApiClientWithCorrectPayload(): void
     {
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
             use GetTrait;

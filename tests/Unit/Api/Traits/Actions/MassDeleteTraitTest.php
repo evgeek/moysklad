@@ -10,7 +10,7 @@ use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 /** @covers \Evgeek\Moysklad\Api\Traits\Actions\MassDeleteTrait */
 class MassDeleteTraitTest extends TraitTestCase
 {
-    public function testMassDelete(): void
+    public function testCallsApiClientWithCorrectPayload(): void
     {
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
             use MassDeleteTrait;

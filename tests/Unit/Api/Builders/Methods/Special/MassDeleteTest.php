@@ -24,14 +24,14 @@ class MassDeleteTest extends ApiTestCase
         $this->builder = new MassDelete($this->api, static::PREV_PATH, static::PARAMS);
     }
 
-    public function testMassDelete(): void
+    public function testMassDeleteCallsApiClientWithCorrectPayload(): void
     {
         $this->expectsSendCalledWith(HttpMethod::POST, static::PATH, static::PARAMS, static::BODY);
 
         $this->builder->massDelete(static::BODY);
     }
 
-    public function testMassDeleteDebug(): void
+    public function testMassDeleteDebugCallsApiClientWithCorrectPayload(): void
     {
         $this->expectsDebugCalledWith(HttpMethod::POST, static::PATH, static::PARAMS, static::BODY);
 

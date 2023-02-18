@@ -22,30 +22,30 @@ class EntityTest extends ApiTestCase
         $this->builder = new Entity($this->api, [], []);
     }
 
-    public function testProduct(): void
+    public function testProductReturnsCorrectClass(): void
     {
-        $product = $this->builder->product();
+        $builder = $this->builder->product();
 
-        $this->assertInstanceOf(Product::class, $product);
-        $this->assertInstanceOf(MethodNamed::class, $product);
-        $this->assertInstanceOf(Builder::class, $product);
+        $this->assertInstanceOf(Product::class, $builder);
+        $this->assertInstanceOf(MethodNamed::class, $builder);
+        $this->assertInstanceOf(Builder::class, $builder);
     }
 
-    public function testCustomerorder(): void
+    public function testCustomerorderReturnsCorrectClass(): void
     {
-        $customerorder = $this->builder->customerorder();
+        $builder = $this->builder->customerorder();
 
-        $this->assertInstanceOf(Customerorder::class, $customerorder);
-        $this->assertInstanceOf(MethodNamed::class, $customerorder);
-        $this->assertInstanceOf(Builder::class, $customerorder);
+        $this->assertInstanceOf(Customerorder::class, $builder);
+        $this->assertInstanceOf(MethodNamed::class, $builder);
+        $this->assertInstanceOf(Builder::class, $builder);
     }
 
-    public function testAssortment(): void
+    public function testAssortmentReturnsCorrectClass(): void
     {
-        $assortment = $this->builder->assortment();
+        $builder = $this->builder->assortment();
 
-        $this->assertInstanceOf(Assortment::class, $assortment);
-        $this->assertInstanceOf(MethodNamed::class, $assortment);
-        $this->assertInstanceOf(Builder::class, $assortment);
+        $this->assertInstanceOf(Assortment::class, $builder);
+        $this->assertInstanceOf(MethodNamed::class, $builder);
+        $this->assertInstanceOf(Builder::class, $builder);
     }
 }

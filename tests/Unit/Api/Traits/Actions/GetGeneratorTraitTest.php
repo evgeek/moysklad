@@ -13,7 +13,7 @@ use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
  */
 class GetGeneratorTraitTest extends TraitTestCase
 {
-    public function testGetGenerator(): void
+    public function testCallsApiClientWithCorrectPayload(): void
     {
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends BuilderNamed {
             use GetGeneratorTrait;
