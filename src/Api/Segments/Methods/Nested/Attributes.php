@@ -12,7 +12,7 @@ use Evgeek\Moysklad\Api\Traits\Actions\MassDeleteTrait;
 use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\ByIdCommonTrait;
 
-final class Attributes extends AbstractMethodNamed
+class Attributes extends AbstractMethodNamed
 {
     use ByIdCommonTrait;
     use CreateTrait;

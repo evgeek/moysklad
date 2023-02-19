@@ -10,7 +10,7 @@ use Evgeek\Moysklad\Api\Traits\Params\ExpandTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\AttributesTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\ByIdCommonTrait;
 
-final class Metadata extends AbstractMethodNamed
+class Metadata extends AbstractMethodNamed
 {
     use AttributesTrait;
     use ByIdCommonTrait;

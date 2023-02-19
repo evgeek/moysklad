@@ -11,7 +11,7 @@ use Evgeek\Moysklad\Api\Segments\Endpoints\Notification;
 use Evgeek\Moysklad\Api\Segments\Endpoints\Report;
 use Evgeek\Moysklad\Http\ApiClient;
 
-final class Query extends AbstractBuilder
+class Query extends AbstractBuilder
 {
     public function __construct(ApiClient $api)
     {

@@ -14,7 +14,7 @@ use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Params\OrderTrait;
 use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
 
-final class Assortment extends AbstractMethodNamed
+class Assortment extends AbstractMethodNamed
 {
     use ExpandTrait;
     use FilterTrait;

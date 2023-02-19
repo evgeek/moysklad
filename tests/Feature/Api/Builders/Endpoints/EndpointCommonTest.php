@@ -4,7 +4,7 @@ namespace Evgeek\Tests\Feature\Api\Builders\Endpoints;
 
 use Evgeek\Tests\Feature\Api\ApiTestCase;
 
-final class EndpointCommonTest extends ApiTestCase
+class EndpointCommonTest extends ApiTestCase
 {
     /**
      * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\EndpointCommon<extended>

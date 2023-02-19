@@ -13,7 +13,7 @@ use Evgeek\Moysklad\Api\Traits\Params\ExpandTrait;
 use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\ByIdCommonTrait;
 
-final class Positions extends AbstractMethodNamed
+class Positions extends AbstractMethodNamed
 {
     use ByIdCommonTrait;
     use CreateTrait;

@@ -9,7 +9,7 @@ use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\InputException;
 
-final class Debug extends AbstractBuilder
+class Debug extends AbstractBuilder
 {
     /**
      * Debug read request

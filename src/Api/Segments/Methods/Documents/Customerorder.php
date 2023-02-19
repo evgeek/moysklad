@@ -17,7 +17,7 @@ use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\ByIdPositionedTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\MetadataTrait;
 
-final class Customerorder extends AbstractMethodNamed
+class Customerorder extends AbstractMethodNamed
 {
     use ByIdPositionedTrait;
     use CreateTrait;

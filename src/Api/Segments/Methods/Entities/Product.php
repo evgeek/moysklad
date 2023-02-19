@@ -17,7 +17,7 @@ use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\ByIdCommonTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\MetadataTrait;
 
-final class Product extends AbstractMethodNamed
+class Product extends AbstractMethodNamed
 {
     use ByIdCommonTrait;
     use CreateTrait;
