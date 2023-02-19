@@ -38,6 +38,8 @@ abstract class AbstractBuilder
      */
     protected function apiSend(HttpMethod $method, mixed $body = null)
     {
+        $a = $this->makePayload($method, $body);
+
         return $this->api->send($this->makePayload($method, $body));
     }
 

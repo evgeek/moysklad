@@ -18,6 +18,7 @@ class SendTraitTest extends TraitTestCase
     {
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends AbstractSegmentNamed {
             use SendTrait;
+
             protected const SEGMENT = 'test_segment';
         };
 

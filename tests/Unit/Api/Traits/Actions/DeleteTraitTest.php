@@ -14,6 +14,7 @@ class DeleteTraitTest extends TraitTestCase
     {
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends AbstractSegmentNamed {
             use DeleteTrait;
+
             protected const SEGMENT = 'test_segment';
         };
 

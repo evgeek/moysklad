@@ -2,25 +2,45 @@
 
 ## [Unreleased] [[Changelog](/CHANGELOG.md#[Unreleased]-upgrade-guide)]
 
+### Приведение метода `expand()` к общей логике.
+
+До:
+
+```php
+$builder = $ms->query()->entity()->customerorder()->byId('guid');
+
+$builder->expand('agent', 'organization')
+```
+
+После:
+
+```php
+$builder = $ms->query()->entity()->customerorder()->byId('guid');
+
+$builder->expand(['agent', 'organization']);
+//Или
+$builder->expand('agent,organization');
+```
+
 ### Реорганизация namespace `Evgeek\Moysklad\Api`.
 
 Данный namespace используется fluent-цепочкой билдера запросов (`$ms->query()->...`), поэтому изменения в нём не влияют на работу библиотеки. Однако, если ваш проект явно использует этот namespace, проверьте следующее:
 
 До:
 
-- `Evgeek\Moysklad\Api\Builders\...`
-- `Evgeek\Moysklad\Api\Traits\Builders\...`
 - `Evgeek\Moysklad\Api\Builders\Methods\Special\Debug`
 - `Evgeek\Moysklad\Api\Builders\Query`
 - `Evgeek\Moysklad\Api\Builders\Methods\Special\MassDelete`
+- `Evgeek\Moysklad\Api\Builders\...`
+- `Evgeek\Moysklad\Api\Traits\Builders\...`
 
 После:
 
-- `Evgeek\Moysklad\Api\Segments\...`
-- `Evgeek\Moysklad\Api\Traits\Segments\...`
 - `Evgeek\Moysklad\Api\Debug`
 - `Evgeek\Moysklad\Api\Query`
 - `Evgeek\Moysklad\Api\Segments\Special\MassDelete`
+- `Evgeek\Moysklad\Api\Segments\...`
+- `Evgeek\Moysklad\Api\Traits\Segments\...`
 
 ### Namespace проекта приведён к [PSR Naming Conventions](https://www.php-fig.org/bylaws/psr-naming-conventions/).
 

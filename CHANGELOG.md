@@ -10,6 +10,7 @@
 
 ### Changed
 
+- Приведение метода `expand()` к общей логике. Теперь он принимает только один параметр, и умеет работать с массивами.
 - Реорганизация namespace `Evgeek\Moysklad\Api`.
 - Namespace проекта приведён к [PSR Naming Conventions](https://www.php-fig.org/bylaws/psr-naming-conventions/).
 - Лог изменений приведён к [Keep a Changelog](https://keepachangelog.com/ru).

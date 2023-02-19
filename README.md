@@ -74,14 +74,10 @@ $ms->query()
 
 ```php
 $product = $ms->query()->entity()->product()->limit(1);
+
 $product = $product->expand('group,images');
-$product = $product->expand('group', 'images');
-$expand = ['group', 'images'];
-$product = $product->expand(...$expand);
-$product = $product
-    ->expand('group')
-    ->expand('images');
-$result = $product->get();
+$product = $product->expand(['group', 'images']);
+$product = $product->expand('group')->expand('images');
 ```
 
 * `filter()` - фильтрация результатов выдачи ([doc](https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-fil-traciq-wyborki-s-pomosch-u-parametra-filter)). В метод можно передать три параметра (ключ, знак и значение), или только два (ключ и значение, в качестве знака по умолчанию будет использовано `=`). В качестве знака можно использовать строку (`'='`, `'!='`) или `Evgeek\Moysklad\Enums\FilterSign` (`FilterSign::EQ`, `FilterSign::NEQ`):

@@ -14,8 +14,9 @@ abstract class ApiTestCase extends TestCase
         'test_method',
     ];
     protected const PARAMS = [
-        'limit=1',
-        'archived=false',
+        'test_param_1' => 1,
+        'test_param_2' => true,
+        'test_param_3' => 'string',
     ];
     protected const BODY = [
         'name' => 'tangerine',

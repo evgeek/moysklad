@@ -14,6 +14,7 @@ class CreateTraitTest extends TraitTestCase
     {
         $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends AbstractSegmentNamed {
             use CreateTrait;
+
             protected const SEGMENT = 'test_segment';
         };
 
