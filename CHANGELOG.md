@@ -6,6 +6,7 @@
 
 ### Added
 
+- В метод `filter()` теперь можно передавать несколько фильтров за раз при помощи массива массивов. Примеры есть в [README](/##параметры-запроса) и PHPDoc метода.
 - Полное покрытие проекта unit тестами.
 
 ### Changed
@@ -14,6 +15,10 @@
 - Реорганизация namespace `Evgeek\Moysklad\Api`.
 - Namespace проекта приведён к [PSR Naming Conventions](https://www.php-fig.org/bylaws/psr-naming-conventions/).
 - Лог изменений приведён к [Keep a Changelog](https://keepachangelog.com/ru).
+
+### Deprecated
+
+- В метод `filters()` будет удалён в следующей минорной версии, используйте вместо него `filter()`.
 
 ## v0.6.3
 

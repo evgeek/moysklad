@@ -24,7 +24,7 @@ trait ExpandTrait
      */
     public function expand(array|string $fields): static
     {
-        $this->initExpand();
+        $this->initExpandParam();
 
         if (is_array($fields)) {
             foreach ($fields as $field) {
@@ -37,7 +37,7 @@ trait ExpandTrait
         return $this;
     }
 
-    private function initExpand(): void
+    private function initExpandParam(): void
     {
         if (!array_key_exists(QueryParams::EXPAND->value, $this->params)) {
             $this->params[QueryParams::EXPAND->value] = '';

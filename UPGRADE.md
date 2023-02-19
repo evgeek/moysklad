@@ -22,6 +22,28 @@ $builder->expand(['agent', 'organization']);
 $builder->expand('agent,organization');
 ```
 
+### DEPRECATED метода `filters()`.
+
+До:
+
+```php
+$ms->query()->entity()->product()
+    ->filters([
+        ['minimumBalance', '=', '0'],
+        ['code', FilterSign::NEQ, 123],
+    ]);
+```
+
+После:
+
+```php
+$ms->query()->entity()->product()
+    ->filter([
+        ['minimumBalance', '=', '0'],
+        ['code', FilterSign::NEQ, 123],
+    ]);
+```
+
 ### Реорганизация namespace `Evgeek\Moysklad\Api`.
 
 Данный namespace используется fluent-цепочкой билдера запросов (`$ms->query()->...`), поэтому изменения в нём не влияют на работу библиотеки. Однако, если ваш проект явно использует этот namespace, проверьте следующее:

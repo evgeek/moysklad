@@ -80,29 +80,22 @@ $product = $product->expand(['group', 'images']);
 $product = $product->expand('group')->expand('images');
 ```
 
-* `filter()` - фильтрация результатов выдачи ([doc](https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-fil-traciq-wyborki-s-pomosch-u-parametra-filter)). В метод можно передать три параметра (ключ, знак и значение), или только два (ключ и значение, в качестве знака по умолчанию будет использовано `=`). В качестве знака можно использовать строку (`'='`, `'!='`) или `Evgeek\Moysklad\Enums\FilterSign` (`FilterSign::EQ`, `FilterSign::NEQ`):
+* `filter()` - фильтрация результатов выдачи ([doc](https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-fil-traciq-wyborki-s-pomosch-u-parametra-filter)). В метод можно передать три параметра (ключ, знак и значение), или только два (ключ и значение, в качестве знака по умолчанию будет использовано `=`). В качестве знака можно использовать строку (`'='`, `'!='`) или `Evgeek\Moysklad\Enums\FilterSign` (`FilterSign::EQ`, `FilterSign::NEQ`). Сразу несколько фильтров можно передать как массив массивов с параметрами фильтрации:
 
 ```php
-$product = $ms->query()->entity()->product()->limit(1)
+$product = $ms->query()->entity()->product()
     ->filter('archived', false)
-    ->filter('name', '=', 'tangerine')
-    ->filter('code', FilterSign::NEQ, 123);
-```
-
-* `filters()` - для передачи сразу нескольких фильтров в одном методе. Передаваемый параметр должен состоять из массивов с 2 или 3 элементами (логика аналогична `filter()`):
-```php
-$product = $ms->query()->entity()->product()->limit(1)
-    ->filters([
-        ['archived', false],
-        ['name', '=', 'tangerine'],
+    ->filter('name', '=~', 'apple')
+    ->filter([
+        ['minimumBalance', '=', '0'],
         ['code', FilterSign::NEQ, 123],
     ]);
 ```
 
 Нюансы:
 
-* И `param()`, и специализированные методы поддерживают дозапись в параметрах, где это возможно (`filter`, `filters`, `expand`, `order`). В остальных параметрах ранее установленное значение перезаписывается.
-* `filter()` и `filters()` автоматом экранируют `;`. `param()` - нет.
+* И `param()`, и специализированные методы поддерживают дозапись в параметрах, где это возможно (`filter`, `expand`, `order`). В остальных параметрах ранее установленное значение перезаписывается.
+* `filter()` автоматом экранирует `;`. `param()` - нет.
 
 ## Отправка запросов
 
@@ -135,7 +128,7 @@ $product = $ms
     ->entity()
     ->product()
     ->limit(1)
-    ->filters([
+    ->filter([
         ['archived', false],
         ['name', '!=', 'tangerine'],
     ])
