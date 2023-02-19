@@ -9,7 +9,7 @@ use Evgeek\Moysklad\Api\Traits\Actions\UpdateTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ExpandTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\PositionsTrait;
 
-class ByIdPositioned extends ById
+class ByIdPositioned extends AbstractById
 {
     use DeleteTrait;
     use ExpandTrait;

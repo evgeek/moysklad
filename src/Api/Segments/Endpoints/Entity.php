@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Api\Segments\Methods\Documents\Customerorder;
 use Evgeek\Moysklad\Api\Segments\Methods\Entities\Assortment;
 use Evgeek\Moysklad\Api\Segments\Methods\Entities\Product;
 
-class Entity extends EndpointNamed
+class Entity extends AbstractEndpointNamed
 {
     protected const SEGMENT = 'entity';
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Segments\Methods\Documents;
 
-use Evgeek\Moysklad\Api\Segments\Methods\MethodNamed;
+use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodNamed;
 use Evgeek\Moysklad\Api\Traits\Actions\CreateTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\GetGeneratorTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\GetTrait;
@@ -17,7 +17,7 @@ use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\ByIdPositionedTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\MetadataTrait;
 
-final class Customerorder extends MethodNamed
+final class Customerorder extends AbstractMethodNamed
 {
     use ByIdPositionedTrait;
     use CreateTrait;

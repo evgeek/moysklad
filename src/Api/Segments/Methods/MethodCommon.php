@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Segments\Methods;
 
-use Evgeek\Moysklad\Api\Segments\SegmentCommon;
+use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
 use Evgeek\Moysklad\Api\Traits\Actions\CreateTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\GetGeneratorTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\GetTrait;
@@ -22,7 +22,7 @@ use Evgeek\Moysklad\Api\Traits\Segments\MetadataTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\MethodCommonTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\PositionsTrait;
 
-class MethodCommon extends SegmentCommon
+class MethodCommon extends AbstractSegmentCommon
 {
     use AttributesTrait;
     use ByIdPositionedTrait;

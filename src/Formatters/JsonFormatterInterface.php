@@ -9,7 +9,7 @@ use Evgeek\Moysklad\Exceptions\FormatException;
 /**
  * @template T
  */
-interface JsonFormatter
+interface JsonFormatterInterface
 {
     /**
      * Encode json response string to T format

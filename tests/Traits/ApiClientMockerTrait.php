@@ -9,7 +9,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /** @mixin TestCase */
-trait ApiClientMocker
+trait ApiClientMockerTrait
 {
     protected MockObject|ApiClient $api;
 

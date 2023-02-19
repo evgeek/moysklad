@@ -2,21 +2,21 @@
 
 namespace Evgeek\Tests\Unit\Api\Traits\Actions;
 
-use Evgeek\Moysklad\Api\Segments\SegmentNamed;
+use Evgeek\Moysklad\Api\Segments\AbstractSegmentNamed;
 use Evgeek\Moysklad\Api\Traits\Actions\SendTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
 /**
- * @covers \Evgeek\Moysklad\Api\Builder
+ * @covers \Evgeek\Moysklad\Api\AbstractBuilder
  * @covers \Evgeek\Moysklad\Api\Traits\Actions\SendTrait
  */
 class SendTraitTest extends TraitTestCase
 {
     public function testSendWithEnumHttpMethod(): void
     {
-        $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends SegmentNamed {
+        $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends AbstractSegmentNamed {
             use SendTrait;
             protected const SEGMENT = 'test_segment';
         };
@@ -27,7 +27,7 @@ class SendTraitTest extends TraitTestCase
 
     public function testSendWithStringHttpMethod(): void
     {
-        $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends SegmentNamed {
+        $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends AbstractSegmentNamed {
             use SendTrait;
             protected const SEGMENT = 'test_segment';
         };
@@ -38,7 +38,7 @@ class SendTraitTest extends TraitTestCase
 
     public function testSendWithWrongStringHttpMethod(): void
     {
-        $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends SegmentNamed {
+        $builder = new class($this->api, static::PREV_PATH, static::PARAMS) extends AbstractSegmentNamed {
             use SendTrait;
             protected const SEGMENT = 'test_segment';
         };

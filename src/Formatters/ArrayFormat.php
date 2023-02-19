@@ -10,9 +10,9 @@ use Throwable;
 /**
  * @template T
  *
- * @implements JsonFormatter<array>
+ * @implements JsonFormatterInterface<array>
  */
-class ArrayFormat extends MultiDecoder
+class ArrayFormat extends AbstractMultiDecoder
 {
     public static function encode(string $content): array
     {

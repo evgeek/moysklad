@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Segments;
 
-use Evgeek\Moysklad\Api\Builder;
+use Evgeek\Moysklad\Api\AbstractBuilder;
 use RuntimeException;
 
-abstract class SegmentNamed extends Builder
+abstract class AbstractSegmentNamed extends AbstractBuilder
 {
     protected const SEGMENT = '';
 

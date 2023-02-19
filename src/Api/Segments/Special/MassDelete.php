@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Segments\Special;
 
-use Evgeek\Moysklad\Api\Segments\SegmentNamed;
+use Evgeek\Moysklad\Api\Segments\AbstractSegmentNamed;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
 
-class MassDelete extends SegmentNamed
+class MassDelete extends AbstractSegmentNamed
 {
     protected const SEGMENT = 'delete';
 

@@ -11,9 +11,9 @@ use Throwable;
 /**
  * @template T
  *
- * @implements JsonFormatter<stdClass>
+ * @implements JsonFormatterInterface<stdClass>
  */
-class StdClassFormat extends MultiDecoder
+class StdClassFormat extends AbstractMultiDecoder
 {
     /**
      * @return array<stdClass>|stdClass

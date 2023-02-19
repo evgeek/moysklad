@@ -2,12 +2,12 @@
 
 namespace Evgeek\Tests\Unit\Api;
 
-use Evgeek\Tests\Traits\ApiClientMocker;
+use Evgeek\Tests\Traits\ApiClientMockerTrait;
 use PHPUnit\Framework\TestCase;
 
 abstract class ApiTestCase extends TestCase
 {
-    use ApiClientMocker;
+    use ApiClientMockerTrait;
 
     protected const PREV_PATH = [
         'test_endpoint',

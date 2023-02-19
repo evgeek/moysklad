@@ -2,11 +2,11 @@
 
 namespace Evgeek\Tests\Unit\Api;
 
-use Evgeek\Moysklad\Api\Builder;
+use Evgeek\Moysklad\Api\AbstractBuilder;
 use Evgeek\Moysklad\Api\Query;
+use Evgeek\Moysklad\Api\Segments\Endpoints\AbstractEndpointNamed;
 use Evgeek\Moysklad\Api\Segments\Endpoints\Audit;
 use Evgeek\Moysklad\Api\Segments\Endpoints\EndpointCommon;
-use Evgeek\Moysklad\Api\Segments\Endpoints\EndpointNamed;
 use Evgeek\Moysklad\Api\Segments\Endpoints\Entity;
 use Evgeek\Moysklad\Api\Segments\Endpoints\Notification;
 use Evgeek\Moysklad\Api\Segments\Endpoints\Report;
@@ -28,7 +28,7 @@ class QueryTest extends ApiTestCase
         $builder = $this->builder->endpoint('test');
 
         $this->assertInstanceOf(EndpointCommon::class, $builder);
-        $this->assertInstanceOf(Builder::class, $builder);
+        $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 
     public function testEntityReturnsCorrectClass(): void
@@ -36,8 +36,8 @@ class QueryTest extends ApiTestCase
         $builder = $this->builder->entity();
 
         $this->assertInstanceOf(Entity::class, $builder);
-        $this->assertInstanceOf(EndpointNamed::class, $builder);
-        $this->assertInstanceOf(Builder::class, $builder);
+        $this->assertInstanceOf(AbstractEndpointNamed::class, $builder);
+        $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 
     public function testReportReturnsCorrectClass(): void
@@ -45,8 +45,8 @@ class QueryTest extends ApiTestCase
         $builder = $this->builder->report();
 
         $this->assertInstanceOf(Report::class, $builder);
-        $this->assertInstanceOf(EndpointNamed::class, $builder);
-        $this->assertInstanceOf(Builder::class, $builder);
+        $this->assertInstanceOf(AbstractEndpointNamed::class, $builder);
+        $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 
     public function testAuditReturnsCorrectClass(): void
@@ -54,8 +54,8 @@ class QueryTest extends ApiTestCase
         $builder = $this->builder->audit();
 
         $this->assertInstanceOf(Audit::class, $builder);
-        $this->assertInstanceOf(EndpointNamed::class, $builder);
-        $this->assertInstanceOf(Builder::class, $builder);
+        $this->assertInstanceOf(AbstractEndpointNamed::class, $builder);
+        $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 
     public function testNotificationReturnsCorrectClass(): void
@@ -63,7 +63,7 @@ class QueryTest extends ApiTestCase
         $builder = $this->builder->notification();
 
         $this->assertInstanceOf(Notification::class, $builder);
-        $this->assertInstanceOf(EndpointNamed::class, $builder);
-        $this->assertInstanceOf(Builder::class, $builder);
+        $this->assertInstanceOf(AbstractEndpointNamed::class, $builder);
+        $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 }

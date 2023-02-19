@@ -9,7 +9,7 @@ use Evgeek\Moysklad\Exceptions\ConfigException;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\GeneratorException;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
-use Evgeek\Moysklad\Formatters\JsonFormatter;
+use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Services\Url;
 use Generator;
 use GuzzleHttp\Psr7\Request;
@@ -24,7 +24,7 @@ class ApiClient
      */
     public function __construct(
         array $credentials,
-        private readonly JsonFormatter $formatter,
+        private readonly JsonFormatterInterface $formatter,
         private readonly RequestSenderInterface $requestSender,
     ) {
         $this->addCredentialsToHeaders($credentials);

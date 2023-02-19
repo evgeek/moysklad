@@ -7,13 +7,13 @@ namespace Evgeek\Moysklad\Tools;
 use Evgeek\Moysklad\Exceptions\ConfigException;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
-use Evgeek\Moysklad\Formatters\JsonFormatter;
+use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Services\Formatter;
 use Evgeek\Moysklad\Services\Url;
 
 class Meta
 {
-    private static ?JsonFormatter $formatter = null;
+    private static ?JsonFormatterInterface $formatter = null;
 
     /**
      * @throws ConfigException|FormatException
@@ -107,7 +107,7 @@ class Meta
     }
 
     /**
-     * @param class-string<JsonFormatter> $formatter
+     * @param class-string<JsonFormatterInterface> $formatter
      *
      * @throws ConfigException
      */

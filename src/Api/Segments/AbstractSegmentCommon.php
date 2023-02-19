@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Segments;
 
-use Evgeek\Moysklad\Api\Builder;
+use Evgeek\Moysklad\Api\AbstractBuilder;
 use Evgeek\Moysklad\Http\ApiClient;
 use RuntimeException;
 
-abstract class SegmentCommon extends Builder
+abstract class AbstractSegmentCommon extends AbstractBuilder
 {
     public function __construct(
         ApiClient $api,

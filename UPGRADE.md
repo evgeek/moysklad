@@ -1,5 +1,53 @@
 # Upgrade guide
 
+## [Unreleased] [[Changelog](/CHANGELOG.md#[Unreleased]-upgrade-guide)]
+
+### Реорганизация namespace `Evgeek\Moysklad\Api`.
+
+Данный namespace используется fluent-цепочкой билдера запросов (`$ms->query()->...`), поэтому изменения в нём не влияют на работу библиотеки. Однако, если ваш проект явно использует этот namespace, проверьте следующее:
+
+До:
+
+- `Evgeek\Moysklad\Api\Builders\...`
+- `Evgeek\Moysklad\Api\Traits\Builders\...`
+- `Evgeek\Moysklad\Api\Builders\Methods\Special\Debug`
+- `Evgeek\Moysklad\Api\Builders\Query`
+- `Evgeek\Moysklad\Api\Builders\Methods\Special\MassDelete`
+
+После:
+
+- `Evgeek\Moysklad\Api\Segments\...`
+- `Evgeek\Moysklad\Api\Traits\Segments\...`
+- `Evgeek\Moysklad\Api\Debug`
+- `Evgeek\Moysklad\Api\Query`
+- `Evgeek\Moysklad\Api\Segments\Special\MassDelete`
+
+### Namespace проекта приведён к [PSR Naming Conventions](https://www.php-fig.org/bylaws/psr-naming-conventions/).
+
+Помимо `Evgeek\Moysklad\Formatters\JsonFormatterInterface`, прочие переименования, аналогично предыдущему пункту, не влияют на API библиотеки.
+
+До:
+
+- `Evgeek\Moysklad\Formatters\JsonFormatter`
+- `Evgeek\Moysklad\Formatters\MultiDecoder`
+- `Evgeek\Moysklad\Api\Builders\Builder`
+- `Evgeek\Moysklad\Api\Builders\BuilderCommon`
+- `Evgeek\Moysklad\Api\Builders\BuilderNamed`
+- `Evgeek\Moysklad\Api\Builders\ById\ById`
+- `Evgeek\Moysklad\Api\Builders\Endpoints\EndpointNamed`
+- `Evgeek\Moysklad\Api\Builders\Methods\MethodNamed`
+
+После:
+
+- `Evgeek\Moysklad\Formatters\JsonFormatterInterface`
+- `Evgeek\Moysklad\Formatters\AbstractMultiDecoder`
+- `Evgeek\Moysklad\Api\AbstractBuilder`
+- `Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon`
+- `Evgeek\Moysklad\Api\Segments\AbstractSegmentNamed`
+- `Evgeek\Moysklad\Api\Segments\ById\AbstractById`
+- `Evgeek\Moysklad\Api\Segments\Endpoints\AbstractEndpointNamed`
+- `Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodNamed`
+
 ## v0.6.0 [[Changelog](/CHANGELOG.md#v060-upgrade-guide)]
 
 ### Настройка форматирования

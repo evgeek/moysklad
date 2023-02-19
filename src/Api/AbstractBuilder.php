@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api;
 
-use Evgeek\Moysklad\Api\Segments\SegmentCommon;
-use Evgeek\Moysklad\Api\Segments\SegmentNamed;
+use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
+use Evgeek\Moysklad\Api\Segments\AbstractSegmentNamed;
 use Evgeek\Moysklad\Api\Traits\Actions\DebugTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\ApiException;
@@ -16,7 +16,7 @@ use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\Payload;
 use Generator;
 
-abstract class Builder
+abstract class AbstractBuilder
 {
     use DebugTrait;
 
@@ -88,25 +88,25 @@ abstract class Builder
     }
 
     /**
-     * @template T of SegmentCommon
+     * @template T of AbstractSegmentCommon
      *
      * @psalm-param class-string<T> $builderClass
      *
      * @return T
      */
-    protected function resolveCommonBuilder(string $builderClass, string $path): SegmentCommon
+    protected function resolveCommonBuilder(string $builderClass, string $path): AbstractSegmentCommon
     {
         return new $builderClass($this->api, $this->path, $this->params, $path);
     }
 
     /**
-     * @template T of SegmentNamed
+     * @template T of AbstractSegmentNamed
      *
      * @psalm-param class-string<T> $builderClass
      *
      * @return T
      */
-    protected function resolveNamedBuilder(string $builderClass): SegmentNamed
+    protected function resolveNamedBuilder(string $builderClass): AbstractSegmentNamed
     {
         return new $builderClass($this->api, $this->path, $this->params);
     }

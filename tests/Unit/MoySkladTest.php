@@ -2,7 +2,7 @@
 
 namespace Evgeek\Tests\Unit;
 
-use Evgeek\Moysklad\Api\Builder;
+use Evgeek\Moysklad\Api\AbstractBuilder;
 use Evgeek\Moysklad\Api\Query;
 use Evgeek\Moysklad\MoySklad;
 use PHPUnit\Framework\TestCase;
@@ -16,6 +16,6 @@ class MoySkladTest extends TestCase
         $query = $ms->query();
 
         $this->assertInstanceOf(Query::class, $query);
-        $this->assertInstanceOf(Builder::class, $query);
+        $this->assertInstanceOf(AbstractBuilder::class, $query);
     }
 }

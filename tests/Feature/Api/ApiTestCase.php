@@ -2,7 +2,7 @@
 
 namespace Evgeek\Tests\Feature\Api;
 
-use Evgeek\Moysklad\Api\Builder;
+use Evgeek\Moysklad\Api\AbstractBuilder;
 use Evgeek\Moysklad\Api\Query;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
@@ -33,7 +33,7 @@ class ApiTestCase extends TestCase
 
     protected function assertNamedBuilderDebugSame(array $path): void
     {
-        $query = array_reduce($path, static fn (Builder $builder, string $method) => $builder->{$method}(), $this->query);
+        $query = array_reduce($path, static fn (AbstractBuilder $builder, string $method) => $builder->{$method}(), $this->query);
         $actual = $query->debug()->get();
         $expected = $this->makeExpectedDebug($path);
 
@@ -44,7 +44,7 @@ class ApiTestCase extends TestCase
     {
         $query = array_reduce(
             $path,
-            static fn (Builder $builder, string $method) => $builder->{$method}(),
+            static fn (AbstractBuilder $builder, string $method) => $builder->{$method}(),
             $this->query->endpoint($endpoint)->method($method)
         );
         $actual = $query->debug()->get();

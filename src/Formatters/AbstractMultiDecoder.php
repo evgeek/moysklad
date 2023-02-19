@@ -10,9 +10,9 @@ use Throwable;
 /**
  * @template T
  *
- * @implements JsonFormatter<T>
+ * @implements JsonFormatterInterface<T>
  */
-abstract class MultiDecoder implements JsonFormatter
+abstract class AbstractMultiDecoder implements JsonFormatterInterface
 {
     public static function decode(mixed $content): string
     {

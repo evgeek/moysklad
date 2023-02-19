@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Segments;
 
-use Evgeek\Moysklad\Api\Segments\ById\ById;
 use Evgeek\Moysklad\Api\Segments\ById\ByIdPositioned;
 
 trait ByIdPositionedTrait
