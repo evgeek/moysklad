@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Traits\Params\ExpandTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\MethodCommonTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
+use InvalidArgumentException;
 
 /**
  * @covers \Evgeek\Moysklad\Api\AbstractBuilder::initQueryParam
@@ -75,6 +76,16 @@ class ExpandTraitTest extends TraitTestCase
         $this->makeExpandBuilder()
             ->expand(['expand1', 'expand2'])
             ->expand('expand3')
+            ->get();
+    }
+
+    public function testArrayExpandMustContainsStrings(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Each expand must be a string');
+
+        $this->makeExpandBuilder()
+            ->expand(['field1', 1])
             ->get();
     }
 
