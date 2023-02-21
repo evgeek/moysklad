@@ -81,7 +81,7 @@ abstract class AbstractBuilder
     /**
      * @template T of AbstractSegmentCommon
      *
-     * @psalm-param class-string<T> $builderClass
+     * @param class-string<T> $builderClass
      *
      * @return T
      */
@@ -93,7 +93,7 @@ abstract class AbstractBuilder
     /**
      * @template T of AbstractSegmentNamed
      *
-     * @psalm-param class-string<T> $builderClass
+     * @param class-string<T> $builderClass
      *
      * @return T
      */
