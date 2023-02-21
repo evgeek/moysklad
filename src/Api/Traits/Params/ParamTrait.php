@@ -24,12 +24,7 @@ trait ParamTrait
     {
         $value = UrlParam::convertMixedValueToString($value);
 
-        try {
-            $queryParam = QueryParam::from($key);
-            $separator = $queryParam->separator();
-        } catch (Throwable) {
-            $separator = '';
-        }
+        $separator = QueryParam::getSeparator($key);
 
         if ($separator === '') {
             $this->params[$key] = $value;
@@ -37,9 +32,8 @@ trait ParamTrait
             return $this;
         }
 
-        if (!array_key_exists($key, $this->params)) {
-            $this->params[$key] = '';
-        }
+        $this->initQueryParam($key);
+
         $this->params[$key] .= $this->params[$key] === '' ?
             $value :
             $separator . $value;

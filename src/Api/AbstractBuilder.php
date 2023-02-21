@@ -101,10 +101,12 @@ abstract class AbstractBuilder
         return new $builderClass($this->api, $this->path, $this->params);
     }
 
-    protected function initQueryParam(QueryParam $queryParam): void
+    protected function initQueryParam(QueryParam|string $queryParam): void
     {
-        if (!array_key_exists($queryParam->value, $this->params)) {
-            $this->params[$queryParam->value] = '';
+        $stringQueryParam = is_string($queryParam) ? $queryParam : $queryParam->value;
+
+        if (!array_key_exists($stringQueryParam, $this->params)) {
+            $this->params[$stringQueryParam] = '';
         }
     }
 }

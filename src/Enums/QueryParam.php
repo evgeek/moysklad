@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Enums;
 
+use Throwable;
+
 enum QueryParam: string
 {
     case EXPAND = 'expand';
@@ -15,7 +17,28 @@ enum QueryParam: string
 
     public function separator(): string
     {
-        return match ($this) {
+        return self::matchSeparator($this);
+    }
+
+    public static function getSeparator(self|string $queryParam): string
+    {
+        if (is_string($queryParam)) {
+            try {
+                $enumParam = self::from($queryParam);
+                $separator = $enumParam->separator();
+            } catch (Throwable) {
+                $separator = '';
+            }
+
+            return $separator;
+        }
+
+        return self::matchSeparator($queryParam);
+    }
+
+    private static function matchSeparator(self $queryParam): string
+    {
+        return match ($queryParam) {
             self::EXPAND => ',',
             self::FILTER, self::ORDER => ';',
             default => ''
