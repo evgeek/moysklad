@@ -4,10 +4,8 @@ namespace Evgeek\Tests\Unit\Api\Traits\Params;
 
 use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
 use Evgeek\Moysklad\Api\Traits\Actions\GetTrait;
-use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\MethodCommonTrait;
-use Evgeek\Moysklad\Enums\FilterSign;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 use InvalidArgumentException;
@@ -181,8 +179,8 @@ class ParamTraitTest extends TraitTestCase
     {
         return new class($this->api, static::PREV_PATH, static::PARAMS, 'test_segment') extends AbstractSegmentCommon {
             use GetTrait;
-            use ParamTrait;
             use MethodCommonTrait;
+            use ParamTrait;
         };
     }
 }
