@@ -36,6 +36,8 @@ trait FilterTrait
         FilterSign|string|int|float|bool $sign = null,
         string|int|float|bool $value = null
     ): static {
+        $this->initQueryParam(QueryParam::FILTER);
+
         if (is_array($key)) {
             return $this->handleArrayOfFilters($key);
         }
@@ -125,8 +127,6 @@ trait FilterTrait
 
     private function addFilterToParams(string $key, string $sign, string $value): void
     {
-        $this->initQueryParam(QueryParam::FILTER);
-
         $filterString = UrlParam::escapeCharactersForFilter($key) . $sign . UrlParam::escapeCharactersForFilter($value);
 
         $this->params[QueryParam::FILTER->value] .= $this->params[QueryParam::FILTER->value] === '' ?

@@ -4,12 +4,9 @@ namespace Evgeek\Tests\Unit\Api\Traits\Params;
 
 use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
 use Evgeek\Moysklad\Api\Traits\Actions\GetTrait;
-use Evgeek\Moysklad\Api\Traits\Params\FilterTrait;
 use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\MethodCommonTrait;
-use Evgeek\Moysklad\Enums\FilterSign;
 use Evgeek\Moysklad\Enums\HttpMethod;
-use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
 /** @covers \Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait */
@@ -66,8 +63,8 @@ class LimitOffsetTraitTest extends TraitTestCase
     private function makeLimitOffsetBuilder()
     {
         return new class($this->api, static::PREV_PATH, static::PARAMS, 'test_segment') extends AbstractSegmentCommon {
-            use LimitOffsetTrait;
             use GetTrait;
+            use LimitOffsetTrait;
             use MethodCommonTrait;
         };
     }
