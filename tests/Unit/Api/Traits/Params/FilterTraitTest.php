@@ -95,7 +95,7 @@ class FilterTraitTest extends TraitTestCase
             ->get();
     }
 
-    public function testFilterPassedBetweenSegments(): void
+    public function testFilterPassedThroughSegments(): void
     {
         $path = [...static::PATH, 'additional_segment'];
         $params = static::PARAMS + ['filter' => 'filter1=value1;filter2>value2;filter3~=value3'];

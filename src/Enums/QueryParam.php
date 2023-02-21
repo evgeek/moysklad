@@ -24,7 +24,7 @@ enum QueryParam: string
     {
         if (is_string($queryParam)) {
             try {
-                $enumParam = self::from($queryParam);
+                $enumParam = self::from(strtolower($queryParam));
                 $separator = $enumParam->separator();
             } catch (Throwable) {
                 $separator = '';

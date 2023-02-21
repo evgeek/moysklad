@@ -26,14 +26,14 @@ trait OrderTrait
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-sortirowka-ob-ektow
      */
-    public function order(array|string $fields, OrderDirection|string $direction = 'asc'): static
+    public function order(array|string $field, OrderDirection|string $direction = 'asc'): static
     {
-        if (is_array($fields)) {
-            return $this->handleArrayOfOrders($fields);
+        if (is_array($field)) {
+            return $this->handleArrayOfOrders($field);
         }
 
         $directionString = is_a($direction, OrderDirection::class) ? $direction->value : $direction;
-        $sort = $fields . ',' . $directionString;
+        $sort = $field . ',' . $directionString;
 
         $this->setQueryParam(QueryParam::ORDER, $sort);
 

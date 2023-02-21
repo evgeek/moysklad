@@ -104,10 +104,10 @@ abstract class AbstractBuilder
 
     protected function setQueryParam(QueryParam|string $queryParam, string|int|float|bool $value): void
     {
-        $stringQueryParam = is_string($queryParam) ? $queryParam : $queryParam->value;
+        $stringQueryParam = strtolower(is_string($queryParam) ? $queryParam : $queryParam->value);
         $stringValue = UrlParam::convertMixedValueToString($value);
 
-        $separator = QueryParam::getSeparator($queryParam);
+        $separator = QueryParam::getSeparator($stringQueryParam);
         if ($separator === '') {
             $this->params[$stringQueryParam] = $stringValue;
 

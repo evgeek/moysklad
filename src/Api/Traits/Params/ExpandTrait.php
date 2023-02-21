@@ -24,13 +24,13 @@ trait ExpandTrait
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-zamena-ssylok-ob-ektami-s-pomosch-u-expand
      */
-    public function expand(array|string $fields): static
+    public function expand(array|string $field): static
     {
-        if (is_array($fields)) {
-            return $this->handleArrayOfExpands($fields);
+        if (is_array($field)) {
+            return $this->handleArrayOfExpands($field);
         }
 
-        $this->setQueryParam(QueryParam::EXPAND, $fields);
+        $this->setQueryParam(QueryParam::EXPAND, $field);
 
         return $this;
     }

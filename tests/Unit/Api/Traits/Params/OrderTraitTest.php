@@ -95,7 +95,7 @@ class OrderTraitTest extends TraitTestCase
             ->get();
     }
 
-    public function testOrderPassedBetweenSegments(): void
+    public function testOrderPassedThroughSegments(): void
     {
         $path = [...static::PATH, 'additional_segment'];
         $params = static::PARAMS + ['order' => 'field1,desc;field2,asc;field3,asc'];

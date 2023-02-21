@@ -89,7 +89,7 @@ class ExpandTraitTest extends TraitTestCase
             ->get();
     }
 
-    public function testExpandPassedBetweenSegments(): void
+    public function testExpandPassedThroughSegments(): void
     {
         $path = [...static::PATH, 'additional_segment'];
         $params = static::PARAMS + ['expand' => 'expand1,expand2,expand3'];

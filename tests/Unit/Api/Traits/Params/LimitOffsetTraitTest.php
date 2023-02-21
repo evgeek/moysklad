@@ -15,7 +15,7 @@ use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
  */
 class LimitOffsetTraitTest extends TraitTestCase
 {
-    public function testSingleLimitFilter(): void
+    public function testSingleLimit(): void
     {
         $params = static::PARAMS + ['limit' => '200'];
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
@@ -25,7 +25,7 @@ class LimitOffsetTraitTest extends TraitTestCase
             ->get();
     }
 
-    public function testNewLimitFilterRewritesPrevious(): void
+    public function testNewLimitRewritesPrevious(): void
     {
         $params = static::PARAMS + ['limit' => '400'];
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
@@ -36,7 +36,7 @@ class LimitOffsetTraitTest extends TraitTestCase
             ->get();
     }
 
-    public function testSingleOffsetFilter(): void
+    public function testSingleOffset(): void
     {
         $params = static::PARAMS + ['offset' => '400'];
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
@@ -46,7 +46,7 @@ class LimitOffsetTraitTest extends TraitTestCase
             ->get();
     }
 
-    public function testNewOffsetFilterRewritesPrevious(): void
+    public function testNewOffsetRewritesPrevious(): void
     {
         $params = static::PARAMS + ['offset' => '500'];
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
@@ -54,6 +54,22 @@ class LimitOffsetTraitTest extends TraitTestCase
         $this->makeLimitOffsetBuilder()
             ->offset(300)
             ->offset(500)
+            ->get();
+    }
+
+    public function testLimitOffsetPassedThroughSegments(): void
+    {
+        $path = [...static::PATH, 'additional_segment'];
+        $params = static::PARAMS + [
+            'limit' => '200',
+            'offset' => '300',
+        ];
+        $this->expectsSendCalledWith(HttpMethod::GET, $path, $params);
+
+        $this->makeLimitOffsetBuilder()
+            ->limit(200)
+            ->offset(300)
+            ->method('additional_segment')
             ->get();
     }
 
