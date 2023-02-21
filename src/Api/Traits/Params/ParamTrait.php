@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Params;
 
-use Evgeek\Moysklad\Enums\QueryParams;
+use Evgeek\Moysklad\Enums\QueryParam;
 use Evgeek\Moysklad\Services\UrlParam;
 use Throwable;
 
@@ -25,7 +25,7 @@ trait ParamTrait
         $value = UrlParam::convertMixedValueToString($value);
 
         try {
-            $queryParam = QueryParams::from($key);
+            $queryParam = QueryParam::from($key);
             $separator = $queryParam->separator();
         } catch (Throwable) {
             $separator = '';

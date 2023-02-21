@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Traits\Params;
 
 use Evgeek\Moysklad\Enums\FilterSign;
-use Evgeek\Moysklad\Enums\QueryParams;
+use Evgeek\Moysklad\Enums\QueryParam;
 use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Moysklad\Services\UrlParam;
 
@@ -125,14 +125,12 @@ trait FilterTrait
 
     private function addFilterToParams(string $key, string $sign, string $value): void
     {
-        if (!array_key_exists(QueryParams::FILTER->value, $this->params)) {
-            $this->params[QueryParams::FILTER->value] = '';
-        }
+        $this->initQueryParam(QueryParam::FILTER);
 
         $filterString = UrlParam::escapeCharactersForFilter($key) . $sign . UrlParam::escapeCharactersForFilter($value);
 
-        $this->params[QueryParams::FILTER->value] .= $this->params[QueryParams::FILTER->value] === '' ?
+        $this->params[QueryParam::FILTER->value] .= $this->params[QueryParam::FILTER->value] === '' ?
             $filterString :
-            QueryParams::FILTER->separator() . $filterString;
+            QueryParam::FILTER->separator() . $filterString;
     }
 }

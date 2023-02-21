@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
 use Evgeek\Moysklad\Api\Segments\AbstractSegmentNamed;
 use Evgeek\Moysklad\Api\Traits\Actions\DebugTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
+use Evgeek\Moysklad\Enums\QueryParam;
 use Evgeek\Moysklad\Exceptions\ApiException;
 use Evgeek\Moysklad\Exceptions\FormatException;
 use Evgeek\Moysklad\Exceptions\GeneratorException;
@@ -111,5 +112,12 @@ abstract class AbstractBuilder
     protected function resolveNamedBuilder(string $builderClass): AbstractSegmentNamed
     {
         return new $builderClass($this->api, $this->path, $this->params);
+    }
+
+    protected function initQueryParam(QueryParam $queryParam): void
+    {
+        if (!array_key_exists($queryParam->value, $this->params)) {
+            $this->params[$queryParam->value] = '';
+        }
     }
 }

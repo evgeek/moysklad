@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Enums;
 
-enum QueryParams: string
+enum QueryParam: string
 {
     case EXPAND = 'expand';
     case FILTER = 'filter';

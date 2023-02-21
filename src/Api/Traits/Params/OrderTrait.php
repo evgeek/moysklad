@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Traits\Params;
 
 use Evgeek\Moysklad\Enums\OrderDirection;
-use Evgeek\Moysklad\Enums\QueryParams;
-use Evgeek\Moysklad\Enums\Sort;
-use Evgeek\Moysklad\Exceptions\InputException;
-use Throwable;
+use Evgeek\Moysklad\Enums\QueryParam;
 
 trait OrderTrait
 {
@@ -23,29 +20,19 @@ trait OrderTrait
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-sortirowka-ob-ektow
-     *
-     * @throws InputException
      */
     public function order(string $field, OrderDirection|string $direction = 'asc'): static
     {
-        if (is_string($direction)) {
-            try {
-                $directionEnum = OrderDirection::from($direction);
-            } catch (Throwable) {
-                throw new InputException("Unknown order direction '$direction'. Check " . OrderDirection::class);
-            }
-            $direction = $directionEnum;
-        }
-        $direction = $direction->value;
-
-        if (!array_key_exists(Sort::SEGMENT->value, $this->params)) {
-            $this->params[Sort::SEGMENT->value] = '';
+        if (is_a($direction, OrderDirection::class)) {
+            $direction = $direction->value;
         }
 
-        $sort = $field . Sort::ORDER_SEPARATOR->value . $direction;
-        $this->params[Sort::SEGMENT->value] .= $this->params[Sort::SEGMENT->value] === '' ?
+        $this->initQueryParam(QueryParam::ORDER);
+
+        $sort = $field . ',' . $direction;
+        $this->params[QueryParam::ORDER->value] .= $this->params[QueryParam::ORDER->value] === '' ?
             $sort :
-            QueryParams::ORDER->separator() . $sort;
+            QueryParam::ORDER->separator() . $sort;
 
         return $this;
     }
