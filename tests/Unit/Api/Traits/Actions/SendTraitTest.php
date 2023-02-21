@@ -9,7 +9,8 @@ use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
 /**
- * @covers \Evgeek\Moysklad\Api\AbstractBuilder
+ * @covers \Evgeek\Moysklad\Api\AbstractBuilder::apiSend
+ * @covers \Evgeek\Moysklad\Api\AbstractBuilder::getEnumHttpMethod
  * @covers \Evgeek\Moysklad\Api\Traits\Actions\SendTrait
  */
 class SendTraitTest extends TraitTestCase

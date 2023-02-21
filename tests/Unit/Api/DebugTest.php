@@ -4,6 +4,7 @@ namespace Evgeek\Tests\Unit\Api;
 
 use Evgeek\Moysklad\Api\Debug;
 use Evgeek\Moysklad\Enums\HttpMethod;
+use Evgeek\Moysklad\Exceptions\InputException;
 
 /** @covers \Evgeek\Moysklad\Api\Debug<extended> */
 class DebugTest extends ApiTestCase
@@ -57,6 +58,21 @@ class DebugTest extends ApiTestCase
         $this->expectsApiDebugCalled(HttpMethod::POST, true);
 
         $this->debug->send(HttpMethod::POST, static::BODY);
+    }
+
+    public function testSendCallsApiClientWithCorrectPayloadFromStringHttpMethod(): void
+    {
+        $this->expectsApiDebugCalled(HttpMethod::POST, true);
+
+        $this->debug->send('post', static::BODY);
+    }
+
+    public function testCannotSendWrongStringHttpMethod(): void
+    {
+        $this->expectException(InputException::class);
+        $this->expectExceptionMessage("'WRONG-METHOD' is not valid HTTP method. Check Evgeek\\Moysklad\\Enums\\HttpMethod");
+
+        $this->debug->send('WRONG-METHOD', static::BODY);
     }
 
     private function expectsApiDebugCalled(HttpMethod $method, bool $withBody = false, ?string $additionalPath = null): void

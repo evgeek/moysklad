@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
 /**
- * @covers \Evgeek\Moysklad\Api\AbstractBuilder
+ * @covers \Evgeek\Moysklad\Api\AbstractBuilder::apiGetGenerator
  * @covers \Evgeek\Moysklad\Api\Traits\Actions\GetGeneratorTrait
  */
 class GetGeneratorTraitTest extends TraitTestCase
