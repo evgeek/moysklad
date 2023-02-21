@@ -163,6 +163,20 @@ class ParamTraitTest extends TraitTestCase
             ->get();
     }
 
+    public function testParamKeysLowered(): void
+    {
+        $params = static::PARAMS + ['order' => 'name,desc;CODE', 'limit' => '1'];
+        $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
+
+        $this->makeParamBuilder()
+            ->param([
+                ['order', 'name,desc'],
+                ['Limit', 1],
+            ])
+            ->param('OrDeR', 'CODE')
+            ->get();
+    }
+
     private function makeParamBuilder()
     {
         return new class($this->api, static::PREV_PATH, static::PARAMS, 'test_segment') extends AbstractSegmentCommon {
