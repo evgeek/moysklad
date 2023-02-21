@@ -11,7 +11,10 @@ use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
-/** @covers \Evgeek\Moysklad\Api\Traits\Params\FilterTrait */
+/**
+ * @covers \Evgeek\Moysklad\Api\Traits\Params\FilterTrait
+ * @covers \Evgeek\Moysklad\Api\AbstractBuilder::initQueryParam
+ */
 class FilterTraitTest extends TraitTestCase
 {
     public function testSingleStringFilter(): void

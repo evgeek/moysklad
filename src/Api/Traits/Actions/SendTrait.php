@@ -27,6 +27,6 @@ trait SendTrait
      */
     public function send(HttpMethod|string $method, mixed $body = null)
     {
-        return $this->apiSend($this->getEnumMethod($method), $body);
+        return $this->apiSend($this->getEnumHttpMethod($method), $body);
     }
 }

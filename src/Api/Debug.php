@@ -114,7 +114,7 @@ class Debug extends AbstractBuilder
      */
     public function send(HttpMethod|string $method, mixed $body = null)
     {
-        return $this->apiDebug($this->getEnumMethod($method), $body);
+        return $this->apiDebug($this->getEnumHttpMethod($method), $body);
     }
 
     protected function makeCurrentPath(): array

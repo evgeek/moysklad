@@ -9,7 +9,10 @@ use Evgeek\Moysklad\Api\Traits\Segments\MethodCommonTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
-/** @covers \Evgeek\Moysklad\Api\Traits\Params\ExpandTrait */
+/**
+ * @covers \Evgeek\Moysklad\Api\Traits\Params\ExpandTrait
+ * @covers \Evgeek\Moysklad\Api\AbstractBuilder::initQueryParam
+ */
 class ExpandTraitTest extends TraitTestCase
 {
     public function testSingleStringExpand(): void

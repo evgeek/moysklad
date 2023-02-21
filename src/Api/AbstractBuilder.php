@@ -65,7 +65,7 @@ abstract class AbstractBuilder
     /**
      * @throws InputException
      */
-    protected function getEnumMethod(HttpMethod|string $method): HttpMethod
+    protected function getEnumHttpMethod(HttpMethod|string $method): HttpMethod
     {
         if (!is_string($method)) {
             return $method;
