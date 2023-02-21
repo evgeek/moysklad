@@ -3,8 +3,8 @@
 namespace Evgeek\Tests\Feature\Api\Builders\Methods\Special;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
-use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Tests\Feature\Api\ApiTestCase;
+use InvalidArgumentException;
 
 /**
  * @coversDefaultClass \Evgeek\Moysklad\Api\Debug
@@ -65,7 +65,7 @@ class DebugTest extends ApiTestCase
      */
     public function testSendWithWrongMethod(): void
     {
-        $this->expectException(InputException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->query->endpoint('test_endpoint')->debug()->send('WRONG_METHOD');
     }
 

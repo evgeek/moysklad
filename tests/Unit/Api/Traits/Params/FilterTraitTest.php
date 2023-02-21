@@ -8,8 +8,8 @@ use Evgeek\Moysklad\Api\Traits\Params\FilterTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\MethodCommonTrait;
 use Evgeek\Moysklad\Enums\FilterSign;
 use Evgeek\Moysklad\Enums\HttpMethod;
-use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
+use InvalidArgumentException;
 
 /**
  * @covers \Evgeek\Moysklad\Api\AbstractBuilder::initQueryParam
@@ -87,7 +87,7 @@ class FilterTraitTest extends TraitTestCase
 
     public function testArrayFilterMustContainsArrays(): void
     {
-        $this->expectException(InputException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Each filter must be an array');
 
         $this->makeFilterBuilder()
@@ -114,14 +114,14 @@ class FilterTraitTest extends TraitTestCase
     public function testFilterPassedWithoutSignCauseException(): void
     {
         $message = "For filter key 'filter1': sign missed";
-        $this->expectException(InputException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage($message);
 
         $this->makeFilterBuilder()
             ->filter('filter1')
             ->get();
 
-        $this->expectException(InputException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage($message);
 
         $this->makeFilterBuilder()
@@ -132,14 +132,14 @@ class FilterTraitTest extends TraitTestCase
     public function testFilterPassedWithoutProperlyValueCauseException(): void
     {
         $message = "For filter key 'filter1': with a sign, you must pass the value as the third parameter";
-        $this->expectException(InputException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage($message);
 
         $this->makeFilterBuilder()
             ->filter('filter1', FilterSign::EQ)
             ->get();
 
-        $this->expectException(InputException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage($message);
 
         $this->makeFilterBuilder()
@@ -165,14 +165,14 @@ class FilterTraitTest extends TraitTestCase
     public function testFilterPassedWithNotProperlySignTypeCauseException(mixed $incorrectSign): void
     {
         $message = "For filter key 'filter1': with a value, sign must be a string or " . FilterSign::class;
-        $this->expectException(InputException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage($message);
 
         $this->makeFilterBuilder()
             ->filter('filter1', $incorrectSign, 'value1')
             ->get();
 
-        $this->expectException(InputException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage($message);
 
         $this->makeFilterBuilder()

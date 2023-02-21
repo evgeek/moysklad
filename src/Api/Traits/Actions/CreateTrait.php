@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Traits\Actions;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
-use Evgeek\Moysklad\Exceptions\ApiException;
-use Evgeek\Moysklad\Exceptions\FormatException;
+use Evgeek\Moysklad\Exceptions\RequestException;
 
 trait CreateTrait
 {
@@ -19,8 +18,7 @@ trait CreateTrait
      *  ->create(['name' => 'orange']);
      * </code>
      *
-     * @throws FormatException
-     * @throws ApiException
+     * @throws RequestException
      */
     public function create(mixed $body)
     {

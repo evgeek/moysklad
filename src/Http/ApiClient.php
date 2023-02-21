@@ -4,24 +4,20 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Http;
 
-use Evgeek\Moysklad\Exceptions\ApiException;
-use Evgeek\Moysklad\Exceptions\ConfigException;
-use Evgeek\Moysklad\Exceptions\FormatException;
-use Evgeek\Moysklad\Exceptions\GeneratorException;
+use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Services\Url;
 use Generator;
 use GuzzleHttp\Psr7\Request;
+use InvalidArgumentException;
 use Throwable;
+use UnexpectedValueException;
 
 class ApiClient
 {
     private array $headers = ['Content-Type' => 'application/json'];
 
-    /**
-     * @throws ConfigException
-     */
     public function __construct(
         array $credentials,
         private readonly JsonFormatterInterface $formatter,
@@ -31,17 +27,13 @@ class ApiClient
     }
 
     /**
-     * @throws FormatException
-     * @throws ApiException
+     * @throws RequestException
      */
     public function send(Payload $payload)
     {
         return $this->formatter::encode($this->sendRequest($payload));
     }
 
-    /**
-     * @throws FormatException
-     */
     public function debug(Payload $payload)
     {
         $url = Url::make($payload);
@@ -57,21 +49,19 @@ class ApiClient
     }
 
     /**
-     * @throws FormatException
-     * @throws GeneratorException
-     * @throws ApiException
+     * @throws RequestException
      */
     public function getGenerator(Payload $payload): Generator
     {
         do {
             $content = ArrayFormat::encode($this->sendRequest($payload));
             if (!array_key_exists('rows', $content)) {
-                throw new GeneratorException("Response is non-iterable (missed 'rows' property)");
+                throw new UnexpectedValueException("Response is non-iterable (missed 'rows' property)");
             }
             $limit = $content['meta']['limit'] ?? null;
             $offset = $content['meta']['offset'] ?? null;
             if ($limit === null || $offset === null) {
-                throw new GeneratorException("Response is non-iterable (missed 'limit' or 'offset' property)");
+                throw new UnexpectedValueException("Response is non-iterable (missed 'limit' or 'offset' property)");
             }
 
             foreach ($content['rows'] as $row) {
@@ -87,8 +77,7 @@ class ApiClient
     }
 
     /**
-     * @throws FormatException
-     * @throws ApiException
+     * @throws RequestException
      */
     private function sendRequest(Payload $payload): string
     {
@@ -101,17 +90,14 @@ class ApiClient
                 ->getBody()
                 ->getContents();
         } catch (Throwable $e) {
-            throw new ApiException($e->getMessage(), $e->getCode());
+            throw new RequestException($e->getMessage(), $e->getCode(), $e);
         }
     }
 
-    /**
-     * @throws ConfigException
-     */
     private function addCredentialsToHeaders(array $credentials): void
     {
         if (!array_is_list($credentials)) {
-            throw new ConfigException('Credentials must be a list array');
+            throw new InvalidArgumentException('Credentials must be a list array');
         }
 
         $count = count($credentials);
@@ -127,7 +113,7 @@ class ApiClient
             return;
         }
 
-        throw new ConfigException('The size of the credential array must be equal to 1 for a token ' .
+        throw new InvalidArgumentException('The size of the credential array must be equal to 1 for a token ' .
             "or 2 for a login-password. $count provided.");
     }
 }

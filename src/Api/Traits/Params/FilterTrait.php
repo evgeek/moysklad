@@ -6,8 +6,8 @@ namespace Evgeek\Moysklad\Api\Traits\Params;
 
 use Evgeek\Moysklad\Enums\FilterSign;
 use Evgeek\Moysklad\Enums\QueryParam;
-use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Moysklad\Services\UrlParam;
+use InvalidArgumentException;
 
 trait FilterTrait
 {
@@ -28,8 +28,6 @@ trait FilterTrait
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-fil-traciq-wyborki-s-pomosch-u-parametra-filter
-     *
-     * @throws InputException
      */
     public function filter(
         array|string $key,
@@ -66,22 +64,17 @@ trait FilterTrait
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-fil-traciq-wyborki-s-pomosch-u-parametra-filter
      * @deprecated
-     *
-     * @throws InputException
      */
     public function filters(array $filters): static
     {
         return $this->handleArrayOfFilters($filters);
     }
 
-    /**
-     * @throws InputException
-     */
     private function handleArrayOfFilters(array $filters): static
     {
         foreach ($filters as $filter) {
             if (!is_array($filter)) {
-                throw new InputException('Each filter must be an array');
+                throw new InvalidArgumentException('Each filter must be an array');
             }
             $this->filter(...$filter);
         }
@@ -91,8 +84,6 @@ trait FilterTrait
 
     /**
      * @return string[]
-     *
-     * @throws InputException
      */
     private function prepareSignAndValueAsStrings(
         string $key,
@@ -102,19 +93,19 @@ trait FilterTrait
         $prefix = "For filter key '$key': ";
 
         if ($sign === null) {
-            throw new InputException($prefix . 'sign missed');
+            throw new InvalidArgumentException($prefix . 'sign missed');
         }
 
         if ($value === null) {
             if (is_a($sign, FilterSign::class)) {
-                throw new InputException($prefix . 'with a sign, you must pass the value as the third parameter');
+                throw new InvalidArgumentException($prefix . 'with a sign, you must pass the value as the third parameter');
             }
 
             /** @var bool|float|int|string $sign */
             $value = $sign;
             $sign = $this->defaultSign;
         } elseif (!is_a($sign, FilterSign::class) && !is_string($sign)) {
-            throw new InputException($prefix . 'with a value, sign must be a string or ' . FilterSign::class);
+            throw new InvalidArgumentException($prefix . 'with a value, sign must be a string or ' . FilterSign::class);
         }
 
         if (is_a($sign, FilterSign::class)) {

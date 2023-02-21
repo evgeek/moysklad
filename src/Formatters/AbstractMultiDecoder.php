@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
-use Evgeek\Moysklad\Exceptions\FormatException;
+use InvalidArgumentException;
 use Throwable;
 
 /**
@@ -23,8 +23,10 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
         try {
             $decodedContent = json_encode($content, JSON_THROW_ON_ERROR);
         } catch (Throwable $e) {
-            throw new FormatException("Can't convert " . gettype($content) . ' content to json string. ' .
-                "Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content);
+            $message = "Can't convert " . gettype($content) . ' content to json string. ' .
+                "Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content;
+
+            throw new InvalidArgumentException($message, $e->getCode(), $e);
         }
 
         return is_string($content) ? $content : $decodedContent;

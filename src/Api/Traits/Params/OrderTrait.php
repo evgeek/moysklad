@@ -6,7 +6,7 @@ namespace Evgeek\Moysklad\Api\Traits\Params;
 
 use Evgeek\Moysklad\Enums\OrderDirection;
 use Evgeek\Moysklad\Enums\QueryParam;
-use Evgeek\Moysklad\Exceptions\InputException;
+use InvalidArgumentException;
 
 trait OrderTrait
 {
@@ -49,14 +49,11 @@ trait OrderTrait
         return is_a($direction, OrderDirection::class) ? $direction->value : $direction;
     }
 
-    /**
-     * @throws InputException
-     */
     private function handleArrayOfOrders(array $orders): static
     {
         foreach ($orders as $order) {
             if (!is_array($order)) {
-                throw new InputException('Each order must be an array');
+                throw new InvalidArgumentException('Each order must be an array');
             }
             $this->order(...$order);
         }

@@ -44,6 +44,26 @@ $ms->query()->entity()->product()
     ]);
 ```
 
+### Переработаны исключения
+
+До:
+
+- `Evgeek\Moysklad\Exceptions\ApiException`
+- `Evgeek\Moysklad\Exceptions\InputException`
+- `Evgeek\Moysklad\Exceptions\ConfigException`
+- `Evgeek\Moysklad\Exceptions\FormatException`
+- `Evgeek\Moysklad\Exceptions\GeneratorException`
+- `Evgeek\Moysklad\Exceptions\AbstractException`
+
+После:
+
+- `Evgeek\Moysklad\Exceptions\RequestException`
+- `InvalidArgumentException`
+- `InvalidArgumentException`
+- `InvalidArgumentException`
+- `UnexpectedValueException`
+- Удалён
+
 ### Реорганизация namespace `Evgeek\Moysklad\Api`.
 
 Данный namespace используется fluent-цепочкой билдера запросов (`$ms->query()->...`), поэтому изменения в нём не влияют на работу библиотеки. Однако, если ваш проект явно использует этот namespace, проверьте следующее:

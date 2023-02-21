@@ -9,13 +9,11 @@ use Evgeek\Moysklad\Api\Segments\AbstractSegmentNamed;
 use Evgeek\Moysklad\Api\Traits\Actions\DebugTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Enums\QueryParam;
-use Evgeek\Moysklad\Exceptions\ApiException;
-use Evgeek\Moysklad\Exceptions\FormatException;
-use Evgeek\Moysklad\Exceptions\GeneratorException;
-use Evgeek\Moysklad\Exceptions\InputException;
+use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\Payload;
 use Generator;
+use InvalidArgumentException;
 
 abstract class AbstractBuilder
 {
@@ -34,35 +32,26 @@ abstract class AbstractBuilder
     abstract protected function makeCurrentPath(): array;
 
     /**
-     * @throws FormatException
-     * @throws ApiException
+     * @throws RequestException
      */
     protected function apiSend(HttpMethod $method, mixed $body = null)
     {
         return $this->api->send($this->makePayload($method, $body));
     }
 
-    /**
-     * @throws FormatException
-     */
     protected function apiDebug(HttpMethod $method, mixed $body = null)
     {
         return $this->api->debug($this->makePayload($method, $body));
     }
 
     /**
-     * @throws FormatException
-     * @throws GeneratorException
-     * @throws ApiException
+     * @throws RequestException
      */
     protected function apiGetGenerator(): Generator
     {
         return $this->api->getGenerator($this->makePayload(HttpMethod::GET));
     }
 
-    /**
-     * @throws InputException
-     */
     protected function getEnumHttpMethod(HttpMethod|string $method): HttpMethod
     {
         if (!is_string($method)) {
@@ -72,7 +61,7 @@ abstract class AbstractBuilder
         $method = strtoupper($method);
         $enumMethod = HttpMethod::tryFrom($method);
         if ($enumMethod === null) {
-            throw new InputException("'$method' is not valid HTTP method. Check " . HttpMethod::class);
+            throw new InvalidArgumentException("'$method' is not valid HTTP method. Check " . HttpMethod::class);
         }
 
         return $enumMethod;

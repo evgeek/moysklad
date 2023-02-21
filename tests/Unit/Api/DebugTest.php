@@ -4,7 +4,7 @@ namespace Evgeek\Tests\Unit\Api;
 
 use Evgeek\Moysklad\Api\Debug;
 use Evgeek\Moysklad\Enums\HttpMethod;
-use Evgeek\Moysklad\Exceptions\InputException;
+use InvalidArgumentException;
 
 /** @covers \Evgeek\Moysklad\Api\Debug<extended> */
 class DebugTest extends ApiTestCase
@@ -69,7 +69,7 @@ class DebugTest extends ApiTestCase
 
     public function testCannotSendWrongStringHttpMethod(): void
     {
-        $this->expectException(InputException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage("'WRONG-METHOD' is not valid HTTP method. Check Evgeek\\Moysklad\\Enums\\HttpMethod");
 
         $this->debug->send('WRONG-METHOD', static::BODY);

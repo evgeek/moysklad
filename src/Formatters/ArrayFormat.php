@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
-use Evgeek\Moysklad\Exceptions\FormatException;
+use InvalidArgumentException;
 use Throwable;
 
 /**
@@ -23,8 +23,9 @@ class ArrayFormat extends AbstractMultiDecoder
         try {
             $encodedContent = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
         } catch (Throwable $e) {
-            throw new FormatException('Can\'t convert content to array. ' .
-                "Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content);
+            $message = "Can't convert content to array. Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content;
+
+            throw new InvalidArgumentException($message, $e->getCode(), $e);
         }
 
         return $encodedContent;

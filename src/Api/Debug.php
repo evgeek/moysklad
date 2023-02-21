@@ -6,8 +6,6 @@ namespace Evgeek\Moysklad\Api;
 
 use Evgeek\Moysklad\Api\Segments\Special\MassDelete;
 use Evgeek\Moysklad\Enums\HttpMethod;
-use Evgeek\Moysklad\Exceptions\FormatException;
-use Evgeek\Moysklad\Exceptions\InputException;
 
 class Debug extends AbstractBuilder
 {
@@ -20,8 +18,6 @@ class Debug extends AbstractBuilder
      *  ->debug()
      *  ->get();
      * </code>
-     *
-     * @throws FormatException
      */
     public function get()
     {
@@ -37,8 +33,6 @@ class Debug extends AbstractBuilder
      *  ->debug()
      *  ->create(['name' => 'orange']);
      * </code>
-     *
-     * @throws FormatException
      */
     public function create(mixed $body)
     {
@@ -55,8 +49,6 @@ class Debug extends AbstractBuilder
      *  ->debug()
      *  ->update(['name' => 'orange']);
      * </code>
-     *
-     * @throws FormatException
      */
     public function update(mixed $body)
     {
@@ -73,8 +65,6 @@ class Debug extends AbstractBuilder
      *  ->debug()
      *  ->delete();
      * </code>
-     *
-     * @throws FormatException
      */
     public function delete()
     {
@@ -90,8 +80,6 @@ class Debug extends AbstractBuilder
      *  ->debug()
      *  ->massDelete($body);
      * </code>
-     *
-     * @throws FormatException
      */
     public function massDelete(mixed $body)
     {
@@ -108,9 +96,6 @@ class Debug extends AbstractBuilder
      *  ->debug()
      *  ->send('PUT', ['name' => 'orange']);
      * </code>
-     *
-     * @throws FormatException
-     * @throws InputException
      */
     public function send(HttpMethod|string $method, mixed $body = null)
     {

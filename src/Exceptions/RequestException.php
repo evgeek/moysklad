@@ -7,8 +7,8 @@ namespace Evgeek\Moysklad\Exceptions;
 use Exception;
 
 /**
- * Application Root Exception
+ * HTTP request sender exception
  */
-abstract class AbstractException extends Exception
+class RequestException extends Exception
 {
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
-use Evgeek\Moysklad\Exceptions\FormatException;
+use InvalidArgumentException;
 use stdClass;
 use Throwable;
 
@@ -17,8 +17,6 @@ class StdClassFormat extends AbstractMultiDecoder
 {
     /**
      * @return array<stdClass>|stdClass
-     *
-     * @throws FormatException
      */
     public static function encode(string $content): stdClass|array
     {
@@ -29,8 +27,9 @@ class StdClassFormat extends AbstractMultiDecoder
         try {
             $encodedContent = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
         } catch (Throwable $e) {
-            throw new FormatException("Can't convert content to stdClass. " .
-                "Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content);
+            $message = "Can't convert content to object. Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content;
+
+            throw new InvalidArgumentException($message, $e->getCode(), $e);
         }
 
         return $encodedContent;

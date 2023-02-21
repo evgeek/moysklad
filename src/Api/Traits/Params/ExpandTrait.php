@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Traits\Params;
 
 use Evgeek\Moysklad\Enums\QueryParam;
-use Evgeek\Moysklad\Exceptions\InputException;
+use InvalidArgumentException;
 
 trait ExpandTrait
 {
@@ -23,8 +23,6 @@ trait ExpandTrait
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-zamena-ssylok-ob-ektami-s-pomosch-u-expand
-     *
-     * @throws InputException
      */
     public function expand(array|string $fields): static
     {
@@ -41,14 +39,11 @@ trait ExpandTrait
         return $this;
     }
 
-    /**
-     * @throws InputException
-     */
     private function handleArrayOfExpands(array $expands): static
     {
         foreach ($expands as $expand) {
             if (!is_string($expand)) {
-                throw new InputException('Each expand must be a string');
+                throw new InvalidArgumentException('Each expand must be a string');
             }
             $this->expand($expand);
         }

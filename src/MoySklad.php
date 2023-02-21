@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad;
 
 use Evgeek\Moysklad\Api\Query;
-use Evgeek\Moysklad\Exceptions\ConfigException;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\GuzzleSender;
@@ -20,8 +19,6 @@ class MoySklad
      * @param array                                $credentials   ['login', 'password'] or ['token']
      * @param class-string<JsonFormatterInterface> $formatter     API response formatter - class name that implements JsonFormatter
      * @param RequestSenderInterface               $requestSender PSR-7 client
-     *
-     * @throws ConfigException
      */
     public function __construct(
         array $credentials,

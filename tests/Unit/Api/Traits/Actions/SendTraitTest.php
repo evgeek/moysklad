@@ -5,8 +5,8 @@ namespace Evgeek\Tests\Unit\Api\Traits\Actions;
 use Evgeek\Moysklad\Api\Segments\AbstractSegmentNamed;
 use Evgeek\Moysklad\Api\Traits\Actions\SendTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
-use Evgeek\Moysklad\Exceptions\InputException;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
+use InvalidArgumentException;
 
 /**
  * @covers \Evgeek\Moysklad\Api\AbstractBuilder::apiSend
@@ -45,7 +45,7 @@ class SendTraitTest extends TraitTestCase
             protected const SEGMENT = 'test_segment';
         };
 
-        $this->expectException(InputException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage("'WRONG-METHOD' is not valid HTTP method. Check Evgeek\\Moysklad\\Enums\\HttpMethod");
         $builder->send('wrong-method', static::BODY);
     }
