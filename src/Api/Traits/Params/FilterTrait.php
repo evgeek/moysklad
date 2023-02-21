@@ -34,14 +34,14 @@ trait FilterTrait
         FilterSign|string|int|float|bool $sign = null,
         string|int|float|bool $value = null
     ): static {
-        $this->initQueryParam(QueryParam::FILTER);
-
         if (is_array($key)) {
             return $this->handleArrayOfFilters($key);
         }
 
-        [$signPrepared, $valuePrepared] = $this->prepareSignAndValueAsStrings($key, $sign, $value);
-        $this->addFilterToParams($key, $signPrepared, $valuePrepared);
+        [$signString, $valueString] = $this->prepareSignAndValueAsStrings($key, $sign, $value);
+        $filter = UrlParam::escapeCharactersForFilter($key) . $signString . UrlParam::escapeCharactersForFilter($valueString);
+
+        $this->setQueryParam(QueryParam::FILTER, $filter);
 
         return $this;
     }
@@ -114,14 +114,5 @@ trait FilterTrait
         $value = UrlParam::convertMixedValueToString($value);
 
         return [$sign, $value];
-    }
-
-    private function addFilterToParams(string $key, string $sign, string $value): void
-    {
-        $filterString = UrlParam::escapeCharactersForFilter($key) . $sign . UrlParam::escapeCharactersForFilter($value);
-
-        $this->params[QueryParam::FILTER->value] .= $this->params[QueryParam::FILTER->value] === '' ?
-            $filterString :
-            QueryParam::FILTER->separator() . $filterString;
     }
 }

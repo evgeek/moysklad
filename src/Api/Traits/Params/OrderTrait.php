@@ -28,25 +28,16 @@ trait OrderTrait
      */
     public function order(array|string $fields, OrderDirection|string $direction = 'asc'): static
     {
-        $this->initQueryParam(QueryParam::ORDER);
-
         if (is_array($fields)) {
             return $this->handleArrayOfOrders($fields);
         }
 
-        $direction = $this->getDirectionAsString($direction);
-        $sort = $fields . ',' . $direction;
+        $directionString = is_a($direction, OrderDirection::class) ? $direction->value : $direction;
+        $sort = $fields . ',' . $directionString;
 
-        $this->params[QueryParam::ORDER->value] .= $this->params[QueryParam::ORDER->value] === '' ?
-            $sort :
-            QueryParam::ORDER->separator() . $sort;
+        $this->setQueryParam(QueryParam::ORDER, $sort);
 
         return $this;
-    }
-
-    private function getDirectionAsString(OrderDirection|string $direction): string
-    {
-        return is_a($direction, OrderDirection::class) ? $direction->value : $direction;
     }
 
     private function handleArrayOfOrders(array $orders): static

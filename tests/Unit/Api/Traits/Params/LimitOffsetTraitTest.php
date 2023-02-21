@@ -9,54 +9,51 @@ use Evgeek\Moysklad\Api\Traits\Segments\MethodCommonTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
-/** @covers \Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait */
+/**
+ * @covers \Evgeek\Moysklad\Api\AbstractBuilder::setQueryParam
+ * @covers \Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait
+ */
 class LimitOffsetTraitTest extends TraitTestCase
 {
     public function testSingleLimitFilter(): void
     {
-        $limit = 200;
-        $params = static::PARAMS + ['limit' => $limit];
+        $params = static::PARAMS + ['limit' => '200'];
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
 
         $this->makeLimitOffsetBuilder()
-            ->limit($limit)
+            ->limit(200)
             ->get();
     }
 
     public function testNewLimitFilterRewritesPrevious(): void
     {
-        $limitOld = 200;
-        $limitNew = 400;
-        $params = static::PARAMS + ['limit' => $limitNew];
+        $params = static::PARAMS + ['limit' => '400'];
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
 
         $this->makeLimitOffsetBuilder()
-            ->limit($limitOld)
-            ->limit($limitNew)
+            ->limit(200)
+            ->limit(400)
             ->get();
     }
 
     public function testSingleOffsetFilter(): void
     {
-        $offset = 400;
-        $params = static::PARAMS + ['offset' => $offset];
+        $params = static::PARAMS + ['offset' => '400'];
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
 
         $this->makeLimitOffsetBuilder()
-            ->offset($offset)
+            ->offset(400)
             ->get();
     }
 
     public function testNewOffsetFilterRewritesPrevious(): void
     {
-        $offsetOld = 400;
-        $offsetNew = 500;
-        $params = static::PARAMS + ['offset' => $offsetNew];
+        $params = static::PARAMS + ['offset' => '500'];
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
 
         $this->makeLimitOffsetBuilder()
-            ->offset($offsetOld)
-            ->offset($offsetNew)
+            ->offset(300)
+            ->offset(500)
             ->get();
     }
 

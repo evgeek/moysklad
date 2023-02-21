@@ -12,7 +12,7 @@ use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 use InvalidArgumentException;
 
 /**
- * @covers \Evgeek\Moysklad\Api\AbstractBuilder::initQueryParam
+ * @covers \Evgeek\Moysklad\Api\AbstractBuilder::setQueryParam
  * @covers \Evgeek\Moysklad\Api\Traits\Params\FilterTrait
  */
 class FilterTraitTest extends TraitTestCase

@@ -26,15 +26,11 @@ trait ExpandTrait
      */
     public function expand(array|string $fields): static
     {
-        $this->initQueryParam(QueryParam::EXPAND);
-
         if (is_array($fields)) {
             return $this->handleArrayOfExpands($fields);
         }
 
-        $this->params[QueryParam::EXPAND->value] .= $this->params[QueryParam::EXPAND->value] === '' ?
-            $fields :
-            QueryParam::EXPAND->separator() . $fields;
+        $this->setQueryParam(QueryParam::EXPAND, $fields);
 
         return $this;
     }
