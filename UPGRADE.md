@@ -7,19 +7,15 @@
 До:
 
 ```php
-$builder = $ms->query()->entity()->customerorder()->byId('guid');
-
-$builder->expand('agent', 'organization')
+$ms->query()->entity()->customerorder()->byId('guid')
+    ->expand('agent', 'organization');
 ```
 
 После:
 
 ```php
-$builder = $ms->query()->entity()->customerorder()->byId('guid');
-
-$builder->expand(['agent', 'organization']);
-//Или
-$builder->expand('agent,organization');
+$ms->query()->entity()->customerorder()->byId('guid')
+    ->expand(['agent', 'organization']);
 ```
 
 ### DEPRECATED метода `filters()`.
