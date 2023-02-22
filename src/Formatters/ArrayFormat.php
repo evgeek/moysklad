@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
-use InvalidArgumentException;
 use Throwable;
 
 /**
@@ -22,10 +21,12 @@ class ArrayFormat extends AbstractMultiDecoder
 
         try {
             $encodedContent = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
-        } catch (Throwable $e) {
-            $message = "Can't convert content to array. Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content;
+        } catch (Throwable) {
+            static::throwContentIsNotValidJsonObject($content);
+        }
 
-            throw new InvalidArgumentException($message, $e->getCode(), $e);
+        if (!is_array($encodedContent)) {
+            static::throwContentIsNotValidJsonObject($content);
         }
 
         return $encodedContent;

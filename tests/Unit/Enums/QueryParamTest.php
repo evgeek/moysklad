@@ -32,7 +32,7 @@ class QueryParamTest extends TestCase
         ];
     }
 
-    private function getSeparatorDataProvider()
+    private function getSeparatorDataProvider(): array
     {
         return array_merge($this->separatorDataProvider(), [
             ['expand', ','],

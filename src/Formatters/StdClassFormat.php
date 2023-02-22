@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
-use InvalidArgumentException;
 use stdClass;
 use Throwable;
 
@@ -26,10 +25,12 @@ class StdClassFormat extends AbstractMultiDecoder
 
         try {
             $encodedContent = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-        } catch (Throwable $e) {
-            $message = "Can't convert content to object. Message: {$e->getMessage()}" . PHP_EOL . ' Content:' . PHP_EOL . $content;
+        } catch (Throwable) {
+            static::throwContentIsNotValidJsonObject($content);
+        }
 
-            throw new InvalidArgumentException($message, $e->getCode(), $e);
+        if (!is_a($encodedContent, stdClass::class) && !is_array($encodedContent)) {
+            static::throwContentIsNotValidJsonObject($content);
         }
 
         return $encodedContent;

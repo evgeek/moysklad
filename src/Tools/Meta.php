@@ -58,6 +58,9 @@ class Meta
         return static::create(['entity', ...$path], $type);
     }
 
+    /**
+     * @param string[] $path
+     */
     public static function create(array $path, string $type)
     {
         static::$formatter = static::$formatter ?? Formatter::resolveDefault();
