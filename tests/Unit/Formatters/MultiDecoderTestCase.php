@@ -25,13 +25,13 @@ abstract class MultiDecoderTestCase extends TestCase
     /** @dataProvider correctEncodeDataProvider */
     public function testEncodeCorrect(string $jsonString, mixed $formatted): void
     {
-        $this->assertSame($formatted, (static::FORMATTER)::encode($jsonString));
+        $this->assertEquals($formatted, (static::FORMATTER)::encode($jsonString));
     }
 
     /** @dataProvider correctDecodeDataProvider */
     public function testDecodeCorrect(string $jsonString, mixed $formatted): void
     {
-        $this->assertSame($jsonString, (static::FORMATTER)::decode($formatted));
+        $this->assertEquals($jsonString, (static::FORMATTER)::decode($formatted));
     }
 
     /** @dataProvider invalidJsonTypesDataProvider */

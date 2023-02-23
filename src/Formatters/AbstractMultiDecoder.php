@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Formatters;
 
 use InvalidArgumentException;
-use stdClass;
 use Throwable;
 
 /**
@@ -60,6 +59,6 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
 
     private static function contentIsEmpty(mixed $content): bool
     {
-        return !$content || (is_a($content, stdClass::class) && $content === new stdClass());
+        return !$content || (is_object($content) && (array) $content === []);
     }
 }

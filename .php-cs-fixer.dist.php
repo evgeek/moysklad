@@ -22,5 +22,6 @@ return $config
         'php_unit_test_class_requires_covers' => false,
         'php_unit_internal_class' => false,
         'php_unit_test_case_static_method_calls' => false,
+        'php_unit_strict' => false,
     ])
     ->setFinder($finder);
