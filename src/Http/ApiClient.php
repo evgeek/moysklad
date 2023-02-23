@@ -81,8 +81,9 @@ class ApiClient
      */
     private function sendRequest(Payload $payload): string
     {
-        $body = $payload->body === null ? '' : $this->formatter::decode($payload->body);
-        $request = new Request($payload->method->value, Url::make($payload), $this->headers, $body);
+        $uri = Url::make($payload);
+        $body = $this->formatter::decode($payload->body);
+        $request = new Request($payload->method->value, $uri, $this->headers, $body);
 
         try {
             return $this->requestSender
@@ -114,6 +115,6 @@ class ApiClient
         }
 
         throw new InvalidArgumentException('The size of the credential array must be equal to 1 for a token ' .
-            "or 2 for a login-password. $count provided.");
+            "or 2 for a login-password, $count provided");
     }
 }

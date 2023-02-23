@@ -25,13 +25,13 @@ abstract class MultiDecoderTestCase extends TestCase
     /** @dataProvider correctEncodeDataProvider */
     public function testEncodeCorrect(string $jsonString, mixed $formatted): void
     {
-        $this->assertEquals($formatted, (static::FORMATTER)::encode($jsonString));
+        $this->assertSame($formatted, (static::FORMATTER)::encode($jsonString));
     }
 
     /** @dataProvider correctDecodeDataProvider */
     public function testDecodeCorrect(string $jsonString, mixed $formatted): void
     {
-        $this->assertEquals($jsonString, (static::FORMATTER)::decode($formatted));
+        $this->assertSame($jsonString, (static::FORMATTER)::decode($formatted));
     }
 
     /** @dataProvider invalidJsonTypesDataProvider */
@@ -66,7 +66,7 @@ abstract class MultiDecoderTestCase extends TestCase
 
     abstract protected function getEncodedEmpty();
 
-    private function correctEncodeDataProvider(): array
+    protected function correctEncodeDataProvider(): array
     {
         return [
             [self::OBJECT_JSON_STRING, $this->getEncodedObject()],
@@ -75,7 +75,7 @@ abstract class MultiDecoderTestCase extends TestCase
         ];
     }
 
-    private function correctDecodeDataProvider(): array
+    protected function correctDecodeDataProvider(): array
     {
         $json = '[{"param1":"value1","param2":false},{"param1":2.34,"param2":null}]';
         $array = [

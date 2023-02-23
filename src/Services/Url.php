@@ -15,11 +15,17 @@ class Url
         return self::prepareUrl($payload->path) . static::prepareQueryParams($payload->params);
     }
 
+    /**
+     * @param string[] $path
+     */
     private static function prepareUrl(array $path): string
     {
         return static::API . '/' . implode('/', $path);
     }
 
+    /**
+     * @param string[] $params
+     */
     private static function prepareQueryParams(array $params): string
     {
         $paramsString = http_build_query($params);

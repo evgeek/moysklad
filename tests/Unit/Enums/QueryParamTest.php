@@ -11,13 +11,13 @@ class QueryParamTest extends TestCase
     /** @dataProvider separatorDataProvider */
     public function testSeparator(QueryParam $queryParam, string $separator): void
     {
-        $this->assertEquals($separator, $queryParam->separator());
+        $this->assertSame($separator, $queryParam->separator());
     }
 
     /** @dataProvider getSeparatorDataProvider */
     public function testGetSeparator(QueryParam|string $queryParam, string $separator): void
     {
-        $this->assertEquals($separator, QueryParam::getSeparator($queryParam));
+        $this->assertSame($separator, QueryParam::getSeparator($queryParam));
     }
 
     private function separatorDataProvider(): array
