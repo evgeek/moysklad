@@ -15,9 +15,9 @@ use Psr\Http\Message\ResponseInterface;
 
 class DefaultGuzzleClientFactory
 {
-    public static function make(int $retries, int $exceptionTruncateAt): Client
+    public static function make(?callable $handler, int $retries, int $exceptionTruncateAt): Client
     {
-        $handlerStack = HandlerStack::create();
+        $handlerStack = HandlerStack::create($handler);
 
         static::pushRetriesMiddleware($handlerStack, $retries);
         static::pushBodySummarizerMiddleware($handlerStack, $exceptionTruncateAt);

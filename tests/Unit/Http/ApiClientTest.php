@@ -57,21 +57,20 @@ class ApiClientTest extends TestCase
     private const CREDENTIALS_LOGIN_PASSWORD = [self::LOGIN, self::PASSWORD];
     private const LOGIN_PASSWORD_HEADER = 'Basic ZmFrZS1sb2dpbjpmYWtlLXBhc3N3b3Jk';
 
+    private MockObject|GuzzleSender $guzzleSender;
     private ApiClient $api;
-    private MockObject|GuzzleSender $requestSender;
 
     protected function setUp(): void
     {
-        $this->requestSender = $this->getMockBuilder(GuzzleSender::class)
-            ->getMock();
-        $this->api = new ApiClient(self::CREDENTIALS_TOKEN, new ArrayFormat(), $this->requestSender);
+        $this->guzzleSender = $this->createMock(GuzzleSender::class);
+        $this->api = new ApiClient(self::CREDENTIALS_TOKEN, new ArrayFormat(), $this->guzzleSender);
     }
 
     public function testSendCreatesRequestAndReturnsFormattedResponse(): void
     {
         $payload = new Payload(HttpMethod::POST, self::PATH, self::PARAMS, self::BODY);
 
-        $this->requestSender->expects($this->once())
+        $this->guzzleSender->expects($this->once())
             ->method('send')
             ->with($this->callback(
                 fn (RequestInterface $request) => strtolower($request->getMethod()) === 'post'
@@ -96,7 +95,7 @@ class ApiClientTest extends TestCase
         $payload = new Payload(HttpMethod::POST, self::PATH, self::PARAMS, self::BODY);
 
         $exceptionMessage = 'Something went wrong';
-        $this->requestSender->expects($this->once())
+        $this->guzzleSender->expects($this->once())
             ->method('send')
             ->willThrowException(new RuntimeException($exceptionMessage));
 
@@ -117,7 +116,7 @@ class ApiClientTest extends TestCase
         $payload = new Payload(HttpMethod::GET, self::PATH, $queryParams, self::BODY);
 
         $requestCount = 0;
-        $this->requestSender->expects($this->exactly(3))
+        $this->guzzleSender->expects($this->exactly(3))
             ->method('send')
             ->with($this->callback(function (RequestInterface $request) use (&$requestCount, $limit, $offset, $queryParams) {
                 [$requestLimit, $requestOffset] = self::getLimitOffsetFromRequest($request);
@@ -211,10 +210,10 @@ class ApiClientTest extends TestCase
 
     public function testCorrectCredentialsToken(): void
     {
-        $api = new ApiClient(self::CREDENTIALS_TOKEN, new ArrayFormat(), $this->requestSender);
+        $api = new ApiClient(self::CREDENTIALS_TOKEN, new ArrayFormat(), $this->guzzleSender);
         $payload = new Payload(HttpMethod::GET, self::PATH, [], null);
 
-        $this->requestSender->expects($this->once())
+        $this->guzzleSender->expects($this->once())
             ->method('send')
             ->with($this->callback(
                 fn (RequestInterface $request) => $request->getHeader('authorization')[0] === self::TOKEN_HEADER
@@ -226,10 +225,10 @@ class ApiClientTest extends TestCase
 
     public function testCorrectCredentialsLoginPassword(): void
     {
-        $api = new ApiClient(self::CREDENTIALS_LOGIN_PASSWORD, new ArrayFormat(), $this->requestSender);
+        $api = new ApiClient(self::CREDENTIALS_LOGIN_PASSWORD, new ArrayFormat(), $this->guzzleSender);
         $payload = new Payload(HttpMethod::GET, self::PATH, [], null);
 
-        $this->requestSender->expects($this->once())
+        $this->guzzleSender->expects($this->once())
             ->method('send')
             ->with($this->callback(
                 fn (RequestInterface $request) => $request->getHeader('authorization')[0] === self::LOGIN_PASSWORD_HEADER
@@ -248,7 +247,7 @@ class ApiClientTest extends TestCase
             'login' => 'login',
             'password' => 'password',
         ];
-        new ApiClient($credentials, new ArrayFormat(), $this->requestSender);
+        new ApiClient($credentials, new ArrayFormat(), $this->guzzleSender);
     }
 
     public function testWrongCountCredentialsThrow(): void
@@ -262,7 +261,7 @@ class ApiClientTest extends TestCase
             'password',
             'token',
         ];
-        new ApiClient($credentials, new ArrayFormat(), $this->requestSender);
+        new ApiClient($credentials, new ArrayFormat(), $this->guzzleSender);
     }
 
     private function limitOffsetDataProvider(): array
@@ -277,7 +276,7 @@ class ApiClientTest extends TestCase
     {
         $payload = new Payload(HttpMethod::GET, self::PATH, [], null);
 
-        $this->requestSender->expects($this->once())
+        $this->guzzleSender->expects($this->once())
             ->method('send')
             ->willReturnCallback(function () use ($unsetCallback) {
                 $responseBody = self::GENERATOR_TEMPLATE;

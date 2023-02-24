@@ -15,7 +15,7 @@ class GuzzleSender implements RequestSenderInterface
 
     public function __construct(int $retries = 1, int $exceptionTruncateAt = 120)
     {
-        $defaultClient = DefaultGuzzleClientFactory::make($retries, $exceptionTruncateAt);
+        $defaultClient = DefaultGuzzleClientFactory::make(null, $retries, $exceptionTruncateAt);
         $this->setClient($defaultClient);
     }
 
