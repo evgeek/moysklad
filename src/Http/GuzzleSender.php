@@ -11,12 +11,8 @@ use Psr\Http\Message\ResponseInterface;
 
 class GuzzleSender implements RequestSenderInterface
 {
-    private Client $client;
-
-    public function __construct(int $retries = 1, int $exceptionTruncateAt = 120)
+    public function __construct(private readonly Client $client)
     {
-        $defaultClient = DefaultGuzzleClientFactory::make(null, $retries, $exceptionTruncateAt);
-        $this->setClient($defaultClient);
     }
 
     /**
@@ -25,10 +21,5 @@ class GuzzleSender implements RequestSenderInterface
     public function send(RequestInterface $request): ResponseInterface
     {
         return $this->client->send($request);
-    }
-
-    public function setClient(Client $client): void
-    {
-        $this->client = $client;
     }
 }
