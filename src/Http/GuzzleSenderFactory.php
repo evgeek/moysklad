@@ -12,21 +12,22 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Throwable;
 
 class GuzzleSenderFactory implements RequestSenderFactoryInterface
 {
-    public function __construct(private readonly int $retries = 1, private readonly int $exceptionTruncateAt = 120)
+    public function __construct(private readonly int $retries = 0, private readonly int $exceptionTruncateAt = 120)
     {
     }
 
     public function make(): RequestSenderInterface
     {
-        return $this->makeFromHandlerStack();
+        return $this->makeFromHandler(null);
     }
 
-    protected function makeFromHandlerStack(HandlerStack $handlerStack = null): GuzzleSender
+    protected function makeFromHandler(?callable $handler): GuzzleSender
     {
-        $handlerStack = $handlerStack ?? HandlerStack::create();
+        $handlerStack = HandlerStack::create($handler);
         $client = $this->createClient($handlerStack);
 
         return new GuzzleSender($client);
@@ -41,19 +42,29 @@ class GuzzleSenderFactory implements RequestSenderFactoryInterface
 
     protected function pushMiddlewares(HandlerStack $handlerStack): void
     {
-        $handlerStack->push($this->getRetryMiddleware());
-        $handlerStack->push($this->getHttpErrorsMiddlewareWithBodySummarizer(), 'http_errors');
+        $handlerStack->push(Middleware::retry(
+            $this->getDecider(),
+            $this->getDelay()
+        ));
+        $handlerStack->push(
+            Middleware::httpErrors(new BodySummarizer($this->exceptionTruncateAt)),
+            'http_errors',
+        );
     }
 
-    protected function getRetryMiddleware(): callable
+    protected function getDecider(): callable
     {
-        return Middleware::retry(function (
+        return function (
             int $currentRetry,
             RequestInterface $request,
             ?ResponseInterface $response,
-            ?GuzzleException $exception,
+            ?Throwable $exception,
         ) {
             if ($currentRetry >= $this->retries) {
+                return false;
+            }
+
+            if (!$exception instanceof GuzzleException) {
                 return false;
             }
 
@@ -64,11 +75,11 @@ class GuzzleSenderFactory implements RequestSenderFactoryInterface
             $statusCode = $response?->getStatusCode() ?? $exception?->getCode();
 
             return $statusCode >= 500 || $statusCode === 429;
-        });
+        };
     }
 
-    protected function getHttpErrorsMiddlewareWithBodySummarizer(): callable
+    protected function getDelay(): ?callable
     {
-        return Middleware::httpErrors(new BodySummarizer($this->exceptionTruncateAt));
+        return null;
     }
 }

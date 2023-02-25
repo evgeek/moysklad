@@ -40,6 +40,28 @@ $ms->query()->entity()->product()
     ]);
 ```
 
+### Настройка отправителя запросов реализована через фабрику
+
+Не требуется ничего менять, если вы не переопределяли стандартный отправитель.
+
+До:
+
+```php
+$ms = new \Evgeek\Moysklad\MoySklad(
+    credentials: ['login', 'password'],
+    requestSender: new \Evgeek\Moysklad\Http\GuzzleSender()
+);
+```
+
+После:
+
+```php
+$ms = new \Evgeek\Moysklad\MoySklad(
+    credentials: ['login', 'password'],
+    requestSenderFactory: new \Evgeek\Moysklad\Http\GuzzleSenderFactory()
+);
+```
+
 ### Переработаны исключения
 
 До:

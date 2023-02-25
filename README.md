@@ -20,13 +20,13 @@ $ms = new \Evgeek\Moysklad\MoySklad(['token']);
 $ms = new \Evgeek\Moysklad\MoySklad(
     credentials: ['login', 'password'],
     formatter: \Evgeek\Moysklad\Formatters\StdClassFormat::class,
-    requestSender: new \Evgeek\Moysklad\Http\GuzzleSender(retires: 3, exceptionTruncateAt: 4000)
+    requestSenderFactory: new \Evgeek\Moysklad\Http\GuzzleSenderFactory(retires: 3, exceptionTruncateAt: 4000)
 );
 ```
 
 * `credentials` - массив с учётными данными. Можно использовать либо токен, либо логин/пароль.
 * `formatter` - имя класса, преобразующего json-строку ответа от API в нужный формат, и наоборот - передаваемый payload в json-строку. Должен реализовывать `\Evgeek\Moysklad\Formatters\JsonFormatterInterface`. Встроенные форматтеры - `StdClassFormat` (по умолчанию), `ArrayFormat`, и `StringFormat`. Все встроенные форматтеры могут принимать в качестве payload `stdClass`, `array` и `string`.
-* `requestSender` - объект для отправки http-запросов. По умолчанию библиотека для этих целей использует [Guzzle](https://github.com/guzzle/guzzle). В стандартный `GuzzleSender()` в качестве аргументов можно передать желаемое количество попыток запроса (по умолчанию 1, задержка между повторами экспоненциальна) и максимальный размер сообщения об ошибке (по умолчанию 120 символов). Вы можете настроить клиент Guzzle самостоятельно, и передать его через метод `GuzzleSender::setClient()`. Использование Guzzle не обязательно: в качестве `requestSender` можно передать любой объект, реализующий простой `PSR-7` совместимый интерфейс `Evgeek\Moysklad\Http\RequestSenderInterface`.
+* `requestSenderFactory` - фабрика, создающая объект для отправки http-запросов. По умолчанию библиотека для этих целей использует [Guzzle](https://github.com/guzzle/guzzle). В стандартный `GuzzleSenderFactory()` в качестве аргументов можно передать желаемое количество попыток повтора запроса в случае неудачи (по умолчанию 0, задержка между повторами экспоненциальна) и максимальный размер сообщения об ошибке (по умолчанию 120 символов). Фабрика и отправитель реализованы через простые `PSR-7` совместимые интерфейсы, поэтому не составит труда как просто настроить клиент Guzzle под собственные предпочтения, так и реализовать собственный способ отправки.
 
 ## Базовое использование
 
