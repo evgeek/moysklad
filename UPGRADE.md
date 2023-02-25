@@ -48,7 +48,6 @@ $ms->query()->entity()->product()
 
 ```php
 $ms = new \Evgeek\Moysklad\MoySklad(
-    credentials: ['login', 'password'],
     requestSender: new \Evgeek\Moysklad\Http\GuzzleSender()
 );
 ```
@@ -57,7 +56,6 @@ $ms = new \Evgeek\Moysklad\MoySklad(
 
 ```php
 $ms = new \Evgeek\Moysklad\MoySklad(
-    credentials: ['login', 'password'],
     requestSenderFactory: new \Evgeek\Moysklad\Http\GuzzleSenderFactory()
 );
 ```
