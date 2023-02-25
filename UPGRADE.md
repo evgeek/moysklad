@@ -40,6 +40,26 @@ $ms->query()->entity()->product()
     ]);
 ```
 
+### Форматтер инициализируется объектом, а не именем класса
+
+Не требуется ничего менять, если вы не переопределяли стандартный формат.
+
+До:
+
+```php
+$ms = new \Evgeek\Moysklad\MoySklad(
+    formatter: \Evgeek\Moysklad\Formatters\StdClassFormat::class
+);
+```
+
+После:
+
+```php
+$ms = new \Evgeek\Moysklad\MoySklad(
+    formatter: new \Evgeek\Moysklad\Formatters\StdClassFormat()
+);
+```
+
 ### Настройка отправителя запросов реализована через фабрику
 
 Не требуется ничего менять, если вы не переопределяли стандартный отправитель.

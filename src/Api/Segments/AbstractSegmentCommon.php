@@ -7,7 +7,6 @@ namespace Evgeek\Moysklad\Api\Segments;
 use Evgeek\Moysklad\Api\AbstractBuilder;
 use Evgeek\Moysklad\Http\ApiClient;
 use InvalidArgumentException;
-use RuntimeException;
 
 abstract class AbstractSegmentCommon extends AbstractBuilder
 {

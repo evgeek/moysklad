@@ -6,12 +6,12 @@ namespace Evgeek\Moysklad\Tools;
 
 use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
-use Evgeek\Moysklad\Services\Formatter;
+use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\Services\Url;
 
 class Meta
 {
-    private static ?JsonFormatterInterface $formatter = null;
+    private static JsonFormatterInterface $formatter;
 
     public static function state(string $guid, string $entity)
     {
@@ -63,7 +63,7 @@ class Meta
      */
     public static function create(array $path, string $type)
     {
-        static::$formatter = static::$formatter ?? Formatter::resolveDefault();
+        static::$formatter = static::$formatter ?? new StdClassFormat();
 
         $href = Url::API;
         foreach ($path as $slug) {
@@ -77,11 +77,8 @@ class Meta
         ]));
     }
 
-    /**
-     * @param class-string<JsonFormatterInterface> $formatter
-     */
-    public static function setFormat(string $formatter): void
+    public static function setFormat(JsonFormatterInterface $formatter): void
     {
-        static::$formatter = Formatter::resolve($formatter);
+        static::$formatter = $formatter;
     }
 }

@@ -6,14 +6,14 @@ use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
 use Evgeek\Moysklad\Api\Traits\Actions\GetTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\ApiTestCase;
-use RuntimeException;
+use InvalidArgumentException;
 
 /** @covers \Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon */
 class AbstractSegmentCommonTest extends ApiTestCase
 {
     public function testCannotConstructWithEmptySegmentPassed(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Passed $segment cannot be empty');
 
         new class($this->api, static::PREV_PATH, static::PARAMS, '') extends AbstractSegmentCommon {};

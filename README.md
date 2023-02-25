@@ -19,14 +19,14 @@ $ms = new \Evgeek\Moysklad\MoySklad(['token']);
 //С подробностями
 $ms = new \Evgeek\Moysklad\MoySklad(
     credentials: ['login', 'password'],
-    formatter: \Evgeek\Moysklad\Formatters\StdClassFormat::class,
+    formatter: new \Evgeek\Moysklad\Formatters\StdClassFormat(),
     requestSenderFactory: new \Evgeek\Moysklad\Http\GuzzleSenderFactory(retires: 3, exceptionTruncateAt: 4000)
 );
 ```
 
 * `credentials` - массив с учётными данными. Можно использовать либо токен, либо логин/пароль.
-* `formatter` - имя класса, преобразующего json-строку ответа от API в нужный формат, и наоборот - передаваемый payload в json-строку. Должен реализовывать `\Evgeek\Moysklad\Formatters\JsonFormatterInterface`. Встроенные форматтеры - `StdClassFormat` (по умолчанию), `ArrayFormat`, и `StringFormat`. Все встроенные форматтеры могут принимать в качестве payload `stdClass`, `array` и `string`.
-* `requestSenderFactory` - фабрика, создающая объект для отправки http-запросов. По умолчанию библиотека для этих целей использует [Guzzle](https://github.com/guzzle/guzzle). В стандартный `GuzzleSenderFactory()` в качестве аргументов можно передать желаемое количество попыток повтора запроса в случае неудачи (по умолчанию 0, задержка между повторами экспоненциальна) и максимальный размер сообщения об ошибке (по умолчанию 120 символов). Фабрика и отправитель реализованы через простые `PSR-7` совместимые интерфейсы, поэтому не составит труда как просто настроить клиент Guzzle под собственные предпочтения, так и реализовать собственный способ отправки.
+* `formatter` - объект, преобразующий json-строку ответа от API в нужный формат, и наоборот - передаваемый payload в json-строку. Должен реализовывать `\Evgeek\Moysklad\Formatters\JsonFormatterInterface`. Встроенные форматтеры - `StdClassFormat` (по умолчанию), `ArrayFormat`, и `StringFormat`. Все встроенные форматтеры могут принимать в качестве payload `stdClass`, `array` и `string`.
+* `requestSenderFactory` - фабрика, создающая объект для отправки http-запросов. По умолчанию библиотека для этих целей использует [Guzzle](https://github.com/guzzle/guzzle). В стандартный `GuzzleSenderFactory()` в качестве аргументов можно передать желаемое количество попыток повтора запроса в случае неудачи (по умолчанию 0, задержка между повторами экспоненциальна) и максимальный размер сообщения об ошибке (по умолчанию 120 символов). Фабрика и отправитель реализованы через простые `PSR-7` совместимые интерфейсы, поэтому не составит труда как просто настроить клиент Guzzle под свои предпочтения, так и реализовать собственный способ отправки.
 
 ## Базовое использование
 
@@ -208,10 +208,10 @@ object(stdClass)#19 (3) {
 }
 ```
 
-Форматирование можно задать передав в метод `Meta::setFormat()` имя класса, реализующего `Evgeek\Moysklad\Formatters\JsonFormatterInterface`. По умолчанию используется `StdClassFormat`. Помните, что формат меты и формат ответа от API задаются в разных местах. Помимо небольшого набора предопределённых сущностей, можно сформировать любую мету при помощи универсального метода `Meta::create()` (и более узкого `Meta::entity()`). Примеры:
+Форматирование устанавливается автоматом при создании нового экземпляра `MoySklad`. Другой формат можно задать при помощи метода `Meta::setFormat()`. По умолчанию используется `StdClassFormat`. Помимо небольшого набора предопределённых сущностей, можно сформировать любую мету при помощи универсального метода `Meta::create()` (и более узкого `Meta::entity()`). Примеры:
 
 ```php
-Meta::setFormat(ArrayFormat::class);
+Meta::setFormat(new ArrayFormat());
 $order = [
     'name' => 'test_order',
     'organization' => ['meta' => Meta::create(['entity', 'organization', 'ec008e5b-f5ab-11e5-7a69-970f0019fa50'], 'organization')],

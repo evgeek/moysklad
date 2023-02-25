@@ -19,7 +19,7 @@ class ApiTestCase extends TestCase
     {
         parent::setUp();
 
-        $this->query = (new MoySklad([static::TOKEN], ArrayFormat::class))->query();
+        $this->query = (new MoySklad([static::TOKEN], new ArrayFormat()))->query();
     }
 
     protected function assertNamedEndpointBuilder(string $endpoint): void
