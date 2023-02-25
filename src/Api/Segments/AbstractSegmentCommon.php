@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Api\Segments;
 
 use Evgeek\Moysklad\Api\AbstractBuilder;
 use Evgeek\Moysklad\Http\ApiClient;
+use InvalidArgumentException;
 use RuntimeException;
 
 abstract class AbstractSegmentCommon extends AbstractBuilder
@@ -22,7 +23,7 @@ abstract class AbstractSegmentCommon extends AbstractBuilder
     protected function makeCurrentPath(): array
     {
         if (!$this->segment) {
-            throw new RuntimeException('Passed $segment cannot be empty');
+            throw new InvalidArgumentException('Passed $segment cannot be empty');
         }
 
         return [...$this->prevPath, $this->segment];
