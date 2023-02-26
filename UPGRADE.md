@@ -1,6 +1,6 @@
 # Upgrade guide
 
-## [Unreleased] [[Changelog](/CHANGELOG.md#[Unreleased]-upgrade-guide)]
+## v0.7.0 [[Changelog](/CHANGELOG.md#v070-upgrade-guide)]
 
 ### Приведение метода `expand()` к общей логике.
 
