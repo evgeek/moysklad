@@ -2,7 +2,7 @@
 
 Все заметные изменения в проекте будут задокументированы в этом файле. Формат основан на [Keep a Changelog](https://keepachangelog.com/ru), и этот проект придерживается семантического версионирования ([semver](https://semver.org/lang/ru/)).
 
-## [Unreleased] [[Upgrade guide](/UPGRADE.md#[Unreleased]-changelog)]
+## v0.7.0 [[Upgrade guide](/UPGRADE.md#v070-changelog)]
 
 ### Added
 - В методы для формирования query-параметров запроса, подразумеющих возможность передачи нескольких значений (`filter()`, `order()`, `expand()` и `params()`) можно передавать несколько наборов значений за раз при помощи массива массивов. Примеры есть в [README](/##параметры-запроса) и PHPDoc методов.
