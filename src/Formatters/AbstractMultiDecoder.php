@@ -57,7 +57,7 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
         throw new InvalidArgumentException('Passed content is not valid json. Content:' . $content . PHP_EOL);
     }
 
-    private static function contentIsEmpty(mixed $content): bool
+    protected static function contentIsEmpty(mixed $content): bool
     {
         return !$content || (is_object($content) && (array) $content === []);
     }

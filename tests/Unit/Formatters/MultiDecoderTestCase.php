@@ -10,7 +10,7 @@ use stdClass;
 
 abstract class MultiDecoderTestCase extends TestCase
 {
-    /** @var JsonFormatterInterface */
+    /** @var class-string<JsonFormatterInterface>|JsonFormatterInterface */
     protected const FORMATTER = AbstractMultiDecoder::class;
 
     protected const OBJECT_JSON_STRING = '{"param":"test_param","context":{"employee":{"meta":' .
