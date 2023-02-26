@@ -7,7 +7,6 @@ namespace Evgeek\Moysklad\Tools;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
-use Evgeek\Moysklad\Services\Url;
 use InvalidArgumentException;
 
 class Meta
@@ -85,7 +84,7 @@ class Meta
 
     private static function makeHref(array $path): string
     {
-        $href = Url::API;
+        $href = 'https://online.moysklad.ru/api/remap/1.2';
         foreach ($path as $key => $segment) {
             if (!is_string($segment)) {
                 throw new InvalidArgumentException("{$key}th segment of path is not a string");

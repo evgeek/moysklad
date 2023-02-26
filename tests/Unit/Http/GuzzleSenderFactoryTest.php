@@ -174,7 +174,7 @@ class GuzzleSenderFactoryTest extends TestCase
                 parent::__construct($retries, $exceptionTruncateAt);
             }
 
-            public function make(): RequestSenderInterface
+            public function make(): GuzzleSender
             {
                 return $this->makeFromHandler($this->mockHandler);
             }

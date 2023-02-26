@@ -20,7 +20,7 @@ class GuzzleSenderFactory implements RequestSenderFactoryInterface
     {
     }
 
-    public function make(): RequestSenderInterface
+    public function make(): GuzzleSender
     {
         return $this->makeFromHandler(null);
     }
