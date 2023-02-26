@@ -4,31 +4,28 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad;
 
-use Evgeek\Moysklad\Api\Builders\Query;
-use Evgeek\Moysklad\Exceptions\ConfigException;
-use Evgeek\Moysklad\Formatters\JsonFormatter;
+use Evgeek\Moysklad\Api\Query;
+use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
+use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\Http\ApiClient;
-use Evgeek\Moysklad\Http\GuzzleSender;
-use Evgeek\Moysklad\Http\RequestSenderInterface;
-use Evgeek\Moysklad\Services\Formatter;
+use Evgeek\Moysklad\Http\GuzzleSenderFactory;
+use Evgeek\Moysklad\Http\RequestSenderFactoryInterface;
 
 class MoySklad
 {
     private ApiClient $api;
 
     /**
-     * @param array                       $credentials   ['login', 'password'] or ['token']
-     * @param class-string<JsonFormatter> $formatter     API response formatter - class name that implements JsonFormatter
-     * @param RequestSenderInterface      $requestSender PSR-7 client
-     *
-     * @throws ConfigException
+     * @param array                         $credentials          ['login', 'password'] or ['token']
+     * @param JsonFormatterInterface        $formatter            API response formatter
+     * @param RequestSenderFactoryInterface $requestSenderFactory PSR-7 client factory
      */
     public function __construct(
         array $credentials,
-        string $formatter = Formatter::DEFAULT,
-        RequestSenderInterface $requestSender = new GuzzleSender(),
+        JsonFormatterInterface $formatter = new StdClassFormat(),
+        RequestSenderFactoryInterface $requestSenderFactory = new GuzzleSenderFactory(),
     ) {
-        $this->api = new ApiClient($credentials, Formatter::resolve($formatter), $requestSender);
+        $this->api = new ApiClient($credentials, $formatter, $requestSenderFactory->make());
     }
 
     /**

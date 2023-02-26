@@ -7,12 +7,18 @@ namespace Evgeek\Moysklad\Formatters;
 /**
  * @template T
  *
- * @implements JsonFormatter<string>
+ * @implements JsonFormatterInterface<string>
  */
-class StringFormat extends MultiDecoder
+class StringFormat extends AbstractMultiDecoder
 {
     public static function encode(string $content): string
     {
+        if ($content === '') {
+            return '';
+        }
+
+        static::validateStringIsJsonObject($content);
+
         return $content;
     }
 }

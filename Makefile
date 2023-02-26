@@ -26,9 +26,15 @@ phpstan: # Run PHPStan
 	vendor/bin/phpstan analyse --xdebug
 
 # PHPUnit
-test: ## Run all tests
-	./vendor/bin/phpunit tests
-test-testdox: ## Run all tests with verbose testdox output
-	./vendor/bin/phpunit --testdox tests
-test-coverage: ## Run all tests with coverage report
-	XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text --coverage-clover .phpunit.cache/clover.xml --coverage-html .phpunit.cache/htmlreport tests
+test-unit: ## Run unit tests. Use p= for specify additional params
+	make test p="--testsuite unit $(p)"
+test-unit-coverage: ## Run unit tests. Use p= for specify additional params
+	make test-coverage p="--testsuite unit $(p)"
+test-feature: ## Run feature tests
+	make test p="--testsuite feature $(p)"
+test-feature-coverage: ## Run unit tests. Use p= for specify additional params
+	make test-coverage p="--testsuite feature $(p)"
+test: ## Run all tests. Use f= for specify file; m= for specify method; p= for other params
+	./vendor/bin/phpunit `if [ -z "$(m)" ]; then echo ""; else echo "--filter $m"; fi` $(f) $(p)
+test-coverage: ## Run all tests with coverage report. Use p= for specify additional params
+	XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text --coverage-clover .phpunit.cache/clover.xml --coverage-html .phpunit.cache/htmlreport $(p)

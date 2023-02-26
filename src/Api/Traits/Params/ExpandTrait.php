@@ -4,35 +4,44 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Params;
 
-use Evgeek\Moysklad\Enums\QueryParams;
+use Evgeek\Moysklad\Enums\QueryParam;
+use InvalidArgumentException;
 
 trait ExpandTrait
 {
     /**
-     * Expand nested entity
+     * Expand nested entity. Works only with limit <= 100 (API restriction)
      * <code>
      * $product = $ms->query()
      *  ->entity()
      *  ->product()
-     *  ->expand('group', 'images')
+     *  ->limit(100)
+     *  ->expand('owner')
+     *  ->expand('minPrice.currency')
+     *  ->expand(['group', 'images']);
      *  ->get();
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-zamena-ssylok-ob-ektami-s-pomosch-u-expand
      */
-    public function expand(string ...$fields): static
+    public function expand(array|string $field): static
     {
-        if (!array_key_exists(0, $fields)) {
-            return $this;
+        if (is_array($field)) {
+            return $this->handleArrayOfExpands($field);
         }
 
-        if (!array_key_exists(QueryParams::EXPAND->value, $this->params)) {
-            $this->params[QueryParams::EXPAND->value] = '';
-        }
-        foreach ($fields as $field) {
-            $this->params[QueryParams::EXPAND->value] .= $this->params[QueryParams::EXPAND->value] === '' ?
-                $field :
-                QueryParams::EXPAND->separator() . $field;
+        $this->setQueryParam(QueryParam::EXPAND, $field);
+
+        return $this;
+    }
+
+    private function handleArrayOfExpands(array $expands): static
+    {
+        foreach ($expands as $expand) {
+            if (!is_string($expand)) {
+                throw new InvalidArgumentException('Each expand must be a string');
+            }
+            $this->expand($expand);
         }
 
         return $this;

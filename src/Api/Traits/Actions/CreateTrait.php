@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Traits\Actions;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
-use Evgeek\Moysklad\Exceptions\ApiException;
-use Evgeek\Moysklad\Exceptions\FormatException;
+use Evgeek\Moysklad\Exceptions\RequestException;
 
 trait CreateTrait
 {
     /**
-     * Create entity (GET http request)
+     * Create entity (POST http request)
      * <code>
      * $product = $ms->query()
      *  ->entity()
@@ -19,8 +18,7 @@ trait CreateTrait
      *  ->create(['name' => 'orange']);
      * </code>
      *
-     * @throws FormatException
-     * @throws ApiException
+     * @throws RequestException
      */
     public function create(mixed $body)
     {

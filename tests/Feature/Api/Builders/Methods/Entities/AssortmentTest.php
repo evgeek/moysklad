@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\ApiTestCase;
 class AssortmentTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Builders\Methods\Entities\Assortment<extended>
+     * @covers \Evgeek\Moysklad\Api\Segments\Methods\Entities\Assortment<extended>
      */
     public function testBuilder(): void
     {
