@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\Services\Url;
+use InvalidArgumentException;
 
 class Meta
 {
@@ -63,15 +64,10 @@ class Meta
      */
     public static function create(array $path, string $type)
     {
-        static::$formatter = static::$formatter ?? new StdClassFormat();
-
-        $href = Url::API;
-        foreach ($path as $slug) {
-            $href .= "/$slug";
-        }
+        static::initFormatter();
 
         return static::$formatter::encode(ArrayFormat::decode([
-            'href' => $href,
+            'href' => static::makeHref($path),
             'type' => $type,
             'mediaType' => 'application/json',
         ]));
@@ -80,5 +76,23 @@ class Meta
     public static function setFormat(JsonFormatterInterface $formatter): void
     {
         static::$formatter = $formatter;
+    }
+
+    private static function initFormatter(): void
+    {
+        static::$formatter = static::$formatter ?? new StdClassFormat();
+    }
+
+    private static function makeHref(array $path): string
+    {
+        $href = Url::API;
+        foreach ($path as $key => $segment) {
+            if (!is_string($segment)) {
+                throw new InvalidArgumentException("{$key}th segment of path is not a string");
+            }
+            $href .= "/$segment";
+        }
+
+        return $href;
     }
 }
