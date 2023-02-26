@@ -10,7 +10,6 @@ use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\GuzzleSenderFactory;
 use Evgeek\Moysklad\Http\RequestSenderFactoryInterface;
-use Evgeek\Moysklad\Tools\Meta;
 
 class MoySklad
 {
@@ -26,7 +25,6 @@ class MoySklad
         JsonFormatterInterface $formatter = new StdClassFormat(),
         RequestSenderFactoryInterface $requestSenderFactory = new GuzzleSenderFactory(),
     ) {
-        Meta::setFormat($formatter);
         $this->api = new ApiClient($credentials, $formatter, $requestSenderFactory->make());
     }
 
