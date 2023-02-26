@@ -33,7 +33,6 @@ class Guid
     public static function extractLast(string $url): ?string
     {
         $guids = static::extractAll($url);
-
         $last = end($guids);
 
         return $last ?: null;
