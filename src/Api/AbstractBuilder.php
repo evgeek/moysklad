@@ -12,7 +12,7 @@ use Evgeek\Moysklad\Enums\QueryParam;
 use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\Payload;
-use Evgeek\Moysklad\Services\UrlParam;
+use Evgeek\Moysklad\Services\Url;
 use Generator;
 use InvalidArgumentException;
 
@@ -105,7 +105,7 @@ abstract class AbstractBuilder
     protected function setQueryParam(QueryParam|string $queryParam, string|int|float|bool $value): void
     {
         $stringQueryParam = strtolower(is_string($queryParam) ? $queryParam : $queryParam->value);
-        $stringValue = UrlParam::convertMixedValueToString($value);
+        $stringValue = Url::convertMixedValueToString($value);
 
         $separator = QueryParam::getSeparator($stringQueryParam);
         if ($separator === '') {

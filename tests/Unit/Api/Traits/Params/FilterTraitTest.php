@@ -47,6 +47,16 @@ class FilterTraitTest extends TraitTestCase
             ->get();
     }
 
+    public function testSingleStringFilterSemicolonInValueEscaped(): void
+    {
+        $params = static::PARAMS + ['filter' => 'filter1=va\;lue1'];
+        $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
+
+        $this->makeFilterBuilder()
+            ->filter('filter1', '=', 'va;lue1')
+            ->get();
+    }
+
     public function testMultipleStringFilters(): void
     {
         $params = static::PARAMS + ['filter' => 'filter1~=value1;filter2>value2'];

@@ -10,6 +10,15 @@ class Url
 {
     public const API = 'https://online.moysklad.ru/api/remap/1.2';
 
+    public static function convertMixedValueToString(string|int|float|bool $value): string
+    {
+        if (is_bool($value)) {
+            return var_export($value, true);
+        }
+
+        return (string) $value;
+    }
+
     public static function make(Payload $payload): string
     {
         return self::prepareUrl($payload->path) . static::prepareQueryParams($payload->params);

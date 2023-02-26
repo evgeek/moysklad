@@ -31,6 +31,12 @@ class UrlTest extends TestCase
         Url::make($payload);
     }
 
+    /** @dataProvider mixedValuesDataProvider */
+    public function testConvertMixedValueToString(string $expectedValue, mixed $value): void
+    {
+        $this->assertSame($expectedValue, Url::convertMixedValueToString($value));
+    }
+
     private function payloadDataProvider(): array
     {
         return [
@@ -48,6 +54,25 @@ class UrlTest extends TestCase
                 ['endpoint', 'method'],
                 ['filter' => 'archived=false;name~=or', 'offset' => 2],
             ],
+        ];
+    }
+
+    private function mixedValuesDataProvider(): array
+    {
+        return [
+            ['', ''],
+            ['test', 'test'],
+            ['TEST', 'TEST'],
+            ['TesT', 'TesT'],
+            ['true', true],
+            ['false', false],
+            ['0', 0],
+            ['1', 1],
+            ['-66', -66],
+            ['123', 123],
+            ['1.23', 1.23],
+            ['1', 1.0],
+            ['-1.0001', -1.0001],
         ];
     }
 }

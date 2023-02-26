@@ -6,7 +6,7 @@ namespace Evgeek\Moysklad\Api\Traits\Params;
 
 use Evgeek\Moysklad\Enums\FilterSign;
 use Evgeek\Moysklad\Enums\QueryParam;
-use Evgeek\Moysklad\Services\UrlParam;
+use Evgeek\Moysklad\Services\Url;
 use InvalidArgumentException;
 
 trait FilterTrait
@@ -39,7 +39,7 @@ trait FilterTrait
         }
 
         [$signString, $valueString] = $this->prepareSignAndValueAsStrings($key, $sign, $value);
-        $filter = UrlParam::escapeCharactersForFilter($key) . $signString . UrlParam::escapeCharactersForFilter($valueString);
+        $filter = $key . $signString . $this->escapeSemicolon($valueString);
 
         $this->setQueryParam(QueryParam::FILTER, $filter);
 
@@ -111,8 +111,13 @@ trait FilterTrait
         if (is_a($sign, FilterSign::class)) {
             $sign = $sign->value;
         }
-        $value = UrlParam::convertMixedValueToString($value);
+        $value = Url::convertMixedValueToString($value);
 
         return [$sign, $value];
+    }
+
+    private function escapeSemicolon(string $value): string
+    {
+        return str_replace(';', '\;', $value);
     }
 }
