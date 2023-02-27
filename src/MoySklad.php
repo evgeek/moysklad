@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad;
 
 use Evgeek\Moysklad\Api\Query;
+use Evgeek\Moysklad\ApiObjects\Builders\Creator;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\Http\ApiClient;
@@ -21,11 +22,11 @@ class MoySklad
      * @param RequestSenderFactoryInterface $requestSenderFactory PSR-7 client factory
      */
     public function __construct(
-        array $credentials,
-        JsonFormatterInterface $formatter = new StdClassFormat(),
-        RequestSenderFactoryInterface $requestSenderFactory = new GuzzleSenderFactory(),
+        array                                   $credentials,
+        private readonly JsonFormatterInterface $formatter = new StdClassFormat(),
+        RequestSenderFactoryInterface           $requestSenderFactory = new GuzzleSenderFactory(),
     ) {
-        $this->api = new ApiClient($credentials, $formatter, $requestSenderFactory->make());
+        $this->api = new ApiClient($credentials, $this->formatter, $requestSenderFactory->make());
     }
 
     /**
@@ -40,5 +41,10 @@ class MoySklad
     public function query(): Query
     {
         return new Query($this->api);
+    }
+
+    public function create(): Creator
+    {
+        return new Creator($this->formatter);
     }
 }
