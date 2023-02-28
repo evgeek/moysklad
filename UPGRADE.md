@@ -1,5 +1,33 @@
 # Upgrade guide
 
+## [Unreleased]
+
+### Методы `Evgeek\Moysklad\Formatters\JsonFormatterInterface` теперь динамические.
+
+Не требуется ничего менять, если вы не работали с форматтерами напрямую.
+
+До:
+
+```php
+\Evgeek\Moysklad\Formatters\ArrayFormat::encode($entity);
+\Evgeek\Moysklad\Formatters\ArrayFormat::decode($entity);
+\Evgeek\Moysklad\Formatters\StringFormat::encode($entity);
+\Evgeek\Moysklad\Formatters\StringFormat::decode($entity);
+\Evgeek\Moysklad\Formatters\StdClassFormat::encode($entity);
+\Evgeek\Moysklad\Formatters\StdClassFormat::decode($entity);
+```
+
+После:
+
+```php
+(new \Evgeek\Moysklad\Formatters\ArrayFormat())->encode($entity);
+(new \Evgeek\Moysklad\Formatters\ArrayFormat())->decode($entity);
+(new \Evgeek\Moysklad\Formatters\StringFormat())->encode($entity);
+(new \Evgeek\Moysklad\Formatters\StringFormat())->decode($entity);
+(new \Evgeek\Moysklad\Formatters\StdClassFormat())->encode($entity);
+(new \Evgeek\Moysklad\Formatters\StdClassFormat())->decode($entity);
+```
+
 ## v0.7.0 [[Changelog](/CHANGELOG.md#v070-upgrade-guide)]
 
 ### Приведение метода `expand()` к общей логике.
@@ -58,22 +86,6 @@ $ms = new \Evgeek\Moysklad\MoySklad(
 $ms = new \Evgeek\Moysklad\MoySklad(
     formatter: new \Evgeek\Moysklad\Formatters\StdClassFormat()
 );
-```
-
-### Методы `Evgeek\Moysklad\Formatters\JsonFormatterInterface` теперь не статические.
-
-Не требуется ничего менять, если вы не работали с форматтерами напрямую.
-
-До:
-
-```php
-\Evgeek\Moysklad\Formatters\ArrayFormat::encode($entity);
-```
-
-После:
-
-```php
-(new \Evgeek\Moysklad\Formatters\ArrayFormat())->encode($entity);
 ```
 
 ### Настройка отправителя запросов реализована через фабрику
