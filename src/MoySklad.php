@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad;
 
 use Evgeek\Moysklad\Api\Query;
-use Evgeek\Moysklad\ApiObjects\Builders\Creator;
+use Evgeek\Moysklad\ApiObjects\Builders\ApiEntityMaker;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\Http\ApiClient;
@@ -43,8 +43,8 @@ class MoySklad
         return new Query($this->api);
     }
 
-    public function create(): Creator
+    public function make(): ApiEntityMaker
     {
-        return new Creator($this->formatter);
+        return new ApiEntityMaker($this->formatter);
     }
 }

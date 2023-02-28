@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Builders;
 
-class Creator extends AbstractObjectBuilder
+class ApiEntityMaker extends AbstractObjectBuilder
 {
     public function entity(): Entity
     {
