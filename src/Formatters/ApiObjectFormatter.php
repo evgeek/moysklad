@@ -100,7 +100,7 @@ class ApiObjectFormatter extends AbstractMultiDecoder
         return $value['meta']['type'] ?? null;
     }
 
-    protected function convertToObject(array|AbstractObject $array): stdClass|array
+    protected function convertToObject(array|AbstractObject $array): AbstractObject|stdClass|array
     {
         if (is_array($array) && array_is_list($array)) {
             return $array;
