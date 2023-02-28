@@ -6,7 +6,7 @@ namespace Evgeek\Moysklad\Tools;
 
 use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
-use Evgeek\Moysklad\Formatters\StdClassFormat;
+use Evgeek\Moysklad\MoySklad;
 use InvalidArgumentException;
 
 class Meta
@@ -79,7 +79,7 @@ class Meta
 
     private static function initFormatter(): void
     {
-        static::$formatter = static::$formatter ?? new StdClassFormat();
+        static::$formatter = static::$formatter ?? MoySklad::getGlobalFormatter();
     }
 
     private static function makeHref(array $path): string

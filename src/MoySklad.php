@@ -15,6 +15,7 @@ use Evgeek\Moysklad\Http\RequestSenderFactoryInterface;
 class MoySklad
 {
     private ApiClient $api;
+    private static JsonFormatterInterface $globalFormatter;
 
     /**
      * @param array                         $credentials          ['login', 'password'] or ['token']
@@ -26,6 +27,7 @@ class MoySklad
         private readonly JsonFormatterInterface $formatter = new StdClassFormat(),
         RequestSenderFactoryInterface $requestSenderFactory = new GuzzleSenderFactory(),
     ) {
+        static::$globalFormatter = $this->formatter;
         $this->api = new ApiClient($credentials, $this->formatter, $requestSenderFactory->make());
     }
 
@@ -46,5 +48,10 @@ class MoySklad
     public function make(): ApiEntityMaker
     {
         return new ApiEntityMaker($this->formatter);
+    }
+
+    public static function getGlobalFormatter(): JsonFormatterInterface
+    {
+        return static::$globalFormatter = static::$globalFormatter ?? new StdClassFormat();
     }
 }

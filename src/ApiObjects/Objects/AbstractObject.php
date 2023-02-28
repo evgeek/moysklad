@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\ApiObjects\Objects;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
+use Evgeek\Moysklad\MoySklad;
 
 /**
  * @property string $id
@@ -15,9 +16,10 @@ class AbstractObject
 {
     private array $content;
 
-    public function __construct(mixed $content = [], private readonly JsonFormatterInterface $formatter = new StdClassFormat())
+    public function __construct(mixed $content = [], JsonFormatterInterface $formatter = null)
     {
-        $this->content = (new ArrayFormat())->encode($this->formatter->decode($content));
+        $formatter = $formatter ?? MoySklad::getGlobalFormatter();
+        $this->content = (new ArrayFormat())->encode($formatter->decode($content));
     }
 
     public function __toString(): string
