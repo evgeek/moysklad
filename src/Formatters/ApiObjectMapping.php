@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Formatters;
 
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractObject;
+use Evgeek\Moysklad\ApiObjects\Objects\Entity\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\Entity\Product;
 use InvalidArgumentException;
 
@@ -12,6 +13,7 @@ class ApiObjectMapping
 {
     protected const DEFAULT_MAPPING = [
         'product' => Product::class,
+        'employee' => Employee::class,
     ];
 
     private array $mapping = self::DEFAULT_MAPPING;

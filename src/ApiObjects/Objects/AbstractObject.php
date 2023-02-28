@@ -15,7 +15,7 @@ use Evgeek\Moysklad\MoySklad;
  */
 class AbstractObject
 {
-    private array $content;
+    protected array $content;
 
     public function __construct(mixed $content = [], JsonFormatterInterface $formatter = null)
     {
@@ -33,7 +33,7 @@ class AbstractObject
 
         foreach ($arrayContent as $key => $value) {
             if (is_array($value)) {
-                $arrayContent[$key] = $apiObjectFormatter->encodeArray($value);
+                $arrayContent[$key] = $apiObjectFormatter->encodeArray2($value);
             }
         }
 
