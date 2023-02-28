@@ -15,8 +15,22 @@ use Throwable;
  */
 class ApiObjectFormatter extends AbstractMultiDecoder
 {
-    public function __construct(private readonly ApiObjectMapping $mapping = new ApiObjectMapping())
+    private ApiObjectMapping $mapping;
+    private static ApiObjectMapping $globalMapping;
+
+    public function __construct(ApiObjectMapping $mapping = null)
     {
+        $this->mapping = $mapping ?? static::getMapping();
+    }
+
+    public static function getMapping(): ApiObjectMapping
+    {
+        return static::$globalMapping = static::$globalMapping ?? new ApiObjectMapping();
+    }
+
+    public static function setMapping(ApiObjectMapping $mapping): void
+    {
+        static::$globalMapping = $mapping;
     }
 
     /**
@@ -38,14 +52,24 @@ class ApiObjectFormatter extends AbstractMultiDecoder
             $this->throwContentIsNotValidJsonObject($content);
         }
 
-        return $this->convertApiObjects($encodedContent);
+        $array = $this->encodeArray($encodedContent);
+
+        return $this->convertToObject($array);
     }
 
-    protected function convertApiObjects(array $content)
+    public function encodeArray(array $content): array|AbstractObject
     {
         foreach ($content as $key => $value) {
-            if ($this->checkValueIsApiEntity($value)) {
-                $content[$key] = $this->convertApiObjects($value);
+            if ($type = $this->getTypeFromApiEntity($value)) {
+                $class = $this->mapping->get($type);
+
+                if ($class) {
+                    $content[$key] = new $class($value);
+                }
+            }
+
+            if (is_array($content[$key])) {
+                $content[$key] = $this->encodeArray($value);
             }
         }
 
@@ -74,5 +98,21 @@ class ApiObjectFormatter extends AbstractMultiDecoder
         }
 
         return $value['meta']['type'] ?? null;
+    }
+
+    protected function convertToObject(array|AbstractObject $array): stdClass|array
+    {
+        if (is_array($array) && array_is_list($array)) {
+            return $array;
+        }
+
+        $object = new stdClass();
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $value = $this->convertToObject($value);
+            }
+            $object->{$key} = $value;
+        }
+        return $object;
     }
 }

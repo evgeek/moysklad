@@ -50,7 +50,7 @@ class MoySklad
         return new ApiEntityMaker($this->formatter);
     }
 
-    public static function getGlobalFormatter(): JsonFormatterInterface
+    public static function getFormatter(): JsonFormatterInterface
     {
         return static::$globalFormatter = static::$globalFormatter ?? new StdClassFormat();
     }

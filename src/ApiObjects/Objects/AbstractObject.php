@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Objects;
 
+use Evgeek\Moysklad\Formatters\ApiObjectFormatter;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
@@ -18,8 +19,25 @@ class AbstractObject
 
     public function __construct(mixed $content = [], JsonFormatterInterface $formatter = null)
     {
-        $formatter = $formatter ?? MoySklad::getGlobalFormatter();
-        $this->content = (new ArrayFormat())->encode($formatter->decode($content));
+        $this->content = $this->formatContent($content, $formatter);
+    }
+
+    private function formatContent(mixed $content, ?JsonFormatterInterface $formatter): array
+    {
+        $formatter = $formatter ?? MoySklad::getFormatter();
+        $apiObjectFormatter = is_a($formatter, ApiObjectFormatter::class) ?
+            $formatter :
+            new ApiObjectFormatter(ApiObjectFormatter::getMapping());
+
+        $arrayContent = (new ArrayFormat())->encode($formatter->decode($content));
+
+        foreach ($arrayContent as $key => $value) {
+            if (is_array($value)) {
+                $arrayContent[$key] = $apiObjectFormatter->encodeArray($value);
+            }
+        }
+
+        return $arrayContent;
     }
 
     public function __toString(): string

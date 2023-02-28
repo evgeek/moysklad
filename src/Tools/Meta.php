@@ -79,7 +79,7 @@ class Meta
 
     private static function initFormatter(): void
     {
-        static::$formatter = static::$formatter ?? MoySklad::getGlobalFormatter();
+        static::$formatter = static::$formatter ?? MoySklad::getFormatter();
     }
 
     private static function makeHref(array $path): string
