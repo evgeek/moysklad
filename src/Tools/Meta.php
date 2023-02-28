@@ -65,7 +65,7 @@ class Meta
     {
         static::initFormatter();
 
-        return static::$formatter::encode(ArrayFormat::decode([
+        return static::$formatter->encode((new ArrayFormat())->decode([
             'href' => static::makeHref($path),
             'type' => $type,
             'mediaType' => 'application/json',

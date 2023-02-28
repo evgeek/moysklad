@@ -11,20 +11,20 @@ use InvalidArgumentException;
 class ApiObjectMapping
 {
     protected const DEFAULT_MAPPING = [
-        'product' => Product::class
+        'product' => Product::class,
     ];
 
     private array $mapping = self::DEFAULT_MAPPING;
 
     public function __construct(?array $mapping = null)
     {
-        if (!is_null($mapping)) {
+        if (null !== $mapping) {
             $this->mapping = $mapping;
         }
     }
 
     /**
-     * @param class-string<AbstractObject>|null $class
+     * @param null|class-string<AbstractObject> $class
      */
     public function set(array|string $type, ?string $class = null): static
     {
@@ -62,7 +62,7 @@ class ApiObjectMapping
     }
 
     /**
-     * @return class-string<AbstractObject>|null
+     * @return null|class-string<AbstractObject>
      */
     public function get(string $type): ?string
     {

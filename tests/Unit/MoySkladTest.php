@@ -23,11 +23,10 @@ class MoySkladTest extends TestCase
     public function testRequestSenderInitialization(): void
     {
         $requestSenderFactoryMock = $this->createMock(RequestSenderFactoryInterface::class);
-        $ms = new MoySklad(['token']);
 
         $requestSenderFactoryMock->expects($this->once())
             ->method('make');
 
-        $ms->__construct(credentials: ['token'], requestSenderFactory: $requestSenderFactoryMock);
+        new MoySklad(credentials: ['token'], requestSenderFactory: $requestSenderFactoryMock);
     }
 }

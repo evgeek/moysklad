@@ -17,7 +17,7 @@ class StdClassFormat extends AbstractMultiDecoder
     /**
      * @return array<stdClass>|stdClass
      */
-    public static function encode(string $content): stdClass|array
+    public function encode(string $content): stdClass|array
     {
         if ($content === '') {
             return new stdClass();
@@ -26,11 +26,11 @@ class StdClassFormat extends AbstractMultiDecoder
         try {
             $encodedContent = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
         } catch (Throwable) {
-            static::throwContentIsNotValidJsonObject($content);
+            $this->throwContentIsNotValidJsonObject($content);
         }
 
         if (!is_a($encodedContent, stdClass::class) && !is_array($encodedContent)) {
-            static::throwContentIsNotValidJsonObject($content);
+            $this->throwContentIsNotValidJsonObject($content);
         }
 
         return $encodedContent;

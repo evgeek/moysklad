@@ -7,7 +7,7 @@ use Evgeek\Moysklad\Formatters\StringFormat;
 /** @covers \Evgeek\Moysklad\Formatters\StringFormat<extended> */
 class StringFormatTest extends MultiDecoderTestCase
 {
-    protected const FORMATTER = StringFormat::class;
+    protected string $formatter = StringFormat::class;
 
     protected function getEncodedObject(): string
     {

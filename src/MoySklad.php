@@ -22,9 +22,9 @@ class MoySklad
      * @param RequestSenderFactoryInterface $requestSenderFactory PSR-7 client factory
      */
     public function __construct(
-        array                                   $credentials,
+        array $credentials,
         private readonly JsonFormatterInterface $formatter = new StdClassFormat(),
-        RequestSenderFactoryInterface           $requestSenderFactory = new GuzzleSenderFactory(),
+        RequestSenderFactoryInterface $requestSenderFactory = new GuzzleSenderFactory(),
     ) {
         $this->api = new ApiClient($credentials, $this->formatter, $requestSenderFactory->make());
     }

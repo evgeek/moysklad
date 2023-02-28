@@ -13,7 +13,7 @@ use Throwable;
  */
 class ArrayFormat extends AbstractMultiDecoder
 {
-    public static function encode(string $content): array
+    public function encode(string $content): array
     {
         if ($content === '') {
             return [];
@@ -22,11 +22,11 @@ class ArrayFormat extends AbstractMultiDecoder
         try {
             $encodedContent = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
         } catch (Throwable) {
-            static::throwContentIsNotValidJsonObject($content);
+            $this->throwContentIsNotValidJsonObject($content);
         }
 
         if (!is_array($encodedContent)) {
-            static::throwContentIsNotValidJsonObject($content);
+            $this->throwContentIsNotValidJsonObject($content);
         }
 
         return $encodedContent;

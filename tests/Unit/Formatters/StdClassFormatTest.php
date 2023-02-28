@@ -2,21 +2,19 @@
 
 namespace Evgeek\Tests\Unit\Formatters;
 
-use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use stdClass;
 
 /** @covers \Evgeek\Moysklad\Formatters\StdClassFormat<extended> */
 class StdClassFormatTest extends MultiDecoderTestCase
 {
-    /** @var JsonFormatterInterface */
-    protected const FORMATTER = StdClassFormat::class;
+    protected string $formatter = StdClassFormat::class;
 
     /** @dataProvider correctEncodeDataProvider */
     public function testEncodeCorrect(string $jsonString, mixed $formatted): void
     {
         $formattedCasted = $this->castToArrayWithNested($formatted);
-        $encodedCasted = $this->castToArrayWithNested((static::FORMATTER)::encode($jsonString));
+        $encodedCasted = $this->castToArrayWithNested((new $this->formatter())->encode($jsonString));
 
         $this->assertSame($formattedCasted, $encodedCasted);
     }

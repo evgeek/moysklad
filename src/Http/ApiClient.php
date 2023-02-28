@@ -31,7 +31,7 @@ class ApiClient
      */
     public function send(Payload $payload)
     {
-        return $this->formatter::encode($this->sendRequest($payload));
+        return $this->formatter->encode($this->sendRequest($payload));
     }
 
     public function debug(Payload $payload)
@@ -42,10 +42,10 @@ class ApiClient
             'url' => urldecode($url),
             'url_encoded' => $url,
             'headers' => $this->headers,
-            'body' => ArrayFormat::encode($this->formatter::decode($payload->body)),
+            'body' => (new ArrayFormat())->encode($this->formatter->decode($payload->body)),
         ];
 
-        return $this->formatter::encode(ArrayFormat::decode($debug));
+        return $this->formatter->encode((new ArrayFormat())->decode($debug));
     }
 
     /**
@@ -54,7 +54,7 @@ class ApiClient
     public function getGenerator(Payload $payload): Generator
     {
         do {
-            $content = ArrayFormat::encode($this->sendRequest($payload));
+            $content = (new ArrayFormat())->encode($this->sendRequest($payload));
             if (!array_key_exists('rows', $content)) {
                 throw new UnexpectedValueException("Response is non-iterable (missed 'rows' property)");
             }
@@ -65,7 +65,7 @@ class ApiClient
             }
 
             foreach ($content['rows'] as $row) {
-                yield $this->formatter::encode(ArrayFormat::decode($row));
+                yield $this->formatter->encode((new ArrayFormat())->decode($row));
             }
 
             $next = $content['meta']['nextHref'] ?? null;
@@ -82,7 +82,7 @@ class ApiClient
     private function sendRequest(Payload $payload): string
     {
         $uri = Url::make($payload);
-        $body = $this->formatter::decode($payload->body);
+        $body = $this->formatter->decode($payload->body);
         $request = new Request($payload->method->value, $uri, $this->headers, $body);
 
         try {

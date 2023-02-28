@@ -17,12 +17,12 @@ class AbstractObject
 
     public function __construct(mixed $content = [], private readonly JsonFormatterInterface $formatter = new StdClassFormat())
     {
-        $this->content = ArrayFormat::encode($this->formatter::decode($content));
+        $this->content = (new ArrayFormat())->encode($this->formatter->decode($content));
     }
 
     public function __toString(): string
     {
-        return ArrayFormat::decode($this->content);
+        return (new ArrayFormat())->decode($this->content);
     }
 
     public function __get(string $name): mixed

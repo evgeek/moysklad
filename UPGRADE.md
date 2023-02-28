@@ -60,6 +60,22 @@ $ms = new \Evgeek\Moysklad\MoySklad(
 );
 ```
 
+### Методы `Evgeek\Moysklad\Formatters\JsonFormatterInterface` теперь не статические.
+
+Не требуется ничего менять, если вы не работали с форматтерами напрямую.
+
+До:
+
+```php
+\Evgeek\Moysklad\Formatters\ArrayFormat::encode($entity);
+```
+
+После:
+
+```php
+(new \Evgeek\Moysklad\Formatters\ArrayFormat())->encode($entity);
+```
+
 ### Настройка отправителя запросов реализована через фабрику
 
 Не требуется ничего менять, если вы не переопределяли стандартный отправитель.

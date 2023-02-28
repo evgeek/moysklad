@@ -10,9 +10,6 @@ use stdClass;
 
 abstract class MultiDecoderTestCase extends TestCase
 {
-    /** @var class-string<JsonFormatterInterface>|JsonFormatterInterface */
-    protected const FORMATTER = AbstractMultiDecoder::class;
-
     protected const OBJECT_JSON_STRING = '{"param":"test_param","context":{"employee":{"meta":' .
         '{"href":"test_href_1","type":"employee"}}},"rows":[{"id":"id1","value":true},{"id":"id2","value":0},' .
         '{"id":"id3","value":null},{"id":"id4","value":123.45}]}';
@@ -22,16 +19,19 @@ abstract class MultiDecoderTestCase extends TestCase
     protected const NULL_JSON_STRING = 'null';
     protected const FALSE_JSON_STRING = 'false';
 
+    /** @var class-string<JsonFormatterInterface> */
+    protected string $formatter = AbstractMultiDecoder::class;
+
     /** @dataProvider correctEncodeDataProvider */
     public function testEncodeCorrect(string $jsonString, mixed $formatted): void
     {
-        $this->assertSame($formatted, (static::FORMATTER)::encode($jsonString));
+        $this->assertSame($formatted, (new $this->formatter())->encode($jsonString));
     }
 
     /** @dataProvider correctDecodeDataProvider */
     public function testDecodeCorrect(string $jsonString, mixed $formatted): void
     {
-        $this->assertSame($jsonString, (static::FORMATTER)::decode($formatted));
+        $this->assertSame($jsonString, (new $this->formatter())->decode($formatted));
     }
 
     /** @dataProvider invalidJsonTypesDataProvider */
@@ -40,7 +40,7 @@ abstract class MultiDecoderTestCase extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Passed content is not valid json.');
 
-        (static::FORMATTER)::encode($jsonString);
+        (new $this->formatter())->encode($jsonString);
     }
 
     public function testDecodeInvalidType(): void
@@ -48,7 +48,7 @@ abstract class MultiDecoderTestCase extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage("Can't convert content of");
 
-        (static::FORMATTER)::decode(NAN);
+        (new $this->formatter())->decode(NAN);
     }
 
     /** @dataProvider invalidJsonTypesDataProvider */
@@ -57,7 +57,7 @@ abstract class MultiDecoderTestCase extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Passed content is not valid json.');
 
-        (static::FORMATTER)::decode($jsonString);
+        (new $this->formatter())->decode($jsonString);
     }
 
     abstract protected function getEncodedObject();
