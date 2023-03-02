@@ -18,11 +18,6 @@ abstract class AbstractApiObject extends stdClass
         $this->hydrateSelf($content, $formatter);
     }
 
-    public function __get(string $name)
-    {
-        return property_exists($this, $name) ? $this->{$name} : null;
-    }
-
     abstract protected function createMeta(mixed $value): self;
 
     protected function hydrateSelf(mixed $content, JsonFormatterInterface $formatter): void
