@@ -29,18 +29,21 @@ abstract class AbstractApiObject extends stdClass
         $formatter = $formatter ?? MoySklad::getFormatter();
         $apiObjectFormatter = is_a($formatter, ApiObjectFormatter::class) ?
             $formatter :
-            new ApiObjectFormatter(ApiObjectFormatter::getMapping());
+            new ApiObjectFormatter();
 
         $arrayContent = (new ArrayFormat())->encode($formatter->decode($content));
 
         foreach ($arrayContent as $key => $value) {
+            if ($key === 'group') {
+                $a = 5;
+            }
             if ($key === 'meta') {
                 $this->{$key} = $this->createMeta($value);
                 continue;
             }
 
             if (is_array($value)) {
-                $this->{$key} = $apiObjectFormatter->encodeArray($value);
+                $this->{$key} = $apiObjectFormatter->encodeToStdClass($value);
                 continue;
             }
 

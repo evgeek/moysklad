@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
-use Evgeek\Moysklad\ApiObjects\Meta\MetaContainer;
-use Evgeek\Moysklad\ApiObjects\Meta\MetaObject;
-use Evgeek\Moysklad\ApiObjects\Objects\AbstractObject;
+use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
 use stdClass;
 use Throwable;
 
@@ -36,9 +34,9 @@ class ApiObjectFormatter extends AbstractMultiDecoder
     }
 
     /**
-     * @return AbstractObject|array<AbstractObject>|array<stdClass>|stdClass
+     * @return AbstractApiObject|array<AbstractApiObject>|array<stdClass>|stdClass
      */
-    public function encode(string $content): AbstractObject|stdClass|array
+    public function encode(string $content): AbstractApiObject|stdClass|array
     {
         if ($content === '') {
             return new stdClass();
@@ -50,24 +48,31 @@ class ApiObjectFormatter extends AbstractMultiDecoder
             $this->throwContentIsNotValidJsonObject($content);
         }
 
-        if (!is_a($encodedContent, stdClass::class) && !is_array($encodedContent)) {
+        if (!is_array($encodedContent)) {
             $this->throwContentIsNotValidJsonObject($content);
         }
 
-        $array = $this->encodeArray($encodedContent);
-
-        return $this->convertToStdClass($array);
+        return $this->encodeToStdClass($encodedContent);
     }
 
-    public function encodeArray(array $content): array|AbstractObject
+    public function encodeToStdClass(array $content): array|AbstractApiObject|stdClass
     {
-        $content = $this->tryConvertToApiObject($content);
-        if (is_subclass_of($content, AbstractObject::class)) {
-            return $content;
+        $result = $this->encodeArray($content);
+
+        return $this->convertToStdClass($result);
+    }
+
+    protected function encodeArray(array $content): array|AbstractApiObject
+    {
+        $object = $this->tryConvertToApiObject($content);
+        if (is_subclass_of($object, AbstractApiObject::class)) {
+            return $object;
         }
 
         foreach ($content as $key => $value) {
-            $content[$key] = $this->tryConvertToApiObject($value);
+            $content[$key] = is_array($value) ?
+                $this->tryConvertToApiObject($value) :
+                $value;
 
             if (is_array($content[$key])) {
                 $content[$key] = $this->encodeArray($value);
@@ -77,50 +82,43 @@ class ApiObjectFormatter extends AbstractMultiDecoder
         return $content;
     }
 
-    private function tryConvertToApiObject(mixed $content): mixed
+    protected function tryConvertToApiObject(array $content): array|AbstractApiObject
     {
-        if ($type = $this->getTypeFromApiEntity($content)) {
-            $class = $this->mapping->getObject($type);
-
-            if ($class) {
-                return new $class($content);
-            }
+        $type = $content['meta']['type'] ?? null;
+        if (!$type) {
+            return $content;
         }
 
-        return $content;
+        $class = array_key_exists('rows', $content) ?
+            $this->mapping->getContainer($type) :
+            $this->mapping->getObject($type);
+
+        return $class ? new $class($content) : $content;
     }
 
-    protected function convertToStdClass(array|AbstractObject $array): AbstractObject|stdClass|array
+    protected function convertToStdClass(array|AbstractApiObject $content): AbstractApiObject|stdClass|array
     {
-        if (is_array($array) && array_is_list($array)) {
+        if (is_subclass_of($content, AbstractApiObject::class)) {
+            return $content;
+        }
+
+        if (array_is_list($content)) {
+            $array = [];
+            foreach ($content as $item) {
+                $array[] = $this->convertToStdClass($item);
+            }
+
             return $array;
         }
 
         $object = new stdClass();
-        foreach ($array as $key => $value) {
+        foreach ($content as $key => $value) {
             if (is_array($value)) {
                 $value = $this->convertToStdClass($value);
             }
             $object->{$key} = $value;
         }
+
         return $object;
-    }
-
-    protected function checkValueIsApiEntity(mixed $value): bool
-    {
-        return is_array($value)
-            && array_key_exists('meta', $value)
-            && !array_key_exists('rows', $value);
-    }
-
-    protected function getTypeFromApiEntity(mixed $value): ?string
-    {
-        if (!$this->checkValueIsApiEntity($value)) {
-            return null;
-        }
-
-        $meta = $value['meta'];
-
-        return is_a($meta, MetaObject::class) ? $meta?->type : $meta['type'];
     }
 }
