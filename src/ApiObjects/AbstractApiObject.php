@@ -34,16 +34,15 @@ abstract class AbstractApiObject extends stdClass
         $arrayContent = (new ArrayFormat())->encode($formatter->decode($content));
 
         foreach ($arrayContent as $key => $value) {
-            if ($key === 'group') {
-                $a = 5;
-            }
             if ($key === 'meta') {
                 $this->{$key} = $this->createMeta($value);
+
                 continue;
             }
 
             if (is_array($value)) {
                 $this->{$key} = $apiObjectFormatter->encodeToStdClass($value);
+
                 continue;
             }
 

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Formatters;
 
 use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
+use Evgeek\Moysklad\ApiObjects\Containers\UnknownContainer;
+use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use stdClass;
 use Throwable;
 
@@ -90,10 +92,10 @@ class ApiObjectFormatter extends AbstractMultiDecoder
         }
 
         $class = array_key_exists('rows', $content) ?
-            $this->mapping->getContainer($type) :
-            $this->mapping->getObject($type);
+            ($this->mapping->getContainer($type) ?? UnknownContainer::class) :
+            ($this->mapping->getObject($type) ?? UnknownObject::class);
 
-        return $class ? new $class($content) : $content;
+        return new $class($content);
     }
 
     protected function convertToStdClass(array|AbstractApiObject $content): AbstractApiObject|stdClass|array

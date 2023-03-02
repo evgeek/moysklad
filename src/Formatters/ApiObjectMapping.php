@@ -52,6 +52,22 @@ class ApiObjectMapping
         $this->set($this->containers, AbstractContainer::class, $type, $class);
     }
 
+    /**
+     * @return null|class-string<AbstractObject>
+     */
+    public function getObject(string $type): ?string
+    {
+        return $this->get($this->objects, AbstractObject::class, $type);
+    }
+
+    /**
+     * @return null|class-string<AbstractContainer>
+     */
+    public function getContainer(string $type): ?string
+    {
+        return $this->get($this->containers, AbstractContainer::class, $type);
+    }
+
     protected function set(array &$property, string $expectedClass, array|string $type, ?string $class): void
     {
         if (is_array($type)) {
@@ -72,23 +88,14 @@ class ApiObjectMapping
         throw new InvalidArgumentException('Class cannot be empty with string type');
     }
 
-    /**
-     * @return null|class-string<AbstractObject>
-     */
-    public function getObject(string $type): ?string
+    protected function validateClassIs(string $class, string $expectedClass): void
     {
-        return $this->get($this->objects, AbstractObject::class, $type);
+        if (!is_subclass_of($class, $expectedClass)) {
+            throw new InvalidArgumentException("$class is not a $expectedClass");
+        }
     }
 
-    /**
-     * @return null|class-string<AbstractContainer>
-     */
-    public function getContainer(string $type): ?string
-    {
-        return $this->get($this->containers, AbstractContainer::class, $type);
-    }
-
-    private function get(array $property, string $expectedClass, string $type)
+    private function get(array $property, string $expectedClass, string $type): ?string
     {
         if (!array_key_exists($type, $property)) {
             return null;
@@ -98,12 +105,5 @@ class ApiObjectMapping
         $this->validateClassIs($class, $expectedClass);
 
         return $class;
-    }
-
-    protected function validateClassIs(string $class, string $expectedClass): void
-    {
-        if (!is_subclass_of($class, $expectedClass)) {
-            throw new InvalidArgumentException("$class is not a $expectedClass");
-        }
     }
 }

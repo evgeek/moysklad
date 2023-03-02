@@ -9,9 +9,9 @@ use Evgeek\Moysklad\ApiObjects\Objects\Product;
 use stdClass;
 
 /**
- * @property stdClass $context
+ * @property stdClass      $context
  * @property MetaContainer $meta
- * @property Product[] $rows
+ * @property Product[]     $rows
  */
 class ProductContainer extends AbstractContainer
 {

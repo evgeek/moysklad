@@ -9,9 +9,9 @@ use Evgeek\Moysklad\ApiObjects\Objects\Employee;
 use stdClass;
 
 /**
- * @property stdClass $context
+ * @property stdClass      $context
  * @property MetaContainer $meta
- * @property Employee[] $rows
+ * @property Employee[]    $rows
  */
 class EmployeeContainer extends AbstractContainer
 {

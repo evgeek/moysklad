@@ -7,7 +7,7 @@ namespace Evgeek\Moysklad\ApiObjects\Objects;
 use Evgeek\Moysklad\ApiObjects\Meta\MetaObject;
 
 /**
- * @property string $name
+ * @property string      $name
  * @property ?MetaObject $meta
  */
 class Product extends AbstractObject
