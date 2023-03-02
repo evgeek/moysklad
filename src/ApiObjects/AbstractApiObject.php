@@ -12,12 +12,10 @@ use stdClass;
 
 abstract class AbstractApiObject extends stdClass
 {
-    protected JsonFormatterInterface $formatter;
-
     public function __construct(mixed $content = [], JsonFormatterInterface $formatter = null)
     {
-        $this->formatter = $formatter ?? MoySklad::getFormatter();
-        $this->hydrateSelf($content);
+        $formatter = $formatter ?? MoySklad::getFormatter();
+        $this->hydrateSelf($content, $formatter);
     }
 
     public function __get(string $name)
@@ -27,13 +25,13 @@ abstract class AbstractApiObject extends stdClass
 
     abstract protected function createMeta(mixed $value): self;
 
-    protected function hydrateSelf(mixed $content): void
+    protected function hydrateSelf(mixed $content, JsonFormatterInterface $formatter): void
     {
-        $apiObjectFormatter = is_a($this->formatter, ApiObjectFormatter::class) ?
-            $this->formatter :
+        $apiObjectFormatter = is_a($formatter, ApiObjectFormatter::class) ?
+            $formatter :
             new ApiObjectFormatter();
 
-        $arrayContent = (new ArrayFormat())->encode($this->formatter->decode($content));
+        $arrayContent = (new ArrayFormat())->encode($formatter->decode($content));
 
         foreach ($arrayContent as $key => $value) {
             if ($key === 'meta') {
