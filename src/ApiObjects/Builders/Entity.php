@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Builders;
 
-use Evgeek\Moysklad\ApiObjects\Objects\Entity\Product;
+use Evgeek\Moysklad\ApiObjects\Objects\Product;
 
 class Entity extends AbstractObjectBuilder
 {

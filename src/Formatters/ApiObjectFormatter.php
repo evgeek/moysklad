@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
-use Evgeek\Moysklad\ApiObjects\Meta;
+use Evgeek\Moysklad\ApiObjects\Meta\MetaContainer;
+use Evgeek\Moysklad\ApiObjects\Meta\MetaObject;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractObject;
 use stdClass;
 use Throwable;
@@ -53,12 +54,12 @@ class ApiObjectFormatter extends AbstractMultiDecoder
             $this->throwContentIsNotValidJsonObject($content);
         }
 
-        $array = $this->encodeArray2($encodedContent);
+        $array = $this->encodeArray($encodedContent);
 
         return $this->convertToStdClass($array);
     }
 
-    public function encodeArray2(array $content): array|AbstractObject
+    public function encodeArray(array $content): array|AbstractObject
     {
         $content = $this->tryConvertToApiObject($content);
         if (is_subclass_of($content, AbstractObject::class)) {
@@ -66,15 +67,10 @@ class ApiObjectFormatter extends AbstractMultiDecoder
         }
 
         foreach ($content as $key => $value) {
-            if($key === 'meta') {
-                $content[$key] = new Meta($value);
-                continue;
-            }
-
             $content[$key] = $this->tryConvertToApiObject($value);
 
             if (is_array($content[$key])) {
-                $content[$key] = $this->encodeArray2($value);
+                $content[$key] = $this->encodeArray($value);
             }
         }
 
@@ -84,7 +80,7 @@ class ApiObjectFormatter extends AbstractMultiDecoder
     private function tryConvertToApiObject(mixed $content): mixed
     {
         if ($type = $this->getTypeFromApiEntity($content)) {
-            $class = $this->mapping->get($type);
+            $class = $this->mapping->getObject($type);
 
             if ($class) {
                 return new $class($content);
@@ -125,6 +121,6 @@ class ApiObjectFormatter extends AbstractMultiDecoder
 
         $meta = $value['meta'];
 
-        return is_a($meta, Meta::class) ? $meta?->type : $meta['type'];
+        return is_a($meta, MetaObject::class) ? $meta?->type : $meta['type'];
     }
 }
