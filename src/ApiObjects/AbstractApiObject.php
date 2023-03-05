@@ -15,12 +15,12 @@ abstract class AbstractApiObject extends stdClass
     public function __construct(mixed $content = [], JsonFormatterInterface $formatter = null)
     {
         $formatter = $formatter ?? MoySklad::getFormatter();
-        $this->hydrateSelf($content, $formatter);
+        $this->hydrate($content, $formatter);
     }
 
     abstract protected function createMeta(mixed $value): self;
 
-    protected function hydrateSelf(mixed $content, JsonFormatterInterface $formatter): void
+    protected function hydrate(mixed $content, JsonFormatterInterface $formatter): void
     {
         $apiObjectFormatter = is_a($formatter, ApiObjectFormatter::class) ?
             $formatter :
