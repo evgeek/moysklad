@@ -6,7 +6,6 @@ namespace Evgeek\Moysklad\ApiObjects\Objects;
 
 use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
 use Evgeek\Moysklad\ApiObjects\Meta\MetaObject;
-use Evgeek\Moysklad\MoySklad;
 
 abstract class AbstractObject extends AbstractApiObject
 {

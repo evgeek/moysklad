@@ -9,7 +9,9 @@ use Evgeek\Moysklad\Tools\Meta;
 
 class MetaMaker
 {
-    public function __construct(protected readonly JsonFormatterInterface $formatter) {}
+    public function __construct(protected readonly JsonFormatterInterface $formatter)
+    {
+    }
 
     public function create(array $path, string $type)
     {

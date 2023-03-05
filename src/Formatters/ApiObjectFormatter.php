@@ -20,7 +20,9 @@ class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInt
 {
     protected MoySklad $ms;
 
-    public function __construct(private readonly ApiObjectMapping $mapping = new ApiObjectMapping()) {}
+    public function __construct(private readonly ApiObjectMapping $mapping = new ApiObjectMapping())
+    {
+    }
 
     public function setMoySklad(MoySklad $ms): static
     {
