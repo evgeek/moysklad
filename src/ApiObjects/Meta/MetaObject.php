@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Meta;
 
-use Evgeek\Moysklad\ApiObjects\Objects\AbstractObject;
-
 /**
  * @property string $href
  * @property string $metadataHref
@@ -14,6 +12,6 @@ use Evgeek\Moysklad\ApiObjects\Objects\AbstractObject;
  * @property string $uuidHref
  * @property string $downloadHref
  */
-class MetaObject extends AbstractObject
+class MetaObject extends AbstractMeta
 {
 }

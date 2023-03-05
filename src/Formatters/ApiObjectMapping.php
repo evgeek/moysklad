@@ -4,68 +4,68 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
-use Evgeek\Moysklad\ApiObjects\Collections\AbstractCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
-use Evgeek\Moysklad\ApiObjects\Objects\AbstractObject;
+use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\Product;
 use InvalidArgumentException;
 
 class ApiObjectMapping
 {
-    protected const DEFAULT_MAPPING_ENTITIES = [
+    protected const DEFAULT_MAPPING_OBJECTS = [
         'product' => Product::class,
         'employee' => Employee::class,
     ];
-    protected const DEFAULT_MAPPING_CONTAINERS = [
+    protected const DEFAULT_MAPPING_COLLECTIONS = [
         'product' => ProductCollection::class,
         'employee' => EmployeeCollection::class,
     ];
 
-    protected array $objects = self::DEFAULT_MAPPING_ENTITIES;
-    protected array $containers = self::DEFAULT_MAPPING_CONTAINERS;
+    protected array $objects = self::DEFAULT_MAPPING_OBJECTS;
+    protected array $collections = self::DEFAULT_MAPPING_COLLECTIONS;
 
-    public function __construct(?array $objects = null, ?array $containers = null)
+    public function __construct(?array $objects = null, ?array $collections = null)
     {
         if (null !== $objects) {
             $this->objects = $objects;
         }
-        if (null !== $containers) {
-            $this->containers = $containers;
+        if (null !== $collections) {
+            $this->collections = $collections;
         }
     }
 
     /**
-     * @param null|class-string<AbstractObject> $class
+     * @param null|class-string<AbstractConcreteObject> $class
      */
     public function setObject(array|string $type, ?string $class = null): void
     {
-        $this->set($this->objects, AbstractObject::class, $type, $class);
+        $this->set($this->objects, AbstractConcreteObject::class, $type, $class);
     }
 
     /**
-     * @param null|class-string<AbstractCollection> $class
+     * @param null|class-string<AbstractConcreteCollection> $class
      */
-    public function setContainer(array|string $type, ?string $class = null): void
+    public function setCollection(array|string $type, ?string $class = null): void
     {
-        $this->set($this->containers, AbstractCollection::class, $type, $class);
+        $this->set($this->collections, AbstractConcreteCollection::class, $type, $class);
     }
 
     /**
-     * @return null|class-string<AbstractObject>
+     * @return null|class-string<AbstractConcreteObject>
      */
     public function getObject(string $type): ?string
     {
-        return $this->get($this->objects, AbstractObject::class, $type);
+        return $this->get($this->objects, AbstractConcreteObject::class, $type);
     }
 
     /**
-     * @return null|class-string<AbstractCollection>
+     * @return null|class-string<AbstractConcreteCollection>
      */
-    public function getContainer(string $type): ?string
+    public function getCollection(string $type): ?string
     {
-        return $this->get($this->containers, AbstractCollection::class, $type);
+        return $this->get($this->collections, AbstractConcreteCollection::class, $type);
     }
 
     protected function set(array &$property, string $expectedClass, array|string $type, ?string $class): void

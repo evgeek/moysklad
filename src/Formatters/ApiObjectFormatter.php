@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Formatters;
 
 use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
+use Evgeek\Moysklad\ApiObjects\AbstractConcreteApiObject;
 use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use Evgeek\Moysklad\MoySklad;
+use Evgeek\Moysklad\Services\Url;
 use stdClass;
 use Throwable;
 
@@ -83,15 +85,30 @@ class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInt
     protected function tryConvertToApiObject(array $content): array|AbstractApiObject
     {
         $type = $content['meta']['type'] ?? null;
-        if (!$type) {
+        $href = $content['meta']['href'] ?? null;
+        if (!$type || !$href) {
             return $content;
         }
 
-        $class = array_key_exists('rows', $content) ?
-            ($this->mapping->getContainer($type) ?? UnknownCollection::class) :
+        $class = $this->isContentCollection($content) ?
+            ($this->mapping->getCollection($type) ?? UnknownCollection::class) :
             ($this->mapping->getObject($type) ?? UnknownObject::class);
 
-        return new $class($this->ms, $content);
+        [$path, $params] = Url::parsePathAndParams($href);
+
+        return is_subclass_of($class, AbstractConcreteApiObject::class) ?
+            new $class($this->ms, $content) :
+            new $class($this->ms, $path, $type, $content);
+    }
+
+    protected function isContentCollection(array $content): bool
+    {
+        return array_key_exists('rows', $content)
+            || isset($content['meta']['limit'])
+            || isset($content['meta']['offset'])
+            || isset($content['meta']['size'])
+            || isset($content['meta']['nextHref'])
+            || isset($content['meta']['previousHref']);
     }
 
     protected function convertToStdClass(array|AbstractApiObject $content): AbstractApiObject|stdClass|array

@@ -10,7 +10,6 @@ use InvalidArgumentException;
 
 /**
  * @covers \Evgeek\Moysklad\Api\AbstractBuilder::apiSend
- * @covers \Evgeek\Moysklad\Api\AbstractBuilder::getEnumHttpMethod
  * @covers \Evgeek\Moysklad\Api\Traits\Actions\SendTrait
  */
 class SendTraitTest extends TraitTestCase

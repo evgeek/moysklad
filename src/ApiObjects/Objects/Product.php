@@ -10,6 +10,11 @@ use Evgeek\Moysklad\ApiObjects\Meta\MetaObject;
  * @property string      $name
  * @property ?MetaObject $meta
  */
-class Product extends AbstractObject
+class Product extends AbstractConcreteObject
 {
+    protected const PATH = [
+        'entity',
+        'product',
+    ];
+    protected const TYPE = 'product';
 }

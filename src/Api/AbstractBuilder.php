@@ -14,7 +14,6 @@ use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\Payload;
 use Evgeek\Moysklad\Services\Url;
 use Generator;
-use InvalidArgumentException;
 
 abstract class AbstractBuilder
 {
@@ -51,21 +50,6 @@ abstract class AbstractBuilder
     protected function apiGetGenerator(): Generator
     {
         return $this->api->getGenerator($this->makePayload(HttpMethod::GET));
-    }
-
-    protected function getEnumHttpMethod(HttpMethod|string $method): HttpMethod
-    {
-        if (!is_string($method)) {
-            return $method;
-        }
-
-        $method = strtoupper($method);
-        $enumMethod = HttpMethod::tryFrom($method);
-        if ($enumMethod === null) {
-            throw new InvalidArgumentException("'$method' is not valid HTTP method. Check " . HttpMethod::class);
-        }
-
-        return $enumMethod;
     }
 
     protected function makePayload(HttpMethod $method, mixed $body = null): Payload

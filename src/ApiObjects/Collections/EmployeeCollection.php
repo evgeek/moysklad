@@ -13,6 +13,11 @@ use stdClass;
  * @property MetaCollection $meta
  * @property Employee[]     $rows
  */
-class EmployeeCollection extends AbstractCollection
+class EmployeeCollection extends AbstractConcreteCollection
 {
+    protected const PATH = [
+        'entity',
+        'employee',
+    ];
+    protected const TYPE = 'employee';
 }

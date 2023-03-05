@@ -13,6 +13,11 @@ use stdClass;
  * @property MetaCollection $meta
  * @property Product[]      $rows
  */
-class ProductCollection extends AbstractCollection
+class ProductCollection extends AbstractConcreteCollection
 {
+    protected const PATH = [
+        'entity',
+        'product',
+    ];
+    protected const TYPE = 'product';
 }

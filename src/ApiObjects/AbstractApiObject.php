@@ -35,8 +35,6 @@ abstract class AbstractApiObject extends stdClass
         return (new StdClassFormat())->encode($this->toString());
     }
 
-    abstract protected function convertMetaToObject(mixed $value): self;
-
     protected function hydrate(mixed $content): void
     {
         $formatter = $this->ms->getApiClient()->getFormatter();
@@ -47,12 +45,6 @@ abstract class AbstractApiObject extends stdClass
         $arrayContent = (new ArrayFormat())->encode($formatter->decode($content));
 
         foreach ($arrayContent as $key => $value) {
-            if ($key === 'meta') {
-                $this->{$key} = $this->convertMetaToObject($value);
-
-                continue;
-            }
-
             if (is_array($value)) {
                 $this->{$key} = $apiObjectFormatter->encodeToStdClass($value);
 
