@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Formatters;
 
 use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
-use Evgeek\Moysklad\ApiObjects\Containers\UnknownContainer;
+use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use stdClass;
 use Throwable;
@@ -17,22 +17,8 @@ use Throwable;
  */
 class ApiObjectFormatter extends AbstractMultiDecoder
 {
-    private ApiObjectMapping $mapping;
-    private static ApiObjectMapping $globalMapping;
-
-    public function __construct(ApiObjectMapping $mapping = null)
+    public function __construct(private readonly ApiObjectMapping $mapping = new ApiObjectMapping())
     {
-        $this->mapping = $mapping ?? static::getMapping();
-    }
-
-    public static function getMapping(): ApiObjectMapping
-    {
-        return static::$globalMapping = static::$globalMapping ?? new ApiObjectMapping();
-    }
-
-    public static function setMapping(ApiObjectMapping $mapping): void
-    {
-        static::$globalMapping = $mapping;
     }
 
     /**
@@ -57,7 +43,7 @@ class ApiObjectFormatter extends AbstractMultiDecoder
         return $this->encodeToStdClass($encodedContent);
     }
 
-    public function encodeToStdClass(array $content): array|AbstractApiObject|stdClass
+    public function encodeToStdClass(array $content): AbstractApiObject|stdClass|array
     {
         $result = $this->encodeArray($content);
 
@@ -92,7 +78,7 @@ class ApiObjectFormatter extends AbstractMultiDecoder
         }
 
         $class = array_key_exists('rows', $content) ?
-            ($this->mapping->getContainer($type) ?? UnknownContainer::class) :
+            ($this->mapping->getContainer($type) ?? UnknownCollection::class) :
             ($this->mapping->getObject($type) ?? UnknownObject::class);
 
         return new $class($content);

@@ -6,22 +6,40 @@ namespace Evgeek\Moysklad\ApiObjects;
 
 use Evgeek\Moysklad\Formatters\ApiObjectFormatter;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
-use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
+use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\MoySklad;
 use stdClass;
 
 abstract class AbstractApiObject extends stdClass
 {
-    public function __construct(mixed $content = [], JsonFormatterInterface $formatter = null)
+    public function __construct(protected readonly MoySklad $ms, mixed $content = [])
     {
-        $formatter = $formatter ?? MoySklad::getFormatter();
-        $this->hydrate($content, $formatter);
+        $this->hydrate($content);
     }
 
-    abstract protected function createMeta(mixed $value): self;
-
-    protected function hydrate(mixed $content, JsonFormatterInterface $formatter): void
+    public function toString(): string
     {
+        return $this->ms->getApiClient()->getFormatter()->decode($this);
+    }
+
+    public function toArray(): array
+    {
+        return (new ArrayFormat())->encode($this->ms->getApiClient()->getFormatter()->decode($this));
+    }
+
+    /**
+     * @return array<stdClass>|stdClass
+     */
+    public function toStdClass(): array|stdClass
+    {
+        return (new StdClassFormat())->encode($this->ms->getApiClient()->getFormatter()->decode($this));
+    }
+
+    abstract protected function convertMetaToObject(mixed $value): self;
+
+    protected function hydrate(mixed $content): void
+    {
+        $formatter = $this->ms->getApiClient()->getFormatter();
         $apiObjectFormatter = is_a($formatter, ApiObjectFormatter::class) ?
             $formatter :
             new ApiObjectFormatter();
@@ -30,7 +48,7 @@ abstract class AbstractApiObject extends stdClass
 
         foreach ($arrayContent as $key => $value) {
             if ($key === 'meta') {
-                $this->{$key} = $this->createMeta($value);
+                $this->{$key} = $this->convertMetaToObject($value);
 
                 continue;
             }

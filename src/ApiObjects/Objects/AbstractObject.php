@@ -9,7 +9,7 @@ use Evgeek\Moysklad\ApiObjects\Meta\MetaObject;
 
 abstract class AbstractObject extends AbstractApiObject
 {
-    protected function createMeta(mixed $value): self
+    protected function convertMetaToObject(mixed $value): self
     {
         return new MetaObject($value);
     }

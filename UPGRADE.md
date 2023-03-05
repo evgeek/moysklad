@@ -2,6 +2,39 @@
 
 ## [Unreleased]
 
+### Аргументы в методе `Meta::state()` приведены к общей логике.
+
+До:
+
+```php
+Meta::state('25cf41f2-b068-11ed-0a80-0e9700500d7e', 'counterparty');
+```
+
+После:
+
+```php
+Meta::state('counterparty', '25cf41f2-b068-11ed-0a80-0e9700500d7e');
+```
+
+### Deprecated установки форматирования в хелпере `Meta`
+
+До:
+
+```php
+Meta::setFormat(new ArrayFormat());
+Meta::product('25cf41f2-b068-11ed-0a80-0e9700500d7e');
+```
+
+После:
+
+```php
+//Создание меты через основной объект MoySklad применит форматирование, заданное в MoySklad
+$ms->meta()->product('25cf41f2-b068-11ed-0a80-0e9700500d7e');
+
+//Альтернатива - явная передача форматтера в хелпер (по умолчанию - StdClassFormat)
+Meta::product('25cf41f2-b068-11ed-0a80-0e9700500d7e', new ArrayFormat())
+```
+
 ### Методы `Evgeek\Moysklad\Formatters\JsonFormatterInterface` теперь динамические.
 
 Не требуется ничего менять, если вы не работали с форматтерами напрямую.

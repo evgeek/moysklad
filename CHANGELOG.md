@@ -7,6 +7,11 @@
 ### Changed
 
 - Методы `Evgeek\Moysklad\Formatters\JsonFormatterInterface` теперь динамические.
+- Аргументы в методе `Meta::state()` приведены к общей логике.
+
+### Deprecated
+
+- Явная установка форматирования в хелпере `Meta`. 
 
 ## v0.7.0 [[Upgrade guide](/UPGRADE.md#v070-changelog)]
 

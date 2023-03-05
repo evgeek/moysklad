@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad;
 
 use Evgeek\Moysklad\Api\Query;
-use Evgeek\Moysklad\ApiObjects\Builders\ApiEntityMaker;
+use Evgeek\Moysklad\ApiObjects\Builders\ApiBuilder;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\GuzzleSenderFactory;
 use Evgeek\Moysklad\Http\RequestSenderFactoryInterface;
+use Evgeek\Moysklad\Meta\MetaMaker;
 
 class MoySklad
 {
     private ApiClient $api;
-    private static JsonFormatterInterface $globalFormatter;
 
     /**
      * @param array                         $credentials          ['login', 'password'] or ['token']
@@ -27,7 +27,6 @@ class MoySklad
         private readonly JsonFormatterInterface $formatter = new StdClassFormat(),
         RequestSenderFactoryInterface $requestSenderFactory = new GuzzleSenderFactory(),
     ) {
-        static::$globalFormatter = $this->formatter;
         $this->api = new ApiClient($credentials, $this->formatter, $requestSenderFactory->make());
     }
 
@@ -45,13 +44,18 @@ class MoySklad
         return new Query($this->api);
     }
 
-    public function make(): ApiEntityMaker
+    public function apiObject(): ApiBuilder
     {
-        return new ApiEntityMaker($this->formatter);
+        return new ApiBuilder($this);
     }
 
-    public static function getFormatter(): JsonFormatterInterface
+    public function meta(): MetaMaker
     {
-        return static::$globalFormatter = static::$globalFormatter ?? new StdClassFormat();
+        return new MetaMaker($this->formatter);
+    }
+
+    public function getApiClient(): ApiClient
+    {
+        return $this->api;
     }
 }

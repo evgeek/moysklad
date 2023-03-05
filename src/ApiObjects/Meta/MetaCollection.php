@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Meta;
 
-use Evgeek\Moysklad\ApiObjects\Containers\AbstractContainer;
+use Evgeek\Moysklad\ApiObjects\Collections\AbstractCollection;
 
 /**
  * @property string $href
@@ -16,6 +16,6 @@ use Evgeek\Moysklad\ApiObjects\Containers\AbstractContainer;
  * @property string $nextHref
  * @property string $previousHref
  */
-class MetaContainer extends AbstractContainer
+class MetaCollection extends AbstractCollection
 {
 }

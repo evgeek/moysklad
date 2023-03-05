@@ -6,10 +6,10 @@ namespace Evgeek\Moysklad\ApiObjects\Builders;
 
 use Evgeek\Moysklad\ApiObjects\Objects\Product;
 
-class Entity extends AbstractObjectBuilder
+class SingleBuilder extends AbstractBuilder
 {
     public function product(mixed $content = []): Product
     {
-        return new Product($content, $this->formatter);
+        return new Product($this->ms, $content);
     }
 }

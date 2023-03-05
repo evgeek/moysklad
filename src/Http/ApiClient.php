@@ -26,6 +26,11 @@ class ApiClient
         $this->addCredentialsToHeaders($credentials);
     }
 
+    public function getFormatter(): JsonFormatterInterface
+    {
+        return $this->formatter;
+    }
+
     /**
      * @throws RequestException
      */

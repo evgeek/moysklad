@@ -68,7 +68,7 @@ class MetaTest extends TestCase
     {
         Meta::setFormat(new ArrayFormat());
 
-        $meta = Meta::state('guid-state', 'product');
+        $meta = Meta::state('product', 'guid-state');
         $expected = [
             'href' => Url::API . '/entity/product/metadata/states/guid-state',
             'type' => 'state',

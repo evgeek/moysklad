@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
-use Evgeek\Moysklad\ApiObjects\Containers\AbstractContainer;
-use Evgeek\Moysklad\ApiObjects\Containers\EmployeeContainer;
-use Evgeek\Moysklad\ApiObjects\Containers\ProductContainer;
+use Evgeek\Moysklad\ApiObjects\Collections\AbstractCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\Product;
@@ -19,8 +19,8 @@ class ApiObjectMapping
         'employee' => Employee::class,
     ];
     protected const DEFAULT_MAPPING_CONTAINERS = [
-        'product' => ProductContainer::class,
-        'employee' => EmployeeContainer::class,
+        'product' => ProductCollection::class,
+        'employee' => EmployeeCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_ENTITIES;
@@ -45,11 +45,11 @@ class ApiObjectMapping
     }
 
     /**
-     * @param null|class-string<AbstractContainer> $class
+     * @param null|class-string<AbstractCollection> $class
      */
     public function setContainer(array|string $type, ?string $class = null): void
     {
-        $this->set($this->containers, AbstractContainer::class, $type, $class);
+        $this->set($this->containers, AbstractCollection::class, $type, $class);
     }
 
     /**
@@ -61,11 +61,11 @@ class ApiObjectMapping
     }
 
     /**
-     * @return null|class-string<AbstractContainer>
+     * @return null|class-string<AbstractCollection>
      */
     public function getContainer(string $type): ?string
     {
-        return $this->get($this->containers, AbstractContainer::class, $type);
+        return $this->get($this->containers, AbstractCollection::class, $type);
     }
 
     protected function set(array &$property, string $expectedClass, array|string $type, ?string $class): void
