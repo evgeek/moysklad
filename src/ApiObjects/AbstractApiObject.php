@@ -24,7 +24,7 @@ abstract class AbstractApiObject extends stdClass
 
     public function toArray(): array
     {
-        return (new ArrayFormat())->encode($this->ms->getApiClient()->getFormatter()->decode($this));
+        return (new ArrayFormat())->encode($this->toString());
     }
 
     /**
@@ -32,7 +32,7 @@ abstract class AbstractApiObject extends stdClass
      */
     public function toStdClass(): array|stdClass
     {
-        return (new StdClassFormat())->encode($this->ms->getApiClient()->getFormatter()->decode($this));
+        return (new StdClassFormat())->encode($this->toString());
     }
 
     abstract protected function convertMetaToObject(mixed $value): self;
