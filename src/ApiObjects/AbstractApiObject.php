@@ -42,7 +42,7 @@ abstract class AbstractApiObject extends stdClass
         $formatter = $this->ms->getApiClient()->getFormatter();
         $apiObjectFormatter = is_a($formatter, ApiObjectFormatter::class) ?
             $formatter :
-            new ApiObjectFormatter();
+            (new ApiObjectFormatter())->setMoySklad($this->ms);
 
         $arrayContent = (new ArrayFormat())->encode($formatter->decode($content));
 

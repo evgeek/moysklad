@@ -11,6 +11,6 @@ abstract class AbstractCollection extends AbstractApiObject
 {
     protected function convertMetaToObject(mixed $value): MetaCollection
     {
-        return new MetaCollection($value);
+        return new MetaCollection($this->ms, $value);
     }
 }

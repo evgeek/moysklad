@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Formatters;
 use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
 use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
+use Evgeek\Moysklad\MoySklad;
 use stdClass;
 use Throwable;
 
@@ -15,10 +16,17 @@ use Throwable;
  *
  * @implements JsonFormatterInterface<stdClass>
  */
-class ApiObjectFormatter extends AbstractMultiDecoder
+class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInterface
 {
-    public function __construct(private readonly ApiObjectMapping $mapping = new ApiObjectMapping())
+    protected MoySklad $ms;
+
+    public function __construct(private readonly ApiObjectMapping $mapping = new ApiObjectMapping()) {}
+
+    public function setMoySklad(MoySklad $ms): static
     {
+        $this->ms = $ms;
+
+        return $this;
     }
 
     /**
@@ -81,7 +89,7 @@ class ApiObjectFormatter extends AbstractMultiDecoder
             ($this->mapping->getContainer($type) ?? UnknownCollection::class) :
             ($this->mapping->getObject($type) ?? UnknownObject::class);
 
-        return new $class($content);
+        return new $class($this->ms, $content);
     }
 
     protected function convertToStdClass(array|AbstractApiObject $content): AbstractApiObject|stdClass|array

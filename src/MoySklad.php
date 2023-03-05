@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Query;
 use Evgeek\Moysklad\ApiObjects\Builders\ApiBuilder;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
+use Evgeek\Moysklad\Formatters\WithMoySkladInterface;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\GuzzleSenderFactory;
 use Evgeek\Moysklad\Http\RequestSenderFactoryInterface;
@@ -23,10 +24,14 @@ class MoySklad
      * @param RequestSenderFactoryInterface $requestSenderFactory PSR-7 client factory
      */
     public function __construct(
-        array $credentials,
+        array                                   $credentials,
         private readonly JsonFormatterInterface $formatter = new StdClassFormat(),
-        RequestSenderFactoryInterface $requestSenderFactory = new GuzzleSenderFactory(),
+        RequestSenderFactoryInterface           $requestSenderFactory = new GuzzleSenderFactory(),
     ) {
+        if (is_a($this->formatter, WithMoySkladInterface::class)) {
+            $this->formatter->setMoySklad($this);
+        }
+
         $this->api = new ApiClient($credentials, $this->formatter, $requestSenderFactory->make());
     }
 
