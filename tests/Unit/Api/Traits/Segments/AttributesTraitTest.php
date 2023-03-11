@@ -4,8 +4,8 @@ namespace Evgeek\Tests\Unit\Api\Traits\Segments;
 
 use Evgeek\Moysklad\Api\AbstractBuilder;
 use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
-use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodNamed;
-use Evgeek\Moysklad\Api\Segments\Methods\Nested\Attributes;
+use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodSegmentNamed;
+use Evgeek\Moysklad\Api\Segments\Methods\Nested\AttributesSegment;
 use Evgeek\Moysklad\Api\Traits\Segments\AttributesTrait;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
@@ -18,8 +18,8 @@ class AttributesTraitTest extends TraitTestCase
             use AttributesTrait;
         })->attributes();
 
-        $this->assertInstanceOf(Attributes::class, $builder);
-        $this->assertInstanceOf(AbstractMethodNamed::class, $builder);
+        $this->assertInstanceOf(AttributesSegment::class, $builder);
+        $this->assertInstanceOf(AbstractMethodSegmentNamed::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 }

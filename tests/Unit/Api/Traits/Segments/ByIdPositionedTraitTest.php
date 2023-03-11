@@ -4,7 +4,7 @@ namespace Evgeek\Tests\Unit\Api\Traits\Segments;
 
 use Evgeek\Moysklad\Api\AbstractBuilder;
 use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
-use Evgeek\Moysklad\Api\Segments\ById\ByIdPositioned;
+use Evgeek\Moysklad\Api\Segments\ById\ByIdSegmentPositioned;
 use Evgeek\Moysklad\Api\Traits\Segments\ByIdPositionedTrait;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
@@ -17,7 +17,7 @@ class ByIdPositionedTraitTest extends TraitTestCase
             use ByIdPositionedTrait;
         })->byId('id');
 
-        $this->assertInstanceOf(ByIdPositioned::class, $builder);
+        $this->assertInstanceOf(ByIdSegmentPositioned::class, $builder);
         $this->assertInstanceOf(AbstractSegmentCommon::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }

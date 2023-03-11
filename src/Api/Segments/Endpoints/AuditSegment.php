@@ -11,7 +11,7 @@ use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\ByIdCommonTrait;
 
-class Audit extends AbstractEndpointNamed
+class AuditSegment extends AbstractEndpointSegmentNamed
 {
     use ByIdCommonTrait;
     use FilterTrait;

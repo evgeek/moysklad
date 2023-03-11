@@ -2,18 +2,18 @@
 
 namespace Evgeek\Tests\Unit\Api\Segments\Special;
 
-use Evgeek\Moysklad\Api\Segments\Special\MassDelete;
+use Evgeek\Moysklad\Api\Segments\Special\MassDeleteSegment;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\ApiTestCase;
 
-/** @covers \Evgeek\Moysklad\Api\Segments\Special\MassDelete<extended> */
+/** @covers \Evgeek\Moysklad\Api\Segments\Special\MassDeleteSegment<extended> */
 class MassDeleteTest extends ApiTestCase
 {
     private const PATH = [
         ...self::PREV_PATH,
         'delete',
     ];
-    private MassDelete $builder;
+    private MassDeleteSegment $builder;
 
     protected function setUp(): void
     {
@@ -21,7 +21,7 @@ class MassDeleteTest extends ApiTestCase
 
         $this->createMockApiClient();
 
-        $this->builder = new MassDelete($this->api, static::PREV_PATH, static::PARAMS);
+        $this->builder = new MassDeleteSegment($this->api, static::PREV_PATH, static::PARAMS);
     }
 
     public function testMassDeleteCallsApiClientWithCorrectPayload(): void

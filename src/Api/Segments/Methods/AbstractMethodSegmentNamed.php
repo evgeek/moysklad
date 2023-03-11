@@ -9,7 +9,7 @@ use Evgeek\Moysklad\Api\Traits\Actions\SendTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\MethodCommonTrait;
 
-abstract class AbstractMethodNamed extends AbstractSegmentNamed
+abstract class AbstractMethodSegmentNamed extends AbstractSegmentNamed
 {
     use MethodCommonTrait;
     use ParamTrait;

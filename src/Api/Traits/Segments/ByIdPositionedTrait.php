@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Segments;
 
-use Evgeek\Moysklad\Api\Segments\ById\ByIdPositioned;
+use Evgeek\Moysklad\Api\Segments\ById\ByIdSegmentPositioned;
 
 trait ByIdPositionedTrait
 {
@@ -20,8 +20,8 @@ trait ByIdPositionedTrait
      *  ->get();
      * </code>
      */
-    public function byId(string $guid): ByIdPositioned
+    public function byId(string $guid): ByIdSegmentPositioned
     {
-        return $this->resolveCommonBuilder(ByIdPositioned::class, $guid);
+        return $this->resolveCommonBuilder(ByIdSegmentPositioned::class, $guid);
     }
 }

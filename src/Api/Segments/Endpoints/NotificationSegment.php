@@ -10,7 +10,7 @@ use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\ByIdCommonTrait;
 
-class Notification extends AbstractEndpointNamed
+class NotificationSegment extends AbstractEndpointSegmentNamed
 {
     use ByIdCommonTrait;
     use GetTrait;

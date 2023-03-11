@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Segments;
 
-use Evgeek\Moysklad\Api\Segments\ById\ByIdCommon;
+use Evgeek\Moysklad\Api\Segments\ById\ByIdSegmentCommon;
 
 trait ByIdCommonTrait
 {
@@ -18,8 +18,8 @@ trait ByIdCommonTrait
      *  ->get();
      * </code>
      */
-    public function byId(string $guid): ByIdCommon
+    public function byId(string $guid): ByIdSegmentCommon
     {
-        return $this->resolveCommonBuilder(ByIdCommon::class, $guid);
+        return $this->resolveCommonBuilder(ByIdSegmentCommon::class, $guid);
     }
 }

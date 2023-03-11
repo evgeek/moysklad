@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Segments;
 
-use Evgeek\Moysklad\Api\Segments\Methods\Nested\Attributes;
+use Evgeek\Moysklad\Api\Segments\Methods\Nested\AttributesSegment;
 
 trait AttributesTrait
 {
@@ -19,8 +19,8 @@ trait AttributesTrait
      *  ->get();
      * </code>
      */
-    public function attributes(): Attributes
+    public function attributes(): AttributesSegment
     {
-        return $this->resolveNamedBuilder(Attributes::class);
+        return $this->resolveNamedBuilder(AttributesSegment::class);
     }
 }

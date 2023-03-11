@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Actions;
 
-use Evgeek\Moysklad\Api\Segments\Special\MassDelete;
+use Evgeek\Moysklad\Api\Segments\Special\MassDeleteSegment;
 use Evgeek\Moysklad\Exceptions\RequestException;
 
 trait MassDeleteTrait
@@ -22,6 +22,6 @@ trait MassDeleteTrait
      */
     public function massDelete(mixed $body)
     {
-        return (new MassDelete($this->api, $this->path, $this->params))->massDelete($body);
+        return (new MassDeleteSegment($this->api, $this->path, $this->params))->massDelete($body);
     }
 }

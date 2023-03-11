@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\ApiTestCase;
 class EntityTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\Entity<extended>
+     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment<extended>
      */
     public function testEndpointBuilder(): void
     {
@@ -15,7 +15,7 @@ class EntityTest extends ApiTestCase
     }
 
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\Entity::product
+     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment::product
      */
     public function testProductBuilder(): void
     {
@@ -26,7 +26,7 @@ class EntityTest extends ApiTestCase
     }
 
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\Entity::customerorder
+     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment::customerorder
      */
     public function testCustomerorderBuilder(): void
     {
@@ -37,7 +37,7 @@ class EntityTest extends ApiTestCase
     }
 
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\Entity::assortment
+     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment::assortment
      */
     public function testAssortmentBuilder(): void
     {

@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\ApiTestCase;
 class ReportTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\Report<extended>
+     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\ReportSegment<extended>
      */
     public function testEndpointBuilder(): void
     {

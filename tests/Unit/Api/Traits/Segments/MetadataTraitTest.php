@@ -4,8 +4,8 @@ namespace Evgeek\Tests\Unit\Api\Traits\Segments;
 
 use Evgeek\Moysklad\Api\AbstractBuilder;
 use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
-use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodNamed;
-use Evgeek\Moysklad\Api\Segments\Methods\Nested\Metadata;
+use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodSegmentNamed;
+use Evgeek\Moysklad\Api\Segments\Methods\Nested\MetadataSegment;
 use Evgeek\Moysklad\Api\Traits\Segments\MetadataTrait;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
@@ -18,8 +18,8 @@ class MetadataTraitTest extends TraitTestCase
             use MetadataTrait;
         })->metadata();
 
-        $this->assertInstanceOf(Metadata::class, $builder);
-        $this->assertInstanceOf(AbstractMethodNamed::class, $builder);
+        $this->assertInstanceOf(MetadataSegment::class, $builder);
+        $this->assertInstanceOf(AbstractMethodSegmentNamed::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Segments;
 
-use Evgeek\Moysklad\Api\Segments\Methods\MethodCommon;
+use Evgeek\Moysklad\Api\Segments\Methods\MethodSegmentCommon;
 
 trait MethodCommonTrait
 {
@@ -17,8 +17,8 @@ trait MethodCommonTrait
      *  ->get();
      * </code>
      */
-    public function method(string $entity): MethodCommon
+    public function method(string $entity): MethodSegmentCommon
     {
-        return $this->resolveCommonBuilder(MethodCommon::class, $entity);
+        return $this->resolveCommonBuilder(MethodSegmentCommon::class, $entity);
     }
 }

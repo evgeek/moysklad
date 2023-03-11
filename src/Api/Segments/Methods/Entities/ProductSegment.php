@@ -2,30 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\Api\Segments\Methods;
+namespace Evgeek\Moysklad\Api\Segments\Methods\Entities;
 
-use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
+use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodSegmentNamed;
 use Evgeek\Moysklad\Api\Traits\Actions\CreateTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\GetGeneratorTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\GetTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\MassDeleteTrait;
-use Evgeek\Moysklad\Api\Traits\Actions\SendTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ExpandTrait;
 use Evgeek\Moysklad\Api\Traits\Params\FilterTrait;
 use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Params\OrderTrait;
-use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
-use Evgeek\Moysklad\Api\Traits\Segments\AttributesTrait;
-use Evgeek\Moysklad\Api\Traits\Segments\ByIdPositionedTrait;
+use Evgeek\Moysklad\Api\Traits\Segments\ByIdCommonTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\MetadataTrait;
-use Evgeek\Moysklad\Api\Traits\Segments\MethodCommonTrait;
-use Evgeek\Moysklad\Api\Traits\Segments\PositionsTrait;
 
-class MethodCommon extends AbstractSegmentCommon
+class ProductSegment extends AbstractMethodSegmentNamed
 {
-    use AttributesTrait;
-    use ByIdPositionedTrait;
+    use ByIdCommonTrait;
     use CreateTrait;
     use ExpandTrait;
     use FilterTrait;
@@ -34,10 +28,8 @@ class MethodCommon extends AbstractSegmentCommon
     use LimitOffsetTrait;
     use MassDeleteTrait;
     use MetadataTrait;
-    use MethodCommonTrait;
     use OrderTrait;
-    use ParamTrait;
-    use PositionsTrait;
     use SearchTrait;
-    use SendTrait;
+
+    public const SEGMENT = 'product';
 }

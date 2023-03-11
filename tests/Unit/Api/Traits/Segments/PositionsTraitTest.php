@@ -4,8 +4,8 @@ namespace Evgeek\Tests\Unit\Api\Traits\Segments;
 
 use Evgeek\Moysklad\Api\AbstractBuilder;
 use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
-use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodNamed;
-use Evgeek\Moysklad\Api\Segments\Methods\Nested\Positions;
+use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodSegmentNamed;
+use Evgeek\Moysklad\Api\Segments\Methods\Nested\PositionsSegment;
 use Evgeek\Moysklad\Api\Traits\Segments\PositionsTrait;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
@@ -18,8 +18,8 @@ class PositionsTraitTest extends TraitTestCase
             use PositionsTrait;
         })->positions();
 
-        $this->assertInstanceOf(Positions::class, $builder);
-        $this->assertInstanceOf(AbstractMethodNamed::class, $builder);
+        $this->assertInstanceOf(PositionsSegment::class, $builder);
+        $this->assertInstanceOf(AbstractMethodSegmentNamed::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 }

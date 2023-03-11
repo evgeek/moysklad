@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Api\Segments\AbstractSegmentNamed;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\RequestException;
 
-class MassDelete extends AbstractSegmentNamed
+class MassDeleteSegment extends AbstractSegmentNamed
 {
     protected const SEGMENT = 'delete';
 

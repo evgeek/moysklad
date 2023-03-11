@@ -45,7 +45,7 @@ class DebugTest extends ApiTestCase
 
     /**
      * @covers ::massDelete
-     * @covers \Evgeek\Moysklad\Api\Segments\Special\MassDelete::massDeleteDebug
+     * @covers \Evgeek\Moysklad\Api\Segments\Special\MassDeleteSegment::massDeleteDebug
      */
     public function testMassDeleteReturns(): void
     {

@@ -3,31 +3,31 @@
 namespace Evgeek\Tests\Unit\Api\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\AbstractBuilder;
-use Evgeek\Moysklad\Api\Segments\Endpoints\Entity;
-use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodNamed;
-use Evgeek\Moysklad\Api\Segments\Methods\Documents\Customerorder;
-use Evgeek\Moysklad\Api\Segments\Methods\Entities\Assortment;
-use Evgeek\Moysklad\Api\Segments\Methods\Entities\Product;
+use Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment;
+use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodSegmentNamed;
+use Evgeek\Moysklad\Api\Segments\Methods\Documents\CustomerorderSegment;
+use Evgeek\Moysklad\Api\Segments\Methods\Entities\AssortmentSegment;
+use Evgeek\Moysklad\Api\Segments\Methods\Entities\ProductSegment;
 use Evgeek\Tests\Unit\Api\ApiTestCase;
 
-/** @covers \Evgeek\Moysklad\Api\Segments\Endpoints\Entity<extended> */
+/** @covers \Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment<extended> */
 class EntityTest extends ApiTestCase
 {
-    private Entity $builder;
+    private EntitySegment $builder;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->builder = new Entity($this->api, [], []);
+        $this->builder = new EntitySegment($this->api, [], []);
     }
 
     public function testProductReturnsCorrectClass(): void
     {
         $builder = $this->builder->product();
 
-        $this->assertInstanceOf(Product::class, $builder);
-        $this->assertInstanceOf(AbstractMethodNamed::class, $builder);
+        $this->assertInstanceOf(ProductSegment::class, $builder);
+        $this->assertInstanceOf(AbstractMethodSegmentNamed::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 
@@ -35,8 +35,8 @@ class EntityTest extends ApiTestCase
     {
         $builder = $this->builder->customerorder();
 
-        $this->assertInstanceOf(Customerorder::class, $builder);
-        $this->assertInstanceOf(AbstractMethodNamed::class, $builder);
+        $this->assertInstanceOf(CustomerorderSegment::class, $builder);
+        $this->assertInstanceOf(AbstractMethodSegmentNamed::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 
@@ -44,8 +44,8 @@ class EntityTest extends ApiTestCase
     {
         $builder = $this->builder->assortment();
 
-        $this->assertInstanceOf(Assortment::class, $builder);
-        $this->assertInstanceOf(AbstractMethodNamed::class, $builder);
+        $this->assertInstanceOf(AssortmentSegment::class, $builder);
+        $this->assertInstanceOf(AbstractMethodSegmentNamed::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 }

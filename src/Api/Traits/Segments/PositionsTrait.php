@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Segments;
 
-use Evgeek\Moysklad\Api\Segments\Methods\Nested\Positions;
+use Evgeek\Moysklad\Api\Segments\Methods\Nested\PositionsSegment;
 
 trait PositionsTrait
 {
@@ -19,8 +19,8 @@ trait PositionsTrait
      *  ->get();
      * </code>
      */
-    public function positions(): Positions
+    public function positions(): PositionsSegment
     {
-        return $this->resolveNamedBuilder(Positions::class);
+        return $this->resolveNamedBuilder(PositionsSegment::class);
     }
 }

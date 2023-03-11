@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api;
 
-use Evgeek\Moysklad\Api\Segments\Endpoints\Audit;
-use Evgeek\Moysklad\Api\Segments\Endpoints\EndpointCommon;
-use Evgeek\Moysklad\Api\Segments\Endpoints\Entity;
-use Evgeek\Moysklad\Api\Segments\Endpoints\Notification;
-use Evgeek\Moysklad\Api\Segments\Endpoints\Report;
+use Evgeek\Moysklad\Api\Segments\Endpoints\AuditSegment;
+use Evgeek\Moysklad\Api\Segments\Endpoints\EndpointSegmentCommon;
+use Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment;
+use Evgeek\Moysklad\Api\Segments\Endpoints\NotificationSegment;
+use Evgeek\Moysklad\Api\Segments\Endpoints\ReportSegment;
 use Evgeek\Moysklad\Http\ApiClient;
 
 class Query extends AbstractBuilder
@@ -27,9 +27,9 @@ class Query extends AbstractBuilder
      *  ->get();
      * </code>
      */
-    public function endpoint(string $endpoint): EndpointCommon
+    public function endpoint(string $endpoint): EndpointSegmentCommon
     {
-        return $this->resolveCommonBuilder(EndpointCommon::class, $endpoint);
+        return $this->resolveCommonBuilder(EndpointSegmentCommon::class, $endpoint);
     }
 
     /**
@@ -44,9 +44,9 @@ class Query extends AbstractBuilder
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/
      */
-    public function entity(): Entity
+    public function entity(): EntitySegment
     {
-        return $this->resolveNamedBuilder(Entity::class);
+        return $this->resolveNamedBuilder(EntitySegment::class);
     }
 
     /**
@@ -54,9 +54,9 @@ class Query extends AbstractBuilder
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/reports/#otchety
      */
-    public function report(): Report
+    public function report(): ReportSegment
     {
-        return $this->resolveNamedBuilder(Report::class);
+        return $this->resolveNamedBuilder(ReportSegment::class);
     }
 
     /**
@@ -64,9 +64,9 @@ class Query extends AbstractBuilder
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/other/#audit
      */
-    public function audit(): Audit
+    public function audit(): AuditSegment
     {
-        return $this->resolveNamedBuilder(Audit::class);
+        return $this->resolveNamedBuilder(AuditSegment::class);
     }
 
     /**
@@ -74,9 +74,9 @@ class Query extends AbstractBuilder
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/other/#uwedomleniq
      */
-    public function notification(): Notification
+    public function notification(): NotificationSegment
     {
-        return $this->resolveNamedBuilder(Notification::class);
+        return $this->resolveNamedBuilder(NotificationSegment::class);
     }
 
     protected function makeCurrentPath(): array

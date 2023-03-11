@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\ApiTestCase;
 class CustomerorderTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\Methods\Documents\Customerorder<extended>
+     * @covers \Evgeek\Moysklad\Api\Segments\Methods\Documents\CustomerorderSegment<extended>
      */
     public function testBuilder(): void
     {

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Segments\Endpoints;
 
-use Evgeek\Moysklad\Api\Segments\Methods\Documents\Customerorder;
-use Evgeek\Moysklad\Api\Segments\Methods\Entities\Assortment;
-use Evgeek\Moysklad\Api\Segments\Methods\Entities\Product;
+use Evgeek\Moysklad\Api\Segments\Methods\Documents\CustomerorderSegment;
+use Evgeek\Moysklad\Api\Segments\Methods\Entities\AssortmentSegment;
+use Evgeek\Moysklad\Api\Segments\Methods\Entities\ProductSegment;
 
-class Entity extends AbstractEndpointNamed
+class EntitySegment extends AbstractEndpointSegmentNamed
 {
     protected const SEGMENT = 'entity';
 
@@ -23,9 +23,9 @@ class Entity extends AbstractEndpointNamed
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
      */
-    public function product(): Product
+    public function product(): ProductSegment
     {
-        return $this->resolveNamedBuilder(Product::class);
+        return $this->resolveNamedBuilder(ProductSegment::class);
     }
 
     /**
@@ -39,9 +39,9 @@ class Entity extends AbstractEndpointNamed
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
      */
-    public function customerorder(): Customerorder
+    public function customerorder(): CustomerorderSegment
     {
-        return $this->resolveNamedBuilder(Customerorder::class);
+        return $this->resolveNamedBuilder(CustomerorderSegment::class);
     }
 
     /**
@@ -55,8 +55,8 @@ class Entity extends AbstractEndpointNamed
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-assortiment
      */
-    public function assortment(): Assortment
+    public function assortment(): AssortmentSegment
     {
-        return $this->resolveNamedBuilder(Assortment::class);
+        return $this->resolveNamedBuilder(AssortmentSegment::class);
     }
 }
