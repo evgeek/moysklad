@@ -90,7 +90,7 @@ class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInt
             return $content;
         }
 
-        $class = $this->isContentCollection($content) ?
+        $class = $this->isCollection($content) ?
             ($this->mapping->getCollection($type) ?? UnknownCollection::class) :
             ($this->mapping->getObject($type) ?? UnknownObject::class);
 
@@ -101,7 +101,7 @@ class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInt
             new $class($this->ms, $path, $type, $content);
     }
 
-    protected function isContentCollection(array $content): bool
+    protected function isCollection(array $content): bool
     {
         return array_key_exists('rows', $content)
             || isset($content['meta']['limit'])
