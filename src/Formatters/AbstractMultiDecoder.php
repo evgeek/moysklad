@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
+use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
 use InvalidArgumentException;
+use stdClass;
 use Throwable;
 
 /**
@@ -26,6 +28,14 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
             return $content;
         }
 
+        if (
+            is_array($content)
+            || is_subclass_of($content, stdClass::class)
+            || is_subclass_of($content, AbstractApiObject::class)
+        ) {
+            $content = static::toArray($content);
+        }
+
         try {
             $decodedContent = json_encode($content, JSON_THROW_ON_ERROR);
         } catch (Throwable) {
@@ -37,6 +47,32 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
         $this->validateStringIsJsonObject($decodedContent);
 
         return $decodedContent;
+    }
+
+    public static function toArray(array|stdClass|AbstractApiObject $content)
+    {
+        if (is_a($content, AbstractApiObject::class)) {
+            return $content->toArray();
+        }
+
+        $array = [];
+        foreach ($content as $key => $value) {
+            if (is_array($value) || is_subclass_of($value, stdClass::class)) {
+                $array[$key] = self::toArray($value);
+
+                continue;
+            }
+
+            if (is_subclass_of($value, AbstractApiObject::class)) {
+                $array[$key] = $value->toArray();
+
+                continue;
+            }
+
+            $array[$key] = $value;
+        }
+
+        return $array;
     }
 
     protected function validateStringIsJsonObject(string $content): void

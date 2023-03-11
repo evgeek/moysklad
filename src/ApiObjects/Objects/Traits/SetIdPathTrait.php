@@ -6,26 +6,32 @@ namespace Evgeek\Moysklad\ApiObjects\Objects\Traits;
 
 use Evgeek\Moysklad\Services\Url;
 use Evgeek\Moysklad\Tools\Guid;
+use InvalidArgumentException;
 
 trait SetIdPathTrait
 {
     public function __set(string $name, mixed $value)
     {
         if ($name === 'id') {
-            $this->setIdToPathAndMetaHref($value);
+            if (!Guid::isGuid($value)) {
+                throw new InvalidArgumentException('id must be a guid');
+            }
+            $this->setIdToMetaHref($value);
         }
 
-        $this->{$name} = $value;
+        parent::__set($name, $value);
     }
 
-    protected function hydrate(mixed $content): void
+    public function __unset(string $name)
     {
-        parent::hydrate($content);
+        if ($name === 'id') {
+            $this->setIdToMetaHref(null);
+        }
 
-        $this->setIdToPathAndMetaHref($this->id ?? null);
+        parent::__unset($name);
     }
 
-    protected function setIdToPathAndMetaHref(?string $id): void
+    protected function setIdToMetaHref(?string $id): void
     {
         $href = $this->meta->href ?? null;
         if (!$href) {
@@ -34,13 +40,20 @@ trait SetIdPathTrait
 
         [$path, $params] = Url::parsePathAndParams($href);
         $lastSegment = $path[count($path) - 1];
-        $idHref = Guid::extractFirst($lastSegment) === null ? null : $lastSegment;
+        $prevId = Guid::isGuid($lastSegment) ? $lastSegment : null;
 
-        $id = $id ?? $idHref;
-        $lastSegment = $path[count($path) - 1];
-        if ($lastSegment !== $id) {
-            $path[] = $id;
-            $this->meta->href = Url::makeFromPathAndParams($path, $params);
+        if ($id === $prevId) {
+            return;
         }
+
+        if ($prevId === null) {
+            $path[] = $id;
+        } elseif ($id === null) {
+            unset($path[count($path) - 1]);
+        } else {
+            $path[count($path) - 1] = $id;
+        }
+
+        $this->contentContainer['meta']->href = Url::makeFromPathAndParams($path, $params);
     }
 }

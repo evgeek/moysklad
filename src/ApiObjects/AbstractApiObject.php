@@ -4,27 +4,50 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects;
 
+use Evgeek\Moysklad\Formatters\AbstractMultiDecoder;
 use Evgeek\Moysklad\Formatters\ApiObjectFormatter;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\MoySklad;
 use stdClass;
 
-abstract class AbstractApiObject extends stdClass
+abstract class AbstractApiObject
 {
+    protected array $contentContainer = [];
+
     public function __construct(protected readonly MoySklad $ms, mixed $content = [])
     {
         $this->hydrate($content);
     }
 
+    public function __get(string $name)
+    {
+        return $this->contentContainer[$name] ?? null;
+    }
+
+    public function __set(string $name, mixed $value)
+    {
+        $this->contentContainer[$name] = $value;
+    }
+
+    public function __isset(string $name)
+    {
+        return array_key_exists($name, $this->contentContainer);
+    }
+
+    public function __unset(string $name)
+    {
+        unset($this->contentContainer[$name]);
+    }
+
     public function toString(): string
     {
-        return $this->ms->getApiClient()->getFormatter()->decode($this);
+        return (new ArrayFormat())->decode($this->toArray());
     }
 
     public function toArray(): array
     {
-        return (new ArrayFormat())->encode($this->toString());
+        return AbstractMultiDecoder::toArray($this->contentContainer);
     }
 
     /**

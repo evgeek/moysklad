@@ -37,4 +37,12 @@ class Guid
 
         return $last ?: null;
     }
+
+    /**
+     * Determine if a string is a valid guid
+     */
+    public static function isGuid(string $guid): bool
+    {
+        return $guid === static::extractFirst($guid);
+    }
 }

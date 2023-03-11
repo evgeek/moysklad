@@ -29,8 +29,14 @@ abstract class AbstractUnknownApiObject extends AbstractApiObject
         if (is_subclass_of($meta, AbstractMeta::class)) {
             return;
         }
+
+        $id = $this->__get('id');
+        if ($id !== null && $path[count($path) - 1] !== $id) {
+            $path[] = $id;
+        }
+
         $meta = $meta ?? $this->ms->meta()->create($path, $this->type);
 
-        $this->meta = $this->convertMetaToObject($meta);
+        $this->__set('meta', $this->convertMetaToObject($meta));
     }
 }
