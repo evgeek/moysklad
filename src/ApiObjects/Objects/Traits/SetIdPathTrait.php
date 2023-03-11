@@ -7,7 +7,7 @@ namespace Evgeek\Moysklad\ApiObjects\Objects\Traits;
 use Evgeek\Moysklad\Services\Url;
 use Evgeek\Moysklad\Tools\Guid;
 
-trait SetPathTrait
+trait SetIdPathTrait
 {
     public function __set(string $name, mixed $value)
     {

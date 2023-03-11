@@ -6,7 +6,7 @@ namespace Evgeek\Moysklad\ApiObjects\Objects;
 
 use Evgeek\Moysklad\ApiObjects\AbstractConcreteApiObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Traits\SetMetaTrait;
-use Evgeek\Moysklad\ApiObjects\Objects\Traits\SetPathTrait;
+use Evgeek\Moysklad\ApiObjects\Objects\Traits\SetIdPathTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Http\Payload;
@@ -16,7 +16,7 @@ use InvalidArgumentException;
 abstract class AbstractConcreteObject extends AbstractConcreteApiObject
 {
     use SetMetaTrait;
-    use SetPathTrait;
+    use SetIdPathTrait;
 
     /**
      * @throws RequestException
