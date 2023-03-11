@@ -27,26 +27,20 @@ trait SetIdPathTrait
 
     protected function setIdToPathAndMetaHref(?string $id): void
     {
-        $params = [];
-        $idHref = null;
         $href = $this->meta->href ?? null;
-        if ($href) {
-            [$path, $params] = Url::parsePathAndParams($href);
-            $lastSegment = $path[count($path) - 1];
-            $idHref = Guid::extractFirst($lastSegment) === null ? null : $lastSegment;
-        }
-
-        if (!$id && !$idHref) {
+        if (!$href) {
             return;
         }
 
+        [$path, $params] = Url::parsePathAndParams($href);
+        $lastSegment = $path[count($path) - 1];
+        $idHref = Guid::extractFirst($lastSegment) === null ? null : $lastSegment;
+
         $id = $id ?? $idHref;
-        $lastSegment = $this->path[count($this->path) - 1];
+        $lastSegment = $path[count($path) - 1];
         if ($lastSegment !== $id) {
-            $this->path[] = $id;
-        }
-        if ($id !== $idHref && isset($this->meta)) {
-            $this->meta->href = Url::makeFromPathAndParams($this->path, $params);
+            $path[] = $id;
+            $this->meta->href = Url::makeFromPathAndParams($path, $params);
         }
     }
 }
