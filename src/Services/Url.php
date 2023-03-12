@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Services;
 
 use Evgeek\Moysklad\Http\Payload;
+use Evgeek\Moysklad\Tools\Guid;
 use InvalidArgumentException;
 
 final class Url
@@ -48,6 +49,14 @@ final class Url
         $path = explode('/', $pathString);
 
         return [$path, $params];
+    }
+
+    public static function getId(string $url)
+    {
+        [$path, $params] = self::parsePathAndParams($url);
+        $lastSegment = $path[count($path) - 1];
+
+        return Guid::isGuid($lastSegment) ? $lastSegment : null;
     }
 
     /**

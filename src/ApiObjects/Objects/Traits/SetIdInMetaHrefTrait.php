@@ -39,8 +39,7 @@ trait SetIdInMetaHrefTrait
         }
 
         [$path, $params] = Url::parsePathAndParams($href);
-        $lastSegment = $path[count($path) - 1];
-        $prevId = Guid::isGuid($lastSegment) ? $lastSegment : null;
+        $prevId = Url::getId($href);
 
         if ($id === $prevId) {
             return;
