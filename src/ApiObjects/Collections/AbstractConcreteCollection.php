@@ -27,7 +27,7 @@ abstract class AbstractConcreteCollection extends AbstractConcreteApiObject
     /**
      * @throws RequestException
      */
-    public function create(array $objects): static
+    public function massCreateUpdate(array $objects): static
     {
         $meta = $this->meta ?? null;
         $context = $this->context ?? null;
