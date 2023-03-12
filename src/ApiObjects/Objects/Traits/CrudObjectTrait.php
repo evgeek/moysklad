@@ -79,12 +79,7 @@ trait CrudObjectTrait
 
     protected function makePayload(HttpMethod $method): Payload
     {
-        $href = $this->meta->href ?? null;
-        if (!$href) {
-            throw new InvalidArgumentException('Cannot find meta href');
-        }
-
-        [$path, $params] = Url::parsePathAndParams($href);
+        [$path, $params] = Url::parsePathAndParams($this->meta->href);
 
         return new Payload(
             method: $method,

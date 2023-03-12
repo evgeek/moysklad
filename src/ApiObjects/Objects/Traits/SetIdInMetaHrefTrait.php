@@ -20,6 +20,15 @@ trait SetIdInMetaHrefTrait
         return parent::__get($name);
     }
 
+    public function __isset(string $name)
+    {
+        if ($name === 'meta') {
+            return true;
+        }
+
+        return parent::__isset($name);
+    }
+
     public function __set(string $name, mixed $value)
     {
         if ($name === 'id') {
