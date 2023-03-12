@@ -67,7 +67,7 @@ trait CrudObjectTrait
     /**
      * @throws RequestException
      */
-    protected function send(HttpMethod|string $method): static
+    protected function send(HttpMethod $method): static
     {
         $payload = $this->makePayload(HttpMethod::makeFrom($method));
 
