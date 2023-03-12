@@ -26,7 +26,6 @@ abstract class AbstractConcreteObject extends AbstractConcreteApiObject
         $payload = $this->makePayload(HttpMethod::makeFrom($method));
 
         $response = $this->ms->getApiClient()->send($payload);
-        $this->contentContainer = [];
         $this->hydrate($response);
 
         return $this;

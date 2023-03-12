@@ -19,7 +19,7 @@ trait SetIdPathTrait
             $this->setIdToMetaHref($value);
         }
 
-        parent::__set($name, $value);
+        $this->{$name} = $value;
     }
 
     public function __unset(string $name)
@@ -28,7 +28,7 @@ trait SetIdPathTrait
             $this->setIdToMetaHref(null);
         }
 
-        parent::__unset($name);
+        unset($this->{$name});
     }
 
     protected function setIdToMetaHref(?string $id): void
@@ -54,6 +54,6 @@ trait SetIdPathTrait
             $path[count($path) - 1] = $id;
         }
 
-        $this->contentContainer['meta']->href = Url::makeFromPathAndParams($path, $params);
+        $this->meta->href = Url::makeFromPathAndParams($path, $params);
     }
 }

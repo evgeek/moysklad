@@ -11,7 +11,7 @@ use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\MoySklad;
 use stdClass;
 
-abstract class AbstractApiObject
+abstract class AbstractApiObject extends stdClass
 {
     protected array $contentContainer = [];
 
@@ -60,6 +60,8 @@ abstract class AbstractApiObject
 
     protected function hydrate(mixed $content): void
     {
+        $this->contentContainer = [];
+
         $formatter = $this->ms->getApiClient()->getFormatter();
         $apiObjectFormatter = is_a($formatter, ApiObjectFormatter::class) ?
             $formatter :

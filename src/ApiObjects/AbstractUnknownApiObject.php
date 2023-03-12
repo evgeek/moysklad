@@ -30,13 +30,13 @@ abstract class AbstractUnknownApiObject extends AbstractApiObject
             return;
         }
 
-        $id = $this->__get('id');
+        $id = $this->id;
         if ($id !== null && $path[count($path) - 1] !== $id) {
             $path[] = $id;
         }
 
         $meta = $meta ?? $this->ms->meta()->create($path, $this->type);
 
-        $this->__set('meta', $this->convertMetaToObject($meta));
+        $this->meta = $this->convertMetaToObject($meta);
     }
 }
