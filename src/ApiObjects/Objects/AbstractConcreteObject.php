@@ -31,6 +31,14 @@ abstract class AbstractConcreteObject extends AbstractConcreteApiObject
         return $this;
     }
 
+    /**
+     * @throws RequestException
+     */
+    public function get(): static
+    {
+        return $this->send(HttpMethod::GET);
+    }
+
     protected function makePayload(HttpMethod $method): Payload
     {
         $href = $this->meta->href ?? null;

@@ -19,7 +19,7 @@ trait SetIdInMetaHrefTrait
             $this->setIdToMetaHref($value);
         }
 
-        $this->{$name} = $value;
+        parent::__set($name, $value);
     }
 
     public function __unset(string $name)
@@ -28,7 +28,7 @@ trait SetIdInMetaHrefTrait
             $this->setIdToMetaHref(null);
         }
 
-        unset($this->{$name});
+        parent::__unset($name);
     }
 
     protected function setIdToMetaHref(?string $id): void
