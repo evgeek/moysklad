@@ -65,7 +65,7 @@ class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInt
     protected function encodeArray(array $content): array|AbstractApiObject
     {
         $object = $this->tryConvertToApiObject($content);
-        if (is_subclass_of($object, AbstractApiObject::class)) {
+        if (is_a($object, AbstractApiObject::class)) {
             return $object;
         }
 
@@ -96,7 +96,7 @@ class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInt
 
         [$path, $params] = Url::parsePathAndParams($href);
 
-        return is_subclass_of($class, AbstractConcreteApiObject::class) ?
+        return is_a($class, AbstractConcreteApiObject::class, true) ?
             new $class($this->ms, $content) :
             new $class($this->ms, $path, $type, $content);
     }
@@ -113,7 +113,7 @@ class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInt
 
     protected function convertToStdClass(array|AbstractApiObject $content): AbstractApiObject|stdClass|array
     {
-        if (is_subclass_of($content, AbstractApiObject::class)) {
+        if (is_a($content, AbstractApiObject::class)) {
             return $content;
         }
 

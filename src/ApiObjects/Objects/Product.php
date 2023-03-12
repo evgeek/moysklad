@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\ApiObjects\Objects;
 use Evgeek\Moysklad\ApiObjects\Meta\MetaObject;
 
 /**
+ * @property string      $id
  * @property string      $name
  * @property ?MetaObject $meta
  */

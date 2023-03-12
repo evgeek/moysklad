@@ -26,7 +26,7 @@ abstract class AbstractUnknownApiObject extends AbstractApiObject
     protected function fillMeta(array $path): void
     {
         $meta = $this->meta ?? null;
-        if (is_subclass_of($meta, AbstractMeta::class)) {
+        if (is_a($meta, AbstractMeta::class)) {
             return;
         }
 

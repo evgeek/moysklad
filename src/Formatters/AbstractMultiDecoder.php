@@ -28,11 +28,7 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
             return $content;
         }
 
-        if (
-            is_array($content)
-            || is_subclass_of($content, stdClass::class)
-            || is_subclass_of($content, AbstractApiObject::class)
-        ) {
+        if (is_array($content) || is_a($content, stdClass::class)) {
             $content = static::toArray($content);
         }
 
@@ -57,14 +53,8 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
 
         $array = [];
         foreach ($content as $key => $value) {
-            if (is_array($value) || is_subclass_of($value, stdClass::class)) {
+            if (is_array($value) || is_a($value, stdClass::class)) {
                 $array[$key] = self::toArray($value);
-
-                continue;
-            }
-
-            if (is_subclass_of($value, AbstractApiObject::class)) {
-                $array[$key] = $value->toArray();
 
                 continue;
             }

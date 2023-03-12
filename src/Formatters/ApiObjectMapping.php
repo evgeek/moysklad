@@ -90,7 +90,7 @@ class ApiObjectMapping
 
     protected function validateClassIs(string $class, string $expectedClass): void
     {
-        if (!is_subclass_of($class, $expectedClass)) {
+        if (!is_a($class, $expectedClass, true)) {
             throw new InvalidArgumentException("$class is not a $expectedClass");
         }
     }
