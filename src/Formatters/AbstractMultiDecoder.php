@@ -53,13 +53,9 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
 
         $array = [];
         foreach ($content as $key => $value) {
-            if (is_array($value) || is_a($value, stdClass::class)) {
-                $array[$key] = self::toArray($value);
-
-                continue;
-            }
-
-            $array[$key] = $value;
+            $array[$key] = is_array($value) || is_a($value, stdClass::class) ?
+                self::toArray($value) :
+                $value;
         }
 
         return $array;
