@@ -29,22 +29,15 @@ abstract class AbstractConcreteCollection extends AbstractConcreteApiObject
      */
     public function massCreateUpdate(array $objects): static
     {
-        $meta = $this->meta ?? null;
-        $context = $this->context ?? null;
-        $payload = $this->makePayload(HttpMethod::POST, $objects);
+        return $this->sendAndWrapResponse(HttpMethod::POST, $objects);
+    }
 
-        $response = [];
-        if ($meta) {
-            $response['meta'] = $meta;
-        }
-        if ($context) {
-            $response['context'] = $context;
-        }
-        $response['rows'] = $this->ms->getApiClient()->send($payload);
-
-        $this->hydrate($response);
-
-        return $this;
+    /**
+     * @throws RequestException
+     */
+    public function massDelete(array $objects): static
+    {
+        return $this->sendAndWrapResponse(HttpMethod::POST, $objects, 'delete');
     }
 
     /**
@@ -60,7 +53,30 @@ abstract class AbstractConcreteCollection extends AbstractConcreteApiObject
         return $this;
     }
 
-    protected function makePayload(HttpMethod $method, mixed $body): Payload
+    /**
+     * @throws RequestException
+     */
+    protected function sendAndWrapResponse(HttpMethod $method, mixed $body, ?string $additionalSegment = null): static
+    {
+        $response = [];
+        $meta = $this->meta ?? null;
+        $context = $this->context ?? null;
+        if ($meta) {
+            $response['meta'] = $meta;
+        }
+        if ($context) {
+            $response['context'] = $context;
+        }
+
+        $payload = $this->makePayload($method, $body, $additionalSegment);
+        $response['rows'] = $this->ms->getApiClient()->send($payload);
+
+        $this->hydrate($response);
+
+        return $this;
+    }
+
+    protected function makePayload(HttpMethod $method, mixed $body, ?string $additionalSegment = null): Payload
     {
         $href = $this->meta->href ?? null;
         if (!$href) {
@@ -68,6 +84,7 @@ abstract class AbstractConcreteCollection extends AbstractConcreteApiObject
         }
 
         [$path, $params] = Url::parsePathAndParams($href);
+        $path = $additionalSegment ? [...$path, $additionalSegment] : $path;
 
         return new Payload(
             method: $method,
