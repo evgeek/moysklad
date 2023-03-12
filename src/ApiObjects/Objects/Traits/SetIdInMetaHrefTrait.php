@@ -4,12 +4,22 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Objects\Traits;
 
+use Evgeek\Moysklad\ApiObjects\Meta\MetaObject;
 use Evgeek\Moysklad\Services\Url;
 use Evgeek\Moysklad\Tools\Guid;
 use InvalidArgumentException;
 
 trait SetIdInMetaHrefTrait
 {
+    public function __get(string $name)
+    {
+        if ($name === 'meta') {
+            return $this->hiddenMeta;
+        }
+
+        return parent::__get($name);
+    }
+
     public function __set(string $name, mixed $value)
     {
         if ($name === 'id') {
@@ -17,6 +27,22 @@ trait SetIdInMetaHrefTrait
                 throw new InvalidArgumentException('id must be a guid');
             }
             $this->setIdToMetaHref($value);
+            $this->contentContainer['meta'] = $this->hiddenMeta;
+        } elseif ($name === 'meta') {
+            $this->hiddenMeta = new MetaObject($this->ms, $value);
+
+            if (!($this->hiddenMeta->href ?? null) || !($this->hiddenMeta->type ?? null)) {
+                throw new InvalidArgumentException('Meta must contain href and type');
+            }
+
+            [$path, $params] = Url::parsePathAndParams($this->hiddenMeta->href);
+            if (Url::getId($this->hiddenMeta->href) || in_array('context', $path, true)) {
+                $this->contentContainer['meta'] = $this->hiddenMeta;
+            } else {
+                unset($this->contentContainer['meta']);
+            }
+
+            return;
         }
 
         parent::__set($name, $value);
@@ -26,6 +52,7 @@ trait SetIdInMetaHrefTrait
     {
         if ($name === 'id') {
             $this->setIdToMetaHref(null);
+            unset($this->contentContainer['meta']);
         }
 
         parent::__unset($name);

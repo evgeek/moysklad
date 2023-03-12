@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\ApiObjects\Collections;
 
 use Evgeek\Moysklad\ApiObjects\AbstractConcreteApiObject;
-use Evgeek\Moysklad\ApiObjects\Collections\Traits\SetMetaCollectionTrait;
+use Evgeek\Moysklad\ApiObjects\Collections\Traits\FillMetaCollectionTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Http\Payload;
@@ -14,7 +14,7 @@ use InvalidArgumentException;
 
 abstract class AbstractConcreteCollection extends AbstractConcreteApiObject
 {
-    use SetMetaCollectionTrait;
+    use FillMetaCollectionTrait;
 
     /**
      * @throws RequestException
