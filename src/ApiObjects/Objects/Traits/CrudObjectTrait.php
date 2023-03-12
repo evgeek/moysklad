@@ -69,7 +69,7 @@ trait CrudObjectTrait
      */
     protected function send(HttpMethod $method): static
     {
-        $payload = $this->makePayload(HttpMethod::makeFrom($method));
+        $payload = $this->makePayload($method);
 
         $response = $this->ms->getApiClient()->send($payload);
         $this->hydrate($response);
