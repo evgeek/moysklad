@@ -49,7 +49,7 @@ class MoySklad
         return new Query($this->api);
     }
 
-    public function apiObject(): ApiBuilder
+    public function object(): ApiBuilder
     {
         return new ApiBuilder($this);
     }
