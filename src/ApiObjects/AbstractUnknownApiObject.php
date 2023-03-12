@@ -30,7 +30,7 @@ abstract class AbstractUnknownApiObject extends AbstractApiObject
             return;
         }
 
-        $id = $this->id;
+        $id = $this->id ?? null;
         if ($id !== null && $path[count($path) - 1] !== $id) {
             $path[] = $id;
         }
