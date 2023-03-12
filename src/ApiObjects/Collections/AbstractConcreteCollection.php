@@ -29,7 +29,22 @@ abstract class AbstractConcreteCollection extends AbstractConcreteApiObject
      */
     public function create(array $objects): static
     {
-        return $this->send(HttpMethod::POST, $objects);
+        $meta = $this->meta ?? null;
+        $context = $this->context ?? null;
+        $payload = $this->makePayload(HttpMethod::POST, $objects);
+
+        $response = [];
+        if ($meta) {
+            $response['meta'] = $meta;
+        }
+        if ($context) {
+            $response['context'] = $context;
+        }
+        $response['rows'] = $this->ms->getApiClient()->send($payload);
+
+        $this->hydrate($response);
+
+        return $this;
     }
 
     /**
