@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Services\Url;
 use Evgeek\Moysklad\Tools\Guid;
 use InvalidArgumentException;
 
-trait SetIdPathTrait
+trait SetIdInMetaHrefTrait
 {
     public function __set(string $name, mixed $value)
     {
