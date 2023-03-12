@@ -8,6 +8,7 @@
 
 - Методы `Evgeek\Moysklad\Formatters\JsonFormatterInterface` теперь динамические.
 - Аргументы в методе `Meta::state()` приведены к общей логике.
+- Максимальное количество символов ответа от API в `Evgeek\Moysklad\Http\GuzzleSenderFactory` увеличено до 4000.
 
 ### Deprecated
 

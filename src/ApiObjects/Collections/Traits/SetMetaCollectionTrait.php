@@ -6,7 +6,7 @@ namespace Evgeek\Moysklad\ApiObjects\Collections\Traits;
 
 use Evgeek\Moysklad\ApiObjects\Meta\MetaCollection;
 
-trait SetMetaTrait
+trait SetMetaCollectionTrait
 {
     protected function convertMetaToObject(mixed $meta): MetaCollection
     {

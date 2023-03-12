@@ -16,7 +16,7 @@ use Throwable;
 
 class GuzzleSenderFactory implements RequestSenderFactoryInterface
 {
-    public function __construct(private readonly int $retries = 0, private readonly int $exceptionTruncateAt = 120)
+    public function __construct(private readonly int $retries = 0, private readonly int $exceptionTruncateAt = 4000)
     {
     }
 
