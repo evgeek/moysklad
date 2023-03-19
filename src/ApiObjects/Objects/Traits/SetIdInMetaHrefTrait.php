@@ -84,9 +84,9 @@ trait SetIdInMetaHrefTrait
         if ($prevId === null) {
             $path[] = $id;
         } elseif ($id === null) {
-            unset($path[count($path) - 1]);
+            array_pop($path);
         } else {
-            $path[count($path) - 1] = $id;
+            $path[array_key_last($path)] = $id;
         }
 
         $this->meta->href = Url::makeFromPathAndParams($path, $params);

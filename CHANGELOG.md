@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 
+### Added
+
+- В билдер запросов добавлен метод `fromUrl()`, позволяющий строить запросы из уже имеющегося урла:
+```php
+$orderUrl = 'https://online.moysklad.ru/api/remap/1.2/entity/customerorder/3aba2611-c64f-11ed-0a80-108a00230a9c'; 
+$orderPositions = $ms
+    ->query()
+    ->fromUrl($orderUrl)
+    ->positions()
+    ->get();
+```
+
 ### Changed
 
 - Методы `Evgeek\Moysklad\Formatters\JsonFormatterInterface` теперь динамические.

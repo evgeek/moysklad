@@ -54,7 +54,7 @@ final class Url
     public static function getId(string $url)
     {
         [$path, $params] = self::parsePathAndParams($url);
-        $lastSegment = $path[count($path) - 1];
+        $lastSegment = array_pop($path);
 
         return Guid::isGuid($lastSegment) ? $lastSegment : null;
     }

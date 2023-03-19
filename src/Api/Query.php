@@ -9,13 +9,23 @@ use Evgeek\Moysklad\Api\Segments\Endpoints\EndpointSegmentCommon;
 use Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Segments\Endpoints\NotificationSegment;
 use Evgeek\Moysklad\Api\Segments\Endpoints\ReportSegment;
+use Evgeek\Moysklad\Api\Segments\Methods\MethodSegmentCommon;
 use Evgeek\Moysklad\Http\ApiClient;
+use Evgeek\Moysklad\Services\Url;
 
 class Query extends AbstractBuilder
 {
     public function __construct(ApiClient $api)
     {
         parent::__construct($api, [], []);
+    }
+
+    public function fromUrl(string $url): MethodSegmentCommon
+    {
+        [$path, $params] = Url::parsePathAndParams($url);
+        $lastSegment = array_pop($path);
+
+        return new MethodSegmentCommon($this->api, $path, $params, $lastSegment);
     }
 
     /**

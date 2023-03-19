@@ -19,7 +19,7 @@ trait FillMetaObjectTrait
         }
 
         $id = $this->id ?? null;
-        if ($id !== null && $path[count($path) - 1] !== $id) {
+        if ($id !== null && $path[array_key_last($path)] !== $id) {
             $path[] = $id;
         }
 
