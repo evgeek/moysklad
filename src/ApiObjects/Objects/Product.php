@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Objects;
 
-use Evgeek\Moysklad\ApiObjects\Meta\MetaObject;
+use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaObject;
 
 /**
  * @property string      $id

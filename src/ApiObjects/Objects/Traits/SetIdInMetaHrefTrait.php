@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Objects\Traits;
 
-use Evgeek\Moysklad\ApiObjects\Meta\MetaObject;
+use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\Services\Url;
 use Evgeek\Moysklad\Tools\Guid;
 use InvalidArgumentException;
@@ -38,7 +38,8 @@ trait SetIdInMetaHrefTrait
             $this->setIdToMetaHref($value);
             $this->contentContainer['meta'] = $this->hiddenMeta;
         } elseif ($name === 'meta') {
-            $this->hiddenMeta = new MetaObject($this->ms, $value);
+            $formatter = $this->ms->getApiClient()->getFormatter();
+            $this->hiddenMeta = (new StdClassFormat())->encode($formatter->decode($value));
 
             if (!($this->hiddenMeta->href ?? null) || !($this->hiddenMeta->type ?? null)) {
                 throw new InvalidArgumentException('Meta must contain href and type');

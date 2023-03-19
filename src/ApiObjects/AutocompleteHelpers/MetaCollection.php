@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\ApiObjects\Meta;
+namespace Evgeek\Moysklad\ApiObjects\AutocompleteHelpers;
+
+use stdClass;
 
 /**
  * @property string $href
@@ -14,6 +16,6 @@ namespace Evgeek\Moysklad\ApiObjects\Meta;
  * @property string $nextHref
  * @property string $previousHref
  */
-class MetaCollection extends AbstractMeta
+class MetaCollection extends stdClass
 {
 }

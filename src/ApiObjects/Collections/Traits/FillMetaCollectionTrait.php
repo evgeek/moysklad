@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Collections\Traits;
 
-use Evgeek\Moysklad\ApiObjects\Meta\AbstractMeta;
-use Evgeek\Moysklad\ApiObjects\Meta\MetaCollection;
+use Evgeek\Moysklad\Formatters\StdClassFormat;
 
 trait FillMetaCollectionTrait
 {
     protected function fillMeta(array $path): void
     {
-        $meta = $this->meta ?? null;
-        if (is_a($meta, AbstractMeta::class)) {
+        if ($this->meta) {
             return;
         }
 
-        $meta = $meta ?? $this->ms->meta()->create($path, $this->type);
+        $meta = $this->ms->meta()->create($path, $this->type);
+        $formatter = $this->ms->getApiClient()->getFormatter();
 
-        $this->meta = new MetaCollection($this->ms, $meta);
+        $this->meta = (new StdClassFormat())->encode($formatter->decode($meta));
     }
 }

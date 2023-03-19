@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Objects\Traits;
 
-use Evgeek\Moysklad\ApiObjects\Meta\AbstractMeta;
-use Evgeek\Moysklad\ApiObjects\Meta\MetaObject;
+use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaObject;
+use Evgeek\Moysklad\Formatters\StdClassFormat;
+use stdClass;
 
 trait FillMetaObjectTrait
 {
-    protected ?MetaObject $hiddenMeta = null;
+    /** @var MetaObject|null */
+    protected ?stdClass $hiddenMeta = null;
 
     protected function fillMeta(array $path): void
     {
         $meta = $this->meta ?? null;
-        if (is_a($meta, AbstractMeta::class)) {
-            return;
-        }
 
         $id = $this->id ?? null;
         if ($id !== null && $path[array_key_last($path)] !== $id) {
@@ -24,6 +23,8 @@ trait FillMetaObjectTrait
         }
 
         $meta = $meta ?? $this->ms->meta()->create($path, $this->type);
-        $this->meta = new MetaObject($this->ms, $meta);
+        $formatter = $this->ms->getApiClient()->getFormatter();
+
+        $this->meta = (new StdClassFormat())->encode($formatter->decode($meta));
     }
 }
