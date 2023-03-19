@@ -7,9 +7,9 @@ namespace Evgeek\Moysklad\ApiObjects\AutocompleteHelpers;
 use stdClass;
 
 /**
- * @property string $href
- * @property string $type
- * @property string $mediaType
+ * @property string  $href
+ * @property string  $type
+ * @property string  $mediaType
  * @property ?int    $size
  * @property ?int    $limit
  * @property ?int    $offset

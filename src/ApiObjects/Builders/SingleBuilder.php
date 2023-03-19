@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Builders;
 
+use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Product;
 
 class SingleBuilder extends AbstractBuilder
 {
-    public function product(mixed $content = []): Product
+    /**
+     * @return Product
+     */
+    public function product(mixed $content = []): AbstractConcreteObject
     {
-        return new Product($this->ms, $content);
+        return $this->resolveObject(Product::TYPE, $content);
     }
 }

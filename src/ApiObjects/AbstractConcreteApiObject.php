@@ -8,8 +8,8 @@ use Evgeek\Moysklad\MoySklad;
 
 abstract class AbstractConcreteApiObject extends AbstractUnknownApiObject
 {
-    protected const PATH = [];
-    protected const TYPE = '';
+    public const PATH = [];
+    public const TYPE = '';
 
     public function __construct(MoySklad $ms, mixed $content = [])
     {

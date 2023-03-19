@@ -15,9 +15,9 @@ use stdClass;
  */
 class EmployeeCollection extends AbstractConcreteCollection
 {
-    protected const PATH = [
+    public const PATH = [
         'entity',
         'employee',
     ];
-    protected const TYPE = 'employee';
+    public const TYPE = 'employee';
 }

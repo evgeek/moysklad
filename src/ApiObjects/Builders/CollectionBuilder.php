@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Builders;
 
+use Evgeek\Moysklad\ApiObjects\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
 
 class CollectionBuilder extends AbstractBuilder
 {
-    public function product(mixed $content = []): ProductCollection
+    /**
+     * @return ProductCollection
+     */
+    public function product(mixed $content = []): AbstractConcreteCollection
     {
-        return new ProductCollection($this->ms, $content);
+        return $this->resolveCollection(ProductCollection::TYPE, $content);
     }
 }

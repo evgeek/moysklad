@@ -7,9 +7,11 @@ namespace Evgeek\Moysklad\Formatters;
 use Evgeek\Moysklad\ApiObjects\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\Product;
+use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use InvalidArgumentException;
 
 class ApiObjectMapping
@@ -53,19 +55,19 @@ class ApiObjectMapping
     }
 
     /**
-     * @return null|class-string<AbstractConcreteObject>
+     * @return class-string<AbstractConcreteObject>
      */
-    public function getObject(string $type): ?string
+    public function getObject(string $type): string
     {
-        return $this->get($this->objects, AbstractConcreteObject::class, $type);
+        return $this->get($this->objects, AbstractConcreteObject::class, $type) ?? UnknownObject::class;
     }
 
     /**
-     * @return null|class-string<AbstractConcreteCollection>
+     * @return class-string<AbstractConcreteCollection>
      */
-    public function getCollection(string $type): ?string
+    public function getCollection(string $type): string
     {
-        return $this->get($this->collections, AbstractConcreteCollection::class, $type);
+        return $this->get($this->collections, AbstractConcreteCollection::class, $type) ?? UnknownCollection::class;
     }
 
     protected function set(array &$property, string $expectedClass, array|string $type, ?string $class): void

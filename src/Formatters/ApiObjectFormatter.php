@@ -6,8 +6,6 @@ namespace Evgeek\Moysklad\Formatters;
 
 use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
 use Evgeek\Moysklad\ApiObjects\AbstractConcreteApiObject;
-use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
-use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\Url;
 use stdClass;
@@ -31,6 +29,11 @@ class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInt
         $this->ms = $ms;
 
         return $this;
+    }
+
+    public function getMapping(): ApiObjectMapping
+    {
+        return $this->mapping;
     }
 
     /**
@@ -91,8 +94,8 @@ class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInt
         }
 
         $class = $this->isCollection($content) ?
-            ($this->mapping->getCollection($type) ?? UnknownCollection::class) :
-            ($this->mapping->getObject($type) ?? UnknownObject::class);
+            $this->mapping->getCollection($type) :
+            $this->mapping->getObject($type);
 
         [$path, $params] = Url::parsePathAndParams($href);
 

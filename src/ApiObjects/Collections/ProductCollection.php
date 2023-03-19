@@ -15,9 +15,9 @@ use stdClass;
  */
 class ProductCollection extends AbstractConcreteCollection
 {
-    protected const PATH = [
+    public const PATH = [
         'entity',
         'product',
     ];
-    protected const TYPE = 'product';
+    public const TYPE = 'product';
 }

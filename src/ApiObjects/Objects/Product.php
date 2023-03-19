@@ -13,9 +13,9 @@ use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaObject;
  */
 class Product extends AbstractConcreteObject
 {
-    protected const PATH = [
+    public const PATH = [
         'entity',
         'product',
     ];
-    protected const TYPE = 'product';
+    public const TYPE = 'product';
 }
