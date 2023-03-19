@@ -39,6 +39,38 @@ trait CrudCollectionTrait
     /**
      * @throws RequestException
      */
+    public function getNext(): ?static
+    {
+        $nextHref = $this->meta->nextHref ?? null;
+
+        if (!$nextHref) {
+            return null;
+        }
+
+        $this->meta->href = $nextHref;
+
+        return $this->send(HttpMethod::GET);
+    }
+
+    /**
+     * @throws RequestException
+     */
+    public function getPrevious(): ?static
+    {
+        $previousHref = $this->meta->previousHref ?? null;
+
+        if (!$previousHref) {
+            return null;
+        }
+
+        $this->meta->href = $previousHref;
+
+        return $this->send(HttpMethod::GET);
+    }
+
+    /**
+     * @throws RequestException
+     */
     protected function send(HttpMethod $method, mixed $body = []): static
     {
         $payload = $this->makePayload($method, $body);
