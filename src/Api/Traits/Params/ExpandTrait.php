@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Params;
 
-use Evgeek\Moysklad\Enums\QueryParam;
-use InvalidArgumentException;
+use Evgeek\Moysklad\Services\QueryParams;
 
 trait ExpandTrait
 {
@@ -26,23 +25,7 @@ trait ExpandTrait
      */
     public function expand(array|string $field): static
     {
-        if (is_array($field)) {
-            return $this->handleArrayOfExpands($field);
-        }
-
-        $this->setQueryParam(QueryParam::EXPAND, $field);
-
-        return $this;
-    }
-
-    private function handleArrayOfExpands(array $expands): static
-    {
-        foreach ($expands as $expand) {
-            if (!is_string($expand)) {
-                throw new InvalidArgumentException('Each expand must be a string');
-            }
-            $this->expand($expand);
-        }
+        $this->params = QueryParams::setExpand($this->params, $field);
 
         return $this;
     }

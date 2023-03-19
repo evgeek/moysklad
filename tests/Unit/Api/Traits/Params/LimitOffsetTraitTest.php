@@ -9,10 +9,7 @@ use Evgeek\Moysklad\Api\Traits\Segments\MethodCommonTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
-/**
- * @covers \Evgeek\Moysklad\Api\AbstractBuilder::setQueryParam
- * @covers \Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait
- */
+/** @covers \Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait */
 class LimitOffsetTraitTest extends TraitTestCase
 {
     public function testSingleLimit(): void

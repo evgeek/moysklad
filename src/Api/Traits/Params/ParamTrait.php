@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Params;
 
-use InvalidArgumentException;
+use Evgeek\Moysklad\Services\QueryParams;
 
 trait ParamTrait
 {
@@ -24,27 +24,7 @@ trait ParamTrait
      */
     public function param(array|string $key, string|int|float|bool $value = null): static
     {
-        if (is_array($key)) {
-            return $this->handleArrayOfParams($key);
-        }
-
-        if ($value === null) {
-            throw new InvalidArgumentException("Value can't be null for the key '$key'");
-        }
-
-        $this->setQueryParam($key, $value);
-
-        return $this;
-    }
-
-    private function handleArrayOfParams(array $params): static
-    {
-        foreach ($params as $param) {
-            if (!is_array($param)) {
-                throw new InvalidArgumentException('Each param must be an array');
-            }
-            $this->param(...$param);
-        }
+        $this->params = QueryParams::setParam($this->params, $key, $value);
 
         return $this;
     }

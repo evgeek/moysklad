@@ -7,9 +7,11 @@ namespace Evgeek\Moysklad\ApiObjects\Collections;
 use Evgeek\Moysklad\ApiObjects\AbstractUnknownApiObject;
 use Evgeek\Moysklad\ApiObjects\Collections\Traits\CrudCollectionTrait;
 use Evgeek\Moysklad\ApiObjects\Collections\Traits\FillMetaCollectionTrait;
+use Evgeek\Moysklad\ApiObjects\Collections\Traits\ParamsCollectionTrait;
 
 class UnknownCollection extends AbstractUnknownApiObject
 {
     use CrudCollectionTrait;
     use FillMetaCollectionTrait;
+    use ParamsCollectionTrait;
 }

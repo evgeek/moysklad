@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Traits\Params;
 
 use Evgeek\Moysklad\Enums\OrderDirection;
-use Evgeek\Moysklad\Enums\QueryParam;
-use InvalidArgumentException;
+use Evgeek\Moysklad\Services\QueryParams;
 
 trait OrderTrait
 {
@@ -28,26 +27,7 @@ trait OrderTrait
      */
     public function order(array|string $field, OrderDirection|string $direction = 'asc'): static
     {
-        if (is_array($field)) {
-            return $this->handleArrayOfOrders($field);
-        }
-
-        $directionString = is_a($direction, OrderDirection::class) ? $direction->value : $direction;
-        $sort = $field . ',' . $directionString;
-
-        $this->setQueryParam(QueryParam::ORDER, $sort);
-
-        return $this;
-    }
-
-    private function handleArrayOfOrders(array $orders): static
-    {
-        foreach ($orders as $order) {
-            if (!is_array($order)) {
-                throw new InvalidArgumentException('Each order must be an array');
-            }
-            $this->order(...$order);
-        }
+        $this->params = QueryParams::setOrder($this->params, $field, $direction);
 
         return $this;
     }

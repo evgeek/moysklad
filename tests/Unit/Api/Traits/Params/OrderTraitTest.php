@@ -11,10 +11,7 @@ use Evgeek\Moysklad\Enums\OrderDirection;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 use InvalidArgumentException;
 
-/**
- * @covers \Evgeek\Moysklad\Api\AbstractBuilder::setQueryParam
- * @covers \Evgeek\Moysklad\Api\Traits\Params\OrderTrait
- */
+/** @covers \Evgeek\Moysklad\Api\Traits\Params\OrderTrait */
 class OrderTraitTest extends TraitTestCase
 {
     public function testSingleStringOrderWithDefaultSortOrder(): void

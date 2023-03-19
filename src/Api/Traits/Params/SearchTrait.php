@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Params;
 
-use Evgeek\Moysklad\Enums\QueryParam;
+use Evgeek\Moysklad\Services\QueryParams;
 
 trait SearchTrait
 {
@@ -22,7 +22,7 @@ trait SearchTrait
      */
     public function search(string $text): static
     {
-        $this->setQueryParam(QueryParam::SEARCH, $text);
+        $this->params = QueryParams::setSearch($this->params, $text);
 
         return $this;
     }

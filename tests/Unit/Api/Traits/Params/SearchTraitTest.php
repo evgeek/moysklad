@@ -9,10 +9,7 @@ use Evgeek\Moysklad\Api\Traits\Segments\MethodCommonTrait;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
-/**
- * @covers \Evgeek\Moysklad\Api\AbstractBuilder::setQueryParam
- * @covers \Evgeek\Moysklad\Api\Traits\Params\SearchTrait
- */
+/** @covers \Evgeek\Moysklad\Api\Traits\Params\SearchTrait */
 class SearchTraitTest extends TraitTestCase
 {
     public function testSingleSearch(): void

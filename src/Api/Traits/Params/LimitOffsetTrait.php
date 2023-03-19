@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Traits\Params;
 
-use Evgeek\Moysklad\Enums\QueryParam;
+use Evgeek\Moysklad\Services\QueryParams;
 
 trait LimitOffsetTrait
 {
@@ -22,7 +22,7 @@ trait LimitOffsetTrait
      */
     public function limit(int $limit): static
     {
-        $this->setQueryParam(QueryParam::LIMIT, $limit);
+        $this->params = QueryParams::setLimit($this->params, $limit);
 
         return $this;
     }
@@ -40,7 +40,7 @@ trait LimitOffsetTrait
      */
     public function offset(int $offset): static
     {
-        $this->setQueryParam(QueryParam::OFFSET, $offset);
+        $this->params = QueryParams::setOffset($this->params, $offset);
 
         return $this;
     }

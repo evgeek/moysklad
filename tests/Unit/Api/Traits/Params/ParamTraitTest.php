@@ -10,10 +10,7 @@ use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 use InvalidArgumentException;
 
-/**
- * @covers \Evgeek\Moysklad\Api\AbstractBuilder::setQueryParam
- * @covers \Evgeek\Moysklad\Api\Traits\Params\ParamTrait
- */
+/** @covers \Evgeek\Moysklad\Api\Traits\Params\ParamTrait */
 class ParamTraitTest extends TraitTestCase
 {
     public function testSingleUnknownParam(): void

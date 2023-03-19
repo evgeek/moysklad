@@ -11,10 +11,7 @@ use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 use InvalidArgumentException;
 
-/**
- * @covers \Evgeek\Moysklad\Api\AbstractBuilder::setQueryParam
- * @covers \Evgeek\Moysklad\Api\Traits\Params\FilterTrait
- */
+/** @covers \Evgeek\Moysklad\Api\Traits\Params\FilterTrait */
 class FilterTraitTest extends TraitTestCase
 {
     public function testSingleStringFilter(): void
@@ -154,20 +151,6 @@ class FilterTraitTest extends TraitTestCase
 
         $this->makeFilterBuilder()
             ->filter([['filter1', FilterSign::NEQ]])
-            ->get();
-    }
-
-    /** @deprecated */
-    public function testFilters(): void
-    {
-        $params = static::PARAMS + ['filter' => 'filter1=value1;filter2>value2'];
-        $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
-
-        $this->makeFilterBuilder()
-            ->filters([
-                ['filter1', 'value1'],
-                ['filter2', FilterSign::GT, 'value2'],
-            ])
             ->get();
     }
 
