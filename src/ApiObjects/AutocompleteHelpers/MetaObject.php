@@ -8,11 +8,11 @@ use stdClass;
 
 /**
  * @property string $href
- * @property string $metadataHref
  * @property string $type
  * @property string $mediaType
- * @property string $uuidHref
- * @property string $downloadHref
+ * @property ?string $metadataHref
+ * @property ?string $uuidHref
+ * @property ?string $downloadHref
  */
 class MetaObject extends stdClass
 {
