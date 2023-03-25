@@ -5,7 +5,9 @@ namespace Evgeek\Tests\Unit\Services;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Http\Payload;
 use Evgeek\Moysklad\Services\Url;
+use Exception;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 
 /** @covers \Evgeek\Moysklad\Services\Url */
 class UrlTest extends TestCase
@@ -22,13 +24,18 @@ class UrlTest extends TestCase
 
     public function testMakeWithWrongPath(): void
     {
-        $path = [['entity'], ['product']];
+        $path = [['entity']];
         $payload = new Payload(HttpMethod::GET, $path, [], []);
 
-        $this->expectWarning();
-        $this->expectWarningMessage('Array to string conversion');
+        set_error_handler(static function (int $code, string $message): never {
+            throw new RuntimeException($message, $code);
+        }, E_ALL);
+
+        $this->expectExceptionMessage('Array to string conversion');
 
         Url::make($payload);
+
+        restore_error_handler();
     }
 
     /** @dataProvider mixedValuesDataProvider */

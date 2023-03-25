@@ -80,7 +80,7 @@ class MetaTest extends TestCase
 
     public function testOrganization(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'organization',
             '/entity/organization/guid1',
             'organization',
@@ -90,7 +90,7 @@ class MetaTest extends TestCase
 
     public function testCounterparty(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'counterparty',
             '/entity/counterparty/guid2',
             'counterparty',
@@ -100,7 +100,7 @@ class MetaTest extends TestCase
 
     public function testStore(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'store',
             '/entity/store/guid',
             'store',
@@ -110,7 +110,7 @@ class MetaTest extends TestCase
 
     public function testCurrency(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'currency',
             '/entity/currency/guid',
             'currency',
@@ -120,7 +120,7 @@ class MetaTest extends TestCase
 
     public function testSaleschannel(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'saleschannel',
             '/entity/saleschannel/guid',
             'saleschannel',
@@ -130,7 +130,7 @@ class MetaTest extends TestCase
 
     public function testProduct(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'product',
             '/entity/product/guid',
             'product',
@@ -140,7 +140,7 @@ class MetaTest extends TestCase
 
     public function testService(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'service',
             '/entity/service/guid',
             'service',
@@ -148,7 +148,9 @@ class MetaTest extends TestCase
         );
     }
 
-    private function assertMetaMethodNyGuidWorks(string $method, string $expectedSegment, string $expectedType, string $guid)
+
+
+    private function assertMetaMethodByGuidWorks(string $method, string $expectedSegment, string $expectedType, string $guid): void
     {
         Meta::setFormat(new ArrayFormat());
 
