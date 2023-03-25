@@ -9,7 +9,7 @@ class ArrayFormatTest extends MultiDecoderTestCase
 {
     protected string $formatter = ArrayFormat::class;
 
-    protected function getEncodedObject(): array
+    public static function getEncodedObject(): array
     {
         return [
             'param' => 'test_param',
@@ -42,7 +42,7 @@ class ArrayFormatTest extends MultiDecoderTestCase
         ];
     }
 
-    protected function getEncodedArray(): array
+    protected static function getEncodedArray(): array
     {
         return [
             ['param' => 'value1', 'meta' => 'meta1'],
@@ -50,7 +50,7 @@ class ArrayFormatTest extends MultiDecoderTestCase
         ];
     }
 
-    protected function getEncodedEmpty(): array
+    protected static function getEncodedEmpty(): array
     {
         return [];
     }

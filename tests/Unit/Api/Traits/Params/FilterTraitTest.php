@@ -173,7 +173,7 @@ class FilterTraitTest extends TraitTestCase
             ->get();
     }
 
-    public function incorrectSignsByTypeDataProvider(): array
+    public static function incorrectSignsByTypeDataProvider(): array
     {
         return [
             [1],
@@ -184,7 +184,7 @@ class FilterTraitTest extends TraitTestCase
         ];
     }
 
-    private function makeFilterBuilder()
+    private function makeFilterBuilder(): AbstractSegmentCommon
     {
         return new class($this->api, static::PREV_PATH, static::PARAMS, 'test_segment') extends AbstractSegmentCommon {
             use FilterTrait;

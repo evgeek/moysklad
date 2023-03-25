@@ -9,17 +9,17 @@ class StringFormatTest extends MultiDecoderTestCase
 {
     protected string $formatter = StringFormat::class;
 
-    protected function getEncodedObject(): string
+    protected static function getEncodedObject(): string
     {
         return static::OBJECT_JSON_STRING;
     }
 
-    protected function getEncodedArray(): string
+    protected static function getEncodedArray(): string
     {
         return static::ARRAYS_JSON_STRING;
     }
 
-    protected function getEncodedEmpty(): string
+    protected static function getEncodedEmpty(): string
     {
         return '';
     }

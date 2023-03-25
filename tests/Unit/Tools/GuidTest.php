@@ -18,16 +18,46 @@ class GuidTest extends TestCase
         $this->assertSame($expected, Guid::extractAll($url));
     }
 
+    public static function extractAllDataProvider(): array
+    {
+        return [
+            [[], 'entity/product/position'],
+            [[], 'entity/f7321b22-a93d/11ed-0a80-0fba0011a6c7/position'],
+            [[self::GUID1, self::GUID2], 'product/' . self::GUID1 . '/position/' . self::GUID2],
+            [[self::GUID3, self::GUID2, self::GUID1], 'method/' . self::GUID3 . '/method/' . self::GUID2 . '/method/' . self::GUID1],
+        ];
+    }
+
     /** @dataProvider extractFirstDataProvider */
     public function testExtractFirst(?string $expected, string $url): void
     {
         $this->assertSame($expected, Guid::extractFirst($url));
     }
 
+    public static function extractFirstDataProvider(): array
+    {
+        return [
+            [null, 'entity/product/position'],
+            [null, 'entity/f7321b22-a93d/11ed-0a80-0fba0011a6c7/position'],
+            [self::GUID1, 'product/' . self::GUID1 . '/position/' . self::GUID2],
+            [self::GUID3, 'method/' . self::GUID3 . '/method/' . self::GUID2 . '/method/' . self::GUID1],
+        ];
+    }
+
     /** @dataProvider extractLastDataProvider */
     public function testExtractLast(?string $expected, string $url): void
     {
         $this->assertSame($expected, Guid::extractLast($url));
+    }
+
+    public static function extractLastDataProvider(): array
+    {
+        return [
+            [null, 'entity/product/position'],
+            [null, 'entity/f7321b22-a93d/11ed-0a80-0fba0011a6c7/position'],
+            [self::GUID2, 'product/' . self::GUID1 . '/position/' . self::GUID2],
+            [self::GUID1, 'method/' . self::GUID3 . '/method/' . self::GUID2 . '/method/' . self::GUID1],
+        ];
     }
 
     public function testIsGuidRecognizeCorrectGuid(): void
@@ -38,35 +68,5 @@ class GuidTest extends TestCase
     public function testIsGuidRejectIncorrectGuid(): void
     {
         $this->assertFalse(Guid::isGuid('wrong-guid'));
-    }
-
-    private function extractAllDataProvider(): array
-    {
-        return [
-            [[], 'entity/product/position'],
-            [[], 'entity/f7321b22-a93d/11ed-0a80-0fba0011a6c7/position'],
-            [[self::GUID1, self::GUID2], 'product/' . self::GUID1 . '/position/' . self::GUID2],
-            [[self::GUID3, self::GUID2, self::GUID1], 'method/' . self::GUID3 . '/method/' . self::GUID2 . '/method/' . self::GUID1],
-        ];
-    }
-
-    private function extractFirstDataProvider(): array
-    {
-        return [
-            [null, 'entity/product/position'],
-            [null, 'entity/f7321b22-a93d/11ed-0a80-0fba0011a6c7/position'],
-            [self::GUID1, 'product/' . self::GUID1 . '/position/' . self::GUID2],
-            [self::GUID3, 'method/' . self::GUID3 . '/method/' . self::GUID2 . '/method/' . self::GUID1],
-        ];
-    }
-
-    private function extractLastDataProvider(): array
-    {
-        return [
-            [null, 'entity/product/position'],
-            [null, 'entity/f7321b22-a93d/11ed-0a80-0fba0011a6c7/position'],
-            [self::GUID2, 'product/' . self::GUID1 . '/position/' . self::GUID2],
-            [self::GUID1, 'method/' . self::GUID3 . '/method/' . self::GUID2 . '/method/' . self::GUID1],
-        ];
     }
 }

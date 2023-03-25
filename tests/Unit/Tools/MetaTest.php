@@ -41,6 +41,15 @@ class MetaTest extends TestCase
         $this->assertSame($expected, $meta);
     }
 
+    public static function correctPathAndTypeDataProvider(): array
+    {
+        return [
+            ['', [], 'type1'],
+            ['/endpoint', ['endpoint'], 'type2'],
+            ['/endpoint/method', ['endpoint', 'method'], 'type3'],
+        ];
+    }
+
     /** @dataProvider incorrectPathSegmentDataProvider */
     public function testCreateFromPathWithNotStringSegmentsDoesNotWorks(mixed $segment): void
     {
@@ -48,6 +57,19 @@ class MetaTest extends TestCase
         $this->expectExceptionMessage('1th segment of path is not a string');
 
         Meta::create(['endpoint', $segment], 'type');
+    }
+
+    public static function incorrectPathSegmentDataProvider(): array
+    {
+        return [
+            [null],
+            [false],
+            [true],
+            [0],
+            [1.1],
+            [['segment']],
+            [new stdClass()],
+        ];
     }
 
     public function testEntity(): void
@@ -162,27 +184,5 @@ class MetaTest extends TestCase
         ];
 
         $this->assertSame($expected, $meta);
-    }
-
-    private function correctPathAndTypeDataProvider(): array
-    {
-        return [
-            ['', [], 'type1'],
-            ['/endpoint', ['endpoint'], 'type2'],
-            ['/endpoint/method', ['endpoint', 'method'], 'type3'],
-        ];
-    }
-
-    private function incorrectPathSegmentDataProvider(): array
-    {
-        return [
-            [null],
-            [false],
-            [true],
-            [0],
-            [1.1],
-            [['segment']],
-            [new stdClass()],
-        ];
     }
 }

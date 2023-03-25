@@ -19,7 +19,7 @@ class StdClassFormatTest extends MultiDecoderTestCase
         $this->assertSame($formattedCasted, $encodedCasted);
     }
 
-    protected function getEncodedObject(): stdClass
+    protected static function getEncodedObject(): stdClass
     {
         return (object) [
             'param' => 'test_param',
@@ -52,7 +52,7 @@ class StdClassFormatTest extends MultiDecoderTestCase
         ];
     }
 
-    protected function getEncodedArray(): array
+    protected static function getEncodedArray(): array
     {
         return [
             (object) ['param' => 'value1', 'meta' => 'meta1'],
@@ -60,7 +60,7 @@ class StdClassFormatTest extends MultiDecoderTestCase
         ];
     }
 
-    protected function getEncodedEmpty(): stdClass
+    protected static function getEncodedEmpty(): stdClass
     {
         return new stdClass();
     }

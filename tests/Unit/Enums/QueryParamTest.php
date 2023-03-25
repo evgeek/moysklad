@@ -14,13 +14,7 @@ class QueryParamTest extends TestCase
         $this->assertSame($separator, $queryParam->separator());
     }
 
-    /** @dataProvider getSeparatorDataProvider */
-    public function testGetSeparator(QueryParam|string $queryParam, string $separator): void
-    {
-        $this->assertSame($separator, QueryParam::getSeparator($queryParam));
-    }
-
-    private function separatorDataProvider(): array
+    public static function separatorDataProvider(): array
     {
         return [
             [QueryParam::EXPAND, ','],
@@ -32,9 +26,15 @@ class QueryParamTest extends TestCase
         ];
     }
 
-    private function getSeparatorDataProvider(): array
+    /** @dataProvider getSeparatorDataProvider */
+    public function testGetSeparator(QueryParam|string $queryParam, string $separator): void
     {
-        return array_merge($this->separatorDataProvider(), [
+        $this->assertSame($separator, QueryParam::getSeparator($queryParam));
+    }
+
+    public static function getSeparatorDataProvider(): array
+    {
+        return array_merge(self::separatorDataProvider(), [
             ['expand', ','],
             ['FILTER', ';'],
             ['OrdEr', ';'],

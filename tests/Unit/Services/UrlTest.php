@@ -22,6 +22,26 @@ class UrlTest extends TestCase
         $this->assertSame(self::API_URL . $expectedPath, Url::make($payload));
     }
 
+    public static function payloadDataProvider(): array
+    {
+        return [
+            [
+                '/entity',
+                ['entity'],
+            ],
+            [
+                '/entity/product?limit=1',
+                ['entity', 'product'],
+                ['limit' => 1],
+            ],
+            [
+                '/endpoint/method?filter=archived%3Dfalse%3Bname%7E%3Dor&offset=2',
+                ['endpoint', 'method'],
+                ['filter' => 'archived=false;name~=or', 'offset' => 2],
+            ],
+        ];
+    }
+
     public function testMakeWithWrongPath(): void
     {
         $path = [['entity']];
@@ -44,27 +64,7 @@ class UrlTest extends TestCase
         $this->assertSame($expectedValue, Url::convertMixedValueToString($value));
     }
 
-    private function payloadDataProvider(): array
-    {
-        return [
-            [
-                '/entity',
-                ['entity'],
-            ],
-            [
-                '/entity/product?limit=1',
-                ['entity', 'product'],
-                ['limit' => 1],
-            ],
-            [
-                '/endpoint/method?filter=archived%3Dfalse%3Bname%7E%3Dor&offset=2',
-                ['endpoint', 'method'],
-                ['filter' => 'archived=false;name~=or', 'offset' => 2],
-            ],
-        ];
-    }
-
-    private function mixedValuesDataProvider(): array
+    public static function mixedValuesDataProvider(): array
     {
         return [
             ['', ''],

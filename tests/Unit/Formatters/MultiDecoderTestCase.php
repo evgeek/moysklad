@@ -34,6 +34,30 @@ abstract class MultiDecoderTestCase extends TestCase
         $this->assertSame($jsonString, (new $this->formatter())->decode($formatted));
     }
 
+    public static function correctDecodeDataProvider(): array
+    {
+        $json = '[{"param1":"value1","param2":false},{"param1":2.34,"param2":null}]';
+        $array = [
+            ['param1' => 'value1', 'param2' => false],
+            ['param1' => 2.34, 'param2' => null],
+        ];
+        $object1 = new stdClass();
+        $object1->param1 = 'value1';
+        $object1->param2 = false;
+        $object2 = new stdClass();
+        $object2->param1 = 2.34;
+        $object2->param2 = null;
+        $arrayOfObjects = [$object1, $object2];
+
+        return array_merge(static::correctEncodeDataProvider(), [
+            ['', false],
+            ['', null],
+            [$json, $json],
+            [$json, $array],
+            [$json, $arrayOfObjects],
+        ]);
+    }
+
     /** @dataProvider invalidJsonTypesDataProvider */
     public function testEncodeUnexpectedDataType(string $jsonString): void
     {
@@ -60,46 +84,7 @@ abstract class MultiDecoderTestCase extends TestCase
         (new $this->formatter())->decode($jsonString);
     }
 
-    abstract protected function getEncodedObject();
-
-    abstract protected function getEncodedArray();
-
-    abstract protected function getEncodedEmpty();
-
-    protected function correctEncodeDataProvider(): array
-    {
-        return [
-            [self::OBJECT_JSON_STRING, $this->getEncodedObject()],
-            [self::ARRAYS_JSON_STRING, $this->getEncodedArray()],
-            ['', $this->getEncodedEmpty()],
-        ];
-    }
-
-    protected function correctDecodeDataProvider(): array
-    {
-        $json = '[{"param1":"value1","param2":false},{"param1":2.34,"param2":null}]';
-        $array = [
-            ['param1' => 'value1', 'param2' => false],
-            ['param1' => 2.34, 'param2' => null],
-        ];
-        $object1 = new stdClass();
-        $object1->param1 = 'value1';
-        $object1->param2 = false;
-        $object2 = new stdClass();
-        $object2->param1 = 2.34;
-        $object2->param2 = null;
-        $arrayOfObjects = [$object1, $object2];
-
-        return array_merge($this->correctEncodeDataProvider(), [
-            ['', false],
-            ['', null],
-            [$json, $json],
-            [$json, $array],
-            [$json, $arrayOfObjects],
-        ]);
-    }
-
-    private function invalidJsonTypesDataProvider(): array
+    public static function invalidJsonTypesDataProvider(): array
     {
         return [
             ['invalid-json-encode'],
@@ -108,6 +93,21 @@ abstract class MultiDecoderTestCase extends TestCase
             ['true'],
             ['false'],
             ['null'],
+        ];
+    }
+
+    abstract protected static function getEncodedObject();
+
+    abstract protected static function getEncodedArray();
+
+    abstract protected static function getEncodedEmpty();
+
+    public static function correctEncodeDataProvider(): array
+    {
+        return [
+            [self::OBJECT_JSON_STRING, static::getEncodedObject()],
+            [self::ARRAYS_JSON_STRING, static::getEncodedArray()],
+            ['', static::getEncodedEmpty()],
         ];
     }
 }

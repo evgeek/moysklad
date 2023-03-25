@@ -187,6 +187,14 @@ class ApiClientTest extends TestCase
         );
     }
 
+    public static function limitOffsetDataProvider(): array
+    {
+        return [
+            ['limit'],
+            ['offset'],
+        ];
+    }
+
     public function testDebug(): void
     {
         $payload = new Payload(HttpMethod::GET, self::PATH, self::PARAMS, self::BODY);
@@ -262,14 +270,6 @@ class ApiClientTest extends TestCase
             'token',
         ];
         new ApiClient($credentials, new ArrayFormat(), $this->guzzleSender);
-    }
-
-    private function limitOffsetDataProvider(): array
-    {
-        return [
-            ['limit'],
-            ['offset'],
-        ];
     }
 
     private function assertGeneratorThrowWithout(string $expectedExceptionMessage, callable $unsetCallback): void
