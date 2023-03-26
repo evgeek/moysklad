@@ -5,7 +5,6 @@ namespace Evgeek\Tests\Unit\Services;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Http\Payload;
 use Evgeek\Moysklad\Services\Url;
-use Exception;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 

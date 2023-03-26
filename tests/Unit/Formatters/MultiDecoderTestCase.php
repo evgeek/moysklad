@@ -96,12 +96,6 @@ abstract class MultiDecoderTestCase extends TestCase
         ];
     }
 
-    abstract protected static function getEncodedObject();
-
-    abstract protected static function getEncodedArray();
-
-    abstract protected static function getEncodedEmpty();
-
     public static function correctEncodeDataProvider(): array
     {
         return [
@@ -110,4 +104,10 @@ abstract class MultiDecoderTestCase extends TestCase
             ['', static::getEncodedEmpty()],
         ];
     }
+
+    abstract protected static function getEncodedObject();
+
+    abstract protected static function getEncodedArray();
+
+    abstract protected static function getEncodedEmpty();
 }

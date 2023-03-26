@@ -170,8 +170,6 @@ class MetaTest extends TestCase
         );
     }
 
-
-
     private function assertMetaMethodByGuidWorks(string $method, string $expectedSegment, string $expectedType, string $guid): void
     {
         Meta::setFormat(new ArrayFormat());
