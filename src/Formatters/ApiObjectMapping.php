@@ -12,17 +12,18 @@ use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\Product;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
+use Evgeek\Moysklad\Dictionaries\Entity;
 use InvalidArgumentException;
 
 class ApiObjectMapping
 {
     protected const DEFAULT_MAPPING_OBJECTS = [
-        'product' => Product::class,
-        'employee' => Employee::class,
+        Entity::PRODUCT => Product::class,
+        Entity::EMPLOYEE => Employee::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
-        'product' => ProductCollection::class,
-        'employee' => EmployeeCollection::class,
+        Entity::PRODUCT => ProductCollection::class,
+        Entity::EMPLOYEE => EmployeeCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;

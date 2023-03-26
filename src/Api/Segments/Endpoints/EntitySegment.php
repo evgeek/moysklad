@@ -7,10 +7,11 @@ namespace Evgeek\Moysklad\Api\Segments\Endpoints;
 use Evgeek\Moysklad\Api\Segments\Methods\Documents\CustomerorderSegment;
 use Evgeek\Moysklad\Api\Segments\Methods\Entities\AssortmentSegment;
 use Evgeek\Moysklad\Api\Segments\Methods\Entities\ProductSegment;
+use Evgeek\Moysklad\Dictionaries\Endpoint;
 
 class EntitySegment extends AbstractEndpointSegmentNamed
 {
-    protected const SEGMENT = 'entity';
+    protected const SEGMENT = Endpoint::ENTITY;
 
     /**
      * Products

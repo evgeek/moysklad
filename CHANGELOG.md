@@ -29,6 +29,7 @@ $orderPositions = $ms
 ### Deprecated
 
 - Явная установка форматирования в хелпере `Meta`. 
+- `Meta::entity()`. Вместо этого метода используйте `Meta::create()`.
 
 ## v0.7.0 [[Upgrade guide](/UPGRADE.md#v070-changelog)]
 

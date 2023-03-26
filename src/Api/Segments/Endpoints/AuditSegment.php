@@ -10,6 +10,7 @@ use Evgeek\Moysklad\Api\Traits\Params\FilterTrait;
 use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\ByIdCommonTrait;
+use Evgeek\Moysklad\Dictionaries\Endpoint;
 
 class AuditSegment extends AbstractEndpointSegmentNamed
 {
@@ -20,5 +21,5 @@ class AuditSegment extends AbstractEndpointSegmentNamed
     use ParamTrait;
     use SendTrait;
 
-    protected const SEGMENT = 'audit';
+    protected const SEGMENT = Endpoint::AUDIT;
 }

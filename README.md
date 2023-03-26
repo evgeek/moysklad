@@ -210,14 +210,13 @@ object(stdClass)#19 (3) {
 
 Форматирование можно задать при помощи метода `Meta::setFormat()`. По умолчанию используется `StdClassFormat`. Учитывайте, что `Meta` и `MoySklad` используют разные форматтеры, то есть установка формата в одном классе не затронет другой.
 
-Помимо небольшого набора предопределённых сущностей, можно сформировать любую мету при помощи универсального метода `Meta::create()` (и более узкого `Meta::entity()`). Примеры:
+Помимо небольшого набора предопределённых сущностей, можно сформировать любую мету при помощи универсального метода `Meta::create()`. Примеры:
 
 ```php
 Meta::setFormat(new ArrayFormat());
 $order = [
     'name' => 'test_order',
     'organization' => ['meta' => Meta::create(['entity', 'organization', 'ec008e5b-f5ab-11e5-7a69-970f0019fa50'], 'organization')],
-    'agent' => ['meta' => Meta::entity(['counterparty', '918e0c83-483c-11e7-7a69-93a700ee9dbd'], 'counterparty')],
 ];
 var_dump($order);
 ```
@@ -233,18 +232,6 @@ array(3) {
       string(97) "https://online.moysklad.ru/api/remap/1.2/entity/organization/ec008e5b-f5ab-11e5-7a69-970f0019fa50"
       ["type"]=>
       string(12) "organization"
-      ["mediaType"]=>
-      string(16) "application/json"
-    }
-  }
-  ["agent"]=>
-  array(1) {
-    ["meta"]=>
-    array(3) {
-      ["href"]=>
-      string(97) "https://online.moysklad.ru/api/remap/1.2/entity/counterparty/918e0c83-483c-11e7-7a69-93a700ee9dbd"
-      ["type"]=>
-      string(12) "counterparty"
       ["mediaType"]=>
       string(16) "application/json"
     }

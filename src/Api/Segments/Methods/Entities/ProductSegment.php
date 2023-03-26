@@ -16,6 +16,7 @@ use Evgeek\Moysklad\Api\Traits\Params\OrderTrait;
 use Evgeek\Moysklad\Api\Traits\Params\SearchTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\ByIdCommonTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\MetadataTrait;
+use Evgeek\Moysklad\Dictionaries\Entity;
 
 class ProductSegment extends AbstractMethodSegmentNamed
 {
@@ -31,5 +32,5 @@ class ProductSegment extends AbstractMethodSegmentNamed
     use OrderTrait;
     use SearchTrait;
 
-    public const SEGMENT = 'product';
+    public const SEGMENT = Entity::PRODUCT;
 }

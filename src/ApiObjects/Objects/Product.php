@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\ApiObjects\Objects;
 
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaObject;
+use Evgeek\Moysklad\Dictionaries\Endpoint;
+use Evgeek\Moysklad\Dictionaries\Entity;
 
 /**
  * @property string      $id
@@ -14,8 +16,8 @@ use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaObject;
 class Product extends AbstractConcreteObject
 {
     public const PATH = [
-        'entity',
-        'product',
+        Endpoint::ENTITY,
+        Entity::PRODUCT,
     ];
-    public const TYPE = 'product';
+    public const TYPE = Entity::PRODUCT;
 }

@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Objects;
 
+use Evgeek\Moysklad\Dictionaries\Endpoint;
+use Evgeek\Moysklad\Dictionaries\Entity;
+
 class Employee extends AbstractConcreteObject
 {
     public const PATH = [
-        'entity',
-        'employee',
+        Endpoint::ENTITY,
+        Entity::EMPLOYEE,
     ];
-    public const TYPE = 'employee';
+    public const TYPE = Entity::EMPLOYEE;
 }

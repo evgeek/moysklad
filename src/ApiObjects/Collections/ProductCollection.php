@@ -6,6 +6,8 @@ namespace Evgeek\Moysklad\ApiObjects\Collections;
 
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\Product;
+use Evgeek\Moysklad\Dictionaries\Endpoint;
+use Evgeek\Moysklad\Dictionaries\Entity;
 use stdClass;
 
 /**
@@ -16,8 +18,8 @@ use stdClass;
 class ProductCollection extends AbstractConcreteCollection
 {
     public const PATH = [
-        'entity',
-        'product',
+        Endpoint::ENTITY,
+        Entity::PRODUCT,
     ];
-    public const TYPE = 'product';
+    public const TYPE = Entity::PRODUCT;
 }

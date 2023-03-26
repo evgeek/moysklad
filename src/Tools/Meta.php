@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Tools;
 
+use Evgeek\Moysklad\ApiObjects\Objects\Employee;
+use Evgeek\Moysklad\ApiObjects\Objects\Product;
+use Evgeek\Moysklad\Dictionaries\Endpoint;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
@@ -27,7 +30,12 @@ class Meta
 
     public static function product(string $guid, JsonFormatterInterface $formatter = null)
     {
-        return static::entity(['product', $guid], 'product', $formatter);
+        return static::create([...Product::PATH, $guid], Product::TYPE, $formatter);
+    }
+
+    public static function employee(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...Employee::PATH, $guid], Employee::TYPE, $formatter);
     }
 
     public static function saleschannel(string $guid, JsonFormatterInterface $formatter = null)
@@ -55,9 +63,10 @@ class Meta
         return static::entity(['organization', $guid], 'organization', $formatter);
     }
 
+    /** @deprecated */
     public static function entity(array $path, string $type, JsonFormatterInterface $formatter = null)
     {
-        return static::create(['entity', ...$path], $type, $formatter);
+        return static::create([Endpoint::ENTITY, ...$path], $type, $formatter);
     }
 
     /**

@@ -6,6 +6,8 @@ namespace Evgeek\Moysklad\ApiObjects\Collections;
 
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\Employee;
+use Evgeek\Moysklad\Dictionaries\Endpoint;
+use Evgeek\Moysklad\Dictionaries\Entity;
 use stdClass;
 
 /**
@@ -16,8 +18,8 @@ use stdClass;
 class EmployeeCollection extends AbstractConcreteCollection
 {
     public const PATH = [
-        'entity',
-        'employee',
+        Endpoint::ENTITY,
+        Entity::EMPLOYEE,
     ];
-    public const TYPE = 'employee';
+    public const TYPE = Entity::EMPLOYEE;
 }

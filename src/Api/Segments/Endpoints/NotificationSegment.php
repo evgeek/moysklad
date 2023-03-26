@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Traits\Actions\SendTrait;
 use Evgeek\Moysklad\Api\Traits\Params\LimitOffsetTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ParamTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\ByIdCommonTrait;
+use Evgeek\Moysklad\Dictionaries\Endpoint;
 
 class NotificationSegment extends AbstractEndpointSegmentNamed
 {
@@ -18,5 +19,5 @@ class NotificationSegment extends AbstractEndpointSegmentNamed
     use ParamTrait;
     use SendTrait;
 
-    protected const SEGMENT = 'notification';
+    protected const SEGMENT = Endpoint::NOTIFICATION;
 }
