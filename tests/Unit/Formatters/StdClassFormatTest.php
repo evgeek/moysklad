@@ -5,7 +5,7 @@ namespace Evgeek\Tests\Unit\Formatters;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use stdClass;
 
-/** @covers \Evgeek\Moysklad\Formatters\StdClassFormat<extended> */
+/** @covers \Evgeek\Moysklad\Formatters\StdClassFormat */
 class StdClassFormatTest extends MultiDecoderTestCase
 {
     protected string $formatter = StdClassFormat::class;

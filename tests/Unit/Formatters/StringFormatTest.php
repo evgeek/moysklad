@@ -4,7 +4,7 @@ namespace Evgeek\Tests\Unit\Formatters;
 
 use Evgeek\Moysklad\Formatters\StringFormat;
 
-/** @covers \Evgeek\Moysklad\Formatters\StringFormat<extended> */
+/** @covers \Evgeek\Moysklad\Formatters\StringFormat */
 class StringFormatTest extends MultiDecoderTestCase
 {
     protected string $formatter = StringFormat::class;

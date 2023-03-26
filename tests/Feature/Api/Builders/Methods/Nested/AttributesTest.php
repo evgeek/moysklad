@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\ApiTestCase;
 class AttributesTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\Methods\Nested\AttributesSegment<extended>
+     * @covers \Evgeek\Moysklad\Api\Segments\Methods\Nested\AttributesSegment
      */
     public function testBuilder(): void
     {

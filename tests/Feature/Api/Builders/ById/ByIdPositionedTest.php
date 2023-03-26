@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\ApiTestCase;
 class ByIdPositionedTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\ById\ByIdSegmentPositioned<extended>
+     * @covers \Evgeek\Moysklad\Api\Segments\ById\ByIdSegmentPositioned
      */
     public function testBuilder(): void
     {

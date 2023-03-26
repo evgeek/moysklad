@@ -11,7 +11,10 @@ use Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Segments\Endpoints\NotificationSegment;
 use Evgeek\Moysklad\Api\Segments\Endpoints\ReportSegment;
 
-/** @covers \Evgeek\Moysklad\Api\Query<extended> */
+/**
+ * @covers \Evgeek\Moysklad\Api\AbstractBuilder
+ * @covers \Evgeek\Moysklad\Api\Query
+ */
 class QueryTest extends ApiTestCase
 {
     private Query $builder;

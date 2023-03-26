@@ -6,7 +6,7 @@ use Evgeek\Moysklad\Api\Segments\Special\MassDeleteSegment;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\ApiTestCase;
 
-/** @covers \Evgeek\Moysklad\Api\Segments\Special\MassDeleteSegment<extended> */
+/** @covers \Evgeek\Moysklad\Api\Segments\Special\MassDeleteSegment */
 class MassDeleteTest extends ApiTestCase
 {
     private const PATH = [

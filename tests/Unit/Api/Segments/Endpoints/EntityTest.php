@@ -10,7 +10,11 @@ use Evgeek\Moysklad\Api\Segments\Methods\Entities\AssortmentSegment;
 use Evgeek\Moysklad\Api\Segments\Methods\Entities\ProductSegment;
 use Evgeek\Tests\Unit\Api\ApiTestCase;
 
-/** @covers \Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment<extended> */
+/**
+ * @covers \Evgeek\Moysklad\Api\AbstractBuilder
+ * @covers \Evgeek\Moysklad\Api\Segments\AbstractSegmentNamed
+ * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment
+ */
 class EntityTest extends ApiTestCase
 {
     private EntitySegment $builder;

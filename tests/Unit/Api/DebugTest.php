@@ -6,7 +6,10 @@ use Evgeek\Moysklad\Api\Debug;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use InvalidArgumentException;
 
-/** @covers \Evgeek\Moysklad\Api\Debug<extended> */
+/**
+ * @covers \Evgeek\Moysklad\Api\AbstractBuilder
+ * @covers \Evgeek\Moysklad\Api\Debug
+ */
 class DebugTest extends ApiTestCase
 {
     private Debug $debug;

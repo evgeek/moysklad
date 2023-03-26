@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\ApiTestCase;
 class ByIdCommonTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\ById\ByIdSegmentCommon<extended>
+     * @covers \Evgeek\Moysklad\Api\Segments\ById\ByIdSegmentCommon
      */
     public function testBuilder(): void
     {

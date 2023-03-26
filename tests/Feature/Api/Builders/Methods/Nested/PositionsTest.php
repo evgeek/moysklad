@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\ApiTestCase;
 class PositionsTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\Methods\Nested\PositionsSegment<extended>
+     * @covers \Evgeek\Moysklad\Api\Segments\Methods\Nested\PositionsSegment
      */
     public function testBuilder(): void
     {

@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\ApiTestCase;
 class EntityTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment<extended>
+     * @covers \Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment
      */
     public function testEndpointBuilder(): void
     {

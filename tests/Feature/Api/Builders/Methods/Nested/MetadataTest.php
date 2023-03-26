@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\ApiTestCase;
 class MetadataTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\Methods\Nested\MetadataSegment<extended>
+     * @covers \Evgeek\Moysklad\Api\Segments\Methods\Nested\MetadataSegment
      */
     public function testBuilder(): void
     {

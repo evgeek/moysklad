@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\ApiTestCase;
 class ProductTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Segments\Methods\Entities\ProductSegment<extended>
+     * @covers \Evgeek\Moysklad\Api\Segments\Methods\Entities\ProductSegment
      */
     public function testBuilder(): void
     {

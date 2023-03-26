@@ -4,7 +4,7 @@ namespace Evgeek\Tests\Unit\Formatters;
 
 use Evgeek\Moysklad\Formatters\ArrayFormat;
 
-/** @covers \Evgeek\Moysklad\Formatters\ArrayFormat<extended> */
+/** @covers \Evgeek\Moysklad\Formatters\ArrayFormat */
 class ArrayFormatTest extends MultiDecoderTestCase
 {
     protected string $formatter = ArrayFormat::class;
