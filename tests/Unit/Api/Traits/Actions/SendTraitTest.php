@@ -45,7 +45,7 @@ class SendTraitTest extends TraitTestCase
         };
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("'WRONG-METHOD' is not valid HTTP method. Check Evgeek\\Moysklad\\Enums\\HttpMethod");
+        $this->expectExceptionMessage("'WRONG-METHOD' is not valid HTTP method");
         $builder->send('wrong-method', static::BODY);
     }
 }

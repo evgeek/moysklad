@@ -27,7 +27,7 @@ enum HttpMethod: string
         $method = strtoupper($method);
         $enumMethod = self::tryFrom($method);
         if ($enumMethod === null) {
-            throw new InvalidArgumentException("'$method' is not valid HTTP method. Check " . __CLASS__);
+            throw new InvalidArgumentException("'$method' is not valid HTTP method");
         }
 
         return $enumMethod;

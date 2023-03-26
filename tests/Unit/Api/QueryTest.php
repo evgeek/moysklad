@@ -4,12 +4,16 @@ namespace Evgeek\Tests\Unit\Api;
 
 use Evgeek\Moysklad\Api\AbstractBuilder;
 use Evgeek\Moysklad\Api\Query;
+use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
 use Evgeek\Moysklad\Api\Segments\Endpoints\AbstractEndpointSegmentNamed;
 use Evgeek\Moysklad\Api\Segments\Endpoints\AuditSegment;
 use Evgeek\Moysklad\Api\Segments\Endpoints\EndpointSegmentCommon;
 use Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Segments\Endpoints\NotificationSegment;
 use Evgeek\Moysklad\Api\Segments\Endpoints\ReportSegment;
+use Evgeek\Moysklad\Api\Segments\Methods\MethodSegmentCommon;
+use Evgeek\Moysklad\Services\Url;
+use InvalidArgumentException;
 
 /**
  * @covers \Evgeek\Moysklad\Api\AbstractBuilder
@@ -24,6 +28,25 @@ class QueryTest extends ApiTestCase
         parent::setUp();
 
         $this->builder = new Query($this->api);
+    }
+
+    public function testFromUrlReturnsCorrectClass(): void
+    {
+        $builder = $this->builder->fromUrl(Url::API . '/endpoint/segment');
+
+        $this->assertInstanceOf(MethodSegmentCommon::class, $builder);
+        $this->assertInstanceOf(AbstractSegmentCommon::class, $builder);
+        $this->assertInstanceOf(AbstractBuilder::class, $builder);
+    }
+
+    public function testFromUrlWithInvalidUrlThrowsError(): void
+    {
+        $wrongUrl = 'wrong-url';
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage("Url '$wrongUrl' does not belongs to Moysklad JSON API v1.2");
+
+        $this->builder->fromUrl($wrongUrl);
     }
 
     public function testEndpointReturnsCorrectClass(): void
