@@ -63,7 +63,7 @@ final class QueryParams
         return self::set($params, QueryParam::EXPAND, $field);
     }
 
-    public static function setParam(array $params, array|string $key, string|int|float|bool|null $value): array
+    public static function setParam(array $params, array|string $key, string|int|float|bool|null $value = null): array
     {
         if (is_array($key)) {
             return self::handleArrayOfParams($params, $key);
