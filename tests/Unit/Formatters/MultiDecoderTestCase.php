@@ -2,6 +2,7 @@
 
 namespace Evgeek\Tests\Unit\Formatters;
 
+use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
 use Evgeek\Moysklad\Formatters\AbstractMultiDecoder;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\WithMoySkladInterface;
@@ -124,22 +125,24 @@ abstract class MultiDecoderTestCase extends TestCase
 
     abstract protected static function getEncodedEmpty();
 
-    protected function castToArrayWithNested(stdClass|array $array): array
+    protected function castToArrayWithNested(mixed $content): mixed
     {
-        if (is_array($array)) {
-            foreach ($array as $key => $value) {
-                if (is_array($value)) {
-                    $array[$key] = $this->castToArrayWithNested($value);
-                }
-                if (is_object($value)) {
-                    $array[$key] = $this->castToArrayWithNested((array) $value);
-                }
+        if (is_array($content)) {
+            foreach ($content as $key => $value) {
+                $content[$key] = $this->castToArrayWithNested($value);
             }
-        }
-        if (is_object($array)) {
-            return $this->castToArrayWithNested((array) $array);
+
+            return $content;
         }
 
-        return $array;
+        if (is_a($content, AbstractApiObject::class)) {
+            return $content->toArray();
+        }
+
+        if (is_object($content)) {
+            return $this->castToArrayWithNested((array) $content);
+        }
+
+        return $content;
     }
 }
