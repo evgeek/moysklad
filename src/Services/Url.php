@@ -34,7 +34,7 @@ final class Url
     public static function parsePathAndParams(string $url): array
     {
         if (!str_starts_with($url, self::API)) {
-            throw new InvalidArgumentException('Wrong url');
+            throw new InvalidArgumentException("Url '$url' does not belongs to Moysklad JSON API v1.2");
         }
 
         $pathString = substr($url, strlen(self::API) + 1);
@@ -47,6 +47,9 @@ final class Url
         }
 
         $path = explode('/', $pathString);
+        if ($path[array_key_last($path)] === '') {
+            array_pop($path);
+        }
 
         return [$path, $params];
     }
