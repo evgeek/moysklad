@@ -11,7 +11,7 @@ use Evgeek\Moysklad\Formatters\ApiObjectMapping;
 use Evgeek\Moysklad\MoySklad;
 use InvalidArgumentException;
 
-class AbstractBuilder
+class AbstractObjectBuilder
 {
     public function __construct(protected readonly MoySklad $ms)
     {

@@ -7,7 +7,7 @@ namespace Evgeek\Moysklad\ApiObjects\Builders;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Product;
 
-class SingleBuilder extends AbstractBuilder
+class SingleObjectBuilder extends AbstractObjectBuilder
 {
     /**
      * @return Product

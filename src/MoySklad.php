@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad;
 
 use Evgeek\Moysklad\Api\Query;
-use Evgeek\Moysklad\ApiObjects\Builders\ApiBuilder;
+use Evgeek\Moysklad\ApiObjects\Builders\ApiObjectBuilder;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\Formatters\WithMoySkladInterface;
@@ -49,9 +49,9 @@ class MoySklad
         return new Query($this->api);
     }
 
-    public function object(): ApiBuilder
+    public function object(): ApiObjectBuilder
     {
-        return new ApiBuilder($this);
+        return new ApiObjectBuilder($this);
     }
 
     public function meta(): MetaMaker
