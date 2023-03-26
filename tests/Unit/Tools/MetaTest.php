@@ -160,6 +160,16 @@ class MetaTest extends TestCase
         );
     }
 
+    public function testEmployee(): void
+    {
+        $this->assertMetaMethodByGuidWorks(
+            'employee',
+            '/entity/employee/guid',
+            'employee',
+            'guid'
+        );
+    }
+
     public function testService(): void
     {
         $this->assertMetaMethodByGuidWorks(
