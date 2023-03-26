@@ -4,19 +4,26 @@ namespace Evgeek\Tests\Unit\Formatters;
 
 use Evgeek\Moysklad\Formatters\ArrayFormat;
 
-/** @covers \Evgeek\Moysklad\Formatters\ArrayFormat */
+/**
+ * @covers \Evgeek\Moysklad\Formatters\AbstractMultiDecoder
+ * @covers \Evgeek\Moysklad\Formatters\ArrayFormat
+ */
 class ArrayFormatTest extends MultiDecoderTestCase
 {
-    protected string $formatter = ArrayFormat::class;
+    protected const FORMATTER = ArrayFormat::class;
 
     public static function getEncodedObject(): array
     {
         return [
             'param' => 'test_param',
+            'meta' => [
+                'href' => 'https://online.moysklad.ru/api/remap/1.2/endpoint/segment',
+                'type' => 'product',
+            ],
             'context' => [
                 'employee' => [
                     'meta' => [
-                        'href' => 'test_href_1',
+                        'href' => 'https://online.moysklad.ru/api/remap/1.2/context/employee',
                         'type' => 'employee',
                     ],
                 ],

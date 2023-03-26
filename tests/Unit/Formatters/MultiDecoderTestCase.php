@@ -4,15 +4,18 @@ namespace Evgeek\Tests\Unit\Formatters;
 
 use Evgeek\Moysklad\Formatters\AbstractMultiDecoder;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
+use Evgeek\Moysklad\Formatters\WithMoySkladInterface;
+use Evgeek\Moysklad\MoySklad;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
 abstract class MultiDecoderTestCase extends TestCase
 {
-    protected const OBJECT_JSON_STRING = '{"param":"test_param","context":{"employee":{"meta":' .
-        '{"href":"test_href_1","type":"employee"}}},"rows":[{"id":"id1","value":true},{"id":"id2","value":0},' .
-        '{"id":"id3","value":null},{"id":"id4","value":123.45}]}';
+    protected const OBJECT_JSON_STRING = '{"param":"test_param","meta":{"href":' .
+        '"https:\/\/online.moysklad.ru\/api\/remap\/1.2\/endpoint\/segment","type":"product"},"context":' .
+        '{"employee":{"meta":{"href":"https:\/\/online.moysklad.ru\/api\/remap\/1.2\/context\/employee","type":"employee"}}},' .
+        '"rows":[{"id":"id1","value":true},{"id":"id2","value":0},{"id":"id3","value":null},{"id":"id4","value":123.45}]}';
     protected const ARRAYS_JSON_STRING = '[{"param":"value1","meta":"meta1"},{"param":"value2","meta":"meta2"}]';
     protected const EMPTY_JSON_STRING = '';
 
@@ -20,18 +23,28 @@ abstract class MultiDecoderTestCase extends TestCase
     protected const FALSE_JSON_STRING = 'false';
 
     /** @var class-string<JsonFormatterInterface> */
-    protected string $formatter = AbstractMultiDecoder::class;
+    protected const FORMATTER = AbstractMultiDecoder::class;
+    protected JsonFormatterInterface $formatter;
+
+    protected function setUp(): void
+    {
+        $formatterClass = static::FORMATTER;
+        $this->formatter = new $formatterClass();
+        if (is_a($this->formatter, WithMoySkladInterface::class)) {
+            $this->formatter->setMoySklad(new MoySklad(['token']));
+        }
+    }
 
     /** @dataProvider correctEncodeDataProvider */
     public function testEncodeCorrect(string $jsonString, mixed $formatted): void
     {
-        $this->assertSame($formatted, (new $this->formatter())->encode($jsonString));
+        $this->assertSame($formatted, $this->formatter->encode($jsonString));
     }
 
     /** @dataProvider correctDecodeDataProvider */
     public function testDecodeCorrect(string $jsonString, mixed $formatted): void
     {
-        $this->assertSame($jsonString, (new $this->formatter())->decode($formatted));
+        $this->assertSame($jsonString, $this->formatter->decode($formatted));
     }
 
     public static function correctDecodeDataProvider(): array
@@ -64,7 +77,7 @@ abstract class MultiDecoderTestCase extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Passed content is not valid json.');
 
-        (new $this->formatter())->encode($jsonString);
+        $this->formatter->encode($jsonString);
     }
 
     public function testDecodeInvalidType(): void
@@ -72,7 +85,7 @@ abstract class MultiDecoderTestCase extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage("Can't convert content of");
 
-        (new $this->formatter())->decode(NAN);
+        $this->formatter->decode(NAN);
     }
 
     /** @dataProvider invalidJsonTypesDataProvider */
@@ -81,7 +94,7 @@ abstract class MultiDecoderTestCase extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Passed content is not valid json.');
 
-        (new $this->formatter())->decode($jsonString);
+        $this->formatter->decode($jsonString);
     }
 
     public static function invalidJsonTypesDataProvider(): array
@@ -110,4 +123,23 @@ abstract class MultiDecoderTestCase extends TestCase
     abstract protected static function getEncodedArray();
 
     abstract protected static function getEncodedEmpty();
+
+    protected function castToArrayWithNested(stdClass|array $array): array
+    {
+        if (is_array($array)) {
+            foreach ($array as $key => $value) {
+                if (is_array($value)) {
+                    $array[$key] = $this->castToArrayWithNested($value);
+                }
+                if (is_object($value)) {
+                    $array[$key] = $this->castToArrayWithNested((array) $value);
+                }
+            }
+        }
+        if (is_object($array)) {
+            return $this->castToArrayWithNested((array) $array);
+        }
+
+        return $array;
+    }
 }

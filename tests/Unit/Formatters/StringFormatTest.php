@@ -4,10 +4,13 @@ namespace Evgeek\Tests\Unit\Formatters;
 
 use Evgeek\Moysklad\Formatters\StringFormat;
 
-/** @covers \Evgeek\Moysklad\Formatters\StringFormat */
+/**
+ * @covers \Evgeek\Moysklad\Formatters\AbstractMultiDecoder
+ * @covers \Evgeek\Moysklad\Formatters\StringFormat
+ */
 class StringFormatTest extends MultiDecoderTestCase
 {
-    protected string $formatter = StringFormat::class;
+    protected const FORMATTER = StringFormat::class;
 
     protected static function getEncodedObject(): string
     {
