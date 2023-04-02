@@ -21,18 +21,22 @@ class AbstractObjectBuilder
     {
         $class = $this->getMapping()->getObject($type);
 
-        return is_a($class, AbstractConcreteObject::class, true) ?
-            new $class($this->ms, $content) :
+        if (!is_a($class, AbstractConcreteObject::class, true)) {
             throw new InvalidArgumentException("Object type '$type' has no mapped class");
+        }
+
+        return new $class($this->ms, $content);
     }
 
     protected function resolveCollection(string $type, mixed $content): AbstractConcreteCollection
     {
         $class = $this->getMapping()->getCollection($type);
 
-        return is_a($class, AbstractConcreteCollection::class, true) ?
-            new $class($this->ms, $content) :
+        if (!is_a($class, AbstractConcreteCollection::class, true)) {
             throw new InvalidArgumentException("Collection type '$type' has no mapped class");
+        }
+
+        return new $class($this->ms, $content);
     }
 
     private function getMapping(): ApiObjectMapping
