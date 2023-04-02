@@ -5,6 +5,7 @@ namespace Evgeek\Tests\Unit\ApiObjects\Builders;
 use Evgeek\Moysklad\ApiObjects\Builders\SingleObjectBuilder;
 use Evgeek\Moysklad\ApiObjects\Objects\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\Product;
+use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use Evgeek\Moysklad\Formatters\ApiObjectFormatter;
 use Evgeek\Moysklad\Formatters\ApiObjectMapping;
 use Evgeek\Moysklad\MoySklad;
@@ -47,5 +48,14 @@ class SingleObjectBuilderTest extends ObjectResolversTestCase
         $product = $this->builder->employee(static::CONTENT);
 
         $this->assertObjectResolvedWithExpectedMetaAndContent($product, Employee::class);
+    }
+
+    public function testUnknownMethod(): void
+    {
+        $path = ['endpoint', 'segment'];
+        $type = 'unknown_type';
+        $unknown = $this->builder->unknown($path, $type, static::CONTENT);
+
+        $this->assertObjectResolvedWithExpectedMetaAndContent($unknown, UnknownObject::class, $path, $type);
     }
 }

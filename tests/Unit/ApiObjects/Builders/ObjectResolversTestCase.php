@@ -3,8 +3,6 @@
 namespace Evgeek\Tests\Unit\ApiObjects\Builders;
 
 use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
-use Evgeek\Moysklad\ApiObjects\AbstractConcreteApiObject;
-use Evgeek\Moysklad\ApiObjects\Collections\AbstractConcreteCollection;
 use PHPUnit\Framework\TestCase;
 
 abstract class ObjectResolversTestCase extends TestCase
@@ -14,12 +12,20 @@ abstract class ObjectResolversTestCase extends TestCase
         'second_key' => false,
     ];
 
-    /** @param class-string<AbstractConcreteApiObject>|class-string<AbstractConcreteCollection> $expectedObjectClass */
-    protected function assertObjectResolvedWithExpectedMetaAndContent(AbstractApiObject $object, string $expectedObjectClass): void
-    {
+    /** @param class-string<AbstractApiObject> $expectedObjectClass */
+    protected function assertObjectResolvedWithExpectedMetaAndContent(
+        AbstractApiObject $object,
+        string $expectedObjectClass,
+        array $path = null,
+        string $type = null,
+    ): void {
         $this->assertInstanceOf($expectedObjectClass, $object);
-        $this->assertSame($expectedObjectClass::TYPE, $object->meta->type);
-        $this->assertStringEndsWith(implode('/', $expectedObjectClass::PATH), $object->meta->href);
+
+        $type = $type ?? $expectedObjectClass::TYPE;
+        $this->assertSame($type, $object->meta->type);
+
+        $path = $path ?? $expectedObjectClass::PATH;
+        $this->assertStringEndsWith(implode('/', $path), $object->meta->href);
 
         foreach (static::CONTENT as $key => $value) {
             $this->assertSame($value, $object->{$key});

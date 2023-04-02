@@ -5,6 +5,7 @@ namespace Evgeek\Tests\Unit\ApiObjects\Builders;
 use Evgeek\Moysklad\ApiObjects\Builders\CollectionObjectBuilder;
 use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\Formatters\ApiObjectFormatter;
 use Evgeek\Moysklad\Formatters\ApiObjectMapping;
 use Evgeek\Moysklad\MoySklad;
@@ -33,6 +34,15 @@ class CollectionObjectBuilderTest extends ObjectResolversTestCase
         $this->expectExceptionMessage("Collection type 'product' has no mapped class");
 
         $builder->product();
+    }
+
+    public function testUnknownMethod(): void
+    {
+        $path = ['endpoint', 'segment'];
+        $type = 'unknown_type';
+        $unknown = $this->builder->unknown($path, $type, static::CONTENT);
+
+        $this->assertObjectResolvedWithExpectedMetaAndContent($unknown, UnknownCollection::class, $path, $type);
     }
 
     public function testProductMethod(): void
