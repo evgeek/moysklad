@@ -3,6 +3,7 @@
 namespace Evgeek\Tests\Traits;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
+use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\Payload;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -15,9 +16,10 @@ trait ApiClientMockerTrait
 
     protected function createMockApiClient(): void
     {
-        $this->api = $this->getMockBuilder(ApiClient::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $this->api = $this->createMock(ApiClient::class);
+        $this->api
+            ->method('getFormatter')
+            ->willReturn(new ArrayFormat());
     }
 
     protected function expectsSendCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null): void
