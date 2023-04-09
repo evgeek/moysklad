@@ -15,12 +15,12 @@ class ParamsObjectTraitTest extends ObjectTraitCase
     {
         parent::setUp();
 
-        $this->expectedUrl = Url::API . '/' . implode('/', static::PATH);
+        $this->expectedUrl = Url::API . '/' . implode('/', [...static::PATH, static::GUID]);
     }
 
     public function testSingleExpandMethod(): void
     {
-        $object = $this->getTestObject([])
+        $object = $this->getTestObject(['id' => static::GUID])
             ->expand('field1');
         $this->expectedUrl .= '?expand=field1';
 
@@ -29,7 +29,7 @@ class ParamsObjectTraitTest extends ObjectTraitCase
 
     public function testMultipleExpandMethods(): void
     {
-        $object = $this->getTestObject([])
+        $object = $this->getTestObject(['id' => static::GUID])
             ->expand('field1')
             ->expand('field2');
         $this->expectedUrl .= '?expand=' . urlencode('field1,field2');
@@ -39,16 +39,17 @@ class ParamsObjectTraitTest extends ObjectTraitCase
 
     public function testExpandMethodWithMultipleExpands(): void
     {
-        $object = $this->getTestObject([])
-            ->expand(['field1', 'field2']);
-        $this->expectedUrl .= '?expand=' . urlencode('field1,field2');
+        $object = $this->getTestObject(['id' => static::GUID])
+            ->expand(['field1', 'field2'])
+            ->expand('field3');
+        $this->expectedUrl .= '?expand=' . urlencode('field1,field2,field3');
 
         $this->assertSame($this->expectedUrl, $object->meta->href);
     }
 
     public function testSingleParamMethod(): void
     {
-        $object = $this->getTestObject([])
+        $object = $this->getTestObject(['id' => static::GUID])
             ->param('field', 'value');
         $this->expectedUrl .= '?field=value';
 
@@ -57,7 +58,7 @@ class ParamsObjectTraitTest extends ObjectTraitCase
 
     public function testMultipleParamMethodsWithReplacedParam(): void
     {
-        $object = $this->getTestObject([])
+        $object = $this->getTestObject(['id' => static::GUID])
             ->param('field', 'value1')
             ->param('field', 'value2');
         $this->expectedUrl .= '?field=value2';
@@ -67,7 +68,7 @@ class ParamsObjectTraitTest extends ObjectTraitCase
 
     public function testMultipleParamMethodsWithAddedParam(): void
     {
-        $object = $this->getTestObject([])
+        $object = $this->getTestObject(['id' => static::GUID])
             ->param('filter', 'key1=value1')
             ->param('filter', 'key2=value2');
         $this->expectedUrl .= '?filter=' . urlencode('key1=value1;key2=value2');
@@ -77,7 +78,7 @@ class ParamsObjectTraitTest extends ObjectTraitCase
 
     public function testParamMethodsWithMultipleDifferentParams(): void
     {
-        $object = $this->getTestObject([])
+        $object = $this->getTestObject(['id' => static::GUID])
             ->param([
                 ['filter', 'key1=value1'],
                 ['expand', 'field1'],
