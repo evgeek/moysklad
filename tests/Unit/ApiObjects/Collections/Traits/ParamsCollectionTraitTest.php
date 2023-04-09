@@ -13,6 +13,8 @@ use Evgeek\Moysklad\Services\Url;
  */
 class ParamsCollectionTraitTest extends CollectionTraitCase
 {
+    private string $expectedUrl = '';
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -118,6 +120,7 @@ class ParamsCollectionTraitTest extends CollectionTraitCase
 
         $this->assertSame($this->expectedUrl, $collection->meta->href);
     }
+
     public function testSingleOrderMethod(): void
     {
         $collection = $this->getTestCollection()

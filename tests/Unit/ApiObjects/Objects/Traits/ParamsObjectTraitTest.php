@@ -11,6 +11,8 @@ use Evgeek\Moysklad\Services\Url;
  */
 class ParamsObjectTraitTest extends ObjectTraitCase
 {
+    private string $expectedUrl = '';
+
     protected function setUp(): void
     {
         parent::setUp();
