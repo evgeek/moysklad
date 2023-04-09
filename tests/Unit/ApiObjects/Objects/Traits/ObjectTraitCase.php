@@ -23,7 +23,7 @@ abstract class ObjectTraitCase extends TestCase
         $this->createMockMoySkladWithMockedApiClient();
     }
 
-    protected function getTestObject(array $content): AbstractConcreteObject
+    protected function getTestObject(array $content = []): AbstractConcreteObject
     {
         return new class($this->ms, $content) extends AbstractConcreteObject {
             public const PATH = CrudObjectTraitTest::PATH;

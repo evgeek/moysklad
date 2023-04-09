@@ -22,7 +22,7 @@ class CrudObjectTraitTest extends ObjectTraitCase
 
     public function testGetMethodWithoutIdThrowsException(): void
     {
-        $object = $this->getTestObject([]);
+        $object = $this->getTestObject();
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Cannot load object without id');
 
@@ -31,7 +31,7 @@ class CrudObjectTraitTest extends ObjectTraitCase
 
     public function testCreateMethodCallsSendWithExpectedParams(): void
     {
-        $object = $this->getTestObject([]);
+        $object = $this->getTestObject();
         $this->expectsSendCalledWith(HttpMethod::POST, static::PATH, [], $object);
 
         $object->create();
@@ -56,7 +56,7 @@ class CrudObjectTraitTest extends ObjectTraitCase
 
     public function testUpdateMethodWithoutIdThrowsException(): void
     {
-        $object = $this->getTestObject([]);
+        $object = $this->getTestObject();
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Cannot update object without id');
 
@@ -73,7 +73,7 @@ class CrudObjectTraitTest extends ObjectTraitCase
 
     public function testDeleteMethodWithoutIdThrowsException(): void
     {
-        $object = $this->getTestObject([]);
+        $object = $this->getTestObject();
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Cannot delete object without id');
 

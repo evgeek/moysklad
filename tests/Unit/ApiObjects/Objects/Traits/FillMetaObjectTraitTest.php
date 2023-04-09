@@ -21,7 +21,7 @@ class FillMetaObjectTraitTest extends ObjectTraitCase
 
     public function testNotExistingMetaWithoutIdMakesFromPathAndType(): void
     {
-        $object = $this->getTestObject([]);
+        $object = $this->getTestObject();
         $expectedMeta = [
             'href' => Url::API . '/' . implode('/', static::PATH),
             'type' => static::TYPE,

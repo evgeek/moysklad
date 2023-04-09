@@ -31,13 +31,21 @@ trait SetIdInMetaHrefTrait
 
     public function __set(string $name, mixed $value)
     {
+        if ($value === null) {
+            $this->__unset($name);
+
+            return;
+        }
+
         if ($name === 'id') {
             if (!Guid::isGuid($value)) {
                 throw new InvalidArgumentException('id must be a guid');
             }
             $this->setIdToMetaHref($value);
             $this->contentContainer['meta'] = $this->hiddenMeta;
-        } elseif ($name === 'meta') {
+        }
+
+        if ($name === 'meta') {
             $formatter = $this->ms->getApiClient()->getFormatter();
             $this->hiddenMeta = (new StdClassFormat())->encode($formatter->decode($value));
 
@@ -65,6 +73,10 @@ trait SetIdInMetaHrefTrait
             unset($this->contentContainer['meta']);
         }
 
+        if ($name === 'meta') {
+            throw new InvalidArgumentException('Meta property cannot be unset');
+        }
+
         parent::__unset($name);
     }
 
@@ -77,10 +89,6 @@ trait SetIdInMetaHrefTrait
 
         [$path, $params] = Url::parsePathAndParams($href);
         $prevId = Url::getId($href);
-
-        if ($id === $prevId) {
-            return;
-        }
 
         if ($prevId === null) {
             $path[] = $id;
