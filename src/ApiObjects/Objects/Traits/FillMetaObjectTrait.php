@@ -15,14 +15,16 @@ trait FillMetaObjectTrait
 
     protected function fillMeta(array $path): void
     {
-        $meta = $this->meta ?? null;
+        if ($this->meta) {
+            return;
+        }
 
         $id = $this->id ?? null;
         if ($id !== null && $path[array_key_last($path)] !== $id) {
             $path[] = $id;
         }
 
-        $meta = $meta ?? $this->ms->meta()->create($path, $this->type);
+        $meta = $this->ms->meta()->create($path, $this->type);
         $formatter = $this->ms->getApiClient()->getFormatter();
 
         $this->meta = (new StdClassFormat())->encode($formatter->decode($meta));
