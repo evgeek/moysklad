@@ -8,7 +8,6 @@ use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Http\Payload;
 use Evgeek\Moysklad\Services\Url;
-use InvalidArgumentException;
 
 trait CrudCollectionTrait
 {
@@ -106,13 +105,10 @@ trait CrudCollectionTrait
 
     protected function makePayload(HttpMethod $method, mixed $body, ?string $additionalSegment = null): Payload
     {
-        $href = $this->meta->href ?? null;
-        if (!$href) {
-            throw new InvalidArgumentException('Cannot find meta href');
-        }
-
-        [$path, $params] = Url::parsePathAndParams($href);
-        $path = $additionalSegment ? [...$path, $additionalSegment] : $path;
+        [$path, $params] = Url::parsePathAndParams($this->meta->href);
+        $path = $additionalSegment ?
+            [...$path, $additionalSegment] :
+            $path;
 
         return new Payload(
             method: $method,

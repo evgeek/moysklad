@@ -14,10 +14,10 @@ class CrudObjectTraitTest extends ObjectTraitCase
 {
     public function testGetMethodCallsSendWithExpectedParams(): void
     {
-        $object = $this->getTestObject(['id' => self::GUID]);
-        $this->expectsSendCalledWith(HttpMethod::GET, [...self::PATH, self::GUID], [], $object);
+        $object = $this->getTestObject(['id' => static::GUID]);
+        $this->expectsSendCalledWith(HttpMethod::GET, [...static::PATH, static::GUID], ['expand' => 'field1'], $object);
 
-        $object->get();
+        $object->expand('field1')->get();
     }
 
     public function testGetMethodWithoutIdThrowsException(): void
@@ -32,14 +32,14 @@ class CrudObjectTraitTest extends ObjectTraitCase
     public function testCreateMethodCallsSendWithExpectedParams(): void
     {
         $object = $this->getTestObject([]);
-        $this->expectsSendCalledWith(HttpMethod::POST, self::PATH, [], $object);
+        $this->expectsSendCalledWith(HttpMethod::POST, static::PATH, [], $object);
 
         $object->create();
     }
 
     public function testCreateMethodWithIdThrowsException(): void
     {
-        $object = $this->getTestObject(['id' => self::GUID]);
+        $object = $this->getTestObject(['id' => static::GUID]);
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Cannot create object with id');
 
@@ -48,8 +48,8 @@ class CrudObjectTraitTest extends ObjectTraitCase
 
     public function testUpdateMethodCallsSendWithExpectedParams(): void
     {
-        $object = $this->getTestObject(['id' => self::GUID]);
-        $this->expectsSendCalledWith(HttpMethod::PUT, [...self::PATH, self::GUID], [], $object);
+        $object = $this->getTestObject(['id' => static::GUID]);
+        $this->expectsSendCalledWith(HttpMethod::PUT, [...static::PATH, static::GUID], [], $object);
 
         $object->update();
     }
@@ -65,8 +65,8 @@ class CrudObjectTraitTest extends ObjectTraitCase
 
     public function testDeleteMethodCallsSendWithExpectedParams(): void
     {
-        $object = $this->getTestObject(['id' => self::GUID]);
-        $this->expectsSendCalledWith(HttpMethod::DELETE, [...self::PATH, self::GUID], [], $object);
+        $object = $this->getTestObject(['id' => static::GUID]);
+        $this->expectsSendCalledWith(HttpMethod::DELETE, [...static::PATH, static::GUID], [], $object);
 
         $object->delete();
     }
