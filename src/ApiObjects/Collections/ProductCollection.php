@@ -11,9 +11,11 @@ use Evgeek\Moysklad\Dictionaries\Entity;
 use stdClass;
 
 /**
- * @property stdClass       $context
- * @property MetaCollection $meta
- * @property Product[]      $rows
+ * Коллекция товаров
+ *
+ * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
+ *
+ * @implements AbstractConcreteCollection<Product>
  */
 class ProductCollection extends AbstractConcreteCollection
 {
