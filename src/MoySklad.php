@@ -19,9 +19,9 @@ class MoySklad
     private ApiClient $api;
 
     /**
-     * @param array                         $credentials          ['login', 'password'] or ['token']
-     * @param JsonFormatterInterface        $formatter            API response formatter
-     * @param RequestSenderFactoryInterface $requestSenderFactory PSR-7 client factory
+     * @param array                         $credentials          ['login', 'password'] или ['token']
+     * @param JsonFormatterInterface        $formatter            Класс, форматирующий ответ от API
+     * @param RequestSenderFactoryInterface $requestSenderFactory Фабрика, создающая PSR-7 совместимый клиент
      */
     public function __construct(
         array $credentials,
@@ -36,10 +36,11 @@ class MoySklad
     }
 
     /**
-     * Query builder
+     * Конструктор запросов
+     *
      * <code>
      * $products = $ms->query()
-     *  ->endpoint('entity')
+     *  ->entity()
      *  ->product()
      *  ->get();
      * </code>
@@ -49,11 +50,29 @@ class MoySklad
         return new Query($this->api);
     }
 
+    /**
+     * Конструктор объектов API
+     *
+     * <code>
+     * $product = $ms->object()
+     *  ->single()
+     *  ->product(['name' => 'cucumber'])
+     *  ->create();
+     * </code>
+     */
     public function object(): ApiObjectBuilder
     {
         return new ApiObjectBuilder($this);
     }
 
+    /**
+     * Конструктор метаданных
+     *
+     * <code>
+     * $employeeMeta = $ms->meta()
+     *  ->employee('25cf41f2-b068-11ed-0a80-0e9700500d7e');
+     * </code>
+     */
     public function meta(): MetaMaker
     {
         return new MetaMaker($this->formatter);
