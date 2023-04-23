@@ -14,7 +14,8 @@ class EntitySegment extends AbstractEndpointSegmentNamed
     protected const SEGMENT = Endpoint::ENTITY;
 
     /**
-     * Products
+     * Товар
+     *
      * <code>
      * $products = $ms->query()
      *  ->entity()
@@ -30,7 +31,8 @@ class EntitySegment extends AbstractEndpointSegmentNamed
     }
 
     /**
-     * Customer orders
+     * Заказ покупателя
+     *
      * <code>
      * $customerOrders = $ms->query()
      *  ->entity()
@@ -46,7 +48,8 @@ class EntitySegment extends AbstractEndpointSegmentNamed
     }
 
     /**
-     * Assortments
+     * Ассортимент
+     *
      * <code>
      * $assortments = $ms->query()
      *  ->entity()
