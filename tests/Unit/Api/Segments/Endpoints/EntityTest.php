@@ -7,6 +7,7 @@ use Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodSegmentNamed;
 use Evgeek\Moysklad\Api\Segments\Methods\Documents\CustomerorderSegment;
 use Evgeek\Moysklad\Api\Segments\Methods\Entities\AssortmentSegment;
+use Evgeek\Moysklad\Api\Segments\Methods\Entities\EmployeeSegment;
 use Evgeek\Moysklad\Api\Segments\Methods\Entities\ProductSegment;
 use Evgeek\Tests\Unit\Api\ApiTestCase;
 
@@ -49,6 +50,15 @@ class EntityTest extends ApiTestCase
         $builder = $this->builder->assortment();
 
         $this->assertInstanceOf(AssortmentSegment::class, $builder);
+        $this->assertInstanceOf(AbstractMethodSegmentNamed::class, $builder);
+        $this->assertInstanceOf(AbstractBuilder::class, $builder);
+    }
+
+    public function testEmployeeReturnsCorrectClass(): void
+    {
+        $builder = $this->builder->employee();
+
+        $this->assertInstanceOf(EmployeeSegment::class, $builder);
         $this->assertInstanceOf(AbstractMethodSegmentNamed::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
