@@ -9,7 +9,8 @@ use Evgeek\Moysklad\Api\Segments\ById\ByIdSegmentCommon;
 trait ByIdCommonTrait
 {
     /**
-     * Single entity by id
+     * Работа с одиночной сущностью по id
+     *
      * <code>
      * $product = $ms->query()
      *  ->entity()

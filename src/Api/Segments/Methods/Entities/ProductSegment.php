@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodSegmentNamed;
 use Evgeek\Moysklad\Api\Traits\Actions\CreateTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\GetGeneratorTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\GetTrait;
+use Evgeek\Moysklad\Api\Traits\Actions\MassCreateUpdateTrait;
 use Evgeek\Moysklad\Api\Traits\Actions\MassDeleteTrait;
 use Evgeek\Moysklad\Api\Traits\Params\ExpandTrait;
 use Evgeek\Moysklad\Api\Traits\Params\FilterTrait;
@@ -27,6 +28,7 @@ class ProductSegment extends AbstractMethodSegmentNamed
     use GetGeneratorTrait;
     use GetTrait;
     use LimitOffsetTrait;
+    use MassCreateUpdateTrait;
     use MassDeleteTrait;
     use MetadataTrait;
     use OrderTrait;

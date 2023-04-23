@@ -9,7 +9,8 @@ use Evgeek\Moysklad\Api\Segments\Methods\Nested\MetadataSegment;
 trait MetadataTrait
 {
     /**
-     * Entity metadata
+     * Метаданные сущности
+     *
      * <code>
      * $product = $ms->query()
      *  ->entity()
@@ -17,6 +18,8 @@ trait MetadataTrait
      *  ->metadata()
      *  ->get();
      * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-metadannye
      */
     public function metadata(): MetadataSegment
     {

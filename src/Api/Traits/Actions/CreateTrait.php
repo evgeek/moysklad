@@ -10,7 +10,8 @@ use Evgeek\Moysklad\Exceptions\RequestException;
 trait CreateTrait
 {
     /**
-     * Create entity (POST http request)
+     * Создать сущность
+     *
      * <code>
      * $product = $ms->query()
      *  ->entity()

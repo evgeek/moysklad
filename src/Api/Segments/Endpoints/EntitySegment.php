@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Api\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Segments\Methods\Documents\CustomerorderSegment;
 use Evgeek\Moysklad\Api\Segments\Methods\Entities\AssortmentSegment;
+use Evgeek\Moysklad\Api\Segments\Methods\Entities\EmployeeSegment;
 use Evgeek\Moysklad\Api\Segments\Methods\Entities\ProductSegment;
 use Evgeek\Moysklad\Dictionaries\Endpoint;
 
@@ -62,5 +63,22 @@ class EntitySegment extends AbstractEndpointSegmentNamed
     public function assortment(): AssortmentSegment
     {
         return $this->resolveNamedBuilder(AssortmentSegment::class);
+    }
+
+    /**
+     * Сотрудник
+     *
+     * <code>
+     * $assortments = $ms->query()
+     *  ->entity()
+     *  ->employee()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sotrudnik
+     */
+    public function employee(): EmployeeSegment
+    {
+        return $this->resolveNamedBuilder(EmployeeSegment::class);
     }
 }

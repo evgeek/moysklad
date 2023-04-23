@@ -10,7 +10,8 @@ use Evgeek\Moysklad\Exceptions\RequestException;
 trait MassDeleteTrait
 {
     /**
-     * Mass delete entity (POST http request to /delete)
+     * Массовое удаление сущностей
+     *
      * <code>
      * $products = $ms->query()
      *  ->entity()
