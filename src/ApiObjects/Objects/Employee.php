@@ -10,6 +10,10 @@ use Evgeek\Moysklad\Dictionaries\Endpoint;
 use Evgeek\Moysklad\Dictionaries\Entity;
 
 /**
+ * Сотрудник
+ *
+ * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sotrudnik
+ *
  * @implements AbstractConcreteObject<EmployeeCollection>
  *
  * @property string      $id

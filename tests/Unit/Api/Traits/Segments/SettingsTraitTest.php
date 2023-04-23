@@ -5,9 +5,7 @@ namespace Evgeek\Tests\Unit\Api\Traits\Segments;
 use Evgeek\Moysklad\Api\AbstractBuilder;
 use Evgeek\Moysklad\Api\Segments\AbstractSegmentCommon;
 use Evgeek\Moysklad\Api\Segments\Methods\AbstractMethodSegmentNamed;
-use Evgeek\Moysklad\Api\Segments\Methods\Nested\PositionsSegment;
 use Evgeek\Moysklad\Api\Segments\Methods\Nested\SettingsSegment;
-use Evgeek\Moysklad\Api\Traits\Segments\PositionsTrait;
 use Evgeek\Moysklad\Api\Traits\Segments\SettingsTrait;
 use Evgeek\Tests\Unit\Api\Traits\TraitTestCase;
 
