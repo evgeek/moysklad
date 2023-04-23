@@ -12,19 +12,19 @@ use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 class CollectionObjectBuilder extends AbstractObjectBuilder
 {
     /** @return ProductCollection */
-    public function product(mixed $content = []): AbstractConcreteCollection
+    public function product(): AbstractConcreteCollection
     {
-        return $this->resolveCollection(ProductCollection::TYPE, $content);
+        return $this->resolveCollection(ProductCollection::TYPE);
     }
 
     /** @return EmployeeCollection */
-    public function employee(mixed $content = []): AbstractConcreteCollection
+    public function employee(): AbstractConcreteCollection
     {
-        return $this->resolveCollection(EmployeeCollection::TYPE, $content);
+        return $this->resolveCollection(EmployeeCollection::TYPE);
     }
 
-    public function unknown(array $path, string $type, mixed $content = []): UnknownCollection
+    public function unknown(array $path, string $type): UnknownCollection
     {
-        return new UnknownCollection($this->ms, $path, $type, $content);
+        return new UnknownCollection($this->ms, $path, $type);
     }
 }

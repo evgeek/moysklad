@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\ApiObjects\Objects;
 
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaObject;
+use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
 use Evgeek\Moysklad\Dictionaries\Endpoint;
 use Evgeek\Moysklad\Dictionaries\Entity;
 
 /**
+ * @implements AbstractConcreteObject<ProductCollection>
+ *
  * @property string      $id
  * @property string      $name
  * @property ?MetaObject $meta
