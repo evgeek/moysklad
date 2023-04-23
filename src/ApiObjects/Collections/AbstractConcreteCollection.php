@@ -17,7 +17,7 @@ use stdClass;
  *
  * @property stdClass       $context
  * @property MetaCollection $meta
- * @property T[]      $rows
+ * @property T[]            $rows
  */
 abstract class AbstractConcreteCollection extends AbstractConcreteApiObject
 {

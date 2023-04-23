@@ -10,14 +10,13 @@ use Evgeek\Moysklad\ApiObjects\Collections\Traits\CrudCollectionTrait;
 use Evgeek\Moysklad\ApiObjects\Collections\Traits\FillMetaCollectionTrait;
 use Evgeek\Moysklad\ApiObjects\Collections\Traits\IterateCollectionTrait;
 use Evgeek\Moysklad\ApiObjects\Collections\Traits\ParamsCollectionTrait;
-use Evgeek\Moysklad\ApiObjects\Objects\Product;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use stdClass;
 
 /**
- * @property stdClass       $context
- * @property MetaCollection $meta
- * @property UnknownObject[]      $rows
+ * @property stdClass        $context
+ * @property MetaCollection  $meta
+ * @property UnknownObject[] $rows
  */
 class UnknownCollection extends AbstractUnknownApiObject
 {
