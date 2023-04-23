@@ -3,6 +3,8 @@
 namespace Evgeek\Tests\Unit\ApiObjects\Builders;
 
 use Evgeek\Moysklad\ApiObjects\Builders\CollectionObjectBuilder;
+use Evgeek\Moysklad\ApiObjects\Collections\AssortmentCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\CustomerorderCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
@@ -57,5 +59,19 @@ class CollectionObjectBuilderTest extends ObjectResolversTestCase
         $product = $this->builder->employee();
 
         $this->assertObjectResolvedWithExpectedMetaAndContent($product, EmployeeCollection::class);
+    }
+
+    public function testAssortmentMethod(): void
+    {
+        $product = $this->builder->assortment();
+
+        $this->assertObjectResolvedWithExpectedMetaAndContent($product, AssortmentCollection::class);
+    }
+
+    public function testCustomerorderMethod(): void
+    {
+        $product = $this->builder->customerorder();
+
+        $this->assertObjectResolvedWithExpectedMetaAndContent($product, CustomerorderCollection::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace Evgeek\Tests\Unit\ApiObjects\Builders;
 
 use Evgeek\Moysklad\ApiObjects\Builders\SingleObjectBuilder;
+use Evgeek\Moysklad\ApiObjects\Objects\Customerorder;
 use Evgeek\Moysklad\ApiObjects\Objects\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\Product;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
@@ -48,6 +49,13 @@ class SingleObjectBuilderTest extends ObjectResolversTestCase
         $product = $this->builder->employee(static::CONTENT);
 
         $this->assertObjectResolvedWithExpectedMetaAndContent($product, Employee::class);
+    }
+
+    public function testCustomerorderMethod(): void
+    {
+        $product = $this->builder->customerorder(static::CONTENT);
+
+        $this->assertObjectResolvedWithExpectedMetaAndContent($product, Customerorder::class);
     }
 
     public function testUnknownMethod(): void

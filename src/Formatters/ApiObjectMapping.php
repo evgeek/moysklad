@@ -6,11 +6,13 @@ namespace Evgeek\Moysklad\Formatters;
 
 use Evgeek\Moysklad\ApiObjects\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\AssortmentCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\CustomerorderCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Assortment;
+use Evgeek\Moysklad\ApiObjects\Objects\Customerorder;
 use Evgeek\Moysklad\ApiObjects\Objects\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\Product;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
@@ -23,11 +25,13 @@ class ApiObjectMapping
         Entity::PRODUCT => Product::class,
         Entity::EMPLOYEE => Employee::class,
         Entity::ASSORTMENT => Assortment::class,
+        Entity::CUSTOMERORDER => Customerorder::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Entity::PRODUCT => ProductCollection::class,
         Entity::EMPLOYEE => EmployeeCollection::class,
         Entity::ASSORTMENT => AssortmentCollection::class,
+        Entity::CUSTOMERORDER => CustomerorderCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;
