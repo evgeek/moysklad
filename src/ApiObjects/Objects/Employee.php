@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Objects;
 
+use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\Image;
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaObject;
 use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
 use Evgeek\Moysklad\Dictionaries\Endpoint;
@@ -16,9 +17,32 @@ use Evgeek\Moysklad\Dictionaries\Entity;
  *
  * @implements AbstractConcreteObject<EmployeeCollection>
  *
- * @property string      $id
- * @property string      $name
- * @property ?MetaObject $meta
+ * @property string           $accountId
+ * @property bool             $archived
+ * @property ?UnknownObject[] $attributes
+ * @property ?UnknownObject[] $cashiers
+ * @property ?string          $code
+ * @property string           $created
+ * @property ?string          $description
+ * @property ?string          $email
+ * @property string           $externalCode
+ * @property ?string          $firstName
+ * @property ?string          $fullName
+ * @property UnknownObject    $group
+ * @property string           $id
+ * @property ?Image           $image
+ * @property ?string          $inn
+ * @property string           $lastName
+ * @property ?MetaObject      $meta
+ * @property ?string          $middleName
+ * @property string           $name
+ * @property Employee         $owner
+ * @property ?string          $phone
+ * @property ?string          $position
+ * @property bool             $shared
+ * @property ?string          $shortFio
+ * @property ?string          $uid
+ * @property string           $updated
  */
 class Employee extends AbstractConcreteObject
 {
