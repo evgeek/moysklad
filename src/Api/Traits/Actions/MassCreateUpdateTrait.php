@@ -15,8 +15,16 @@ trait MassCreateUpdateTrait
      * <code>
      * $products = $ms->query()
      *  ->entity()
-     *  ->customerorder()
-     *  ->massCreateUpdate($content);
+     *  ->product()
+     *  ->massCreateUpdate([
+     *      [
+     *          'name' => 'Корнишоны',
+     *      ],
+     *      [
+     *          'meta' => Meta::product('051c81fa-e1ba-11ed-0a80-0f4100572c02'),
+     *          'name' => 'Патиссоны',
+     *      ],
+     * ]);
      * </code>
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-sozdanie-i-obnowlenie-neskol-kih-ob-ektow

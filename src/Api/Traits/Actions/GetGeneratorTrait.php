@@ -10,7 +10,9 @@ use Generator;
 trait GetGeneratorTrait
 {
     /**
-     * Create generator from request (only for iterable entities: with rows array and meta->limit/meta->offset fields)
+     * Создать генератор из запроса итерируемой сущности.
+     * Генератор можно перебирать в цикле, при этом подгружать новые страницы он будет самостоятельно.
+     *
      * <code>
      * $generator = $ms->query()
      *  ->entity()

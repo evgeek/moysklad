@@ -10,7 +10,8 @@ use Evgeek\Moysklad\Exceptions\RequestException;
 trait GetTrait
 {
     /**
-     * Read single entity or list (GET http request)
+     * Получить одиночную сущность или коллекцию сущностей.
+     *
      * <code>
      * $products = $ms->query()
      *  ->entity()

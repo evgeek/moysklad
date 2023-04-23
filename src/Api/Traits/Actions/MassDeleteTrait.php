@@ -16,7 +16,10 @@ trait MassDeleteTrait
      * $products = $ms->query()
      *  ->entity()
      *  ->customerorder()
-     *  ->massDelete($body);
+     *  ->massDelete([
+     *      ['meta' => Meta::product('051c81fa-e1ba-11ed-0a80-0f4100572c02')],
+     *      ['meta' => Meta::product('25cf41f2-b068-11ed-0a80-0e9700500d7e')],
+     *  ]);
      * </code>
      *
      * @throws RequestException

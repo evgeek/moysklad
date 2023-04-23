@@ -10,7 +10,8 @@ use Evgeek\Moysklad\Exceptions\RequestException;
 trait DeleteTrait
 {
     /**
-     * Delete entity (DELETE http request)
+     * Удалить сущность
+     *
      * <code>
      * $ms->query()
      *  ->entity()

@@ -10,7 +10,8 @@ use Evgeek\Moysklad\Exceptions\RequestException;
 trait UpdateTrait
 {
     /**
-     * Update entity (PUT http request)
+     * Обновить сущность
+     *
      * <code>
      * $product = $ms->query()
      *  ->entity()
