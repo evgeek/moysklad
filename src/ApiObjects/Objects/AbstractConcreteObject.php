@@ -23,7 +23,7 @@ abstract class AbstractConcreteObject extends AbstractConcreteApiObject
     use ParamsObjectTrait;
     use SetIdInMetaHrefTrait;
 
-    public static function make(MoySklad $ms, array $content): static
+    public static function make(MoySklad $ms, array $content = []): static
     {
         return new static($ms, $content);
     }
