@@ -40,21 +40,21 @@ class CollectionObjectBuilderTest extends ObjectResolversTestCase
     {
         $path = ['endpoint', 'segment'];
         $type = 'unknown_type';
-        $unknown = $this->builder->unknown($path, $type, static::CONTENT);
+        $unknown = $this->builder->unknown($path, $type);
 
         $this->assertObjectResolvedWithExpectedMetaAndContent($unknown, UnknownCollection::class, $path, $type);
     }
 
     public function testProductMethod(): void
     {
-        $product = $this->builder->product(static::CONTENT);
+        $product = $this->builder->product();
 
         $this->assertObjectResolvedWithExpectedMetaAndContent($product, ProductCollection::class);
     }
 
     public function testEmployeeMethod(): void
     {
-        $product = $this->builder->employee(static::CONTENT);
+        $product = $this->builder->employee();
 
         $this->assertObjectResolvedWithExpectedMetaAndContent($product, EmployeeCollection::class);
     }

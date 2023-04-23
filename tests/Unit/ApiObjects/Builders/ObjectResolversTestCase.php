@@ -3,6 +3,7 @@
 namespace Evgeek\Tests\Unit\ApiObjects\Builders;
 
 use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
+use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use PHPUnit\Framework\TestCase;
 
 abstract class ObjectResolversTestCase extends TestCase
@@ -27,8 +28,10 @@ abstract class ObjectResolversTestCase extends TestCase
         $path = $path ?? $expectedObjectClass::PATH;
         $this->assertStringEndsWith(implode('/', $path), $object->meta->href);
 
-        foreach (static::CONTENT as $key => $value) {
-            $this->assertSame($value, $object->{$key});
+        if (is_subclass_of($expectedObjectClass, AbstractConcreteObject::class)) {
+            foreach (static::CONTENT as $key => $value) {
+                $this->assertSame($value, $object->{$key});
+            }
         }
     }
 }
