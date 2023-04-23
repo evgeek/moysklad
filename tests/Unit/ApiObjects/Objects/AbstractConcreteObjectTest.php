@@ -19,6 +19,7 @@ class AbstractConcreteObjectTest extends TestCase
 {
     /**
      * @param class-string<AbstractConcreteObject> $class
+     *
      * @dataProvider classAndCollection
      */
     public function testMakeReturnsSameClassWithExpectedContent(string $class): void
@@ -39,6 +40,7 @@ class AbstractConcreteObjectTest extends TestCase
 
     /**
      * @param class-string<AbstractConcreteObject> $class
+     *
      * @dataProvider classAndCollection
      */
     public function testCollectionReturnsExpectedDefaultCollection(string $class, string $collection): void

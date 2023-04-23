@@ -13,7 +13,7 @@ use InvalidArgumentException;
 
 final class ApiObjectMappingHelper
 {
-    public static function resolveObject(MoySklad $ms, string $type, mixed $content): AbstractConcreteObject
+    public static function resolveObject(MoySklad $ms, string $type, mixed $content = []): AbstractConcreteObject
     {
         $class = self::getMapping($ms)->getObject($type);
 
