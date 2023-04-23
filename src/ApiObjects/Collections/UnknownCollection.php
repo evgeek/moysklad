@@ -9,6 +9,7 @@ use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\Traits\CrudCollectionTrait;
 use Evgeek\Moysklad\ApiObjects\Collections\Traits\FillMetaCollectionTrait;
 use Evgeek\Moysklad\ApiObjects\Collections\Traits\IterateCollectionTrait;
+use Evgeek\Moysklad\ApiObjects\Collections\Traits\IteratorTrait;
 use Evgeek\Moysklad\ApiObjects\Collections\Traits\ParamsCollectionTrait;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use stdClass;
@@ -23,5 +24,6 @@ class UnknownCollection extends AbstractUnknownApiObject
     use CrudCollectionTrait;
     use FillMetaCollectionTrait;
     use IterateCollectionTrait;
+    use IteratorTrait;
     use ParamsCollectionTrait;
 }
