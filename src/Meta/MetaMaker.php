@@ -23,6 +23,11 @@ class MetaMaker
         return Meta::employee($guid, $this->formatter);
     }
 
+    public function customerorder(string $guid)
+    {
+        return Meta::customerorder($guid, $this->formatter);
+    }
+
     public function create(array $path, string $type)
     {
         return Meta::create($path, $type, $this->formatter);

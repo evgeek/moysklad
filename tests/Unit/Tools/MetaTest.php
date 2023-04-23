@@ -170,6 +170,16 @@ class MetaTest extends TestCase
         );
     }
 
+    public function testCustomerorder(): void
+    {
+        $this->assertMetaMethodByGuidWorks(
+            'customerorder',
+            '/entity/customerorder/guid',
+            'customerorder',
+            'guid'
+        );
+    }
+
     public function testService(): void
     {
         $this->assertMetaMethodByGuidWorks(

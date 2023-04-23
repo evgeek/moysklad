@@ -35,6 +35,7 @@ class MetaMakerTest extends TestCase
             ['create', [['segment1', 'segment2'], 'type'], '/segment1/segment2', 'type'],
             ['product', [self::GUID], '/entity/product/' . self::GUID, 'product'],
             ['employee', [self::GUID], '/entity/employee/' . self::GUID, 'employee'],
+            ['customerorder', [self::GUID], '/entity/customerorder/' . self::GUID, 'customerorder'],
         ];
     }
 }
