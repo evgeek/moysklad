@@ -41,12 +41,14 @@ trait CrudObjectTrait
     /**
      * @throws RequestException
      */
-    public function update(): static
+    public function update(mixed $content = []): static
     {
         $id = Url::getId($this->meta->href);
         if (!$id) {
             throw new InvalidArgumentException('Cannot update object without id');
         }
+
+        $this->hydrateAdd($content);
 
         return $this->send(HttpMethod::PUT);
     }

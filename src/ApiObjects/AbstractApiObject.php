@@ -62,6 +62,11 @@ abstract class AbstractApiObject extends stdClass
     {
         $this->contentContainer = [];
 
+        $this->hydrateAdd($content);
+    }
+
+    protected function hydrateAdd(mixed $content): void
+    {
         $formatter = $this->ms->getApiClient()->getFormatter();
         $apiObjectFormatter = is_a($formatter, ApiObjectFormatter::class) ?
             $formatter :
