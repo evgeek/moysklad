@@ -10,7 +10,8 @@ use Evgeek\Moysklad\Services\QueryParams;
 trait OrderTrait
 {
     /**
-     * Sorts result by field.
+     * Сортировка результата по переданному полю.
+     *
      * <code>
      * $product = $ms->query()
      *  ->entity()
