@@ -45,7 +45,7 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
         return $decodedContent;
     }
 
-    public static function toArray(array|stdClass|AbstractApiObject $content)
+    public static function toArray(array|stdClass|AbstractApiObject $content): array
     {
         if (is_a($content, AbstractApiObject::class)) {
             return $content->toArray();

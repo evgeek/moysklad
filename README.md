@@ -1,8 +1,8 @@
 # SDK для работы с API v1.2 сервиса "Мой Склад"
 
-Идея этой библиотеки - максимально лёгкий и гибкий SDK, позволяющий работать с [API 1.2](https://dev.moysklad.ru/doc/api/remap/1.2) и `PHP 8.1+`.
+Лёгкая и универсальная библиотека, позволяющий работать с [API 1.2](https://dev.moysklad.ru/doc/api/remap/1.2) и `PHP 8.1+`.
 
-Библиотека находится в разработке, версии до `v1.0.0` могут не обладать обратной совместимостью. Список изменений можно найти в [Changelog](CHANGELOG.md). Инструкция по обновлению для версий, не поддерживающих обратную совместимость - [Upgrade guide](UPGRADE.md).
+Находится в разработке, версии до `v1.0.0` могут не обладать обратной совместимостью. Список изменений можно найти в [Changelog](CHANGELOG.md). Инструкция по обновлению для версий, не поддерживающих обратную совместимость - [Upgrade guide](UPGRADE.md).
 
 ## Установка
 
@@ -10,231 +10,41 @@
 composer require evgeek/moysklad
 ```
 
-## Настройка
+## Пример использования
 
 ```php
-//Минимум
-$ms = new \Evgeek\Moysklad\MoySklad(['token']);
+use Evgeek\Moysklad\MoySklad;
+use Evgeek\Moysklad\ApiObjects\Objects\Product;
 
-//С подробностями
-$ms = new \Evgeek\Moysklad\MoySklad(
-    credentials: ['login', 'password'],
-    formatter: new \Evgeek\Moysklad\Formatters\StdClassFormat(),
-    requestSenderFactory: new \Evgeek\Moysklad\Http\GuzzleSenderFactory(retires: 3, exceptionTruncateAt: 4000)
-);
-```
+$ms = new MoySklad(['token']);
 
-* `credentials` - массив с учётными данными. Можно использовать либо токен, либо логин/пароль.
-* `formatter` - объект, преобразующий json-строку ответа от API в нужный формат, и наоборот - передаваемый payload в json-строку. Должен реализовывать `\Evgeek\Moysklad\Formatters\JsonFormatterInterface`. Встроенные форматтеры - `StdClassFormat` (по умолчанию), `ArrayFormat`, и `StringFormat`. Все встроенные форматтеры могут принимать в качестве payload `stdClass`, `array` и `string`.
-* `requestSenderFactory` - фабрика, создающая объект для отправки http-запросов. По умолчанию библиотека для этих целей использует [Guzzle](https://github.com/guzzle/guzzle). В стандартный `GuzzleSenderFactory()` в качестве аргументов можно передать желаемое количество попыток повтора запроса в случае неудачи (по умолчанию 0, задержка между повторами экспоненциальна) и максимальный размер сообщения об ошибке (по умолчанию 120 символов). Фабрика и отправитель реализованы через простые `PSR-7` совместимые интерфейсы, поэтому не составит труда как просто настроить клиент Guzzle под свои предпочтения, так и реализовать собственный способ отправки.
-
-## Базовое использование
-
-Взаимодействовать с API можно как при помощи реализованных в SDK сущностей, так и при помощи универсальных методов, которые позволят собрать любой запрос. К примеру, запрос `GET https://online.moysklad.ru/api/remap/1.2/entity/customerorder/00001c03-5227-11e8-9ff4-315000132d57/positions?limit=2` можно построить так:
-
-```php
-$ms->query()
-    ->entity()
-    ->customerorder()
-    ->byId('00001c03-5227-11e8-9ff4-315000132d57')
-    ->positions()
-    ->limit(2)
-    ->get();
-```
-
-Или так:
-
-```php
-$ms->query()
-    ->endpoint('entity')
-    ->method('customerorder')
-    ->byId('00001c03-5227-11e8-9ff4-315000132d57')
-    ->method('positions')
-    ->param('limit', '2')
-    ->send('GET');
-```
-
-Список универсальных методов:
-
-* `endpoint()` - входная точка api: `entity`, `report` и т д.
-* `method()` - шаг вложенности url. Вложенностей может быть несколько
-* `byId()` - аналогично, шаг вложенности, но предназначен для идентификаторов сущностей. От `method()` отличается только набором методов.
-* `param()` - для формирования query-параметров url
-* `send()` - отправляет http-запрос и возвращает его результат. Параметры `method` и `body` позволяют задать http-метод запроса и его payload.
-
-## Параметры запроса
-
-Для формирования параметров запроса, помимо `param()`, есть несколько более удобных методов:
-
-* `limit()` - ограничение количества записей в ответе
-* `offset()` - сдвиг для пагинации
-* `search()` - контекстный поиск ([doc](https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-kontextnyj-poisk))
-* `expand()` - разворачивание вложенных сущностей ([doc](https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-zamena-ssylok-ob-ektami-s-pomosch-u-expand)). Несколько полей можно задать при помощи нескольких вызовов метода, или передав в метод массив с названиями полей. Помните, что разворачивание работает только с limit <= 100 и до 3-го уровня вложенности (ограничение API):
-
-```php
-$ms->query()->entity()->product()
-    ->limit(100)
-    ->expand('owner')
-    ->expand('minPrice.currency')
-    ->expand(['group', 'images']);
-```
-
-* `filter()` - фильтрация результатов выдачи ([doc](https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-fil-traciq-wyborki-s-pomosch-u-parametra-filter)). В метод можно передать три параметра (ключ, знак и значение), или только два (ключ и значение, в качестве знака по умолчанию будет использовано `=`). Знаком может быть строка (`'='`, `'!='` и пр.) или enum `Evgeek\Moysklad\Enums\FilterSign`. Несколько фильтров за раз можно передать как массив массивов с параметрами фильтрации:
-
-```php
-$product = $ms->query()->entity()->product()
-    ->filter('archived', false)
-    ->filter('name', '=~', 'apple')
-    ->filter([
-        ['minimumBalance', '=', '0'],
-        ['code', FilterSign::NEQ, 123],
-    ]);
-```
-
-* `order()` - сортировка ([doc](https://dev.moysklad.ru/doc/api/remap/1.2/#mojsklad-json-api-obschie-swedeniq-sortirowka-ob-ektow)). Если направление не задано, будет сортироваться по возрастанию (`asc`). Несколько сортировок можно передать или массивом массивов, или через несколько вызовов метода:
-
-```php
-$ms->query()->entity()->product()
-    ->order('updated', 'asc')
-    ->order([
-       ['code', 'desc'],
-       ['name'],
-    ]);
-```
-
-Нюансы:
-
-* И `param()`, и специализированные методы поддерживают дозапись в параметрах, где это возможно (`filter`, `expand`, `order`). В остальных параметрах ранее установленное значение перезаписывается.
-* `param()`, аналогично прочим методам с дозаписью, поддерживает передачу нескольких наборов значений через массив массивов.
-* `filter()` автоматом экранирует `;`. `param()` - нет.
-
-## Отправка запросов
-
-Помимо `send()`, для отправки http-запросов поддерживаются следующие методы:
-
-* `get()` - `GET` запрос для чтения данных
-* `create()` - `POST` запрос для создания сущности
-* `update()` - `PUT` запрос для обновления сущности
-* `delete()` - `DELETE` запрос для удаления сущности
-* `massDelete()` - `POST` запрос для массового удаления
-
-Тело для `POST` и `PUT` запросов можно передавать в любом поддерживаемом формате (массив, объект, json-строка).
-
-#### Дополнительные методы:
-
-* `getGenerator()` - метод для итерируемых сущностей. Возвращает генератор, перебирающий массив `rows` с текущего `offset` и до последнего элемента (с отправкой новых запросов, если это необходимо). Пагинация осуществляется с шагом `limit`.
-
-```php
-$generator = $ms->query()->entity()->product()->limit(100)->search('orange')->getGenerator();
-foreach ($generator as $product) {
-    //...
-}
-```
-
-* `debug()` - можно разместить перед любым `CRUD` методом, чтобы увидеть в подробностях, какой именно запрос будет отправлен:
-
-```php
-$product = $ms
-    ->query()
+//Конструктор запросов
+$product = $ms->query()
     ->entity()
     ->product()
-    ->limit(1)
-    ->filter([
-        ['archived', false],
-        ['name', '!=', 'tangerine'],
-    ])
-    ->debug()
+    ->byId('25cf41f2-b068-11ed-0a80-0e9700500d7e')
     ->get();
-var_dump($product);
+
+//Active Record
+$product = Product::make($ms);
+$product->id = '25cf41f2-b068-11ed-0a80-0e9700500d7e';
+$product->get();
 ```
 
-```bash
-object(stdClass)#28 (5) {
-  ["method"]=>
-  string(3) "GET"
-  ["url"]=>
-  string(101) "https://online.moysklad.ru/api/remap/1.2/entity/product?limit=1&filter=archived=false;name!=tangerine"
-  ["url_encoded"]=>
-  string(109) "https://online.moysklad.ru/api/remap/1.2/entity/product?limit=1&filter=archived%3Dfalse%3Bname%21%3Dtangerine"
-  ["headers"]=>
-  object(stdClass)#29 (2) {
-    ["Content-Type"]=>
-    string(16) "application/json"
-    ["Authorization"]=>
-    string(38) "Basic ###############################"
-  }
-  ["body"]=>
-  array(0) {
-  }
-}
-```
+## Документация
 
-## Вспомогательные классы
+* Настройка клиента (ССЫЛКА)
+* Конструктор запросов (ССЫЛКА)
+* Объекты (Active Record) (ССЫЛКА)
+* Форматтеры (ССЫЛКА)
+* Вспомогательные инструменты (ССЫЛКА)
 
-* `\Evgeek\Moysklad\Tools\Guid` - предназначен для работы с id (guid/uuid) сущностей:
+## Особенности
 
-```php
-$url = 'https://online.moysklad.ru/api/remap/1.2/entity/customerorder/00001c03-5227-11e8-9ff4-315000132d57/positions/00002107-5227-11e8-9ff4-315000132d58';
-var_dump(Guid::extractAll($url));
-var_dump(Guid::extractFirst($url));
-var_dump(Guid::extractLast($url));
-```
+Библиотека предоставляет два подхода к работе с API - Конструктор запросов и Объектный (Active Record). Подходы полностью совместимы и взаимозаменяемы.
 
-```bash
-array(2) {
-  [0]=>
-  string(36) "00001c03-5227-11e8-9ff4-315000132d57"
-  [1]=>
-  string(36) "00002107-5227-11e8-9ff4-315000132d58"
-}
-string(36) "00001c03-5227-11e8-9ff4-315000132d57"
-string(36) "00002107-5227-11e8-9ff4-315000132d58"
-```
+### Query builder
 
-* `\Evgeek\Moysklad\Tools\Meta` - помогает формировать метадату для создания новых объектов:
+Позволяет при помощи fluent-цепочки методов собрать любой запрос к API. 
 
-```php
-var_dump(Meta::organization('ec008e5b-f5ab-11e5-7a69-970f0019fa50'));
-```
-
-```bash
-object(stdClass)#19 (3) {
-  ["href"]=>
-  string(97) "https://online.moysklad.ru/api/remap/1.2/entity/organization/ec008e5b-f5ab-11e5-7a69-970f0019fa50"
-  ["type"]=>
-  string(12) "organization"
-  ["mediaType"]=>
-  string(16) "application/json"
-}
-```
-
-Форматирование можно задать при помощи метода `Meta::setFormat()`. По умолчанию используется `StdClassFormat`. Учитывайте, что `Meta` и `MoySklad` используют разные форматтеры, то есть установка формата в одном классе не затронет другой.
-
-Помимо небольшого набора предопределённых сущностей, можно сформировать любую мету при помощи универсального метода `Meta::create()`. Примеры:
-
-```php
-Meta::setFormat(new ArrayFormat());
-$order = [
-    'name' => 'test_order',
-    'organization' => ['meta' => Meta::create(['entity', 'organization', 'ec008e5b-f5ab-11e5-7a69-970f0019fa50'], 'organization')],
-];
-var_dump($order);
-```
-```bash
-array(3) {
-  ["name"]=>
-  string(10) "test_order"
-  ["organization"]=>
-  array(1) {
-    ["meta"]=>
-    array(3) {
-      ["href"]=>
-      string(97) "https://online.moysklad.ru/api/remap/1.2/entity/organization/ec008e5b-f5ab-11e5-7a69-970f0019fa50"
-      ["type"]=>
-      string(12) "organization"
-      ["mediaType"]=>
-      string(16) "application/json"
-    }
-  }
-}
-```
+![query-builder](/docs/query_builder.gif)
