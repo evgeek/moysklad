@@ -84,4 +84,4 @@ Product::collection($ms)
 
 ## Обратная связь
 
-Буду рад видеть ваши идеи, пожелания и замечания в [issues](https://github.com/evgeek/moysklad/issues).
+Буду рад видеть ваши идеи, пожелания и вопросы в [issues](https://github.com/evgeek/moysklad/issues).
