@@ -16,6 +16,10 @@ $orderPositions = $ms
     ->get();
 ```
 
+- В ошибку запроса `Evgeek\Moysklad\Exceptions\RequestException` добавлены методы:
+  - `getResponse()` - возвращает PSR-7 объект HTTP ответа, если он существует.
+  - `getContent()` - Возвращает содержимое HTTP ответа в виде объекта stdClass.
+
 ### Changed
 
 - Методы `Evgeek\Moysklad\Formatters\JsonFormatterInterface` теперь динамические.

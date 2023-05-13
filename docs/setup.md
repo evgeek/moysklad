@@ -15,7 +15,7 @@ $ms = new MoySklad(
     credentials: ['login', 'password'],
     formatter: new StdClassFormat(),
     requestSenderFactory: new GuzzleSenderFactory(
-        retires: 3, 
+        retries: 3, 
         exceptionTruncateAt: 4000
     )
 );

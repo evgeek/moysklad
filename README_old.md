@@ -20,7 +20,7 @@ $ms = new \Evgeek\Moysklad\MoySklad(['token']);
 $ms = new \Evgeek\Moysklad\MoySklad(
     credentials: ['login', 'password'],
     formatter: new \Evgeek\Moysklad\Formatters\StdClassFormat(),
-    requestSenderFactory: new \Evgeek\Moysklad\Http\GuzzleSenderFactory(retires: 3, exceptionTruncateAt: 4000)
+    requestSenderFactory: new \Evgeek\Moysklad\Http\GuzzleSenderFactory(retries: 3, exceptionTruncateAt: 4000)
 );
 ```
 

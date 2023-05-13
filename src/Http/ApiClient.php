@@ -114,7 +114,7 @@ class ApiClient
         }
 
         if ($count === 2) {
-            $this->headers['Authorization'] = 'Basic ' . base64_encode($credentials[0] . ':' .$credentials[1]);
+            $this->headers['Authorization'] = 'Basic ' . base64_encode($credentials[0] . ':' . $credentials[1]);
 
             return;
         }
