@@ -4,18 +4,30 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Exceptions;
 
+use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
 use stdClass;
+use Throwable;
 
 /**
  * HTTP request sender exception
  */
 class RequestException extends Exception
 {
-    private ?stdClass $content;
+    private ?string $content;
     private bool $contentResolved = false;
+
+    public function __construct(
+        private readonly JsonFormatterInterface $formatter,
+        string $message = '',
+        int $code = 0,
+        ?Throwable $previous = null
+    )
+    {
+        parent::__construct($message, $code, $previous);
+    }
 
     /**
      * Возвращает PSR-7 объект HTTP ответа, если он существует
@@ -38,18 +50,15 @@ class RequestException extends Exception
     /**
      * Возвращает содержимое HTTP ответа
      */
-    public function getContent(): ?stdClass
+    public function getContent(): stdClass|array|string|null
     {
         if ($this->contentResolved) {
-            return $this->content;
+            $this->formatter->encode($this->content);
         }
 
-        $content = $this->getResponse()?->getBody()->getContents();
-        $this->content = $content === null ?
-            null :
-            (new StdClassFormat())->encode($content);
+        $this->content = $this->getResponse()?->getBody()->getContents();
         $this->contentResolved = true;
 
-        return $this->content;
+        return $this->formatter->encode($this->content);
     }
 }

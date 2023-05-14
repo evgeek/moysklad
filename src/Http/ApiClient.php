@@ -96,7 +96,7 @@ class ApiClient
                 ->getBody()
                 ->getContents();
         } catch (Throwable $e) {
-            throw new RequestException($e->getMessage(), $e->getCode(), $e);
+            throw new RequestException($this->formatter, $e->getMessage(), $e->getCode(), $e);
         }
     }
 
