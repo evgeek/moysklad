@@ -33,8 +33,7 @@ $product->get();
 ## Документация
 
 * [Настройка клиента](/docs/setup.md)
-* [Конструктор запросов](/docs/query_builder.md)
-* [Объектный подход (Active Record)](/docs/active_record.md)
+* [Отправка запросов](/docs/queries.md)
 * [Форматтеры](/docs/formatters.md)
 * [Вспомогательные инструменты](/docs/tools.md)
 

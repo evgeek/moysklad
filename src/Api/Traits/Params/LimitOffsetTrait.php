@@ -20,9 +20,9 @@ trait LimitOffsetTrait
      *  ->get();
      * </code>
      */
-    public function limit(int $limit): static
+    public function limit(int $count): static
     {
-        $this->params = QueryParams::setLimit($this->params, $limit);
+        $this->params = QueryParams::setLimit($this->params, $count);
 
         return $this;
     }
@@ -38,9 +38,9 @@ trait LimitOffsetTrait
      *  ->get();
      * </code>
      */
-    public function offset(int $offset): static
+    public function offset(int $count): static
     {
-        $this->params = QueryParams::setOffset($this->params, $offset);
+        $this->params = QueryParams::setOffset($this->params, $count);
 
         return $this;
     }

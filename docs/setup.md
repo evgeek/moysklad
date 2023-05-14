@@ -4,7 +4,7 @@
 
 ```php
 use Evgeek\Moysklad\MoySklad;
-use Evgeek\Moysklad\Formatters\StdClassFormat;
+use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Http\GuzzleSenderFactory;
 
 //Минимум
@@ -13,7 +13,7 @@ $ms = new MoySklad(['token']);
 //С подробностями
 $ms = new MoySklad(
     credentials: ['login', 'password'],
-    formatter: new StdClassFormat(),
+    formatter: new ArrayFormat(),
     requestSenderFactory: new GuzzleSenderFactory(
         retries: 3, 
         exceptionTruncateAt: 4000

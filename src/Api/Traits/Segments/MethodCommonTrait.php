@@ -9,7 +9,8 @@ use Evgeek\Moysklad\Api\Segments\Methods\MethodSegmentCommon;
 trait MethodCommonTrait
 {
     /**
-     * Nested URL path
+     * Добавление сегмента к цепочке в url
+     *
      * <code>
      * $product = $ms->query()
      *  ->entity()
@@ -17,8 +18,8 @@ trait MethodCommonTrait
      *  ->get();
      * </code>
      */
-    public function method(string $entity): MethodSegmentCommon
+    public function method(string $name): MethodSegmentCommon
     {
-        return $this->resolveCommonBuilder(MethodSegmentCommon::class, $entity);
+        return $this->resolveCommonBuilder(MethodSegmentCommon::class, $name);
     }
 }

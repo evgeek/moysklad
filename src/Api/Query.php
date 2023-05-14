@@ -29,7 +29,8 @@ class Query extends AbstractBuilder
     }
 
     /**
-     * Generic endpoint method
+     * Универсальный метод входных точек API
+     *
      * <code>
      * $products = $ms->query()
      *  ->endpoint('entity')
@@ -37,13 +38,14 @@ class Query extends AbstractBuilder
      *  ->get();
      * </code>
      */
-    public function endpoint(string $endpoint): EndpointSegmentCommon
+    public function endpoint(string $name): EndpointSegmentCommon
     {
-        return $this->resolveCommonBuilder(EndpointSegmentCommon::class, $endpoint);
+        return $this->resolveCommonBuilder(EndpointSegmentCommon::class, $name);
     }
 
     /**
-     * Entities and documents endpoint
+     * Входная точка для работы с Сущностями и Документами
+     *
      * <code>
      * $products = $ms->query()
      *  ->entity()
@@ -60,7 +62,7 @@ class Query extends AbstractBuilder
     }
 
     /**
-     * Reports endpoint
+     * Входная точка для работы с Отчётами
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/reports/#otchety
      */
@@ -70,7 +72,7 @@ class Query extends AbstractBuilder
     }
 
     /**
-     * Audit endpoint
+     * Входная точка для работы с Аудитом
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/other/#audit
      */
@@ -80,7 +82,7 @@ class Query extends AbstractBuilder
     }
 
     /**
-     * Notifications endpoint
+     * Входная точка для работы с Уведомлениями
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/other/#uwedomleniq
      */
