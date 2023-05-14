@@ -33,7 +33,7 @@ $product->get();
 ## Документация
 
 * [Настройка клиента](/docs/setup.md)
-* [Отправка запросов](/docs/queries.md)
+* [Взаимодействие с API](/docs/api_interaction.md)
 * [Форматтеры](/docs/formatters.md)
 * [Вспомогательные инструменты](/docs/tools.md)
 
