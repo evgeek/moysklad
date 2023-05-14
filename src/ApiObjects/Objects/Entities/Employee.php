@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\ApiObjects\Objects;
+namespace Evgeek\Moysklad\ApiObjects\Objects\Entities;
 
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\Image;
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaObject;
 use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
+use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
+use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use Evgeek\Moysklad\Dictionaries\Endpoint;
 use Evgeek\Moysklad\Dictionaries\Entity;
 

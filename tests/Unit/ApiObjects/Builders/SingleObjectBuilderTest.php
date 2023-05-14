@@ -3,9 +3,9 @@
 namespace Evgeek\Tests\Unit\ApiObjects\Builders;
 
 use Evgeek\Moysklad\ApiObjects\Builders\SingleObjectBuilder;
-use Evgeek\Moysklad\ApiObjects\Objects\Customerorder;
-use Evgeek\Moysklad\ApiObjects\Objects\Employee;
-use Evgeek\Moysklad\ApiObjects\Objects\Product;
+use Evgeek\Moysklad\ApiObjects\Objects\Documents\Customerorder;
+use Evgeek\Moysklad\ApiObjects\Objects\Entities\Employee;
+use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use Evgeek\Moysklad\Formatters\ApiObjectFormatter;
 use Evgeek\Moysklad\Formatters\ApiObjectMapping;

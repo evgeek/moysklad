@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\ApiObjects\Objects;
+namespace Evgeek\Moysklad\ApiObjects\Objects\Entities;
 
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\Alcoholic;
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\Barcode;
@@ -12,6 +12,8 @@ use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\Price;
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\PriceWithType;
 use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
+use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
+use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use Evgeek\Moysklad\Dictionaries\Endpoint;
 use Evgeek\Moysklad\Dictionaries\Entity;
 

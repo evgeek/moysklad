@@ -7,8 +7,8 @@ namespace Evgeek\Tests\Unit\ApiObjects\Objects;
 use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
-use Evgeek\Moysklad\ApiObjects\Objects\Employee;
-use Evgeek\Moysklad\ApiObjects\Objects\Product;
+use Evgeek\Moysklad\ApiObjects\Objects\Entities\Employee;
+use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
 use Evgeek\Moysklad\MoySklad;
 use PHPUnit\Framework\TestCase;
 

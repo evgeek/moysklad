@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\ApiObjects\Builders;
 
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
-use Evgeek\Moysklad\ApiObjects\Objects\Customerorder;
-use Evgeek\Moysklad\ApiObjects\Objects\Employee;
-use Evgeek\Moysklad\ApiObjects\Objects\Product;
+use Evgeek\Moysklad\ApiObjects\Objects\Documents\Customerorder;
+use Evgeek\Moysklad\ApiObjects\Objects\Entities\Employee;
+use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use Evgeek\Moysklad\Dictionaries\Entity;
 

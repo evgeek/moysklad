@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Collections;
 
-use Evgeek\Moysklad\ApiObjects\Objects\Customerorder;
+use Evgeek\Moysklad\ApiObjects\Objects\Documents\Customerorder;
 use Evgeek\Moysklad\Dictionaries\Endpoint;
 use Evgeek\Moysklad\Dictionaries\Entity;
 
