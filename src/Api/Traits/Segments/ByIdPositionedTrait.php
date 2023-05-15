@@ -9,7 +9,8 @@ use Evgeek\Moysklad\Api\Segments\ById\ByIdSegmentPositioned;
 trait ByIdPositionedTrait
 {
     /**
-     * Single entity with positions by id
+     * Работа с одиночной сущностью с позициями по id.
+     *
      * <code>
      * $order = $ms->query()
      *  ->entity()

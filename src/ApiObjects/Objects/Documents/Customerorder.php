@@ -10,8 +10,8 @@ use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
+use Evgeek\Moysklad\Dictionaries\Document;
 use Evgeek\Moysklad\Dictionaries\Endpoint;
-use Evgeek\Moysklad\Dictionaries\Entity;
 
 /**
  * Заказ покупателя
@@ -70,7 +70,7 @@ class Customerorder extends AbstractConcreteObject
 {
     public const PATH = [
         Endpoint::ENTITY,
-        Entity::CUSTOMERORDER,
+        Document::CUSTOMERORDER,
     ];
-    public const TYPE = Entity::CUSTOMERORDER;
+    public const TYPE = Document::CUSTOMERORDER;
 }

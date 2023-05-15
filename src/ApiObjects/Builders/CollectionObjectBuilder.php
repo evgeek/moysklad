@@ -10,6 +10,7 @@ use Evgeek\Moysklad\ApiObjects\Collections\CustomerorderCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
+use Evgeek\Moysklad\Dictionaries\Document;
 use Evgeek\Moysklad\Dictionaries\Entity;
 
 class CollectionObjectBuilder extends AbstractObjectBuilder
@@ -35,7 +36,7 @@ class CollectionObjectBuilder extends AbstractObjectBuilder
     /** @return CustomerorderCollection */
     public function customerorder(): AbstractConcreteCollection
     {
-        return $this->resolveCollection(Entity::CUSTOMERORDER);
+        return $this->resolveCollection(Document::CUSTOMERORDER);
     }
 
     public function unknown(array $path, string $type): UnknownCollection

@@ -9,7 +9,7 @@ use Evgeek\Moysklad\Api\Segments\Methods\Nested\SettingsSegment;
 trait SettingsTrait
 {
     /**
-     * Настройки сущности
+     * Настройки сущности.
      *
      * <code>
      * $product = $ms->query()

@@ -10,7 +10,7 @@ use Evgeek\Moysklad\Exceptions\RequestException;
 trait UpdateTrait
 {
     /**
-     * Обновить сущность
+     * Обновление сущности.
      *
      * <code>
      * $product = $ms->query()

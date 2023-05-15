@@ -10,7 +10,7 @@ use Evgeek\Moysklad\Exceptions\RequestException;
 trait DeleteTrait
 {
     /**
-     * Удалить сущность
+     * Удаление сущности.
      *
      * <code>
      * $ms->query()

@@ -26,7 +26,7 @@ final class Url
         return self::makeFromPathAndParams($payload->path, $payload->params);
     }
 
-    public static function makeFromPathAndParams(array $path, array $params): string
+    public static function makeFromPathAndParams(array $path, array $params = []): string
     {
         return self::prepareUrl($path) . self::prepareQueryParams($params);
     }
@@ -56,7 +56,7 @@ final class Url
 
     public static function getId(string $url)
     {
-        [$path, $params] = self::parsePathAndParams($url);
+        [$path] = self::parsePathAndParams($url);
         $lastSegment = array_pop($path);
 
         return Guid::isGuid($lastSegment) ? $lastSegment : null;

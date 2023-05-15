@@ -26,4 +26,16 @@ trait IterateCollectionTrait
             $this->each($closure);
         } while ($this->getNext());
     }
+
+    /**
+     * @throws RequestException
+     */
+    public function eachCollectionGenerator(callable $closure): void
+    {
+        $this->get();
+
+        do {
+            $closure(clone $this);
+        } while ($this->getNext());
+    }
 }

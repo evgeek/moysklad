@@ -9,7 +9,7 @@ use Evgeek\Moysklad\Api\Segments\Methods\Nested\MetadataSegment;
 trait MetadataTrait
 {
     /**
-     * Метаданные сущности
+     * Метаданные сущности.
      *
      * <code>
      * $product = $ms->query()

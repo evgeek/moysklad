@@ -9,7 +9,8 @@ use Evgeek\Moysklad\Api\Segments\Methods\Nested\PositionsSegment;
 trait PositionsTrait
 {
     /**
-     * Entity positions
+     * Позиции сущности.
+     *
      * <code>
      * $order = $ms->query()
      *  ->entity()

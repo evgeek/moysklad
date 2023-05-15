@@ -16,6 +16,7 @@ use Evgeek\Moysklad\ApiObjects\Objects\Entities\Assortment;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
+use Evgeek\Moysklad\Dictionaries\Document;
 use Evgeek\Moysklad\Dictionaries\Entity;
 use InvalidArgumentException;
 
@@ -25,13 +26,13 @@ class ApiObjectMapping
         Entity::PRODUCT => Product::class,
         Entity::EMPLOYEE => Employee::class,
         Entity::ASSORTMENT => Assortment::class,
-        Entity::CUSTOMERORDER => Customerorder::class,
+        Document::CUSTOMERORDER => Customerorder::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Entity::PRODUCT => ProductCollection::class,
         Entity::EMPLOYEE => EmployeeCollection::class,
         Entity::ASSORTMENT => AssortmentCollection::class,
-        Entity::CUSTOMERORDER => CustomerorderCollection::class,
+        Document::CUSTOMERORDER => CustomerorderCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;

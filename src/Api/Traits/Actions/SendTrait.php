@@ -10,7 +10,7 @@ use Evgeek\Moysklad\Exceptions\RequestException;
 trait SendTrait
 {
     /**
-     * Общий метод, позволяющий отправлять произвольный HTTP-запрос.
+     * Универсальный метод, позволяющий отправлять произвольный HTTP-запрос.
      *
      * <code>
      * $product = $ms->query()

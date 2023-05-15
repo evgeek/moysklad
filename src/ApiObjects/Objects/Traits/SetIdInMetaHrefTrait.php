@@ -53,7 +53,7 @@ trait SetIdInMetaHrefTrait
                 throw new InvalidArgumentException('Meta must contain href and type');
             }
 
-            [$path, $params] = Url::parsePathAndParams($this->hiddenMeta->href);
+            [$path] = Url::parsePathAndParams($this->hiddenMeta->href);
             if (Url::getId($this->hiddenMeta->href) || in_array('context', $path, true)) {
                 $this->contentContainer['meta'] = $this->hiddenMeta;
             } else {

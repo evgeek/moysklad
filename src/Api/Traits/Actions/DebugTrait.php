@@ -9,7 +9,9 @@ use Evgeek\Moysklad\Api\Debug;
 trait DebugTrait
 {
     /**
-     * Set it before the CRUD method to generate debug information for the request
+     * Отладочный метод.
+     * Разместите его перед любым CRUD-методом, и он вернёт детальную информацию о запросе, не выполняя сам запрос.
+     *
      * <code>
      * $products = $ms->query()
      *  ->entity()

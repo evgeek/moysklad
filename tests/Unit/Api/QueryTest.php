@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Segments\Endpoints\NotificationSegment;
 use Evgeek\Moysklad\Api\Segments\Endpoints\ReportSegment;
 use Evgeek\Moysklad\Api\Segments\Methods\MethodSegmentCommon;
+use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\Url;
 use InvalidArgumentException;
 
@@ -47,6 +48,26 @@ class QueryTest extends ApiTestCase
         $this->expectExceptionMessage("Url '$wrongUrl' does not belongs to Moysklad JSON API v1.2");
 
         $this->builder->fromUrl($wrongUrl);
+    }
+
+    public function testFromUrlDropParamsByDefault(): void
+    {
+        $ms = new MoySklad(['token']);
+        $baseUrl = Url::API . '/endpoint/segment';
+        $urlWithParams = $baseUrl . '?param=value';
+        $url = $ms->query()->fromUrl($urlWithParams)->debug()->get()->url;
+
+        $this->assertSame($baseUrl, $url);
+    }
+
+    public function testFromUrlPreserveParamsWithFlag(): void
+    {
+        $ms = new MoySklad(['token']);
+        $baseUrl = Url::API . '/endpoint/segment';
+        $urlWithParams = $baseUrl . '?param=value';
+        $url = $ms->query()->fromUrl($urlWithParams, true)->debug()->get()->url;
+
+        $this->assertSame($urlWithParams, $url);
     }
 
     public function testEndpointReturnsCorrectClass(): void

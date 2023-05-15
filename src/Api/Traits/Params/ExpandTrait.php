@@ -9,9 +9,12 @@ use Evgeek\Moysklad\Services\QueryParams;
 trait ExpandTrait
 {
     /**
-     * Expand nested entity. Works only with limit <= 100 (API restriction)
+     * Разворачивает вложенную сущность. Работает только с limit <= 100 (ограничение API).
+     * Несколько сущностей можно передать ввиде массива, или вызвать метод несколько раз.
+     * Можно развернуть сущности с уровнем вложенности до 3, задав путь до неё через точку.
+     *
      * <code>
-     * $product = $ms->query()
+     * $products = $ms->query()
      *  ->entity()
      *  ->product()
      *  ->limit(100)

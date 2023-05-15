@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\ApiObjects\Collections;
 
 use Evgeek\Moysklad\ApiObjects\Objects\Documents\Customerorder;
+use Evgeek\Moysklad\Dictionaries\Document;
 use Evgeek\Moysklad\Dictionaries\Endpoint;
-use Evgeek\Moysklad\Dictionaries\Entity;
 
 /**
- * Коллекция заказов покупателя
+ * Коллекция заказов покупателя.
  *
  * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
  *
@@ -19,7 +19,7 @@ class CustomerorderCollection extends AbstractConcreteCollection
 {
     public const PATH = [
         Endpoint::ENTITY,
-        Entity::CUSTOMERORDER,
+        Document::CUSTOMERORDER,
     ];
-    public const TYPE = Entity::CUSTOMERORDER;
+    public const TYPE = Document::CUSTOMERORDER;
 }

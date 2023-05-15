@@ -9,7 +9,7 @@ use Evgeek\Moysklad\Api\Segments\Methods\MethodSegmentCommon;
 trait MethodCommonTrait
 {
     /**
-     * Добавление сегмента к цепочке в url
+     * Универсальный метод для добавления сегмента к цепочке в url.
      *
      * <code>
      * $product = $ms->query()

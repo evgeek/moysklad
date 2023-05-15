@@ -9,7 +9,8 @@ use Evgeek\Moysklad\Api\Segments\Methods\Nested\AttributesSegment;
 trait AttributesTrait
 {
     /**
-     * Attributes
+     * Атрибуты.
+     *
      * <code>
      * $product = $ms->query()
      *  ->entity()

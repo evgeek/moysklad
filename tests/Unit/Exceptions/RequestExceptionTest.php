@@ -3,6 +3,7 @@
 namespace Evgeek\Tests\Unit\Exceptions;
 
 use Evgeek\Moysklad\Exceptions\RequestException;
+use Evgeek\Moysklad\MoySklad;
 use Exception;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\Request;
@@ -16,7 +17,7 @@ class RequestExceptionTest extends TestCase
 {
     public function testResponseNotResolvedWithoutPrevious(): void
     {
-        $exception = new RequestException('', 0, null);
+        $exception = $this->makeRequestException();
 
         $this->assertNull($exception->getResponse());
     }
@@ -24,7 +25,7 @@ class RequestExceptionTest extends TestCase
     public function testResponseNotResolvedFromPreviousWithoutGetResponseMethod(): void
     {
         $previous = new ConnectException('', new Request('GET', 'https://example.com'));
-        $exception = new RequestException('', 0, $previous);
+        $exception = $this->makeRequestException(previous: $previous);
 
         $this->assertNull($exception->getResponse());
     }
@@ -37,7 +38,7 @@ class RequestExceptionTest extends TestCase
                 return null;
             }
         };
-        $exception = new RequestException('', 0, $invalidException);
+        $exception = $this->makeRequestException(previous: $invalidException);
 
         $this->assertNull($exception->getResponse());
     }
@@ -51,7 +52,7 @@ class RequestExceptionTest extends TestCase
 
     public function testContentNotResolvedWithoutResponse(): void
     {
-        $exception = new RequestException('', 0, null);
+        $exception = $this->makeRequestException();
 
         $this->assertNull($exception->getContent());
     }
@@ -64,10 +65,10 @@ class RequestExceptionTest extends TestCase
         $this->assertInstanceOf(stdClass::class, $content);
         $this->assertCount(1, (array) $content);
         $this->assertSame('value', $content->key);
-        $this->assertSame($content, $exception->getContent());
+        $this->assertSame(json_encode($content), json_encode($exception->getContent()));
     }
 
-    private function makeCorrectException(?string $body = null): RequestException
+    private function makeCorrectException(string $body = null): RequestException
     {
         $exception = new class($body) extends Exception {
             public function __construct(private readonly ?string $body, string $message = '', int $code = 0, ?Throwable $previous = null)
@@ -81,6 +82,13 @@ class RequestExceptionTest extends TestCase
             }
         };
 
-        return new RequestException('', 0, $exception);
+        return $this->makeRequestException($exception);
+    }
+
+    private function makeRequestException(?Throwable $previous = null): RequestException
+    {
+        $formatter = (new MoySklad(['token']))->getApiClient()->getFormatter();
+
+        return new RequestException($formatter, '', 0, $previous);
     }
 }

@@ -12,6 +12,7 @@ use Evgeek\Moysklad\ApiObjects\Collections\Traits\IterateCollectionTrait;
 use Evgeek\Moysklad\ApiObjects\Collections\Traits\IteratorTrait;
 use Evgeek\Moysklad\ApiObjects\Collections\Traits\ParamsCollectionTrait;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
+use Iterator;
 use stdClass;
 
 /**
@@ -19,7 +20,7 @@ use stdClass;
  * @property MetaCollection  $meta
  * @property UnknownObject[] $rows
  */
-class UnknownCollection extends AbstractUnknownApiObject
+class UnknownCollection extends AbstractUnknownApiObject implements Iterator
 {
     use CrudCollectionTrait;
     use FillMetaCollectionTrait;

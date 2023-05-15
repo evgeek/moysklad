@@ -9,9 +9,10 @@ use Evgeek\Moysklad\Services\QueryParams;
 trait SearchTrait
 {
     /**
-     * Context search
+     * Контекстный поиск.
+     *
      * <code>
-     * $product = $ms->query()
+     * $products = $ms->query()
      *  ->entity()
      *  ->product()
      *  ->search('orange')

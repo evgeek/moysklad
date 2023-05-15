@@ -16,7 +16,7 @@ trait MoySkladMockerTrait
 
     protected MockObject|MoySklad $ms;
 
-    protected function createMockMoySkladWithMockedApiClient(): void
+    protected function createMockMoySkladWithMockedApiClient(): MockObject|MoySklad
     {
         $this->createMockApiClient();
 
@@ -24,5 +24,7 @@ trait MoySkladMockerTrait
         $this->ms->method('getApiClient')->willReturn($this->api);
         $this->ms->method('meta')->willReturn(new MetaMaker(new ArrayFormat()));
         $this->ms->method('object')->willReturn(new ApiObjectBuilder($this->ms));
+
+        return $this->ms;
     }
 }

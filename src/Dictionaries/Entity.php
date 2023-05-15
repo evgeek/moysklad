@@ -9,5 +9,4 @@ class Entity
     public const PRODUCT = 'product';
     public const EMPLOYEE = 'employee';
     public const ASSORTMENT = 'assortment';
-    public const CUSTOMERORDER = 'customerorder';
 }

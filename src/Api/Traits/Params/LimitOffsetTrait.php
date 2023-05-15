@@ -9,38 +9,37 @@ use Evgeek\Moysklad\Services\QueryParams;
 trait LimitOffsetTrait
 {
     /**
-     * Maximum entities in response
+     * Ограничение максимального количества возвращаемых элементов (по умолчанию 1000).
+     *
      * <code>
-     * $product = $ms->query()
+     * $products = $ms->query()
      *  ->entity()
-     *  ->product()
+     *  ->products()
      *  ->limit(100)
-     *  ->offset(0)
-     *  ->debug()
      *  ->get();
      * </code>
      */
-    public function limit(int $count): static
+    public function limit(int $amount): static
     {
-        $this->params = QueryParams::setLimit($this->params, $count);
+        $this->params = QueryParams::setLimit($this->params, $amount);
 
         return $this;
     }
 
     /**
-     * Offset for pagination
+     * Смещение начала выборки, используется для пагинации.
+     *
      * <code>
-     * $product = $ms->entity()
+     * $products = $ms->query()
+     *  ->entity()
      *  ->product()
-     *  ->limit(100)
-     *  ->offset(0)
-     *  ->debug()
+     *  ->offset(100)
      *  ->get();
      * </code>
      */
-    public function offset(int $count): static
+    public function offset(int $amount): static
     {
-        $this->params = QueryParams::setOffset($this->params, $count);
+        $this->params = QueryParams::setOffset($this->params, $amount);
 
         return $this;
     }

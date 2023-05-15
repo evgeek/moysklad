@@ -20,10 +20,26 @@ class Query extends AbstractBuilder
         parent::__construct($api, [], []);
     }
 
-    public function fromUrl(string $url): MethodSegmentCommon
+    /**
+     * Инициализирует конструктор запросов из переданного $url.
+     * Если $withParams === true, конструктор сохранит параметры из url, иначе - отбросит.
+     *
+     * <code>
+     * $productUrl = "https://online.moysklad.ru/api/remap/1.2/entity/product/3aba2611-c64f-11ed-0a80-108a00230a9c?expand=image";
+     * $product = $ms->query()
+     *  ->fromUrl($productUrl, true)
+     *  ->get();
+     * </code>
+     *
+     * @param mixed $withParams
+     */
+    public function fromUrl(string $url, $withParams = false): MethodSegmentCommon
     {
         [$path, $params] = Url::parsePathAndParams($url);
         $lastSegment = array_pop($path);
+        if (!$withParams) {
+            $params = [];
+        }
 
         return new MethodSegmentCommon($this->api, $path, $params, $lastSegment);
     }

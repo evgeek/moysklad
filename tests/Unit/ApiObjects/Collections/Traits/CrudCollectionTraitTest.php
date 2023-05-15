@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Evgeek\Tests\Unit\ApiObjects\Collections\Traits;
 
+use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\Enums\HttpMethod;
+use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\Url;
 
 /**
@@ -46,6 +48,27 @@ class CrudCollectionTraitTest extends CollectionTraitCase
         $this->assertSame($context, $collection->toArray()['context']);
     }
 
+    public function testMassCreateUpdateMethodCallsSendWithExpectedParamsFromCollection(): void
+    {
+        $content = [
+            [
+                'meta' => $this->ms->meta()->create(static::PATH, static::TYPE),
+                'name' => 'create entity',
+            ],
+            [
+                'meta' => $this->ms->meta()->create([...static::PATH, static::GUID], static::TYPE),
+                'id' => static::GUID,
+                'name' => 'update entity',
+            ],
+        ];
+        $ms = new MoySklad(['token']);
+        $updatableCollection = new UnknownCollection($ms, static::PATH, static::TYPE, ['rows' => $content]);
+        $collection = $this->getTestCollection();
+        $this->expectsSendCalledWith(HttpMethod::POST, static::PATH, [], $updatableCollection->rows);
+
+        $collection->massCreateUpdate($updatableCollection);
+    }
+
     public function testMassDeleteMethodCallsSendWithExpectedParams(): void
     {
         $content = [
@@ -59,6 +82,23 @@ class CrudCollectionTraitTest extends CollectionTraitCase
         $this->expectsSendCalledWith(HttpMethod::POST, [...static::PATH, 'delete'], [], $content);
 
         $collection->massDelete($content);
+    }
+
+    public function testMassDeleteMethodCallsSendWithExpectedParamsFromCollection(): void
+    {
+        $content = [
+            [
+                'meta' => $this->ms->meta()->create([...static::PATH, static::GUID], static::TYPE),
+                'id' => static::GUID,
+                'name' => 'update entity',
+            ],
+        ];
+        $ms = new MoySklad(['token']);
+        $deletableCollection = new UnknownCollection($ms, static::PATH, static::TYPE, ['rows' => $content]);
+        $collection = $this->getTestCollection();
+        $this->expectsSendCalledWith(HttpMethod::POST, [...static::PATH, 'delete'], [], $deletableCollection->rows);
+
+        $collection->massDelete($deletableCollection);
     }
 
     public function testGetNextMethodWithNext(): void

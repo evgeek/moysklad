@@ -15,13 +15,13 @@ class MassDeleteSegment extends AbstractSegmentNamed
     /**
      * @throws RequestException
      */
-    public function massDelete(mixed $body)
+    public function massDelete(mixed $objects)
     {
-        return $this->apiSend(HttpMethod::POST, $body);
+        return $this->apiSend(HttpMethod::POST, $objects);
     }
 
-    public function massDeleteDebug(mixed $body)
+    public function massDeleteDebug(mixed $objects)
     {
-        return $this->apiDebug(HttpMethod::POST, $body);
+        return $this->apiDebug(HttpMethod::POST, $objects);
     }
 }

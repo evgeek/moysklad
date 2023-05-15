@@ -12,10 +12,12 @@ trait FilterTrait
     private FilterSign $defaultSign = FilterSign::EQ;
 
     /**
-     * Filter results. You can only pass 2 first parameters for key and value to use '=' as a default sign.
-     * Multiple filters can be passed as an array of arrays with filter params.
+     * Фильтрация результатов.
+     * Принимает три параметра (имя свойства, знак, значение) или два (имя свойства и значение, знак по умолчанию - '=').
+     * Несколько фильтров можно применить, вызвав метод несколько раз, или при помощи массива массивов.
+     *
      * <code>
-     * $product = $ms->query()->entity()->product()
+     * $products = $ms->query()->entity()->product()
      *  ->filter('archived', false)
      *  ->filter('name', '=~', 'apple')
      *  ->filter([

@@ -6,7 +6,22 @@
 
 ### Added
 
-- В билдер запросов добавлен метод `fromUrl()`, позволяющий строить запросы из уже имеющегося урла:
+- Реализована работа с API через [Active Record объекты](/docs/active_record.md).
+
+```php
+use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
+use Evgeek\Moysklad\MoySklad;
+
+$ms = new MoySklad(['token'])
+$product = Product::make($ms, ['name' => 'orange'])->create();
+$product->code = '1234567';
+$product->update();
+```
+
+- В конструктор запросов добавлен метод `massCreateUpdate()`, позволяющий создавать и/или обновлять по нескольку объектов за раз.
+
+- В конструктор запросов добавлен метод `fromUrl($url, $withParams)`, позволяющий строить запросы из уже имеющегося url:
+
 ```php
 $orderUrl = 'https://online.moysklad.ru/api/remap/1.2/entity/customerorder/3aba2611-c64f-11ed-0a80-108a00230a9c'; 
 $orderPositions = $ms
@@ -18,10 +33,11 @@ $orderPositions = $ms
 
 - В ошибку запроса `Evgeek\Moysklad\Exceptions\RequestException` добавлены методы:
   - `getResponse()` - возвращает PSR-7 объект HTTP ответа, если он существует.
-  - `getContent()` - Возвращает содержимое HTTP ответа в виде объекта stdClass.
+  - `getContent()` - Возвращает содержимое HTTP ответа, отформатированное текущим форматтером, или `null` в случае отсутствия содержимого.
 
 ### Changed
 
+- Переписана документация.
 - Методы `Evgeek\Moysklad\Formatters\JsonFormatterInterface` теперь динамические.
 - Аргументы в методе `Meta::state()` приведены к общей логике.
 - Максимальное количество символов ответа от API по умолчанию в `Evgeek\Moysklad\Http\GuzzleSenderFactory` увеличено до 4000.

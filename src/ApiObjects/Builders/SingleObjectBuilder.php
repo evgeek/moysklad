@@ -9,6 +9,7 @@ use Evgeek\Moysklad\ApiObjects\Objects\Documents\Customerorder;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
+use Evgeek\Moysklad\Dictionaries\Document;
 use Evgeek\Moysklad\Dictionaries\Entity;
 
 class SingleObjectBuilder extends AbstractObjectBuilder
@@ -28,7 +29,7 @@ class SingleObjectBuilder extends AbstractObjectBuilder
     /** @return Customerorder */
     public function customerorder(mixed $content = []): AbstractConcreteObject
     {
-        return $this->resolveObject(Entity::CUSTOMERORDER, $content);
+        return $this->resolveObject(Document::CUSTOMERORDER, $content);
     }
 
     public function unknown(array $path, string $type, mixed $content = []): UnknownObject

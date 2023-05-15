@@ -9,15 +9,17 @@ use Evgeek\Moysklad\Services\QueryParams;
 trait ParamTrait
 {
     /**
-     * Generic query param
+     * Универсальный метод для формирования произвольного параметра url.
+     * Несколько параметров можно применить, вызвав метод несколько раз, или при помощи массива массивов.
+     *
      * <code>
-     * $order = $ms->query()
+     * $products = $ms->query()
      *  ->entity()
-     *  ->customerorder()
+     *  ->product()
      *  ->param('limit', 10)
      *  ->param([
      *      ['offset', '20'],
-     *      ['order', 'name;created_at,desc'],
+     *      ['search', 'orange'],
      *  ])
      *  ->get();
      * </code>

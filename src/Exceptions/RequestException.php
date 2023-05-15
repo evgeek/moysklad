@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Exceptions;
 
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
-use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Exception;
 use Psr\Http\Message\ResponseInterface;
 use stdClass;
@@ -24,8 +23,7 @@ class RequestException extends Exception
         string $message = '',
         int $code = 0,
         ?Throwable $previous = null
-    )
-    {
+    ) {
         parent::__construct($message, $code, $previous);
     }
 
@@ -53,12 +51,19 @@ class RequestException extends Exception
     public function getContent(): stdClass|array|string|null
     {
         if ($this->contentResolved) {
-            $this->formatter->encode($this->content);
+            $this->getContentEncoded();
         }
 
         $this->content = $this->getResponse()?->getBody()->getContents();
         $this->contentResolved = true;
 
-        return $this->formatter->encode($this->content);
+        return $this->getContentEncoded();
+    }
+
+    private function getContentEncoded(): stdClass|array|string|null
+    {
+        return $this->content === null ?
+            null :
+            $this->formatter->encode($this->content);
     }
 }

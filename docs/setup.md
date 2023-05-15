@@ -1,6 +1,6 @@
 # Настройка клиента
 
-Основной объект для взаимодействия с API - `Evgeek\Moysklad\MoySklad`. В минимальной конфигурации ему требуется только массив с `credentials`.
+Основной класс для взаимодействия с API - `Evgeek\Moysklad\MoySklad`. В минимальной конфигурации ему требуется только массив с `credentials`.
 
 ```php
 use Evgeek\Moysklad\MoySklad;

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Tests\Unit\ApiObjects\Collections\Traits;
 
+use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
 use Evgeek\Moysklad\Http\Payload;
 use Evgeek\Moysklad\Services\Url;
@@ -35,7 +36,7 @@ class IterateCollectionTraitTest extends CollectionTraitCase
     public function testEachGeneratorCallsApiAsExpected(): void
     {
         $meta = $this->ms->meta()->create(static::PATH, static::TYPE);
-        [$path, $params] = Url::parsePathAndParams($meta['href']);
+        [$path] = Url::parsePathAndParams($meta['href']);
         $meta['nextHref'] = Url::makeFromPathAndParams($path, ['limit' => 2, 'offset' => 2]);
         $this->api
             ->expects($this->exactly(2))
@@ -55,7 +56,6 @@ class IterateCollectionTraitTest extends CollectionTraitCase
                 ],
                 default => throw new RuntimeException('Incorrect payload')
             });
-        $this->createMockApiClient();
 
         $collection = $this->getTestCollection()->limit(2)->offset(0);
 
@@ -66,5 +66,45 @@ class IterateCollectionTraitTest extends CollectionTraitCase
         });
 
         $this->assertSame(3, $counter);
+    }
+
+    public function testEachCollectionGeneratorCallsApiAsExpected(): void
+    {
+        $meta = $this->ms->meta()->create(Product::PATH, Product::TYPE);
+        [$path] = Url::parsePathAndParams($meta['href']);
+        $meta['nextHref'] = Url::makeFromPathAndParams($path, ['limit' => 2, 'offset' => 2]);
+        $this->api
+            ->expects($this->exactly(2))
+            ->method('send')
+            ->willReturnCallback(fn (Payload $payload) => match (true) {
+                $payload->params === ['limit' => '2', 'offset' => '0'] => [
+                    'meta' => $meta,
+                    'rows' => [
+                        $this->ms->object()->single()->product(['id' => static::GUID, 'name' => 'product1']),
+                        $this->ms->object()->single()->product(['id' => static::GUID, 'name' => 'product2']),
+                    ],
+                ],
+                $payload->params === ['limit' => '2', 'offset' => '2'] => [
+                    'rows' => [
+                        $this->ms->object()->single()->product(['id' => static::GUID, 'name' => 'product3']),
+                    ],
+                ],
+                default => throw new RuntimeException('Incorrect payload')
+            });
+
+        $collection = (new ProductCollection($this->ms))->limit(2)->offset(0);
+
+        $collectionCount = 0;
+        $productsCount = 0;
+        $collection->eachCollectionGenerator(function (ProductCollection $products) use (&$collectionCount, &$productsCount) {
+            ++$collectionCount;
+            $products->each(function (Product $product) use (&$productsCount) {
+                ++$productsCount;
+                $this->assertSame("product$productsCount", $product->name);
+            });
+        });
+
+        $this->assertSame(2, $collectionCount);
+        $this->assertSame(3, $productsCount);
     }
 }

@@ -8,70 +8,94 @@ use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Http\Payload;
 use Evgeek\Moysklad\Services\Url;
-use InvalidArgumentException;
 
 trait CrudObjectTrait
 {
     /**
+     * Загрузка сущности из Моего Склада.
+     *
+     * <code>
+     * $product = Product::make($ms, ['id' => '9aa1b41b-f2fc-11ed-0a80-0f60007ec621'])
+     *  ->get();
+     * </code>
+     *
      * @throws RequestException
      */
     public function get(): static
     {
-        $id = Url::getId($this->meta->href);
-        if (!$id) {
-            throw new InvalidArgumentException('Cannot load object without id');
-        }
-
         return $this->send(HttpMethod::GET);
     }
 
     /**
+     * Создание сущности в Моём Складе.
+     *
+     * <code>
+     * $product = Product::make($ms, ['name' => 'orange'])->create();
+     *
+     * //Или
+     * $product = Product::make($ms);
+     * $product->name = 'orange';
+     * $product->create();
+     * </code>
+     *
      * @throws RequestException
      */
     public function create(): static
     {
-        $id = Url::getId($this->meta->href);
-        if ($id) {
-            throw new InvalidArgumentException('Cannot create object with id');
-        }
-
         return $this->send(HttpMethod::POST);
     }
 
     /**
+     * Обновление сущности.
+     *
+     * <code>
+     * $product = Product::make($ms, ['id' => '9aa1b41b-f2fc-11ed-0a80-0f60007ec621'])
+     * ->update(['name' => 'orange']);
+     *
+     * //Или
+     * $product = Product::make($ms, ['id' => '9aa1b41b-f2fc-11ed-0a80-0f60007ec621']);
+     * $product->name = 'orange';
+     * $product->update();
+     * </code>
+     *
      * @throws RequestException
      */
     public function update(mixed $content = []): static
     {
-        $id = Url::getId($this->meta->href);
-        if (!$id) {
-            throw new InvalidArgumentException('Cannot update object without id');
-        }
-
         $this->hydrateAdd($content);
 
         return $this->send(HttpMethod::PUT);
     }
 
     /**
+     * Удаление сущности.
+     *
+     * <code>
+     * Product::make($ms, ['id' => '9aa1b41b-f2fc-11ed-0a80-0f60007ec621'])
+     *  ->delete();
+     * </code>
+     *
      * @throws RequestException
      */
     public function delete(): static
     {
-        $id = Url::getId($this->meta->href);
-        if (!$id) {
-            throw new InvalidArgumentException('Cannot delete object without id');
-        }
-
         return $this->send(HttpMethod::DELETE);
     }
 
     /**
+     * Универсальный метод, позволяющий отправлять произвольный HTTP-запрос.
+     *
+     * <code>
+     * $product = Product::make($ms, ['id' => '825c1a20-f2ff-11ed-0a80-0868007fddf4']);
+     * $product->name = 'tangerine';
+     * $product->send('PUT');
+     * </code>
+     *
      * @throws RequestException
      */
-    protected function send(HttpMethod $method): static
+    public function send(HttpMethod|string $method): static
     {
-        $payload = $this->makePayload($method);
+        $payload = $this->makePayload(HttpMethod::makeFrom($method));
 
         $response = $this->ms->getApiClient()->send($payload);
         $this->hydrate($response);
