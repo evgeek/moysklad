@@ -11,15 +11,6 @@ use InvalidArgumentException;
 
 trait SetIdInMetaHrefTrait
 {
-    public function __isset(string $name)
-    {
-        if ($name === 'meta') {
-            return true;
-        }
-
-        return parent::__isset($name);
-    }
-
     public function __set(string $name, mixed $value)
     {
         if ($value === null) {
@@ -42,11 +33,6 @@ trait SetIdInMetaHrefTrait
     {
         if ($name === 'id') {
             $this->setIdToMetaHref(null);
-            unset($this->contentContainer['meta']);
-        }
-
-        if ($name === 'meta') {
-            throw new InvalidArgumentException('Meta property cannot be unset');
         }
 
         parent::__unset($name);

@@ -51,16 +51,6 @@ class SetIdInMetaHrefTraitTest extends ObjectTraitCase
         $this->assertSame($this->expectedUrl . '/' . static::GUID2, $object->meta->href);
     }
 
-    public function testMetaPropertyCannotBeUnset(): void
-    {
-        $object = $this->getTestObject();
-
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Meta property cannot be unset');
-
-        $object->meta = null;
-    }
-
     /** @dataProvider propertyNames */
     public function testSettingPropertyToNullUnsetIt(string $name): void
     {
