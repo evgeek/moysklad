@@ -23,12 +23,25 @@ abstract class AbstractConcreteObject extends AbstractConcreteApiObject
     use ParamsObjectTrait;
     use SetIdInMetaHrefTrait;
 
-    public static function make(MoySklad $ms, array $content = []): static
+    /**
+     * Создаёт новый объект сущности данного класса, наполяя его параметрами из $content.
+     *
+     * <code>
+     * $product = Product::make($ms, ['name' => 'orange']);
+     * </code>
+     */
+    public static function make(MoySklad $ms, mixed $content = []): static
     {
         return new static($ms, $content);
     }
 
     /**
+     * Создаёт новый объект коллекции данного класса.
+     *
+     * <code>
+     * $productCollection = Product::collection($ms);
+     * </code>
+     *
      * @return T
      */
     public static function collection(MoySklad $ms): AbstractConcreteCollection
