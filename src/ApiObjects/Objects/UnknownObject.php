@@ -14,6 +14,8 @@ use Evgeek\Moysklad\ApiObjects\Objects\Traits\SetIdInMetaHrefTrait;
 use Evgeek\Moysklad\MoySklad;
 
 /**
+ * Неизвестная сущность. Используется для работы с ещё не реализованными в библиотеке сущностями.
+ *
  * @property string      $id
  * @property ?MetaObject $meta
  */

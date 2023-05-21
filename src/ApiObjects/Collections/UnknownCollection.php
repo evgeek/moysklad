@@ -16,6 +16,8 @@ use Iterator;
 use stdClass;
 
 /**
+ * Неизвестная коллекция. Используется для работы с ещё не реализованными в библиотеке коллекциями.
+ *
  * @property stdClass        $context
  * @property MetaCollection  $meta
  * @property UnknownObject[] $rows

@@ -40,17 +40,25 @@ abstract class AbstractApiObject extends stdClass
         unset($this->contentContainer[$name]);
     }
 
+    /**
+     * Возвращает текущий объект преобразованным в строку
+     */
     public function toString(): string
     {
         return (new ArrayFormat())->decode($this->toArray());
     }
 
+    /**
+     * Возвращает текущий объект преобразованным в массив.
+     */
     public function toArray(): array
     {
         return AbstractMultiDecoder::toArray($this->contentContainer);
     }
 
     /**
+     * Возвращает текущий объект преобразованным в stdClass.
+     *
      * @return array<stdClass>|stdClass
      */
     public function toStdClass(): array|stdClass

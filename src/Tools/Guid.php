@@ -7,7 +7,7 @@ namespace Evgeek\Moysklad\Tools;
 class Guid
 {
     /**
-     * Returns array with all guids from string
+     * Возвращает массив из всех guid, встречающихся в строке.
      */
     public static function extractAll(string $url): array
     {
@@ -18,7 +18,7 @@ class Guid
     }
 
     /**
-     * Returns the first guid from the string (or null if there is no guid)
+     * Возвращает первый guid, найденный в строке, или null в случае его отсутствия.
      */
     public static function extractFirst(string $url): ?string
     {
@@ -28,7 +28,7 @@ class Guid
     }
 
     /**
-     * Returns the last guid from the string (or null if there is no guid)
+     * Возвращает последний guid, найденный в строке, или null в случае его отсутствия.
      */
     public static function extractLast(string $url): ?string
     {
@@ -39,7 +39,7 @@ class Guid
     }
 
     /**
-     * Determine if a string is a valid guid
+     * Определяет, является ли строка валидным guid.
      */
     public static function isGuid(string $guid): bool
     {

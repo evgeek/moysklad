@@ -10,7 +10,8 @@ use Evgeek\Moysklad\Enums\HttpMethod;
 class Debug extends AbstractBuilder
 {
     /**
-     * Debug read request
+     * Возвращает отладочную информацию запроса на чтение.
+     *
      * <code>
      * $debug = $ms->query
      *  ->entity()
@@ -25,7 +26,8 @@ class Debug extends AbstractBuilder
     }
 
     /**
-     * Debug create request
+     * Возвращает отладочную информацию запроса на создание.
+     *
      * <code>
      * $debug = $ms->query
      *  ->entity()
@@ -40,7 +42,8 @@ class Debug extends AbstractBuilder
     }
 
     /**
-     * Debug update request
+     * Возвращает отладочную информацию запроса на изменение.
+     *
      * <code>
      * $debug = $ms->query
      *  ->entity()
@@ -56,7 +59,8 @@ class Debug extends AbstractBuilder
     }
 
     /**
-     * Debug delete request
+     * Возвращает отладочную информацию запроса на удаление.
+     *
      * <code>
      * $debug = $ms->query
      *  ->entity()
@@ -72,7 +76,8 @@ class Debug extends AbstractBuilder
     }
 
     /**
-     * Debug Mass Delete request
+     * Возвращает отладочную информацию запроса на массовое удаление.
+     *
      * <code>
      * $debug = $ms->query
      *  ->entity()
@@ -87,7 +92,8 @@ class Debug extends AbstractBuilder
     }
 
     /**
-     * Debug general request
+     * Возвращает отладочную информацию произвольного запроса.
+     *
      * <code>
      * $debug = $ms->query
      *  ->entity()

@@ -14,24 +14,51 @@ use Evgeek\Moysklad\Dictionaries\Entity;
 
 class SingleObjectBuilder extends AbstractObjectBuilder
 {
-    /** @return Product */
+    /**
+     * Создаёт сущность Товар.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
+     *
+     * @return Product
+     */
     public function product(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Entity::PRODUCT, $content);
     }
 
-    /** @return Employee */
+    /**
+     * Создаёт сущность Сотрудник.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sotrudnik
+     *
+     * @return Employee
+     */
     public function employee(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Entity::EMPLOYEE, $content);
     }
 
-    /** @return Customerorder */
+    /**
+     * Создаёт сущность Заказ покупателя.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
+     *
+     * @return Customerorder
+     */
     public function customerorder(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Document::CUSTOMERORDER, $content);
     }
 
+    /**
+     * Создаёт неизвестную сущность. Используется для не реализованных в библиотеке сущностей.
+     *
+     * <code>
+     * $product = $ms->object()
+     *  ->single()
+     *  ->unknown(['entity', 'product', '1958e4df-f7ca-11ed-0a80-030500578f19'], 'product');
+     * </code>
+     */
     public function unknown(array $path, string $type, mixed $content = []): UnknownObject
     {
         return new UnknownObject($this->ms, $path, $type, $content);
