@@ -11,15 +11,6 @@ use InvalidArgumentException;
 
 trait SetIdInMetaHrefTrait
 {
-    public function __get(string $name)
-    {
-        if ($name === 'meta') {
-            return $this->hiddenMeta;
-        }
-
-        return parent::__get($name);
-    }
-
     public function __isset(string $name)
     {
         if ($name === 'meta') {
@@ -42,25 +33,6 @@ trait SetIdInMetaHrefTrait
                 throw new InvalidArgumentException('id must be a guid');
             }
             $this->setIdToMetaHref($value);
-            $this->contentContainer['meta'] = $this->hiddenMeta;
-        }
-
-        if ($name === 'meta') {
-            $formatter = $this->ms->getApiClient()->getFormatter();
-            $this->hiddenMeta = (new StdClassFormat())->encode($formatter->decode($value));
-
-            if (!($this->hiddenMeta->href ?? null)) {
-                throw new InvalidArgumentException('Meta must contain href');
-            }
-
-            [$path] = Url::parsePathAndParams($this->hiddenMeta->href);
-            if (Url::getId($this->hiddenMeta->href) || in_array('context', $path, true)) {
-                $this->contentContainer['meta'] = $this->hiddenMeta;
-            } else {
-                unset($this->contentContainer['meta']);
-            }
-
-            return;
         }
 
         parent::__set($name, $value);

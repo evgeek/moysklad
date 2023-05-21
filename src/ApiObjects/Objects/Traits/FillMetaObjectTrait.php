@@ -10,9 +10,6 @@ use stdClass;
 
 trait FillMetaObjectTrait
 {
-    /** @var null|MetaObject */
-    protected ?stdClass $hiddenMeta = null;
-
     protected function fillMeta(array $path): void
     {
         if ($this->meta) {

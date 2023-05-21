@@ -11,6 +11,7 @@ use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use Evgeek\Moysklad\Formatters\ApiObjectFormatter;
 use Evgeek\Moysklad\Formatters\ApiObjectMapping;
 use Evgeek\Moysklad\MoySklad;
+use Evgeek\Moysklad\Services\Url;
 use stdClass;
 
 /**
@@ -152,7 +153,7 @@ class ApiObjectFormatterTest extends StdClassFormatTest
 
     public function testContextOfCollectionEncodedAndContainsMeta(): void
     {
-        [$productCollection, $unknownObject] = $this->encode(self::COMPLEX_CASE);
+        [$productCollection] = $this->encode(self::COMPLEX_CASE);
 
         $this->assertInstanceOf(Employee::class, $productCollection->context->employee);
         $this->assertIsObject($productCollection->context->employee->meta ?? null);
@@ -160,7 +161,7 @@ class ApiObjectFormatterTest extends StdClassFormatTest
 
     public function testKnownElementOfCollectionEncodedToRegisteredObject(): void
     {
-        [$productCollection, $unknownObject] = $this->encode(self::COMPLEX_CASE);
+        [$productCollection] = $this->encode(self::COMPLEX_CASE);
 
         $product = $productCollection->rows[0];
         $this->assertInstanceOf(Product::class, $product);
@@ -168,27 +169,27 @@ class ApiObjectFormatterTest extends StdClassFormatTest
 
     public function testUnknownElementOfCollectionEncodedToUnknownObject(): void
     {
-        [$productCollection, $unknownObject] = $this->encode(self::COMPLEX_CASE);
+        [, $unknownObject] = $this->encode(self::COMPLEX_CASE);
 
         $this->assertInstanceOf(UnknownObject::class, $unknownObject);
     }
 
-    public function testNestedEntityWithoutIdEncodedCorrectlyAndHasHiddenMeta(): void
+    public function testObjectIdAddedToMetaHref(): void
     {
-        [$productCollection, $unknownObject] = $this->encode(self::COMPLEX_CASE);
+        [$productCollection] = $this->encode(self::COMPLEX_CASE);
 
         $owner = $productCollection->rows[0]->owner;
 
         $this->assertInstanceOf(Employee::class, $owner);
-        $this->assertNull($owner->toStdClass()->meta ?? null);
+        $this->assertSame(Url::makeFromPathAndParams(Employee::PATH), $owner->meta->href);
 
         $owner->id = 'cbcf493b-55bc-11d9-848a-00112f43529a';
-        $this->assertNotNull($owner->toStdClass()->meta ?? null);
+        $this->assertNotNull(Url::makeFromPathAndParams(Employee::PATH) . '/' . $owner->id, $owner->meta->href);
     }
 
     public function testNestedUnknownCollectionEncodedToUnknownCollection(): void
     {
-        [$productCollection, $unknownObject] = $this->encode(self::COMPLEX_CASE);
+        [$productCollection] = $this->encode(self::COMPLEX_CASE);
 
         $this->assertInstanceOf(UnknownCollection::class, $productCollection->rows[0]->fake_collection);
     }

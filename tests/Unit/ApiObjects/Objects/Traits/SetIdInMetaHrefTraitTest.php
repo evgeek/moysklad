@@ -33,18 +33,6 @@ class SetIdInMetaHrefTraitTest extends ObjectTraitCase
         $object->id = 'wrong-guid';
     }
 
-    public function testMetaHiddenWithoutIdAndRevealsWithId(): void
-    {
-        $object = $this->getTestObject();
-        $this->assertFalse(isset($object->toArray()['meta']));
-
-        $object->id = static::GUID;
-        $this->assertTrue(isset($object->toArray()['meta']));
-
-        $object->id = null;
-        $this->assertFalse(isset($object->toArray()['meta']));
-    }
-
     public function testSetIdInsteadOfEmptyIdAddedIdToPath(): void
     {
         $object = $this->getTestObject();
@@ -63,36 +51,6 @@ class SetIdInMetaHrefTraitTest extends ObjectTraitCase
         $this->assertSame($this->expectedUrl . '/' . static::GUID2, $object->meta->href);
     }
 
-    public function testSetMetaWithoutIdHidesResultAndViceVersa(): void
-    {
-        $object = $this->getTestObject(['id' => static::GUID]);
-        $this->assertTrue(isset($object->toArray()['meta']));
-
-        $metaWithId = $metaWithoutId = (array) $object->meta;
-        [$path, $params] = Url::parsePathAndParams($metaWithoutId['href']);
-        array_pop($path);
-        $metaWithoutId['href'] = Url::makeFromPathAndParams($path, $params);
-
-        $object->meta = $metaWithoutId;
-        $this->assertFalse(isset($object->toArray()['meta']));
-
-        $object->meta = $metaWithId;
-        $this->assertTrue(isset($object->toArray()['meta']));
-    }
-
-    public function testSetMetaWithoutHrefThrowsException(): void
-    {
-        $object = $this->getTestObject();
-        $meta = $this->ms->meta()->create(static::PATH, static::TYPE);
-
-        unset($meta['href']);
-
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Meta must contain href');
-
-        $object->meta = $meta;
-    }
-
     public function testMetaPropertyCannotBeUnset(): void
     {
         $object = $this->getTestObject();
@@ -101,14 +59,6 @@ class SetIdInMetaHrefTraitTest extends ObjectTraitCase
         $this->expectExceptionMessage('Meta property cannot be unset');
 
         $object->meta = null;
-    }
-
-    public function testMetaPropertyExistsAlways(): void
-    {
-        $object = $this->getTestObject();
-
-        $this->assertFalse(isset($object->toArray()['meta']));
-        $this->assertTrue(isset($object->meta));
     }
 
     /** @dataProvider propertyNames */
