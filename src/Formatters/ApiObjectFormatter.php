@@ -97,7 +97,7 @@ class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInt
             $this->mapping->getCollection($type) :
             $this->mapping->getObject($type);
 
-        [$path, $params] = Url::parsePathAndParams($href);
+        [$path] = Url::parsePathAndParams($href);
 
         return is_a($class, AbstractConcreteApiObject::class, true) ?
             new $class($this->ms, $content) :
