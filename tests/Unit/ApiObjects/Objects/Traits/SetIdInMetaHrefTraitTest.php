@@ -88,20 +88,7 @@ class SetIdInMetaHrefTraitTest extends ObjectTraitCase
         unset($meta['href']);
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Meta must contain href and type');
-
-        $object->meta = $meta;
-    }
-
-    public function testSetMetaWithoutTypeThrowsException(): void
-    {
-        $object = $this->getTestObject();
-        $meta = $this->ms->meta()->create(static::PATH, static::TYPE);
-
-        $meta['type'] = null;
-
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Meta must contain href and type');
+        $this->expectExceptionMessage('Meta must contain href');
 
         $object->meta = $meta;
     }

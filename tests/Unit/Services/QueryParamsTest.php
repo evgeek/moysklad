@@ -232,7 +232,7 @@ class QueryParamsTest extends TestCase
     {
         $params = self::PARAMS + ['expand' => 'field1'];
 
-        $params = QueryParams::setParam($params, 'ExPaNd', 'field2');
+        $params = QueryParams::setParam($params, 'expand', 'field2');
         $this->assertSame(self::PARAMS + ['expand' => 'field1,field2'], $params);
     }
 

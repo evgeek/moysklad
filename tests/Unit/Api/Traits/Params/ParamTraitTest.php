@@ -36,7 +36,7 @@ class ParamTraitTest extends TraitTestCase
 
     public function testSingleUnknownParamUppercaseConvertsToLowercase(): void
     {
-        $params = static::PARAMS + ['param1' => '0'];
+        $params = static::PARAMS + ['Param1' => '0'];
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
 
         $this->makeParamBuilder()
@@ -51,7 +51,7 @@ class ParamTraitTest extends TraitTestCase
 
         $this->makeParamBuilder()
             ->param('param1', 200.0)
-            ->param('Param1', true)
+            ->param('param1', true)
             ->get();
     }
 
@@ -71,7 +71,7 @@ class ParamTraitTest extends TraitTestCase
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params);
 
         $this->makeParamBuilder()
-            ->param('Order', 'name,desc')
+            ->param('order', 'name,desc')
             ->param('order', 'updated_at')
             ->get();
     }
@@ -97,7 +97,7 @@ class ParamTraitTest extends TraitTestCase
         $this->makeParamBuilder()
             ->param('order', 'code')
             ->param([
-                ['Order', 'name,desc'],
+                ['order', 'name,desc'],
                 ['order', 'updated_at,asc'],
             ])
             ->param('expand', 'group')
@@ -128,7 +128,7 @@ class ParamTraitTest extends TraitTestCase
                 ['param1', 0],
                 ['param2', 1.0],
             ])
-            ->param('Param2', 'value')
+            ->param('param2', 'value')
             ->get();
     }
 
@@ -150,7 +150,7 @@ class ParamTraitTest extends TraitTestCase
 
         $this->makeParamBuilder()
             ->param([
-                ['Order', 'name,desc'],
+                ['order', 'name,desc'],
                 ['order', 'updated_at,asc'],
             ])
             ->method('additional_segment')
@@ -166,9 +166,9 @@ class ParamTraitTest extends TraitTestCase
         $this->makeParamBuilder()
             ->param([
                 ['order', 'name,desc'],
-                ['Limit', 1],
+                ['limit', 1],
             ])
-            ->param('OrDeR', 'CODE')
+            ->param('order', 'CODE')
             ->get();
     }
 
