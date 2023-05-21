@@ -166,7 +166,7 @@ final class QueryParams
 
     private static function set(array $params, QueryParam|string $queryParam, string|int|float|bool $value): array
     {
-        $stringQueryParam = strtolower(is_string($queryParam) ? $queryParam : $queryParam->value);
+        $stringQueryParam = is_string($queryParam) ? $queryParam : $queryParam->value;
         $stringValue = Url::convertMixedValueToString($value);
 
         $separator = QueryParam::getSeparator($stringQueryParam);

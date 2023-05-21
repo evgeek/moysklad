@@ -49,8 +49,8 @@ trait SetIdInMetaHrefTrait
             $formatter = $this->ms->getApiClient()->getFormatter();
             $this->hiddenMeta = (new StdClassFormat())->encode($formatter->decode($value));
 
-            if (!($this->hiddenMeta->href ?? null) || !($this->hiddenMeta->type ?? null)) {
-                throw new InvalidArgumentException('Meta must contain href and type');
+            if (!($this->hiddenMeta->href ?? null)) {
+                throw new InvalidArgumentException('Meta must contain href');
             }
 
             [$path] = Url::parsePathAndParams($this->hiddenMeta->href);
