@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Objects\Traits;
 
-use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\Services\Url;
 use Evgeek\Moysklad\Tools\Guid;
 use InvalidArgumentException;

@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Objects\Traits;
 
-use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaObject;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
-use stdClass;
 
 trait FillMetaObjectTrait
 {

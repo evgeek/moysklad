@@ -22,9 +22,9 @@ trait ApiClientMockerTrait
             ->willReturn(new ArrayFormat());
     }
 
-    protected function expectsSendCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null): void
+    protected function expectsSendCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null, mixed $willReturn = null): void
     {
-        $this->mockApiClientMethodExpectsPayload('send', $httpMethod, $path, $params, $body);
+        $this->mockApiClientMethodExpectsPayload('send', $httpMethod, $path, $params, $body, $willReturn);
     }
 
     protected function expectsDebugCalledWith(HttpMethod $httpMethod, array $path, array $params, mixed $body = null): void
@@ -37,9 +37,9 @@ trait ApiClientMockerTrait
         $this->mockApiClientMethodExpectsPayload('getGenerator', $httpMethod, $path, $params, $body);
     }
 
-    private function mockApiClientMethodExpectsPayload(string $method, HttpMethod $httpMethod, array $path, array $params, mixed $body): void
+    private function mockApiClientMethodExpectsPayload(string $method, HttpMethod $httpMethod, array $path, array $params, mixed $body, mixed $willReturn = null): void
     {
-        $this->api->expects($this->once())
+        $mock = $this->api->expects($this->once())
             ->method($method)
             ->with($this->callback(
                 fn (Payload $payload) => $payload->method === $httpMethod
@@ -47,5 +47,9 @@ trait ApiClientMockerTrait
                     && $payload->params === $params
                     && $payload->body === $body
             ));
+
+        if ($willReturn !== null) {
+            $mock->willReturn($willReturn);
+        }
     }
 }

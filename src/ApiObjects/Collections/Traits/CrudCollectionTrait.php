@@ -7,8 +7,10 @@ namespace Evgeek\Moysklad\ApiObjects\Collections\Traits;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Http\Payload;
+use Evgeek\Moysklad\Services\ApiObjectHelper;
 use Evgeek\Moysklad\Services\CollectionHelper;
 use Evgeek\Moysklad\Services\Url;
+use UnexpectedValueException;
 
 trait CrudCollectionTrait
 {
@@ -140,6 +142,10 @@ trait CrudCollectionTrait
         $payload = $this->makePayload($method, $body);
 
         $response = $this->ms->getApiClient()->send($payload);
+        if (!ApiObjectHelper::isCollection($this->ms, $response)) {
+            throw new UnexpectedValueException('Response must be a collection, object received');
+        }
+
         $this->hydrate($response);
 
         return $this;

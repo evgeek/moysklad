@@ -8,6 +8,7 @@ use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\Url;
+use UnexpectedValueException;
 
 /**
  * @covers \Evgeek\Moysklad\ApiObjects\Collections\Traits\CrudCollectionTrait
@@ -17,7 +18,7 @@ class CrudCollectionTraitTest extends CollectionTraitCase
     public function testGetMethodCallsSendWithExpectedParams(): void
     {
         $collection = $this->getTestCollection();
-        $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, ['limit' => '100'], []);
+        $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, ['limit' => '100'], [], ['rows' => '']);
 
         $collection->limit(100)->get();
     }
@@ -108,7 +109,7 @@ class CrudCollectionTraitTest extends CollectionTraitCase
         $meta['nextHref'] = Url::makeFromPathAndParams(static::PATH, $params);
         $collection = $this->getTestCollection(['meta' => $meta]);
 
-        $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params, []);
+        $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, $params, [], ['rows' => '']);
         $collection->getNext();
     }
 
@@ -123,12 +124,12 @@ class CrudCollectionTraitTest extends CollectionTraitCase
     {
         $newParams = ['limit' => '100', 'offset' => '100'];
         $meta = $this->ms->meta()->create(static::PATH, static::TYPE);
-        [$path, $params] = Url::parsePathAndParams($meta['href']);
+        [$path] = Url::parsePathAndParams($meta['href']);
         $meta['href'] = Url::makeFromPathAndParams($path, $newParams);
         $meta['previousHref'] = Url::makeFromPathAndParams(static::PATH, []);
         $collection = $this->getTestCollection(['meta' => $meta]);
 
-        $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, [], []);
+        $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, [], [], ['rows' => '']);
 
         $collection->getPrevious();
     }
@@ -138,5 +139,15 @@ class CrudCollectionTraitTest extends CollectionTraitCase
         $collection = $this->getTestCollection();
 
         $this->assertNull($collection->getPrevious());
+    }
+
+    public function testReceivedNotCollectionThrows()
+    {
+        $collection = $this->getTestCollection();
+        $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, [], []);
+
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage('Response must be a collection, object received');
+        $collection->get();
     }
 }

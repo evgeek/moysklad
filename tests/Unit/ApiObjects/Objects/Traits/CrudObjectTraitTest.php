@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Tests\Unit\ApiObjects\Objects\Traits;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
+use UnexpectedValueException;
 
 /**
  * @covers \Evgeek\Moysklad\ApiObjects\Objects\Traits\CrudObjectTrait
@@ -41,5 +42,15 @@ class CrudObjectTraitTest extends ObjectTraitCase
         $this->expectsSendCalledWith(HttpMethod::DELETE, [...static::PATH, static::GUID], [], $object);
 
         $object->delete();
+    }
+
+    public function testReceivedNotCollectionThrows()
+    {
+        $object = $this->getTestObject();
+        $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, [], $object, ['rows' => []]);
+
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage('Response must be an object, collection received');
+        $object->get();
     }
 }

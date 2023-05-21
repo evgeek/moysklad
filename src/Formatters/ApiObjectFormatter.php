@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Formatters;
 use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
 use Evgeek\Moysklad\ApiObjects\AbstractConcreteApiObject;
 use Evgeek\Moysklad\MoySklad;
+use Evgeek\Moysklad\Services\ApiObjectHelper;
 use Evgeek\Moysklad\Services\Url;
 use stdClass;
 use Throwable;
@@ -93,7 +94,7 @@ class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInt
             return $content;
         }
 
-        $class = $this->isCollection($content) ?
+        $class = ApiObjectHelper::isCollection($this->ms, $content) ?
             $this->mapping->getCollection($type) :
             $this->mapping->getObject($type);
 
@@ -102,16 +103,6 @@ class ApiObjectFormatter extends AbstractMultiDecoder implements WithMoySkladInt
         return is_a($class, AbstractConcreteApiObject::class, true) ?
             new $class($this->ms, $content) :
             new $class($this->ms, $path, $type, $content);
-    }
-
-    protected function isCollection(array $content): bool
-    {
-        return array_key_exists('rows', $content)
-            || isset($content['meta']['limit'])
-            || isset($content['meta']['offset'])
-            || isset($content['meta']['size'])
-            || isset($content['meta']['nextHref'])
-            || isset($content['meta']['previousHref']);
     }
 
     protected function convertToStdClass(array|AbstractApiObject $content): AbstractApiObject|stdClass|array
