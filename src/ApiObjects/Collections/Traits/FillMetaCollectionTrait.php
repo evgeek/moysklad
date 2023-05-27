@@ -15,7 +15,7 @@ trait FillMetaCollectionTrait
         }
 
         $meta = $this->ms->meta()->create($path, $this->type);
-        $formatter = $this->ms->getApiClient()->getFormatter();
+        $formatter = $this->ms->getFormatter();
 
         $this->meta = (new StdClassFormat())->encode($formatter->decode($meta));
     }

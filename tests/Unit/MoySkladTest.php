@@ -44,12 +44,19 @@ class MoySkladTest extends TestCase
 
     public function testGetApiClient(): void
     {
-        $formatter = new ApiObjectFormatter();
-        $ms = new MoySklad(['token'], $formatter);
+        $ms = new MoySklad(['token']);
         $apiClient = $ms->getApiClient();
 
         $this->assertInstanceOf(ApiClient::class, $apiClient);
-        $this->assertSame($formatter, $apiClient->getFormatter());
+    }
+
+    public function testGetFormatter(): void
+    {
+        $expectedFormatter = new ApiObjectFormatter();
+        $ms = new MoySklad(['token'], $expectedFormatter);
+        $formatter = $ms->getFormatter();
+
+        $this->assertSame($expectedFormatter, $formatter);
     }
 
     public function testRequestSenderInitialization(): void

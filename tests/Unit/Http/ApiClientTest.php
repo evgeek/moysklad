@@ -66,14 +66,6 @@ class ApiClientTest extends TestCase
         $this->api = new ApiClient(self::CREDENTIALS_TOKEN, new ArrayFormat(), $this->guzzleSender);
     }
 
-    public function testGetFormatterReturnsPassedFormatter(): void
-    {
-        $formatter = new ArrayFormat();
-        $api = new ApiClient(self::CREDENTIALS_TOKEN, $formatter, $this->guzzleSender);
-
-        $this->assertSame($formatter, $api->getFormatter());
-    }
-
     public function testSendCreatesRequestAndReturnsFormattedResponse(): void
     {
         $payload = new Payload(HttpMethod::POST, self::PATH, self::PARAMS, self::BODY);

@@ -78,6 +78,19 @@ class MoySklad
         return new MetaMaker($this->formatter);
     }
 
+    /**
+     * Возвращает текущий форматтер
+     *
+     * <code>
+     * $product = Product::make($ms, ['name' => 'orange']);
+     * $productAsString = $ms->getFormatter()->decode($product);
+     * </code>
+     */
+    public function getFormatter(): JsonFormatterInterface
+    {
+        return $this->formatter;
+    }
+
     public function getApiClient(): ApiClient
     {
         return $this->api;

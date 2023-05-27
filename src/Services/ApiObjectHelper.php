@@ -11,7 +11,7 @@ final class ApiObjectHelper
 {
     public static function isCollection(MoySklad $ms, mixed $content): bool
     {
-        $formatter = $ms->getApiClient()->getFormatter();
+        $formatter = $ms->getFormatter();
         $arrayContent = (new ArrayFormat())->encode($formatter->decode($content));
 
         return array_key_exists('rows', $arrayContent)

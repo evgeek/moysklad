@@ -37,7 +37,7 @@ final class ApiObjectMappingHelper
 
     private static function getMapping(MoySklad $ms): ApiObjectMapping
     {
-        $formatter = $ms->getApiClient()->getFormatter();
+        $formatter = $ms->getFormatter();
 
         return is_a($formatter, ApiObjectFormatter::class) ?
             $formatter->getMapping() :

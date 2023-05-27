@@ -87,7 +87,7 @@ class RequestExceptionTest extends TestCase
 
     private function makeRequestException(?Throwable $previous = null): RequestException
     {
-        $formatter = (new MoySklad(['token']))->getApiClient()->getFormatter();
+        $formatter = (new MoySklad(['token']))->getFormatter();
 
         return new RequestException($formatter, '', 0, $previous);
     }
