@@ -21,7 +21,7 @@
 
 ### Свойства объектов
 
-В классах сущностей и коллекций при помощи PHPDoc реализованы подсказки имён и типов свойств для ide. Впрочем, если свойство ещё не добавлено в PHPDoc, с ним всё равно можно работать.
+В классах сущностей и коллекций при помощи PHPDoc реализованы подсказки имён и типов свойств для IDE. Впрочем, даже если свойство ещё не добавлено в PHPDoc, с ним всё равно можно работать.
 
 ```php
 use Evgeek\Moysklad\MoySklad;
@@ -103,7 +103,8 @@ $product = Product::make($ms, ['id' => '9aa1b41b-f2fc-11ed-0a80-0f60007ec621'])
 $product = Product::make($ms, ['id' => '9aa1b41b-f2fc-11ed-0a80-0f60007ec621'])
     ->update(['name' => 'orange']);
 //Или
-$product = Product::make($ms, ['id' => '9aa1b41b-f2fc-11ed-0a80-0f60007ec621']);
+$product = Product::make($ms);
+$product->id = '9aa1b41b-f2fc-11ed-0a80-0f60007ec621';
 $product->name = 'orange';
 $product->update();
 ```
