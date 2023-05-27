@@ -103,8 +103,6 @@ class ApiObjectMapping
 
             return;
         }
-
-        throw new InvalidArgumentException('Class cannot be empty with string type');
     }
 
     protected function validateClassIs(string $class, string $expectedClass): void
