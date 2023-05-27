@@ -36,6 +36,7 @@ $product->get();
 * [Взаимодействие с API](/docs/api_interaction.md)
 * [Форматтеры](/docs/formatters.md)
 * [Вспомогательные инструменты](/docs/tools.md)
+* [Обработка исключений](/docs/exceptions.md)
 
 ## Особенности
 
