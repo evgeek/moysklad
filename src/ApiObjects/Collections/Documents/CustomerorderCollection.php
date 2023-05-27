@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\ApiObjects\Collections;
+namespace Evgeek\Moysklad\ApiObjects\Collections\Documents;
 
+use Evgeek\Moysklad\ApiObjects\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\Documents\Customerorder;
 use Evgeek\Moysklad\Dictionaries\Document;
 use Evgeek\Moysklad\Dictionaries\Endpoint;

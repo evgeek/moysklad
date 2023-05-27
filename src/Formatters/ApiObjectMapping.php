@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
+use Evgeek\Moysklad\ApiObjects\AbstractConcreteApiObject;
 use Evgeek\Moysklad\ApiObjects\Collections\AbstractConcreteCollection;
-use Evgeek\Moysklad\ApiObjects\Collections\AssortmentCollection;
-use Evgeek\Moysklad\ApiObjects\Collections\CustomerorderCollection;
-use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
-use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Documents\CustomerorderCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\AssortmentCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\EmployeeCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Documents\Customerorder;
@@ -49,19 +50,23 @@ class ApiObjectMapping
     }
 
     /**
-     * @param null|class-string<AbstractConcreteObject> $class
+     * @param class-string<AbstractConcreteObject>|list<class-string<AbstractConcreteObject>> $class
      */
-    public function setObject(array|string $type, ?string $class = null): void
+    public function setObject(array|string $class): static
     {
-        $this->set($this->objects, AbstractConcreteObject::class, $type, $class);
+        $this->set($this->objects, AbstractConcreteObject::class, $class);
+
+        return $this;
     }
 
     /**
-     * @param null|class-string<AbstractConcreteCollection> $class
+     * @param class-string<AbstractConcreteCollection>|list<class-string<AbstractConcreteCollection>> $class
      */
-    public function setCollection(array|string $type, ?string $class = null): void
+    public function setCollection(array|string $class): static
     {
-        $this->set($this->collections, AbstractConcreteCollection::class, $type, $class);
+        $this->set($this->collections, AbstractConcreteCollection::class, $class);
+
+        return $this;
     }
 
     /**
@@ -80,16 +85,18 @@ class ApiObjectMapping
         return $this->get($this->collections, AbstractConcreteCollection::class, $type) ?? UnknownCollection::class;
     }
 
-    protected function set(array &$property, string $expectedClass, array|string $type, ?string $class): void
+    /** @param class-string<AbstractConcreteApiObject>|list<class-string<AbstractConcreteApiObject>> $class */
+    protected function set(array &$property, string $expectedClass, array|string $class): void
     {
-        if (is_array($type)) {
-            foreach ($type as $nestedType => $nestedClass) {
-                $this->set($property, $expectedClass, $nestedType, $nestedClass);
+        if (is_array($class)) {
+            foreach ($class as $nestedClass) {
+                $this->set($property, $expectedClass, $nestedClass);
             }
 
             return;
         }
 
+        $type = $class::TYPE;
         if (is_string($class)) {
             $this->validateClassIs($class, $expectedClass);
             $property[$type] = $class;

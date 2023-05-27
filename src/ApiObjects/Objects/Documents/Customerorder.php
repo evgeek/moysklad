@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\ApiObjects\Objects\Documents;
 
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaObject;
-use Evgeek\Moysklad\ApiObjects\Collections\CustomerorderCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Documents\CustomerorderCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Employee;

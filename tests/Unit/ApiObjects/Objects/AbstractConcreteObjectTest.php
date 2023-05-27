@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Evgeek\Tests\Unit\ApiObjects\Objects;
 
-use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
-use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\EmployeeCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;

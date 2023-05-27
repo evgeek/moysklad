@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Tests\Unit\ApiObjects\Collections\Traits;
 
-use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
 use Evgeek\Moysklad\Http\Payload;
 use Evgeek\Moysklad\Services\Url;

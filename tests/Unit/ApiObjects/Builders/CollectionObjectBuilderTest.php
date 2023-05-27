@@ -3,10 +3,10 @@
 namespace Evgeek\Tests\Unit\ApiObjects\Builders;
 
 use Evgeek\Moysklad\ApiObjects\Builders\CollectionObjectBuilder;
-use Evgeek\Moysklad\ApiObjects\Collections\AssortmentCollection;
-use Evgeek\Moysklad\ApiObjects\Collections\CustomerorderCollection;
-use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
-use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Documents\CustomerorderCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\AssortmentCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\EmployeeCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\Formatters\ApiObjectFormatter;
 use Evgeek\Moysklad\Formatters\ApiObjectMapping;

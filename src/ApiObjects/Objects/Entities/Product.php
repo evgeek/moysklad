@@ -10,7 +10,7 @@ use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\MetaObject;
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\Pack;
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\Price;
 use Evgeek\Moysklad\ApiObjects\AutocompleteHelpers\PriceWithType;
-use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;

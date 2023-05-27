@@ -3,7 +3,7 @@
 namespace Evgeek\Tests\Unit\Formatters;
 
 use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
-use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Employee;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;

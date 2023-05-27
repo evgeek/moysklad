@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\ApiObjects\Objects\Entities;
 
-use Evgeek\Moysklad\ApiObjects\Collections\AssortmentCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\AssortmentCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Dictionaries\Endpoint;
 use Evgeek\Moysklad\Dictionaries\Entity;

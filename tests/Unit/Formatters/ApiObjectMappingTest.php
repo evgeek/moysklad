@@ -2,9 +2,10 @@
 
 namespace Evgeek\Tests\Unit\Formatters;
 
+use Error;
 use Evgeek\Moysklad\ApiObjects\Collections\AbstractConcreteCollection;
-use Evgeek\Moysklad\ApiObjects\Collections\EmployeeCollection;
-use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\EmployeeCollection;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Employee;
@@ -35,7 +36,7 @@ class ApiObjectMappingTest extends TestCase
     {
         $this->assertSame(Product::class, $this->mapping->getObject(Entity::PRODUCT));
 
-        $this->mapping->setObject(Entity::PRODUCT, ExtendedTestProduct::class);
+        $this->mapping->setObject(ExtendedTestProduct::class);
 
         $this->assertSame(ExtendedTestProduct::class, $this->mapping->getObject(Entity::PRODUCT));
     }
@@ -45,13 +46,13 @@ class ApiObjectMappingTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(ExtendedTestProductCollection::class . ' is not a ' . AbstractConcreteObject::class);
 
-        $this->mapping->setObject(Entity::PRODUCT, ExtendedTestProductCollection::class);
+        $this->mapping->setObject(ExtendedTestProductCollection::class);
     }
 
     public function testSetSingleObjectWithEmptyClassThrowsError(): void
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Class cannot be empty with string type');
+        $this->expectException(Error::class);
+        $this->expectExceptionMessage('Class "product" not found');
 
         $this->mapping->setObject(Entity::PRODUCT);
     }
@@ -62,8 +63,8 @@ class ApiObjectMappingTest extends TestCase
         $this->assertSame(Employee::class, $this->mapping->getObject(Entity::EMPLOYEE));
 
         $this->mapping->setObject([
-            Entity::PRODUCT => ExtendedTestProduct::class,
-            Entity::EMPLOYEE => ExtendedTestEmployee::class,
+            ExtendedTestProduct::class,
+            ExtendedTestEmployee::class,
         ]);
 
         $this->assertSame(ExtendedTestProduct::class, $this->mapping->getObject(Entity::PRODUCT));
@@ -79,7 +80,7 @@ class ApiObjectMappingTest extends TestCase
     {
         $this->assertSame(ProductCollection::class, $this->mapping->getCollection(Entity::PRODUCT));
 
-        $this->mapping->setCollection(Entity::PRODUCT, ExtendedTestProductCollection::class);
+        $this->mapping->setCollection(ExtendedTestProductCollection::class);
 
         $this->assertSame(ExtendedTestProductCollection::class, $this->mapping->getCollection(Entity::PRODUCT));
     }
@@ -89,13 +90,13 @@ class ApiObjectMappingTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(ExtendedTestProduct::class . ' is not a ' . AbstractConcreteCollection::class);
 
-        $this->mapping->setCollection(Entity::PRODUCT, ExtendedTestProduct::class);
+        $this->mapping->setCollection(ExtendedTestProduct::class);
     }
 
     public function testSetCollectionWithEmptyClassThrowsError(): void
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Class cannot be empty with string type');
+        $this->expectException(Error::class);
+        $this->expectExceptionMessage('Class "product" not found');
 
         $this->mapping->setCollection(Entity::PRODUCT);
     }
@@ -106,8 +107,8 @@ class ApiObjectMappingTest extends TestCase
         $this->assertSame(EmployeeCollection::class, $this->mapping->getCollection(Entity::EMPLOYEE));
 
         $this->mapping->setCollection([
-            Entity::PRODUCT => ExtendedTestProductCollection::class,
-            Entity::EMPLOYEE => ExtendedTestEmployeeCollection::class,
+            ExtendedTestProductCollection::class,
+            ExtendedTestEmployeeCollection::class,
         ]);
 
         $this->assertSame(ExtendedTestProductCollection::class, $this->mapping->getCollection(Entity::PRODUCT));

@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Evgeek\Moysklad\ApiObjects\Collections;
+namespace Evgeek\Moysklad\ApiObjects\Collections\Entities;
 
+use Evgeek\Moysklad\ApiObjects\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
 use Evgeek\Moysklad\ApiObjects\Objects\UnknownObject;
 use Evgeek\Moysklad\Dictionaries\Endpoint;

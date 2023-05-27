@@ -1,6 +1,6 @@
 # Объектный подход (Active Record)
 
-Работа с API при помощи определённых в библиотеке классов сущностей и их коллекций. 
+Работа с API при помощи определённых в библиотеке классов сущностей и их коллекций. Объект сущности представляет собой одну запись соответствующего типа в Моём Складе, объект коллекции - набор объектов сущностей.
 
 * [Общая информация](/docs/active_record.md#общая-информация)
   * [Свойства объектов](/docs/active_record.md#свойства-объектов)
@@ -125,8 +125,7 @@ Product::make($ms, ['id' => '9aa1b41b-f2fc-11ed-0a80-0f60007ec621'])
 Инициализировать коллекцию можно несколькими равноценными способами. Коллекция создаётся пустой. Для загрузки свойств из Моего Склада используйте [методы отправки запросов](/docs/active_record.md#методы-отправки-запросов-коллекций).
 
 ```php
-use Evgeek\Moysklad\ApiObjects\Collections\ProductCollection;
-use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
+use Evgeek\Moysklad\ApiObjects\Collections\Entities\ProductCollection;use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
 
 $products1 = Product::collection($ms);
 $products2 = new ProductCollection($ms);
@@ -281,7 +280,7 @@ Product::collection($ms)
 
 ## Универсальные методы
 
-Позволяют взаимодействовать с API в случае отсутствия нужных методов в библиотеке.
+Позволяют взаимодействовать с API в случае отсутствия нужных методов в библиотеке. 
 
 * `param($key, $value)` - позволяет сформировать любой параметр запроса. Несколько параметров можно передать массивом массивов.
 
