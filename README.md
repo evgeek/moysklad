@@ -28,6 +28,8 @@ $product = $ms->query()
 $product = Product::make($ms);
 $product->id = '25cf41f2-b068-11ed-0a80-0e9700500d7e';
 $product->get();
+//Или
+$product = Product::make($ms, ['id' => '25cf41f2-b068-11ed-0a80-0e9700500d7e'])->get();
 ```
 
 ## Документация
