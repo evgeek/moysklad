@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad;
 
-use Evgeek\Moysklad\Api\Query;
-use Evgeek\Moysklad\ApiObjects\Builders\ApiObjectBuilder;
+use Evgeek\Moysklad\Api\Query\QueryBuilder;
+use Evgeek\Moysklad\Api\Record\Builders\RecordBuilder;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\Formatters\WithMoySkladInterface;
@@ -45,24 +45,24 @@ class MoySklad
      *  ->get();
      * </code>
      */
-    public function query(): Query
+    public function query(): QueryBuilder
     {
-        return new Query($this->api);
+        return new QueryBuilder($this->api);
     }
 
     /**
      * Конструктор объектов API
      *
      * <code>
-     * $product = $ms->object()
+     * $product = $ms->record()
      *  ->single()
      *  ->product(['name' => 'cucumber'])
      *  ->create();
      * </code>
      */
-    public function object(): ApiObjectBuilder
+    public function record(): RecordBuilder
     {
-        return new ApiObjectBuilder($this);
+        return new RecordBuilder($this);
     }
 
     /**

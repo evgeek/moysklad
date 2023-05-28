@@ -127,7 +127,7 @@ $ms->query()
 
 ## Методы отправки запросов
 
-Тело (`$body`) для запросов можно передавать в любом поддерживаемом формате (массив, stdClass, ApiObject, json-строка).
+Тело (`$body`) для запросов можно передавать в любом поддерживаемом формате (массив, stdClass, Record, json-строка).
 
 * `create($body)` - `POST` запрос для создания сущности.
 
@@ -171,7 +171,7 @@ $ms->query()
 * `massDelete($objects)` - `POST` запрос для массового удаления. в метод требуется передать массив удаляемых сущностей в любом формате. Сущность может быть как получена из Моего Склада, так и сформирована при помощи соответствующего класса либо хелпера `Meta`.
 
 ```php
-use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 
 $product1 = $ms->query()->entity()->product()->byId('cc181c35-f259-11ed-0a80-00e900658c8f')->get();
 $product2 = Product::make($ms, ['id' => 'd540c409-f259-11ed-0a80-00e900658e53']);

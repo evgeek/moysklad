@@ -2,7 +2,7 @@
 
 namespace Evgeek\Tests\Traits;
 
-use Evgeek\Moysklad\ApiObjects\Builders\ApiObjectBuilder;
+use Evgeek\Moysklad\Api\Record\Builders\RecordBuilder;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Meta\MetaMaker;
 use Evgeek\Moysklad\MoySklad;
@@ -23,7 +23,7 @@ trait MoySkladMockerTrait
         $this->ms = $this->createMock(MoySklad::class);
         $this->ms->method('getApiClient')->willReturn($this->api);
         $this->ms->method('meta')->willReturn(new MetaMaker(new ArrayFormat()));
-        $this->ms->method('object')->willReturn(new ApiObjectBuilder($this->ms));
+        $this->ms->method('record')->willReturn(new RecordBuilder($this->ms));
         $this->ms->method('getFormatter')->willReturn(new ArrayFormat());
 
         return $this->ms;

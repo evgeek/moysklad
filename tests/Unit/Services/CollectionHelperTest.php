@@ -2,7 +2,7 @@
 
 namespace Evgeek\Tests\Unit\Services;
 
-use Evgeek\Moysklad\ApiObjects\Collections\UnknownCollection;
+use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\CollectionHelper;
 use PHPUnit\Framework\TestCase;

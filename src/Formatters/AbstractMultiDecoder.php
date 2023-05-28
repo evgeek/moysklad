@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
-use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
+use Evgeek\Moysklad\Api\Record\AbstractRecord;
 use InvalidArgumentException;
 use stdClass;
 use Throwable;
@@ -45,9 +45,9 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
         return $decodedContent;
     }
 
-    public static function toArray(array|stdClass|AbstractApiObject $content): array
+    public static function toArray(array|stdClass|AbstractRecord $content): array
     {
-        if (is_a($content, AbstractApiObject::class)) {
+        if (is_a($content, AbstractRecord::class)) {
             return $content->toArray();
         }
 

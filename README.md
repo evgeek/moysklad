@@ -13,7 +13,7 @@ composer require evgeek/moysklad
 ## Быстрый старт
 
 ```php
-use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;use Evgeek\Moysklad\MoySklad;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;use Evgeek\Moysklad\MoySklad;
 
 $ms = new MoySklad(['token']);
 
@@ -42,7 +42,7 @@ $product = Product::make($ms, ['id' => '25cf41f2-b068-11ed-0a80-0e9700500d7e'])-
 
 ## Особенности
 
-Библиотека предоставляет два подхода к работе с API - Конструктор запросов и Объектный (Active Record). Подходы полностью совместимы и взаимозаменяемы.
+Библиотека предоставляет два подхода к работе с API - конструктор запросов (Query) и объектный (Record). Подходы полностью совместимы и взаимозаменяемы.
 
 ### Конструктор запросов ([Документация](/docs/query_builder.md))
 

@@ -2,7 +2,7 @@
 
 namespace Evgeek\Tests\Unit\Formatters;
 
-use Evgeek\Moysklad\ApiObjects\AbstractApiObject;
+use Evgeek\Moysklad\Api\Record\AbstractRecord;
 use Evgeek\Moysklad\Formatters\AbstractMultiDecoder;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\WithMoySkladInterface;
@@ -135,7 +135,7 @@ abstract class MultiDecoderTestCase extends TestCase
             return $content;
         }
 
-        if (is_a($content, AbstractApiObject::class)) {
+        if (is_a($content, AbstractRecord::class)) {
             return $content->toArray();
         }
 

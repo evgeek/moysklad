@@ -2,6 +2,24 @@
 
 ## [Unreleased]
 
+### Реорганизация namespace `Evgeek\Moysklad\Api`.
+
+Данный namespace используется fluent-цепочкой билдера запросов (`$ms->query()->...`), поэтому изменения в нём не влияют на работу библиотеки. Однако, если ваш проект явно использует этот namespace, проверьте следующее:
+
+До:
+
+- `Evgeek\Moysklad\Api\Query`
+- `Evgeek\Moysklad\Api\Segments\Special\MassDelete`
+- `Evgeek\Moysklad\Api\Segments\...`
+- `Evgeek\Moysklad\Api\Traits\Segments\...`
+
+После:
+
+- `Evgeek\Moysklad\Api\Query\QueryBuilder`
+- `Evgeek\Moysklad\Api\Query\Segments\Special\MassDelete`
+- `Evgeek\Moysklad\Api\Query\Segments\...`
+- `Evgeek\Moysklad\Api\Query\Traits\Segments\...`
+
 ### Аргументы в методе `Meta::state()` приведены к общей логике.
 
 До:
@@ -42,23 +60,15 @@ Meta::product('25cf41f2-b068-11ed-0a80-0e9700500d7e', new ArrayFormat())
 До:
 
 ```php
-\Evgeek\Moysklad\Formatters\ArrayFormat::encode($entity);
-\Evgeek\Moysklad\Formatters\ArrayFormat::decode($entity);
-\Evgeek\Moysklad\Formatters\StringFormat::encode($entity);
-\Evgeek\Moysklad\Formatters\StringFormat::decode($entity);
-\Evgeek\Moysklad\Formatters\StdClassFormat::encode($entity);
-\Evgeek\Moysklad\Formatters\StdClassFormat::decode($entity);
+ArrayFormat::encode($entity);
+StdClassFormat::decode($entity);
 ```
 
 После:
 
 ```php
-(new \Evgeek\Moysklad\Formatters\ArrayFormat())->encode($entity);
-(new \Evgeek\Moysklad\Formatters\ArrayFormat())->decode($entity);
-(new \Evgeek\Moysklad\Formatters\StringFormat())->encode($entity);
-(new \Evgeek\Moysklad\Formatters\StringFormat())->decode($entity);
-(new \Evgeek\Moysklad\Formatters\StdClassFormat())->encode($entity);
-(new \Evgeek\Moysklad\Formatters\StdClassFormat())->decode($entity);
+(new ArrayFormat())->encode($entity);
+(new StdClassFormat())->decode($entity);
 ```
 
 ## v0.7.0 [[Changelog](/CHANGELOG.md#v070-upgrade-guide)]

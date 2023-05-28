@@ -2,11 +2,11 @@
 
 namespace Evgeek\Tests\Unit;
 
-use Evgeek\Moysklad\Api\AbstractBuilder;
-use Evgeek\Moysklad\Api\Query;
-use Evgeek\Moysklad\ApiObjects\Builders\AbstractObjectBuilder;
-use Evgeek\Moysklad\ApiObjects\Builders\ApiObjectBuilder;
-use Evgeek\Moysklad\Formatters\ApiObjectFormatter;
+use Evgeek\Moysklad\Api\Query\AbstractBuilder;
+use Evgeek\Moysklad\Api\Query\QueryBuilder;
+use Evgeek\Moysklad\Api\Record\Builders\AbstractBuilder as AbstractRecordBuilder;
+use Evgeek\Moysklad\Api\Record\Builders\RecordBuilder;
+use Evgeek\Moysklad\Formatters\RecordFormatter;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\RequestSenderFactoryInterface;
 use Evgeek\Moysklad\Meta\MetaMaker;
@@ -21,17 +21,17 @@ class MoySkladTest extends TestCase
         $ms = new MoySklad(['token']);
         $query = $ms->query();
 
-        $this->assertInstanceOf(Query::class, $query);
+        $this->assertInstanceOf(QueryBuilder::class, $query);
         $this->assertInstanceOf(AbstractBuilder::class, $query);
     }
 
     public function testObject(): void
     {
         $ms = new MoySklad(['token']);
-        $object = $ms->object();
+        $object = $ms->record();
 
-        $this->assertInstanceOf(ApiObjectBuilder::class, $object);
-        $this->assertInstanceOf(AbstractObjectBuilder::class, $object);
+        $this->assertInstanceOf(RecordBuilder::class, $object);
+        $this->assertInstanceOf(AbstractRecordBuilder::class, $object);
     }
 
     public function testMeta(): void
@@ -52,7 +52,7 @@ class MoySkladTest extends TestCase
 
     public function testGetFormatter(): void
     {
-        $expectedFormatter = new ApiObjectFormatter();
+        $expectedFormatter = new RecordFormatter();
         $ms = new MoySklad(['token'], $expectedFormatter);
         $formatter = $ms->getFormatter();
 

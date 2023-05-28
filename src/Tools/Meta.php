@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Tools;
 
-use Evgeek\Moysklad\ApiObjects\Objects\Documents\Customerorder;
-use Evgeek\Moysklad\ApiObjects\Objects\Entities\Employee;
-use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Customerorder;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 use Evgeek\Moysklad\Dictionaries\Document;
 use Evgeek\Moysklad\Dictionaries\Endpoint;
 use Evgeek\Moysklad\Dictionaries\Entity;

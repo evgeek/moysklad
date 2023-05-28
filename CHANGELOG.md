@@ -9,7 +9,7 @@
 - Реализована работа с API через [Active Record объекты](/docs/active_record.md).
 
 ```php
-use Evgeek\Moysklad\ApiObjects\Objects\Entities\Product;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 use Evgeek\Moysklad\MoySklad;
 
 $ms = new MoySklad(['token'])
@@ -38,6 +38,7 @@ $orderPositions = $ms
 ### Changed
 
 - Переписана документация.
+- Реорганизация namespace `Evgeek\Moysklad\Api`.
 - Методы `Evgeek\Moysklad\Formatters\JsonFormatterInterface` теперь динамические.
 - Аргументы в методе `Meta::state()` приведены к общей логике.
 - Максимальное количество символов ответа от API по умолчанию в `Evgeek\Moysklad\Http\GuzzleSenderFactory` увеличено до 4000.
