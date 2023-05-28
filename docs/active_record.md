@@ -33,6 +33,21 @@ $product->unknownProperty = 123;
 var_dump($product->id, $product->name, $product->unknownProperty);
 ```
 
+Устанавливаемые свойства автоматический преобразуются в объекты, если это возможно. Данные в формате Моего Склада будут преобразованы в объекты Active Record, остальные - в stdClass.
+
+```php
+$product = Product::make($ms);
+$product->owner = [
+    'meta' => [
+        'href' => 'https://online.moysklad.ru/api/remap/1.2/entity/employee/f71b6eb9-a93d-11ed-0a80-0fba0011a679',
+        'type' => 'employee',
+    ],
+];
+
+echo $product->owner->meta->type . PHP_EOL;
+echo $product->owner->get()->name . PHP_EOL;
+```
+
 ### Приведение к простым типам
 
 Любой объект можно привести к простому типу при помощи методов `toArray()`, `toString()` и `toStdClass()`. Это удобно для отладки.

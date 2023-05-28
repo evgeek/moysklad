@@ -61,15 +61,24 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
         return $array;
     }
 
-    protected function validateStringIsJsonObject(string $content): void
+    public static function checkStringIsValidJson(string $content): bool
     {
         try {
             $decodedContent = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
         } catch (Throwable) {
-            $this->throwContentIsNotValidJsonObject($content);
+            return false;
         }
 
         if (!is_array($decodedContent)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    protected function validateStringIsJsonObject(string $content): void
+    {
+        if (!self::checkStringIsValidJson($content)) {
             $this->throwContentIsNotValidJsonObject($content);
         }
     }

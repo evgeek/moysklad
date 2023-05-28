@@ -27,7 +27,20 @@ abstract class AbstractApiObject extends stdClass
 
     public function __set(string $name, mixed $value)
     {
-        $this->contentContainer[$name] = $value;
+        if (
+            !is_array($value)
+            && !(is_a($value, stdClass::class) && !is_a($value, self::class))
+            && !(is_string($value) && AbstractMultiDecoder::checkStringIsValidJson($value))
+        ) {
+            $this->contentContainer[$name] = $value;
+
+            return;
+        }
+
+        $decoded = $this->ms->getFormatter()->decode($value);
+        $encoded = $this->getApiObjectFormatter()->encode($decoded);
+
+        $this->contentContainer[$name] = $encoded;
     }
 
     public function __isset(string $name)
@@ -76,20 +89,19 @@ abstract class AbstractApiObject extends stdClass
     protected function hydrateAdd(mixed $content): void
     {
         $formatter = $this->ms->getFormatter();
-        $apiObjectFormatter = is_a($formatter, ApiObjectFormatter::class) ?
-            $formatter :
-            (new ApiObjectFormatter())->setMoySklad($this->ms);
-
         $arrayContent = (new ArrayFormat())->encode($formatter->decode($content));
 
         foreach ($arrayContent as $key => $value) {
-            if (is_array($value)) {
-                $this->{$key} = $apiObjectFormatter->encodeToStdClass($value);
-
-                continue;
-            }
-
             $this->{$key} = $value;
         }
+    }
+
+    protected function getApiObjectFormatter(): ApiObjectFormatter
+    {
+        $formatter = $this->ms->getFormatter();
+
+        return is_a($formatter, ApiObjectFormatter::class) ?
+            $formatter :
+            (new ApiObjectFormatter())->setMoySklad($this->ms);
     }
 }
