@@ -19,9 +19,13 @@ class MoySklad
     private ApiClient $api;
 
     /**
+     * Основной класс библиотеки.
+     *
      * @param array                         $credentials          ['login', 'password'] или ['token']
      * @param JsonFormatterInterface        $formatter            Класс, форматирующий ответ от API
      * @param RequestSenderFactoryInterface $requestSenderFactory Фабрика, создающая PSR-7 совместимый клиент
+     *
+     * @see https://github.com/evgeek/moysklad/blob/master/docs/setup.md
      */
     public function __construct(
         array $credentials,

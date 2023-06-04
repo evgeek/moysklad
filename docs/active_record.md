@@ -30,7 +30,11 @@ use Evgeek\Moysklad\MoySklad;
 $ms = new MoySklad(['token']);
 $product = Product::make($ms, ['name' => 'orange'])->create();
 $product->unknownProperty = 123;
+
 var_dump($product->id, $product->name, $product->unknownProperty);
+//string(36) "5444e6f7-0300-11ee-0a80-046f00689371"
+//string(6) "orange"
+//int(123)
 ```
 
 Устанавливаемые свойства автоматический преобразуются в объекты, если это возможно. Данные в формате Моего Склада будут преобразованы в `Record`, остальные - в `stdClass`.
@@ -45,7 +49,9 @@ $product->owner = [
 ];
 
 echo $product->owner->meta->type . PHP_EOL;
+//employee
 echo $product->owner->get()->name . PHP_EOL;
+//Evgeniy
 ```
 
 ### Приведение к простым типам
@@ -63,7 +69,7 @@ var_dump($product->toArray());
 
 ### Инициализация объекта
 
-Создать объект Record можно несколькими равноценными способами. Объект создаётся пустым, только со свойствами, переданными ему при инициализации. Для загрузки свойств из Моего Склада используйте [методы отправки запросов](/docs/active_record.md#методы-отправки-запросов-объекта).
+Создать объект Record можно несколькими равноценными способами. Объект создаётся пустым, только со свойствами, переданными ему при инициализации, и автоматически устанавливаемыми метаданными. Для загрузки свойств из Моего Склада используйте [методы отправки запросов](/docs/active_record.md#методы-отправки-запросов-объекта).
 
 ```php
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
@@ -103,6 +109,9 @@ $product = Product::make($ms, ['name' => 'orange'])->create();
 $product = Product::make($ms);
 $product->name = 'orange';
 $product->create();
+
+echo $product->id;
+//c297fc79-0300-11ee-0a80-0350006b23fc
 ```
 
 * `get()` - `GET` запрос, загружающий сущность из Моего Склада. У сущности должен быть задан id.
