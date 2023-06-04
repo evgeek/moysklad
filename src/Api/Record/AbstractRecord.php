@@ -6,7 +6,7 @@ namespace Evgeek\Moysklad\Api\Record;
 
 use Evgeek\Moysklad\Formatters\AbstractMultiDecoder;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
-use Evgeek\Moysklad\Formatters\RecordFormatter;
+use Evgeek\Moysklad\Formatters\RecordFormat;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\MoySklad;
 use stdClass;
@@ -96,12 +96,12 @@ abstract class AbstractRecord extends stdClass
         }
     }
 
-    protected function getRecordFormatter(): RecordFormatter
+    protected function getRecordFormatter(): RecordFormat
     {
         $formatter = $this->ms->getFormatter();
 
-        return is_a($formatter, RecordFormatter::class) ?
+        return is_a($formatter, RecordFormat::class) ?
             $formatter :
-            (new RecordFormatter())->setMoySklad($this->ms);
+            (new RecordFormat())->setMoySklad($this->ms);
     }
 }

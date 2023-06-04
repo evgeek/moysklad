@@ -7,7 +7,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Customerorder;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 use Evgeek\Moysklad\Api\Record\Objects\UnknownObject;
-use Evgeek\Moysklad\Formatters\RecordFormatter;
+use Evgeek\Moysklad\Formatters\RecordFormat;
 use Evgeek\Moysklad\Formatters\RecordMapping;
 use Evgeek\Moysklad\MoySklad;
 use InvalidArgumentException;
@@ -28,7 +28,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
     public function testResolvingUnregisteredObjectThrowsException(): void
     {
         $mapping = new RecordMapping([], []);
-        $ms = new MoySklad(['token'], new RecordFormatter($mapping));
+        $ms = new MoySklad(['token'], new RecordFormat($mapping));
         $builder = new ObjectBuilder($ms);
 
         $this->expectException(InvalidArgumentException::class);

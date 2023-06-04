@@ -29,7 +29,7 @@ $productArray = (new ArrayFormat())->encode($productString);
 
 ## Record
 
-`RecordFormatter` - форматтер, преобразующий данные в формат `Record` ([Документация](/docs/active_record.md)). Данные, не являющиеся сущностями Моего Склада, преобразуются в `stdClass`.
+`RecordFormat` - форматтер, преобразующий данные в формат `Record` ([Документация](/docs/active_record.md)). Данные, не являющиеся сущностями Моего Склада, преобразуются в `stdClass`.
 
 Ответы от API преобразуются в объекты на всех уровнях вложенности, что позволяет работать с методами вложенных объектов.
 
@@ -79,7 +79,7 @@ $mapping
     ->setObject(Contract::class)
     ->setCollection(ContractCollection::class);
 
-$ms = new MoySklad(['token'], new RecordFormatter($mapping));
+$ms = new MoySklad(['token'], new RecordFormat($mapping));
 
 Contract::collection($ms)
     ->eachGenerator(function (Contract $contract) {
@@ -103,7 +103,7 @@ class ExtendedProduct extends Product
 $mapping = (new RecordMapping())
     ->setObject(ExtendedProduct::class);
 
-$ms = new MoySklad(['token'], new RecordFormatter($mapping));
+$ms = new MoySklad(['token'], new RecordFormat($mapping));
 
 Product::collection($ms)
     ->eachGenerator(function (ExtendedProduct $product) {

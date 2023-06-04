@@ -6,7 +6,7 @@ namespace Evgeek\Moysklad\Services;
 
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
-use Evgeek\Moysklad\Formatters\RecordFormatter;
+use Evgeek\Moysklad\Formatters\RecordFormat;
 use Evgeek\Moysklad\Formatters\RecordMapping;
 use Evgeek\Moysklad\MoySklad;
 use InvalidArgumentException;
@@ -39,7 +39,7 @@ final class RecordMappingHelper
     {
         $formatter = $ms->getFormatter();
 
-        return is_a($formatter, RecordFormatter::class) ?
+        return is_a($formatter, RecordFormat::class) ?
             $formatter->getMapping() :
             new RecordMapping();
     }

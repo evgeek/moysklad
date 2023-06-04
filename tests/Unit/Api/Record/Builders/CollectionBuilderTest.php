@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\EmployeeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
-use Evgeek\Moysklad\Formatters\RecordFormatter;
+use Evgeek\Moysklad\Formatters\RecordFormat;
 use Evgeek\Moysklad\Formatters\RecordMapping;
 use Evgeek\Moysklad\MoySklad;
 use InvalidArgumentException;
@@ -29,7 +29,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
     public function testResolvingUnregisteredCollectionThrowsException(): void
     {
         $mapping = new RecordMapping([], []);
-        $ms = new MoySklad(['token'], new RecordFormatter($mapping));
+        $ms = new MoySklad(['token'], new RecordFormat($mapping));
         $builder = new CollectionBuilder($ms);
 
         $this->expectException(InvalidArgumentException::class);

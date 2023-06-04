@@ -6,7 +6,7 @@ use Evgeek\Moysklad\Api\Query\AbstractBuilder;
 use Evgeek\Moysklad\Api\Query\QueryBuilder;
 use Evgeek\Moysklad\Api\Record\Builders\AbstractBuilder as AbstractRecordBuilder;
 use Evgeek\Moysklad\Api\Record\Builders\RecordBuilder;
-use Evgeek\Moysklad\Formatters\RecordFormatter;
+use Evgeek\Moysklad\Formatters\RecordFormat;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\RequestSenderFactoryInterface;
 use Evgeek\Moysklad\Meta\MetaMaker;
@@ -52,7 +52,7 @@ class MoySkladTest extends TestCase
 
     public function testGetFormatter(): void
     {
-        $expectedFormatter = new RecordFormatter();
+        $expectedFormatter = new RecordFormat();
         $ms = new MoySklad(['token'], $expectedFormatter);
         $formatter = $ms->getFormatter();
 

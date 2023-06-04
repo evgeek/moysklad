@@ -32,7 +32,7 @@ $product->unknownProperty = 123;
 var_dump($product->id, $product->name, $product->unknownProperty);
 ```
 
-Устанавливаемые свойства автоматический преобразуются в объекты, если это возможно. Данные в формате Моего Склада будут преобразованы в Record, остальные - в stdClass.
+Устанавливаемые свойства автоматический преобразуются в объекты, если это возможно. Данные в формате Моего Склада будут преобразованы в `Record`, остальные - в `stdClass`.
 
 ```php
 $product = Product::make($ms);
@@ -60,7 +60,7 @@ var_dump($product->toArray());
 
 Объект представляет собой сущность Моего Склада. Объект обладает свойствами сущности и методами для взаимодействия с API. Свойства могут быть как простыми типами (строка, число и т.д.), так и другими объектами.
 
-### Инициализация сущности
+### Инициализация объекта
 
 Создать объект Record можно несколькими равноценными способами. Объект создаётся пустым, только со свойствами, переданными ему при инициализации. Для загрузки свойств из Моего Склада используйте [методы отправки запросов](/docs/active_record.md#методы-отправки-запросов-объекта).
 
@@ -139,7 +139,8 @@ Product::make($ms, ['id' => '9aa1b41b-f2fc-11ed-0a80-0f60007ec621'])
 Инициализировать коллекцию можно несколькими равноценными способами. Коллекция создаётся пустой. Для загрузки свойств из Моего Склада используйте [методы отправки запросов](/docs/active_record.md#методы-отправки-запросов-коллекций).
 
 ```php
-use Evgeek\Moysklad\Api\Record\Collections\Entities\ProductCollection;use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\ProductCollection;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 
 $products1 = Product::collection($ms);
 $products2 = new ProductCollection($ms);

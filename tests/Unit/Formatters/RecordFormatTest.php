@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 use Evgeek\Moysklad\Api\Record\Objects\UnknownObject;
-use Evgeek\Moysklad\Formatters\RecordFormatter;
+use Evgeek\Moysklad\Formatters\RecordFormat;
 use Evgeek\Moysklad\Formatters\RecordMapping;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\Url;
@@ -16,11 +16,11 @@ use stdClass;
 
 /**
  * @covers \Evgeek\Moysklad\Formatters\AbstractMultiDecoder
- * @covers \Evgeek\Moysklad\Formatters\RecordFormatter
+ * @covers \Evgeek\Moysklad\Formatters\RecordFormat
  */
-class RecordFormatterTest extends StdClassFormatTest
+class RecordFormatTest extends StdClassFormatTest
 {
-    protected const FORMATTER = RecordFormatter::class;
+    protected const FORMATTER = RecordFormat::class;
 
     private const COMPLEX_CASE = [
         [
@@ -89,7 +89,7 @@ class RecordFormatterTest extends StdClassFormatTest
     public function testGetMappingReturnsPassedMapping(): void
     {
         $mapping = new RecordMapping();
-        $formatter = new RecordFormatter($mapping);
+        $formatter = new RecordFormat($mapping);
 
         $this->assertSame($mapping, $formatter->getMapping());
     }
@@ -196,7 +196,7 @@ class RecordFormatterTest extends StdClassFormatTest
 
     private function encode(array $content): AbstractRecord|array|stdClass
     {
-        $formatter = new RecordFormatter();
+        $formatter = new RecordFormat();
         $formatter->setMoySklad(new MoySklad(['token']));
 
         return $formatter->encodeToStdClass($content);

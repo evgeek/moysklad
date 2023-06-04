@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Api\Record\AbstractConcreteRecord;
 use Evgeek\Moysklad\Api\Record\AbstractUnknownRecord;
 use Evgeek\Moysklad\Api\Record\Collections\Traits\FillMetaCollectionTrait;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
-use Evgeek\Moysklad\Formatters\RecordFormatter;
+use Evgeek\Moysklad\Formatters\RecordFormat;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Tools\Meta;
 use InvalidArgumentException;
@@ -125,7 +125,7 @@ class AbstractRecordTest extends TestCase
 
     private function getConcreteObjectWithExpectedContent(): AbstractConcreteRecord
     {
-        $ms = new MoySklad(['token'], new RecordFormatter());
+        $ms = new MoySklad(['token'], new RecordFormat());
 
         return $this->getConcreteObject(self::CONTENT, $ms);
     }

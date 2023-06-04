@@ -7,7 +7,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 use Evgeek\Moysklad\Dictionaries\Entity;
-use Evgeek\Moysklad\Formatters\RecordFormatter;
+use Evgeek\Moysklad\Formatters\RecordFormat;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\RecordMappingHelper;
 use InvalidArgumentException;
@@ -66,10 +66,10 @@ class RecordMappingHelperTest extends TestCase
         ];
     }
 
-    private function getMoySklad(bool $withRecordFormatter = false): MoySklad
+    private function getMoySklad(bool $withRecordFormat = false): MoySklad
     {
-        return $withRecordFormatter ?
-            new MoySklad(['token'], new RecordFormatter()) :
+        return $withRecordFormat ?
+            new MoySklad(['token'], new RecordFormat()) :
             new MoySklad(['token']);
     }
 }

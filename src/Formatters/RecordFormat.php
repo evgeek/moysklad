@@ -17,7 +17,7 @@ use Throwable;
  *
  * @implements JsonFormatterInterface<stdClass>
  */
-class RecordFormatter extends AbstractMultiDecoder implements WithMoySkladInterface
+class RecordFormat extends AbstractMultiDecoder implements WithMoySkladInterface
 {
     protected MoySklad $ms;
 
