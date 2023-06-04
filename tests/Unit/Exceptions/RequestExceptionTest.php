@@ -4,8 +4,8 @@ namespace Evgeek\Tests\Unit\Exceptions;
 
 use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\MoySklad;
+use Evgeek\Moysklad\Services\Url;
 use Exception;
-use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
@@ -24,10 +24,16 @@ class RequestExceptionTest extends TestCase
 
     public function testResponseNotResolvedFromPreviousWithoutGetResponseMethod(): void
     {
-        $previous = new ConnectException('', new Request('GET', 'https://example.com'));
-        $exception = $this->makeRequestException(previous: $previous);
+        $exception = $this->makeRequestException(previous: new Exception());
 
         $this->assertNull($exception->getResponse());
+    }
+
+    public function testRequestNotResolvedFromPreviousWithoutGetRequestMethod(): void
+    {
+        $exception = $this->makeRequestException(previous: new Exception());
+
+        $this->assertNull($exception->getRequest());
     }
 
     public function testResponseNotResolvedFromPreviousWithInvalidGetResponseMethod(): void
@@ -43,11 +49,31 @@ class RequestExceptionTest extends TestCase
         $this->assertNull($exception->getResponse());
     }
 
+    public function testRequestNotResolvedFromPreviousWithInvalidGetRequestMethod(): void
+    {
+        $invalidException = new class() extends Exception {
+            public function getRequest()
+            {
+                return null;
+            }
+        };
+        $exception = $this->makeRequestException(previous: $invalidException);
+
+        $this->assertNull($exception->getRequest());
+    }
+
     public function testResponseResolvedFromPreviousWithCorrectGetResponseMethod(): void
     {
-        $exception = $this->makeCorrectException();
+        $exception = $this->makeCorrectWithResponseException();
 
         $this->assertInstanceOf(Response::class, $exception->getResponse());
+    }
+
+    public function testRequestResolvedFromPreviousWithCorrectGetResponseMethod(): void
+    {
+        $exception = $this->makeCorrectWithRequestException('GET', Url::API);
+
+        $this->assertInstanceOf(Request::class, $exception->getRequest());
     }
 
     public function testContentNotResolvedWithoutResponse(): void
@@ -59,7 +85,7 @@ class RequestExceptionTest extends TestCase
 
     public function testContentResolvedCorrectly(): void
     {
-        $exception = $this->makeCorrectException('{"key": "value"}');
+        $exception = $this->makeCorrectWithResponseException('{"key": "value"}');
         $content = $exception->getContent();
 
         $this->assertInstanceOf(stdClass::class, $content);
@@ -68,7 +94,7 @@ class RequestExceptionTest extends TestCase
         $this->assertSame(json_encode($content), json_encode($exception->getContent()));
     }
 
-    private function makeCorrectException(string $body = null): RequestException
+    private function makeCorrectWithResponseException(string $body = null): RequestException
     {
         $exception = new class($body) extends Exception {
             public function __construct(private readonly ?string $body, string $message = '', int $code = 0, ?Throwable $previous = null)
@@ -79,6 +105,28 @@ class RequestExceptionTest extends TestCase
             public function getResponse(): Response
             {
                 return new Response(body: $this->body);
+            }
+        };
+
+        return $this->makeRequestException($exception);
+    }
+
+    private function makeCorrectWithRequestException(string $method, string $uri): RequestException
+    {
+        $exception = new class($method, $uri) extends Exception {
+            public function __construct(
+                private readonly string $method,
+                private readonly string $uri,
+                string $message = '',
+                int $code = 0,
+                ?Throwable $previous = null,
+            ) {
+                parent::__construct($message, $code, $previous);
+            }
+
+            public function getRequest(): Request
+            {
+                return new Request($this->method, $this->uri);
             }
         };
 

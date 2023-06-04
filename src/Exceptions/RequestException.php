@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Exceptions;
 
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Exception;
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use stdClass;
 use Throwable;
@@ -25,6 +26,24 @@ class RequestException extends Exception
         ?Throwable $previous = null
     ) {
         parent::__construct($message, $code, $previous);
+    }
+
+    /**
+     * Возвращает PSR-7 объект HTTP запроса, если он существует
+     */
+    public function getRequest(): ?RequestInterface
+    {
+        $previous = $this->getPrevious();
+        if (!$previous || !method_exists($previous, 'getRequest')) {
+            return null;
+        }
+
+        $response = $previous->getRequest();
+        if (!is_subclass_of($response, RequestInterface::class)) {
+            return null;
+        }
+
+        return $response;
     }
 
     /**

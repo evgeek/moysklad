@@ -9,7 +9,7 @@ use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Http\Payload;
 use Evgeek\Moysklad\Services\RecordHelper;
 use Evgeek\Moysklad\Services\Url;
-use UnexpectedValueException;
+use InvalidArgumentException;
 
 trait CrudObjectTrait
 {
@@ -101,7 +101,7 @@ trait CrudObjectTrait
 
         $response = $this->ms->getApiClient()->send($payload);
         if (RecordHelper::isCollection($this->ms, $response)) {
-            throw new UnexpectedValueException('Response must be an object, collection received');
+            throw new InvalidArgumentException('Response must be an object, collection received');
         }
 
         $this->hydrate($response);

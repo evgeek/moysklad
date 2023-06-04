@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\Url;
-use UnexpectedValueException;
+use InvalidArgumentException;
 
 /**
  * @covers \Evgeek\Moysklad\Api\Record\Collections\Traits\CrudCollectionTrait
@@ -146,7 +146,7 @@ class CrudCollectionTraitTest extends CollectionTraitCase
         $collection = $this->getTestCollection();
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, [], []);
 
-        $this->expectException(UnexpectedValueException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Response must be a collection, object received');
         $collection->get();
     }

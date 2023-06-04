@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Tests\Unit\Api\Record\Objects\Traits;
 
 use Evgeek\Moysklad\Enums\HttpMethod;
-use UnexpectedValueException;
+use InvalidArgumentException;
 
 /**
  * @covers \Evgeek\Moysklad\Api\Record\Objects\Traits\CrudObjectTrait
@@ -49,7 +49,7 @@ class CrudObjectTraitTest extends ObjectTraitCase
         $object = $this->getTestObject();
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, [], $object, ['rows' => []]);
 
-        $this->expectException(UnexpectedValueException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Response must be an object, collection received');
         $object->get();
     }
