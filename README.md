@@ -13,7 +13,8 @@ composer require evgeek/moysklad
 ## Быстрый старт
 
 ```php
-use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;use Evgeek\Moysklad\MoySklad;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
+use Evgeek\Moysklad\MoySklad;
 
 $ms = new MoySklad(['token']);
 

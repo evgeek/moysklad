@@ -24,7 +24,8 @@
 В классах объектов и коллекций при помощи PHPDoc реализованы подсказки имён и типов свойств для IDE. Впрочем, даже если свойство ещё не добавлено в PHPDoc, с ним всё равно можно работать.
 
 ```php
-use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;use Evgeek\Moysklad\MoySklad;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
+use Evgeek\Moysklad\MoySklad;
 
 $ms = new MoySklad(['token']);
 $product = Product::make($ms, ['name' => 'orange'])->create();
