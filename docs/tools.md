@@ -105,3 +105,6 @@ echo $firstId;
 var_dump(Guid::check($firstId));
 //bool(true)
 ```
+
+| - | [Оглавление](/docs/index.md) | - |
+|:--|:----------------------------:|--:|
