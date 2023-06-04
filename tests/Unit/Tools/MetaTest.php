@@ -41,6 +41,15 @@ class MetaTest extends TestCase
         $this->assertSame($expected, $meta);
     }
 
+    public static function correctPathAndTypeDataProvider(): array
+    {
+        return [
+            ['', [], 'type1'],
+            ['/endpoint', ['endpoint'], 'type2'],
+            ['/endpoint/method', ['endpoint', 'method'], 'type3'],
+        ];
+    }
+
     /** @dataProvider incorrectPathSegmentDataProvider */
     public function testCreateFromPathWithNotStringSegmentsDoesNotWorks(mixed $segment): void
     {
@@ -48,6 +57,19 @@ class MetaTest extends TestCase
         $this->expectExceptionMessage('1th segment of path is not a string');
 
         Meta::create(['endpoint', $segment], 'type');
+    }
+
+    public static function incorrectPathSegmentDataProvider(): array
+    {
+        return [
+            [null],
+            [false],
+            [true],
+            [0],
+            [1.1],
+            [['segment']],
+            [new stdClass()],
+        ];
     }
 
     public function testEntity(): void
@@ -68,7 +90,7 @@ class MetaTest extends TestCase
     {
         Meta::setFormat(new ArrayFormat());
 
-        $meta = Meta::state('guid-state', 'product');
+        $meta = Meta::state('product', 'guid-state');
         $expected = [
             'href' => Url::API . '/entity/product/metadata/states/guid-state',
             'type' => 'state',
@@ -80,7 +102,7 @@ class MetaTest extends TestCase
 
     public function testOrganization(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'organization',
             '/entity/organization/guid1',
             'organization',
@@ -90,7 +112,7 @@ class MetaTest extends TestCase
 
     public function testCounterparty(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'counterparty',
             '/entity/counterparty/guid2',
             'counterparty',
@@ -100,7 +122,7 @@ class MetaTest extends TestCase
 
     public function testStore(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'store',
             '/entity/store/guid',
             'store',
@@ -110,7 +132,7 @@ class MetaTest extends TestCase
 
     public function testCurrency(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'currency',
             '/entity/currency/guid',
             'currency',
@@ -120,7 +142,7 @@ class MetaTest extends TestCase
 
     public function testSaleschannel(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'saleschannel',
             '/entity/saleschannel/guid',
             'saleschannel',
@@ -130,7 +152,7 @@ class MetaTest extends TestCase
 
     public function testProduct(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'product',
             '/entity/product/guid',
             'product',
@@ -138,9 +160,29 @@ class MetaTest extends TestCase
         );
     }
 
+    public function testEmployee(): void
+    {
+        $this->assertMetaMethodByGuidWorks(
+            'employee',
+            '/entity/employee/guid',
+            'employee',
+            'guid'
+        );
+    }
+
+    public function testCustomerorder(): void
+    {
+        $this->assertMetaMethodByGuidWorks(
+            'customerorder',
+            '/entity/customerorder/guid',
+            'customerorder',
+            'guid'
+        );
+    }
+
     public function testService(): void
     {
-        $this->assertMetaMethodNyGuidWorks(
+        $this->assertMetaMethodByGuidWorks(
             'service',
             '/entity/service/guid',
             'service',
@@ -148,7 +190,7 @@ class MetaTest extends TestCase
         );
     }
 
-    private function assertMetaMethodNyGuidWorks(string $method, string $expectedSegment, string $expectedType, string $guid)
+    private function assertMetaMethodByGuidWorks(string $method, string $expectedSegment, string $expectedType, string $guid): void
     {
         Meta::setFormat(new ArrayFormat());
 
@@ -160,27 +202,5 @@ class MetaTest extends TestCase
         ];
 
         $this->assertSame($expected, $meta);
-    }
-
-    private function correctPathAndTypeDataProvider(): array
-    {
-        return [
-            ['', [], 'type1'],
-            ['/endpoint', ['endpoint'], 'type2'],
-            ['/endpoint/method', ['endpoint', 'method'], 'type3'],
-        ];
-    }
-
-    private function incorrectPathSegmentDataProvider(): array
-    {
-        return [
-            [null],
-            [false],
-            [true],
-            [0],
-            [1.1],
-            [['segment']],
-            [new stdClass()],
-        ];
     }
 }

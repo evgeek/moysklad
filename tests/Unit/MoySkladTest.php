@@ -2,9 +2,14 @@
 
 namespace Evgeek\Tests\Unit;
 
-use Evgeek\Moysklad\Api\AbstractBuilder;
-use Evgeek\Moysklad\Api\Query;
+use Evgeek\Moysklad\Api\Query\AbstractBuilder;
+use Evgeek\Moysklad\Api\Query\QueryBuilder;
+use Evgeek\Moysklad\Api\Record\Builders\AbstractBuilder as AbstractRecordBuilder;
+use Evgeek\Moysklad\Api\Record\Builders\RecordBuilder;
+use Evgeek\Moysklad\Formatters\RecordFormat;
+use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\RequestSenderFactoryInterface;
+use Evgeek\Moysklad\Meta\MetaMaker;
 use Evgeek\Moysklad\MoySklad;
 use PHPUnit\Framework\TestCase;
 
@@ -16,18 +21,51 @@ class MoySkladTest extends TestCase
         $ms = new MoySklad(['token']);
         $query = $ms->query();
 
-        $this->assertInstanceOf(Query::class, $query);
+        $this->assertInstanceOf(QueryBuilder::class, $query);
         $this->assertInstanceOf(AbstractBuilder::class, $query);
+    }
+
+    public function testObject(): void
+    {
+        $ms = new MoySklad(['token']);
+        $object = $ms->record();
+
+        $this->assertInstanceOf(RecordBuilder::class, $object);
+        $this->assertInstanceOf(AbstractRecordBuilder::class, $object);
+    }
+
+    public function testMeta(): void
+    {
+        $ms = new MoySklad(['token']);
+        $meta = $ms->meta();
+
+        $this->assertInstanceOf(MetaMaker::class, $meta);
+    }
+
+    public function testGetApiClient(): void
+    {
+        $ms = new MoySklad(['token']);
+        $apiClient = $ms->getApiClient();
+
+        $this->assertInstanceOf(ApiClient::class, $apiClient);
+    }
+
+    public function testGetFormatter(): void
+    {
+        $expectedFormatter = new RecordFormat();
+        $ms = new MoySklad(['token'], $expectedFormatter);
+        $formatter = $ms->getFormatter();
+
+        $this->assertSame($expectedFormatter, $formatter);
     }
 
     public function testRequestSenderInitialization(): void
     {
         $requestSenderFactoryMock = $this->createMock(RequestSenderFactoryInterface::class);
-        $ms = new MoySklad(['token']);
 
         $requestSenderFactoryMock->expects($this->once())
             ->method('make');
 
-        $ms->__construct(credentials: ['token'], requestSenderFactory: $requestSenderFactoryMock);
+        new MoySklad(credentials: ['token'], requestSenderFactory: $requestSenderFactoryMock);
     }
 }

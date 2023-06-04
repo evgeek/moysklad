@@ -1,10 +1,62 @@
 # Changelog
 
-Все заметные изменения в проекте будут задокументированы в этом файле. Формат основан на [Keep a Changelog](https://keepachangelog.com/ru), и этот проект придерживается семантического версионирования ([semver](https://semver.org/lang/ru/)).
+Все существенные изменения в проекте будут задокументированы в этом файле. Формат основан на [Keep a Changelog](https://keepachangelog.com/), и этот проект придерживается семантического версионирования ([semver](https://semver.org/)).
+
+## v0.8.0 [[Upgrade guide](/UPGRADE.md#v080-changelog)]
+
+### Added
+
+- Реализована работа с API через [Active Record объекты](/docs/active_record.md).
+
+```php
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
+use Evgeek\Moysklad\MoySklad;
+
+$ms = new MoySklad(['token'])
+$product = Product::make($ms, ['name' => 'orange'])->create();
+$product->code = '1234567';
+$product->update();
+```
+
+- В конструктор запросов добавлен метод `massCreateUpdate()`, позволяющий создавать и/или обновлять по нескольку объектов за раз.
+
+- В конструктор запросов добавлен метод `fromUrl($url, $withParams)`, позволяющий строить запросы из уже имеющегося url:
+
+```php
+$orderUrl = 'https://online.moysklad.ru/api/remap/1.2/entity/customerorder/3aba2611-c64f-11ed-0a80-108a00230a9c'; 
+$orderPositions = $ms
+    ->query()
+    ->fromUrl($orderUrl)
+    ->positions()
+    ->get();
+```
+
+- В ошибку запроса `Evgeek\Moysklad\Exceptions\RequestException` добавлены методы:
+  - `getRequest()` - возвращает PSR-7 объект HTTP запроса, если он существует.
+  - `getResponse()` - возвращает PSR-7 объект HTTP ответа, если он существует.
+  - `getContent()` - Возвращает содержимое HTTP ответа, отформатированное текущим форматтером, или `null` в случае отсутствия содержимого.
+
+### Changed
+
+- Переписана документация.
+- Реорганизация namespace `Evgeek\Moysklad\Api`.
+- Методы `Evgeek\Moysklad\Formatters\JsonFormatterInterface` теперь динамические.
+- Аргументы в методе `Meta::state()` приведены к общей логике.
+- Максимальное количество символов ответа от API по умолчанию в `Evgeek\Moysklad\Http\GuzzleSenderFactory` увеличено до 4000.
+
+### Removed
+
+- Удалён устаревший метод `filters()`. Его функциональность теперь целиком возложена на `filter()`. 
+
+### Deprecated
+
+- Явная установка форматирования в хелпере `Meta`. 
+- `Meta::entity()`. Вместо этого метода используйте `Meta::create()`.
 
 ## v0.7.0 [[Upgrade guide](/UPGRADE.md#v070-changelog)]
 
 ### Added
+
 - В методы для формирования query-параметров запроса, подразумеющих возможность передачи нескольких значений (`filter()`, `order()`, `expand()` и `params()`) можно передавать несколько наборов значений за раз при помощи массива массивов. Примеры есть в [README](/##параметры-запроса) и PHPDoc методов.
 - Полное покрытие проекта unit тестами.
 

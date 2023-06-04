@@ -4,22 +4,25 @@ namespace Evgeek\Tests\Unit\Formatters;
 
 use Evgeek\Moysklad\Formatters\StringFormat;
 
-/** @covers \Evgeek\Moysklad\Formatters\StringFormat<extended> */
+/**
+ * @covers \Evgeek\Moysklad\Formatters\AbstractMultiDecoder
+ * @covers \Evgeek\Moysklad\Formatters\StringFormat
+ */
 class StringFormatTest extends MultiDecoderTestCase
 {
     protected const FORMATTER = StringFormat::class;
 
-    protected function getEncodedObject(): string
+    protected static function getEncodedObject(): string
     {
         return static::OBJECT_JSON_STRING;
     }
 
-    protected function getEncodedArray(): string
+    protected static function getEncodedArray(): string
     {
         return static::ARRAYS_JSON_STRING;
     }
 
-    protected function getEncodedEmpty(): string
+    protected static function getEncodedEmpty(): string
     {
         return '';
     }

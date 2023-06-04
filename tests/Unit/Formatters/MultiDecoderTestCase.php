@@ -2,80 +2,53 @@
 
 namespace Evgeek\Tests\Unit\Formatters;
 
+use Evgeek\Moysklad\Api\Record\AbstractRecord;
 use Evgeek\Moysklad\Formatters\AbstractMultiDecoder;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
+use Evgeek\Moysklad\Formatters\WithMoySkladInterface;
+use Evgeek\Moysklad\MoySklad;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
 abstract class MultiDecoderTestCase extends TestCase
 {
-    /** @var class-string<JsonFormatterInterface>|JsonFormatterInterface */
-    protected const FORMATTER = AbstractMultiDecoder::class;
-
-    protected const OBJECT_JSON_STRING = '{"param":"test_param","context":{"employee":{"meta":' .
-        '{"href":"test_href_1","type":"employee"}}},"rows":[{"id":"id1","value":true},{"id":"id2","value":0},' .
-        '{"id":"id3","value":null},{"id":"id4","value":123.45}]}';
+    protected const OBJECT_JSON_STRING = '{"param":"test_param","meta":{"href":' .
+        '"https:\/\/online.moysklad.ru\/api\/remap\/1.2\/endpoint\/segment","type":"product"},"context":' .
+        '{"employee":{"meta":{"href":"https:\/\/online.moysklad.ru\/api\/remap\/1.2\/context\/employee","type":"employee"}}},' .
+        '"rows":[{"id":"id1","value":true},{"id":"id2","value":0},{"id":"id3","value":null},{"id":"id4","value":123.45}]}';
     protected const ARRAYS_JSON_STRING = '[{"param":"value1","meta":"meta1"},{"param":"value2","meta":"meta2"}]';
     protected const EMPTY_JSON_STRING = '';
 
     protected const NULL_JSON_STRING = 'null';
     protected const FALSE_JSON_STRING = 'false';
 
+    /** @var class-string<JsonFormatterInterface> */
+    protected const FORMATTER = AbstractMultiDecoder::class;
+    protected JsonFormatterInterface $formatter;
+
+    protected function setUp(): void
+    {
+        $formatterClass = static::FORMATTER;
+        $this->formatter = new $formatterClass();
+        if (is_a($this->formatter, WithMoySkladInterface::class)) {
+            $this->formatter->setMoySklad(new MoySklad(['token']));
+        }
+    }
+
     /** @dataProvider correctEncodeDataProvider */
     public function testEncodeCorrect(string $jsonString, mixed $formatted): void
     {
-        $this->assertSame($formatted, (static::FORMATTER)::encode($jsonString));
+        $this->assertSame($formatted, $this->formatter->encode($jsonString));
     }
 
     /** @dataProvider correctDecodeDataProvider */
     public function testDecodeCorrect(string $jsonString, mixed $formatted): void
     {
-        $this->assertSame($jsonString, (static::FORMATTER)::decode($formatted));
+        $this->assertSame($jsonString, $this->formatter->decode($formatted));
     }
 
-    /** @dataProvider invalidJsonTypesDataProvider */
-    public function testEncodeUnexpectedDataType(string $jsonString): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Passed content is not valid json.');
-
-        (static::FORMATTER)::encode($jsonString);
-    }
-
-    public function testDecodeInvalidType(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("Can't convert content of");
-
-        (static::FORMATTER)::decode(NAN);
-    }
-
-    /** @dataProvider invalidJsonTypesDataProvider */
-    public function testDecodeInvalidString(string $jsonString): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Passed content is not valid json.');
-
-        (static::FORMATTER)::decode($jsonString);
-    }
-
-    abstract protected function getEncodedObject();
-
-    abstract protected function getEncodedArray();
-
-    abstract protected function getEncodedEmpty();
-
-    protected function correctEncodeDataProvider(): array
-    {
-        return [
-            [self::OBJECT_JSON_STRING, $this->getEncodedObject()],
-            [self::ARRAYS_JSON_STRING, $this->getEncodedArray()],
-            ['', $this->getEncodedEmpty()],
-        ];
-    }
-
-    protected function correctDecodeDataProvider(): array
+    public static function correctDecodeDataProvider(): array
     {
         $json = '[{"param1":"value1","param2":false},{"param1":2.34,"param2":null}]';
         $array = [
@@ -90,7 +63,7 @@ abstract class MultiDecoderTestCase extends TestCase
         $object2->param2 = null;
         $arrayOfObjects = [$object1, $object2];
 
-        return array_merge($this->correctEncodeDataProvider(), [
+        return array_merge(static::correctEncodeDataProvider(), [
             ['', false],
             ['', null],
             [$json, $json],
@@ -99,7 +72,33 @@ abstract class MultiDecoderTestCase extends TestCase
         ]);
     }
 
-    private function invalidJsonTypesDataProvider(): array
+    /** @dataProvider invalidJsonTypesDataProvider */
+    public function testEncodeUnexpectedDataType(string $jsonString): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Passed content is not valid json.');
+
+        $this->formatter->encode($jsonString);
+    }
+
+    public function testDecodeInvalidType(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage("Can't convert content of");
+
+        $this->formatter->decode(NAN);
+    }
+
+    /** @dataProvider invalidJsonTypesDataProvider */
+    public function testDecodeInvalidString(string $jsonString): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Passed content is not valid json.');
+
+        $this->formatter->decode($jsonString);
+    }
+
+    public static function invalidJsonTypesDataProvider(): array
     {
         return [
             ['invalid-json-encode'],
@@ -109,5 +108,41 @@ abstract class MultiDecoderTestCase extends TestCase
             ['false'],
             ['null'],
         ];
+    }
+
+    public static function correctEncodeDataProvider(): array
+    {
+        return [
+            [self::OBJECT_JSON_STRING, static::getEncodedObject()],
+            [self::ARRAYS_JSON_STRING, static::getEncodedArray()],
+            ['', static::getEncodedEmpty()],
+        ];
+    }
+
+    abstract protected static function getEncodedObject();
+
+    abstract protected static function getEncodedArray();
+
+    abstract protected static function getEncodedEmpty();
+
+    protected function castToArrayWithNested(mixed $content): mixed
+    {
+        if (is_array($content)) {
+            foreach ($content as $key => $value) {
+                $content[$key] = $this->castToArrayWithNested($value);
+            }
+
+            return $content;
+        }
+
+        if (is_a($content, AbstractRecord::class)) {
+            return $content->toArray();
+        }
+
+        if (is_object($content)) {
+            return $this->castToArrayWithNested((array) $content);
+        }
+
+        return $content;
     }
 }

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Formatters;
 
+use Evgeek\Moysklad\Api\Record\AbstractRecord;
 use InvalidArgumentException;
+use stdClass;
 use Throwable;
 
 /**
@@ -14,16 +16,20 @@ use Throwable;
  */
 abstract class AbstractMultiDecoder implements JsonFormatterInterface
 {
-    public static function decode(mixed $content): string
+    public function decode(mixed $content): string
     {
-        if (static::contentIsEmpty($content)) {
+        if ($this->contentIsEmpty($content)) {
             return '';
         }
 
         if (is_string($content)) {
-            static::validateStringIsJsonObject($content);
+            $this->validateStringIsJsonObject($content);
 
             return $content;
+        }
+
+        if (is_array($content) || is_a($content, stdClass::class)) {
+            $content = static::toArray($content);
         }
 
         try {
@@ -34,30 +40,55 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
             throw new InvalidArgumentException("Can't convert content of '$type' type to json string.");
         }
 
-        static::validateStringIsJsonObject($decodedContent);
+        $this->validateStringIsJsonObject($decodedContent);
 
         return $decodedContent;
     }
 
-    protected static function validateStringIsJsonObject(string $content): void
+    public static function toArray(array|stdClass|AbstractRecord $content): array
+    {
+        if (is_a($content, AbstractRecord::class)) {
+            return $content->toArray();
+        }
+
+        $array = [];
+        foreach ($content as $key => $value) {
+            $array[$key] = is_array($value) || is_a($value, stdClass::class) ?
+                self::toArray($value) :
+                $value;
+        }
+
+        return $array;
+    }
+
+    public static function checkStringIsValidJson(string $content): bool
     {
         try {
             $decodedContent = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
         } catch (Throwable) {
-            static::throwContentIsNotValidJsonObject($content);
+            return false;
         }
 
         if (!is_array($decodedContent)) {
-            static::throwContentIsNotValidJsonObject($content);
+            return false;
+        }
+
+        return true;
+    }
+
+    protected function validateStringIsJsonObject(string $content): void
+    {
+        if (!self::checkStringIsValidJson($content)) {
+            $this->throwContentIsNotValidJsonObject($content);
         }
     }
 
-    protected static function throwContentIsNotValidJsonObject(string $content): never
+    protected function throwContentIsNotValidJsonObject(string $content): never
     {
         throw new InvalidArgumentException('Passed content is not valid json. Content:' . $content . PHP_EOL);
     }
 
-    protected static function contentIsEmpty(mixed $content): bool
+    protected function contentIsEmpty(mixed $content): bool
     {
         return !$content || (is_object($content) && (array) $content === []);
     }

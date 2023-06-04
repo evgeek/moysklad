@@ -11,13 +11,13 @@ namespace Evgeek\Moysklad\Formatters;
  */
 class StringFormat extends AbstractMultiDecoder
 {
-    public static function encode(string $content): string
+    public function encode(string $content): string
     {
         if ($content === '') {
             return '';
         }
 
-        static::validateStringIsJsonObject($content);
+        $this->validateStringIsJsonObject($content);
 
         return $content;
     }

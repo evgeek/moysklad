@@ -2,33 +2,38 @@
 
 namespace Evgeek\Tests\Unit\Formatters;
 
-use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use stdClass;
 
-/** @covers \Evgeek\Moysklad\Formatters\StdClassFormat<extended> */
+/**
+ * @covers \Evgeek\Moysklad\Formatters\AbstractMultiDecoder
+ * @covers \Evgeek\Moysklad\Formatters\StdClassFormat
+ */
 class StdClassFormatTest extends MultiDecoderTestCase
 {
-    /** @var JsonFormatterInterface */
     protected const FORMATTER = StdClassFormat::class;
 
     /** @dataProvider correctEncodeDataProvider */
     public function testEncodeCorrect(string $jsonString, mixed $formatted): void
     {
         $formattedCasted = $this->castToArrayWithNested($formatted);
-        $encodedCasted = $this->castToArrayWithNested((static::FORMATTER)::encode($jsonString));
+        $encodedCasted = $this->castToArrayWithNested($this->formatter->encode($jsonString));
 
         $this->assertSame($formattedCasted, $encodedCasted);
     }
 
-    protected function getEncodedObject(): stdClass
+    protected static function getEncodedObject(): stdClass
     {
         return (object) [
             'param' => 'test_param',
+            'meta' => (object) [
+                'href' => 'https://online.moysklad.ru/api/remap/1.2/endpoint/segment',
+                'type' => 'product',
+            ],
             'context' => (object) [
                 'employee' => (object) [
                     'meta' => (object) [
-                        'href' => 'test_href_1',
+                        'href' => 'https://online.moysklad.ru/api/remap/1.2/context/employee',
                         'type' => 'employee',
                     ],
                 ],
@@ -54,7 +59,7 @@ class StdClassFormatTest extends MultiDecoderTestCase
         ];
     }
 
-    protected function getEncodedArray(): array
+    protected static function getEncodedArray(): array
     {
         return [
             (object) ['param' => 'value1', 'meta' => 'meta1'],
@@ -62,27 +67,8 @@ class StdClassFormatTest extends MultiDecoderTestCase
         ];
     }
 
-    protected function getEncodedEmpty(): stdClass
+    protected static function getEncodedEmpty(): stdClass
     {
         return new stdClass();
-    }
-
-    protected function castToArrayWithNested(stdClass|array $array): array
-    {
-        if (is_array($array)) {
-            foreach ($array as $key => $value) {
-                if (is_array($value)) {
-                    $array[$key] = $this->castToArrayWithNested($value);
-                }
-                if (is_object($value)) {
-                    $array[$key] = $this->castToArrayWithNested((array) $value);
-                }
-            }
-        }
-        if (is_object($array)) {
-            return $this->castToArrayWithNested((array) $array);
-        }
-
-        return $array;
     }
 }

@@ -1,5 +1,76 @@
 # Upgrade guide
 
+## v0.8.0 [[Changelog](/CHANGELOG.md#v080-upgrade-guide)]
+
+### Реорганизация namespace `Evgeek\Moysklad\Api`.
+
+Данный namespace используется fluent-цепочкой билдера запросов (`$ms->query()->...`), поэтому изменения в нём не влияют на работу библиотеки. Однако, если ваш проект явно использует этот namespace, проверьте следующее:
+
+До:
+
+- `Evgeek\Moysklad\Api\Query`
+- `Evgeek\Moysklad\Api\Segments\Special\MassDelete`
+- `Evgeek\Moysklad\Api\Segments\...`
+- `Evgeek\Moysklad\Api\Traits\Segments\...`
+
+После:
+
+- `Evgeek\Moysklad\Api\Query\QueryBuilder`
+- `Evgeek\Moysklad\Api\Query\Segments\Special\MassDelete`
+- `Evgeek\Moysklad\Api\Query\Segments\...`
+- `Evgeek\Moysklad\Api\Query\Traits\Segments\...`
+
+### Аргументы в методе `Meta::state()` приведены к общей логике.
+
+До:
+
+```php
+Meta::state('25cf41f2-b068-11ed-0a80-0e9700500d7e', 'counterparty');
+```
+
+После:
+
+```php
+Meta::state('counterparty', '25cf41f2-b068-11ed-0a80-0e9700500d7e');
+```
+
+### Deprecated установки форматирования в хелпере `Meta`
+
+До:
+
+```php
+Meta::setFormat(new ArrayFormat());
+Meta::product('25cf41f2-b068-11ed-0a80-0e9700500d7e');
+```
+
+После:
+
+```php
+//Создание меты через основной объект MoySklad применит форматирование, заданное в MoySklad
+$ms->meta()->product('25cf41f2-b068-11ed-0a80-0e9700500d7e');
+
+//Альтернатива - явная передача форматтера в хелпер (по умолчанию - StdClassFormat)
+Meta::product('25cf41f2-b068-11ed-0a80-0e9700500d7e', new ArrayFormat())
+```
+
+### Методы `Evgeek\Moysklad\Formatters\JsonFormatterInterface` теперь динамические.
+
+Не требуется ничего менять, если вы не работали с форматтерами напрямую.
+
+До:
+
+```php
+ArrayFormat::encode($entity);
+StdClassFormat::decode($entity);
+```
+
+После:
+
+```php
+(new ArrayFormat())->encode($entity);
+(new StdClassFormat())->decode($entity);
+```
+
 ## v0.7.0 [[Changelog](/CHANGELOG.md#v070-upgrade-guide)]
 
 ### Приведение метода `expand()` к общей логике.

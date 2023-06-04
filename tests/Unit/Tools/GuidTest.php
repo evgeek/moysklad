@@ -18,19 +18,7 @@ class GuidTest extends TestCase
         $this->assertSame($expected, Guid::extractAll($url));
     }
 
-    /** @dataProvider extractFirstDataProvider */
-    public function testExtractFirst(?string $expected, string $url): void
-    {
-        $this->assertSame($expected, Guid::extractFirst($url));
-    }
-
-    /** @dataProvider extractLastDataProvider */
-    public function testExtractLast(?string $expected, string $url): void
-    {
-        $this->assertSame($expected, Guid::extractLast($url));
-    }
-
-    private function extractAllDataProvider(): array
+    public static function extractAllDataProvider(): array
     {
         return [
             [[], 'entity/product/position'],
@@ -40,7 +28,13 @@ class GuidTest extends TestCase
         ];
     }
 
-    private function extractFirstDataProvider(): array
+    /** @dataProvider extractFirstDataProvider */
+    public function testExtractFirst(?string $expected, string $url): void
+    {
+        $this->assertSame($expected, Guid::extractFirst($url));
+    }
+
+    public static function extractFirstDataProvider(): array
     {
         return [
             [null, 'entity/product/position'],
@@ -50,7 +44,13 @@ class GuidTest extends TestCase
         ];
     }
 
-    private function extractLastDataProvider(): array
+    /** @dataProvider extractLastDataProvider */
+    public function testExtractLast(?string $expected, string $url): void
+    {
+        $this->assertSame($expected, Guid::extractLast($url));
+    }
+
+    public static function extractLastDataProvider(): array
     {
         return [
             [null, 'entity/product/position'],
@@ -58,5 +58,15 @@ class GuidTest extends TestCase
             [self::GUID2, 'product/' . self::GUID1 . '/position/' . self::GUID2],
             [self::GUID1, 'method/' . self::GUID3 . '/method/' . self::GUID2 . '/method/' . self::GUID1],
         ];
+    }
+
+    public function testIsGuidRecognizeCorrectGuid(): void
+    {
+        $this->assertTrue(Guid::check(self::GUID1));
+    }
+
+    public function testIsGuidRejectIncorrectGuid(): void
+    {
+        $this->assertFalse(Guid::check('wrong-guid'));
     }
 }

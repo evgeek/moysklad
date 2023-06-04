@@ -14,10 +14,10 @@ interface JsonFormatterInterface
      *
      * @return T
      */
-    public static function encode(string $content);
+    public function encode(string $content);
 
     /**
      * Decode content to json string format
      */
-    public static function decode(mixed $content): string;
+    public function decode(mixed $content): string;
 }

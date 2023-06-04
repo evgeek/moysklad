@@ -84,6 +84,15 @@ class GuzzleSenderFactoryTest extends TestCase
         $this->assertCount(2, $factory->container);
     }
 
+    public static function retryableCodesDataProvider(): array
+    {
+        return [
+            [500, ServerException::class],
+            [503, ServerException::class],
+            [429, RequestException::class],
+        ];
+    }
+
     /** @dataProvider notRetryableCodesDataProvider */
     public function testRetryDoesNotWorksWithNotRetryableCodes(int $code, ?string $exception): void
     {
@@ -100,6 +109,17 @@ class GuzzleSenderFactoryTest extends TestCase
         $requestSender->send(new Request('GET', Url::API));
 
         $this->assertCount(1, $factory->container);
+    }
+
+    public static function notRetryableCodesDataProvider(): array
+    {
+        return [
+            [200, null],
+            [201, null],
+            [304, null],
+            [403, ClientException::class],
+            [409, ClientException::class],
+        ];
     }
 
     public function testRetryWorksOnClientException(): void
@@ -142,26 +162,6 @@ class GuzzleSenderFactoryTest extends TestCase
         $this->expectExceptionMessage('response-b (truncated...)');
 
         $requestSender->send(new Request('GET', Url::API));
-    }
-
-    private function retryableCodesDataProvider(): array
-    {
-        return [
-            [500, ServerException::class],
-            [503, ServerException::class],
-            [429, RequestException::class],
-        ];
-    }
-
-    private function notRetryableCodesDataProvider(): array
-    {
-        return [
-            [200, null],
-            [201, null],
-            [304, null],
-            [403, ClientException::class],
-            [409, ClientException::class],
-        ];
     }
 
     private function createFactoryMock(int $retries = 0, int $exceptionTruncateAt = 120)

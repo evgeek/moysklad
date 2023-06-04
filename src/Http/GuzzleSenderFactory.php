@@ -16,8 +16,16 @@ use Throwable;
 
 class GuzzleSenderFactory implements RequestSenderFactoryInterface
 {
-    public function __construct(private readonly int $retries = 0, private readonly int $exceptionTruncateAt = 120)
-    {
+    /**
+     * Стандартная фабрика Guzzle.
+     *
+     * @param int $retries             количество повторных попыток отправки запроса в случае неудачи
+     * @param int $exceptionTruncateAt максимальный размер сообщения об ошибке
+     */
+    public function __construct(
+        private readonly int $retries = 0,
+        private readonly int $exceptionTruncateAt = 4000
+    ) {
     }
 
     public function make(): GuzzleSender

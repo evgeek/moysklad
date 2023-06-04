@@ -4,87 +4,105 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Tools;
 
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Customerorder;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
+use Evgeek\Moysklad\Dictionaries\Document;
+use Evgeek\Moysklad\Dictionaries\Endpoint;
+use Evgeek\Moysklad\Dictionaries\Entity;
 use Evgeek\Moysklad\Formatters\ArrayFormat;
 use Evgeek\Moysklad\Formatters\JsonFormatterInterface;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
+use Evgeek\Moysklad\Services\Url;
 use InvalidArgumentException;
 
 class Meta
 {
-    private static JsonFormatterInterface $formatter;
+    /** @deprecated */
+    private static ?JsonFormatterInterface $formatter = null;
 
-    public static function state(string $guid, string $entity)
+    public static function state(string $entity, string $guid, JsonFormatterInterface $formatter = null)
     {
-        return static::entity([$entity, 'metadata', 'states', $guid], 'state');
+        return static::entity([$entity, 'metadata', 'states', $guid], 'state', $formatter);
     }
 
-    public static function service(string $guid)
+    public static function service(string $guid, JsonFormatterInterface $formatter = null)
     {
-        return static::entity(['service', $guid], 'service');
+        return static::entity(['service', $guid], 'service', $formatter);
     }
 
-    public static function product(string $guid)
+    public static function product(string $guid, JsonFormatterInterface $formatter = null)
     {
-        return static::entity(['product', $guid], 'product');
+        return static::create([...Product::PATH, $guid], Entity::PRODUCT, $formatter);
     }
 
-    public static function saleschannel(string $guid)
+    public static function employee(string $guid, JsonFormatterInterface $formatter = null)
     {
-        return static::entity(['saleschannel', $guid], 'saleschannel');
+        return static::create([...Employee::PATH, $guid], Entity::EMPLOYEE, $formatter);
     }
 
-    public static function currency(string $guid)
+    public static function customerorder(string $guid, JsonFormatterInterface $formatter = null)
     {
-        return static::entity(['currency', $guid], 'currency');
+        return static::create([...Customerorder::PATH, $guid], Document::CUSTOMERORDER, $formatter);
     }
 
-    public static function store(string $guid)
+    public static function saleschannel(string $guid, JsonFormatterInterface $formatter = null)
     {
-        return static::entity(['store', $guid], 'store');
+        return static::entity(['saleschannel', $guid], 'saleschannel', $formatter);
     }
 
-    public static function counterparty(string $guid)
+    public static function currency(string $guid, JsonFormatterInterface $formatter = null)
     {
-        return static::entity(['counterparty', $guid], 'counterparty');
+        return static::entity(['currency', $guid], 'currency', $formatter);
     }
 
-    public static function organization(string $guid)
+    public static function store(string $guid, JsonFormatterInterface $formatter = null)
     {
-        return static::entity(['organization', $guid], 'organization');
+        return static::entity(['store', $guid], 'store', $formatter);
     }
 
-    public static function entity(array $path, string $type)
+    public static function counterparty(string $guid, JsonFormatterInterface $formatter = null)
     {
-        return static::create(['entity', ...$path], $type);
+        return static::entity(['counterparty', $guid], 'counterparty', $formatter);
+    }
+
+    public static function organization(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::entity(['organization', $guid], 'organization', $formatter);
+    }
+
+    /** @deprecated */
+    public static function entity(array $path, string $type, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([Endpoint::ENTITY, ...$path], $type, $formatter);
     }
 
     /**
      * @param string[] $path
      */
-    public static function create(array $path, string $type)
+    public static function create(array $path, string $type, JsonFormatterInterface $formatter = null)
     {
-        static::initFormatter();
+        $formatter = $formatter ?? static::$formatter ?? new StdClassFormat();
 
-        return static::$formatter::encode(ArrayFormat::decode([
+        return $formatter->encode((new ArrayFormat())->decode([
             'href' => static::makeHref($path),
             'type' => $type,
             'mediaType' => 'application/json',
         ]));
     }
 
+    /**
+     * @deprecated
+     */
     public static function setFormat(JsonFormatterInterface $formatter): void
     {
         static::$formatter = $formatter;
     }
 
-    private static function initFormatter(): void
-    {
-        static::$formatter = static::$formatter ?? new StdClassFormat();
-    }
-
     private static function makeHref(array $path): string
     {
-        $href = 'https://online.moysklad.ru/api/remap/1.2';
+        $href = Url::API;
+        $path = array_values($path);
         foreach ($path as $key => $segment) {
             if (!is_string($segment)) {
                 throw new InvalidArgumentException("{$key}th segment of path is not a string");
