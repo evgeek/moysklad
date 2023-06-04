@@ -86,7 +86,7 @@ $product = Product::make($ms, [
 * `extractAll($url)` - возвращает массив со всеми id, извлечёнными из переданной строки `$url`.
 * `extractFirst($url)` - возвращает первый id из переданной строки.
 * `extractLast($url)` - возвращает последний id из переданной строки.
-* `isGuid($id)` - возвращает `true`, если переданный `$id` является валидным guid, иначе `false`.
+* `check($id)` - возвращает `true`, если переданный `$id` является валидным guid, иначе `false`.
 
 ```php
 $url = 'https://online.moysklad.ru/api/remap/1.2/entity/customerorder/00001c03-5227-11e8-9ff4-315000132d57/positions/00002107-5227-11e8-9ff4-315000132d58';
@@ -102,6 +102,6 @@ $firstId = Guid::extractFirst($url);
 echo $firstId;
 //00001c03-5227-11e8-9ff4-315000132d57
 
-var_dump(Guid::isGuid($firstId));
+var_dump(Guid::check($firstId));
 //bool(true)
 ```

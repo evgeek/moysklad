@@ -19,7 +19,7 @@ trait SetIdInMetaHrefTrait
         }
 
         if ($name === 'id') {
-            if (!Guid::isGuid($value)) {
+            if (!Guid::check($value)) {
                 throw new InvalidArgumentException('id must be a guid');
             }
             $this->setIdToMetaHref($value);

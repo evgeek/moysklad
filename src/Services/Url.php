@@ -59,7 +59,7 @@ final class Url
         [$path] = self::parsePathAndParams($url);
         $lastSegment = array_pop($path);
 
-        return Guid::isGuid($lastSegment) ? $lastSegment : null;
+        return Guid::check($lastSegment) ? $lastSegment : null;
     }
 
     /**

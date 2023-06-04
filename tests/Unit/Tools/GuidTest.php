@@ -62,11 +62,11 @@ class GuidTest extends TestCase
 
     public function testIsGuidRecognizeCorrectGuid(): void
     {
-        $this->assertTrue(Guid::isGuid(self::GUID1));
+        $this->assertTrue(Guid::check(self::GUID1));
     }
 
     public function testIsGuidRejectIncorrectGuid(): void
     {
-        $this->assertFalse(Guid::isGuid('wrong-guid'));
+        $this->assertFalse(Guid::check('wrong-guid'));
     }
 }

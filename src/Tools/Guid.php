@@ -41,7 +41,7 @@ class Guid
     /**
      * Определяет, является ли строка валидным guid.
      */
-    public static function isGuid(string $guid): bool
+    public static function check(string $guid): bool
     {
         return $guid === static::extractFirst($guid);
     }
