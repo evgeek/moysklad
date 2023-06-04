@@ -1,6 +1,6 @@
 # Upgrade guide
 
-## [Unreleased]
+## v0.8.0 [[Changelog](/CHANGELOG.md#v080-upgrade-guide)]
 
 ### Реорганизация namespace `Evgeek\Moysklad\Api`.
 

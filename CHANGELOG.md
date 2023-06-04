@@ -2,7 +2,7 @@
 
 Все существенные изменения в проекте будут задокументированы в этом файле. Формат основан на [Keep a Changelog](https://keepachangelog.com/), и этот проект придерживается семантического версионирования ([semver](https://semver.org/)).
 
-## [Unreleased]
+## v0.8.0 [[Upgrade guide](/UPGRADE.md#v080-changelog)]
 
 ### Added
 
