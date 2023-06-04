@@ -29,7 +29,7 @@ $ms = new MoySklad(
 
 Объект, преобразующий json-строку ответа от API в нужный формат, и наоборот - передаваемый payload в json-строку. Должен реализовывать `\Evgeek\Moysklad\Formatters\JsonFormatterInterface`. Встроенные форматтеры - `StdClassFormat` (по умолчанию), `ArrayFormat`, `StringFormat` и `RecordFormat`. Все встроенные форматтеры могут принимать в качестве payload `stdClass`, `array`, `string` и `Record`.
 
-Подробности касательно форматтеров можно найти в [соответствующем разделе](/docs/formatters.md) документации.
+Подробности о работе форматтеров находятся в [соответствующем разделе](/docs/formatters.md) документации.
 
 ### requestSenderFactory
 
