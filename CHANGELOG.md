@@ -2,7 +2,11 @@
 
 Все существенные изменения в проекте будут задокументированы в этом файле. Формат основан на [Keep a Changelog](https://keepachangelog.com/), и этот проект придерживается семантического версионирования ([semver](https://semver.org/)).
 
-## v0.8.1
+## v0.8.2
+
+### Fixed
+
+- Исправлен [баг](https://github.com/evgeek/moysklad/issues/26) со строковым списком в объектах Record.
 
 ### Fixed
 
