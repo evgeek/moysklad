@@ -8,6 +8,8 @@
 
 - Исправлен [баг](https://github.com/evgeek/moysklad/issues/26) со строковым списком в объектах Record.
 
+## v0.8.1
+
 ### Fixed
 
 - Исправлен [баг](https://github.com/evgeek/moysklad/issues/27) со свойством `type` в объектах Record.
