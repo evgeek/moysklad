@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Formatters\StdClassFormat;
 
 trait FillMetaObjectTrait
 {
-    protected function fillMeta(array $path): void
+    protected function fillMeta(array $path, string $type): void
     {
         if ($this->meta) {
             return;
@@ -19,7 +19,7 @@ trait FillMetaObjectTrait
             $path[] = $id;
         }
 
-        $meta = $this->ms->meta()->create($path, $this->type);
+        $meta = $this->ms->meta()->create($path, $type);
         $formatter = $this->ms->getFormatter();
 
         $this->meta = (new StdClassFormat())->encode($formatter->decode($meta));
