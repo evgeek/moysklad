@@ -114,7 +114,9 @@ class RecordFormat extends AbstractMultiDecoder implements WithMoySkladInterface
         if (array_is_list($content)) {
             $array = [];
             foreach ($content as $item) {
-                $array[] = $this->convertToStdClass($item);
+                $array[] = is_array($item) || is_subclass_of($item, AbstractRecord::class) ?
+                    $this->convertToStdClass($item) :
+                    $item;
             }
 
             return $array;

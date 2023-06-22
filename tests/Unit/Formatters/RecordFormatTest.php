@@ -43,6 +43,7 @@ class RecordFormatTest extends StdClassFormatTest
                         'type' => 'product',
                     ],
                     'id' => '25cf41f2-b068-11ed-0a80-0e9700500d7e',
+                    'type' => 'unknown',
                     'owner' => [
                         'meta' => [
                             'href' => 'https://online.moysklad.ru/api/remap/1.2/entity/employee',
@@ -56,6 +57,7 @@ class RecordFormatTest extends StdClassFormatTest
                         ],
                         'rows' => [
                             [],
+                            ['tags' => ['tag1', 'tag2']],
                         ],
                     ],
                 ],
