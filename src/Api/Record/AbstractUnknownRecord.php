@@ -9,16 +9,16 @@ use InvalidArgumentException;
 
 abstract class AbstractUnknownRecord extends AbstractRecord
 {
-    public function __construct(MoySklad $ms, array $path, protected readonly string $type, mixed $content = [])
+    public function __construct(MoySklad $ms, array $path, string $type, mixed $content = [])
     {
-        if (!$path || !$this->type) {
+        if (!$path || !$type) {
             throw new InvalidArgumentException('path and type cannot be empty');
         }
 
         parent::__construct($ms, $content);
 
-        $this->fillMeta($path);
+        $this->fillMeta($path, $type);
     }
 
-    abstract protected function fillMeta(array $path): void;
+    abstract protected function fillMeta(array $path, string $type): void;
 }
