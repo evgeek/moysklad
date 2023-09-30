@@ -22,7 +22,7 @@ class GuzzleSenderTest extends TestCase
             ->with($this->callback(
                 fn (RequestInterface $request) => $request->getMethod() === 'GET'
                     && $request->getUri()->getScheme() === 'https'
-                    && $request->getUri()->getHost() === 'online.moysklad.ru'
+                    && $request->getUri()->getHost() === 'api.moysklad.ru'
                     && $request->getUri()->getPath() === '/api/remap/1.2'
                     && $request->getUri()->getQuery() === ''
                     && $request->getUri()->getFragment() === ''

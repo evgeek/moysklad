@@ -76,8 +76,8 @@ class ApiClientTest extends TestCase
                 fn (RequestInterface $request) => strtolower($request->getMethod()) === 'post'
                     && $request->getHeader('content-type')[0] === 'application/json'
                     && $request->getUri()->getScheme() === 'https'
-                    && $request->getHeader('host')[0] === 'online.moysklad.ru'
-                    && $request->getUri()->getHost() === 'online.moysklad.ru'
+                    && $request->getHeader('host')[0] === 'api.moysklad.ru'
+                    && $request->getUri()->getHost() === 'api.moysklad.ru'
                     && $request->getHeader('authorization')[0] === self::TOKEN_HEADER
                     && $request->getUri()->getPath() === '/api/remap/1.2/entity/product'
                     && $request->getUri()->getQuery() === http_build_query(self::PARAMS)
@@ -198,14 +198,15 @@ class ApiClientTest extends TestCase
     public function testDebug(): void
     {
         $payload = new Payload(HttpMethod::GET, self::PATH, self::PARAMS, self::BODY);
-        $url = 'https://online.moysklad.ru/api/remap/1.2/entity/product?limit=1&filter=filter_param_1=filter_value_1;filter_param_2=true';
-        $urlEncoded = 'https://online.moysklad.ru/api/remap/1.2/entity/product?limit=1&filter=filter_param_1%3Dfilter_value_1%3Bfilter_param_2%3Dtrue';
+        $url = 'https://api.moysklad.ru/api/remap/1.2/entity/product?limit=1&filter=filter_param_1=filter_value_1;filter_param_2=true';
+        $urlEncoded = 'https://api.moysklad.ru/api/remap/1.2/entity/product?limit=1&filter=filter_param_1%3Dfilter_value_1%3Bfilter_param_2%3Dtrue';
         $expected = [
             'method' => 'GET',
             'url' => $url,
             'url_encoded' => $urlEncoded,
             'headers' => [
                 'Content-Type' => 'application/json',
+                'Accept-Encoding' => 'gzip',
                 'Authorization' => self::TOKEN_HEADER,
             ],
             'body' => self::BODY,

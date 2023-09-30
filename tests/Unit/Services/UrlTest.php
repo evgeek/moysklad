@@ -12,7 +12,7 @@ use RuntimeException;
 /** @covers \Evgeek\Moysklad\Services\Url */
 class UrlTest extends TestCase
 {
-    private const API_URL = 'https://online.moysklad.ru/api/remap/1.2';
+    private const API_URL = 'https://api.moysklad.ru/api/remap/1.2';
     private const GUID1 = '25cf41f2-b068-11ed-0a80-0e9700500d7e';
     private const GUID2 = 'f731148b-a93d-11ed-0a80-0fba0011a6c6';
 

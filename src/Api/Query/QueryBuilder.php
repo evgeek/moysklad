@@ -25,7 +25,7 @@ class QueryBuilder extends AbstractBuilder
      * Если $withParams === true, конструктор сохранит параметры из url, иначе - отбросит.
      *
      * <code>
-     * $productUrl = "https://online.moysklad.ru/api/remap/1.2/entity/product/3aba2611-c64f-11ed-0a80-108a00230a9c?expand=image";
+     * $productUrl = "https://api.moysklad.ru/api/remap/1.2/entity/product/3aba2611-c64f-11ed-0a80-108a00230a9c?expand=image";
      * $product = $ms->query()
      *  ->fromUrl($productUrl, true)
      *  ->get();
