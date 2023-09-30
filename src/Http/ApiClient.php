@@ -16,7 +16,10 @@ use UnexpectedValueException;
 
 class ApiClient
 {
-    private array $headers = ['Content-Type' => 'application/json'];
+    private array $headers = [
+        'Content-Type' => 'application/json',
+        'Accept-Encoding' => 'gzip',
+    ];
 
     public function __construct(
         array $credentials,

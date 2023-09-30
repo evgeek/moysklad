@@ -27,13 +27,13 @@ class StdClassFormatTest extends MultiDecoderTestCase
         return (object) [
             'param' => 'test_param',
             'meta' => (object) [
-                'href' => 'https://online.moysklad.ru/api/remap/1.2/endpoint/segment',
+                'href' => 'https://api.moysklad.ru/api/remap/1.2/endpoint/segment',
                 'type' => 'product',
             ],
             'context' => (object) [
                 'employee' => (object) [
                     'meta' => (object) [
-                        'href' => 'https://online.moysklad.ru/api/remap/1.2/context/employee',
+                        'href' => 'https://api.moysklad.ru/api/remap/1.2/context/employee',
                         'type' => 'employee',
                     ],
                 ],

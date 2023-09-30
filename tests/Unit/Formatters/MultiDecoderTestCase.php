@@ -14,8 +14,8 @@ use stdClass;
 abstract class MultiDecoderTestCase extends TestCase
 {
     protected const OBJECT_JSON_STRING = '{"param":"test_param","meta":{"href":' .
-        '"https:\/\/online.moysklad.ru\/api\/remap\/1.2\/endpoint\/segment","type":"product"},"context":' .
-        '{"employee":{"meta":{"href":"https:\/\/online.moysklad.ru\/api\/remap\/1.2\/context\/employee","type":"employee"}}},' .
+        '"https:\/\/api.moysklad.ru\/api\/remap\/1.2\/endpoint\/segment","type":"product"},"context":' .
+        '{"employee":{"meta":{"href":"https:\/\/api.moysklad.ru\/api\/remap\/1.2\/context\/employee","type":"employee"}}},' .
         '"rows":[{"id":"id1","value":true},{"id":"id2","value":0},{"id":"id3","value":null},{"id":"id4","value":123.45}]}';
     protected const ARRAYS_JSON_STRING = '[{"param":"value1","meta":"meta1"},{"param":"value2","meta":"meta2"}]';
     protected const EMPTY_JSON_STRING = '';

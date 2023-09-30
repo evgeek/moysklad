@@ -25,13 +25,13 @@ class RecordFormatTest extends StdClassFormatTest
     private const COMPLEX_CASE = [
         [
             'meta' => [
-                'href' => 'https://online.moysklad.ru/api/remap/1.2/entity/product',
+                'href' => 'https://api.moysklad.ru/api/remap/1.2/entity/product',
                 'type' => 'product',
             ],
             'context' => [
                 'employee' => [
                     'meta' => [
-                        'href' => 'https://online.moysklad.ru/api/remap/1.2/context/employee',
+                        'href' => 'https://api.moysklad.ru/api/remap/1.2/context/employee',
                         'type' => 'employee',
                     ],
                 ],
@@ -39,20 +39,20 @@ class RecordFormatTest extends StdClassFormatTest
             'rows' => [
                 [
                     'meta' => [
-                        'href' => 'https://online.moysklad.ru/api/remap/1.2/entity/product',
+                        'href' => 'https://api.moysklad.ru/api/remap/1.2/entity/product',
                         'type' => 'product',
                     ],
                     'id' => '25cf41f2-b068-11ed-0a80-0e9700500d7e',
                     'type' => 'unknown',
                     'owner' => [
                         'meta' => [
-                            'href' => 'https://online.moysklad.ru/api/remap/1.2/entity/employee',
+                            'href' => 'https://api.moysklad.ru/api/remap/1.2/entity/employee',
                             'type' => 'employee',
                         ],
                     ],
                     'fake_collection' => [
                         'meta' => [
-                            'href' => 'https://online.moysklad.ru/api/remap/1.2/entity/fake_entity',
+                            'href' => 'https://api.moysklad.ru/api/remap/1.2/entity/fake_entity',
                             'type' => 'fake_entity',
                         ],
                         'rows' => [
@@ -65,7 +65,7 @@ class RecordFormatTest extends StdClassFormatTest
         ],
         [
             'meta' => [
-                'href' => 'https://online.moysklad.ru/api/remap/1.2/entity/fake_entity',
+                'href' => 'https://api.moysklad.ru/api/remap/1.2/entity/fake_entity',
                 'type' => 'fake_entity',
             ],
             'id' => 'f731148b-a93d-11ed-0a80-0fba0011a6c6',
@@ -115,7 +115,7 @@ class RecordFormatTest extends StdClassFormatTest
             [
                 [
                     'meta' => [
-                        'href' => 'https://online.moysklad.ru/api/remap/1.2/context/employee',
+                        'href' => 'https://api.moysklad.ru/api/remap/1.2/context/employee',
                         'type' => 'employee',
                     ],
                 ],
@@ -123,7 +123,7 @@ class RecordFormatTest extends StdClassFormatTest
             [
                 [[
                     'meta' => [
-                        'href' => 'https://online.moysklad.ru/api/remap/1.2/context/employee',
+                        'href' => 'https://api.moysklad.ru/api/remap/1.2/context/employee',
                         'type' => 'employee',
                     ],
                 ]],
@@ -131,7 +131,7 @@ class RecordFormatTest extends StdClassFormatTest
             [
                 [
                     'meta' => [
-                        'href' => 'https://online.moysklad.ru/api/remap/1.2/entity/product',
+                        'href' => 'https://api.moysklad.ru/api/remap/1.2/entity/product',
                         'type' => 'product',
                     ],
                     'rows' => [],

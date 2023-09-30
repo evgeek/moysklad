@@ -33,7 +33,7 @@ $product->get();
 $product = Product::make($ms, ['id' => '25cf41f2-b068-11ed-0a80-0e9700500d7e'])->get();
 ```
 
-## Документация
+## Полная документация
 
 * [Настройка клиента](/docs/setup.md)
 * [Взаимодействие с API](/docs/api_interaction.md)
@@ -78,7 +78,7 @@ Product::collection($ms)
 
 ![autocomplete](/docs/autocomplete.gif)
 
-### Документация
+### Встроенная документация
 
 Публичные методы тщательно документированы: описание, примеры кода, ссылки на документацию API.
 

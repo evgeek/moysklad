@@ -63,6 +63,7 @@ class ApiTestCase extends TestCase
             'url_encoded' => $url,
             'headers' => [
                 'Content-Type' => 'application/json',
+                'Accept-Encoding' => 'gzip',
                 'Authorization' => 'Bearer ' . static::TOKEN,
             ],
             'body' => $body ?? [],

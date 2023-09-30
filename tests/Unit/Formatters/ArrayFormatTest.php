@@ -17,13 +17,13 @@ class ArrayFormatTest extends MultiDecoderTestCase
         return [
             'param' => 'test_param',
             'meta' => [
-                'href' => 'https://online.moysklad.ru/api/remap/1.2/endpoint/segment',
+                'href' => 'https://api.moysklad.ru/api/remap/1.2/endpoint/segment',
                 'type' => 'product',
             ],
             'context' => [
                 'employee' => [
                     'meta' => [
-                        'href' => 'https://online.moysklad.ru/api/remap/1.2/context/employee',
+                        'href' => 'https://api.moysklad.ru/api/remap/1.2/context/employee',
                         'type' => 'employee',
                     ],
                 ],

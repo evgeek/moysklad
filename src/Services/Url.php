@@ -10,7 +10,7 @@ use InvalidArgumentException;
 
 final class Url
 {
-    public const API = 'https://online.moysklad.ru/api/remap/1.2';
+    public const API = 'https://api.moysklad.ru/api/remap/1.2';
 
     public static function convertMixedValueToString(string|int|float|bool $value): string
     {
