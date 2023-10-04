@@ -13,12 +13,6 @@ class StringFormat extends AbstractMultiDecoder
 {
     public function encode(string $content): string
     {
-        if ($content === '') {
-            return '';
-        }
-
-        $this->validateStringIsJsonObject($content);
-
         return $content;
     }
 }
