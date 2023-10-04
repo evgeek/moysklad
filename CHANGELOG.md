@@ -2,6 +2,12 @@
 
 Все существенные изменения в проекте будут задокументированы в этом файле. Формат основан на [Keep a Changelog](https://keepachangelog.com/), и этот проект придерживается семантического версионирования ([semver](https://semver.org/)).
 
+## v0.9.1
+
+### Changed
+
+- `\Evgeek\Moysklad\Formatters\StringFormat::class` отныне не требует, чтобы ответ от API был в json формате. Это позволяет при помощи данного форматтера работать с любыми ответами, включая [файлы](https://github.com/evgeek/moysklad/issues/34).
+
 ## v0.9.0
 
 ### Changed
