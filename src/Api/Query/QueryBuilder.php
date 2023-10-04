@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Query;
 
+use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AccountSegmentSettings;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AuditSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EndpointSegmentCommon;
+use Evgeek\Moysklad\Api\Query\Segments\Endpoints\ContextSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EndpointCommonSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\NotificationSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\ReportSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Methods\MethodSegmentCommon;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\MethodCommonSegment;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Services\Url;
 
@@ -33,7 +35,7 @@ class QueryBuilder extends AbstractBuilder
      *
      * @param mixed $withParams
      */
-    public function fromUrl(string $url, $withParams = false): MethodSegmentCommon
+    public function fromUrl(string $url, $withParams = false): MethodCommonSegment
     {
         [$path, $params] = Url::parsePathAndParams($url);
         $lastSegment = array_pop($path);
@@ -41,7 +43,7 @@ class QueryBuilder extends AbstractBuilder
             $params = [];
         }
 
-        return new MethodSegmentCommon($this->api, $path, $params, $lastSegment);
+        return new MethodCommonSegment($this->api, $path, $params, $lastSegment);
     }
 
     /**
@@ -54,9 +56,9 @@ class QueryBuilder extends AbstractBuilder
      *  ->get();
      * </code>
      */
-    public function endpoint(string $name): EndpointSegmentCommon
+    public function endpoint(string $name): EndpointCommonSegment
     {
-        return $this->resolveCommonBuilder(EndpointSegmentCommon::class, $name);
+        return $this->resolveCommonBuilder(EndpointCommonSegment::class, $name);
     }
 
     /**
@@ -75,6 +77,36 @@ class QueryBuilder extends AbstractBuilder
     public function entity(): EntitySegment
     {
         return $this->resolveNamedBuilder(EntitySegment::class);
+    }
+
+    /**
+     * Входная точка для работы с Контекстом
+     *
+     * <code>
+     * $products = $ms->query()
+     *  ->context()
+     *  ->companysettings()
+     *  ->get();
+     * </code>
+     */
+    public function context(): ContextSegment
+    {
+        return $this->resolveNamedBuilder(ContextSegment::class);
+    }
+
+    /**
+     * Входная точка для работы с настройками аккаунта
+     *
+     * <code>
+     * $products = $ms->query()
+     *  ->accountSettings()
+     *  ->subscription()
+     *  ->get();
+     * </code>
+     */
+    public function accountSettings(): AccountSegmentSettings
+    {
+        return $this->resolveNamedBuilder(AccountSegmentSettings::class);
     }
 
     /**

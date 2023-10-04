@@ -6,8 +6,8 @@ namespace Evgeek\Moysklad\Api\Record\Objects\Entities;
 
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
-use Evgeek\Moysklad\Dictionaries\Endpoint;
-use Evgeek\Moysklad\Dictionaries\Entity;
+use Evgeek\Moysklad\Dictionaries\Segment;
+use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
  * Ассортимент
@@ -16,11 +16,11 @@ use Evgeek\Moysklad\Dictionaries\Entity;
  *
  * @implements AbstractConcreteObject<AssortmentCollection>
  */
-class Assortment extends AbstractConcreteObject
+class Assortment extends AbstractEntity
 {
     public const PATH = [
-        Endpoint::ENTITY,
-        Entity::ASSORTMENT,
+        Segment::ENTITY,
+        Segment::ASSORTMENT,
     ];
-    public const TYPE = Entity::ASSORTMENT;
+    public const TYPE = Type::ASSORTMENT;
 }

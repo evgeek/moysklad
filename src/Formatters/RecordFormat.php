@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Formatters;
 
 use Evgeek\Moysklad\Api\Record\AbstractConcreteRecord;
+use Evgeek\Moysklad\Api\Record\AbstractNestedRecord;
 use Evgeek\Moysklad\Api\Record\AbstractRecord;
 use Evgeek\Moysklad\MoySklad;
+use Evgeek\Moysklad\Services\NestedRecordHelper;
 use Evgeek\Moysklad\Services\RecordHelper;
 use Evgeek\Moysklad\Services\Url;
+use Evgeek\Moysklad\Tools\Guid;
 use stdClass;
 use Throwable;
 
@@ -86,7 +89,7 @@ class RecordFormat extends AbstractMultiDecoder implements WithMoySkladInterface
         return $content;
     }
 
-    protected function tryConvertToRecord(array $content): array|AbstractRecord
+    protected function tryConvertToRecord(array $content): AbstractRecord|array
     {
         $type = $content['meta']['type'] ?? null;
         $href = $content['meta']['href'] ?? null;
@@ -100,9 +103,18 @@ class RecordFormat extends AbstractMultiDecoder implements WithMoySkladInterface
 
         [$path] = Url::parsePathAndParams($href);
 
-        return is_a($class, AbstractConcreteRecord::class, true) ?
-            new $class($this->ms, $content) :
-            new $class($this->ms, $path, $type, $content);
+        if (is_a($class, AbstractConcreteRecord::class, true)) {
+            return new $class($this->ms, $content);
+        }
+
+        if (is_a($class, AbstractNestedRecord::class, true)) {
+            $parentPath = NestedRecordHelper::clearParentPath($path, $class::PATH);
+
+            return new $class($this->ms, $parentPath, $content);
+        }
+
+        // UnknownObject | UnknownCollection
+        return new $class($this->ms, $path, $type, $content);
     }
 
     protected function convertToStdClass(array|AbstractRecord $content): AbstractRecord|stdClass|array
@@ -114,7 +126,7 @@ class RecordFormat extends AbstractMultiDecoder implements WithMoySkladInterface
         if (array_is_list($content)) {
             $array = [];
             foreach ($content as $item) {
-                $array[] = is_array($item) || is_subclass_of($item, AbstractRecord::class) ?
+                $array[] = is_array($item) ?
                     $this->convertToStdClass($item) :
                     $item;
             }

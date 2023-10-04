@@ -3,13 +3,61 @@
 namespace Evgeek\Tests\Unit\Api\Record\Builders;
 
 use Evgeek\Moysklad\Api\Record\Builders\ObjectBuilder;
-use Evgeek\Moysklad\Api\Record\Objects\Documents\Customerorder;
+use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
+use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusTransaction;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Bundle;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\CompanySettings;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Consignment;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Contract;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Counterparty;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Country;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Currency;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomEntity;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomRole;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\ExpenseItem;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Files;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Group;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\PersonalDiscount;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\PriceType;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingProcess;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\ProductFolder;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Project;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Region;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\RetailStore;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\SalesChannel;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Service;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\SpecialPriceDiscount;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Store;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Subscription;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Task;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\TaxRate;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Uom;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\UserSettings;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Variant;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Webhook;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\WebhookStock;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Cashier;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Image;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\TrackingCode;
 use Evgeek\Moysklad\Api\Record\Objects\UnknownObject;
+use Evgeek\Moysklad\Dictionaries\Type;
 use Evgeek\Moysklad\Formatters\RecordFormat;
 use Evgeek\Moysklad\Formatters\RecordMapping;
 use Evgeek\Moysklad\MoySklad;
+use Evgeek\Moysklad\Services\Url;
 use InvalidArgumentException;
 
 /**
@@ -37,27 +85,6 @@ class ObjectBuilderTest extends RecordResolversTestCase
         $builder->product();
     }
 
-    public function testProductMethod(): void
-    {
-        $product = $this->builder->product(static::CONTENT);
-
-        $this->assertObjectResolvedWithExpectedMetaAndContent($product, Product::class);
-    }
-
-    public function testEmployeeMethod(): void
-    {
-        $product = $this->builder->employee(static::CONTENT);
-
-        $this->assertObjectResolvedWithExpectedMetaAndContent($product, Employee::class);
-    }
-
-    public function testCustomerorderMethod(): void
-    {
-        $product = $this->builder->customerorder(static::CONTENT);
-
-        $this->assertObjectResolvedWithExpectedMetaAndContent($product, Customerorder::class);
-    }
-
     public function testUnknownMethod(): void
     {
         $path = ['endpoint', 'segment'];
@@ -65,5 +92,80 @@ class ObjectBuilderTest extends RecordResolversTestCase
         $unknown = $this->builder->unknown($path, $type, static::CONTENT);
 
         $this->assertObjectResolvedWithExpectedMetaAndContent($unknown, UnknownObject::class, $path, $type);
+    }
+
+    /**
+     * @param class-string<AbstractConcreteObject> $expectedSegment
+     *
+     * @dataProvider methodsWithCorrespondingObjectClass
+     */
+    public function testMethodReturnsCorrectClass(string $method, string $expectedSegment, bool $isNested = false): void
+    {
+        $expectedClass = $isNested ? AbstractNestedObject::class : AbstractConcreteObject::class;
+        $object = $isNested ?
+            $this->builder->{$method}(['endpoint', 'segment'], static::CONTENT) :
+            $this->builder->{$method}(static::CONTENT);
+
+        $this->assertInstanceOf($expectedClass, $object);
+        $this->assertObjectResolvedWithExpectedMetaAndContent($object, $expectedSegment);
+
+        $path = $isNested ?
+            ['endpoint', 'segment', ...$object::PATH] :
+            $object::PATH;
+        $expectedHref = Url::makeFromPathAndParams($path);
+        $this->assertSame($expectedHref, $object->meta->href);
+    }
+
+    public static function methodsWithCorrespondingObjectClass(): array
+    {
+        return [
+            Type::BONUSTRANSACTION => ['bonustransaction', BonusTransaction::class],
+            Type::BONUSPROGRAM => ['bonusprogram', BonusProgram::class],
+            Type::CURRENCY => ['currency', Currency::class],
+            Type::WEBHOOK => ['webhook', Webhook::class],
+            Type::WEBHOOKSTOCK => ['webhookstock', WebhookStock::class],
+            Type::PRODUCTFOLDER => ['productfolder', ProductFolder::class],
+            Type::CONTRACT => ['contract', Contract::class],
+            Type::UOM => ['uom', Uom::class],
+            Type::TASK => ['task', Task::class],
+            Type::IMAGE => ['image', Image::class, true],
+            Type::SALESCHANNEL => ['saleschannel', SalesChannel::class],
+            Type::CASHIER => ['cashier', Cashier::class, true],
+            Type::BUNDLE => ['bundle', Bundle::class],
+            Type::COUNTERPARTY => ['counterparty', Counterparty::class],
+            Type::VARIANT => ['variant', Variant::class],
+            Type::COMPANYSETTINGS => ['companysettings', CompanySettings::class],
+            Type::USERSETTINGS => ['usersettings', UserSettings::class],
+            Type::GROUP => ['group', Group::class],
+            Type::SUBSCRIPTION => ['subscription', Subscription::class],
+            Type::CUSTOMROLE => ['role', CustomRole::class],
+            Type::CUSTOMENTITY => ['customentity', CustomEntity::class],
+            Type::PROJECT => ['project', Project::class],
+            Type::REGION => ['region', Region::class],
+            Type::CONSIGNMENT => ['consignment', Consignment::class],
+            Type::ACCUMULATIONDISCOUNT => ['accumulationdiscount', AccumulationDiscount::class],
+            Type::PERSONALDISCOUNT => ['personaldiscount', PersonalDiscount::class],
+            Type::SPECIALPRICEDISCOUNT => ['specialpricediscount', SpecialPriceDiscount::class],
+            Type::STORE => ['store', Store::class],
+            Type::EMPLOYEE => ['employee', Employee::class],
+            Type::NAMEDFILTER => ['namedfilter', NamedFilter::class, true],
+            Type::TAXRATE => ['taxrate', TaxRate::class],
+            Type::STATE => ['state', State::class, true],
+            Type::EXPENSEITEM => ['expenseitem', ExpenseItem::class],
+            Type::COUNTRY => ['country', Country::class],
+            Type::PROCESSINGPLAN => ['processingplan', ProcessingPlan::class],
+            Type::PROCESSINGPLANSTAGES => ['processingplanstages', ProcessingPlanStages::class, true],
+            Type::PROCESSINGPLANMATERIAL => ['processingplanmaterial', ProcessingPlanMaterial::class, true],
+            Type::PROCESSINGPLANRESULT => ['processingplanresult', ProcessingPlanResult::class, true],
+            Type::PROCESSINGPROCESS => ['processingprocess', ProcessingProcess::class],
+            Type::PRICETYPE => ['pricetype', PriceType::class],
+            Type::PRODUCT => ['product', Product::class],
+            Type::RETAILSTORE => ['retailstore', RetailStore::class],
+            Type::SERVICE => ['service', Service::class],
+            Type::FILES => ['files', Files::class, true],
+            Type::ATTRIBUTEMETADATA => ['attributemetadata', AttributeMetadata::class],
+
+            Type::CUSTOMERORDER => ['customerorder', CustomerOrder::class],
+        ];
     }
 }

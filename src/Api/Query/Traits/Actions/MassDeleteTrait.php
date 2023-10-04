@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Query\Traits\Actions;
 
-use Evgeek\Moysklad\Api\Query\Segments\Special\MassDeleteSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Special\MassSegmentDelete;
 use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Services\CollectionHelper;
 
@@ -30,6 +30,6 @@ trait MassDeleteTrait
     {
         $objects = CollectionHelper::extractRows($objects);
 
-        return (new MassDeleteSegment($this->api, $this->path, $this->params))->massDelete($objects);
+        return (new MassSegmentDelete($this->api, $this->path, $this->params))->massDelete($objects);
     }
 }

@@ -4,20 +4,13 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 
-use Evgeek\Moysklad\Api\Query\Traits\Actions\GetTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Actions\SendTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Params\LimitOffsetTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Params\ParamTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Segments\ByIdCommonTrait;
-use Evgeek\Moysklad\Dictionaries\Endpoint;
+use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
+use Evgeek\Moysklad\Api\Query\Traits\Segments\ById\ByIdCommonTrait;
+use Evgeek\Moysklad\Dictionaries\Segment;
 
-class NotificationSegment extends AbstractEndpointSegmentNamed
+class NotificationSegment extends AbstractNamedSegment
 {
     use ByIdCommonTrait;
-    use GetTrait;
-    use LimitOffsetTrait;
-    use ParamTrait;
-    use SendTrait;
 
-    protected const SEGMENT = Endpoint::NOTIFICATION;
+    protected const SEGMENT = Segment::NOTIFICATION;
 }

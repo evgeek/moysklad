@@ -141,7 +141,7 @@ class CrudCollectionTraitTest extends CollectionTraitCase
         $this->assertNull($collection->getPrevious());
     }
 
-    public function testReceivedNotCollectionThrows()
+    public function testReceivedNotCollectionThrows(): void
     {
         $collection = $this->getTestCollection();
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, [], []);

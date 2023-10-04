@@ -12,7 +12,7 @@ trait PositionsTrait
      * Позиции сущности.
      *
      * <code>
-     * $order = $ms->query()
+     * $orderPositions = $ms->query()
      *  ->entity()
      *  ->customerorder()
      *  ->byId('efe3944b-980d-11ec-0a80-0d180027c266')

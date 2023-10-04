@@ -5,53 +5,61 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Record\Builders;
 
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
-use Evgeek\Moysklad\Api\Record\Objects\Documents\Customerorder;
+use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusTransaction;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Bundle;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\CompanySettings;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Consignment;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Contract;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Counterparty;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Country;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Currency;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomEntity;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomRole;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\ExpenseItem;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Files;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Group;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\PersonalDiscount;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\PriceType;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingProcess;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\ProductFolder;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Project;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Region;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\RetailStore;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\SalesChannel;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Service;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\SpecialPriceDiscount;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Store;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Subscription;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Task;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\TaxRate;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Uom;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\UserSettings;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Variant;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Webhook;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\WebhookStock;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Cashier;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Image;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
+use Evgeek\Moysklad\Api\Record\Objects\ObjectInterface;
 use Evgeek\Moysklad\Api\Record\Objects\UnknownObject;
-use Evgeek\Moysklad\Dictionaries\Document;
-use Evgeek\Moysklad\Dictionaries\Entity;
+use Evgeek\Moysklad\Dictionaries\Type;
 
 class ObjectBuilder extends AbstractBuilder
 {
     /**
-     * Создаёт сущность Товар.
-     *
-     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
-     *
-     * @return Product
-     */
-    public function product(mixed $content = []): AbstractConcreteObject
-    {
-        return $this->resolveObject(Entity::PRODUCT, $content);
-    }
-
-    /**
-     * Создаёт сущность Сотрудник.
-     *
-     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sotrudnik
-     *
-     * @return Employee
-     */
-    public function employee(mixed $content = []): AbstractConcreteObject
-    {
-        return $this->resolveObject(Entity::EMPLOYEE, $content);
-    }
-
-    /**
-     * Создаёт сущность Заказ покупателя.
-     *
-     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
-     *
-     * @return Customerorder
-     */
-    public function customerorder(mixed $content = []): AbstractConcreteObject
-    {
-        return $this->resolveObject(Document::CUSTOMERORDER, $content);
-    }
-
-    /**
-     * Создаёт неизвестную сущность. Используется для не реализованных в библиотеке сущностей.
+     * Создаёт объект неизвестной сущности. Используется для не реализованных в библиотеке сущностей.
      *
      * <code>
      * $product = $ms->object()
@@ -62,5 +70,566 @@ class ObjectBuilder extends AbstractBuilder
     public function unknown(array $path, string $type, mixed $content = []): UnknownObject
     {
         return new UnknownObject($this->ms, $path, $type, $content);
+    }
+
+    /**
+     * Бонусная операция.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-bonusnaq-operaciq
+     *
+     * @return BonusTransaction
+     */
+    public function bonustransaction(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::BONUSTRANSACTION, $content);
+    }
+
+    /**
+     * Бонусная программа.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-bonusnaq-programma
+     *
+     * @return BonusProgram
+     */
+    public function bonusprogram(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::BONUSPROGRAM, $content);
+    }
+
+    /**
+     * Валюта.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-valuta
+     *
+     * @return Currency
+     */
+    public function currency(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::CURRENCY, $content);
+    }
+
+    /**
+     * Вебхук.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-vebhuki
+     *
+     * @return Webhook
+     */
+    public function webhook(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::WEBHOOK, $content);
+    }
+
+    /**
+     * Вебхук на изменение остатков.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-vebhuk-na-izmenenie-ostatkow
+     *
+     * @return WebhookStock
+     */
+    public function webhookstock(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::WEBHOOKSTOCK, $content);
+    }
+
+    /**
+     * Группа товаров.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-gruppa-towarow
+     *
+     * @return ProductFolder
+     */
+    public function productfolder(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PRODUCTFOLDER, $content);
+    }
+
+    /**
+     * Договор.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-dogowor
+     *
+     * @return Contract
+     */
+    public function contract(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::CONTRACT, $content);
+    }
+
+    /**
+     * Единица измерения.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-edinica-izmereniq
+     *
+     * @return Uom
+     */
+    public function uom(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::UOM, $content);
+    }
+
+    /**
+     * Задача.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-zadacha
+     *
+     * @return Task
+     */
+    public function task(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::TASK, $content);
+    }
+
+    /**
+     * Изображение.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-izobrazhenie
+     *
+     * @return Image
+     */
+    public function image(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::IMAGE, $parent, $content);
+    }
+
+    /**
+     * Канал продаж.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kanal-prodazh
+     *
+     * @return SalesChannel
+     */
+    public function saleschannel(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::SALESCHANNEL, $content);
+    }
+
+    /**
+     * Кассир.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kassir
+     *
+     * @return Cashier
+     */
+    public function cashier(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::CASHIER, $parent, $content);
+    }
+
+    /**
+     * Комплект.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-komplekt
+     *
+     * @return Bundle
+     */
+    public function bundle(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::BUNDLE, $content);
+    }
+
+    /**
+     * Контрагент.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kontragent
+     *
+     * @return Counterparty
+     */
+    public function counterparty(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::COUNTERPARTY, $content);
+    }
+
+    /**
+     * Модификация.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-modifikaciq
+     *
+     * @return Variant
+     */
+    public function variant(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::VARIANT, $content);
+    }
+
+    /**
+     * Настройки компании.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-nastrojki-kompanii
+     *
+     * @return CompanySettings
+     */
+    public function companysettings(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::COMPANYSETTINGS, $content);
+    }
+
+    /**
+     * Настройки пользователя.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-nastrojki-pol-zowatelq
+     *
+     * @return UserSettings
+     */
+    public function usersettings(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::USERSETTINGS, $content);
+    }
+
+    /**
+     * Отдел.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-otdel
+     *
+     * @return Group
+     */
+    public function group(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::GROUP, $content);
+    }
+
+    /**
+     * Подписка компании.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-podpiska-kompanii
+     *
+     * @return Subscription
+     */
+    public function subscription(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::SUBSCRIPTION, $content);
+    }
+
+    /**
+     * Пользовательская роль.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-pol-zowatel-skie-roli
+     *
+     * @return CustomRole
+     */
+    public function role(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::CUSTOMROLE, $content);
+    }
+
+    /**
+     * Пользовательский справочник.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-pol-zowatel-skij-sprawochnik
+     *
+     * @return CustomEntity
+     */
+    public function customentity(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::CUSTOMENTITY, $content);
+    }
+
+    /**
+     * Проект.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-proekt
+     *
+     * @return Project
+     */
+    public function project(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PROJECT, $content);
+    }
+
+    /**
+     * Регион.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-region
+     *
+     * @return Region
+     */
+    public function region(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::REGION, $content);
+    }
+
+    /**
+     * Серия.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-seriq
+     *
+     * @return Consignment
+     */
+    public function consignment(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::CONSIGNMENT, $content);
+    }
+
+    /**
+     * Накопительная скидка.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
+     *
+     * @return AccumulationDiscount
+     */
+    public function accumulationdiscount(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::ACCUMULATIONDISCOUNT, $content);
+    }
+
+    /**
+     * Персональная скидка.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
+     *
+     * @return PersonalDiscount
+     */
+    public function personaldiscount(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PERSONALDISCOUNT, $content);
+    }
+
+    /**
+     * Специальная цена.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
+     *
+     * @return SpecialPriceDiscount
+     */
+    public function specialpricediscount(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::SPECIALPRICEDISCOUNT, $content);
+    }
+
+    /**
+     * Склад.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sklad
+     *
+     * @return Store
+     */
+    public function store(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::STORE, $content);
+    }
+
+    /**
+     * Сотрудник.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sotrudnik
+     *
+     * @return Employee
+     */
+    public function employee(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::EMPLOYEE, $content);
+    }
+
+    /**
+     * Сохраненный фильтр.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sohranennye-fil-try
+     *
+     * @return NamedFilter
+     */
+    public function namedfilter(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::NAMEDFILTER, $parent, $content);
+    }
+
+    /**
+     * Ставка НДС.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-stawka-nds
+     *
+     * @return TaxRate
+     */
+    public function taxrate(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::TAXRATE, $content);
+    }
+
+    /**
+     * Статусы документов.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-statusy-dokumentow
+     *
+     * @return State
+     */
+    public function state(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::STATE, $parent, $content);
+    }
+
+    /**
+     * Статья расходов.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-stat-q-rashodow
+     *
+     * @return ExpenseItem
+     */
+    public function expenseitem(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::EXPENSEITEM, $content);
+    }
+
+    /**
+     * Страна.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-strana
+     *
+     * @return Country
+     */
+    public function country(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::COUNTRY, $content);
+    }
+
+    /**
+     * Техкарта.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta
+     *
+     * @return ProcessingPlan
+     */
+    public function processingplan(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PROCESSINGPLAN, $content);
+    }
+
+    /**
+     * Этап Техкарты.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta-jetapy-tehkarty
+     *
+     * @return ProcessingPlanStages
+     */
+    public function processingplanstages(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::PROCESSINGPLANSTAGES, $parent, $content);
+    }
+
+    /**
+     * Материал Техкарты.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta-material-tehkarty
+     *
+     * @return ProcessingPlanMaterial
+     */
+    public function processingplanmaterial(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::PROCESSINGPLANMATERIAL, $parent, $content);
+    }
+
+    /**
+     * Продукт Техкарты.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta-produkty-tehkarty
+     *
+     * @return ProcessingPlanResult
+     */
+    public function processingplanresult(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::PROCESSINGPLANRESULT, $parent, $content);
+    }
+
+    /**
+     * Техпроцесс.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehprocess
+     *
+     * @return ProcessingProcess
+     */
+    public function processingprocess(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PROCESSINGPROCESS, $content);
+    }
+
+    /**
+     * Тип цен.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tipy-cen
+     *
+     * @return PriceType
+     */
+    public function pricetype(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PRICETYPE, $content);
+    }
+
+    /**
+     * Товар.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
+     *
+     * @return Product
+     */
+    public function product(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PRODUCT, $content);
+    }
+
+    /**
+     * Точка продаж.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tochka-prodazh
+     *
+     * @return RetailStore
+     */
+    public function retailstore(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::RETAILSTORE, $content);
+    }
+
+    /**
+     * Услуга.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-usluga
+     *
+     * @return Service
+     */
+    public function service(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::SERVICE, $content);
+    }
+
+    /**
+     * Файл.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-fajly
+     *
+     * @return Files
+     */
+    public function files(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::FILES, $parent, $content);
+    }
+
+    /**
+     * Характеристика модификации.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-harakteristiki-modifikacij
+     *
+     * @return AttributeMetadata
+     */
+    public function attributemetadata(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::ATTRIBUTEMETADATA, $content);
+    }
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Заказ покупателя.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
+     *
+     * @return CustomerOrder
+     */
+    public function customerorder(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::CUSTOMERORDER, $content);
     }
 }

@@ -5,24 +5,30 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Record\Collections\Entities;
 
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Bundle;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Consignment;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
-use Evgeek\Moysklad\Api\Record\Objects\UnknownObject;
-use Evgeek\Moysklad\Dictionaries\Endpoint;
-use Evgeek\Moysklad\Dictionaries\Entity;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Service;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Variant;
+use Evgeek\Moysklad\Dictionaries\Segment;
+use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
- * Коллекция ассортиментов
+ * Коллекция Ассортиментов
  *
  * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-assortiment
  *
  * @implements AbstractConcreteCollection<Product>
- * @implements AbstractConcreteCollection<UnknownObject>
+ * @implements AbstractConcreteCollection<Service>
+ * @implements AbstractConcreteCollection<Bundle>
+ * @implements AbstractConcreteCollection<Consignment>
+ * @implements AbstractConcreteCollection<Variant>
  */
-class AssortmentCollection extends AbstractConcreteCollection
+class AssortmentCollection extends AbstractEntityCollection
 {
     public const PATH = [
-        Endpoint::ENTITY,
-        Entity::ASSORTMENT,
+        Segment::ENTITY,
+        Segment::ASSORTMENT,
     ];
-    public const TYPE = Entity::ASSORTMENT;
+    public const TYPE = Type::ASSORTMENT;
 }

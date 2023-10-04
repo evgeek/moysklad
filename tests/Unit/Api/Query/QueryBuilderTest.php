@@ -4,14 +4,16 @@ namespace Evgeek\Tests\Unit\Api\Query;
 
 use Evgeek\Moysklad\Api\Query\AbstractBuilder;
 use Evgeek\Moysklad\Api\Query\QueryBuilder;
-use Evgeek\Moysklad\Api\Query\Segments\AbstractSegmentCommon;
-use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AbstractEndpointSegmentNamed;
+use Evgeek\Moysklad\Api\Query\Segments\AbstractCommonSegment;
+use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AccountSegmentSettings;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AuditSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EndpointSegmentCommon;
+use Evgeek\Moysklad\Api\Query\Segments\Endpoints\ContextSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EndpointCommonSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\NotificationSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\ReportSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Methods\MethodSegmentCommon;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\MethodCommonSegment;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\Url;
 use InvalidArgumentException;
@@ -35,8 +37,8 @@ class QueryBuilderTest extends ApiTestCase
     {
         $builder = $this->builder->fromUrl(Url::API . '/endpoint/segment');
 
-        $this->assertInstanceOf(MethodSegmentCommon::class, $builder);
-        $this->assertInstanceOf(AbstractSegmentCommon::class, $builder);
+        $this->assertInstanceOf(MethodCommonSegment::class, $builder);
+        $this->assertInstanceOf(AbstractCommonSegment::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 
@@ -74,7 +76,7 @@ class QueryBuilderTest extends ApiTestCase
     {
         $builder = $this->builder->endpoint('test');
 
-        $this->assertInstanceOf(EndpointSegmentCommon::class, $builder);
+        $this->assertInstanceOf(EndpointCommonSegment::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 
@@ -83,7 +85,7 @@ class QueryBuilderTest extends ApiTestCase
         $builder = $this->builder->entity();
 
         $this->assertInstanceOf(EntitySegment::class, $builder);
-        $this->assertInstanceOf(AbstractEndpointSegmentNamed::class, $builder);
+        $this->assertInstanceOf(AbstractNamedSegment::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 
@@ -92,7 +94,7 @@ class QueryBuilderTest extends ApiTestCase
         $builder = $this->builder->report();
 
         $this->assertInstanceOf(ReportSegment::class, $builder);
-        $this->assertInstanceOf(AbstractEndpointSegmentNamed::class, $builder);
+        $this->assertInstanceOf(AbstractNamedSegment::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 
@@ -101,7 +103,7 @@ class QueryBuilderTest extends ApiTestCase
         $builder = $this->builder->audit();
 
         $this->assertInstanceOf(AuditSegment::class, $builder);
-        $this->assertInstanceOf(AbstractEndpointSegmentNamed::class, $builder);
+        $this->assertInstanceOf(AbstractNamedSegment::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 
@@ -110,7 +112,25 @@ class QueryBuilderTest extends ApiTestCase
         $builder = $this->builder->notification();
 
         $this->assertInstanceOf(NotificationSegment::class, $builder);
-        $this->assertInstanceOf(AbstractEndpointSegmentNamed::class, $builder);
+        $this->assertInstanceOf(AbstractNamedSegment::class, $builder);
+        $this->assertInstanceOf(AbstractBuilder::class, $builder);
+    }
+
+    public function testContextReturnsCorrectClass(): void
+    {
+        $builder = $this->builder->context();
+
+        $this->assertInstanceOf(ContextSegment::class, $builder);
+        $this->assertInstanceOf(AbstractNamedSegment::class, $builder);
+        $this->assertInstanceOf(AbstractBuilder::class, $builder);
+    }
+
+    public function testAccountSettingsReturnsCorrectClass(): void
+    {
+        $builder = $this->builder->accountSettings();
+
+        $this->assertInstanceOf(AccountSegmentSettings::class, $builder);
+        $this->assertInstanceOf(AbstractNamedSegment::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
 }

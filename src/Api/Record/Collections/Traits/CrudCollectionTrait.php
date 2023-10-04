@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Record\Collections\Traits;
 
+use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Http\Payload;
@@ -95,7 +96,7 @@ trait CrudCollectionTrait
     {
         $objects = CollectionHelper::extractRows($objects);
 
-        return $this->sendAndWrapResponse(HttpMethod::POST, $objects, 'delete');
+        return $this->sendAndWrapResponse(HttpMethod::POST, $objects, Segment::DELETE);
     }
 
     /**

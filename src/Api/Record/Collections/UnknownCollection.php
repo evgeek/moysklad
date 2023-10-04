@@ -22,7 +22,7 @@ use stdClass;
  * @property MetaCollection  $meta
  * @property UnknownObject[] $rows
  */
-class UnknownCollection extends AbstractUnknownRecord implements Iterator
+class UnknownCollection extends AbstractUnknownRecord implements CollectionInterface, Iterator
 {
     use CrudCollectionTrait;
     use FillMetaCollectionTrait;

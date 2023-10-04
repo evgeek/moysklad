@@ -4,18 +4,12 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Query\Segments\ById;
 
-use Evgeek\Moysklad\Api\Query\Segments\AbstractSegmentCommon;
-use Evgeek\Moysklad\Api\Query\Traits\Actions\GetTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Actions\SendTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Params\ParamTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Segments\ByIdCommonTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Segments\MethodCommonTrait;
+use Evgeek\Moysklad\Api\Query\Segments\AbstractCommonSegment;
+use Evgeek\Moysklad\Api\Query\Traits\Actions\DeleteTrait;
+use Evgeek\Moysklad\Api\Query\Traits\Actions\UpdateTrait;
 
-abstract class AbstractByIdSegment extends AbstractSegmentCommon
+abstract class AbstractByIdSegment extends AbstractCommonSegment
 {
-    use ByIdCommonTrait;
-    use GetTrait;
-    use MethodCommonTrait;
-    use ParamTrait;
-    use SendTrait;
+    use DeleteTrait;
+    use UpdateTrait;
 }

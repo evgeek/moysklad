@@ -1,5 +1,51 @@
 # Upgrade guide
 
+## [Unreleased] [[Changelog](/CHANGELOG.md#v0100-upgrade-guide)]
+
+### Имена классов Query и Record приведены к PascalCase. 
+
+Затронуло только `Customerorder`
+
+До:
+
+- `use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerorderSegment;`
+- `use Evgeek\Moysklad\Api\Record\Objects\Documents\Customerorder;`
+- `use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerorderCollection;`
+
+После:
+
+- `use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;`
+- `use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;`
+- `use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;`
+
+### Имена классов Query сегментов приведены к единому виду.
+
+До:
+
+- `use Evgeek\Moysklad\Api\Query\Segments\ById\ByIdSegmentCommon;`
+- `use Evgeek\Moysklad\Api\Query\Segments\ById\ByIdSegmentPositioned;`
+- `use Evgeek\Moysklad\Api\Query\Segments\Methods\AbstractMethodSegmentNamed;`
+- `use Evgeek\Moysklad\Api\Query\Segments\Methods\MethodSegmentCommon;`
+
+После:
+
+- `use Evgeek\Moysklad\Api\Query\Segments\ById\ByIdCommonSegment;`
+- `use Evgeek\Moysklad\Api\Query\Segments\ById\ByIdWithPositionsSegment;`
+- `use Evgeek\Moysklad\Api\Query\Segments\Methods\AbstractMethodNamedSegment;`
+- `use Evgeek\Moysklad\Api\Query\Segments\Methods\MethodCommonSegment;`
+
+### Словари (`Evgeek\Moysklad\Dictionaries\...`) `Document`, `Endpoint` и `Entity` заменены на `Segment` (сегменты в url) и `Type` (type в meta сущности).
+
+До:
+
+- `Endpoint::ENTITY;`
+- `Document::CUSTOMERORDER;`
+
+После:
+
+- `Segment::ENTITY;`
+- `Type::CUSTOMERORDER;`
+
 ## v0.8.0 [[Changelog](/CHANGELOG.md#v080-upgrade-guide)]
 
 ### Реорганизация namespace `Evgeek\Moysklad\Api`.
