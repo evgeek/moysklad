@@ -22,6 +22,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\DiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\EmployeeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ExpenseItemCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\GroupCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\OrganizationCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\PersonalDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\PriceTypeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProcessingPlanCollection;
@@ -61,6 +62,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\Discount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ExpenseItem;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Group;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Organization;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PersonalDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PriceType;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
@@ -132,6 +134,7 @@ class AbstractConcreteObjectTest extends KnownObjectTestCase
             Type::RETAILSTORE => [RetailStore::class, RetailStoreCollection::class],
             Type::SERVICE => [Service::class, ServiceCollection::class],
             Type::ATTRIBUTEMETADATA => [AttributeMetadata::class, AttributeMetadataCollection::class],
+            Type::ORGANIZATION => [Organization::class, OrganizationCollection::class],
 
             Type::CUSTOMERORDER => [CustomerOrder::class, CustomerOrderCollection::class],
         ];

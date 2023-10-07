@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Evgeek\Tests\Unit\Api\Record\Objects;
 
-use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomTemplateCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\EmbeddedTemplateCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\FilesCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\AccountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\CashierCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\CustomTemplateCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\EmbeddedTemplateCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\FilesCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ImageCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
@@ -16,12 +17,13 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Counterparty;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomTemplate;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\EmbeddedTemplate;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\Files;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Account;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\Cashier;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\CustomTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\EmbeddedTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Files;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\Image;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
@@ -53,6 +55,7 @@ class AbstractNestedObjectTest extends KnownObjectTestCase
             Type::FILES => [Files::class, FilesCollection::class, Counterparty::make($ms)],
             Type::EMBEDDEDTEMPLATE => [EmbeddedTemplate::class, EmbeddedTemplateCollection::class, Counterparty::make($ms)],
             Type::CUSTOMTEMPLATE => [CustomTemplate::class, CustomTemplateCollection::class, Counterparty::make($ms)],
+            Type::ACCOUNT => [Account::class, AccountCollection::class, Counterparty::make($ms)],
         ];
     }
 }

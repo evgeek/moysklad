@@ -3,6 +3,7 @@
 namespace Evgeek\Tests\Unit\Tools;
 
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Counterparty;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Organization;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 use Evgeek\Moysklad\Api\Record\Objects\ObjectInterface;
@@ -164,6 +165,8 @@ class MetaTest extends TestCase
             Type::ATTRIBUTEMETADATA => ['attributemetadata', 'entity/variant/metadata/characteristics', 'attributemetadata'],
             Type::EMBEDDEDTEMPLATE => ['embeddedtemplate', 'entity/counterparty/metadata/embeddedtemplate', 'embeddedtemplate', true, Counterparty::make($ms)],
             Type::CUSTOMTEMPLATE => ['customtemplate', 'entity/counterparty/metadata/customtemplate', 'customtemplate', true, Counterparty::make($ms)],
+            Type::ORGANIZATION => ['organization', 'entity/organization', 'organization'],
+            Type::ACCOUNT => ['account', 'entity/organization/' . self::GUID1 . '/accounts', 'account', true, Organization::make($ms, ['id' => self::GUID1])],
 
             Type::CUSTOMERORDER => ['customerorder', 'entity/customerorder', 'customerorder'],
         ];

@@ -19,6 +19,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\DiscountSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\EmployeeSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\ExpenseItemSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\GroupSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\OrganizationSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\PersonalDiscountSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\ProcessingPlanSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\ProcessingProcessSegment;
@@ -38,6 +39,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\UomSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\VariantSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\WebhookSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\WebhookStockSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\AccountsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\CashiersSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\CustomTemplateSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\EmbeddedTemplateSegment;
@@ -48,9 +50,6 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\NamedFilterSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ProductsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StagesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StatesSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\TrackingCodesSegment;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomTemplate;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\EmbeddedTemplate;
 use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
@@ -108,6 +107,8 @@ class EntityTest extends EndpointTestCase
             Type::FILES => ['files', FilesSegment::class, ['counterparty', static::GUID1]],
             Type::EMBEDDEDTEMPLATE => ['embeddedtemplate', EmbeddedTemplateSegment::class, ['counterparty', 'metadata']],
             Type::CUSTOMTEMPLATE => ['customtemplate', CustomTemplateSegment::class, ['counterparty', 'metadata']],
+            Type::ORGANIZATION => ['organization', OrganizationSegment::class],
+            Type::ACCOUNT => ['accounts', AccountsSegment::class, ['organization', static::GUID1]],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderSegment::class],
         ];

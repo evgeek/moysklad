@@ -19,13 +19,11 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\CountryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CurrencyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomEntityCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomRoleCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\DiscountCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\EmbeddedTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\EmployeeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ExpenseItemCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\FilesCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\GroupCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\OrganizationCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\PersonalDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\PriceTypeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProcessingPlanCollection;
@@ -45,7 +43,11 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\UomCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\VariantCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookStockCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\AccountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\CashierCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\CustomTemplateCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\EmbeddedTemplateCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\FilesCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ImageCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
@@ -167,6 +169,8 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::ATTRIBUTEMETADATA => ['attributemetadata', AttributeMetadataCollection::class],
             Type::EMBEDDEDTEMPLATE => ['embeddedtemplate', EmbeddedTemplateCollection::class, true],
             Type::CUSTOMTEMPLATE => ['customtemplate', CustomTemplateCollection::class, true],
+            Type::ORGANIZATION => ['organization', OrganizationCollection::class],
+            Type::ACCOUNT => ['account', AccountCollection::class, true],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderCollection::class],
         ];

@@ -488,6 +488,26 @@ class MetaBuilder
         return Meta::customtemplate($parent, $guid, $this->formatter);
     }
 
+    /**
+     * Метаданные Юрлиц.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico
+     */
+    public function organization(string $guid)
+    {
+        return Meta::organization($guid, $this->formatter);
+    }
+
+    /**
+     * Метаданные Счёта юрлица.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico-scheta-urlica
+     */
+    public function account(ObjectInterface|array|string $parent, string $guid)
+    {
+        return Meta::account($parent, $guid, $this->formatter);
+    }
+
 
 
 

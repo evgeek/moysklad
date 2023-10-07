@@ -63,4 +63,5 @@ class Type
     public const PRICETYPE = 'pricetype';
 
     public const CUSTOMERORDER = 'customerorder';
+    public const ACCOUNT = 'account';
 }

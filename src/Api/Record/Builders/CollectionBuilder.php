@@ -20,13 +20,11 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\CountryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CurrencyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomEntityCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomRoleCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\DiscountCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\EmbeddedTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\EmployeeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ExpenseItemCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\FilesCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\GroupCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\OrganizationCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\PersonalDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\PriceTypeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProcessingPlanCollection;
@@ -46,7 +44,11 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\UomCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\VariantCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookStockCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\AccountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\CashierCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\CustomTemplateCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\EmbeddedTemplateCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\FilesCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ImageCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
@@ -633,6 +635,30 @@ class CollectionBuilder extends AbstractBuilder
     public function customtemplate(ObjectInterface|array|string $parent): AbstractNestedCollection
     {
         return $this->resolveNestedCollection(Type::CUSTOMTEMPLATE, $parent);
+    }
+
+    /**
+     * Коллекция Юрлиц.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico
+     *
+     * @return OrganizationCollection
+     */
+    public function organization(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::ORGANIZATION);
+    }
+
+    /**
+     * Коллекция Счетов юрлица
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico-scheta-urlica
+     *
+     * @return AccountCollection
+     */
+    public function account(ObjectInterface|array|string $parent): AbstractNestedCollection
+    {
+        return $this->resolveNestedCollection(Type::ACCOUNT, $parent);
     }
 
 

@@ -20,12 +20,10 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\Country;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Currency;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomEntity;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomRole;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomTemplate;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\EmbeddedTemplate;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ExpenseItem;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\Files;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Group;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Organization;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PersonalDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PriceType;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
@@ -47,7 +45,11 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\UserSettings;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Variant;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Webhook;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\WebhookStock;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Account;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\Cashier;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\CustomTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\EmbeddedTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Files;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\Image;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
@@ -627,7 +629,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Пользовательский шаблон шаблон.
+     * Пользовательский шаблон.
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-pol-zowatel-skih-shablonow
      *
@@ -636,6 +638,30 @@ class ObjectBuilder extends AbstractBuilder
     public function customtemplate(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
     {
         return $this->resolveNestedObject(Type::CUSTOMTEMPLATE, $parent, $content);
+    }
+
+    /**
+     * Юрлицо.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico
+     *
+     * @return Organization
+     */
+    public function organization(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::ORGANIZATION, $content);
+    }
+
+    /**
+     * Счёт юрлица.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico-scheta-urlica
+     *
+     * @return Account
+     */
+    public function account(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::ACCOUNT, $parent, $content);
     }
 
 

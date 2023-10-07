@@ -78,4 +78,5 @@ class Segment
     public const DELETE = 'delete';
     public const CHARACTERISTICS = 'characteristics';
     public const DEFAULT = 'default';
+    public const ACCOUNTS = 'accounts';
 }

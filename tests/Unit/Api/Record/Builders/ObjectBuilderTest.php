@@ -19,12 +19,10 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\Country;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Currency;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomEntity;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomRole;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomTemplate;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\EmbeddedTemplate;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ExpenseItem;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\Files;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Group;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Organization;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PersonalDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PriceType;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
@@ -46,14 +44,17 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\UserSettings;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Variant;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Webhook;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\WebhookStock;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Account;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\Cashier;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\CustomTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\EmbeddedTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Files;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\Image;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
-use Evgeek\Moysklad\Api\Record\Objects\Nested\TrackingCode;
 use Evgeek\Moysklad\Api\Record\Objects\UnknownObject;
 use Evgeek\Moysklad\Dictionaries\Type;
 use Evgeek\Moysklad\Formatters\RecordFormat;
@@ -168,6 +169,8 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::ATTRIBUTEMETADATA => ['attributemetadata', AttributeMetadata::class],
             Type::EMBEDDEDTEMPLATE => ['embeddedtemplate', EmbeddedTemplate::class, true],
             Type::CUSTOMTEMPLATE => ['customtemplate', CustomTemplate::class, true],
+            Type::ORGANIZATION => ['organization', Organization::class],
+            Type::ACCOUNT => ['account', Account::class, true],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrder::class],
         ];

@@ -18,12 +18,10 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\Country;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Currency;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomEntity;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomRole;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomTemplate;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\EmbeddedTemplate;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ExpenseItem;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\Files;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Group;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Organization;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PersonalDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PriceType;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
@@ -44,7 +42,11 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\UserSettings;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Variant;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Webhook;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\WebhookStock;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Account;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\Cashier;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\CustomTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\EmbeddedTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Files;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\Image;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
@@ -526,6 +528,26 @@ class Meta
         return static::createNested($parent, [...CustomTemplate::PATH, $guid], CustomTemplate::TYPE, $formatter);
     }
 
+    /**
+     * Метаданные Юрлиц.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico
+     */
+    public static function organization(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...Organization::PATH, $guid], Organization::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Счёта юрлица.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico-scheta-urlica
+     */
+    public static function account(ObjectInterface|array|string $parent, string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::createNested($parent, [...Account::PATH, $guid], Account::TYPE, $formatter);
+    }
+
 
 
 
@@ -549,10 +571,6 @@ class Meta
 
 
 
-    public static function organization(string $guid, JsonFormatterInterface $formatter = null)
-    {
-        return static::entity(['organization', $guid], 'organization', $formatter);
-    }
 
     /** @deprecated */
     public static function entity(array $path, string $type, JsonFormatterInterface $formatter = null)

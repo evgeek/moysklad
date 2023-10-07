@@ -3,6 +3,7 @@
 namespace Evgeek\Tests\Unit\Meta;
 
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Counterparty;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\Organization;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 use Evgeek\Moysklad\Dictionaries\Type;
@@ -91,6 +92,8 @@ class MetaBuilderTest extends TestCase
             Type::ATTRIBUTEMETADATA => ['attributemetadata', [self::GUID1], '/entity/variant/metadata/characteristics/' . self::GUID1, 'attributemetadata'],
             Type::EMBEDDEDTEMPLATE => ['embeddedtemplate', [Counterparty::make($ms), self::GUID2], '/entity/counterparty/metadata/embeddedtemplate/' . self::GUID2, 'embeddedtemplate'],
             Type::CUSTOMTEMPLATE => ['customtemplate', [Counterparty::make($ms), self::GUID2], '/entity/counterparty/metadata/customtemplate/' . self::GUID2, 'customtemplate'],
+            Type::ORGANIZATION => ['organization', [self::GUID1], '/entity/organization/' . self::GUID1, 'organization'],
+            Type::ACCOUNT => ['account', [Organization::make($ms, ['id' => self::GUID1]), self::GUID2], '/entity/organization/' . self::GUID1 . '/accounts/' . self::GUID2, 'account'],
 
             Type::CUSTOMERORDER => ['customerorder', [self::GUID1], '/entity/customerorder/' . self::GUID1, 'customerorder'],
         ];

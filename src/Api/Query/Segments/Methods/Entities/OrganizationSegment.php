@@ -9,13 +9,14 @@ use Evgeek\Moysklad\Api\Query\Traits\Actions\MassCreateUpdateTrait;
 use Evgeek\Moysklad\Api\Query\Traits\Actions\MassDeleteTrait;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\AttributesTrait;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\ById\ByIdCommonTrait;
+use Evgeek\Moysklad\Api\Query\Traits\Segments\ById\ByIdOrganizationTrait;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\MetadataTrait;
 use Evgeek\Moysklad\Dictionaries\Segment;
 
 class OrganizationSegment extends AbstractEntitySegment
 {
     use AttributesTrait;
-    use ByIdCommonTrait;
+    use ByIdOrganizationTrait;
     use CreateTrait;
     use MassCreateUpdateTrait;
     use MassDeleteTrait;

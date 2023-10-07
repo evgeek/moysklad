@@ -22,12 +22,9 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\CountryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CurrencyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomEntityCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomRoleCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\DiscountCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\EmbeddedTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\EmployeeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ExpenseItemCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\FilesCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\GroupCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\OrganizationCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\PersonalDiscountCollection;
@@ -50,7 +47,11 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\UomCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\VariantCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookStockCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\AccountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\CashierCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\CustomTemplateCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\EmbeddedTemplateCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\FilesCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ImageCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
@@ -76,12 +77,9 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\Country;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Currency;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomEntity;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomRole;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomTemplate;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Discount;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\EmbeddedTemplate;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ExpenseItem;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\Files;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Group;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Organization;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PersonalDiscount;
@@ -106,7 +104,11 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\UserSettings;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Variant;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Webhook;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\WebhookStock;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Account;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\Cashier;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\CustomTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\EmbeddedTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\Files;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\Image;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
@@ -173,6 +175,7 @@ class RecordMapping
         Type::EMBEDDEDTEMPLATE => EmbeddedTemplate::class,
         Type::CUSTOMTEMPLATE => CustomTemplate::class,
         Type::ORGANIZATION => Organization::class,
+        Type::ACCOUNT => Account::class,
         Type::PROCESSINGSTAGE => ProcessingStage::class,
 
         Type::CUSTOMERORDER => CustomerOrder::class,
@@ -226,6 +229,7 @@ class RecordMapping
         Type::EMBEDDEDTEMPLATE => EmbeddedTemplateCollection::class,
         Type::CUSTOMTEMPLATE => CustomTemplateCollection::class,
         Type::ORGANIZATION => OrganizationCollection::class,
+        Type::ACCOUNT => AccountCollection::class,
         Type::PROCESSINGSTAGE => ProcessingStageCollection::class,
 
         Type::CUSTOMERORDER => CustomerOrderCollection::class,
