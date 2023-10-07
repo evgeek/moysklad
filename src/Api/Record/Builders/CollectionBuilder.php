@@ -20,7 +20,9 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\CountryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CurrencyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomEntityCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomRoleCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\DiscountCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\EmbeddedTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\EmployeeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ExpenseItemCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\FilesCollection;
@@ -607,6 +609,30 @@ class CollectionBuilder extends AbstractBuilder
     public function attributemetadata(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::ATTRIBUTEMETADATA);
+    }
+
+    /**
+     * Коллекция Стандартных шаблонов.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-standartnyh-shablonow
+     *
+     * @return EmbeddedTemplateCollection
+     */
+    public function embeddedtemplate(ObjectInterface|array|string $parent): AbstractNestedCollection
+    {
+        return $this->resolveNestedCollection(Type::EMBEDDEDTEMPLATE, $parent);
+    }
+
+    /**
+     * Коллекция Пользовательских шаблонов.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-pol-zowatel-skih-shablonow
+     *
+     * @return CustomTemplateCollection
+     */
+    public function customtemplate(ObjectInterface|array|string $parent): AbstractNestedCollection
+    {
+        return $this->resolveNestedCollection(Type::CUSTOMTEMPLATE, $parent);
     }
 
 

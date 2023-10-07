@@ -19,6 +19,8 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\Country;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Currency;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomEntity;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomRole;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\EmbeddedTemplate;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ExpenseItem;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Files;
@@ -164,6 +166,8 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::SERVICE => ['service', Service::class],
             Type::FILES => ['files', Files::class, true],
             Type::ATTRIBUTEMETADATA => ['attributemetadata', AttributeMetadata::class],
+            Type::EMBEDDEDTEMPLATE => ['embeddedtemplate', EmbeddedTemplate::class, true],
+            Type::CUSTOMTEMPLATE => ['customtemplate', CustomTemplate::class, true],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrder::class],
         ];

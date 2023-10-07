@@ -20,6 +20,8 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\Country;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Currency;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomEntity;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomRole;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\EmbeddedTemplate;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ExpenseItem;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Files;
@@ -610,6 +612,30 @@ class ObjectBuilder extends AbstractBuilder
     public function attributemetadata(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::ATTRIBUTEMETADATA, $content);
+    }
+
+    /**
+     * Стандартный шаблон.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-standartnyh-shablonow
+     *
+     * @return EmbeddedTemplate
+     */
+    public function embeddedtemplate(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::EMBEDDEDTEMPLATE, $parent, $content);
+    }
+
+    /**
+     * Пользовательский шаблон шаблон.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-pol-zowatel-skih-shablonow
+     *
+     * @return CustomTemplate
+     */
+    public function customtemplate(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::CUSTOMTEMPLATE, $parent, $content);
     }
 
 

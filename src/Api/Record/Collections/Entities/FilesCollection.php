@@ -15,7 +15,7 @@ use Evgeek\Moysklad\Dictionaries\Type;
  *
  * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-fajly
  *
- * @implements AbstractConcreteCollection<Files>
+ * @implements AbstractNestedCollection<Files>
  */
 class FilesCollection extends AbstractNestedCollection
 {

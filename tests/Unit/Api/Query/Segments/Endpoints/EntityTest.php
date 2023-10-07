@@ -39,6 +39,8 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\VariantSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\WebhookSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\WebhookStockSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\CashiersSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\CustomTemplateSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\EmbeddedTemplateSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\FilesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ImagesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\MaterialsSegment;
@@ -47,6 +49,8 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ProductsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StagesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StatesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\TrackingCodesSegment;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\EmbeddedTemplate;
 use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
@@ -101,7 +105,9 @@ class EntityTest extends EndpointTestCase
             Type::PRODUCT => ['product', ProductSegment::class],
             Type::RETAILSTORE => ['retailstore', RetailStoreSegment::class],
             Type::SERVICE => ['service', ServiceSegment::class],
-            Type::ATTRIBUTEMETADATA => ['files', FilesSegment::class, ['counterparty', static::GUID1]],
+            Type::FILES => ['files', FilesSegment::class, ['counterparty', static::GUID1]],
+            Type::EMBEDDEDTEMPLATE => ['embeddedtemplate', EmbeddedTemplateSegment::class, ['counterparty', 'metadata']],
+            Type::CUSTOMTEMPLATE => ['customtemplate', CustomTemplateSegment::class, ['counterparty', 'metadata']],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderSegment::class],
         ];

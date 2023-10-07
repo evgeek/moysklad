@@ -16,7 +16,9 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\CountryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CurrencyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomEntityCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomRoleCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\DiscountCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\EmbeddedTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\EmployeeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ExpenseItemCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\FilesCollection;
@@ -63,7 +65,9 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\Country;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Currency;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomEntity;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomRole;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomTemplate;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Discount;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\EmbeddedTemplate;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ExpenseItem;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Files;
@@ -264,6 +268,8 @@ class RecordMappingHelperTest extends TestCase
             Type::SERVICE => [Type::SERVICE, Service::class, ServiceCollection::class],
             Type::FILES => [Type::FILES, Files::class, FilesCollection::class, Counterparty::make($ms)],
             Type::ATTRIBUTEMETADATA => [Type::ATTRIBUTEMETADATA, AttributeMetadata::class, AttributeMetadataCollection::class],
+            Type::EMBEDDEDTEMPLATE => [Type::EMBEDDEDTEMPLATE, EmbeddedTemplate::class, EmbeddedTemplateCollection::class, Counterparty::make($ms)],
+            Type::CUSTOMTEMPLATE => [Type::CUSTOMTEMPLATE, CustomTemplate::class, CustomTemplateCollection::class, Counterparty::make($ms)],
 
             Type::CUSTOMERORDER => [Type::CUSTOMERORDER, CustomerOrder::class, CustomerOrderCollection::class],
         ];

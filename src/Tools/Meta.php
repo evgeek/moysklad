@@ -18,6 +18,8 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\Country;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Currency;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomEntity;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomRole;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\EmbeddedTemplate;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ExpenseItem;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Files;
@@ -502,6 +504,26 @@ class Meta
     public static function attributemetadata(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...AttributeMetadata::PATH, $guid], AttributeMetadata::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Стандартного шаблона.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-standartnyh-shablonow
+     */
+    public static function embeddedtemplate(ObjectInterface|array|string $parent, string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::createNested($parent, [...EmbeddedTemplate::PATH, $guid], EmbeddedTemplate::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Пользовательского шаблона.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-pol-zowatel-skih-shablonow
+     */
+    public static function customtemplate(ObjectInterface|array|string $parent, string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::createNested($parent, [...CustomTemplate::PATH, $guid], CustomTemplate::TYPE, $formatter);
     }
 
 

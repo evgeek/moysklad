@@ -468,6 +468,26 @@ class MetaBuilder
         return Meta::attributemetadata($guid, $this->formatter);
     }
 
+    /**
+     * Метаданные Стандартного шаблона.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-standartnyh-shablonow
+     */
+    public function embeddedtemplate(ObjectInterface|array|string $parent, string $guid)
+    {
+        return Meta::embeddedtemplate($parent, $guid, $this->formatter);
+    }
+
+    /**
+     * Метаданные Пользовательского шаблона.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-pol-zowatel-skih-shablonow
+     */
+    public function customtemplate(ObjectInterface|array|string $parent, string $guid)
+    {
+        return Meta::customtemplate($parent, $guid, $this->formatter);
+    }
+
 
 
 

@@ -26,4 +26,9 @@ class StringFormatTest extends MultiDecoderTestCase
     {
         return '';
     }
+
+    public static function invalidJsonTypesDataProvider(): array
+    {
+        return [];
+    }
 }

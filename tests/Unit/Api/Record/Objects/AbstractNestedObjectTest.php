@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Evgeek\Tests\Unit\Api\Record\Objects;
 
+use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomTemplateCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\EmbeddedTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\FilesCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\CashierCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ImageCollection;
@@ -14,6 +16,8 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Counterparty;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\CustomTemplate;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\EmbeddedTemplate;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Files;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
@@ -47,6 +51,8 @@ class AbstractNestedObjectTest extends KnownObjectTestCase
             Type::PROCESSINGPLANMATERIAL => [ProcessingPlanMaterial::class, ProcessingPlanMaterialCollection::class, ProcessingPlan::make($ms)],
             Type::PROCESSINGPLANRESULT => [ProcessingPlanResult::class, ProcessingPlanResultCollection::class, ProcessingPlan::make($ms)],
             Type::FILES => [Files::class, FilesCollection::class, Counterparty::make($ms)],
+            Type::EMBEDDEDTEMPLATE => [EmbeddedTemplate::class, EmbeddedTemplateCollection::class, Counterparty::make($ms)],
+            Type::CUSTOMTEMPLATE => [CustomTemplate::class, CustomTemplateCollection::class, Counterparty::make($ms)],
         ];
     }
 }

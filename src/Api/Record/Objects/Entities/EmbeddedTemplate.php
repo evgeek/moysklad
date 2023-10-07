@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Api\Record\Objects\Entities;
 
 use Evgeek\Moysklad\Api\Record\Collections\Entities\EmbeddedTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
+use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Dictionaries\Type;
 
@@ -14,12 +15,12 @@ use Evgeek\Moysklad\Dictionaries\Type;
  *
  * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy
  *
- * @implements AbstractConcreteObject<EmbeddedTemplateCollection>
+ * @implements AbstractNestedObject<EmbeddedTemplateCollection>
  */
-class EmbeddedTemplate extends AbstractEntity
+class EmbeddedTemplate extends AbstractNestedObject
 {
     public const PATH = [
-        Segment::ENTITY,
+        Segment::METADATA,
         Segment::EMBEDDEDTEMPLATE,
     ];
     public const TYPE = Type::EMBEDDEDTEMPLATE;

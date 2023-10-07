@@ -19,7 +19,9 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\CountryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CurrencyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomEntityCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomRoleCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\CustomTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\DiscountCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\EmbeddedTemplateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\EmployeeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ExpenseItemCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\FilesCollection;
@@ -163,6 +165,8 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::SERVICE => ['service', ServiceCollection::class],
             Type::FILES => ['files', FilesCollection::class, true],
             Type::ATTRIBUTEMETADATA => ['attributemetadata', AttributeMetadataCollection::class],
+            Type::EMBEDDEDTEMPLATE => ['embeddedtemplate', EmbeddedTemplateCollection::class, true],
+            Type::CUSTOMTEMPLATE => ['customtemplate', CustomTemplateCollection::class, true],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderCollection::class],
         ];
