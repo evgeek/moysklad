@@ -11,9 +11,9 @@ use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
- * Коллекция Файлов
+ * Коллекция Счетов юрлица
  *
- * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-fajly
+ * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico-scheta-urlica
  *
  * @implements AbstractNestedCollection<Account>
  */
