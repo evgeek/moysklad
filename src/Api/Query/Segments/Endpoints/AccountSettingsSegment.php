@@ -8,7 +8,7 @@ use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\AccountSettings\SubscriptionSegment;
 use Evgeek\Moysklad\Dictionaries\Segment;
 
-class AccountSegmentSettings extends AbstractNamedSegment
+class AccountSettingsSegment extends AbstractNamedSegment
 {
     protected const SEGMENT = Segment::ACCOUNTSETTINGS;
 

@@ -11,7 +11,7 @@ use Evgeek\Moysklad\Dictionaries\Type;
 /**
  * @covers \Evgeek\Moysklad\Api\Query\Segments\Endpoints\ContextSegment
  */
-class ContextTest extends EndpointTestCase
+class ContextSegmentTest extends EndpointTestCase
 {
     protected string $builderClass = ContextSegment::class;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Query;
 
-use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AccountSegmentSettings;
+use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AccountSettingsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AuditSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\ContextSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EndpointCommonSegment;
@@ -104,9 +104,9 @@ class QueryBuilder extends AbstractBuilder
      *  ->get();
      * </code>
      */
-    public function accountSettings(): AccountSegmentSettings
+    public function accountSettings(): AccountSettingsSegment
     {
-        return $this->resolveNamedBuilder(AccountSegmentSettings::class);
+        return $this->resolveNamedBuilder(AccountSettingsSegment::class);
     }
 
     /**

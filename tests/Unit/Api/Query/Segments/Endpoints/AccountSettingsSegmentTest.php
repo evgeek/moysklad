@@ -2,16 +2,16 @@
 
 namespace Evgeek\Tests\Unit\Api\Query\Segments\Endpoints;
 
-use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AccountSegmentSettings;
+use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AccountSettingsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\AccountSettings\SubscriptionSegment;
 use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
- * @covers \Evgeek\Moysklad\Api\Query\Segments\Endpoints\AccountSegmentSettings
+ * @covers \Evgeek\Moysklad\Api\Query\Segments\Endpoints\AccountSettingsSegment
  */
-class AccountSettingsTest extends EndpointTestCase
+class AccountSettingsSegmentTest extends EndpointTestCase
 {
-    protected string $builderClass = AccountSegmentSettings::class;
+    protected string $builderClass = AccountSettingsSegment::class;
 
     public static function methodsWithCorrespondingSegmentClass(): array
     {

@@ -19,8 +19,6 @@ class MassDeleteTest extends ApiTestCase
     {
         parent::setUp();
 
-        $this->createMockApiClient();
-
         $this->builder = new MassSegmentDelete($this->api, static::PREV_PATH, static::PARAMS);
     }
 

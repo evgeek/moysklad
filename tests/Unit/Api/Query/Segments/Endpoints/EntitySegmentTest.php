@@ -56,7 +56,7 @@ use Evgeek\Moysklad\Dictionaries\Type;
 /**
  * @covers \Evgeek\Moysklad\Api\Query\Segments\Endpoints\EntitySegment
  */
-class EntityTest extends EndpointTestCase
+class EntitySegmentTest extends EndpointTestCase
 {
     protected string $builderClass = EntitySegment::class;
 

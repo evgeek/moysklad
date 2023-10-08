@@ -6,7 +6,7 @@ use Evgeek\Moysklad\Api\Query\AbstractBuilder;
 use Evgeek\Moysklad\Api\Query\QueryBuilder;
 use Evgeek\Moysklad\Api\Query\Segments\AbstractCommonSegment;
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AccountSegmentSettings;
+use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AccountSettingsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AuditSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\ContextSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EndpointCommonSegment;
@@ -129,7 +129,7 @@ class QueryBuilderTest extends ApiTestCase
     {
         $builder = $this->builder->accountSettings();
 
-        $this->assertInstanceOf(AccountSegmentSettings::class, $builder);
+        $this->assertInstanceOf(AccountSettingsSegment::class, $builder);
         $this->assertInstanceOf(AbstractNamedSegment::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }

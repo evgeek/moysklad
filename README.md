@@ -35,11 +35,12 @@ $product = Product::make($ms, ['id' => '25cf41f2-b068-11ed-0a80-0e9700500d7e'])-
 
 ## Полная документация
 
-* [Настройка клиента](/docs/setup.md)
-* [Взаимодействие с API](/docs/api_interaction.md)
-* [Форматтеры](/docs/formatters.md)
-* [Вспомогательные инструменты](/docs/tools.md)
-* [Обработка исключений](/docs/exceptions.md)
+* [Оглавление](/docs/index.md)
+  * [Настройка клиента](/docs/setup.md)
+  * [Взаимодействие с API](/docs/api_interaction.md)
+  * [Форматтеры](/docs/formatters.md)
+  * [Вспомогательные инструменты](/docs/tools.md)
+  * [Обработка исключений](/docs/exceptions.md)
 
 ## Особенности
 

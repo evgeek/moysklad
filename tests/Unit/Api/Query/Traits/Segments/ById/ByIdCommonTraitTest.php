@@ -1,6 +1,6 @@
 <?php
 
-namespace Evgeek\Tests\Unit\Api\Query\Traits\Segments;
+namespace Evgeek\Tests\Unit\Api\Query\Traits\Segments\ById;
 
 use Evgeek\Moysklad\Api\Query\AbstractBuilder;
 use Evgeek\Moysklad\Api\Query\Segments\AbstractCommonSegment;
