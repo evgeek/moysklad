@@ -20,8 +20,13 @@ class AttributeMetadataCrudCollectionTraitTest extends CollectionTraitCase
 {
     public function testCharacteristicsExtractsAsRows(): void
     {
+        $attributeMetadata1 = AttributeMetadata::make($this->ms, ['id' => static::GUID1]);
+        $attributeMetadata2 = AttributeMetadata::make($this->ms, ['id' => static::GUID2]);
         $response = Variant::make($this->ms, [
-            'characteristics' => AttributeMetadata::make($this->ms, ['id' => static::GUID1])
+            'characteristics' => [
+                $attributeMetadata1,
+                $attributeMetadata2,
+            ],
         ]);
 
         $this->expectsSendCalledWith(
@@ -36,5 +41,7 @@ class AttributeMetadataCrudCollectionTraitTest extends CollectionTraitCase
 
         $this->assertNull($result->characteristics);
         $this->assertSame($response->toArray()['characteristics'], $result->toArray()['rows']);
+        $this->assertSame($attributeMetadata1->toArray(), $result->rows[0]->toArray());
+        $this->assertSame($attributeMetadata2->toArray(), $result->rows[1]->toArray());
     }
 }
