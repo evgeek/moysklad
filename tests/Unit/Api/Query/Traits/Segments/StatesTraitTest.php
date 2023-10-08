@@ -10,29 +10,25 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\CharacteristicsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\CustomTemplateSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\EmbeddedTemplateSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\FilesSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ImagesSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\MetadataForVariantSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\MetadataSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StatesSegment;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\AttributesTrait;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\CharacteristicsTrait;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\CustomTemplateTrait;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\EmbeddedTemplateTrait;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\FilesTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Segments\ImagesTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Segments\MetadataForVariantTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Segments\MetadataTrait;
+use Evgeek\Moysklad\Api\Query\Traits\Segments\StatesTrait;
 use Evgeek\Tests\Unit\Api\Query\Traits\TraitTestCase;
 
-/** @covers \Evgeek\Moysklad\Api\Query\Traits\Segments\MetadataTrait */
-class MetadataTraitTest extends TraitTestCase
+/** @covers \Evgeek\Moysklad\Api\Query\Traits\Segments\StatesTrait */
+class StatesTraitTest extends TraitTestCase
 {
     public function testReturnsCorrectClass(): void
     {
         $builder = (new class($this->api, static::PREV_PATH, static::PARAMS, 'test_segment') extends AbstractCommonSegment {
-            use MetadataTrait;
-        })->metadata();
+            use StatesTrait;
+        })->states();
 
-        $this->assertInstanceOf(MetadataSegment::class, $builder);
+        $this->assertInstanceOf(StatesSegment::class, $builder);
         $this->assertInstanceOf(AbstractMethodNamedSegment::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }
