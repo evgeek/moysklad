@@ -18,21 +18,21 @@ use InvalidArgumentException;
  */
 class AttributeMetadataCrudCollectionTraitTest extends CollectionTraitCase
 {
-    public function testTEst(): void
+    public function testCharacteristicsExtractsAsRows(): void
     {
         $response = Variant::make($this->ms, [
-            'characteristics' => AttributeMetadata::make($this->ms, ['id' => static::GUID])
+            'characteristics' => AttributeMetadata::make($this->ms, ['id' => static::GUID1])
         ]);
 
-        $collection = AttributeMetadata::collection($this->ms);
         $this->expectsSendCalledWith(
             HttpMethod::GET,
             ['entity', 'variant', 'metadata'],
             [],
             [],
-            $response->toString());
+            $response->toString()
+        );
 
-        $result = $collection->get();
+        $result = AttributeMetadata::collection($this->ms)->get();
 
         $this->assertNull($result->characteristics);
         $this->assertSame($response->toArray()['characteristics'], $result->toArray()['rows']);
