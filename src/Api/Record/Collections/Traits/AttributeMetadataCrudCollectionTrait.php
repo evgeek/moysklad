@@ -53,9 +53,7 @@ trait AttributeMetadataCrudCollectionTrait
             array_pop($path);
         }
 
-        $path = $additionalSegment ?
-            [...$path, $additionalSegment] :
-            $path;
+        $path = $additionalSegment ? [...$path, $additionalSegment] : $path;
 
         return new Payload(
             method: $method,
