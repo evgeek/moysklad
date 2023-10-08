@@ -167,6 +167,7 @@ class MetaTest extends TestCase
             Type::CUSTOMTEMPLATE => ['customtemplate', 'entity/counterparty/metadata/customtemplate', 'customtemplate', true, Counterparty::make($ms)],
             Type::ORGANIZATION => ['organization', 'entity/organization', 'organization'],
             Type::ACCOUNT => ['account', 'entity/organization/' . self::GUID1 . '/accounts', 'account', true, Organization::make($ms, ['id' => self::GUID1])],
+            Type::PROCESSINGSTAGE => ['processingstage', 'entity/processingstage', 'processingstage'],
 
             Type::CUSTOMERORDER => ['customerorder', 'entity/customerorder', 'customerorder'],
         ];

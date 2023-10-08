@@ -25,6 +25,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\PersonalDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\PriceTypeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProcessingPlanCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProcessingProcessCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\ProcessingStageCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProductFolderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProjectCollection;
@@ -76,6 +77,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\PersonalDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PriceType;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingProcess;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingStage;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProductFolder;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Project;
@@ -275,7 +277,8 @@ class RecordMappingHelperTest extends TestCase
             Type::EMBEDDEDTEMPLATE => [Type::EMBEDDEDTEMPLATE, EmbeddedTemplate::class, EmbeddedTemplateCollection::class, Counterparty::make($ms)],
             Type::CUSTOMTEMPLATE => [Type::CUSTOMTEMPLATE, CustomTemplate::class, CustomTemplateCollection::class, Counterparty::make($ms)],
             Type::ORGANIZATION => [Type::ORGANIZATION, Organization::class, OrganizationCollection::class],
-            Type::ACCOUNT => [Type::ACCOUNT, Account::class, AccountCollection::class, Counterparty::make($ms)],
+            Type::ACCOUNT => [Type::ACCOUNT, Account::class, AccountCollection::class, Organization::make($ms)],
+            Type::PROCESSINGSTAGE => [Type::PROCESSINGSTAGE, ProcessingStage::class, ProcessingStageCollection::class],
 
             Type::CUSTOMERORDER => [Type::CUSTOMERORDER, CustomerOrder::class, CustomerOrderCollection::class],
         ];

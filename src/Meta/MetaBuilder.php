@@ -489,7 +489,7 @@ class MetaBuilder
     }
 
     /**
-     * Метаданные Юрлиц.
+     * Метаданные Юрлица.
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico
      */
@@ -506,6 +506,16 @@ class MetaBuilder
     public function account(ObjectInterface|array|string $parent, string $guid)
     {
         return Meta::account($parent, $guid, $this->formatter);
+    }
+
+    /**
+     * Метаданные Этапа производства.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jetap-proizwodstwa
+     */
+    public function processingstage(string $guid)
+    {
+        return Meta::processingstage($guid, $this->formatter);
     }
 
 

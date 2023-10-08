@@ -26,6 +26,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\PersonalDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PriceType;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingProcess;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingStage;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProductFolder;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Project;
@@ -529,7 +530,7 @@ class Meta
     }
 
     /**
-     * Метаданные Юрлиц.
+     * Метаданные Юрлица.
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico
      */
@@ -546,6 +547,16 @@ class Meta
     public static function account(ObjectInterface|array|string $parent, string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::createNested($parent, [...Account::PATH, $guid], Account::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Этапа производства.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jetap-proizwodstwa
+     */
+    public static function processingstage(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...ProcessingStage::PATH, $guid], ProcessingStage::TYPE, $formatter);
     }
 
 

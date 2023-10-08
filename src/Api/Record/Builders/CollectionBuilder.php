@@ -29,6 +29,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\PersonalDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\PriceTypeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProcessingPlanCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProcessingProcessCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\ProcessingStageCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProductFolderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProjectCollection;
@@ -659,6 +660,18 @@ class CollectionBuilder extends AbstractBuilder
     public function account(ObjectInterface|array|string $parent): AbstractNestedCollection
     {
         return $this->resolveNestedCollection(Type::ACCOUNT, $parent);
+    }
+
+    /**
+     * Коллекция Этапов производства.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jetap-proizwodstwa
+     *
+     * @return ProcessingStageCollection
+     */
+    public function processingstage(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::PROCESSINGSTAGE);
     }
 
 

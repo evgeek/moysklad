@@ -28,6 +28,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\PersonalDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PriceType;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingProcess;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingStage;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProductFolder;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Project;
@@ -662,6 +663,18 @@ class ObjectBuilder extends AbstractBuilder
     public function account(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
     {
         return $this->resolveNestedObject(Type::ACCOUNT, $parent, $content);
+    }
+
+    /**
+     * Этап производства.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jetap-proizwodstwa
+     *
+     * @return ProcessingStage
+     */
+    public function processingstage(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PROCESSINGSTAGE, $content);
     }
 
 

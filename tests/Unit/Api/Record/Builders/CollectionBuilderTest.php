@@ -28,6 +28,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\PersonalDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\PriceTypeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProcessingPlanCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProcessingProcessCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Entities\ProcessingStageCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProductFolderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\ProjectCollection;
@@ -171,6 +172,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::CUSTOMTEMPLATE => ['customtemplate', CustomTemplateCollection::class, true],
             Type::ORGANIZATION => ['organization', OrganizationCollection::class],
             Type::ACCOUNT => ['account', AccountCollection::class, true],
+            Type::PROCESSINGSTAGE => ['processingstage', ProcessingStageCollection::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderCollection::class],
         ];

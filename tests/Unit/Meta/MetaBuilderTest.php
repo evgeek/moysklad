@@ -94,6 +94,7 @@ class MetaBuilderTest extends TestCase
             Type::CUSTOMTEMPLATE => ['customtemplate', [Counterparty::make($ms), self::GUID2], '/entity/counterparty/metadata/customtemplate/' . self::GUID2, 'customtemplate'],
             Type::ORGANIZATION => ['organization', [self::GUID1], '/entity/organization/' . self::GUID1, 'organization'],
             Type::ACCOUNT => ['account', [Organization::make($ms, ['id' => self::GUID1]), self::GUID2], '/entity/organization/' . self::GUID1 . '/accounts/' . self::GUID2, 'account'],
+            Type::PROCESSINGSTAGE => ['processingstage', [self::GUID1], '/entity/processingstage/' . self::GUID1, 'processingstage'],
 
             Type::CUSTOMERORDER => ['customerorder', [self::GUID1], '/entity/customerorder/' . self::GUID1, 'customerorder'],
         ];

@@ -27,6 +27,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\PersonalDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PriceType;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingProcess;
+use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingStage;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProductFolder;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Project;
@@ -171,6 +172,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::CUSTOMTEMPLATE => ['customtemplate', CustomTemplate::class, true],
             Type::ORGANIZATION => ['organization', Organization::class],
             Type::ACCOUNT => ['account', Account::class, true],
+            Type::PROCESSINGSTAGE => ['processingstage', ProcessingStage::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrder::class],
         ];

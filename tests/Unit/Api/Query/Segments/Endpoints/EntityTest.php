@@ -23,6 +23,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\OrganizationSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\PersonalDiscountSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\ProcessingPlanSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\ProcessingProcessSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\ProcessingStageSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\ProductFolderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\ProductSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\ProjectSegment;
@@ -109,6 +110,7 @@ class EntityTest extends EndpointTestCase
             Type::CUSTOMTEMPLATE => ['customtemplate', CustomTemplateSegment::class, ['counterparty', 'metadata']],
             Type::ORGANIZATION => ['organization', OrganizationSegment::class],
             Type::ACCOUNT => ['accounts', AccountsSegment::class, ['organization', static::GUID1]],
+            Type::PROCESSINGSTAGE => ['processingstage', ProcessingStageSegment::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderSegment::class],
         ];
