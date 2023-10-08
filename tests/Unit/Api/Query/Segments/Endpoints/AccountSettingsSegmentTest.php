@@ -5,11 +5,12 @@ namespace Evgeek\Tests\Unit\Api\Query\Segments\Endpoints;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\AccountSettingsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\AccountSettings\SubscriptionSegment;
 use Evgeek\Moysklad\Dictionaries\Type;
+use Evgeek\Tests\Unit\Api\Query\Segments\SegmentTestCase;
 
 /**
  * @covers \Evgeek\Moysklad\Api\Query\Segments\Endpoints\AccountSettingsSegment
  */
-class AccountSettingsSegmentTest extends EndpointTestCase
+class AccountSettingsSegmentTest extends SegmentTestCase
 {
     protected string $builderClass = AccountSettingsSegment::class;
 

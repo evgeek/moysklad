@@ -52,11 +52,12 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ProductsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StagesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StatesSegment;
 use Evgeek\Moysklad\Dictionaries\Type;
+use Evgeek\Tests\Unit\Api\Query\Segments\SegmentTestCase;
 
 /**
  * @covers \Evgeek\Moysklad\Api\Query\Segments\Endpoints\EntitySegment
  */
-class EntitySegmentTest extends EndpointTestCase
+class EntitySegmentTest extends SegmentTestCase
 {
     protected string $builderClass = EntitySegment::class;
 

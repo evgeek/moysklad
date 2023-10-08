@@ -1,6 +1,6 @@
 <?php
 
-namespace Evgeek\Tests\Unit\Api\Query\Segments\Endpoints;
+namespace Evgeek\Tests\Unit\Api\Query\Segments;
 
 use Evgeek\Moysklad\Api\Query\AbstractBuilder;
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
@@ -12,7 +12,7 @@ use Evgeek\Tests\Unit\Api\Query\ApiTestCase;
  * @covers \Evgeek\Moysklad\Api\Query\AbstractBuilder
  * @covers \Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment
  */
-abstract class EndpointTestCase extends ApiTestCase
+abstract class SegmentTestCase extends ApiTestCase
 {
     protected const GUID1 = '25cf41f2-b068-11ed-0a80-0e9700500d7e';
     protected const GUID2 = '161d25a8-1477-11ec-ac18-000b00000002';

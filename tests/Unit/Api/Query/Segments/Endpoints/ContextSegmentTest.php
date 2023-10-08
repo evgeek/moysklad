@@ -7,11 +7,12 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Contexts\CompanySettingsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Contexts\PriceTypeSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Contexts\UserSettingsSegment;
 use Evgeek\Moysklad\Dictionaries\Type;
+use Evgeek\Tests\Unit\Api\Query\Segments\SegmentTestCase;
 
 /**
  * @covers \Evgeek\Moysklad\Api\Query\Segments\Endpoints\ContextSegment
  */
-class ContextSegmentTest extends EndpointTestCase
+class ContextSegmentTest extends SegmentTestCase
 {
     protected string $builderClass = ContextSegment::class;
 
