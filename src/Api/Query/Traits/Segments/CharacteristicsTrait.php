@@ -11,15 +11,14 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StatesSegment;
 trait CharacteristicsTrait
 {
     /**
-     * Статусы.
+     * Характеристики модификаций.
      *
      * <code>
-     * $counterpartyState = $ms->query()
+     * $characteristics = $ms->query()
      *  ->entity()
      *  ->variant()
      *  ->metadata()
      *  ->characteristics()
-     *  ->byId('6eb8b7ac-296f-11ee-0a80-0b150057895b')
      *  ->get();
      * </code>
      */
