@@ -697,4 +697,14 @@ class MetaBuilder
     {
         return Meta::returntocommissionerposition($parent, $guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Полученного отчета комиссионера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera
+     */
+    public function commissionreportin(string $guid)
+    {
+        return Meta::commissionreportin($guid, $this->formatter);
+    }
 }

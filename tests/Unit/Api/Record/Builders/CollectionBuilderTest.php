@@ -5,6 +5,7 @@ namespace Evgeek\Tests\Unit\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Builders\CollectionBuilder;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
@@ -208,6 +209,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::DEMAND => ['demand', DemandCollection::class],
             Type::MOVE => ['move', MoveCollection::class],
             Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerposition', ReturnToCommissionerPositionCollection::class, true],
+            Type::COMMISSIONREPORTIN => ['commissionreportin', CommissionReportInCollection::class],
         ];
     }
 }

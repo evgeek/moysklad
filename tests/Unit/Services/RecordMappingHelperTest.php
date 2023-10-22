@@ -2,6 +2,7 @@
 
 namespace Evgeek\Tests\Unit\Services;
 
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
@@ -70,6 +71,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ReturnToCommissionerPositionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
@@ -331,6 +333,7 @@ class RecordMappingHelperTest extends TestCase
             Type::DEMAND => [Type::DEMAND, Demand::class, DemandCollection::class],
             Type::MOVE => [Type::MOVE, Move::class, MoveCollection::class],
             Type::RETURNTOCOMMISSIONERPOSITION => [Type::RETURNTOCOMMISSIONERPOSITION, ReturnToCommissionerPosition::class, ReturnToCommissionerPositionCollection::class, Product::class],
+            Type::COMMISSIONREPORTIN => [Type::COMMISSIONREPORTIN, CommissionReportIn::class, CommissionReportInCollection::class],
         ];
     }
 

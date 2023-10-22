@@ -5,6 +5,7 @@ namespace Evgeek\Tests\Unit\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Builders\ObjectBuilder;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
@@ -209,6 +210,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::DEMAND => ['demand', Demand::class],
             Type::MOVE => ['move', Move::class],
             Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerposition', ReturnToCommissionerPosition::class, true],
+            Type::COMMISSIONREPORTIN => ['commissionreportin', CommissionReportIn::class],
         ];
     }
 }

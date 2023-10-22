@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Tools;
 
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
@@ -754,6 +755,16 @@ class Meta
     public static function returntocommissionerposition(ObjectInterface|array|string $parent, string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::createNested($parent, [...ReturnToCommissionerPosition::PATH, $guid], ReturnToCommissionerPosition::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Полученного отчета комиссионера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera
+     */
+    public static function commissionreportin(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...CommissionReportIn::PATH, $guid], CommissionReportIn::TYPE, $formatter);
     }
 
 

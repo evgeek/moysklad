@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Record\AbstractConcreteRecord;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\CollectionInterface;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
@@ -79,6 +80,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
@@ -228,6 +230,7 @@ class RecordMapping
         Type::ENTER => Enter::class,
         Type::DEMAND => Demand::class,
         Type::MOVE => Move::class,
+        Type::COMMISSIONREPORTIN => CommissionReportIn::class,
         Type::RETURNTOCOMMISSIONERPOSITION => ReturnToCommissionerPosition::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
@@ -298,6 +301,7 @@ class RecordMapping
         Type::ENTER => EnterCollection::class,
         Type::DEMAND => DemandCollection::class,
         Type::MOVE => MoveCollection::class,
+        Type::COMMISSIONREPORTIN => CommissionReportInCollection::class,
         Type::RETURNTOCOMMISSIONERPOSITION => ReturnToCommissionerPositionCollection::class,
     ];
 

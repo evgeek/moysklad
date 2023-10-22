@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Api\Record\Builders;
 
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
@@ -905,5 +906,17 @@ class CollectionBuilder extends AbstractBuilder
     public function returntocommissionerposition(ObjectInterface|array|string $parent): AbstractNestedCollection
     {
         return $this->resolveNestedCollection(Type::RETURNTOCOMMISSIONERPOSITION, $parent);
+    }
+
+    /**
+     * Коллекция Полученных отчетов комиссионера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera
+     *
+     * @return CommissionReportInCollection
+     */
+    public function commissionreportin(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::COMMISSIONREPORTIN);
     }
 }

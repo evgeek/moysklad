@@ -81,5 +81,6 @@ class Type
     public const ENTER = 'enter';
     public const DEMAND = 'demand';
     public const MOVE = 'move';
+    public const COMMISSIONREPORTIN = 'commissionreportin';
     public const RETURNTOCOMMISSIONERPOSITION = 'returntocommissionerposition';
 }

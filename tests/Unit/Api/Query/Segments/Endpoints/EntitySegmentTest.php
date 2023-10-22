@@ -3,6 +3,7 @@
 namespace Evgeek\Tests\Unit\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EntitySegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CounterpartyAdjustmentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
@@ -147,7 +148,8 @@ class EntitySegmentTest extends SegmentTestCase
             Type::ENTER => ['enter', Segment::ENTER, EnterSegment::class],
             Type::DEMAND => ['demand', Segment::DEMAND, DemandSegment::class],
             Type::MOVE => ['move', Segment::MOVE, MoveSegment::class],
-//            Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerpositions', ReturnToCommissionerPositionsSegment::class, ['commissionreportin', 'ea05e0c9-8667-11e7-8a7f-40d000000060', 'positions', '161d25a8-1477-11ec-ac18-000b00000002']],
+            Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerpositions', Segment::RETURNTOCOMMISSIONERPOSITIONS, ReturnToCommissionerPositionsSegment::class, ['commissionreportin', 'ea05e0c9-8667-11e7-8a7f-40d000000060']],
+            Type::COMMISSIONREPORTIN => ['commissionreportin', Segment::COMMISSIONREPORTIN, CommissionReportInSegment::class],
         ];
     }
 }

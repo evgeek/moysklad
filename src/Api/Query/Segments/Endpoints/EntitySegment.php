@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CounterpartyAdjustmentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
@@ -966,5 +967,22 @@ class EntitySegment extends AbstractNamedSegment
     public function move(): MoveSegment
     {
         return $this->resolveNamedBuilder(MoveSegment::class);
+    }
+
+    /**
+     * Полученный отчет комиссионера
+     *
+     * <code>
+     * $commissionReportIn = $ms->query()
+     *  ->entity()
+     *  ->commissionreportin()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera
+     */
+    public function commissionreportin(): CommissionReportInSegment
+    {
+        return $this->resolveNamedBuilder(CommissionReportInSegment::class);
     }
 }

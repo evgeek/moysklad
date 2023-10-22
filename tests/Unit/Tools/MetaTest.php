@@ -2,6 +2,7 @@
 
 namespace Evgeek\Tests\Unit\Tools;
 
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Counterparty;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Organization;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
@@ -185,7 +186,8 @@ class MetaTest extends TestCase
             Type::ENTER => ['enter', 'entity/enter', 'enter'],
             Type::DEMAND => ['demand', 'entity/demand', 'demand'],
             Type::MOVE => ['move', 'entity/move', 'move'],
-//            Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerposition', 'entity/commissionreportin/' . self::GUID1 . '/returntocommissionerpositions/' . self::GUID2, 'returntocommissionerposition', true, $parentProduct],
+            Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerposition', 'entity/commissionreportin/' . self::GUID1 . '/returntocommissionerpositions', 'returntocommissionerposition', true, CommissionReportIn::make($ms, ['id' => self::GUID1])],
+            Type::COMMISSIONREPORTIN => ['commissionreportin', 'entity/commissionreportin', 'commissionreportin'],
         ];
     }
 

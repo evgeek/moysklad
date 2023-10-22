@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Api\Record\Builders;
 
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
@@ -908,5 +909,17 @@ class ObjectBuilder extends AbstractBuilder
     public function returntocommissionerposition(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
     {
         return $this->resolveNestedObject(Type::RETURNTOCOMMISSIONERPOSITION, $parent, $content);
+    }
+
+    /**
+     * Полученный отчет комиссионера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera
+     *
+     * @return CommissionReportIn
+     */
+    public function commissionreportin(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::COMMISSIONREPORTIN, $content);
     }
 }
