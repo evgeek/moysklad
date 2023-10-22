@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
@@ -843,5 +844,17 @@ class ObjectBuilder extends AbstractBuilder
     public function paymentout(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::PAYMENTOUT, $content);
+    }
+
+    /**
+     * Корректировка баланса контрагента
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-korrektirowka-balansa-kontragenta
+     *
+     * @return CounterpartyAdjustment
+     */
+    public function counterpartyadjustment(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::COUNTERPARTYADJUSTMENT, $content);
     }
 }

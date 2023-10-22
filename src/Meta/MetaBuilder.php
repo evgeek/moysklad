@@ -647,4 +647,14 @@ class MetaBuilder
     {
         return Meta::paymentout($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Корректировки баланса контрагента
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-korrektirowka-balansa-kontragenta
+     */
+    public function counterpartyadjustment(string $guid)
+    {
+        return Meta::counterpartyadjustment($guid, $this->formatter);
+    }
 }

@@ -4,6 +4,7 @@ namespace Evgeek\Tests\Unit\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportOutSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CounterpartyAdjustmentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InventorySegment;
@@ -138,6 +139,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::PURCHASEORDER => ['purchaseorder', Segment::PURCHASEORDER, PurchaseOrderSegment::class],
             Type::INVENTORY => ['inventory', Segment::INVENTORY, InventorySegment::class],
             Type::PAYMENTOUT => ['paymentout', Segment::PAYMENTOUT, PaymentOutSegment::class],
+            Type::COUNTERPARTYADJUSTMENT => ['counterpartyadjustment', Segment::COUNTERPARTYADJUSTMENT, CounterpartyAdjustmentSegment::class],
         ];
     }
 }

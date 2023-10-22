@@ -92,4 +92,5 @@ class Segment
     public const PURCHASEORDER = 'purchaseorder';
     public const INVENTORY = 'inventory';
     public const PAYMENTOUT = 'paymentout';
+    public const COUNTERPARTYADJUSTMENT = 'counterpartyadjustment';
 }

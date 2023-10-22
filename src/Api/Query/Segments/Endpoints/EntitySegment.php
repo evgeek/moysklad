@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportOutSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CounterpartyAdjustmentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InventorySegment;
@@ -894,5 +895,22 @@ class EntitySegment extends AbstractNamedSegment
     public function paymentout(): PaymentOutSegment
     {
         return $this->resolveNamedBuilder(PaymentOutSegment::class);
+    }
+
+    /**
+     * Корректировка баланса контрагента
+     *
+     * <code>
+     * $counterpartyAdjustments = $ms->query()
+     *  ->entity()
+     *  ->counterpartyadjustment()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-korrektirowka-balansa-kontragenta
+     */
+    public function counterpartyadjustment(): CounterpartyAdjustmentSegment
+    {
+        return $this->resolveNamedBuilder(CounterpartyAdjustmentSegment::class);
     }
 }

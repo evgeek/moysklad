@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Tools;
 
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
@@ -699,6 +700,16 @@ class Meta
     public static function paymentout(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...PaymentOut::PATH, $guid], PaymentOut::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Корректировки баланса контрагента
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-korrektirowka-balansa-kontragenta
+     */
+    public static function counterpartyadjustment(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...CounterpartyAdjustment::PATH, $guid], CounterpartyAdjustment::TYPE, $formatter);
     }
 
 

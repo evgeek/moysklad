@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
@@ -840,5 +841,17 @@ class CollectionBuilder extends AbstractBuilder
     public function paymentout(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::PAYMENTOUT);
+    }
+
+    /**
+     * Коллекция Корректировок баланса контрагента
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-korrektirowka-balansa-kontragenta
+     *
+     * @return CounterpartyAdjustmentCollection
+     */
+    public function counterpartyadjustment(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::COUNTERPARTYADJUSTMENT);
     }
 }

@@ -6,6 +6,7 @@ use Evgeek\Moysklad\Api\Record\Builders\CollectionBuilder;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
@@ -198,6 +199,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::PURCHASEORDER => ['purchaseorder', PurchaseOrderCollection::class],
             Type::INVENTORY => ['inventory', InventoryCollection::class],
             Type::PAYMENTOUT => ['paymentout', PaymentOutCollection::class],
+            Type::COUNTERPARTYADJUSTMENT => ['counterpartyadjustment', CounterpartyAdjustmentCollection::class],
         ];
     }
 }
