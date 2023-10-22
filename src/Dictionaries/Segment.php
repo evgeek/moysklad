@@ -85,4 +85,5 @@ class Segment
     public const SALESRETURN = 'salesreturn';
     public const PURCHASERETURN = 'purchasereturn';
     public const PREPAYMENTRETURN = 'prepaymentreturn';
+    public const PAYMENTIN = 'paymentin';
 }

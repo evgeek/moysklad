@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
@@ -751,6 +752,23 @@ class EntitySegment extends AbstractNamedSegment
     public function prepaymentreturn(): PrepaymentReturnSegment
     {
         return $this->resolveNamedBuilder(PrepaymentReturnSegment::class);
+    }
+
+    /**
+     * Входящий платеж.
+     *
+     * <code>
+     * $paymentIn = $ms->query()
+     *  ->entity()
+     *  ->paymentin()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vhodqschij-platezh
+     */
+    public function paymentin(): PaymentInSegment
+    {
+        return $this->resolveNamedBuilder(PaymentInSegment::class);
     }
 
 

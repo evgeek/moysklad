@@ -10,6 +10,7 @@ use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\CollectionInterface;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
@@ -69,6 +70,7 @@ use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
@@ -193,6 +195,7 @@ class RecordMapping
         Type::SALESRETURN => SalesReturn::class,
         Type::PURCHASERETURN => PurchaseReturn::class,
         Type::PREPAYMENTRETURN => PrepaymentReturn::class,
+        Type::PAYMENTIN => PaymentIn::class,
 
         Type::CUSTOMERORDER => CustomerOrder::class,
     ];
@@ -253,6 +256,7 @@ class RecordMapping
         Type::SALESRETURN => SalesReturnCollection::class,
         Type::PURCHASERETURN => PurchaseReturnCollection::class,
         Type::PREPAYMENTRETURN => PrepaymentReturnCollection::class,
+        Type::PAYMENTIN => PaymentInCollection::class,
 
         Type::CUSTOMERORDER => CustomerOrderCollection::class,
     ];

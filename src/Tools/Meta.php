@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Tools;
 
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
@@ -585,7 +586,7 @@ class Meta
     }
 
     /**
-     * Метаданные Возвратов покупателя.
+     * Метаданные Возврата покупателя.
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-pokupatelq
      */
@@ -595,7 +596,7 @@ class Meta
     }
 
     /**
-     * Метаданные Возвратов поставщику.
+     * Метаданные Возврата поставщику.
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-postawschiku
      */
@@ -605,13 +606,23 @@ class Meta
     }
 
     /**
-     * Метаданные Возвратов предоплаты.
+     * Метаданные Возврата предоплаты.
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-predoplaty
      */
     public static function prepaymentreturn(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...PrepaymentReturn::PATH, $guid], PrepaymentReturn::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Входящего платежа.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vhodqschij-platezh
+     */
+    public static function paymentin(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...PaymentIn::PATH, $guid], PaymentIn::TYPE, $formatter);
     }
 
 

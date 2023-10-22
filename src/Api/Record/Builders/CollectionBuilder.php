@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
@@ -737,6 +738,18 @@ class CollectionBuilder extends AbstractBuilder
     public function prepaymentreturn(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::PREPAYMENTRETURN);
+    }
+
+    /**
+     * Коллекция Входящих платежей.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vhodqschij-platezh
+     *
+     * @return PaymentInCollection
+     */
+    public function paymentin(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::PAYMENTIN);
     }
 
 

@@ -55,20 +55,21 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ProductsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\SettingsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StagesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StatesSegment;
+use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Dictionaries\Type;
 use Evgeek\Tests\Unit\Api\Query\Segments\SegmentTestCase;
 
 /**
  * @covers \Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AssortmentSegment
  */
-class PriceTypeSegmentTest extends SegmentTestCase
+class AssortmentSegmentTest extends SegmentTestCase
 {
     protected string $builderClass = AssortmentSegment::class;
 
     public static function methodsWithCorrespondingSegmentClass(): array
     {
         return [
-            'default' => ['settings', SettingsSegment::class],
+            'default' => ['settings', Segment::SETTINGS, SettingsSegment::class],
         ];
     }
 }

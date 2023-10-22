@@ -568,6 +568,16 @@ class MetaBuilder
         return Meta::prepaymentreturn($guid, $this->formatter);
     }
 
+    /**
+     * Метаданные Входящего платежа.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vhodqschij-platezh
+     */
+    public function paymentin(string $guid)
+    {
+        return Meta::paymentin($guid, $this->formatter);
+    }
+
 
 
 

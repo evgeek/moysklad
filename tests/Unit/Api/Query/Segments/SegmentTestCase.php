@@ -32,11 +32,11 @@ abstract class SegmentTestCase extends ApiTestCase
     abstract public static function methodsWithCorrespondingSegmentClass(): array;
 
     /**
-     * @param class-string<AbstractMethodNamedSegment> $expectedSegment
+     * @param class-string<AbstractMethodNamedSegment> $expectedSegmentClass
      *
      * @dataProvider methodsWithCorrespondingSegmentClass
      */
-    public function testMethodReturnsCorrectClass(string $method, string $expectedSegment, array $parent = []): void
+    public function testMethodReturnsCorrectClass(string $method, string $expectedSegment, string $expectedSegmentClass, array $parent = []): void
     {
         $builder = $this->builder;
         foreach ($parent as $segment) {
@@ -46,7 +46,8 @@ abstract class SegmentTestCase extends ApiTestCase
         }
         $builder = $builder->{$method}();
 
-        $this->assertInstanceOf($expectedSegment, $builder);
+        $this->assertSame($expectedSegment, $builder::SEGMENT);
+        $this->assertInstanceOf($expectedSegmentClass, $builder);
         $this->assertInstanceOf(AbstractMethodNamedSegment::class, $builder);
         $this->assertInstanceOf(AbstractBuilder::class, $builder);
     }

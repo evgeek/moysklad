@@ -54,6 +54,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\NamedFilterSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ProductsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StagesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StatesSegment;
+use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Dictionaries\Type;
 use Evgeek\Tests\Unit\Api\Query\Segments\SegmentTestCase;
 
@@ -67,7 +68,7 @@ class PriceTypeSegmentTest extends SegmentTestCase
     public static function methodsWithCorrespondingSegmentClass(): array
     {
         return [
-            'default' => ['default', DefaultSegment::class],
+            'default' => ['default', Segment::DEFAULT, DefaultSegment::class],
         ];
     }
 }

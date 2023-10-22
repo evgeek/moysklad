@@ -6,6 +6,7 @@ namespace Evgeek\Tests\Unit\Api\Record\Objects;
 
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
@@ -51,6 +52,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookStockCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
@@ -154,6 +156,7 @@ class AbstractConcreteObjectTest extends KnownObjectTestCase
             Type::SALESRETURN => [SalesReturn::class, SalesReturnCollection::class],
             Type::PURCHASERETURN => [PurchaseReturn::class, PurchaseReturnCollection::class],
             Type::PREPAYMENTRETURN => [PrepaymentReturn::class, PrepaymentReturnCollection::class],
+            Type::PAYMENTIN => [PaymentIn::class, PaymentInCollection::class],
 
             Type::CUSTOMERORDER => [CustomerOrder::class, CustomerOrderCollection::class],
         ];
