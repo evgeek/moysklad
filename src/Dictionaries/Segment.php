@@ -81,4 +81,5 @@ class Segment
     public const ACCOUNTS = 'accounts';
 
     public const RETAILDRAWERCASHIN = 'retaildrawercashin';
+    public const INTERNALORDER = 'internalorder';
 }

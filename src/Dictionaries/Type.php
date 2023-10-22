@@ -66,4 +66,5 @@ class Type
     public const ACCOUNT = 'account';
 
     public const RETAILDRAWERCASHIN = 'retaildrawercashin';
+    public const INTERNALORDER = 'internalorder';
 }

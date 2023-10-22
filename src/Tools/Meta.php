@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Tools;
 
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
@@ -568,6 +569,16 @@ class Meta
     public static function retaildrawercashin(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...RetailDrawerCashIn::PATH, $guid], RetailDrawerCashIn::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Внутреннего заказа.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnutrennij-zakaz
+     */
+    public static function internalorder(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...InternalOrder::PATH, $guid], InternalOrder::TYPE, $formatter);
     }
 
 

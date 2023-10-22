@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
@@ -685,6 +686,18 @@ class CollectionBuilder extends AbstractBuilder
     public function retaildrawercashin(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::RETAILDRAWERCASHIN);
+    }
+
+    /**
+     * Коллекция Внутренних заказов.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnutrennij-zakaz
+     *
+     * @return InternalOrderCollection
+     */
+    public function internalorder(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::INTERNALORDER);
     }
 
 

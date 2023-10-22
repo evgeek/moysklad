@@ -170,6 +170,7 @@ class MetaTest extends TestCase
             Type::PROCESSINGSTAGE => ['processingstage', 'entity/processingstage', 'processingstage'],
 
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', 'entity/retaildrawercashin', 'retaildrawercashin'],
+            Type::INTERNALORDER => ['internalorder', 'entity/internalorder', 'internalorder'],
 
             Type::CUSTOMERORDER => ['customerorder', 'entity/customerorder', 'customerorder'],
         ];

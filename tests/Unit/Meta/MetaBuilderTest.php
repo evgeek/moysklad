@@ -97,6 +97,7 @@ class MetaBuilderTest extends TestCase
             Type::PROCESSINGSTAGE => ['processingstage', [self::GUID1], '/entity/processingstage/' . self::GUID1, 'processingstage'],
 
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', [self::GUID1], '/entity/retaildrawercashin/' . self::GUID1, 'retaildrawercashin'],
+            Type::INTERNALORDER => ['internalorder', [self::GUID1], '/entity/internalorder/' . self::GUID1, 'internalorder'],
 
             Type::CUSTOMERORDER => ['customerorder', [self::GUID1], '/entity/customerorder/' . self::GUID1, 'customerorder'],
         ];

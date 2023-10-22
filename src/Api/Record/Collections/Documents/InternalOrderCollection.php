@@ -10,17 +10,17 @@ use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
- * Коллекция Заказов покупателя.
+ * Коллекция Внутренних заказов.
  *
- * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
+ * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnutrennij-zakaz
  *
  * @implements AbstractConcreteCollection<CustomerOrder>
  */
-class CustomerOrderCollection extends AbstractDocumentCollection
+class InternalOrderCollection extends AbstractDocumentCollection
 {
     public const PATH = [
         Segment::ENTITY,
-        Segment::CUSTOMERORDER,
+        Segment::INTERNALORDER,
     ];
-    public const TYPE = Type::CUSTOMERORDER;
+    public const TYPE = Type::INTERNALORDER;
 }

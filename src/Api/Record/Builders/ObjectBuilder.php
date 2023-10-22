@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
@@ -688,6 +689,18 @@ class ObjectBuilder extends AbstractBuilder
     public function retaildrawercashin(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::RETAILDRAWERCASHIN, $content);
+    }
+
+    /**
+     * Внутренний заказ.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnutrennij-zakaz
+     *
+     * @return InternalOrder
+     */
+    public function internalorder(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::INTERNALORDER, $content);
     }
 
 

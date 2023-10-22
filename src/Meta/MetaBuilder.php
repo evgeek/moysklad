@@ -528,6 +528,16 @@ class MetaBuilder
         return Meta::retaildrawercashin($guid, $this->formatter);
     }
 
+    /**
+     * Метаданные Внутреннего заказа.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnutrennij-zakaz
+     */
+    public function internalorder(string $guid)
+    {
+        return Meta::internalorder($guid, $this->formatter);
+    }
+
 
 
 

@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AccumulationDiscountSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AssortmentSegment;
@@ -679,6 +680,23 @@ class EntitySegment extends AbstractNamedSegment
     public function retaildrawercashin(): RetailDrawerCashInSegment
     {
         return $this->resolveNamedBuilder(RetailDrawerCashInSegment::class);
+    }
+
+    /**
+     * Внутренний заказ.
+     *
+     * <code>
+     * $internalOrders = $ms->query()
+     *  ->entity()
+     *  ->internalorder()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnutrennij-zakaz
+     */
+    public function internalorder(): InternalOrderSegment
+    {
+        return $this->resolveNamedBuilder(InternalOrderSegment::class);
     }
 
 

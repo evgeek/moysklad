@@ -4,6 +4,7 @@ namespace Evgeek\Tests\Unit\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AccumulationDiscountSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AssortmentSegment;
@@ -115,6 +116,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::PROCESSINGSTAGE => ['processingstage', ProcessingStageSegment::class],
 
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', RetailDrawerCashInSegment::class],
+            Type::INTERNALORDER => ['internalorder', InternalOrderSegment::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderSegment::class],
         ];
