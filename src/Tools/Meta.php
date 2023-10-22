@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
@@ -732,6 +733,16 @@ class Meta
     public static function demand(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...Demand::PATH, $guid], Demand::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Перемещения
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-peremeschenie
+     */
+    public static function move(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...Move::PATH, $guid], Move::TYPE, $formatter);
     }
 
 

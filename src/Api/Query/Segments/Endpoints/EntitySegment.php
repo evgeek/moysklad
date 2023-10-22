@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\DemandSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\EnterSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InventorySegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\MoveSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment;
@@ -948,5 +949,22 @@ class EntitySegment extends AbstractNamedSegment
     public function demand(): DemandSegment
     {
         return $this->resolveNamedBuilder(DemandSegment::class);
+    }
+
+    /**
+     * Перемещение
+     *
+     * <code>
+     * $moves = $ms->query()
+     *  ->entity()
+     *  ->move()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-peremeschenie
+     */
+    public function move(): MoveSegment
+    {
+        return $this->resolveNamedBuilder(MoveSegment::class);
     }
 }

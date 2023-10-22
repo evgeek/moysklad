@@ -13,6 +13,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
@@ -882,5 +883,17 @@ class ObjectBuilder extends AbstractBuilder
     public function demand(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::DEMAND, $content);
+    }
+
+    /**
+     * Перемещение
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-peremeschenie
+     *
+     * @return Move
+     */
+    public function move(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::MOVE, $content);
     }
 }

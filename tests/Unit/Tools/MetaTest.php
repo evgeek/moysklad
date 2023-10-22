@@ -184,6 +184,7 @@ class MetaTest extends TestCase
             Type::COUNTERPARTYADJUSTMENT => ['counterpartyadjustment', 'entity/counterpartyadjustment', 'counterpartyadjustment'],
             Type::ENTER => ['enter', 'entity/enter', 'enter'],
             Type::DEMAND => ['demand', 'entity/demand', 'demand'],
+            Type::MOVE => ['move', 'entity/move', 'move'],
         ];
     }
 

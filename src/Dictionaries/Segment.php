@@ -95,4 +95,5 @@ class Segment
     public const COUNTERPARTYADJUSTMENT = 'counterpartyadjustment';
     public const ENTER = 'enter';
     public const DEMAND = 'demand';
+    public const MOVE = 'move';
 }

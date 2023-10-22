@@ -111,6 +111,7 @@ class MetaBuilderTest extends TestCase
             Type::COUNTERPARTYADJUSTMENT => ['counterpartyadjustment', [self::GUID1], '/entity/counterpartyadjustment/' . self::GUID1, 'counterpartyadjustment'],
             Type::ENTER => ['enter', [self::GUID1], '/entity/enter/' . self::GUID1, 'enter'],
             Type::DEMAND => ['demand', [self::GUID1], '/entity/demand/' . self::GUID1, 'demand'],
+            Type::MOVE => ['move', [self::GUID1], '/entity/move/' . self::GUID1, 'move'],
         ];
     }
 }

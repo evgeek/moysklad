@@ -677,4 +677,14 @@ class MetaBuilder
     {
         return Meta::demand($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Перемещения
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-peremeschenie
+     */
+    public function move(string $guid)
+    {
+        return Meta::move($guid, $this->formatter);
+    }
 }

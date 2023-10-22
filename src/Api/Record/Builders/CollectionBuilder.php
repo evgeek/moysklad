@@ -13,6 +13,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
@@ -879,5 +880,17 @@ class CollectionBuilder extends AbstractBuilder
     public function demand(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::DEMAND);
+    }
+
+    /**
+     * Коллекция Перемещений
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-peremeschenie
+     *
+     * @return MoveCollection
+     */
+    public function move(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::MOVE);
     }
 }

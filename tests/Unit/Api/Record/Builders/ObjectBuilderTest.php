@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
@@ -204,6 +205,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::COUNTERPARTYADJUSTMENT => ['counterpartyadjustment', CounterpartyAdjustment::class],
             Type::ENTER => ['enter', Enter::class],
             Type::DEMAND => ['demand', Demand::class],
+            Type::MOVE => ['move', Move::class],
         ];
     }
 }

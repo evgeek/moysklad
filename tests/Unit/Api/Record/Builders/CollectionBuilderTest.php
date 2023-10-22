@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
@@ -204,6 +205,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::COUNTERPARTYADJUSTMENT => ['counterpartyadjustment', CounterpartyAdjustmentCollection::class],
             Type::ENTER => ['enter', EnterCollection::class],
             Type::DEMAND => ['demand', DemandCollection::class],
+            Type::MOVE => ['move', MoveCollection::class],
         ];
     }
 }

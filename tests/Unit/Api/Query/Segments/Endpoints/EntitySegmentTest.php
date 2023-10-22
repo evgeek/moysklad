@@ -10,6 +10,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\DemandSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\EnterSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InventorySegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\MoveSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment;
@@ -144,6 +145,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::COUNTERPARTYADJUSTMENT => ['counterpartyadjustment', Segment::COUNTERPARTYADJUSTMENT, CounterpartyAdjustmentSegment::class],
             Type::ENTER => ['enter', Segment::ENTER, EnterSegment::class],
             Type::DEMAND => ['demand', Segment::DEMAND, DemandSegment::class],
+            Type::MOVE => ['move', Segment::MOVE, MoveSegment::class],
         ];
     }
 }
