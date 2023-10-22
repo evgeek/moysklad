@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
@@ -675,6 +676,18 @@ class ObjectBuilder extends AbstractBuilder
     public function processingstage(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::PROCESSINGSTAGE, $content);
+    }
+
+    /**
+     * Внесение денег.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnesenie-deneg
+     *
+     * @return RetailDrawerCashIn
+     */
+    public function retaildrawercashin(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::RETAILDRAWERCASHIN, $content);
     }
 
 

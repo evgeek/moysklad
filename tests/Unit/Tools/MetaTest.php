@@ -169,6 +169,8 @@ class MetaTest extends TestCase
             Type::ACCOUNT => ['account', 'entity/organization/' . self::GUID1 . '/accounts', 'account', true, Organization::make($ms, ['id' => self::GUID1])],
             Type::PROCESSINGSTAGE => ['processingstage', 'entity/processingstage', 'processingstage'],
 
+            Type::RETAILDRAWERCASHIN => ['retaildrawercashin', 'entity/retaildrawercashin', 'retaildrawercashin'],
+
             Type::CUSTOMERORDER => ['customerorder', 'entity/customerorder', 'customerorder'],
         ];
     }

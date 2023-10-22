@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\CollectionInterface;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
@@ -63,6 +64,7 @@ use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Assortment;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
@@ -178,6 +180,8 @@ class RecordMapping
         Type::ACCOUNT => Account::class,
         Type::PROCESSINGSTAGE => ProcessingStage::class,
 
+        Type::RETAILDRAWERCASHIN => RetailDrawerCashIn::class,
+
         Type::CUSTOMERORDER => CustomerOrder::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
@@ -231,6 +235,8 @@ class RecordMapping
         Type::ORGANIZATION => OrganizationCollection::class,
         Type::ACCOUNT => AccountCollection::class,
         Type::PROCESSINGSTAGE => ProcessingStageCollection::class,
+
+        Type::RETAILDRAWERCASHIN => RetailDrawerCashInCollection::class,
 
         Type::CUSTOMERORDER => CustomerOrderCollection::class,
     ];

@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AccumulationDiscountSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AssortmentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\BonusProgramSegment;
@@ -662,6 +663,26 @@ class EntitySegment extends AbstractNamedSegment
     {
         return $this->resolveNamedBuilder(ProcessingStageSegment::class);
     }
+
+    /**
+     * Внесение денег.
+     *
+     * <code>
+     * $retailDrawerCashIns = $ms->query()
+     *  ->entity()
+     *  ->retaildrawercashin()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnesenie-deneg
+     */
+    public function retaildrawercashin(): RetailDrawerCashInSegment
+    {
+        return $this->resolveNamedBuilder(RetailDrawerCashInSegment::class);
+    }
+
+
+
 
     /**
      * Заказ покупателя.

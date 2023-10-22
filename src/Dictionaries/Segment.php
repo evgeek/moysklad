@@ -79,4 +79,6 @@ class Segment
     public const CHARACTERISTICS = 'characteristics';
     public const DEFAULT = 'default';
     public const ACCOUNTS = 'accounts';
+
+    public const RETAILDRAWERCASHIN = 'retaildrawercashin';
 }

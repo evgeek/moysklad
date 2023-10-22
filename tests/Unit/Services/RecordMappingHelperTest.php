@@ -3,6 +3,7 @@
 namespace Evgeek\Tests\Unit\Services;
 
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
@@ -54,6 +55,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Assortment;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
@@ -279,6 +281,8 @@ class RecordMappingHelperTest extends TestCase
             Type::ORGANIZATION => [Type::ORGANIZATION, Organization::class, OrganizationCollection::class],
             Type::ACCOUNT => [Type::ACCOUNT, Account::class, AccountCollection::class, Organization::make($ms)],
             Type::PROCESSINGSTAGE => [Type::PROCESSINGSTAGE, ProcessingStage::class, ProcessingStageCollection::class],
+
+            Type::RETAILDRAWERCASHIN => [Type::RETAILDRAWERCASHIN, RetailDrawerCashIn::class, RetailDrawerCashInCollection::class],
 
             Type::CUSTOMERORDER => [Type::CUSTOMERORDER, CustomerOrder::class, CustomerOrderCollection::class],
         ];

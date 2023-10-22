@@ -6,6 +6,7 @@ use Evgeek\Moysklad\Api\Record\Builders\ObjectBuilder;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
@@ -173,6 +174,8 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::ORGANIZATION => ['organization', Organization::class],
             Type::ACCOUNT => ['account', Account::class, true],
             Type::PROCESSINGSTAGE => ['processingstage', ProcessingStage::class],
+
+            Type::RETAILDRAWERCASHIN => ['retaildrawercashin', RetailDrawerCashIn::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrder::class],
         ];

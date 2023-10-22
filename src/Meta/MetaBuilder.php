@@ -518,6 +518,16 @@ class MetaBuilder
         return Meta::processingstage($guid, $this->formatter);
     }
 
+    /**
+     * Метаданные Внесения денег.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnesenie-deneg
+     */
+    public function retaildrawercashin(string $guid)
+    {
+        return Meta::retaildrawercashin($guid, $this->formatter);
+    }
+
 
 
 

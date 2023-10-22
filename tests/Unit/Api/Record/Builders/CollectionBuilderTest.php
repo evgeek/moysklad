@@ -6,6 +6,7 @@ use Evgeek\Moysklad\Api\Record\Builders\CollectionBuilder;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
@@ -173,6 +174,8 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::ORGANIZATION => ['organization', OrganizationCollection::class],
             Type::ACCOUNT => ['account', AccountCollection::class, true],
             Type::PROCESSINGSTAGE => ['processingstage', ProcessingStageCollection::class],
+
+            Type::RETAILDRAWERCASHIN => ['retaildrawercashin', RetailDrawerCashInCollection::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderCollection::class],
         ];

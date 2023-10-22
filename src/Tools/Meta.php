@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Tools;
 
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
@@ -557,6 +558,16 @@ class Meta
     public static function processingstage(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...ProcessingStage::PATH, $guid], ProcessingStage::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Внесения денег.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnesenie-deneg
+     */
+    public static function retaildrawercashin(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...RetailDrawerCashIn::PATH, $guid], RetailDrawerCashIn::TYPE, $formatter);
     }
 
 
