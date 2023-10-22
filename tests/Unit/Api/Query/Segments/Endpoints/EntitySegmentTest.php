@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashOutSegment;
@@ -130,6 +131,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::PAYMENTIN => ['paymentin', Segment::PAYMENTIN, PaymentInSegment::class],
             Type::COMMISSIONREPORTOUT => ['commissionreportout', Segment::COMMISSIONREPORTOUT, CommissionReportOutSegment::class],
             Type::RETAILDRAWERCASHOUT => ['retaildrawercashout', Segment::RETAILDRAWERCASHOUT, RetailDrawerCashOutSegment::class],
+            Type::PROCESSINGORDER => ['processingorder', Segment::PROCESSINGORDER, ProcessingOrderSegment::class],
 
             Type::CUSTOMERORDER => ['customerorder', Segment::CUSTOMERORDER, CustomerOrderSegment::class],
         ];

@@ -104,6 +104,7 @@ class MetaBuilderTest extends TestCase
             Type::PAYMENTIN => ['paymentin', [self::GUID1], '/entity/paymentin/' . self::GUID1, 'paymentin'],
             Type::COMMISSIONREPORTOUT => ['commissionreportout', [self::GUID1], '/entity/commissionreportout/' . self::GUID1, 'commissionreportout'],
             Type::RETAILDRAWERCASHOUT => ['retaildrawercashout', [self::GUID1], '/entity/retaildrawercashout/' . self::GUID1, 'retaildrawercashout'],
+            Type::PROCESSINGORDER => ['processingorder', [self::GUID1], '/entity/processingorder/' . self::GUID1, 'processingorder'],
 
             Type::CUSTOMERORDER => ['customerorder', [self::GUID1], '/entity/customerorder/' . self::GUID1, 'customerorder'],
         ];

@@ -13,6 +13,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
@@ -75,6 +76,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
@@ -202,6 +204,7 @@ class RecordMapping
         Type::PAYMENTIN => PaymentIn::class,
         Type::COMMISSIONREPORTOUT => CommissionReportOut::class,
         Type::RETAILDRAWERCASHOUT => RetailDrawerCashOut::class,
+        Type::PROCESSINGORDER => ProcessingOrder::class,
 
         Type::CUSTOMERORDER => CustomerOrder::class,
     ];
@@ -265,6 +268,7 @@ class RecordMapping
         Type::PAYMENTIN => PaymentInCollection::class,
         Type::COMMISSIONREPORTOUT => CommissionReportOutCollection::class,
         Type::RETAILDRAWERCASHOUT => RetailDrawerCashOutCollection::class,
+        Type::PROCESSINGORDER => ProcessingOrderCollection::class,
 
         Type::CUSTOMERORDER => CustomerOrderCollection::class,
     ];

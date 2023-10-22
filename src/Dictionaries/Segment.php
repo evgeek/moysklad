@@ -88,4 +88,5 @@ class Segment
     public const PAYMENTIN = 'paymentin';
     public const COMMISSIONREPORTOUT = 'commissionreportout';
     public const RETAILDRAWERCASHOUT = 'retaildrawercashout';
+    public const PROCESSINGORDER = 'processingorder';
 }

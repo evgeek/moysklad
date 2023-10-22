@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
@@ -779,6 +780,18 @@ class ObjectBuilder extends AbstractBuilder
     public function retaildrawercashout(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::RETAILDRAWERCASHOUT, $content);
+    }
+
+    /**
+     * Заказ на производство.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-na-proizwodstwo
+     *
+     * @return ProcessingOrder
+     */
+    public function processingorder(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PROCESSINGORDER, $content);
     }
 
 

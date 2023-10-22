@@ -598,6 +598,16 @@ class MetaBuilder
         return Meta::retaildrawercashout($guid, $this->formatter);
     }
 
+    /**
+     * Метаданные Заказа на производство.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-na-proizwodstwo
+     */
+    public function processingorder(string $guid)
+    {
+        return Meta::processingorder($guid, $this->formatter);
+    }
+
 
 
 

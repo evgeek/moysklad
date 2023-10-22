@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
@@ -776,6 +777,18 @@ class CollectionBuilder extends AbstractBuilder
     public function retaildrawercashout(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::RETAILDRAWERCASHOUT);
+    }
+
+    /**
+     * Коллекция Заказов на производство.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-na-proizwodstwo
+     *
+     * @return ProcessingOrderCollection
+     */
+    public function processingorder(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::PROCESSINGORDER);
     }
 
 

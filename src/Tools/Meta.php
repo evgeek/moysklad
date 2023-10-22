@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
@@ -645,6 +646,16 @@ class Meta
     public static function retaildrawercashout(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...RetailDrawerCashOut::PATH, $guid], RetailDrawerCashOut::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Заказа на производство.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-na-proizwodstwo
+     */
+    public static function processingorder(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...ProcessingOrder::PATH, $guid], ProcessingOrder::TYPE, $formatter);
     }
 
 
