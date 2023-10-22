@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
@@ -701,6 +702,18 @@ class ObjectBuilder extends AbstractBuilder
     public function internalorder(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::INTERNALORDER, $content);
+    }
+
+    /**
+     * Возврат покупателя.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-pokupatelq
+     *
+     * @return SalesReturn
+     */
+    public function salesreturn(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::SALESRETURN, $content);
     }
 
 

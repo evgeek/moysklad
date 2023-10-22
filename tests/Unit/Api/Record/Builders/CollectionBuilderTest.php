@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
@@ -178,6 +179,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
 
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', RetailDrawerCashInCollection::class],
             Type::INTERNALORDER => ['internalorder', InternalOrderCollection::class],
+            Type::SALESRETURN => ['salesreturn', SalesReturnCollection::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderCollection::class],
         ];

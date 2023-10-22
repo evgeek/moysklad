@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
@@ -699,6 +700,23 @@ class CollectionBuilder extends AbstractBuilder
     {
         return $this->resolveCollection(Type::INTERNALORDER);
     }
+
+    /**
+     * Коллекция Возвратов покупателя.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-pokupatelq
+     *
+     * @return SalesReturnCollection
+     */
+    public function salesreturn(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::SALESRETURN);
+    }
+
+
+
+
+
 
 
 

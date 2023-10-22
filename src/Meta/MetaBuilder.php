@@ -538,6 +538,16 @@ class MetaBuilder
         return Meta::internalorder($guid, $this->formatter);
     }
 
+    /**
+     * Метаданные Возвратов покупателя.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-pokupatelq
+     */
+    public function salesreturn(string $guid)
+    {
+        return Meta::salesreturn($guid, $this->formatter);
+    }
+
 
 
 

@@ -7,6 +7,7 @@ namespace Evgeek\Tests\Unit\Api\Record\Objects;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
@@ -49,6 +50,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Assortment;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
@@ -145,6 +147,7 @@ class AbstractConcreteObjectTest extends KnownObjectTestCase
 
             Type::RETAILDRAWERCASHIN => [RetailDrawerCashIn::class, RetailDrawerCashInCollection::class],
             Type::INTERNALORDER => [InternalOrder::class, InternalOrderCollection::class],
+            Type::SALESRETURN => [SalesReturn::class, SalesReturnCollection::class],
 
             Type::CUSTOMERORDER => [CustomerOrder::class, CustomerOrderCollection::class],
         ];

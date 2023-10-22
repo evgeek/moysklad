@@ -82,4 +82,5 @@ class Segment
 
     public const RETAILDRAWERCASHIN = 'retaildrawercashin';
     public const INTERNALORDER = 'internalorder';
+    public const SALESRETURN = 'salesreturn';
 }

@@ -6,6 +6,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SalesReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AccumulationDiscountSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AssortmentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\BonusProgramSegment;
@@ -117,6 +118,7 @@ class EntitySegmentTest extends SegmentTestCase
 
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', RetailDrawerCashInSegment::class],
             Type::INTERNALORDER => ['internalorder', InternalOrderSegment::class],
+            Type::SALESRETURN => ['salesreturn', SalesReturnSegment::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderSegment::class],
         ];
