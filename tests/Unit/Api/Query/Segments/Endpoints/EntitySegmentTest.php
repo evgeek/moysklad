@@ -65,6 +65,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ImagesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\MaterialsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\NamedFilterSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ProductsSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ReturnToCommissionerPositionsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StagesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StatesSegment;
 use Evgeek\Moysklad\Dictionaries\Segment;
@@ -146,6 +147,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::ENTER => ['enter', Segment::ENTER, EnterSegment::class],
             Type::DEMAND => ['demand', Segment::DEMAND, DemandSegment::class],
             Type::MOVE => ['move', Segment::MOVE, MoveSegment::class],
+//            Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerpositions', ReturnToCommissionerPositionsSegment::class, ['commissionreportin', 'ea05e0c9-8667-11e7-8a7f-40d000000060', 'positions', '161d25a8-1477-11ec-ac18-000b00000002']],
         ];
     }
 }

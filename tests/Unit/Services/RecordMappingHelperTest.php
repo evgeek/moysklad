@@ -67,6 +67,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ReturnToCommissionerPositionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
@@ -137,6 +138,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ReturnToCommissionerPosition;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\TrackingCode;
 use Evgeek\Moysklad\Api\Record\Objects\ObjectInterface;
@@ -328,6 +330,7 @@ class RecordMappingHelperTest extends TestCase
             Type::ENTER => [Type::ENTER, Enter::class, EnterCollection::class],
             Type::DEMAND => [Type::DEMAND, Demand::class, DemandCollection::class],
             Type::MOVE => [Type::MOVE, Move::class, MoveCollection::class],
+            Type::RETURNTOCOMMISSIONERPOSITION => [Type::RETURNTOCOMMISSIONERPOSITION, ReturnToCommissionerPosition::class, ReturnToCommissionerPositionCollection::class, Product::class],
         ];
     }
 

@@ -96,4 +96,5 @@ class Segment
     public const ENTER = 'enter';
     public const DEMAND = 'demand';
     public const MOVE = 'move';
+    public const RETURNTOCOMMISSIONERPOSITIONS = 'returntocommissionerpositions';
 }

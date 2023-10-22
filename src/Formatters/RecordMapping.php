@@ -73,6 +73,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ReturnToCommissionerPositionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
@@ -146,6 +147,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ReturnToCommissionerPosition;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\TrackingCode;
 use Evgeek\Moysklad\Api\Record\Objects\ObjectInterface;
@@ -226,6 +228,7 @@ class RecordMapping
         Type::ENTER => Enter::class,
         Type::DEMAND => Demand::class,
         Type::MOVE => Move::class,
+        Type::RETURNTOCOMMISSIONERPOSITION => ReturnToCommissionerPosition::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Type::ASSORTMENT => AssortmentCollection::class,
@@ -295,6 +298,7 @@ class RecordMapping
         Type::ENTER => EnterCollection::class,
         Type::DEMAND => DemandCollection::class,
         Type::MOVE => MoveCollection::class,
+        Type::RETURNTOCOMMISSIONERPOSITION => ReturnToCommissionerPositionCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;

@@ -70,6 +70,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ReturnToCommissionerPositionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
@@ -206,6 +207,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::ENTER => ['enter', EnterCollection::class],
             Type::DEMAND => ['demand', DemandCollection::class],
             Type::MOVE => ['move', MoveCollection::class],
+            Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerposition', ReturnToCommissionerPositionCollection::class, true],
         ];
     }
 }

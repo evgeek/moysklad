@@ -185,6 +185,7 @@ class MetaTest extends TestCase
             Type::ENTER => ['enter', 'entity/enter', 'enter'],
             Type::DEMAND => ['demand', 'entity/demand', 'demand'],
             Type::MOVE => ['move', 'entity/move', 'move'],
+//            Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerposition', 'entity/commissionreportin/' . self::GUID1 . '/returntocommissionerpositions/' . self::GUID2, 'returntocommissionerposition', true, $parentProduct],
         ];
     }
 

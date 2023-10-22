@@ -112,6 +112,7 @@ class MetaBuilderTest extends TestCase
             Type::ENTER => ['enter', [self::GUID1], '/entity/enter/' . self::GUID1, 'enter'],
             Type::DEMAND => ['demand', [self::GUID1], '/entity/demand/' . self::GUID1, 'demand'],
             Type::MOVE => ['move', [self::GUID1], '/entity/move/' . self::GUID1, 'move'],
+//            Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerposition', [$parentProduct, self::GUID2], '/entity/commissionreportin/' . self::GUID1 . '/returntocommissionerpositions/' . self::GUID2, 'returntocommissionerposition'],
         ];
     }
 }

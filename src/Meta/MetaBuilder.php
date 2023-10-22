@@ -687,4 +687,14 @@ class MetaBuilder
     {
         return Meta::move($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Позиции возврата на склад комиссионера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera-pozicii-wozwrata-na-sklad-komissionera
+     */
+    public function returntocommissionerposition(ObjectInterface|array|string $parent, string $guid)
+    {
+        return Meta::returntocommissionerposition($parent, $guid, $this->formatter);
+    }
 }

@@ -71,7 +71,9 @@ use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ReturnToCommissionerPosition;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\TrackingCode;
 use Evgeek\Moysklad\Api\Record\Objects\UnknownObject;
 use Evgeek\Moysklad\Dictionaries\Type;
 use Evgeek\Moysklad\Formatters\RecordFormat;
@@ -206,6 +208,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::ENTER => ['enter', Enter::class],
             Type::DEMAND => ['demand', Demand::class],
             Type::MOVE => ['move', Move::class],
+            Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerposition', ReturnToCommissionerPosition::class, true],
         ];
     }
 }

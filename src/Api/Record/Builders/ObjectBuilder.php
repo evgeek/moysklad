@@ -72,6 +72,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ReturnToCommissionerPosition;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
 use Evgeek\Moysklad\Api\Record\Objects\ObjectInterface;
 use Evgeek\Moysklad\Api\Record\Objects\UnknownObject;
@@ -895,5 +896,17 @@ class ObjectBuilder extends AbstractBuilder
     public function move(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::MOVE, $content);
+    }
+
+    /**
+     * Позиция возврата на склад комиссионера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera-pozicii-wozwrata-na-sklad-komissionera
+     *
+     * @return ReturnToCommissionerPosition
+     */
+    public function returntocommissionerposition(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::RETURNTOCOMMISSIONERPOSITION, $parent, $content);
     }
 }

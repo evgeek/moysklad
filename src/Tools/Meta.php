@@ -69,6 +69,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ReturnToCommissionerPosition;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
 use Evgeek\Moysklad\Api\Record\Objects\ObjectInterface;
 use Evgeek\Moysklad\Dictionaries\Segment;
@@ -743,6 +744,16 @@ class Meta
     public static function move(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...Move::PATH, $guid], Move::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Позиции возврата на склад комиссионера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera-pozicii-wozwrata-na-sklad-komissionera
+     */
+    public static function returntocommissionerposition(ObjectInterface|array|string $parent, string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::createNested($parent, [...ReturnToCommissionerPosition::PATH, $guid], ReturnToCommissionerPosition::TYPE, $formatter);
     }
 
 

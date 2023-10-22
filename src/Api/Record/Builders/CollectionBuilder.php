@@ -71,6 +71,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ReturnToCommissionerPositionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
@@ -892,5 +893,17 @@ class CollectionBuilder extends AbstractBuilder
     public function move(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::MOVE);
+    }
+
+    /**
+     * Коллекция Позиций возврата на склад комиссионера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera-pozicii-wozwrata-na-sklad-komissionera
+     *
+     * @return ReturnToCommissionerPositionCollection
+     */
+    public function returntocommissionerposition(ObjectInterface|array|string $parent): AbstractNestedCollection
+    {
+        return $this->resolveNestedCollection(Type::RETURNTOCOMMISSIONERPOSITION, $parent);
     }
 }
