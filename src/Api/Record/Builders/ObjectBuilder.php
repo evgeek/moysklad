@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
@@ -88,7 +89,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Бонусная операция.
+     * Бонусная операция
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-bonusnaq-operaciq
      *
@@ -100,7 +101,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Бонусная программа.
+     * Бонусная программа
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-bonusnaq-programma
      *
@@ -112,7 +113,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Валюта.
+     * Валюта
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-valuta
      *
@@ -124,7 +125,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Вебхук.
+     * Вебхук
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-vebhuki
      *
@@ -136,7 +137,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Вебхук на изменение остатков.
+     * Вебхук на изменение остатков
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-vebhuk-na-izmenenie-ostatkow
      *
@@ -148,7 +149,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Группа товаров.
+     * Группа товаров
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-gruppa-towarow
      *
@@ -160,7 +161,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Договор.
+     * Договор
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-dogowor
      *
@@ -172,7 +173,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Единица измерения.
+     * Единица измерения
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-edinica-izmereniq
      *
@@ -184,7 +185,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Задача.
+     * Задача
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-zadacha
      *
@@ -196,7 +197,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Изображение.
+     * Изображение
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-izobrazhenie
      *
@@ -208,7 +209,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Канал продаж.
+     * Канал продаж
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kanal-prodazh
      *
@@ -220,7 +221,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Кассир.
+     * Кассир
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kassir
      *
@@ -232,7 +233,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Комплект.
+     * Комплект
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-komplekt
      *
@@ -244,7 +245,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Контрагент.
+     * Контрагент
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kontragent
      *
@@ -256,7 +257,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Модификация.
+     * Модификация
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-modifikaciq
      *
@@ -268,7 +269,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Настройки компании.
+     * Настройки компании
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-nastrojki-kompanii
      *
@@ -280,7 +281,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Настройки пользователя.
+     * Настройки пользователя
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-nastrojki-pol-zowatelq
      *
@@ -292,7 +293,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Отдел.
+     * Отдел
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-otdel
      *
@@ -304,7 +305,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Подписка компании.
+     * Подписка компании
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-podpiska-kompanii
      *
@@ -316,7 +317,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Пользовательская роль.
+     * Пользовательская роль
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-pol-zowatel-skie-roli
      *
@@ -328,7 +329,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Пользовательский справочник.
+     * Пользовательский справочник
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-pol-zowatel-skij-sprawochnik
      *
@@ -340,7 +341,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Проект.
+     * Проект
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-proekt
      *
@@ -352,7 +353,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Регион.
+     * Регион
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-region
      *
@@ -364,7 +365,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Серия.
+     * Серия
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-seriq
      *
@@ -376,7 +377,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Накопительная скидка.
+     * Накопительная скидка
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
      *
@@ -388,7 +389,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Персональная скидка.
+     * Персональная скидка
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
      *
@@ -400,7 +401,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Специальная цена.
+     * Специальная цена
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
      *
@@ -412,7 +413,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Склад.
+     * Склад
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sklad
      *
@@ -424,7 +425,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Сотрудник.
+     * Сотрудник
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sotrudnik
      *
@@ -436,7 +437,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Сохраненный фильтр.
+     * Сохраненный фильтр
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sohranennye-fil-try
      *
@@ -448,7 +449,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Ставка НДС.
+     * Ставка НДС
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-stawka-nds
      *
@@ -460,7 +461,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Статусы документов.
+     * Статусы документов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-statusy-dokumentow
      *
@@ -472,7 +473,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Статья расходов.
+     * Статья расходов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-stat-q-rashodow
      *
@@ -484,7 +485,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Страна.
+     * Страна
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-strana
      *
@@ -496,7 +497,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Техкарта.
+     * Техкарта
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta
      *
@@ -508,7 +509,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Этап Техкарты.
+     * Этап Техкарты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta-jetapy-tehkarty
      *
@@ -520,7 +521,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Материал Техкарты.
+     * Материал Техкарты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta-material-tehkarty
      *
@@ -532,7 +533,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Продукт Техкарты.
+     * Продукт Техкарты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta-produkty-tehkarty
      *
@@ -544,7 +545,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Техпроцесс.
+     * Техпроцесс
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehprocess
      *
@@ -556,7 +557,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Тип цен.
+     * Тип цен
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tipy-cen
      *
@@ -568,7 +569,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Товар.
+     * Товар
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
      *
@@ -580,7 +581,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Точка продаж.
+     * Точка продаж
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tochka-prodazh
      *
@@ -592,7 +593,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Услуга.
+     * Услуга
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-usluga
      *
@@ -604,7 +605,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Файл.
+     * Файл
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-fajly
      *
@@ -616,7 +617,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Характеристика модификации.
+     * Характеристика модификации
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-harakteristiki-modifikacij
      *
@@ -628,7 +629,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Стандартный шаблон.
+     * Стандартный шаблон
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-standartnyh-shablonow
      *
@@ -640,7 +641,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Пользовательский шаблон.
+     * Пользовательский шаблон
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-pol-zowatel-skih-shablonow
      *
@@ -652,7 +653,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Юрлицо.
+     * Юрлицо
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico
      *
@@ -664,7 +665,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Счёт юрлица.
+     * Счёт юрлица
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico-scheta-urlica
      *
@@ -676,7 +677,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Этап производства.
+     * Этап производства
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jetap-proizwodstwa
      *
@@ -688,7 +689,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Внесение денег.
+     * Внесение денег
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnesenie-deneg
      *
@@ -700,7 +701,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Внутренний заказ.
+     * Внутренний заказ
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnutrennij-zakaz
      *
@@ -712,7 +713,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Возврат покупателя.
+     * Возврат покупателя
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-pokupatelq
      *
@@ -724,7 +725,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Возврат поставщику.
+     * Возврат поставщику
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-postawschiku
      *
@@ -736,7 +737,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Возврат предоплаты.
+     * Возврат предоплаты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-predoplaty
      *
@@ -748,7 +749,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Входящий платеж.
+     * Входящий платеж
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vhodqschij-platezh
      *
@@ -760,7 +761,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Выданный отчет комиссионера.
+     * Выданный отчет комиссионера
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vydannyj-otchet-komissionera
      *
@@ -772,7 +773,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Выплата денег.
+     * Выплата денег
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vyplata-deneg
      *
@@ -784,7 +785,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Заказ на производство.
+     * Заказ на производство
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-na-proizwodstwo
      *
@@ -796,7 +797,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Заказ покупателя.
+     * Заказ покупателя
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
      *
@@ -808,7 +809,7 @@ class ObjectBuilder extends AbstractBuilder
     }
 
     /**
-     * Заказ поставщику.
+     * Заказ поставщику
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-postawschiku
      *
@@ -817,5 +818,17 @@ class ObjectBuilder extends AbstractBuilder
     public function purchaseorder(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::PURCHASEORDER, $content);
+    }
+
+    /**
+     * Инвентаризация
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-inwentarizaciq
+     *
+     * @return Inventory
+     */
+    public function inventory(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::INVENTORY, $content);
     }
 }

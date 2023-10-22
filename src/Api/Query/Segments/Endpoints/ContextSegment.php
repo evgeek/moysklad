@@ -14,7 +14,7 @@ class ContextSegment extends AbstractNamedSegment
     protected const SEGMENT = Segment::CONTEXT;
 
     /**
-     * Настройки компании.
+     * Настройки компании
      *
      * <code>
      * $companySettings = $ms->query()
@@ -31,7 +31,7 @@ class ContextSegment extends AbstractNamedSegment
     }
 
     /**
-     * Настройки пользователя.
+     * Настройки пользователя
      *
      * <code>
      * $userSettings = $ms->query()

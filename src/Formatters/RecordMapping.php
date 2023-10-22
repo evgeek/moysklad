@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Record\Collections\CollectionInterface;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
@@ -75,6 +76,7 @@ use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
@@ -208,6 +210,7 @@ class RecordMapping
         Type::PROCESSINGORDER => ProcessingOrder::class,
         Type::CUSTOMERORDER => CustomerOrder::class,
         Type::PURCHASEORDER => PurchaseOrder::class,
+        Type::INVENTORY => Inventory::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Type::ASSORTMENT => AssortmentCollection::class,
@@ -271,6 +274,7 @@ class RecordMapping
         Type::PROCESSINGORDER => ProcessingOrderCollection::class,
         Type::CUSTOMERORDER => CustomerOrderCollection::class,
         Type::PURCHASEORDER => PurchaseOrderCollection::class,
+        Type::INVENTORY => InventoryCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;

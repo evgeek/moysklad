@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InventorySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingOrderSegment;
@@ -62,7 +63,7 @@ class EntitySegment extends AbstractNamedSegment
     protected const SEGMENT = Segment::ENTITY;
 
     /**
-     * Ассортимент.
+     * Ассортимент
      *
      * <code>
      * $assortments = $ms->query()
@@ -79,7 +80,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Бонусная операция.
+     * Бонусная операция
      *
      * <code>
      * $bonusTransactions = $ms->query()
@@ -96,7 +97,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Бонусная программа.
+     * Бонусная программа
      *
      * <code>
      * $bonusPrograms = $ms->query()
@@ -113,7 +114,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Валюта.
+     * Валюта
      *
      * <code>
      * $currencies = $ms->query()
@@ -130,7 +131,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Вебхуки.
+     * Вебхуки
      *
      * <code>
      * $webhooks = $ms->query()
@@ -147,7 +148,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Вебхук на изменение остатков.
+     * Вебхук на изменение остатков
      *
      * <code>
      * $webhookStocks = $ms->query()
@@ -164,7 +165,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Группа товаров.
+     * Группа товаров
      *
      * <code>
      * $productFolders = $ms->query()
@@ -181,7 +182,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Договор.
+     * Договор
      *
      * <code>
      * $contracts = $ms->query()
@@ -198,7 +199,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Единица измерения.
+     * Единица измерения
      *
      * <code>
      * $uoms = $ms->query()
@@ -215,7 +216,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Задача.
+     * Задача
      *
      * <code>
      * $tasks = $ms->query()
@@ -232,7 +233,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Канал продаж.
+     * Канал продаж
      *
      * <code>
      * $salesChannels = $ms->query()
@@ -249,7 +250,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Комплект.
+     * Комплект
      *
      * <code>
      * $bundles = $ms->query()
@@ -266,7 +267,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Контрагент.
+     * Контрагент
      *
      * <code>
      * $counterparties = $ms->query()
@@ -283,7 +284,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Модификация.
+     * Модификация
      *
      * <code>
      * $variants = $ms->query()
@@ -300,7 +301,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Отдел.
+     * Отдел
      *
      * <code>
      * $groups = $ms->query()
@@ -317,7 +318,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Пользовательские роли.
+     * Пользовательские роли
      *
      * <code>
      * $roles = $ms->query()
@@ -334,7 +335,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Пользовательский справочник.
+     * Пользовательский справочник
      *
      * <code>
      * $customEntities = $ms->query()
@@ -351,7 +352,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Проект.
+     * Проект
      *
      * <code>
      * $projects = $ms->query()
@@ -368,7 +369,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Регион.
+     * Регион
      *
      * <code>
      * $regions = $ms->query()
@@ -385,7 +386,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Серия.
+     * Серия
      *
      * <code>
      * $consignments = $ms->query()
@@ -402,7 +403,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Скидки.
+     * Скидки
      *
      * <code>
      * $discounts = $ms->query()
@@ -419,7 +420,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Накопительные скидки.
+     * Накопительные скидки
      *
      * <code>
      * $accumulationDiscounts = $ms->query()
@@ -436,7 +437,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Персональные скидки.
+     * Персональные скидки
      *
      * <code>
      * $personalDiscounts = $ms->query()
@@ -453,7 +454,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Специальные цены.
+     * Специальные цены
      *
      * <code>
      * $specialPriceDiscounts = $ms->query()
@@ -470,7 +471,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Склад.
+     * Склад
      *
      * <code>
      * $stores = $ms->query()
@@ -487,7 +488,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Сотрудник.
+     * Сотрудник
      *
      * <code>
      * $employees = $ms->query()
@@ -504,7 +505,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Ставка НДС.
+     * Ставка НДС
      *
      * <code>
      * $taxRates = $ms->query()
@@ -521,7 +522,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Статья расходов.
+     * Статья расходов
      *
      * <code>
      * $expenseItems = $ms->query()
@@ -538,7 +539,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Страна.
+     * Страна
      *
      * <code>
      * $countries = $ms->query()
@@ -555,7 +556,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Техкарта.
+     * Техкарта
      *
      * <code>
      * $processingPlans = $ms->query()
@@ -572,7 +573,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Техпроцесс.
+     * Техпроцесс
      *
      * <code>
      * $processingProcesses = $ms->query()
@@ -589,7 +590,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Товар.
+     * Товар
      *
      * <code>
      * $products = $ms->query()
@@ -606,7 +607,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Точка продаж.
+     * Точка продаж
      *
      * <code>
      * $retailStores = $ms->query()
@@ -623,7 +624,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Услуга.
+     * Услуга
      *
      * <code>
      * $services = $ms->query()
@@ -640,7 +641,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Юрлицо.
+     * Юрлицо
      *
      * <code>
      * $organizations = $ms->query()
@@ -657,7 +658,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Этап производства.
+     * Этап производства
      *
      * <code>
      * $processingStages = $ms->query()
@@ -674,7 +675,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Внесение денег.
+     * Внесение денег
      *
      * <code>
      * $retailDrawerCashIns = $ms->query()
@@ -691,7 +692,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Внутренний заказ.
+     * Внутренний заказ
      *
      * <code>
      * $internalOrders = $ms->query()
@@ -708,7 +709,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Возврат покупателя.
+     * Возврат покупателя
      *
      * <code>
      * $salesReturns = $ms->query()
@@ -725,7 +726,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Возврат поставщику.
+     * Возврат поставщику
      *
      * <code>
      * $purchaseReturns = $ms->query()
@@ -742,7 +743,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Возврат предоплаты.
+     * Возврат предоплаты
      *
      * <code>
      * $prepaymentReturns = $ms->query()
@@ -759,7 +760,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Входящий платеж.
+     * Входящий платеж
      *
      * <code>
      * $paymentIn = $ms->query()
@@ -776,7 +777,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Выданный отчет комиссионера.
+     * Выданный отчет комиссионера
      *
      * <code>
      * $commissionReportOuts = $ms->query()
@@ -793,7 +794,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Выплата денег.
+     * Выплата денег
      *
      * <code>
      * $retailDrawerCashOuts = $ms->query()
@@ -810,7 +811,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Заказ на производство.
+     * Заказ на производство
      *
      * <code>
      * $processingOrders = $ms->query()
@@ -827,7 +828,7 @@ class EntitySegment extends AbstractNamedSegment
     }
 
     /**
-     * Заказ покупателя.
+     * Заказ покупателя
      *
      * <code>
      * $customerOrders = $ms->query()
@@ -858,5 +859,22 @@ class EntitySegment extends AbstractNamedSegment
     public function purchaseorder(): PurchaseOrderSegment
     {
         return $this->resolveNamedBuilder(PurchaseOrderSegment::class);
+    }
+
+    /**
+     * Инвентаризация
+     *
+     * <code>
+     * $inventories = $ms->query()
+     *  ->entity()
+     *  ->inventory()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-inwentarizaciq
+     */
+    public function inventory(): InventorySegment
+    {
+        return $this->resolveNamedBuilder(InventorySegment::class);
     }
 }

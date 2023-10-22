@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
@@ -86,7 +87,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Ассортиментов (Товары, Услуги, Комплекты, Серии и Модификаци).
+     * Коллекция Ассортиментов (Товары, Услуги, Комплекты, Серии и Модификаци)
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-assortiment
      *
@@ -98,7 +99,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Бонусных операций.
+     * Коллекция Бонусных операций
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-bonusnaq-operaciq
      *
@@ -110,7 +111,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Бонусных программм.
+     * Коллекция Бонусных программм
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-bonusnaq-programma
      *
@@ -122,7 +123,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Валют.
+     * Коллекция Валют
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-valuta
      *
@@ -134,7 +135,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Вебхуков.
+     * Коллекция Вебхуков
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-vebhuki
      *
@@ -146,7 +147,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Вебхуков на изменение остатков.
+     * Коллекция Вебхуков на изменение остатков
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-vebhuk-na-izmenenie-ostatkow
      *
@@ -158,7 +159,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Групп товаров.
+     * Коллекция Групп товаров
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-gruppa-towarow
      *
@@ -170,7 +171,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Договоров.
+     * Коллекция Договоров
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-dogowor
      *
@@ -182,7 +183,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Единиц измерения.
+     * Коллекция Единиц измерения
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-edinica-izmereniq
      *
@@ -194,7 +195,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Задач.
+     * Коллекция Задач
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-zadacha
      *
@@ -206,7 +207,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Изображений.
+     * Коллекция Изображений
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-izobrazhenie
      *
@@ -218,7 +219,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Каналов продаж.
+     * Коллекция Каналов продаж
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kanal-prodazh
      *
@@ -230,7 +231,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Кассиров.
+     * Коллекция Кассиров
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kassir
      *
@@ -242,7 +243,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Кодов маркировки.
+     * Коллекция Кодов маркировки
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kody-markirowki
      *
@@ -254,7 +255,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Комплектов.
+     * Коллекция Комплектов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-komplekt
      *
@@ -266,7 +267,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Контрагентов.
+     * Коллекция Контрагентов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kontragent
      *
@@ -278,7 +279,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Модификаций.
+     * Коллекция Модификаций
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-modifikaciq
      *
@@ -290,7 +291,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Отделов.
+     * Коллекция Отделов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-otdel
      *
@@ -302,7 +303,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Пользовательских ролей.
+     * Коллекция Пользовательских ролей
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-pol-zowatel-skie-roli
      *
@@ -314,7 +315,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Пользовательских справочников.
+     * Коллекция Пользовательских справочников
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-pol-zowatel-skij-sprawochnik
      *
@@ -326,7 +327,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Проектов.
+     * Коллекция Проектов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-proekt
      *
@@ -338,7 +339,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Регионов.
+     * Коллекция Регионов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-region
      *
@@ -350,7 +351,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Серий.
+     * Коллекция Серий
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-seriq
      *
@@ -362,7 +363,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Скидкок.
+     * Коллекция Скидкок
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
      *
@@ -374,7 +375,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Накопительных скидок.
+     * Коллекция Накопительных скидок
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
      *
@@ -386,7 +387,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Персональных скидок.
+     * Коллекция Персональных скидок
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
      *
@@ -398,7 +399,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Специальных цен.
+     * Коллекция Специальных цен
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
      *
@@ -410,7 +411,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Складов.
+     * Коллекция Складов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sklad
      *
@@ -422,7 +423,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Сотрудников.
+     * Коллекция Сотрудников
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sotrudnik
      *
@@ -434,7 +435,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Сохраненных фильтров.
+     * Коллекция Сохраненных фильтров
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sohranennye-fil-try
      *
@@ -446,7 +447,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Ставок НДС.
+     * Коллекция Ставок НДС
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-stawka-nds
      *
@@ -458,7 +459,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Статусов документов.
+     * Коллекция Статусов документов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-statusy-dokumentow
      *
@@ -470,7 +471,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Статей расходов.
+     * Коллекция Статей расходов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-stat-q-rashodow
      *
@@ -482,7 +483,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Стран.
+     * Коллекция Стран
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-strana
      *
@@ -494,7 +495,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Техкарт.
+     * Коллекция Техкарт
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta
      *
@@ -506,7 +507,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Этапов Техкарты.
+     * Коллекция Этапов Техкарты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta-jetapy-tehkarty
      *
@@ -518,7 +519,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Материалов Техкарты.
+     * Коллекция Материалов Техкарты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta-material-tehkarty
      *
@@ -530,7 +531,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Продуктов Техкарты.
+     * Коллекция Продуктов Техкарты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta-produkty-tehkarty
      *
@@ -542,7 +543,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Техпроцессов.
+     * Коллекция Техпроцессов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehprocess
      *
@@ -554,7 +555,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Типов цен.
+     * Коллекция Типов цен
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tipy-cen
      *
@@ -566,7 +567,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Товаров.
+     * Коллекция Товаров
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
      *
@@ -577,7 +578,7 @@ class CollectionBuilder extends AbstractBuilder
         return $this->resolveCollection(Type::PRODUCT);
     }
     /**
-     * Коллекция Точек продаж.
+     * Коллекция Точек продаж
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tochka-prodazh
      *
@@ -589,7 +590,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Услуг.
+     * Коллекция Услуг
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-usluga
      *
@@ -601,7 +602,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Файлов.
+     * Коллекция Файлов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-fajly
      *
@@ -613,7 +614,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Характеристик модификации.
+     * Коллекция Характеристик модификации
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-harakteristiki-modifikacij
      *
@@ -625,7 +626,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Стандартных шаблонов.
+     * Коллекция Стандартных шаблонов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-standartnyh-shablonow
      *
@@ -637,7 +638,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Пользовательских шаблонов.
+     * Коллекция Пользовательских шаблонов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-pol-zowatel-skih-shablonow
      *
@@ -649,7 +650,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Юрлиц.
+     * Коллекция Юрлиц
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico
      *
@@ -673,7 +674,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Этапов производства.
+     * Коллекция Этапов производства
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jetap-proizwodstwa
      *
@@ -685,7 +686,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Внесений денег.
+     * Коллекция Внесений денег
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnesenie-deneg
      *
@@ -697,7 +698,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Внутренних заказов.
+     * Коллекция Внутренних заказов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnutrennij-zakaz
      *
@@ -709,7 +710,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Возвратов покупателя.
+     * Коллекция Возвратов покупателя
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-pokupatelq
      *
@@ -721,7 +722,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Возвратов поставщику.
+     * Коллекция Возвратов поставщику
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-postawschiku
      *
@@ -733,7 +734,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Возвратов предоплаты.
+     * Коллекция Возвратов предоплаты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-predoplaty
      *
@@ -745,7 +746,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Входящих платежей.
+     * Коллекция Входящих платежей
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vhodqschij-platezh
      *
@@ -757,7 +758,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Выданных отчетов комиссионера.
+     * Коллекция Выданных отчетов комиссионера
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vydannyj-otchet-komissionera
      *
@@ -769,7 +770,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Выплат денег.
+     * Коллекция Выплат денег
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vyplata-deneg
      *
@@ -781,7 +782,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Заказов на производство.
+     * Коллекция Заказов на производство
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-na-proizwodstwo
      *
@@ -793,7 +794,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Заказов покупателя.
+     * Коллекция Заказов покупателя
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
      *
@@ -805,7 +806,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Заказов поставщику.
+     * Коллекция Заказов поставщику
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-postawschiku
      *
@@ -814,5 +815,17 @@ class CollectionBuilder extends AbstractBuilder
     public function purchaseorder(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::PURCHASEORDER);
+    }
+
+    /**
+     * Коллекция Инвентаризаций
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-inwentarizaciq
+     *
+     * @return InventoryCollection
+     */
+    public function inventory(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::INVENTORY);
     }
 }

@@ -13,7 +13,7 @@ class AccountSettingsSegment extends AbstractNamedSegment
     protected const SEGMENT = Segment::ACCOUNTSETTINGS;
 
     /**
-     * Подписка компании.
+     * Подписка компании
      *
      * <code>
      * $subscription = $ms->query()

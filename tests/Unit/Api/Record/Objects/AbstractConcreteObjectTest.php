@@ -7,6 +7,7 @@ namespace Evgeek\Tests\Unit\Api\Record\Objects;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
@@ -57,6 +58,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
@@ -169,6 +171,7 @@ class AbstractConcreteObjectTest extends KnownObjectTestCase
             Type::PROCESSINGORDER => [ProcessingOrder::class, ProcessingOrderCollection::class],
             Type::CUSTOMERORDER => [CustomerOrder::class, CustomerOrderCollection::class],
             Type::PURCHASEORDER => [PurchaseOrder::class, PurchaseOrderCollection::class],
+            Type::INVENTORY => [Inventory::class, InventoryCollection::class],
         ];
     }
 }

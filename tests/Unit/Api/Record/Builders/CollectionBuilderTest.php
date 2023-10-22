@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
@@ -194,6 +195,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::PROCESSINGORDER => ['processingorder', ProcessingOrderCollection::class],
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderCollection::class],
             Type::PURCHASEORDER => ['purchaseorder', PurchaseOrderCollection::class],
+            Type::INVENTORY => ['inventory', InventoryCollection::class],
         ];
     }
 }

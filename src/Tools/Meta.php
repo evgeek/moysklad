@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Tools;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
@@ -80,7 +81,7 @@ class Meta
     private static ?JsonFormatterInterface $formatter = null;
 
     /**
-     * Метаданные Бонусной операции.
+     * Метаданные Бонусной операции
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-bonusnaq-operaciq
      */
@@ -90,7 +91,7 @@ class Meta
     }
 
     /**
-     * Метаданные Бонусной программы.
+     * Метаданные Бонусной программы
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-bonusnaq-programma
      */
@@ -100,7 +101,7 @@ class Meta
     }
 
     /**
-     * Метаданные Валюты.
+     * Метаданные Валюты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-valuta
      */
@@ -110,7 +111,7 @@ class Meta
     }
 
     /**
-     * Метаданные Вебхука.
+     * Метаданные Вебхука
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-vebhuki
      */
@@ -120,7 +121,7 @@ class Meta
     }
 
     /**
-     * Метаданные Вебхука на изменение остатков.
+     * Метаданные Вебхука на изменение остатков
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-vebhuk-na-izmenenie-ostatkow
      */
@@ -130,7 +131,7 @@ class Meta
     }
 
     /**
-     * Метаданные Группы товаров.
+     * Метаданные Группы товаров
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-gruppa-towarow
      */
@@ -140,7 +141,7 @@ class Meta
     }
 
     /**
-     * Метаданные Договора.
+     * Метаданные Договора
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-dogowor
      */
@@ -150,7 +151,7 @@ class Meta
     }
 
     /**
-     * Метаданные Единицы измерения.
+     * Метаданные Единицы измерения
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-edinica-izmereniq
      */
@@ -160,7 +161,7 @@ class Meta
     }
 
     /**
-     * Метаданные Изображения.
+     * Метаданные Изображения
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-izobrazhenie
      */
@@ -170,7 +171,7 @@ class Meta
     }
 
     /**
-     * Метаданные Задачи.
+     * Метаданные Задачи
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-zadacha
      */
@@ -180,7 +181,7 @@ class Meta
     }
 
     /**
-     * Метаданные Канала продаж.
+     * Метаданные Канала продаж
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kanal-prodazh
      */
@@ -190,7 +191,7 @@ class Meta
     }
 
     /**
-     * Метаданные Кассира.
+     * Метаданные Кассира
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kassir
      */
@@ -200,7 +201,7 @@ class Meta
     }
 
     /**
-     * Метаданные Комплекта.
+     * Метаданные Комплекта
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-komplekt
      */
@@ -210,7 +211,7 @@ class Meta
     }
 
     /**
-     * Метаданные Контрагента.
+     * Метаданные Контрагента
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-kontragent
      */
@@ -220,7 +221,7 @@ class Meta
     }
 
     /**
-     * Метаданные Модификации.
+     * Метаданные Модификации
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-modifikaciq
      */
@@ -230,7 +231,7 @@ class Meta
     }
 
     /**
-     * Метаданные Настроек компании.
+     * Метаданные Настроек компании
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-nastrojki-kompanii
      */
@@ -240,7 +241,7 @@ class Meta
     }
 
     /**
-     * Метаданные Настроек пользователя.
+     * Метаданные Настроек пользователя
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-nastrojki-pol-zowatelq
      */
@@ -250,7 +251,7 @@ class Meta
     }
 
     /**
-     * Метаданные Отдела.
+     * Метаданные Отдела
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-otdel
      */
@@ -260,7 +261,7 @@ class Meta
     }
 
     /**
-     * Метаданные Пользовательской роли.
+     * Метаданные Пользовательской роли
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-pol-zowatel-skie-roli
      */
@@ -270,7 +271,7 @@ class Meta
     }
 
     /**
-     * Метаданные Пользовательского справочника.
+     * Метаданные Пользовательского справочника
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-pol-zowatel-skij-sprawochnik
      */
@@ -280,7 +281,7 @@ class Meta
     }
 
     /**
-     * Метаданные Проекта.
+     * Метаданные Проекта
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-proekt
      */
@@ -290,7 +291,7 @@ class Meta
     }
 
     /**
-     * Метаданные Региона.
+     * Метаданные Региона
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-region
      */
@@ -300,7 +301,7 @@ class Meta
     }
 
     /**
-     * Метаданные Серии.
+     * Метаданные Серии
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-seriq
      */
@@ -310,7 +311,7 @@ class Meta
     }
 
     /**
-     * Метаданные Накопительной скидки.
+     * Метаданные Накопительной скидки
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
      */
@@ -320,7 +321,7 @@ class Meta
     }
 
     /**
-     * Метаданные Персональной скидки.
+     * Метаданные Персональной скидки
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
      */
@@ -330,7 +331,7 @@ class Meta
     }
 
     /**
-     * Метаданные Специальной цены.
+     * Метаданные Специальной цены
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-skidki
      */
@@ -340,7 +341,7 @@ class Meta
     }
 
     /**
-     * Метаданные Склада.
+     * Метаданные Склада
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sklad
      */
@@ -350,7 +351,7 @@ class Meta
     }
 
     /**
-     * Метаданные Сотрудника.
+     * Метаданные Сотрудника
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sotrudnik
      */
@@ -360,7 +361,7 @@ class Meta
     }
 
     /**
-     * Метаданные Сохраненного фильтра.
+     * Метаданные Сохраненного фильтра
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sohranennye-fil-try
      */
@@ -370,7 +371,7 @@ class Meta
     }
 
     /**
-     * Метаданные Ставки НДС.
+     * Метаданные Ставки НДС
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-stawka-nds
      */
@@ -380,7 +381,7 @@ class Meta
     }
 
     /**
-     * Метаданные Статуса документов.
+     * Метаданные Статуса документов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-statusy-dokumentow
      */
@@ -390,7 +391,7 @@ class Meta
     }
 
     /**
-     * Метаданные Статьи расходов.
+     * Метаданные Статьи расходов
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-stat-q-rashodow
      */
@@ -400,7 +401,7 @@ class Meta
     }
 
     /**
-     * Метаданные Страны.
+     * Метаданные Страны
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-strana
      */
@@ -410,7 +411,7 @@ class Meta
     }
 
     /**
-     * Метаданные Техкарты.
+     * Метаданные Техкарты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta
      */
@@ -420,7 +421,7 @@ class Meta
     }
 
     /**
-     * Метаданные Этапа Техкарты.
+     * Метаданные Этапа Техкарты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta-jetapy-tehkarty
      */
@@ -430,7 +431,7 @@ class Meta
     }
 
     /**
-     * Метаданные Материала Техкарты.
+     * Метаданные Материала Техкарты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta-material-tehkarty
      */
@@ -440,7 +441,7 @@ class Meta
     }
 
     /**
-     * Метаданные Продукта Техкарты.
+     * Метаданные Продукта Техкарты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehkarta-produkty-tehkarty
      */
@@ -450,7 +451,7 @@ class Meta
     }
 
     /**
-     * Метаданные Техпроцесса.
+     * Метаданные Техпроцесса
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tehprocess
      */
@@ -460,7 +461,7 @@ class Meta
     }
 
     /**
-     * Метаданные Типа цены.
+     * Метаданные Типа цены
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tipy-cen
      */
@@ -470,7 +471,7 @@ class Meta
     }
 
     /**
-     * Метаданные Товара.
+     * Метаданные Товара
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-towar
      */
@@ -480,7 +481,7 @@ class Meta
     }
 
     /**
-     * Метаданные Точки продаж.
+     * Метаданные Точки продаж
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-tochka-prodazh
      */
@@ -490,7 +491,7 @@ class Meta
     }
 
     /**
-     * Метаданные Услуги.
+     * Метаданные Услуги
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-usluga
      */
@@ -500,7 +501,7 @@ class Meta
     }
 
     /**
-     * Метаданные Файла.
+     * Метаданные Файла
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-fajly
      */
@@ -510,7 +511,7 @@ class Meta
     }
 
     /**
-     * Метаданные Характеристики модификации.
+     * Метаданные Характеристики модификации
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-harakteristiki-modifikacij
      */
@@ -520,7 +521,7 @@ class Meta
     }
 
     /**
-     * Метаданные Стандартного шаблона.
+     * Метаданные Стандартного шаблона
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-standartnyh-shablonow
      */
@@ -530,7 +531,7 @@ class Meta
     }
 
     /**
-     * Метаданные Пользовательского шаблона.
+     * Метаданные Пользовательского шаблона
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-pol-zowatel-skih-shablonow
      */
@@ -540,7 +541,7 @@ class Meta
     }
 
     /**
-     * Метаданные Юрлица.
+     * Метаданные Юрлица
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico
      */
@@ -550,7 +551,7 @@ class Meta
     }
 
     /**
-     * Метаданные Счёта юрлица.
+     * Метаданные Счёта юрлица
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jurlico-scheta-urlica
      */
@@ -560,7 +561,7 @@ class Meta
     }
 
     /**
-     * Метаданные Этапа производства.
+     * Метаданные Этапа производства
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-jetap-proizwodstwa
      */
@@ -570,7 +571,7 @@ class Meta
     }
 
     /**
-     * Метаданные Внесения денег.
+     * Метаданные Внесения денег
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnesenie-deneg
      */
@@ -580,7 +581,7 @@ class Meta
     }
 
     /**
-     * Метаданные Внутреннего заказа.
+     * Метаданные Внутреннего заказа
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnutrennij-zakaz
      */
@@ -590,7 +591,7 @@ class Meta
     }
 
     /**
-     * Метаданные Возврата покупателя.
+     * Метаданные Возврата покупателя
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-pokupatelq
      */
@@ -600,7 +601,7 @@ class Meta
     }
 
     /**
-     * Метаданные Возврата поставщику.
+     * Метаданные Возврата поставщику
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-postawschiku
      */
@@ -610,7 +611,7 @@ class Meta
     }
 
     /**
-     * Метаданные Возврата предоплаты.
+     * Метаданные Возврата предоплаты
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-predoplaty
      */
@@ -620,7 +621,7 @@ class Meta
     }
 
     /**
-     * Метаданные Входящего платежа.
+     * Метаданные Входящего платежа
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vhodqschij-platezh
      */
@@ -630,7 +631,7 @@ class Meta
     }
 
     /**
-     * Метаданные Выданного отчета комиссионера.
+     * Метаданные Выданного отчета комиссионера
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vydannyj-otchet-komissionera
      */
@@ -640,7 +641,7 @@ class Meta
     }
 
     /**
-     * Метаданные Выплаты денег.
+     * Метаданные Выплаты денег
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vyplata-deneg
      */
@@ -650,7 +651,7 @@ class Meta
     }
 
     /**
-     * Метаданные Заказа на производство.
+     * Метаданные Заказа на производство
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-na-proizwodstwo
      */
@@ -660,7 +661,7 @@ class Meta
     }
 
     /**
-     * Метаданные Заказа покупателя.
+     * Метаданные Заказа покупателя
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
      */
@@ -670,13 +671,23 @@ class Meta
     }
 
     /**
-     * Метаданные Заказа поставщику.
+     * Метаданные Заказа поставщику
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-postawschiku
      */
     public static function purchaseorder(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...PurchaseOrder::PATH, $guid], PurchaseOrder::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Инвентаризации
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-inwentarizaciq
+     */
+    public static function inventory(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...Inventory::PATH, $guid], Inventory::TYPE, $formatter);
     }
 
 

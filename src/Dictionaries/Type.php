@@ -75,4 +75,5 @@ class Type
     public const RETAILDRAWERCASHOUT = 'retaildrawercashout';
     public const PROCESSINGORDER = 'processingorder';
     public const PURCHASEORDER = 'purchaseorder';
+    public const INVENTORY = 'inventory';
 }

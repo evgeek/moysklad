@@ -106,6 +106,7 @@ class MetaBuilderTest extends TestCase
             Type::PROCESSINGORDER => ['processingorder', [self::GUID1], '/entity/processingorder/' . self::GUID1, 'processingorder'],
             Type::CUSTOMERORDER => ['customerorder', [self::GUID1], '/entity/customerorder/' . self::GUID1, 'customerorder'],
             Type::PURCHASEORDER => ['purchaseorder', [self::GUID1], '/entity/purchaseorder/' . self::GUID1, 'purchaseorder'],
+            Type::INVENTORY => ['inventory', [self::GUID1], '/entity/inventory/' . self::GUID1, 'inventory'],
         ];
     }
 }
