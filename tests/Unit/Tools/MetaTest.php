@@ -182,6 +182,7 @@ class MetaTest extends TestCase
             Type::INVENTORY => ['inventory', 'entity/inventory', 'inventory'],
             Type::PAYMENTOUT => ['paymentout', 'entity/paymentout', 'paymentout'],
             Type::COUNTERPARTYADJUSTMENT => ['counterpartyadjustment', 'entity/counterpartyadjustment', 'counterpartyadjustment'],
+            Type::ENTER => ['enter', 'entity/enter', 'enter'],
         ];
     }
 

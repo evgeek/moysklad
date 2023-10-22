@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CounterpartyAdjustmentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\EnterSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InventorySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
@@ -912,5 +913,22 @@ class EntitySegment extends AbstractNamedSegment
     public function counterpartyadjustment(): CounterpartyAdjustmentSegment
     {
         return $this->resolveNamedBuilder(CounterpartyAdjustmentSegment::class);
+    }
+
+    /**
+     * Оприходование
+     *
+     * <code>
+     * $enters = $ms->query()
+     *  ->entity()
+     *  ->enter()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-oprihodowanie
+     */
+    public function enter(): EnterSegment
+    {
+        return $this->resolveNamedBuilder(EnterSegment::class);
     }
 }

@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
@@ -853,5 +854,17 @@ class CollectionBuilder extends AbstractBuilder
     public function counterpartyadjustment(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::COUNTERPARTYADJUSTMENT);
+    }
+
+    /**
+     * Коллекция Оприходований
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-oprihodowanie
+     *
+     * @return EnterCollection
+     */
+    public function enter(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::ENTER);
     }
 }

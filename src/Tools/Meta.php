@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Tools;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
@@ -710,6 +711,16 @@ class Meta
     public static function counterpartyadjustment(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...CounterpartyAdjustment::PATH, $guid], CounterpartyAdjustment::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Оприходования
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-oprihodowanie
+     */
+    public static function enter(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...Enter::PATH, $guid], Enter::TYPE, $formatter);
     }
 
 

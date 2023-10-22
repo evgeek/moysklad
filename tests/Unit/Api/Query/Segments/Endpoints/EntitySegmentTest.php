@@ -6,6 +6,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CounterpartyAdjustmentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\EnterSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InventorySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
@@ -140,6 +141,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::INVENTORY => ['inventory', Segment::INVENTORY, InventorySegment::class],
             Type::PAYMENTOUT => ['paymentout', Segment::PAYMENTOUT, PaymentOutSegment::class],
             Type::COUNTERPARTYADJUSTMENT => ['counterpartyadjustment', Segment::COUNTERPARTYADJUSTMENT, CounterpartyAdjustmentSegment::class],
+            Type::ENTER => ['enter', Segment::ENTER, EnterSegment::class],
         ];
     }
 }

@@ -657,4 +657,14 @@ class MetaBuilder
     {
         return Meta::counterpartyadjustment($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Оприходования
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-oprihodowanie
+     */
+    public function enter(string $guid)
+    {
+        return Meta::enter($guid, $this->formatter);
+    }
 }

@@ -78,4 +78,5 @@ class Type
     public const INVENTORY = 'inventory';
     public const PAYMENTOUT = 'paymentout';
     public const COUNTERPARTYADJUSTMENT = 'counterpartyadjustment';
+    public const ENTER = 'enter';
 }

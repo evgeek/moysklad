@@ -109,6 +109,7 @@ class MetaBuilderTest extends TestCase
             Type::INVENTORY => ['inventory', [self::GUID1], '/entity/inventory/' . self::GUID1, 'inventory'],
             Type::PAYMENTOUT => ['paymentout', [self::GUID1], '/entity/paymentout/' . self::GUID1, 'paymentout'],
             Type::COUNTERPARTYADJUSTMENT => ['counterpartyadjustment', [self::GUID1], '/entity/counterpartyadjustment/' . self::GUID1, 'counterpartyadjustment'],
+            Type::ENTER => ['enter', [self::GUID1], '/entity/enter/' . self::GUID1, 'enter'],
         ];
     }
 }
