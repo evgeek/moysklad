@@ -5,6 +5,7 @@ namespace Evgeek\Tests\Unit\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Builders\ObjectBuilder;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
@@ -186,6 +187,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::PURCHASERETURN => ['purchasereturn', PurchaseReturn::class],
             Type::PREPAYMENTRETURN => ['prepaymentreturn', PrepaymentReturn::class],
             Type::PAYMENTIN => ['paymentin', PaymentIn::class],
+            Type::COMMISSIONREPORTOUT => ['commissionreportout', CommissionReportOut::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrder::class],
         ];

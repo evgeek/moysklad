@@ -3,6 +3,7 @@
 namespace Evgeek\Tests\Unit\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EntitySegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
@@ -126,6 +127,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::PURCHASERETURN => ['purchasereturn', Segment::PURCHASERETURN, PurchaseReturnSegment::class],
             Type::PREPAYMENTRETURN => ['prepaymentreturn', Segment::PREPAYMENTRETURN, PrepaymentReturnSegment::class],
             Type::PAYMENTIN => ['paymentin', Segment::PAYMENTIN, PaymentInSegment::class],
+            Type::COMMISSIONREPORTOUT => ['commissionreportout', Segment::COMMISSIONREPORTOUT, CommissionReportOutSegment::class],
 
             Type::CUSTOMERORDER => ['customerorder', Segment::CUSTOMERORDER, CustomerOrderSegment::class],
         ];

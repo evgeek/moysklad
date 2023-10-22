@@ -71,4 +71,5 @@ class Type
     public const PURCHASERETURN = 'purchasereturn';
     public const PREPAYMENTRETURN = 'prepaymentreturn';
     public const PAYMENTIN = 'paymentin';
+    public const COMMISSIONREPORTOUT = 'commissionreportout';
 }

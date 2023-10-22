@@ -578,6 +578,16 @@ class MetaBuilder
         return Meta::paymentin($guid, $this->formatter);
     }
 
+    /**
+     * Метаданные Выданного отчета комиссионера.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vydannyj-otchet-komissionera
+     */
+    public function commissionreportout(string $guid)
+    {
+        return Meta::commissionreportout($guid, $this->formatter);
+    }
+
 
 
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
@@ -769,6 +770,23 @@ class EntitySegment extends AbstractNamedSegment
     public function paymentin(): PaymentInSegment
     {
         return $this->resolveNamedBuilder(PaymentInSegment::class);
+    }
+
+    /**
+     * Выданный отчет комиссионера.
+     *
+     * <code>
+     * $commissionReportOuts = $ms->query()
+     *  ->entity()
+     *  ->commissionreportout()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vydannyj-otchet-komissionera
+     */
+    public function commissionreportout(): CommissionReportOutSegment
+    {
+        return $this->resolveNamedBuilder(CommissionReportOutSegment::class);
     }
 
 

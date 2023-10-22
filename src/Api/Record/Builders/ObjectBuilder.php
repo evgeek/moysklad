@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Api\Record\Builders;
 
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
@@ -753,6 +754,18 @@ class ObjectBuilder extends AbstractBuilder
     public function paymentin(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::PAYMENTIN, $content);
+    }
+
+    /**
+     * Выданный отчет комиссионера.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vydannyj-otchet-komissionera
+     *
+     * @return CommissionReportOut
+     */
+    public function commissionreportout(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::COMMISSIONREPORTOUT, $content);
     }
 
 

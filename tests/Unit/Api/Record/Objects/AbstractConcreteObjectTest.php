@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Tests\Unit\Api\Record\Objects;
 
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
@@ -50,6 +51,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\VariantCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookStockCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
@@ -157,6 +159,7 @@ class AbstractConcreteObjectTest extends KnownObjectTestCase
             Type::PURCHASERETURN => [PurchaseReturn::class, PurchaseReturnCollection::class],
             Type::PREPAYMENTRETURN => [PrepaymentReturn::class, PrepaymentReturnCollection::class],
             Type::PAYMENTIN => [PaymentIn::class, PaymentInCollection::class],
+            Type::COMMISSIONREPORTOUT => [CommissionReportOut::class, CommissionReportOutCollection::class],
 
             Type::CUSTOMERORDER => [CustomerOrder::class, CustomerOrderCollection::class],
         ];

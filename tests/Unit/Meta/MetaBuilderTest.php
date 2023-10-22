@@ -102,6 +102,7 @@ class MetaBuilderTest extends TestCase
             Type::PURCHASERETURN => ['purchasereturn', [self::GUID1], '/entity/purchasereturn/' . self::GUID1, 'purchasereturn'],
             Type::PREPAYMENTRETURN => ['prepaymentreturn', [self::GUID1], '/entity/prepaymentreturn/' . self::GUID1, 'prepaymentreturn'],
             Type::PAYMENTIN => ['paymentin', [self::GUID1], '/entity/paymentin/' . self::GUID1, 'paymentin'],
+            Type::COMMISSIONREPORTOUT => ['commissionreportout', [self::GUID1], '/entity/commissionreportout/' . self::GUID1, 'commissionreportout'],
 
             Type::CUSTOMERORDER => ['customerorder', [self::GUID1], '/entity/customerorder/' . self::GUID1, 'customerorder'],
         ];

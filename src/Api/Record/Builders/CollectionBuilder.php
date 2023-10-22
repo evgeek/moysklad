@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Api\Record\Builders;
 
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
@@ -750,6 +751,18 @@ class CollectionBuilder extends AbstractBuilder
     public function paymentin(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::PAYMENTIN);
+    }
+
+    /**
+     * Коллекция Выданных отчетов комиссионера.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vydannyj-otchet-komissionera
+     *
+     * @return CommissionReportOutCollection
+     */
+    public function commissionreportout(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::COMMISSIONREPORTOUT);
     }
 
 

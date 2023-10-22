@@ -5,6 +5,7 @@ namespace Evgeek\Tests\Unit\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Builders\CollectionBuilder;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
@@ -186,6 +187,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::PURCHASERETURN => ['purchasereturn', PurchaseReturnCollection::class],
             Type::PREPAYMENTRETURN => ['prepaymentreturn', PrepaymentReturnCollection::class],
             Type::PAYMENTIN => ['paymentin', PaymentInCollection::class],
+            Type::COMMISSIONREPORTOUT => ['commissionreportout', CommissionReportOutCollection::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderCollection::class],
         ];

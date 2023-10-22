@@ -2,6 +2,7 @@
 
 namespace Evgeek\Tests\Unit\Services;
 
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
@@ -59,6 +60,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanResultCollection
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
@@ -298,6 +300,7 @@ class RecordMappingHelperTest extends TestCase
             Type::PURCHASERETURN => [Type::PURCHASERETURN, PurchaseReturn::class, PurchaseReturnCollection::class],
             Type::PREPAYMENTRETURN => [Type::PREPAYMENTRETURN, PrepaymentReturn::class, PrepaymentReturnCollection::class],
             Type::PAYMENTIN => [Type::PAYMENTIN, PaymentIn::class, PaymentInCollection::class],
+            Type::COMMISSIONREPORTOUT => [Type::COMMISSIONREPORTOUT, CommissionReportOut::class, CommissionReportOutCollection::class],
 
             Type::CUSTOMERORDER => [Type::CUSTOMERORDER, CustomerOrder::class, CustomerOrderCollection::class],
         ];
