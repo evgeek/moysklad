@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
@@ -634,6 +635,16 @@ class Meta
     public static function commissionreportout(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...CommissionReportOut::PATH, $guid], CommissionReportOut::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Выплаты денег.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vyplata-deneg
+     */
+    public static function retaildrawercashout(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...RetailDrawerCashOut::PATH, $guid], RetailDrawerCashOut::TYPE, $formatter);
     }
 
 

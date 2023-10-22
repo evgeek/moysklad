@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
@@ -188,6 +189,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::PREPAYMENTRETURN => ['prepaymentreturn', PrepaymentReturnCollection::class],
             Type::PAYMENTIN => ['paymentin', PaymentInCollection::class],
             Type::COMMISSIONREPORTOUT => ['commissionreportout', CommissionReportOutCollection::class],
+            Type::RETAILDRAWERCASHOUT => ['retaildrawercashout', RetailDrawerCashOutCollection::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderCollection::class],
         ];

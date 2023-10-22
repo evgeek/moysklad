@@ -87,4 +87,5 @@ class Segment
     public const PREPAYMENTRETURN = 'prepaymentreturn';
     public const PAYMENTIN = 'paymentin';
     public const COMMISSIONREPORTOUT = 'commissionreportout';
+    public const RETAILDRAWERCASHOUT = 'retaildrawercashout';
 }

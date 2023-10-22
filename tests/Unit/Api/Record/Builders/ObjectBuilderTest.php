@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
@@ -188,6 +189,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::PREPAYMENTRETURN => ['prepaymentreturn', PrepaymentReturn::class],
             Type::PAYMENTIN => ['paymentin', PaymentIn::class],
             Type::COMMISSIONREPORTOUT => ['commissionreportout', CommissionReportOut::class],
+            Type::RETAILDRAWERCASHOUT => ['retaildrawercashout', RetailDrawerCashOut::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrder::class],
         ];

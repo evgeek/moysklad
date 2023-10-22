@@ -176,6 +176,7 @@ class MetaTest extends TestCase
             Type::PREPAYMENTRETURN => ['prepaymentreturn', 'entity/prepaymentreturn', 'prepaymentreturn'],
             Type::PAYMENTIN => ['paymentin', 'entity/paymentin', 'paymentin'],
             Type::COMMISSIONREPORTOUT => ['commissionreportout', 'entity/commissionreportout', 'commissionreportout'],
+            Type::RETAILDRAWERCASHOUT => ['retaildrawercashout', 'entity/retaildrawercashout', 'retaildrawercashout'],
 
             Type::CUSTOMERORDER => ['customerorder', 'entity/customerorder', 'customerorder'],
         ];

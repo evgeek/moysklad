@@ -13,6 +13,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
@@ -766,6 +767,18 @@ class ObjectBuilder extends AbstractBuilder
     public function commissionreportout(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::COMMISSIONREPORTOUT, $content);
+    }
+
+    /**
+     * Выплата денег.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vyplata-deneg
+     *
+     * @return RetailDrawerCashOut
+     */
+    public function retaildrawercashout(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::RETAILDRAWERCASHOUT, $content);
     }
 
 

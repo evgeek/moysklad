@@ -588,6 +588,16 @@ class MetaBuilder
         return Meta::commissionreportout($guid, $this->formatter);
     }
 
+    /**
+     * Метаданные Выплаты денег.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vyplata-deneg
+     */
+    public function retaildrawercashout(string $guid)
+    {
+        return Meta::retaildrawercashout($guid, $this->formatter);
+    }
+
 
 
 

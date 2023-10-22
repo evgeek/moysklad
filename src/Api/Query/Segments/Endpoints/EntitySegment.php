@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SalesReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AccumulationDiscountSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AssortmentSegment;
@@ -787,6 +788,23 @@ class EntitySegment extends AbstractNamedSegment
     public function commissionreportout(): CommissionReportOutSegment
     {
         return $this->resolveNamedBuilder(CommissionReportOutSegment::class);
+    }
+
+    /**
+     * Выплата денег.
+     *
+     * <code>
+     * $retailDrawerCashOuts = $ms->query()
+     *  ->entity()
+     *  ->retaildrawercashout()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vyplata-deneg
+     */
+    public function retaildrawercashout(): RetailDrawerCashOutSegment
+    {
+        return $this->resolveNamedBuilder(RetailDrawerCashOutSegment::class);
     }
 
 

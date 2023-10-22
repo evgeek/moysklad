@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
@@ -67,6 +68,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Assortment;
@@ -301,6 +303,7 @@ class RecordMappingHelperTest extends TestCase
             Type::PREPAYMENTRETURN => [Type::PREPAYMENTRETURN, PrepaymentReturn::class, PrepaymentReturnCollection::class],
             Type::PAYMENTIN => [Type::PAYMENTIN, PaymentIn::class, PaymentInCollection::class],
             Type::COMMISSIONREPORTOUT => [Type::COMMISSIONREPORTOUT, CommissionReportOut::class, CommissionReportOutCollection::class],
+            Type::RETAILDRAWERCASHOUT => [Type::RETAILDRAWERCASHOUT, RetailDrawerCashOut::class, RetailDrawerCashOutCollection::class],
 
             Type::CUSTOMERORDER => [Type::CUSTOMERORDER, CustomerOrder::class, CustomerOrderCollection::class],
         ];
