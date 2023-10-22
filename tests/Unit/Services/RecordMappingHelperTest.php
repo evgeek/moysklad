@@ -5,6 +5,7 @@ namespace Evgeek\Tests\Unit\Services;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
@@ -70,6 +71,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
@@ -322,6 +324,7 @@ class RecordMappingHelperTest extends TestCase
             Type::PAYMENTOUT => [Type::PAYMENTOUT, PaymentOut::class, PaymentOutCollection::class],
             Type::COUNTERPARTYADJUSTMENT => [Type::COUNTERPARTYADJUSTMENT, CounterpartyAdjustment::class, CounterpartyAdjustmentCollection::class],
             Type::ENTER => [Type::ENTER, Enter::class, EnterCollection::class],
+            Type::DEMAND => [Type::DEMAND, Demand::class, DemandCollection::class],
         ];
     }
 

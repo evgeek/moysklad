@@ -110,6 +110,7 @@ class MetaBuilderTest extends TestCase
             Type::PAYMENTOUT => ['paymentout', [self::GUID1], '/entity/paymentout/' . self::GUID1, 'paymentout'],
             Type::COUNTERPARTYADJUSTMENT => ['counterpartyadjustment', [self::GUID1], '/entity/counterpartyadjustment/' . self::GUID1, 'counterpartyadjustment'],
             Type::ENTER => ['enter', [self::GUID1], '/entity/enter/' . self::GUID1, 'enter'],
+            Type::DEMAND => ['demand', [self::GUID1], '/entity/demand/' . self::GUID1, 'demand'],
         ];
     }
 }

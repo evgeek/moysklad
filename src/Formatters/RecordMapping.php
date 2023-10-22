@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Record\Collections\CollectionInterface;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
@@ -79,6 +80,7 @@ use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
@@ -220,6 +222,7 @@ class RecordMapping
         Type::PAYMENTOUT => PaymentOut::class,
         Type::COUNTERPARTYADJUSTMENT => CounterpartyAdjustment::class,
         Type::ENTER => Enter::class,
+        Type::DEMAND => Demand::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Type::ASSORTMENT => AssortmentCollection::class,
@@ -287,6 +290,7 @@ class RecordMapping
         Type::PAYMENTOUT => PaymentOutCollection::class,
         Type::COUNTERPARTYADJUSTMENT => CounterpartyAdjustmentCollection::class,
         Type::ENTER => EnterCollection::class,
+        Type::DEMAND => DemandCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;

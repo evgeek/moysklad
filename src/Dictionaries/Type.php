@@ -79,4 +79,5 @@ class Type
     public const PAYMENTOUT = 'paymentout';
     public const COUNTERPARTYADJUSTMENT = 'counterpartyadjustment';
     public const ENTER = 'enter';
+    public const DEMAND = 'demand';
 }

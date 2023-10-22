@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
@@ -866,5 +867,17 @@ class CollectionBuilder extends AbstractBuilder
     public function enter(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::ENTER);
+    }
+
+    /**
+     * Коллекция Отгрузок
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-otgruzka
+     *
+     * @return DemandCollection
+     */
+    public function demand(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::DEMAND);
     }
 }

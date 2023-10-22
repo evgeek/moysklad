@@ -667,4 +667,14 @@ class MetaBuilder
     {
         return Meta::enter($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Отгрузки
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-otgruzka
+     */
+    public function demand(string $guid)
+    {
+        return Meta::demand($guid, $this->formatter);
+    }
 }

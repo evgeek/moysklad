@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Tools;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
@@ -721,6 +722,16 @@ class Meta
     public static function enter(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...Enter::PATH, $guid], Enter::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Отгрузки
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-otgruzka
+     */
+    public static function demand(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...Demand::PATH, $guid], Demand::TYPE, $formatter);
     }
 
 

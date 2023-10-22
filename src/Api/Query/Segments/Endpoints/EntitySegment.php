@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CounterpartyAdjustmentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\DemandSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\EnterSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InventorySegment;
@@ -930,5 +931,22 @@ class EntitySegment extends AbstractNamedSegment
     public function enter(): EnterSegment
     {
         return $this->resolveNamedBuilder(EnterSegment::class);
+    }
+
+    /**
+     * Отгрузка
+     *
+     * <code>
+     * $demands = $ms->query()
+     *  ->entity()
+     *  ->demand()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-otgruzka
+     */
+    public function demand(): DemandSegment
+    {
+        return $this->resolveNamedBuilder(DemandSegment::class);
     }
 }

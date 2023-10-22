@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
@@ -869,5 +870,17 @@ class ObjectBuilder extends AbstractBuilder
     public function enter(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::ENTER, $content);
+    }
+
+    /**
+     * Отгрузка
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-otgruzka
+     *
+     * @return Demand
+     */
+    public function demand(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::DEMAND, $content);
     }
 }
