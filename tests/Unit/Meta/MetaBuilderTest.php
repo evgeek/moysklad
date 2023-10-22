@@ -95,7 +95,6 @@ class MetaBuilderTest extends TestCase
             Type::ORGANIZATION => ['organization', [self::GUID1], '/entity/organization/' . self::GUID1, 'organization'],
             Type::ACCOUNT => ['account', [Organization::make($ms, ['id' => self::GUID1]), self::GUID2], '/entity/organization/' . self::GUID1 . '/accounts/' . self::GUID2, 'account'],
             Type::PROCESSINGSTAGE => ['processingstage', [self::GUID1], '/entity/processingstage/' . self::GUID1, 'processingstage'],
-
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', [self::GUID1], '/entity/retaildrawercashin/' . self::GUID1, 'retaildrawercashin'],
             Type::INTERNALORDER => ['internalorder', [self::GUID1], '/entity/internalorder/' . self::GUID1, 'internalorder'],
             Type::SALESRETURN => ['salesreturn', [self::GUID1], '/entity/salesreturn/' . self::GUID1, 'salesreturn'],
@@ -105,8 +104,8 @@ class MetaBuilderTest extends TestCase
             Type::COMMISSIONREPORTOUT => ['commissionreportout', [self::GUID1], '/entity/commissionreportout/' . self::GUID1, 'commissionreportout'],
             Type::RETAILDRAWERCASHOUT => ['retaildrawercashout', [self::GUID1], '/entity/retaildrawercashout/' . self::GUID1, 'retaildrawercashout'],
             Type::PROCESSINGORDER => ['processingorder', [self::GUID1], '/entity/processingorder/' . self::GUID1, 'processingorder'],
-
             Type::CUSTOMERORDER => ['customerorder', [self::GUID1], '/entity/customerorder/' . self::GUID1, 'customerorder'],
+            Type::PURCHASEORDER => ['purchaseorder', [self::GUID1], '/entity/purchaseorder/' . self::GUID1, 'purchaseorder'],
         ];
     }
 }

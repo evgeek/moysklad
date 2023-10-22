@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashOutSegment;
@@ -825,14 +826,6 @@ class EntitySegment extends AbstractNamedSegment
         return $this->resolveNamedBuilder(ProcessingOrderSegment::class);
     }
 
-
-
-
-
-
-
-
-
     /**
      * Заказ покупателя.
      *
@@ -848,5 +841,22 @@ class EntitySegment extends AbstractNamedSegment
     public function customerorder(): CustomerOrderSegment
     {
         return $this->resolveNamedBuilder(CustomerOrderSegment::class);
+    }
+
+    /**
+     * Заказ поставщику
+     *
+     * <code>
+     * $purchaseOrders = $ms->query()
+     *  ->entity()
+     *  ->purchaseorder()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-postawschiku
+     */
+    public function purchaseorder(): PurchaseOrderSegment
+    {
+        return $this->resolveNamedBuilder(PurchaseOrderSegment::class);
     }
 }

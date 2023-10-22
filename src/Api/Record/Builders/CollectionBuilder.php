@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
@@ -791,18 +792,6 @@ class CollectionBuilder extends AbstractBuilder
         return $this->resolveCollection(Type::PROCESSINGORDER);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Коллекция Заказов покупателя.
      *
@@ -813,5 +802,17 @@ class CollectionBuilder extends AbstractBuilder
     public function customerorder(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::CUSTOMERORDER);
+    }
+
+    /**
+     * Коллекция Заказов поставщику.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-postawschiku
+     *
+     * @return PurchaseOrderCollection
+     */
+    public function purchaseorder(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::PURCHASEORDER);
     }
 }

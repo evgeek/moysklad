@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashOutSegment;
@@ -122,7 +123,6 @@ class EntitySegmentTest extends SegmentTestCase
             Type::ORGANIZATION => ['organization', Segment::ORGANIZATION, OrganizationSegment::class],
             Type::ACCOUNT => ['accounts', Segment::ACCOUNTS, AccountsSegment::class, ['organization', static::GUID1]],
             Type::PROCESSINGSTAGE => ['processingstage', Segment::PROCESSINGSTAGE, ProcessingStageSegment::class],
-
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', Segment::RETAILDRAWERCASHIN, RetailDrawerCashInSegment::class],
             Type::INTERNALORDER => ['internalorder', Segment::INTERNALORDER, InternalOrderSegment::class],
             Type::SALESRETURN => ['salesreturn', Segment::SALESRETURN, SalesReturnSegment::class],
@@ -132,8 +132,8 @@ class EntitySegmentTest extends SegmentTestCase
             Type::COMMISSIONREPORTOUT => ['commissionreportout', Segment::COMMISSIONREPORTOUT, CommissionReportOutSegment::class],
             Type::RETAILDRAWERCASHOUT => ['retaildrawercashout', Segment::RETAILDRAWERCASHOUT, RetailDrawerCashOutSegment::class],
             Type::PROCESSINGORDER => ['processingorder', Segment::PROCESSINGORDER, ProcessingOrderSegment::class],
-
             Type::CUSTOMERORDER => ['customerorder', Segment::CUSTOMERORDER, CustomerOrderSegment::class],
+            Type::PURCHASEORDER => ['purchaseorder', Segment::PURCHASEORDER, PurchaseOrderSegment::class],
         ];
     }
 }

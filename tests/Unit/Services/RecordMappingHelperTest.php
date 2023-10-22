@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
@@ -68,6 +69,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
@@ -297,7 +299,6 @@ class RecordMappingHelperTest extends TestCase
             Type::ORGANIZATION => [Type::ORGANIZATION, Organization::class, OrganizationCollection::class],
             Type::ACCOUNT => [Type::ACCOUNT, Account::class, AccountCollection::class, Organization::make($ms)],
             Type::PROCESSINGSTAGE => [Type::PROCESSINGSTAGE, ProcessingStage::class, ProcessingStageCollection::class],
-
             Type::RETAILDRAWERCASHIN => [Type::RETAILDRAWERCASHIN, RetailDrawerCashIn::class, RetailDrawerCashInCollection::class],
             Type::INTERNALORDER => [Type::INTERNALORDER, InternalOrder::class, InternalOrderCollection::class],
             Type::SALESRETURN => [Type::SALESRETURN, SalesReturn::class, SalesReturnCollection::class],
@@ -307,8 +308,8 @@ class RecordMappingHelperTest extends TestCase
             Type::COMMISSIONREPORTOUT => [Type::COMMISSIONREPORTOUT, CommissionReportOut::class, CommissionReportOutCollection::class],
             Type::RETAILDRAWERCASHOUT => [Type::RETAILDRAWERCASHOUT, RetailDrawerCashOut::class, RetailDrawerCashOutCollection::class],
             Type::PROCESSINGORDER => [Type::PROCESSINGORDER, ProcessingOrder::class, ProcessingOrderCollection::class],
-
             Type::CUSTOMERORDER => [Type::CUSTOMERORDER, CustomerOrder::class, CustomerOrderCollection::class],
+            Type::PURCHASEORDER => [Type::PURCHASEORDER, PurchaseOrder::class, PurchaseOrderCollection::class],
         ];
     }
 

@@ -608,15 +608,6 @@ class MetaBuilder
         return Meta::processingorder($guid, $this->formatter);
     }
 
-
-
-
-
-
-
-
-
-
     /**
      * Метаданные Заказа покупателя.
      *
@@ -625,5 +616,15 @@ class MetaBuilder
     public function customerorder(string $guid)
     {
         return Meta::customerorder($guid, $this->formatter);
+    }
+
+    /**
+     * Метаданные Заказа поставщику.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-postawschiku
+     */
+    public function purchaseorder(string $guid)
+    {
+        return Meta::purchaseorder($guid, $this->formatter);
     }
 }

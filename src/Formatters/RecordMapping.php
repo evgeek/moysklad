@@ -14,6 +14,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
@@ -77,6 +78,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
@@ -195,7 +197,6 @@ class RecordMapping
         Type::ORGANIZATION => Organization::class,
         Type::ACCOUNT => Account::class,
         Type::PROCESSINGSTAGE => ProcessingStage::class,
-
         Type::RETAILDRAWERCASHIN => RetailDrawerCashIn::class,
         Type::INTERNALORDER => InternalOrder::class,
         Type::SALESRETURN => SalesReturn::class,
@@ -205,8 +206,8 @@ class RecordMapping
         Type::COMMISSIONREPORTOUT => CommissionReportOut::class,
         Type::RETAILDRAWERCASHOUT => RetailDrawerCashOut::class,
         Type::PROCESSINGORDER => ProcessingOrder::class,
-
         Type::CUSTOMERORDER => CustomerOrder::class,
+        Type::PURCHASEORDER => PurchaseOrder::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Type::ASSORTMENT => AssortmentCollection::class,
@@ -259,7 +260,6 @@ class RecordMapping
         Type::ORGANIZATION => OrganizationCollection::class,
         Type::ACCOUNT => AccountCollection::class,
         Type::PROCESSINGSTAGE => ProcessingStageCollection::class,
-
         Type::RETAILDRAWERCASHIN => RetailDrawerCashInCollection::class,
         Type::INTERNALORDER => InternalOrderCollection::class,
         Type::SALESRETURN => SalesReturnCollection::class,
@@ -269,8 +269,8 @@ class RecordMapping
         Type::COMMISSIONREPORTOUT => CommissionReportOutCollection::class,
         Type::RETAILDRAWERCASHOUT => RetailDrawerCashOutCollection::class,
         Type::PROCESSINGORDER => ProcessingOrderCollection::class,
-
         Type::CUSTOMERORDER => CustomerOrderCollection::class,
+        Type::PURCHASEORDER => PurchaseOrderCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;

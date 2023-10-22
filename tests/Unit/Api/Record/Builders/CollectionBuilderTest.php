@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
@@ -182,7 +183,6 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::ORGANIZATION => ['organization', OrganizationCollection::class],
             Type::ACCOUNT => ['account', AccountCollection::class, true],
             Type::PROCESSINGSTAGE => ['processingstage', ProcessingStageCollection::class],
-
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', RetailDrawerCashInCollection::class],
             Type::INTERNALORDER => ['internalorder', InternalOrderCollection::class],
             Type::SALESRETURN => ['salesreturn', SalesReturnCollection::class],
@@ -192,8 +192,8 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::COMMISSIONREPORTOUT => ['commissionreportout', CommissionReportOutCollection::class],
             Type::RETAILDRAWERCASHOUT => ['retaildrawercashout', RetailDrawerCashOutCollection::class],
             Type::PROCESSINGORDER => ['processingorder', ProcessingOrderCollection::class],
-
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderCollection::class],
+            Type::PURCHASEORDER => ['purchaseorder', PurchaseOrderCollection::class],
         ];
     }
 }

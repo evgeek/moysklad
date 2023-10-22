@@ -10,6 +10,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
@@ -59,6 +60,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
@@ -156,7 +158,6 @@ class AbstractConcreteObjectTest extends KnownObjectTestCase
             Type::ATTRIBUTEMETADATA => [AttributeMetadata::class, AttributeMetadataCollection::class],
             Type::ORGANIZATION => [Organization::class, OrganizationCollection::class],
             Type::PROCESSINGSTAGE => [ProcessingStage::class, ProcessingStageCollection::class],
-
             Type::RETAILDRAWERCASHIN => [RetailDrawerCashIn::class, RetailDrawerCashInCollection::class],
             Type::INTERNALORDER => [InternalOrder::class, InternalOrderCollection::class],
             Type::SALESRETURN => [SalesReturn::class, SalesReturnCollection::class],
@@ -166,8 +167,8 @@ class AbstractConcreteObjectTest extends KnownObjectTestCase
             Type::COMMISSIONREPORTOUT => [CommissionReportOut::class, CommissionReportOutCollection::class],
             Type::RETAILDRAWERCASHOUT => [RetailDrawerCashOut::class, RetailDrawerCashOutCollection::class],
             Type::PROCESSINGORDER => [ProcessingOrder::class, ProcessingOrderCollection::class],
-
             Type::CUSTOMERORDER => [CustomerOrder::class, CustomerOrderCollection::class],
+            Type::PURCHASEORDER => [PurchaseOrder::class, PurchaseOrderCollection::class],
         ];
     }
 }

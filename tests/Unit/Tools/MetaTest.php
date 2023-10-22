@@ -168,7 +168,6 @@ class MetaTest extends TestCase
             Type::ORGANIZATION => ['organization', 'entity/organization', 'organization'],
             Type::ACCOUNT => ['account', 'entity/organization/' . self::GUID1 . '/accounts', 'account', true, Organization::make($ms, ['id' => self::GUID1])],
             Type::PROCESSINGSTAGE => ['processingstage', 'entity/processingstage', 'processingstage'],
-
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', 'entity/retaildrawercashin', 'retaildrawercashin'],
             Type::INTERNALORDER => ['internalorder', 'entity/internalorder', 'internalorder'],
             Type::SALESRETURN => ['salesreturn', 'entity/salesreturn', 'salesreturn'],
@@ -178,8 +177,8 @@ class MetaTest extends TestCase
             Type::COMMISSIONREPORTOUT => ['commissionreportout', 'entity/commissionreportout', 'commissionreportout'],
             Type::RETAILDRAWERCASHOUT => ['retaildrawercashout', 'entity/retaildrawercashout', 'retaildrawercashout'],
             Type::PROCESSINGORDER => ['processingorder', 'entity/processingorder', 'processingorder'],
-
             Type::CUSTOMERORDER => ['customerorder', 'entity/customerorder', 'customerorder'],
+            Type::PURCHASEORDER => ['purchaseorder', 'entity/purchaseorder', 'purchaseorder'],
         ];
     }
 

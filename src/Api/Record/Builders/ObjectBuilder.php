@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
@@ -794,15 +795,6 @@ class ObjectBuilder extends AbstractBuilder
         return $this->resolveObject(Type::PROCESSINGORDER, $content);
     }
 
-
-
-
-
-
-
-
-
-
     /**
      * Заказ покупателя.
      *
@@ -813,5 +805,17 @@ class ObjectBuilder extends AbstractBuilder
     public function customerorder(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::CUSTOMERORDER, $content);
+    }
+
+    /**
+     * Заказ поставщику.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-postawschiku
+     *
+     * @return PurchaseOrder
+     */
+    public function purchaseorder(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PURCHASEORDER, $content);
     }
 }

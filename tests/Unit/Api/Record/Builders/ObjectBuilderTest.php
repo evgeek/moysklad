@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
@@ -182,7 +183,6 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::ORGANIZATION => ['organization', Organization::class],
             Type::ACCOUNT => ['account', Account::class, true],
             Type::PROCESSINGSTAGE => ['processingstage', ProcessingStage::class],
-
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', RetailDrawerCashIn::class],
             Type::INTERNALORDER => ['internalorder', InternalOrder::class],
             Type::SALESRETURN => ['salesreturn', SalesReturn::class],
@@ -192,8 +192,8 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::COMMISSIONREPORTOUT => ['commissionreportout', CommissionReportOut::class],
             Type::RETAILDRAWERCASHOUT => ['retaildrawercashout', RetailDrawerCashOut::class],
             Type::PROCESSINGORDER => ['processingorder', ProcessingOrder::class],
-
             Type::CUSTOMERORDER => ['customerorder', CustomerOrder::class],
+            Type::PURCHASEORDER => ['purchaseorder', PurchaseOrder::class],
         ];
     }
 }
