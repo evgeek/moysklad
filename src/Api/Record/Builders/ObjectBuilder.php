@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
@@ -830,5 +831,17 @@ class ObjectBuilder extends AbstractBuilder
     public function inventory(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::INVENTORY, $content);
+    }
+
+    /**
+     * Исходящий платеж
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-ishodqschij-platezh
+     *
+     * @return PaymentOut
+     */
+    public function paymentout(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PAYMENTOUT, $content);
     }
 }

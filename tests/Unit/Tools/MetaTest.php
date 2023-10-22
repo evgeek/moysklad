@@ -180,6 +180,7 @@ class MetaTest extends TestCase
             Type::CUSTOMERORDER => ['customerorder', 'entity/customerorder', 'customerorder'],
             Type::PURCHASEORDER => ['purchaseorder', 'entity/purchaseorder', 'purchaseorder'],
             Type::INVENTORY => ['inventory', 'entity/inventory', 'inventory'],
+            Type::PAYMENTOUT => ['paymentout', 'entity/paymentout', 'paymentout'],
         ];
     }
 

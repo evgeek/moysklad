@@ -91,4 +91,5 @@ class Segment
     public const PROCESSINGORDER = 'processingorder';
     public const PURCHASEORDER = 'purchaseorder';
     public const INVENTORY = 'inventory';
+    public const PAYMENTOUT = 'paymentout';
 }

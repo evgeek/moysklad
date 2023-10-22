@@ -10,6 +10,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
@@ -196,6 +197,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::CUSTOMERORDER => ['customerorder', CustomerOrder::class],
             Type::PURCHASEORDER => ['purchaseorder', PurchaseOrder::class],
             Type::INVENTORY => ['inventory', Inventory::class],
+            Type::PAYMENTOUT => ['paymentout', PaymentOut::class],
         ];
     }
 }

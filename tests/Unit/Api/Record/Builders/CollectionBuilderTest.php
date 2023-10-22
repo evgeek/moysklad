@@ -10,6 +10,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
@@ -196,6 +197,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderCollection::class],
             Type::PURCHASEORDER => ['purchaseorder', PurchaseOrderCollection::class],
             Type::INVENTORY => ['inventory', InventoryCollection::class],
+            Type::PAYMENTOUT => ['paymentout', PaymentOutCollection::class],
         ];
     }
 }

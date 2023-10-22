@@ -9,6 +9,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
@@ -688,6 +689,16 @@ class Meta
     public static function inventory(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...Inventory::PATH, $guid], Inventory::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Исходящего платежа
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-ishodqschij-platezh
+     */
+    public static function paymentout(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...PaymentOut::PATH, $guid], PaymentOut::TYPE, $formatter);
     }
 
 

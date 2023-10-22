@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
@@ -827,5 +828,17 @@ class CollectionBuilder extends AbstractBuilder
     public function inventory(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::INVENTORY);
+    }
+
+    /**
+     * Коллекция Исходящих платежей
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-ishodqschij-platezh
+     *
+     * @return PaymentOutCollection
+     */
+    public function paymentout(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::PAYMENTOUT);
     }
 }

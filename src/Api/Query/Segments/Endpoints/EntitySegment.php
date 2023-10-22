@@ -10,6 +10,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InventorySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseOrderSegment;
@@ -876,5 +877,22 @@ class EntitySegment extends AbstractNamedSegment
     public function inventory(): InventorySegment
     {
         return $this->resolveNamedBuilder(InventorySegment::class);
+    }
+
+    /**
+     * Исходящий платеж
+     *
+     * <code>
+     * $paymentOuts = $ms->query()
+     *  ->entity()
+     *  ->paymentout()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-ishodqschij-platezh
+     */
+    public function paymentout(): PaymentOutSegment
+    {
+        return $this->resolveNamedBuilder(PaymentOutSegment::class);
     }
 }

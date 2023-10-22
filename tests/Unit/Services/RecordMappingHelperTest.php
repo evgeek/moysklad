@@ -7,6 +7,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
@@ -69,6 +70,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
@@ -313,6 +315,7 @@ class RecordMappingHelperTest extends TestCase
             Type::CUSTOMERORDER => [Type::CUSTOMERORDER, CustomerOrder::class, CustomerOrderCollection::class],
             Type::PURCHASEORDER => [Type::PURCHASEORDER, PurchaseOrder::class, PurchaseOrderCollection::class],
             Type::INVENTORY => [Type::INVENTORY, Inventory::class, InventoryCollection::class],
+            Type::PAYMENTOUT => [Type::PAYMENTOUT, PaymentOut::class, PaymentOutCollection::class],
         ];
     }
 

@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InventorySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseOrderSegment;
@@ -136,6 +137,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::CUSTOMERORDER => ['customerorder', Segment::CUSTOMERORDER, CustomerOrderSegment::class],
             Type::PURCHASEORDER => ['purchaseorder', Segment::PURCHASEORDER, PurchaseOrderSegment::class],
             Type::INVENTORY => ['inventory', Segment::INVENTORY, InventorySegment::class],
+            Type::PAYMENTOUT => ['paymentout', Segment::PAYMENTOUT, PaymentOutSegment::class],
         ];
     }
 }

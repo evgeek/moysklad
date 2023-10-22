@@ -637,4 +637,14 @@ class MetaBuilder
     {
         return Meta::inventory($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Исходящего платежа
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-ishodqschij-platezh
+     */
+    public function paymentout(string $guid)
+    {
+        return Meta::paymentout($guid, $this->formatter);
+    }
 }
