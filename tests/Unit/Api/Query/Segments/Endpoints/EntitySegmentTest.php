@@ -5,6 +5,7 @@ namespace Evgeek\Tests\Unit\Api\Query\Segments\Endpoints;
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SalesReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AccumulationDiscountSegment;
@@ -119,6 +120,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', RetailDrawerCashInSegment::class],
             Type::INTERNALORDER => ['internalorder', InternalOrderSegment::class],
             Type::SALESRETURN => ['salesreturn', SalesReturnSegment::class],
+            Type::PURCHASERETURN => ['purchasereturn', PurchaseReturnSegment::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderSegment::class],
         ];

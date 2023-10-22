@@ -11,7 +11,7 @@ use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
- * Коллекция Внутренних заказов.
+ * Коллекция Внутренних заказов
  *
  * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnutrennij-zakaz
  *

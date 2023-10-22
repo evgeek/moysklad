@@ -11,7 +11,7 @@ use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
- * Коллекция Внесений денег.
+ * Коллекция Внесений денег
  *
  * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vnesenie-deneg
  *

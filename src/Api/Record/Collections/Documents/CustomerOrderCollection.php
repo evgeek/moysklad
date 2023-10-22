@@ -10,7 +10,7 @@ use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
- * Коллекция Заказов покупателя.
+ * Коллекция Заказов покупателя
  *
  * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-zakaz-pokupatelq
  *

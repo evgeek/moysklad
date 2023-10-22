@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Tools;
 
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
@@ -590,6 +591,16 @@ class Meta
     public static function salesreturn(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...SalesReturn::PATH, $guid], SalesReturn::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Возвратов поставщику.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-postawschiku
+     */
+    public static function purchasereturn(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...PurchaseReturn::PATH, $guid], PurchaseReturn::TYPE, $formatter);
     }
 
 

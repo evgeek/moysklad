@@ -7,6 +7,7 @@ use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
@@ -180,6 +181,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', RetailDrawerCashIn::class],
             Type::INTERNALORDER => ['internalorder', InternalOrder::class],
             Type::SALESRETURN => ['salesreturn', SalesReturn::class],
+            Type::PURCHASERETURN => ['purchasereturn', PurchaseReturn::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrder::class],
         ];

@@ -172,6 +172,7 @@ class MetaTest extends TestCase
             Type::RETAILDRAWERCASHIN => ['retaildrawercashin', 'entity/retaildrawercashin', 'retaildrawercashin'],
             Type::INTERNALORDER => ['internalorder', 'entity/internalorder', 'internalorder'],
             Type::SALESRETURN => ['salesreturn', 'entity/salesreturn', 'salesreturn'],
+            Type::PURCHASERETURN => ['purchasereturn', 'entity/purchasereturn', 'purchasereturn'],
 
             Type::CUSTOMERORDER => ['customerorder', 'entity/customerorder', 'customerorder'],
         ];

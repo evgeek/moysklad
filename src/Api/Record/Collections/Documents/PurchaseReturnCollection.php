@@ -6,22 +6,23 @@ namespace Evgeek\Moysklad\Api\Record\Collections\Documents;
 
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
- * Коллекция Возвратов покупателя
+ * Коллекция Возвратов поставщику
  *
- * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-pokupatelq
+ * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-postawschiku
  *
- * @implements AbstractConcreteCollection<SalesReturn>
+ * @implements AbstractConcreteCollection<PurchaseReturn>
  */
-class SalesReturnCollection extends AbstractDocumentCollection
+class PurchaseReturnCollection extends AbstractDocumentCollection
 {
     public const PATH = [
         Segment::ENTITY,
-        Segment::SALESRETURN,
+        Segment::PURCHASERETURN,
     ];
-    public const TYPE = Type::SALESRETURN;
+    public const TYPE = Type::PURCHASERETURN;
 }

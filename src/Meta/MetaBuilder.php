@@ -548,6 +548,16 @@ class MetaBuilder
         return Meta::salesreturn($guid, $this->formatter);
     }
 
+    /**
+     * Метаданные Возвратов поставщику.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-postawschiku
+     */
+    public function purchasereturn(string $guid)
+    {
+        return Meta::purchasereturn($guid, $this->formatter);
+    }
+
 
 
 

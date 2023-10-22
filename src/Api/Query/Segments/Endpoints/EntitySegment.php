@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SalesReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AccumulationDiscountSegment;
@@ -715,6 +716,23 @@ class EntitySegment extends AbstractNamedSegment
     public function salesreturn(): SalesReturnSegment
     {
         return $this->resolveNamedBuilder(SalesReturnSegment::class);
+    }
+
+    /**
+     * Возврат поставщику.
+     *
+     * <code>
+     * $purchaseReturns = $ms->query()
+     *  ->entity()
+     *  ->purchasereturn()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-postawschiku
+     */
+    public function purchasereturn(): PurchaseReturnSegment
+    {
+        return $this->resolveNamedBuilder(PurchaseReturnSegment::class);
     }
 
 
