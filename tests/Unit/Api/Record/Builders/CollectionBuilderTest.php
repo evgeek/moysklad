@@ -7,6 +7,7 @@ use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
@@ -182,6 +183,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::INTERNALORDER => ['internalorder', InternalOrderCollection::class],
             Type::SALESRETURN => ['salesreturn', SalesReturnCollection::class],
             Type::PURCHASERETURN => ['purchasereturn', PurchaseReturnCollection::class],
+            Type::PREPAYMENTRETURN => ['prepaymentreturn', PrepaymentReturnCollection::class],
 
             Type::CUSTOMERORDER => ['customerorder', CustomerOrderCollection::class],
         ];

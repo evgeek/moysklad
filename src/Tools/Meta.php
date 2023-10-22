@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Tools;
 
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
@@ -601,6 +602,16 @@ class Meta
     public static function purchasereturn(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...PurchaseReturn::PATH, $guid], PurchaseReturn::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Возвратов предоплаты.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-predoplaty
+     */
+    public static function prepaymentreturn(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...PrepaymentReturn::PATH, $guid], PrepaymentReturn::TYPE, $formatter);
     }
 
 

@@ -173,6 +173,7 @@ class MetaTest extends TestCase
             Type::INTERNALORDER => ['internalorder', 'entity/internalorder', 'internalorder'],
             Type::SALESRETURN => ['salesreturn', 'entity/salesreturn', 'salesreturn'],
             Type::PURCHASERETURN => ['purchasereturn', 'entity/purchasereturn', 'purchasereturn'],
+            Type::PREPAYMENTRETURN => ['prepaymentreturn', 'entity/prepaymentreturn', 'prepaymentreturn'],
 
             Type::CUSTOMERORDER => ['customerorder', 'entity/customerorder', 'customerorder'],
         ];

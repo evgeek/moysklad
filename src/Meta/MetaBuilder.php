@@ -558,6 +558,16 @@ class MetaBuilder
         return Meta::purchasereturn($guid, $this->formatter);
     }
 
+    /**
+     * Метаданные Возвратов предоплаты.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-predoplaty
+     */
+    public function prepaymentreturn(string $guid)
+    {
+        return Meta::prepaymentreturn($guid, $this->formatter);
+    }
+
 
 
 

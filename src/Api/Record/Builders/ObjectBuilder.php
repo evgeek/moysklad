@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
@@ -727,6 +728,18 @@ class ObjectBuilder extends AbstractBuilder
     public function purchasereturn(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::PURCHASERETURN, $content);
+    }
+
+    /**
+     * Возврат предоплаты.
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-vozwrat-predoplaty
+     *
+     * @return PrepaymentReturn
+     */
+    public function prepaymentreturn(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PREPAYMENTRETURN, $content);
     }
 
 
