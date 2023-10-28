@@ -1,6 +1,6 @@
 # Upgrade guide
 
-## [Unreleased] [[Changelog](/CHANGELOG.md#v0100-upgrade-guide)]
+## v0.10.0 [[Changelog](/CHANGELOG.md#v0100-upgrade-guide)]
 
 ### Имена классов Query и Record приведены к PascalCase. 
 
