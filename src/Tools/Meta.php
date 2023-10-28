@@ -14,6 +14,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\InvoiceIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InvoiceOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Loss;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
@@ -875,6 +876,16 @@ class Meta
     public static function invoiceout(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...InvoiceOut::PATH, $guid], InvoiceOut::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Счета поставщика
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-postawschika
+     */
+    public static function invoicein(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...InvoiceIn::PATH, $guid], InvoiceIn::TYPE, $formatter);
     }
 
 

@@ -16,17 +16,17 @@ use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
- * Коллекция Счетов покупателям
+ * Коллекция Счетов поставщикам
  *
- * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-pokupatelu
+ * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-postawschika
  *
  * @implements AbstractConcreteCollection<InvoiceOut>
  */
-class InvoiceOutCollection extends AbstractDocumentCollection
+class InvoiceInCollection extends AbstractDocumentCollection
 {
     public const PATH = [
         Segment::ENTITY,
-        Segment::INVOICEOUT,
+        Segment::INVOICEIN,
     ];
-    public const TYPE = Type::INVOICEOUT;
+    public const TYPE = Type::INVOICEIN;
 }

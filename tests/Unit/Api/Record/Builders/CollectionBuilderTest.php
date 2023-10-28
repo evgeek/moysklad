@@ -15,6 +15,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\InvoiceInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InvoiceOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\LossCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
@@ -230,6 +231,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::RETAILSALESRETURN => ['retailsalesreturn', RetailSalesReturnCollection::class],
             Type::LOSS => ['loss', LossCollection::class],
             Type::INVOICEOUT => ['invoiceout', InvoiceOutCollection::class],
+            Type::INVOICEIN => ['invoicein', InvoiceInCollection::class],
         ];
     }
 }

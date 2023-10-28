@@ -807,4 +807,14 @@ class MetaBuilder
     {
         return Meta::invoiceout($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Счета поставщика
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-postawschika
+     */
+    public function invoicein(string $guid)
+    {
+        return Meta::invoicein($guid, $this->formatter);
+    }
 }

@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\InvoiceInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InvoiceOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\LossCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
@@ -91,6 +92,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\InvoiceIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InvoiceOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Loss;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
@@ -364,6 +366,7 @@ class RecordMappingHelperTest extends TestCase
             Type::RETAILSALESRETURN => [Type::RETAILSALESRETURN, RetailSalesReturn::class, RetailSalesReturnCollection::class],
             Type::LOSS => [Type::LOSS, Loss::class, LossCollection::class],
             Type::INVOICEOUT => [Type::INVOICEOUT, InvoiceOut::class, InvoiceOutCollection::class],
+            Type::INVOICEIN => [Type::INVOICEIN, InvoiceIn::class, InvoiceInCollection::class],
         ];
     }
 

@@ -16,6 +16,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\InvoiceIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InvoiceOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Loss;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
@@ -1051,5 +1052,17 @@ class ObjectBuilder extends AbstractBuilder
     public function invoiceout(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::INVOICEOUT, $content);
+    }
+
+    /**
+     * Счет поставщика
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-postawschika
+     *
+     * @return InvoiceIn
+     */
+    public function invoicein(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::INVOICEIN, $content);
     }
 }

@@ -16,6 +16,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\InvoiceInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InvoiceOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\LossCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
@@ -1039,7 +1040,7 @@ class CollectionBuilder extends AbstractBuilder
     }
 
     /**
-     * Коллекция Счетов покупателю
+     * Коллекция Счетов покупателям
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-pokupatelu
      *
@@ -1048,5 +1049,17 @@ class CollectionBuilder extends AbstractBuilder
     public function invoiceout(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::INVOICEOUT);
+    }
+
+    /**
+     * Коллекция Счетов поставщикам
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-postawschika
+     *
+     * @return InvoiceInCollection
+     */
+    public function invoicein(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::INVOICEIN);
     }
 }

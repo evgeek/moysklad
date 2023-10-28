@@ -13,6 +13,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\DemandSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\EnterSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InventorySegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InvoiceInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InvoiceOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\LossSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\MoveSegment;
@@ -170,6 +171,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::RETAILSALESRETURN => ['retailsalesreturn', Segment::RETAILSALESRETURN, RetailSalesReturnSegment::class],
             Type::LOSS => ['loss', Segment::LOSS, LossSegment::class],
             Type::INVOICEOUT => ['invoiceout', Segment::INVOICEOUT, InvoiceOutSegment::class],
+            Type::INVOICEIN => ['invoicein', Segment::INVOICEIN, InvoiceInSegment::class],
         ];
     }
 }

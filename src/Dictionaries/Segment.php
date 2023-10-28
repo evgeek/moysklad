@@ -108,4 +108,5 @@ class Segment
     public const RETAILSALESRETURN = 'retailsalesreturn';
     public const LOSS = 'loss';
     public const INVOICEOUT = 'invoiceout';
+    public const INVOICEIN = 'invoicein';
 }

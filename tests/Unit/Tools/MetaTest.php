@@ -198,6 +198,7 @@ class MetaTest extends TestCase
             Type::RETAILSALESRETURN => ['retailsalesreturn', 'entity/retailsalesreturn', 'retailsalesreturn'],
             Type::LOSS => ['loss', 'entity/loss', 'loss'],
             Type::INVOICEOUT => ['invoiceout', 'entity/invoiceout', 'invoiceout'],
+            Type::INVOICEIN => ['invoicein', 'entity/invoicein', 'invoicein'],
         ];
     }
 
