@@ -707,4 +707,14 @@ class MetaBuilder
     {
         return Meta::commissionreportin($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Прайс-листа
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-prajs-list
+     */
+    public function pricelist(string $guid)
+    {
+        return Meta::pricelist($guid, $this->formatter);
+    }
 }

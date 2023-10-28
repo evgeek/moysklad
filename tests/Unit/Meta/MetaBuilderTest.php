@@ -115,6 +115,7 @@ class MetaBuilderTest extends TestCase
             Type::MOVE => ['move', [self::GUID1], '/entity/move/' . self::GUID1, 'move'],
             Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerposition', [CommissionReportIn::make($ms, ['id' => self::GUID1]), self::GUID2], '/entity/commissionreportin/' . self::GUID1 . '/returntocommissionerpositions/' . self::GUID2, 'returntocommissionerposition'],
             Type::COMMISSIONREPORTIN => ['commissionreportin', [self::GUID1], '/entity/commissionreportin/' . self::GUID1, 'commissionreportin'],
+            Type::PRICELIST => ['pricelist', [self::GUID1], '/entity/pricelist/' . self::GUID1, 'pricelist'],
         ];
     }
 }

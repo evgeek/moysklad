@@ -16,6 +16,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PriceListCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
@@ -73,6 +74,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
@@ -190,6 +192,7 @@ class AbstractConcreteObjectTest extends KnownObjectTestCase
             Type::DEMAND => [Demand::class, DemandCollection::class],
             Type::MOVE => [Move::class, MoveCollection::class],
             Type::COMMISSIONREPORTIN => [CommissionReportIn::class, CommissionReportInCollection::class],
+            Type::PRICELIST => [PriceList::class, PriceListCollection::class],
         ];
     }
 }

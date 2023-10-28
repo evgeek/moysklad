@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PriceListSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CounterpartyAdjustmentSegment;
@@ -984,5 +985,22 @@ class EntitySegment extends AbstractNamedSegment
     public function commissionreportin(): CommissionReportInSegment
     {
         return $this->resolveNamedBuilder(CommissionReportInSegment::class);
+    }
+
+    /**
+     * Прайс-лист
+     *
+     * <code>
+     * $priceList = $ms->query()
+     *  ->entity()
+     *  ->pricelist()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-prajs-list
+     */
+    public function pricelist(): PriceListSegment
+    {
+        return $this->resolveNamedBuilder(PriceListSegment::class);
     }
 }

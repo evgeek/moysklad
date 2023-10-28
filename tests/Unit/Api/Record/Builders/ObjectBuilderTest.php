@@ -17,6 +17,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
@@ -211,6 +212,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::MOVE => ['move', Move::class],
             Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerposition', ReturnToCommissionerPosition::class, true],
             Type::COMMISSIONREPORTIN => ['commissionreportin', CommissionReportIn::class],
+            Type::PRICELIST => ['pricelist', PriceList::class],
         ];
     }
 }

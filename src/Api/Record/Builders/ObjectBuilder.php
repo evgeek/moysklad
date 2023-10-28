@@ -18,6 +18,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
@@ -921,5 +922,17 @@ class ObjectBuilder extends AbstractBuilder
     public function commissionreportin(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::COMMISSIONREPORTIN, $content);
+    }
+
+    /**
+     * Прайс-лист
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-prajs-list
+     *
+     * @return PriceList
+     */
+    public function pricelist(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PRICELIST, $content);
     }
 }

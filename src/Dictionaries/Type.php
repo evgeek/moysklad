@@ -83,4 +83,5 @@ class Type
     public const MOVE = 'move';
     public const COMMISSIONREPORTIN = 'commissionreportin';
     public const RETURNTOCOMMISSIONERPOSITION = 'returntocommissionerposition';
+    public const PRICELIST = 'pricelist';
 }

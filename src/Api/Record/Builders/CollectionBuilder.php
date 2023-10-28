@@ -18,6 +18,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PriceListCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
@@ -918,5 +919,17 @@ class CollectionBuilder extends AbstractBuilder
     public function commissionreportin(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::COMMISSIONREPORTIN);
+    }
+
+    /**
+     * Коллекция Прайс-листов
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-prajs-list
+     *
+     * @return PriceListCollection
+     */
+    public function pricelist(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::PRICELIST);
     }
 }

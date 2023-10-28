@@ -17,6 +17,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PriceListCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
@@ -210,6 +211,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::MOVE => ['move', MoveCollection::class],
             Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerposition', ReturnToCommissionerPositionCollection::class, true],
             Type::COMMISSIONREPORTIN => ['commissionreportin', CommissionReportInCollection::class],
+            Type::PRICELIST => ['pricelist', PriceListCollection::class],
         ];
     }
 }

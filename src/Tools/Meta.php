@@ -16,6 +16,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
@@ -765,6 +766,16 @@ class Meta
     public static function commissionreportin(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...CommissionReportIn::PATH, $guid], CommissionReportIn::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Прайс-листа
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-prajs-list
+     */
+    public static function pricelist(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...PriceList::PATH, $guid], PriceList::TYPE, $formatter);
     }
 
 

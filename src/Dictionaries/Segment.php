@@ -98,4 +98,5 @@ class Segment
     public const MOVE = 'move';
     public const COMMISSIONREPORTIN = 'commissionreportin';
     public const RETURNTOCOMMISSIONERPOSITIONS = 'returntocommissionerpositions';
+    public const PRICELIST = 'pricelist';
 }
