@@ -11,8 +11,8 @@ use Evgeek\Moysklad\Dictionaries\Segment;
 
 class FilesSegment extends AbstractMethodNamedSegment
 {
-    use UpdateTrait;
     use DeleteTrait;
+    use UpdateTrait;
 
     public const SEGMENT = Segment::FILES;
 }

@@ -943,16 +943,6 @@ class Meta
         return static::createNested($parent, [...ProcessingPositionResult::PATH, $guid], ProcessingPositionResult::TYPE, $formatter);
     }
 
-
-
-
-
-
-
-
-
-
-
     /** @deprecated */
     public static function entity(array $path, string $type, JsonFormatterInterface $formatter = null)
     {

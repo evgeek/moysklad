@@ -10,6 +10,6 @@ use Evgeek\Moysklad\Api\Query\Traits\Segments\NamedFilterTrait;
 
 abstract class AbstractEntitySegment extends AbstractMethodNamedSegment
 {
-    use NamedFilterTrait;
     use GetGeneratorTrait;
+    use NamedFilterTrait;
 }

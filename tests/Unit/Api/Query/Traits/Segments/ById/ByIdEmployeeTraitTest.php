@@ -6,8 +6,6 @@ use Evgeek\Moysklad\Api\Query\AbstractBuilder;
 use Evgeek\Moysklad\Api\Query\Segments\AbstractCommonSegment;
 use Evgeek\Moysklad\Api\Query\Segments\ById\ByIdEmployeeSegment;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\ById\ByIdEmployeeTrait;
-use Evgeek\Moysklad\Dictionaries\Segment;
-use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Query\Traits\TraitTestCase;
 
 /** @covers \Evgeek\Moysklad\Api\Query\Traits\Segments\ById\ByIdEmployeeTrait */

@@ -2,7 +2,6 @@
 
 namespace Evgeek\Tests\Unit\Api\Query\Segments;
 
-use Evgeek\Moysklad\Api\Query\Segments\AbstractCommonSegment;
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Query\ApiTestCase;

@@ -11,7 +11,6 @@ use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\NestedRecordHelper;
 use Evgeek\Moysklad\Services\RecordHelper;
 use Evgeek\Moysklad\Services\Url;
-use Evgeek\Moysklad\Tools\Guid;
 use stdClass;
 use Throwable;
 

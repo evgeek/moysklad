@@ -16,9 +16,9 @@ class ImagesSegment extends AbstractMethodNamedSegment
 {
     use ByIdCommonTrait;
     use CreateTrait;
+    use GetGeneratorTrait;
     use MassCreateUpdateTrait;
     use MassDeleteTrait;
-    use GetGeneratorTrait;
 
     public const SEGMENT = Segment::IMAGES;
 }

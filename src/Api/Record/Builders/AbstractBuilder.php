@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Record\Builders;
 
-use Evgeek\Moysklad\Api\Record\AbstractConcreteRecord;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;

@@ -5,9 +5,7 @@ namespace Evgeek\Tests\Unit\Api\Query\Traits\Segments;
 use Evgeek\Moysklad\Api\Query\AbstractBuilder;
 use Evgeek\Moysklad\Api\Query\Segments\AbstractCommonSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\AbstractMethodNamedSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\AttributesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\CharacteristicsSegment;
-use Evgeek\Moysklad\Api\Query\Traits\Segments\AttributesTrait;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\CharacteristicsTrait;
 use Evgeek\Tests\Unit\Api\Query\Traits\TraitTestCase;
 

@@ -468,7 +468,7 @@ class RecordMapping
         }
     }
 
-    private function get(array $property,string $type, array $expectedClasses): ?string
+    private function get(array $property, string $type, array $expectedClasses): ?string
     {
         if (!array_key_exists($type, $property)) {
             return null;

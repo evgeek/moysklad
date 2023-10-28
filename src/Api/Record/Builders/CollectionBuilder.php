@@ -600,6 +600,7 @@ class CollectionBuilder extends AbstractBuilder
     {
         return $this->resolveCollection(Type::PRODUCT);
     }
+
     /**
      * Коллекция Точек продаж
      *

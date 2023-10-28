@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Query\Traits\Segments\ById;
 
-use Evgeek\Moysklad\Api\Query\Segments\ById\ByIdEmployeeSegment;
 use Evgeek\Moysklad\Api\Query\Segments\ById\ByIdOrganizationSegment;
 
 trait ByIdOrganizationTrait

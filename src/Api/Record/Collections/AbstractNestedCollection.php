@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Record\Collections;
 
-use Evgeek\Moysklad\Api\Record\AbstractConcreteRecord;
 use Evgeek\Moysklad\Api\Record\AbstractNestedRecord;
 use Evgeek\Moysklad\Api\Record\AutocompleteHelpers\MetaCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Traits\CrudCollectionTrait;

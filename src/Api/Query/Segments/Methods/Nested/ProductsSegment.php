@@ -13,8 +13,8 @@ use Evgeek\Moysklad\Dictionaries\Segment;
 class ProductsSegment extends AbstractMethodNamedSegment
 {
     use ByIdCommonTrait;
-    use GetGeneratorTrait;
     use CreateTrait;
+    use GetGeneratorTrait;
 
     public const SEGMENT = Segment::PRODUCTS;
 }

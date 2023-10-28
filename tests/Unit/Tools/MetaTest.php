@@ -105,8 +105,7 @@ class MetaTest extends TestCase
         string $expectedType,
         bool $withId = true,
         ObjectInterface|string|array $parent = []
-    ): void
-    {
+    ): void {
         $withId ?
             $this->assertMetaMethodByGuidWorks($method, $expectedPath, $expectedType, $parent) :
             $this->assertMetaMethodWithoutGuidWorks($method, $expectedPath, $expectedType, $parent);

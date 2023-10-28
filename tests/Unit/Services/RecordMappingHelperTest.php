@@ -218,8 +218,8 @@ class RecordMappingHelperTest extends TestCase
 
     /** @dataProvider standardEntities */
     public function testResolvingRegisteredCollection(
-        string  $type,
-        string  $expectedObjectClass,
+        string $type,
+        string $expectedObjectClass,
         ?string $expectedCollectionClass,
         ObjectInterface|array|string|null $parent = null
     ): void {

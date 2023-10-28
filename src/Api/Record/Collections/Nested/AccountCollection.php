@@ -6,7 +6,6 @@ namespace Evgeek\Moysklad\Api\Record\Collections\Nested;
 
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\Account;
-use Evgeek\Moysklad\Api\Record\Objects\Nested\Files;
 use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Dictionaries\Type;
 

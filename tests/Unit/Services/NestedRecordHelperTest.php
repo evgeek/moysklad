@@ -32,7 +32,7 @@ class NestedRecordHelperTest extends TestCase
 
         $objectWithoutMetaHref = new CustomerOrder($ms, ['meta' => []]);
         $objectWithoutMeta = Product::make($ms);
-        unset($objectWithoutMeta->meta);
+        $objectWithoutMeta->meta = null;
 
         return [
             [$objectWithoutMetaHref, 'Parent object missing meta->href property'],

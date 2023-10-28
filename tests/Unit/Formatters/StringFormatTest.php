@@ -12,6 +12,11 @@ class StringFormatTest extends MultiDecoderTestCase
 {
     protected const FORMATTER = StringFormat::class;
 
+    public static function invalidJsonTypesDataProvider(): array
+    {
+        return [];
+    }
+
     protected static function getEncodedObject(): string
     {
         return static::OBJECT_JSON_STRING;
@@ -25,10 +30,5 @@ class StringFormatTest extends MultiDecoderTestCase
     protected static function getEncodedEmpty(): string
     {
         return '';
-    }
-
-    public static function invalidJsonTypesDataProvider(): array
-    {
-        return [];
     }
 }

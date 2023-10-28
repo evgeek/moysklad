@@ -94,7 +94,7 @@ class RecordFormatTest extends StdClassFormatTest
                 'id' => '25cf41f2-b068-11ed-0a80-0e9700500d7e',
                 'key' => 'value',
             ],
-        ]
+        ],
     ];
 
     public function testNestedEntityEncodedCorrectly(): void

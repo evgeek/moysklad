@@ -15,8 +15,9 @@ use PHPUnit\Framework\TestCase;
 abstract class KnownObjectTestCase extends TestCase
 {
     /**
-     * @param class-string<AbstractConcreteObject|AbstractNestedObject> $objectClass
+     * @param class-string<AbstractConcreteObject|AbstractNestedObject>              $objectClass
      * @param null|class-string<AbstractConcreteCollection|AbstractNestedCollection> $collectionClass
+     *
      * @dataProvider classAndCollection
      */
     public function testMakeReturnsSameClassWithExpectedContent(
@@ -42,8 +43,9 @@ abstract class KnownObjectTestCase extends TestCase
     }
 
     /**
-     * @param class-string<AbstractConcreteObject|AbstractNestedObject> $objectClass
+     * @param class-string<AbstractConcreteObject|AbstractNestedObject>              $objectClass
      * @param null|class-string<AbstractConcreteCollection|AbstractNestedCollection> $collectionClass
+     *
      * @dataProvider classAndCollection
      */
     public function testCollectionReturnsExpectedDefaultCollection(
@@ -53,6 +55,7 @@ abstract class KnownObjectTestCase extends TestCase
     ): void {
         if (!$collectionClass) {
             $this->assertNull($collectionClass);
+
             return;
         }
 

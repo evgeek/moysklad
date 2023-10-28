@@ -3,19 +3,15 @@
 namespace Evgeek\Tests\Unit\Api\Query\Segments\ById;
 
 use Evgeek\Moysklad\Api\Query\Segments\ById\AbstractByIdSegment;
-use Evgeek\Moysklad\Api\Query\Segments\ById\ByIdEmployeeSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Special\MassSegmentDelete;
-use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Query\ApiTestCase;
 
 /** @covers \Evgeek\Moysklad\Api\Query\Segments\ById\ByIdEmployeeSegment */
 abstract class ByIdSegmentTestCase extends ApiTestCase
 {
-    private AbstractByIdSegment $builder;
-
     /** @var class-string<AbstractByIdSegment> */
     protected const SEGMENT_CLASS = null;
+    private AbstractByIdSegment $builder;
 
     protected function setUp(): void
     {

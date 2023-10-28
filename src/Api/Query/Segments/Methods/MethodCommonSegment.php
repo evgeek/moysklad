@@ -28,8 +28,8 @@ class MethodCommonSegment extends AbstractCommonSegment
     use MassCreateUpdateTrait;
     use MassDeleteTrait;
     use MetadataTrait;
-    use PositionsTrait;
-    use UpdateTrait;
     use NamedFilterTrait;
+    use PositionsTrait;
     use StatesTrait;
+    use UpdateTrait;
 }

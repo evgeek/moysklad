@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Services;
 
-use Evgeek\Moysklad\Api\Record\AbstractConcreteRecord;
-use Evgeek\Moysklad\Api\Record\AbstractNestedRecord;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
@@ -30,13 +28,13 @@ final class RecordMappingHelper
 
         return new $class($ms, $content);
     }
+
     public static function resolveNestedObject(
         MoySklad $ms,
         ObjectInterface|array|string $parent,
         string $type,
         mixed $content = []
-    ): AbstractNestedObject
-    {
+    ): AbstractNestedObject {
         $class = self::getMapping($ms)->getObject($type);
 
         if (is_a($class, UnknownObject::class, true)) {

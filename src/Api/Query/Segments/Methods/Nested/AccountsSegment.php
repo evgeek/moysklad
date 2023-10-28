@@ -11,8 +11,8 @@ use Evgeek\Moysklad\Dictionaries\Segment;
 
 class AccountsSegment extends AbstractMethodNamedSegment
 {
-    use UpdateTrait;
     use ByIdCommonTrait;
+    use UpdateTrait;
 
     public const SEGMENT = Segment::ACCOUNTS;
 }

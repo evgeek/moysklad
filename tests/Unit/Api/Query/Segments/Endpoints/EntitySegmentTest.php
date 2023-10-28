@@ -112,7 +112,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::IMAGE => ['images', Segment::IMAGES, ImagesSegment::class, ['bundle', static::GUID1]],
             Type::SALESCHANNEL => ['saleschannel', Segment::SALESCHANNEL, SalesChannelSegment::class],
             Type::CASHIER => ['cashiers', Segment::CASHIERS, CashiersSegment::class, ['retailstore', static::GUID1]],
-//            Type::TRACKINGCODE => ['trackingCodes', TrackingCodesSegment::class, ['supply', 'ea05e0c9-8667-11e7-8a7f-40d000000060', 'positions', '161d25a8-1477-11ec-ac18-000b00000002']],
+            //            Type::TRACKINGCODE => ['trackingCodes', TrackingCodesSegment::class, ['supply', 'ea05e0c9-8667-11e7-8a7f-40d000000060', 'positions', '161d25a8-1477-11ec-ac18-000b00000002']],
             Type::BUNDLE => ['bundle', Segment::BUNDLE, BundleSegment::class],
             Type::COUNTERPARTY => ['counterparty', Segment::COUNTERPARTY, CounterpartySegment::class],
             Type::VARIANT => ['variant', Segment::VARIANT, VariantSegment::class],

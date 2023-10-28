@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Query\Segments\ById;
 
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\AccountsSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\SecuritySegment;
 
 class ByIdOrganizationSegment extends AbstractByIdSegment
 {

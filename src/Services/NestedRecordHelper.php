@@ -6,7 +6,6 @@ namespace Evgeek\Moysklad\Services;
 
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\ObjectInterface;
-use Evgeek\Moysklad\Formatters\RecordMapping;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Tools\Guid;
 use InvalidArgumentException;

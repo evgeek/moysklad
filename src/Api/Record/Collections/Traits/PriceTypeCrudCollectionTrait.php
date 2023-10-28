@@ -4,19 +4,9 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Record\Collections\Traits;
 
-use Evgeek\Moysklad\Api\Record\Collections\Entities\PriceTypeCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\PriceType;
-use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
-use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\RequestException;
-use Evgeek\Moysklad\Formatters\StdClassFormat;
-use Evgeek\Moysklad\Http\Payload;
-use Evgeek\Moysklad\Services\CollectionHelper;
-use Evgeek\Moysklad\Services\NestedRecordHelper;
-use Evgeek\Moysklad\Services\RecordHelper;
-use Evgeek\Moysklad\Services\Url;
-use InvalidArgumentException;
 
 trait PriceTypeCrudCollectionTrait
 {

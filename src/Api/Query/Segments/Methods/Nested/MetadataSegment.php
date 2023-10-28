@@ -16,9 +16,9 @@ class MetadataSegment extends AbstractMethodNamedSegment
 {
     use AttributesTrait;
     use ByIdCommonTrait;
-    use StatesTrait;
-    use EmbeddedTemplateTrait;
     use CustomTemplateTrait;
+    use EmbeddedTemplateTrait;
+    use StatesTrait;
 
     public const SEGMENT = Segment::METADATA;
 }

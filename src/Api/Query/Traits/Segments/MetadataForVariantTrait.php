@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Query\Traits\Segments;
 
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\MetadataForVariantSegment;
-use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\MetadataSegment;
 
 trait MetadataForVariantTrait
 {

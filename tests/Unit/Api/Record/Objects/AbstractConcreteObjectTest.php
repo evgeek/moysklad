@@ -74,7 +74,6 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\UomCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\VariantCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookStockCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
@@ -148,7 +147,6 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\UserSettings;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Variant;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Webhook;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\WebhookStock;
-use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
 use Evgeek\Moysklad\Dictionaries\Type;
 
 /**

@@ -5,16 +5,11 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Record\Collections\Traits;
 
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
-use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Formatters\StdClassFormat;
 use Evgeek\Moysklad\Http\Payload;
-use Evgeek\Moysklad\Services\CollectionHelper;
-use Evgeek\Moysklad\Services\NestedRecordHelper;
-use Evgeek\Moysklad\Services\RecordHelper;
 use Evgeek\Moysklad\Services\Url;
-use InvalidArgumentException;
 
 trait StateCrudCollectionTrait
 {
@@ -30,19 +25,6 @@ trait StateCrudCollectionTrait
         $this->hydrate($stateCollection);
 
         return $this;
-    }
-
-    private function extractStateCollection(mixed $metadata)
-    {
-        $stdResponse = (new StdClassFormat())->encode($this->ms->getFormatter()->decode($metadata));
-
-        [$parentPath] = Url::parsePathAndParams($stdResponse->meta->href);
-        array_pop($parentPath);
-
-        $statesCollection = State::collection($this->ms, $parentPath);
-        $statesCollection->rows = $stdResponse->states;
-
-        return $statesCollection;
     }
 
     protected function makePayload(HttpMethod $method, mixed $body, ?string $additionalSegment = null): Payload
@@ -61,5 +43,18 @@ trait StateCrudCollectionTrait
             params: $params,
             body: $body,
         );
+    }
+
+    private function extractStateCollection(mixed $metadata)
+    {
+        $stdResponse = (new StdClassFormat())->encode($this->ms->getFormatter()->decode($metadata));
+
+        [$parentPath] = Url::parsePathAndParams($stdResponse->meta->href);
+        array_pop($parentPath);
+
+        $statesCollection = State::collection($this->ms, $parentPath);
+        $statesCollection->rows = $stdResponse->states;
+
+        return $statesCollection;
     }
 }

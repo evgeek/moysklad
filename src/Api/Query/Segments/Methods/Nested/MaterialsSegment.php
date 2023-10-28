@@ -13,8 +13,8 @@ use Evgeek\Moysklad\Dictionaries\Segment;
 class MaterialsSegment extends AbstractMethodNamedSegment
 {
     use ByIdCommonTrait;
-    use GetGeneratorTrait;
     use CreateTrait;
+    use GetGeneratorTrait;
 
     public const SEGMENT = Segment::MATERIALS;
 }
