@@ -24,6 +24,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDemand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
@@ -221,6 +222,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::SUPPLY => ['supply', Supply::class],
             Type::CASHIN => ['cashin', CashIn::class],
             Type::CASHOUT => ['cashout', CashOut::class],
+            Type::RETAILDEMAND => ['retaildemand', RetailDemand::class],
         ];
     }
 }

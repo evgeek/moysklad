@@ -22,6 +22,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PriceListSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDemandSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SalesReturnSegment;
@@ -160,6 +161,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::SUPPLY => ['supply', Segment::SUPPLY, SupplySegment::class],
             Type::CASHIN => ['cashin', Segment::CASHIN, CashInSegment::class],
             Type::CASHOUT => ['cashout', Segment::CASHOUT, CashOutSegment::class],
+            Type::RETAILDEMAND => ['retaildemand', Segment::RETAILDEMAND, RetailDemandSegment::class],
         ];
     }
 }

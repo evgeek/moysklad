@@ -24,6 +24,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PriceListCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
@@ -220,6 +221,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::SUPPLY => ['supply', SupplyCollection::class],
             Type::CASHIN => ['cashin', CashInCollection::class],
             Type::CASHOUT => ['cashout', CashOutCollection::class],
+            Type::RETAILDEMAND => ['retaildemand', RetailDemandCollection::class],
         ];
     }
 }

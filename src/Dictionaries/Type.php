@@ -88,4 +88,5 @@ class Type
     public const SUPPLY = 'supply';
     public const CASHIN = 'cashin';
     public const CASHOUT = 'cashout';
+    public const RETAILDEMAND = 'retaildemand';
 }

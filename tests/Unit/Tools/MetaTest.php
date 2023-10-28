@@ -193,6 +193,7 @@ class MetaTest extends TestCase
             Type::SUPPLY => ['supply', 'entity/supply', 'supply'],
             Type::CASHIN => ['cashin', 'entity/cashin', 'cashin'],
             Type::CASHOUT => ['cashout', 'entity/cashout', 'cashout'],
+            Type::RETAILDEMAND => ['retaildemand', 'entity/retaildemand', 'retaildemand'],
         ];
     }
 

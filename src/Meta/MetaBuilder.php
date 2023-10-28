@@ -757,4 +757,14 @@ class MetaBuilder
     {
         return Meta::cashout($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Розничной продажи
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-roznichnaq-prodazha
+     */
+    public function retaildemand(string $guid)
+    {
+        return Meta::retaildemand($guid, $this->formatter);
+    }
 }

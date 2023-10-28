@@ -24,6 +24,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDemandSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SalesReturnSegment;
@@ -1074,5 +1075,22 @@ class EntitySegment extends AbstractNamedSegment
     public function cashout(): CashOutSegment
     {
         return $this->resolveNamedBuilder(CashOutSegment::class);
+    }
+
+    /**
+     * Розничная продажа
+     *
+     * <code>
+     * $retailDemand = $ms->query()
+     *  ->entity()
+     *  ->retaildemand()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-roznichnaq-prodazha
+     */
+    public function retaildemand(): RetailDemandSegment
+    {
+        return $this->resolveNamedBuilder(RetailDemandSegment::class);
     }
 }

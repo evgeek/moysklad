@@ -23,6 +23,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDemand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
@@ -820,6 +821,16 @@ class Meta
     public static function cashout(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...CashOut::PATH, $guid], CashOut::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Розничной продажи
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-roznichnaq-prodazha
+     */
+    public static function retaildemand(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...RetailDemand::PATH, $guid], RetailDemand::TYPE, $formatter);
     }
 
 

@@ -25,6 +25,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PriceListCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
@@ -983,5 +984,17 @@ class CollectionBuilder extends AbstractBuilder
     public function cashout(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::CASHOUT);
+    }
+
+    /**
+     * Коллекция Розничных продаж
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-roznichnaq-prodazha
+     *
+     * @return RetailDemandCollection
+     */
+    public function retaildemand(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::RETAILDEMAND);
     }
 }
