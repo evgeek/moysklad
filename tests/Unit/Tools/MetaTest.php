@@ -190,6 +190,7 @@ class MetaTest extends TestCase
             Type::COMMISSIONREPORTIN => ['commissionreportin', 'entity/commissionreportin', 'commissionreportin'],
             Type::PRICELIST => ['pricelist', 'entity/pricelist', 'pricelist'],
             Type::PREPAYMENT => ['prepayment', 'entity/prepayment', 'prepayment'],
+            Type::SUPPLY => ['supply', 'entity/supply', 'supply'],
         ];
     }
 

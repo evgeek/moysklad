@@ -26,6 +26,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\SupplyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
@@ -944,5 +945,17 @@ class CollectionBuilder extends AbstractBuilder
     public function prepayment(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::PREPAYMENT);
+    }
+
+    /**
+     * Коллекция Приемок
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-priemka
+     *
+     * @return SupplyCollection
+     */
+    public function supply(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::SUPPLY);
     }
 }

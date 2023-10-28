@@ -24,6 +24,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Supply;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
@@ -787,6 +788,16 @@ class Meta
     public static function prepayment(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...Prepayment::PATH, $guid], Prepayment::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Приемки
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-priemka
+     */
+    public static function supply(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...Supply::PATH, $guid], Supply::TYPE, $formatter);
     }
 
 

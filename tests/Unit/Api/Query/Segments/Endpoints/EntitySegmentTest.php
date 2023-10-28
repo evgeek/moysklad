@@ -23,6 +23,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SalesReturnSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SupplySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AccumulationDiscountSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AssortmentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\BonusProgramSegment;
@@ -154,6 +155,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::COMMISSIONREPORTIN => ['commissionreportin', Segment::COMMISSIONREPORTIN, CommissionReportInSegment::class],
             Type::PRICELIST => ['pricelist', Segment::PRICELIST, PriceListSegment::class],
             Type::PREPAYMENT => ['prepayment', Segment::PREPAYMENT, PrepaymentSegment::class],
+            Type::SUPPLY => ['supply', Segment::SUPPLY, SupplySegment::class],
         ];
     }
 }

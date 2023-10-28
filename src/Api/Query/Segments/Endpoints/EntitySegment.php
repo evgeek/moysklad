@@ -25,6 +25,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SalesReturnSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SupplySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AccumulationDiscountSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AssortmentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\BonusProgramSegment;
@@ -1020,5 +1021,22 @@ class EntitySegment extends AbstractNamedSegment
     public function prepayment(): PrepaymentSegment
     {
         return $this->resolveNamedBuilder(PrepaymentSegment::class);
+    }
+
+    /**
+     * Приемка
+     *
+     * <code>
+     * $supply = $ms->query()
+     *  ->entity()
+     *  ->supply()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-priemka
+     */
+    public function supply(): SupplySegment
+    {
+        return $this->resolveNamedBuilder(SupplySegment::class);
     }
 }

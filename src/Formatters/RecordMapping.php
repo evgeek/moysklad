@@ -28,6 +28,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\SupplyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
@@ -102,6 +103,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Supply;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Assortment;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
@@ -238,6 +240,7 @@ class RecordMapping
         Type::RETURNTOCOMMISSIONERPOSITION => ReturnToCommissionerPosition::class,
         Type::PRICELIST => PriceList::class,
         Type::PREPAYMENT => Prepayment::class,
+        Type::SUPPLY => Supply::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Type::ASSORTMENT => AssortmentCollection::class,
@@ -311,6 +314,7 @@ class RecordMapping
         Type::RETURNTOCOMMISSIONERPOSITION => ReturnToCommissionerPositionCollection::class,
         Type::PRICELIST => PriceListCollection::class,
         Type::PREPAYMENT => PrepaymentCollection::class,
+        Type::SUPPLY => SupplyCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;

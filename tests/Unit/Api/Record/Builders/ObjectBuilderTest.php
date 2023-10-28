@@ -25,6 +25,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Supply;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
@@ -215,6 +216,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::COMMISSIONREPORTIN => ['commissionreportin', CommissionReportIn::class],
             Type::PRICELIST => ['pricelist', PriceList::class],
             Type::PREPAYMENT => ['prepayment', Prepayment::class],
+            Type::SUPPLY => ['supply', Supply::class],
         ];
     }
 }

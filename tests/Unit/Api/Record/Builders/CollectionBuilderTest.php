@@ -25,6 +25,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\SupplyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
@@ -214,6 +215,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::COMMISSIONREPORTIN => ['commissionreportin', CommissionReportInCollection::class],
             Type::PRICELIST => ['pricelist', PriceListCollection::class],
             Type::PREPAYMENT => ['prepayment', PrepaymentCollection::class],
+            Type::SUPPLY => ['supply', SupplyCollection::class],
         ];
     }
 }

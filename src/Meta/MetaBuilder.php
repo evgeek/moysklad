@@ -727,4 +727,14 @@ class MetaBuilder
     {
         return Meta::prepayment($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Приемки
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-priemka
+     */
+    public function supply(string $guid)
+    {
+        return Meta::supply($guid, $this->formatter);
+    }
 }
