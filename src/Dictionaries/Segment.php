@@ -105,4 +105,5 @@ class Segment
     public const CASHOUT = 'cashout';
     public const RETAILDEMAND = 'retaildemand';
     public const RETAILSHIFT = 'retailshift';
+    public const RETAILSALESRETURN = 'retailsalesreturn';
 }

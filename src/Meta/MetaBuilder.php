@@ -777,4 +777,14 @@ class MetaBuilder
     {
         return Meta::retailshift($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Розничного возврата
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-roznichnyj-wozwrat
+     */
+    public function retailsalesreturn(string $guid)
+    {
+        return Meta::retailsalesreturn($guid, $this->formatter);
+    }
 }

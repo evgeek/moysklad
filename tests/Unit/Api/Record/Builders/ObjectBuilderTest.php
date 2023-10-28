@@ -27,6 +27,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDemand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailSalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailShift;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Supply;
@@ -225,6 +226,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::CASHOUT => ['cashout', CashOut::class],
             Type::RETAILDEMAND => ['retaildemand', RetailDemand::class],
             Type::RETAILSHIFT => ['retailshift', RetailShift::class],
+            Type::RETAILSALESRETURN => ['retailsalesreturn', RetailSalesReturn::class],
         ];
     }
 }

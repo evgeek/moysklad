@@ -27,6 +27,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDemandSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashOutSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailSalesReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailShiftSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SalesReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SupplySegment;
@@ -67,6 +68,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\VariantSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\WebhookSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\WebhookStockSegment;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\MetadataTrait;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailSalesReturn;
 use Evgeek\Moysklad\Dictionaries\Segment;
 
 class EntitySegment extends AbstractNamedSegment
@@ -980,7 +982,7 @@ class EntitySegment extends AbstractNamedSegment
      * Полученный отчет комиссионера
      *
      * <code>
-     * $commissionReportIn = $ms->query()
+     * $commissionReportIns = $ms->query()
      *  ->entity()
      *  ->commissionreportin()
      *  ->get();
@@ -997,7 +999,7 @@ class EntitySegment extends AbstractNamedSegment
      * Прайс-лист
      *
      * <code>
-     * $priceList = $ms->query()
+     * $priceLists = $ms->query()
      *  ->entity()
      *  ->pricelist()
      *  ->get();
@@ -1014,7 +1016,7 @@ class EntitySegment extends AbstractNamedSegment
      * Предоплата
      *
      * <code>
-     * $prepayment = $ms->query()
+     * $prepayments = $ms->query()
      *  ->entity()
      *  ->prepayment()
      *  ->get();
@@ -1031,7 +1033,7 @@ class EntitySegment extends AbstractNamedSegment
      * Приемка
      *
      * <code>
-     * $supply = $ms->query()
+     * $supplies = $ms->query()
      *  ->entity()
      *  ->supply()
      *  ->get();
@@ -1048,7 +1050,7 @@ class EntitySegment extends AbstractNamedSegment
      * Приходный ордер
      *
      * <code>
-     * $cashIn = $ms->query()
+     * $cashIns = $ms->query()
      *  ->entity()
      *  ->cashin()
      *  ->get();
@@ -1065,7 +1067,7 @@ class EntitySegment extends AbstractNamedSegment
      * Расходный ордер
      *
      * <code>
-     * $cashOut = $ms->query()
+     * $cashOuts = $ms->query()
      *  ->entity()
      *  ->cashout()
      *  ->get();
@@ -1082,7 +1084,7 @@ class EntitySegment extends AbstractNamedSegment
      * Розничная продажа
      *
      * <code>
-     * $retailDemand = $ms->query()
+     * $retailDemands = $ms->query()
      *  ->entity()
      *  ->retaildemand()
      *  ->get();
@@ -1099,7 +1101,7 @@ class EntitySegment extends AbstractNamedSegment
      * Розничная смена
      *
      * <code>
-     * $retailShift = $ms->query()
+     * $retailShifts = $ms->query()
      *  ->entity()
      *  ->retailshift()
      *  ->get();
@@ -1110,5 +1112,22 @@ class EntitySegment extends AbstractNamedSegment
     public function retailshift(): RetailShiftSegment
     {
         return $this->resolveNamedBuilder(RetailShiftSegment::class);
+    }
+
+    /**
+     * Розничный возврат
+     *
+     * <code>
+     * $retailSalesReturns = $ms->query()
+     *  ->entity()
+     *  ->retailsalesreturn()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-roznichnyj-wozwrat
+     */
+    public function retailsalesreturn(): RetailSalesReturnSegment
+    {
+        return $this->resolveNamedBuilder(RetailSalesReturnSegment::class);
     }
 }
