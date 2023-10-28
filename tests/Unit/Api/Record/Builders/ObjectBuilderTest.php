@@ -5,6 +5,7 @@ namespace Evgeek\Tests\Unit\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Builders\ObjectBuilder;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
@@ -217,6 +218,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::PRICELIST => ['pricelist', PriceList::class],
             Type::PREPAYMENT => ['prepayment', Prepayment::class],
             Type::SUPPLY => ['supply', Supply::class],
+            Type::CASHIN => ['cashin', CashIn::class],
         ];
     }
 }

@@ -737,4 +737,14 @@ class MetaBuilder
     {
         return Meta::supply($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Приходного ордера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-prihodnyj-order
+     */
+    public function cashin(string $guid)
+    {
+        return Meta::cashin($guid, $this->formatter);
+    }
 }

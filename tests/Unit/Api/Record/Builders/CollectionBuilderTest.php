@@ -5,6 +5,7 @@ namespace Evgeek\Tests\Unit\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Builders\CollectionBuilder;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
@@ -216,6 +217,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::PRICELIST => ['pricelist', PriceListCollection::class],
             Type::PREPAYMENT => ['prepayment', PrepaymentCollection::class],
             Type::SUPPLY => ['supply', SupplyCollection::class],
+            Type::CASHIN => ['cashin', CashInCollection::class],
         ];
     }
 }

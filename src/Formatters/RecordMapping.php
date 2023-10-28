@@ -8,6 +8,7 @@ use Evgeek\Moysklad\Api\Record\AbstractConcreteRecord;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\CollectionInterface;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
@@ -83,6 +84,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
 use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
@@ -241,6 +243,7 @@ class RecordMapping
         Type::PRICELIST => PriceList::class,
         Type::PREPAYMENT => Prepayment::class,
         Type::SUPPLY => Supply::class,
+        Type::CASHIN => CashIn::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Type::ASSORTMENT => AssortmentCollection::class,
@@ -315,6 +318,7 @@ class RecordMapping
         Type::PRICELIST => PriceListCollection::class,
         Type::PREPAYMENT => PrepaymentCollection::class,
         Type::SUPPLY => SupplyCollection::class,
+        Type::CASHIN => CashInCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;

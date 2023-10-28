@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Tests\Unit\Api\Record\Objects;
 
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
@@ -64,6 +65,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\VariantCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\WebhookStockCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
@@ -199,6 +201,7 @@ class AbstractConcreteObjectTest extends KnownObjectTestCase
             Type::PRICELIST => [PriceList::class, PriceListCollection::class],
             Type::PREPAYMENT => [Prepayment::class, PrepaymentCollection::class],
             Type::SUPPLY => [Supply::class, SupplyCollection::class],
+            Type::CASHIN => [CashIn::class, CashInCollection::class],
         ];
     }
 }

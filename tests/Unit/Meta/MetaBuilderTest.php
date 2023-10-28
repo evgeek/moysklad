@@ -118,6 +118,7 @@ class MetaBuilderTest extends TestCase
             Type::PRICELIST => ['pricelist', [self::GUID1], '/entity/pricelist/' . self::GUID1, 'pricelist'],
             Type::PREPAYMENT => ['prepayment', [self::GUID1], '/entity/prepayment/' . self::GUID1, 'prepayment'],
             Type::SUPPLY => ['supply', [self::GUID1], '/entity/supply/' . self::GUID1, 'supply'],
+            Type::CASHIN => ['cashin', [self::GUID1], '/entity/cashin/' . self::GUID1, 'cashin'],
         ];
     }
 }

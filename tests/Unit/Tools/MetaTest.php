@@ -191,6 +191,7 @@ class MetaTest extends TestCase
             Type::PRICELIST => ['pricelist', 'entity/pricelist', 'pricelist'],
             Type::PREPAYMENT => ['prepayment', 'entity/prepayment', 'prepayment'],
             Type::SUPPLY => ['supply', 'entity/supply', 'supply'],
+            Type::CASHIN => ['cashin', 'entity/cashin', 'cashin'],
         ];
     }
 

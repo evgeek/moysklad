@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Tools;
 
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
@@ -798,6 +799,16 @@ class Meta
     public static function supply(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...Supply::PATH, $guid], Supply::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Приходного ордера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-prihodnyj-order
+     */
+    public static function cashin(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...CashIn::PATH, $guid], CashIn::TYPE, $formatter);
     }
 
 

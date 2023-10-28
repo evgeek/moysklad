@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PriceListSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportInSegment;
@@ -1038,5 +1039,22 @@ class EntitySegment extends AbstractNamedSegment
     public function supply(): SupplySegment
     {
         return $this->resolveNamedBuilder(SupplySegment::class);
+    }
+
+    /**
+     * Приходный ордер
+     *
+     * <code>
+     * $cashIn = $ms->query()
+     *  ->entity()
+     *  ->cashin()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-prihodnyj-order
+     */
+    public function cashin(): CashInSegment
+    {
+        return $this->resolveNamedBuilder(CashInSegment::class);
     }
 }

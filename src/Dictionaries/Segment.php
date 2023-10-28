@@ -101,4 +101,5 @@ class Segment
     public const PRICELIST = 'pricelist';
     public const PREPAYMENT = 'prepayment';
     public const SUPPLY = 'supply';
+    public const CASHIN = 'cashin';
 }
