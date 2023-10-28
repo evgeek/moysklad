@@ -14,6 +14,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentColle
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\FactureOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InvoiceInCollection;
@@ -1061,5 +1062,17 @@ class CollectionBuilder extends AbstractBuilder
     public function invoicein(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::INVOICEIN);
+    }
+
+    /**
+     * Коллекция Счетов-фактур выданных
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-faktura-wydannyj
+     *
+     * @return FactureOutCollection
+     */
+    public function factureout(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::FACTUREOUT);
     }
 }

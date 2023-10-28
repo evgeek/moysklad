@@ -6,7 +6,7 @@ namespace Evgeek\Moysklad\Api\Record\Collections\Documents;
 
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
-use Evgeek\Moysklad\Api\Record\Objects\Documents\InvoiceIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\FactureOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InvoiceOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Loss;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDemand;
@@ -17,17 +17,17 @@ use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
- * Коллекция Счетов поставщикам
+ * Коллекция Счетов-фактур выданных
  *
- * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-postawschika
+ * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-faktura-wydannyj
  *
- * @implements AbstractConcreteCollection<InvoiceIn>
+ * @implements AbstractConcreteCollection<FactureOut>
  */
-class InvoiceInCollection extends AbstractDocumentCollection
+class FactureOutCollection extends AbstractDocumentCollection
 {
     public const PATH = [
         Segment::ENTITY,
-        Segment::INVOICEIN,
+        Segment::FACTUREOUT,
     ];
-    public const TYPE = Type::INVOICEIN;
+    public const TYPE = Type::FACTUREOUT;
 }

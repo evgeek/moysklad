@@ -126,6 +126,7 @@ class MetaBuilderTest extends TestCase
             Type::LOSS => ['loss', [self::GUID1], '/entity/loss/' . self::GUID1, 'loss'],
             Type::INVOICEOUT => ['invoiceout', [self::GUID1], '/entity/invoiceout/' . self::GUID1, 'invoiceout'],
             Type::INVOICEIN => ['invoicein', [self::GUID1], '/entity/invoicein/' . self::GUID1, 'invoicein'],
+            Type::FACTUREOUT => ['factureout', [self::GUID1], '/entity/factureout/' . self::GUID1, 'factureout'],
         ];
     }
 }

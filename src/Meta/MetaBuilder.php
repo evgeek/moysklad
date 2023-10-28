@@ -817,4 +817,14 @@ class MetaBuilder
     {
         return Meta::invoicein($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Счет-фактуры выданного
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-faktura-wydannyj
+     */
+    public function factureout(string $guid)
+    {
+        return Meta::factureout($guid, $this->formatter);
+    }
 }

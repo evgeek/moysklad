@@ -94,4 +94,5 @@ class Type
     public const LOSS = 'loss';
     public const INVOICEOUT = 'invoiceout';
     public const INVOICEIN = 'invoicein';
+    public const FACTUREOUT = 'factureout';
 }

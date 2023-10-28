@@ -109,4 +109,5 @@ class Segment
     public const LOSS = 'loss';
     public const INVOICEOUT = 'invoiceout';
     public const INVOICEIN = 'invoicein';
+    public const FACTUREOUT = 'factureout';
 }

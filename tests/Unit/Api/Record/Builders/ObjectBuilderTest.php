@@ -13,6 +13,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\FactureOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InvoiceIn;
@@ -233,6 +234,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::LOSS => ['loss', Loss::class],
             Type::INVOICEOUT => ['invoiceout', InvoiceOut::class],
             Type::INVOICEIN => ['invoicein', InvoiceIn::class],
+            Type::FACTUREOUT => ['factureout', FactureOut::class],
         ];
     }
 }

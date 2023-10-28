@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CashOutSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\FactureOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InvoiceInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InvoiceOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\LossSegment;
@@ -1183,5 +1184,22 @@ class EntitySegment extends AbstractNamedSegment
     public function invoicein(): InvoiceInSegment
     {
         return $this->resolveNamedBuilder(InvoiceInSegment::class);
+    }
+
+    /**
+     * Счет-фактура выданный
+     *
+     * <code>
+     * $factureOuts = $ms->query()
+     *  ->entity()
+     *  ->invoicein()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-faktura-wydannyj
+     */
+    public function factureout(): FactureOutSegment
+    {
+        return $this->resolveNamedBuilder(FactureOutSegment::class);
     }
 }
