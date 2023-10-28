@@ -2,10 +2,7 @@
 
 namespace Evgeek\Tests\Unit\Api\Query\Traits\Params;
 
-use Evgeek\Moysklad\Api\Query\Segments\AbstractSegmentCommon;
-use Evgeek\Moysklad\Api\Query\Traits\Actions\GetTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Params\ParamTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Segments\MethodCommonTrait;
+use Evgeek\Moysklad\Api\Query\Segments\AbstractCommonSegment;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Query\Traits\TraitTestCase;
 use InvalidArgumentException;
@@ -174,10 +171,7 @@ class ParamTraitTest extends TraitTestCase
 
     private function makeParamBuilder()
     {
-        return new class($this->api, static::PREV_PATH, static::PARAMS, 'test_segment') extends AbstractSegmentCommon {
-            use GetTrait;
-            use MethodCommonTrait;
-            use ParamTrait;
+        return new class($this->api, static::PREV_PATH, static::PARAMS, 'test_segment') extends AbstractCommonSegment {
         };
     }
 }

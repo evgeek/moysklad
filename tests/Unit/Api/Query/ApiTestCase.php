@@ -9,6 +9,7 @@ abstract class ApiTestCase extends TestCase
 {
     use ApiClientMockerTrait;
 
+    protected const GUID = '25cf41f2-b068-11ed-0a80-0e9700500d7e';
     protected const PREV_PATH = [
         'test_endpoint',
         'test_method',

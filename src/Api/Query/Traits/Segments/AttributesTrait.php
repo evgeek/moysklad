@@ -12,7 +12,7 @@ trait AttributesTrait
      * Атрибуты.
      *
      * <code>
-     * $product = $ms->query()
+     * $attributes = $ms->query()
      *  ->entity()
      *  ->product()
      *  ->metadata()

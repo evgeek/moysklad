@@ -12,9 +12,9 @@ class IteratorTraitTest extends CollectionTraitCase
     public function testEachCorrectIterateRows(): void
     {
         $objects = [
-            $this->ms->record()->object()->product(['id' => static::GUID, 'name' => 'product1']),
-            $this->ms->record()->object()->product(['id' => static::GUID, 'name' => 'product2']),
-            $this->ms->record()->object()->product(['id' => static::GUID, 'name' => 'product3']),
+            $this->ms->record()->object()->product(['id' => static::GUID1, 'name' => 'product1']),
+            $this->ms->record()->object()->product(['id' => static::GUID1, 'name' => 'product2']),
+            $this->ms->record()->object()->product(['id' => static::GUID1, 'name' => 'product3']),
         ];
         $collection = $this->getTestCollection(['rows' => $objects]);
 

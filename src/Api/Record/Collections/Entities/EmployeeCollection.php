@@ -6,21 +6,21 @@ namespace Evgeek\Moysklad\Api\Record\Collections\Entities;
 
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
-use Evgeek\Moysklad\Dictionaries\Endpoint;
-use Evgeek\Moysklad\Dictionaries\Entity;
+use Evgeek\Moysklad\Dictionaries\Segment;
+use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
- * Коллекция сотрудников
+ * Коллекция Сотрудников
  *
  * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sotrudnik
  *
  * @implements AbstractConcreteCollection<Employee>
  */
-class EmployeeCollection extends AbstractConcreteCollection
+class EmployeeCollection extends AbstractEntityCollection
 {
     public const PATH = [
-        Endpoint::ENTITY,
-        Entity::EMPLOYEE,
+        Segment::ENTITY,
+        Segment::EMPLOYEE,
     ];
-    public const TYPE = Entity::EMPLOYEE;
+    public const TYPE = Type::EMPLOYEE;
 }

@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Query;
 
-use Evgeek\Moysklad\Api\Query\Segments\AbstractSegmentCommon;
-use Evgeek\Moysklad\Api\Query\Segments\AbstractSegmentNamed;
-use Evgeek\Moysklad\Api\Query\Traits\Actions\DebugTrait;
+use Evgeek\Moysklad\Api\Query\Segments\AbstractCommonSegment;
+use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Http\ApiClient;
@@ -15,8 +14,6 @@ use Generator;
 
 abstract class AbstractBuilder
 {
-    use DebugTrait;
-
     protected array $path;
 
     public function __construct(
@@ -61,21 +58,21 @@ abstract class AbstractBuilder
     }
 
     /**
-     * @template T of AbstractSegmentCommon
+     * @template T of AbstractCommonSegment
      *
      * @param class-string<T> $builderClass
      */
-    protected function resolveCommonBuilder(string $builderClass, string $path): AbstractSegmentCommon
+    protected function resolveCommonBuilder(string $builderClass, string $path): AbstractCommonSegment
     {
         return new $builderClass($this->api, $this->path, $this->params, $path);
     }
 
     /**
-     * @template T of AbstractSegmentNamed
+     * @template T of AbstractNamedSegment
      *
      * @param class-string<T> $builderClass
      */
-    protected function resolveNamedBuilder(string $builderClass): AbstractSegmentNamed
+    protected function resolveNamedBuilder(string $builderClass): AbstractNamedSegment
     {
         return new $builderClass($this->api, $this->path, $this->params);
     }

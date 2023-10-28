@@ -4,53 +4,53 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Record\Objects\Entities;
 
-use Evgeek\Moysklad\Api\Record\AutocompleteHelpers\Image;
+use Evgeek\Moysklad\Api\Record\AutocompleteHelpers\EmployeeImageObject;
 use Evgeek\Moysklad\Api\Record\AutocompleteHelpers\MetaObject;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\EmployeeCollection;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\UnknownObject;
-use Evgeek\Moysklad\Dictionaries\Endpoint;
-use Evgeek\Moysklad\Dictionaries\Entity;
+use Evgeek\Moysklad\Dictionaries\Segment;
+use Evgeek\Moysklad\Dictionaries\Type;
 
 /**
  * Сотрудник
  *
+ * @property string               $accountId    ID учетной записи
+ * @property bool                 $archived     Добавлен ли Сотрудник в архив
+ * @property ?UnknownObject[]     $attributes   Дополнительные поля Сотрудника
+ * @property ?UnknownObject[]     $cashiers     Массив кассиров
+ * @property ?string              $code         Код Сотрудника
+ * @property string               $created      Момент создания Сотрудника
+ * @property ?string              $description  Комментарий к Сотруднику
+ * @property ?string              $email        Электронная почта сотрудника
+ * @property string               $externalCode Внешний код Сотрудника
+ * @property ?string              $firstName    Имя
+ * @property ?string              $fullName     Имя Отчество Фамилия
+ * @property UnknownObject        $group        Отдел сотрудника
+ * @property string               $id           ID Сотрудника
+ * @property ?EmployeeImageObject $image        Фотография сотрудника
+ * @property ?string              $inn          ИНН сотрудника (в формате ИНН физического лица)
+ * @property string               $lastName     Фамилия
+ * @property ?MetaObject          $meta         Метаданные Сотрудника
+ * @property ?string              $middleName   Отчество
+ * @property string               $name         Наименование Сотрудника
+ * @property Employee             $owner        Владелец (Сотрудник)
+ * @property ?string              $phone        Телефон сотрудника
+ * @property ?string              $position     Должность сотрудника
+ * @property bool                 $shared       Общий доступ
+ * @property ?string              $shortFio     Краткое ФИО
+ * @property ?string              $uid          Логин Сотрудника
+ * @property string               $updated      Момент последнего обновления Сотрудника
+ *
  * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-sotrudnik
  *
  * @implements AbstractConcreteObject<EmployeeCollection>
- *
- * @property string           $accountId
- * @property bool             $archived
- * @property ?UnknownObject[] $attributes
- * @property ?UnknownObject[] $cashiers
- * @property ?string          $code
- * @property string           $created
- * @property ?string          $description
- * @property ?string          $email
- * @property string           $externalCode
- * @property ?string          $firstName
- * @property ?string          $fullName
- * @property UnknownObject    $group
- * @property string           $id
- * @property ?Image           $image
- * @property ?string          $inn
- * @property string           $lastName
- * @property ?MetaObject      $meta
- * @property ?string          $middleName
- * @property string           $name
- * @property Employee         $owner
- * @property ?string          $phone
- * @property ?string          $position
- * @property bool             $shared
- * @property ?string          $shortFio
- * @property ?string          $uid
- * @property string           $updated
  */
-class Employee extends AbstractConcreteObject
+class Employee extends AbstractEntity
 {
     public const PATH = [
-        Endpoint::ENTITY,
-        Entity::EMPLOYEE,
+        Segment::ENTITY,
+        Segment::EMPLOYEE,
     ];
-    public const TYPE = Entity::EMPLOYEE;
+    public const TYPE = Type::EMPLOYEE;
 }

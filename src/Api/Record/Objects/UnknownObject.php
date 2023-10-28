@@ -19,7 +19,7 @@ use Evgeek\Moysklad\MoySklad;
  * @property string      $id
  * @property ?MetaObject $meta
  */
-class UnknownObject extends AbstractUnknownRecord
+class UnknownObject extends AbstractUnknownRecord implements ObjectInterface
 {
     use CrudObjectTrait;
     use FillMetaObjectTrait;

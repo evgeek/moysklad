@@ -2,10 +2,7 @@
 
 namespace Evgeek\Tests\Unit\Api\Query\Traits\Params;
 
-use Evgeek\Moysklad\Api\Query\Segments\AbstractSegmentCommon;
-use Evgeek\Moysklad\Api\Query\Traits\Actions\GetTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Params\SearchTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Segments\MethodCommonTrait;
+use Evgeek\Moysklad\Api\Query\Segments\AbstractCommonSegment;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Query\Traits\TraitTestCase;
 
@@ -47,10 +44,7 @@ class SearchTraitTest extends TraitTestCase
 
     private function makeSearchBuilder()
     {
-        return new class($this->api, static::PREV_PATH, static::PARAMS, 'test_segment') extends AbstractSegmentCommon {
-            use GetTrait;
-            use MethodCommonTrait;
-            use SearchTrait;
+        return new class($this->api, static::PREV_PATH, static::PARAMS, 'test_segment') extends AbstractCommonSegment {
         };
     }
 }

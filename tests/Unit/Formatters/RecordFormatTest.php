@@ -7,6 +7,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Entities\ProductCollection;
 use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Employee;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\UnknownObject;
 use Evgeek\Moysklad\Formatters\RecordFormat;
 use Evgeek\Moysklad\Formatters\RecordMapping;
@@ -71,9 +72,46 @@ class RecordFormatTest extends StdClassFormatTest
             'id' => 'f731148b-a93d-11ed-0a80-0fba0011a6c6',
         ],
     ];
+    private const NESTED_CASE = [
+        'meta' => [
+            'href' => 'https://api.moysklad.ru/api/remap/1.2/entity/product/namedfilter',
+            'type' => 'namedfilter',
+        ],
+        'context' => [
+            'employee' => [
+                'meta' => [
+                    'href' => 'https://api.moysklad.ru/api/remap/1.2/context/employee',
+                    'type' => 'employee',
+                ],
+            ],
+        ],
+        'rows' => [
+            [
+                'meta' => [
+                    'href' => 'https://api.moysklad.ru/api/remap/1.2/product/namedfilter/25cf41f2-b068-11ed-0a80-0e9700500d7e',
+                    'type' => 'namedfilter',
+                ],
+                'id' => '25cf41f2-b068-11ed-0a80-0e9700500d7e',
+                'key' => 'value',
+            ],
+        ],
+    ];
+
+    public function testNestedEntityEncodedCorrectly(): void
+    {
+        $namedFilter = $this->encode(self::NESTED_CASE)->rows[0] ?? null;
+
+        $this->assertInstanceOf(NamedFilter::class, $namedFilter);
+        $this->assertSame(
+            'https://api.moysklad.ru/api/remap/1.2/product/namedfilter/25cf41f2-b068-11ed-0a80-0e9700500d7e',
+            $namedFilter->meta->href,
+        );
+        $this->assertSame('25cf41f2-b068-11ed-0a80-0e9700500d7e', $namedFilter->id);
+        $this->assertSame('value', $namedFilter->key);
+    }
 
     /** @dataProvider correctEncodeDataProvider */
-    public function testEncodeCorrect(string $jsonString, mixed $formatted): void
+    public function testEncodeCorrectly(string $jsonString, mixed $formatted): void
     {
         $formattedCasted = $this->castToArrayWithNested($formatted);
         $result = $this->formatter->encode($jsonString);

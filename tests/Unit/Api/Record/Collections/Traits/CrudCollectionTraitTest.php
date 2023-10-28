@@ -27,7 +27,7 @@ class CrudCollectionTraitTest extends CollectionTraitCase
     {
         $context = [
             'employee' => [
-                'meta' => $this->ms->meta()->employee(static::GUID),
+                'meta' => $this->ms->meta()->employee(static::GUID1),
             ],
         ];
         $content = [
@@ -36,8 +36,8 @@ class CrudCollectionTraitTest extends CollectionTraitCase
                 'name' => 'create entity',
             ],
             [
-                'meta' => $this->ms->meta()->create([...static::PATH, static::GUID], static::TYPE),
-                'id' => static::GUID,
+                'meta' => $this->ms->meta()->create([...static::PATH, static::GUID1], static::TYPE),
+                'id' => static::GUID1,
                 'name' => 'update entity',
             ],
         ];
@@ -57,8 +57,8 @@ class CrudCollectionTraitTest extends CollectionTraitCase
                 'name' => 'create entity',
             ],
             [
-                'meta' => $this->ms->meta()->create([...static::PATH, static::GUID], static::TYPE),
-                'id' => static::GUID,
+                'meta' => $this->ms->meta()->create([...static::PATH, static::GUID1], static::TYPE),
+                'id' => static::GUID1,
                 'name' => 'update entity',
             ],
         ];
@@ -74,8 +74,8 @@ class CrudCollectionTraitTest extends CollectionTraitCase
     {
         $content = [
             [
-                'meta' => $this->ms->meta()->create([...static::PATH, static::GUID], static::TYPE),
-                'id' => static::GUID,
+                'meta' => $this->ms->meta()->create([...static::PATH, static::GUID1], static::TYPE),
+                'id' => static::GUID1,
                 'name' => 'update entity',
             ],
         ];
@@ -89,8 +89,8 @@ class CrudCollectionTraitTest extends CollectionTraitCase
     {
         $content = [
             [
-                'meta' => $this->ms->meta()->create([...static::PATH, static::GUID], static::TYPE),
-                'id' => static::GUID,
+                'meta' => $this->ms->meta()->create([...static::PATH, static::GUID1], static::TYPE),
+                'id' => static::GUID1,
                 'name' => 'update entity',
             ],
         ];
@@ -141,7 +141,7 @@ class CrudCollectionTraitTest extends CollectionTraitCase
         $this->assertNull($collection->getPrevious());
     }
 
-    public function testReceivedNotCollectionThrows()
+    public function testReceivedNotCollectionThrows(): void
     {
         $collection = $this->getTestCollection();
         $this->expectsSendCalledWith(HttpMethod::GET, static::PATH, [], []);

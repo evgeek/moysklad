@@ -2,10 +2,7 @@
 
 namespace Evgeek\Tests\Unit\Api\Query\Traits\Params;
 
-use Evgeek\Moysklad\Api\Query\Segments\AbstractSegmentCommon;
-use Evgeek\Moysklad\Api\Query\Traits\Actions\GetTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Params\FilterTrait;
-use Evgeek\Moysklad\Api\Query\Traits\Segments\MethodCommonTrait;
+use Evgeek\Moysklad\Api\Query\Segments\AbstractCommonSegment;
 use Evgeek\Moysklad\Enums\FilterSign;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Tests\Unit\Api\Query\Traits\TraitTestCase;
@@ -184,12 +181,9 @@ class FilterTraitTest extends TraitTestCase
         ];
     }
 
-    private function makeFilterBuilder(): AbstractSegmentCommon
+    private function makeFilterBuilder(): AbstractCommonSegment
     {
-        return new class($this->api, static::PREV_PATH, static::PARAMS, 'test_segment') extends AbstractSegmentCommon {
-            use FilterTrait;
-            use GetTrait;
-            use MethodCommonTrait;
+        return new class($this->api, static::PREV_PATH, static::PARAMS, 'test_segment') extends AbstractCommonSegment {
         };
     }
 }

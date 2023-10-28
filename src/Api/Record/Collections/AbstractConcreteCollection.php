@@ -21,7 +21,7 @@ use stdClass;
  * @property MetaCollection $meta
  * @property T[]            $rows
  */
-abstract class AbstractConcreteCollection extends AbstractConcreteRecord implements Iterator
+abstract class AbstractConcreteCollection extends AbstractConcreteRecord implements CollectionInterface, Iterator
 {
     use CrudCollectionTrait;
     use FillMetaCollectionTrait;

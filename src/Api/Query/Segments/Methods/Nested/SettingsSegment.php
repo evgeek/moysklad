@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Query\Segments\Methods\Nested;
 
-use Evgeek\Moysklad\Api\Query\Segments\Methods\AbstractMethodSegmentNamed;
-use Evgeek\Moysklad\Api\Query\Traits\Actions\GetTrait;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\AbstractMethodNamedSegment;
 use Evgeek\Moysklad\Api\Query\Traits\Actions\UpdateTrait;
+use Evgeek\Moysklad\Dictionaries\Segment;
 
-class SettingsSegment extends AbstractMethodSegmentNamed
+class SettingsSegment extends AbstractMethodNamedSegment
 {
-    use GetTrait;
     use UpdateTrait;
 
-    public const SEGMENT = 'settings';
+    public const SEGMENT = Segment::SETTINGS;
 }

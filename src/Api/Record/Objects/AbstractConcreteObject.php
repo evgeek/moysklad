@@ -16,7 +16,7 @@ use Evgeek\Moysklad\Services\RecordMappingHelper;
 /**
  * @template T of AbstractConcreteCollection
  */
-abstract class AbstractConcreteObject extends AbstractConcreteRecord
+abstract class AbstractConcreteObject extends AbstractConcreteRecord implements ObjectInterface
 {
     use CrudObjectTrait;
     use FillMetaObjectTrait;

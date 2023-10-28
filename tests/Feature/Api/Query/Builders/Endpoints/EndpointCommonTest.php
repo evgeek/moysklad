@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\Query\ApiTestCase;
 class EndpointCommonTest extends ApiTestCase
 {
     /**
-     * @covers \Evgeek\Moysklad\Api\Query\Segments\Endpoints\EndpointSegmentCommon
+     * @covers \Evgeek\Moysklad\Api\Query\Segments\Endpoints\EndpointCommonSegment
      */
     public function testEndpointBuilder(): void
     {

@@ -34,10 +34,10 @@ $productArray = (new ArrayFormat())->encode($productString);
 Ответы от API преобразуются в объекты на всех уровнях вложенности, что позволяет работать с методами вложенных объектов.
 
 ```php
-Customerorder::collection($ms)
+CustomerOrder::collection($ms)
     ->limit(100)
     ->expand('positions.assortment')
-    ->eachGenerator(function (Customerorder $customerorder) {
+    ->eachGenerator(function (CustomerOrder $customerorder) {
         echo $customerorder->id . PHP_EOL;
 
         $customerorder->positions

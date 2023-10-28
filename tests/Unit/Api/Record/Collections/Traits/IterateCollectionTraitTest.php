@@ -18,9 +18,9 @@ class IterateCollectionTraitTest extends CollectionTraitCase
     public function testEachCorrectIterateRows(): void
     {
         $objects = [
-            $this->ms->record()->object()->product(['id' => static::GUID, 'name' => 'product1']),
-            $this->ms->record()->object()->product(['id' => static::GUID, 'name' => 'product2']),
-            $this->ms->record()->object()->product(['id' => static::GUID, 'name' => 'product3']),
+            $this->ms->record()->object()->product(['id' => static::GUID1, 'name' => 'product1']),
+            $this->ms->record()->object()->product(['id' => static::GUID1, 'name' => 'product2']),
+            $this->ms->record()->object()->product(['id' => static::GUID1, 'name' => 'product3']),
         ];
         $collection = $this->getTestCollection(['rows' => $objects]);
 
@@ -45,13 +45,13 @@ class IterateCollectionTraitTest extends CollectionTraitCase
                 $payload->params === ['limit' => '2', 'offset' => '0'] => [
                     'meta' => $meta,
                     'rows' => [
-                        $this->ms->record()->object()->product(['id' => static::GUID, 'name' => 'product1']),
-                        $this->ms->record()->object()->product(['id' => static::GUID, 'name' => 'product2']),
+                        $this->ms->record()->object()->product(['id' => static::GUID1, 'name' => 'product1']),
+                        $this->ms->record()->object()->product(['id' => static::GUID1, 'name' => 'product2']),
                     ],
                 ],
                 $payload->params === ['limit' => '2', 'offset' => '2'] => [
                     'rows' => [
-                        $this->ms->record()->object()->product(['id' => static::GUID, 'name' => 'product3']),
+                        $this->ms->record()->object()->product(['id' => static::GUID1, 'name' => 'product3']),
                     ],
                 ],
                 default => throw new RuntimeException('Incorrect payload')
@@ -80,13 +80,13 @@ class IterateCollectionTraitTest extends CollectionTraitCase
                 $payload->params === ['limit' => '2', 'offset' => '0'] => [
                     'meta' => $meta,
                     'rows' => [
-                        $this->ms->record()->object()->product(['id' => static::GUID, 'name' => 'product1']),
-                        $this->ms->record()->object()->product(['id' => static::GUID, 'name' => 'product2']),
+                        $this->ms->record()->object()->product(['id' => static::GUID1, 'name' => 'product1']),
+                        $this->ms->record()->object()->product(['id' => static::GUID1, 'name' => 'product2']),
                     ],
                 ],
                 $payload->params === ['limit' => '2', 'offset' => '2'] => [
                     'rows' => [
-                        $this->ms->record()->object()->product(['id' => static::GUID, 'name' => 'product3']),
+                        $this->ms->record()->object()->product(['id' => static::GUID1, 'name' => 'product3']),
                     ],
                 ],
                 default => throw new RuntimeException('Incorrect payload')

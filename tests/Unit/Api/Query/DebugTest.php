@@ -2,23 +2,23 @@
 
 namespace Evgeek\Tests\Unit\Api\Query;
 
-use Evgeek\Moysklad\Api\Query\Debug;
+use Evgeek\Moysklad\Api\Query\DebugBuilder;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use InvalidArgumentException;
 
 /**
  * @covers \Evgeek\Moysklad\Api\Query\AbstractBuilder
- * @covers \Evgeek\Moysklad\Api\Query\Debug
+ * @covers \Evgeek\Moysklad\Api\Query\DebugBuilder
  */
 class DebugTest extends ApiTestCase
 {
-    private Debug $debug;
+    private DebugBuilder $debug;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->debug = new Debug($this->api, static::PREV_PATH, static::PARAMS);
+        $this->debug = new DebugBuilder($this->api, static::PREV_PATH, static::PARAMS);
     }
 
     public function testGetCallsApiClientWithCorrectPayload(): void
@@ -54,6 +54,13 @@ class DebugTest extends ApiTestCase
         $this->expectsApiDebugCalled(HttpMethod::POST, true, 'delete');
 
         $this->debug->massDelete(static::BODY);
+    }
+
+    public function testMassCreateUpdateCallsApiClientWithCorrectPayload(): void
+    {
+        $this->expectsApiDebugCalled(HttpMethod::POST, true);
+
+        $this->debug->massCreateUpdate(static::BODY);
     }
 
     public function testSendCallsApiClientWithCorrectPayload(): void

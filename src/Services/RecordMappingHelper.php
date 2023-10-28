@@ -5,7 +5,12 @@ declare(strict_types=1);
 namespace Evgeek\Moysklad\Services;
 
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
+use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
+use Evgeek\Moysklad\Api\Record\Collections\UnknownCollection;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
+use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
+use Evgeek\Moysklad\Api\Record\Objects\ObjectInterface;
+use Evgeek\Moysklad\Api\Record\Objects\UnknownObject;
 use Evgeek\Moysklad\Formatters\RecordFormat;
 use Evgeek\Moysklad\Formatters\RecordMapping;
 use Evgeek\Moysklad\MoySklad;
@@ -24,6 +29,25 @@ final class RecordMappingHelper
         return new $class($ms, $content);
     }
 
+    public static function resolveNestedObject(
+        MoySklad $ms,
+        ObjectInterface|array|string $parent,
+        string $type,
+        mixed $content = []
+    ): AbstractNestedObject {
+        $class = self::getMapping($ms)->getObject($type);
+
+        if (is_a($class, UnknownObject::class, true)) {
+            throw new InvalidArgumentException("Nested object type '$type' has no mapped class");
+        }
+
+        if (!is_a($class, AbstractNestedObject::class, true)) {
+            throw new InvalidArgumentException("Nested object type '$type' has wrong mapped class");
+        }
+
+        return new $class($ms, $parent, $content);
+    }
+
     public static function resolveCollection(MoySklad $ms, string $type): AbstractConcreteCollection
     {
         $class = self::getMapping($ms)->getCollection($type);
@@ -35,7 +59,22 @@ final class RecordMappingHelper
         return new $class($ms);
     }
 
-    private static function getMapping(MoySklad $ms): RecordMapping
+    public static function resolveNestedCollection(MoySklad $ms, ObjectInterface|array|string $parent, string $type): AbstractNestedCollection
+    {
+        $class = self::getMapping($ms)->getCollection($type);
+
+        if (is_a($class, UnknownCollection::class, true)) {
+            throw new InvalidArgumentException("Nested collection type '$type' has no mapped class");
+        }
+
+        if (!is_a($class, AbstractNestedCollection::class, true)) {
+            throw new InvalidArgumentException("Nested collection type '$type' has wrong mapped class");
+        }
+
+        return new $class($ms, $parent);
+    }
+
+    public static function getMapping(MoySklad $ms): RecordMapping
     {
         $formatter = $ms->getFormatter();
 

@@ -9,7 +9,7 @@ use Evgeek\Moysklad\Api\Record\Builders\RecordBuilder;
 use Evgeek\Moysklad\Formatters\RecordFormat;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\RequestSenderFactoryInterface;
-use Evgeek\Moysklad\Meta\MetaMaker;
+use Evgeek\Moysklad\Meta\MetaBuilder;
 use Evgeek\Moysklad\MoySklad;
 use PHPUnit\Framework\TestCase;
 
@@ -39,7 +39,7 @@ class MoySkladTest extends TestCase
         $ms = new MoySklad(['token']);
         $meta = $ms->meta();
 
-        $this->assertInstanceOf(MetaMaker::class, $meta);
+        $this->assertInstanceOf(MetaBuilder::class, $meta);
     }
 
     public function testGetApiClient(): void

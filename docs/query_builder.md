@@ -123,7 +123,7 @@ $ms->query()
 #### Нюансы
 
 * И `param()`, и специализированные методы при повторном вызове поддерживают дозапись в параметрах, где это возможно (`filter`, `expand`, `order`). В остальных параметрах ранее установленное значение перезаписывается.
-* `filter()` автоматом экранирует `;`. `param()` - нет.
+* `filter()` автоматически экранирует `;`. `param()` - нет.
 
 ## Методы отправки запросов
 
@@ -175,7 +175,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Entities\Product;
 
 $product1 = $ms->query()->entity()->product()->byId('cc181c35-f259-11ed-0a80-00e900658c8f')->get();
 $product2 = Product::make($ms, ['id' => 'd540c409-f259-11ed-0a80-00e900658e53']);
-$product3 = ['meta' => Meta::product('d540c409-f259-11ed-0a80-00e900658e53')];
+$product3 = ['meta' => Meta::product('25cf41f2-b068-11ed-0a80-0e9700500d7e')];
 
 $ms->query()
     ->entity()

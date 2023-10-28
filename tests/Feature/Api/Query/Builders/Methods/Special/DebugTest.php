@@ -7,7 +7,7 @@ use Evgeek\Tests\Feature\Api\Query\ApiTestCase;
 use InvalidArgumentException;
 
 /**
- * @coversDefaultClass \Evgeek\Moysklad\Api\Query\Debug
+ * @coversDefaultClass \Evgeek\Moysklad\Api\Query\DebugBuilder
  */
 class DebugTest extends ApiTestCase
 {
@@ -45,7 +45,7 @@ class DebugTest extends ApiTestCase
 
     /**
      * @covers ::massDelete
-     * @covers \Evgeek\Moysklad\Api\Query\Segments\Special\MassDeleteSegment::massDeleteDebug
+     * @covers \Evgeek\Moysklad\Api\Query\Segments\Special\MassSegmentDelete::massDeleteDebug
      */
     public function testMassDeleteReturns(): void
     {

@@ -12,7 +12,7 @@ trait MetadataTrait
      * Метаданные сущности.
      *
      * <code>
-     * $product = $ms->query()
+     * $productMetadata = $ms->query()
      *  ->entity()
      *  ->product()
      *  ->metadata()

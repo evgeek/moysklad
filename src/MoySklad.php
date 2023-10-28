@@ -12,7 +12,7 @@ use Evgeek\Moysklad\Formatters\WithMoySkladInterface;
 use Evgeek\Moysklad\Http\ApiClient;
 use Evgeek\Moysklad\Http\GuzzleSenderFactory;
 use Evgeek\Moysklad\Http\RequestSenderFactoryInterface;
-use Evgeek\Moysklad\Meta\MetaMaker;
+use Evgeek\Moysklad\Meta\MetaBuilder;
 
 class MoySklad
 {
@@ -77,9 +77,9 @@ class MoySklad
      *  ->employee('25cf41f2-b068-11ed-0a80-0e9700500d7e');
      * </code>
      */
-    public function meta(): MetaMaker
+    public function meta(): MetaBuilder
     {
-        return new MetaMaker($this->formatter);
+        return new MetaBuilder($this->formatter);
     }
 
     /**

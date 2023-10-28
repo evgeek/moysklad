@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Evgeek\Moysklad\Api\Record\Collections\Traits;
 
+use Evgeek\Moysklad\Dictionaries\Segment;
 use Evgeek\Moysklad\Enums\HttpMethod;
 use Evgeek\Moysklad\Exceptions\RequestException;
 use Evgeek\Moysklad\Http\Payload;
@@ -80,7 +81,7 @@ trait CrudCollectionTrait
      * <code>
      * $product1 = $ms->query()->entity()->product()->byId('cc181c35-f259-11ed-0a80-00e900658c8f')->get();
      * $product2 = Product::make($ms, ['id' => 'd540c409-f259-11ed-0a80-00e900658e53']);
-     * $product3 = ['meta' => Meta::product('d540c409-f259-11ed-0a80-00e900658e53')];
+     * $product3 = ['meta' => Meta::product('25cf41f2-b068-11ed-0a80-0e9700500d7e')];
      *
      * Product::collection($ms)->massDelete([$product1, $product2, $product3]);
      *
@@ -95,7 +96,7 @@ trait CrudCollectionTrait
     {
         $objects = CollectionHelper::extractRows($objects);
 
-        return $this->sendAndWrapResponse(HttpMethod::POST, $objects, 'delete');
+        return $this->sendAndWrapResponse(HttpMethod::POST, $objects, Segment::DELETE);
     }
 
     /**

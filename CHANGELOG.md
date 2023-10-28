@@ -2,6 +2,19 @@
 
 Все существенные изменения в проекте будут задокументированы в этом файле. Формат основан на [Keep a Changelog](https://keepachangelog.com/), и этот проект придерживается семантического версионирования ([semver](https://semver.org/)).
 
+## v0.10.0 [[Upgrade guide](/UPGRADE.md#v0100-changelog)]
+
+### Added
+
+* Реализовано большинство сущностей Моего Склада - и в Конструкторе запросов, и в Record.
+* debug-метод для `massCreateUpdate()`
+
+### Changed
+
+- Имена классов Record приведены к PascalCase.
+- Имена классов Query сегментов приведены к единому виду.
+- Словари `Document`, `Endpoint` и `Entity` заменены на `Segment` (сегменты в url) и `Type` (type в meta сущности).
+
 ## v0.9.1
 
 ### Changed

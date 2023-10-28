@@ -72,6 +72,8 @@ trait ParamsCollectionTrait
      *  ->limit(100)
      *  ->get();
      * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/workbook/#workbook-fil-traciq-listanie-poisk-i-sortirowka-listanie
      */
     public function limit(int $amount): static
     {
@@ -90,6 +92,8 @@ trait ParamsCollectionTrait
      *  ->offset(100)
      *  ->get();
      * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/workbook/#workbook-fil-traciq-listanie-poisk-i-sortirowka-listanie
      */
     public function offset(int $amount): static
     {
