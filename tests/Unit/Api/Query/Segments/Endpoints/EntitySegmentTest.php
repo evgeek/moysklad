@@ -25,6 +25,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDemandSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashOutSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailShiftSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SalesReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SupplySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AccumulationDiscountSegment;
@@ -162,6 +163,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::CASHIN => ['cashin', Segment::CASHIN, CashInSegment::class],
             Type::CASHOUT => ['cashout', Segment::CASHOUT, CashOutSegment::class],
             Type::RETAILDEMAND => ['retaildemand', Segment::RETAILDEMAND, RetailDemandSegment::class],
+            Type::RETAILSHIFT => ['retailshift', Segment::RETAILSHIFT, RetailShiftSegment::class],
         ];
     }
 }

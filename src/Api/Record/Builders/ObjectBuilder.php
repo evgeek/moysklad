@@ -28,6 +28,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDemand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailShift;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Supply;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
@@ -999,5 +1000,17 @@ class ObjectBuilder extends AbstractBuilder
     public function retaildemand(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::RETAILDEMAND, $content);
+    }
+
+    /**
+     * Розничная смена
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-roznichnaq-smena
+     *
+     * @return RetailShift
+     */
+    public function retailshift(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::RETAILSHIFT, $content);
     }
 }

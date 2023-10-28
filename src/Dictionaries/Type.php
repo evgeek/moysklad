@@ -89,4 +89,5 @@ class Type
     public const CASHIN = 'cashin';
     public const CASHOUT = 'cashout';
     public const RETAILDEMAND = 'retaildemand';
+    public const RETAILSHIFT = 'retailshift';
 }

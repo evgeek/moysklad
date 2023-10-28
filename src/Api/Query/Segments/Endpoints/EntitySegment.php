@@ -27,6 +27,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDemandSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDrawerCashOutSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailShiftSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SalesReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\SupplySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Entities\AccumulationDiscountSegment;
@@ -1092,5 +1093,22 @@ class EntitySegment extends AbstractNamedSegment
     public function retaildemand(): RetailDemandSegment
     {
         return $this->resolveNamedBuilder(RetailDemandSegment::class);
+    }
+
+    /**
+     * Розничная смена
+     *
+     * <code>
+     * $retailShift = $ms->query()
+     *  ->entity()
+     *  ->retailshift()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-roznichnaq-smena
+     */
+    public function retailshift(): RetailShiftSegment
+    {
+        return $this->resolveNamedBuilder(RetailShiftSegment::class);
     }
 }

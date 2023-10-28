@@ -767,4 +767,14 @@ class MetaBuilder
     {
         return Meta::retaildemand($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Розничной смены
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-roznichnaq-smena
+     */
+    public function retailshift(string $guid)
+    {
+        return Meta::retailshift($guid, $this->formatter);
+    }
 }

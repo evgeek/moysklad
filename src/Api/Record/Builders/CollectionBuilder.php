@@ -28,6 +28,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailShiftCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SupplyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
@@ -996,5 +997,17 @@ class CollectionBuilder extends AbstractBuilder
     public function retaildemand(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::RETAILDEMAND);
+    }
+
+    /**
+     * Коллекция Розничных смен
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-roznichnaq-smena
+     *
+     * @return RetailShiftCollection
+     */
+    public function retailshift(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::RETAILSHIFT);
     }
 }

@@ -30,6 +30,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailDrawerCashOutCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\RetailShiftCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SupplyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
@@ -108,6 +109,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDemand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailDrawerCashOut;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailShift;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Supply;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
@@ -250,6 +252,7 @@ class RecordMapping
         Type::CASHIN => CashIn::class,
         Type::CASHOUT => CashOut::class,
         Type::RETAILDEMAND => RetailDemand::class,
+        Type::RETAILSHIFT => RetailShift::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Type::ASSORTMENT => AssortmentCollection::class,
@@ -327,6 +330,7 @@ class RecordMapping
         Type::CASHIN => CashInCollection::class,
         Type::CASHOUT => CashOutCollection::class,
         Type::RETAILDEMAND => RetailDemandCollection::class,
+        Type::RETAILSHIFT => RetailShiftCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;
