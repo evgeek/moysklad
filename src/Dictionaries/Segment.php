@@ -99,4 +99,5 @@ class Segment
     public const COMMISSIONREPORTIN = 'commissionreportin';
     public const RETURNTOCOMMISSIONERPOSITIONS = 'returntocommissionerpositions';
     public const PRICELIST = 'pricelist';
+    public const PREPAYMENT = 'prepayment';
 }

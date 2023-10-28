@@ -13,6 +13,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PriceListCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
@@ -83,6 +84,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Prepayment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
@@ -337,6 +339,7 @@ class RecordMappingHelperTest extends TestCase
             Type::RETURNTOCOMMISSIONERPOSITION => [Type::RETURNTOCOMMISSIONERPOSITION, ReturnToCommissionerPosition::class, ReturnToCommissionerPositionCollection::class, Product::class],
             Type::COMMISSIONREPORTIN => [Type::COMMISSIONREPORTIN, CommissionReportIn::class, CommissionReportInCollection::class],
             Type::PRICELIST => [Type::PRICELIST, PriceList::class, PriceListCollection::class],
+            Type::PREPAYMENT => [Type::PREPAYMENT, Prepayment::class, PrepaymentCollection::class],
         ];
     }
 

@@ -15,6 +15,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\MoveSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PriceListSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseOrderSegment;
@@ -152,6 +153,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerpositions', Segment::RETURNTOCOMMISSIONERPOSITIONS, ReturnToCommissionerPositionsSegment::class, ['commissionreportin', 'ea05e0c9-8667-11e7-8a7f-40d000000060']],
             Type::COMMISSIONREPORTIN => ['commissionreportin', Segment::COMMISSIONREPORTIN, CommissionReportInSegment::class],
             Type::PRICELIST => ['pricelist', Segment::PRICELIST, PriceListSegment::class],
+            Type::PREPAYMENT => ['prepayment', Segment::PREPAYMENT, PrepaymentSegment::class],
         ];
     }
 }

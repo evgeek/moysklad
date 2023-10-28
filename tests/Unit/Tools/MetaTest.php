@@ -189,6 +189,7 @@ class MetaTest extends TestCase
             Type::RETURNTOCOMMISSIONERPOSITION => ['returntocommissionerposition', 'entity/commissionreportin/' . self::GUID1 . '/returntocommissionerpositions', 'returntocommissionerposition', true, CommissionReportIn::make($ms, ['id' => self::GUID1])],
             Type::COMMISSIONREPORTIN => ['commissionreportin', 'entity/commissionreportin', 'commissionreportin'],
             Type::PRICELIST => ['pricelist', 'entity/pricelist', 'pricelist'],
+            Type::PREPAYMENT => ['prepayment', 'entity/prepayment', 'prepayment'],
         ];
     }
 

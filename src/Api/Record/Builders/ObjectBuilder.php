@@ -17,6 +17,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Prepayment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
@@ -934,5 +935,17 @@ class ObjectBuilder extends AbstractBuilder
     public function pricelist(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::PRICELIST, $content);
+    }
+
+    /**
+     * Предоплата
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-predoplata
+     *
+     * @return Prepayment
+     */
+    public function prepayment(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PREPAYMENT, $content);
     }
 }

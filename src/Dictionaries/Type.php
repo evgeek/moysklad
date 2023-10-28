@@ -84,4 +84,5 @@ class Type
     public const COMMISSIONREPORTIN = 'commissionreportin';
     public const RETURNTOCOMMISSIONERPOSITION = 'returntocommissionerposition';
     public const PRICELIST = 'pricelist';
+    public const PREPAYMENT = 'prepayment';
 }

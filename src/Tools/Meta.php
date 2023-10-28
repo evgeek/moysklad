@@ -15,6 +15,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Prepayment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
@@ -776,6 +777,16 @@ class Meta
     public static function pricelist(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...PriceList::PATH, $guid], PriceList::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Предоплат
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-predoplata
+     */
+    public static function prepayment(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...Prepayment::PATH, $guid], Prepayment::TYPE, $formatter);
     }
 
 

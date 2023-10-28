@@ -17,6 +17,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PriceListCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
@@ -931,5 +932,17 @@ class CollectionBuilder extends AbstractBuilder
     public function pricelist(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::PRICELIST);
+    }
+
+    /**
+     * Коллекция Предоплат
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-predoplata
+     *
+     * @return PrepaymentCollection
+     */
+    public function prepayment(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::PREPAYMENT);
     }
 }

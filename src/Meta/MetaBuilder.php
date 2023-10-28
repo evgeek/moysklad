@@ -717,4 +717,14 @@ class MetaBuilder
     {
         return Meta::pricelist($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Предоплат
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-predoplata
+     */
+    public function prepayment(string $guid)
+    {
+        return Meta::prepayment($guid, $this->formatter);
+    }
 }

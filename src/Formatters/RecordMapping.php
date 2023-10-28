@@ -19,6 +19,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PriceListCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
@@ -92,6 +93,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Prepayment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
@@ -235,6 +237,7 @@ class RecordMapping
         Type::COMMISSIONREPORTIN => CommissionReportIn::class,
         Type::RETURNTOCOMMISSIONERPOSITION => ReturnToCommissionerPosition::class,
         Type::PRICELIST => PriceList::class,
+        Type::PREPAYMENT => Prepayment::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Type::ASSORTMENT => AssortmentCollection::class,
@@ -307,6 +310,7 @@ class RecordMapping
         Type::COMMISSIONREPORTIN => CommissionReportInCollection::class,
         Type::RETURNTOCOMMISSIONERPOSITION => ReturnToCommissionerPositionCollection::class,
         Type::PRICELIST => PriceListCollection::class,
+        Type::PREPAYMENT => PrepaymentCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;
