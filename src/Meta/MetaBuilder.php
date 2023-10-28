@@ -797,4 +797,14 @@ class MetaBuilder
     {
         return Meta::loss($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Счета покупателю
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-pokupatelu
+     */
+    public function invoiceout(string $guid)
+    {
+        return Meta::invoiceout($guid, $this->formatter);
+    }
 }

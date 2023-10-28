@@ -14,6 +14,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\InvoiceOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Loss;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
@@ -864,6 +865,16 @@ class Meta
     public static function loss(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...Loss::PATH, $guid], Loss::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Счета покупателю
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-pokupatelu
+     */
+    public static function invoiceout(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...InvoiceOut::PATH, $guid], InvoiceOut::TYPE, $formatter);
     }
 
 
