@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentColle
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\FactureInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\FactureOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
@@ -81,6 +82,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\FactureIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\FactureOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
@@ -226,6 +228,7 @@ class AbstractConcreteObjectTest extends KnownObjectTestCase
             Type::INVOICEOUT => [InvoiceOut::class, InvoiceOutCollection::class],
             Type::INVOICEIN => [InvoiceIn::class, InvoiceInCollection::class],
             Type::FACTUREOUT => [FactureOut::class, FactureOutCollection::class],
+            Type::FACTUREIN => [FactureIn::class, FactureInCollection::class],
         ];
     }
 }

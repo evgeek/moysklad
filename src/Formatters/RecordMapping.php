@@ -16,6 +16,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentColle
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\FactureInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\FactureOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
@@ -100,6 +101,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\FactureIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\FactureOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
@@ -268,6 +270,7 @@ class RecordMapping
         Type::INVOICEOUT => InvoiceOut::class,
         Type::INVOICEIN => InvoiceIn::class,
         Type::FACTUREOUT => FactureOut::class,
+        Type::FACTUREIN => FactureIn::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Type::ASSORTMENT => AssortmentCollection::class,
@@ -351,6 +354,7 @@ class RecordMapping
         Type::INVOICEOUT => InvoiceOutCollection::class,
         Type::INVOICEIN => InvoiceInCollection::class,
         Type::FACTUREOUT => FactureOutCollection::class,
+        Type::FACTUREIN => FactureInCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;

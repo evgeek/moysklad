@@ -14,6 +14,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\FactureIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\FactureOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
@@ -1077,5 +1078,17 @@ class ObjectBuilder extends AbstractBuilder
     public function factureout(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::FACTUREOUT, $content);
+    }
+
+    /**
+     * Счет-фактура полученный
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-faktura-poluchennyj
+     *
+     * @return FactureIn
+     */
+    public function facturein(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::FACTUREIN, $content);
     }
 }

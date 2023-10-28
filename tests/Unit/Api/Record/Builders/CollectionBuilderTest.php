@@ -13,6 +13,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentColle
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CustomerOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\FactureInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\FactureOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
@@ -234,6 +235,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::INVOICEOUT => ['invoiceout', InvoiceOutCollection::class],
             Type::INVOICEIN => ['invoicein', InvoiceInCollection::class],
             Type::FACTUREOUT => ['factureout', FactureOutCollection::class],
+            Type::FACTUREIN => ['facturein', FactureInCollection::class],
         ];
     }
 }

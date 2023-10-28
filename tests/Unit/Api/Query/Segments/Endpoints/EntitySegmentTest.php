@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CounterpartyAdjustmentS
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CustomerOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\DemandSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\EnterSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\FactureInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\FactureOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InternalOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\InventorySegment;
@@ -174,6 +175,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::INVOICEOUT => ['invoiceout', Segment::INVOICEOUT, InvoiceOutSegment::class],
             Type::INVOICEIN => ['invoicein', Segment::INVOICEIN, InvoiceInSegment::class],
             Type::FACTUREOUT => ['factureout', Segment::FACTUREOUT, FactureOutSegment::class],
+            Type::FACTUREIN => ['facturein', Segment::FACTUREIN, FactureInSegment::class],
         ];
     }
 }

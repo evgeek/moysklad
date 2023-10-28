@@ -95,4 +95,5 @@ class Type
     public const INVOICEOUT = 'invoiceout';
     public const INVOICEIN = 'invoicein';
     public const FACTUREOUT = 'factureout';
+    public const FACTUREIN = 'facturein';
 }

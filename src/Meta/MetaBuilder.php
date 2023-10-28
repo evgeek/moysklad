@@ -819,12 +819,22 @@ class MetaBuilder
     }
 
     /**
-     * Метаданные Счет-фактуры выданного
+     * Метаданные Счета-фактуры выданного
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-faktura-wydannyj
      */
     public function factureout(string $guid)
     {
         return Meta::factureout($guid, $this->formatter);
+    }
+
+    /**
+     * Метаданные Счета-фактуры полученного
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-faktura-poluchennyj
+     */
+    public function facturein(string $guid)
+    {
+        return Meta::facturein($guid, $this->formatter);
     }
 }

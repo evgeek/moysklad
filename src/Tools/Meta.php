@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CustomerOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\FactureIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\FactureOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
@@ -890,13 +891,23 @@ class Meta
     }
 
     /**
-     * Метаданные Счет-фактуры выданного
+     * Метаданные Счета-фактуры выданного
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-faktura-wydannyj
      */
     public static function factureout(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...FactureOut::PATH, $guid], FactureOut::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Счета-фактуры полученного
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-schet-faktura-poluchennyj
+     */
+    public static function facturein(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...FactureIn::PATH, $guid], FactureIn::TYPE, $formatter);
     }
 
 
