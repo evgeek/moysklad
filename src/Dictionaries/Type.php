@@ -97,4 +97,6 @@ class Type
     public const FACTUREOUT = 'factureout';
     public const FACTUREIN = 'facturein';
     public const PROCESSING = 'processing';
+    public const PROCESSINGPOSITIONMATERIAL = 'processingpositionmaterial';
+    public const PROCESSINGPOSITIONRESULT = 'processingpositionresult';
 }

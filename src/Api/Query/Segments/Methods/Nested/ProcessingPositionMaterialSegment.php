@@ -13,11 +13,11 @@ use Evgeek\Moysklad\Api\Query\Traits\Segments\ById\ByIdCommonTrait;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\ById\ByIdWithPositionsTrait;
 use Evgeek\Moysklad\Dictionaries\Segment;
 
-class ReturnToCommissionerPositionsSegment extends AbstractMethodNamedSegment
+class ProcessingPositionMaterialSegment extends AbstractMethodNamedSegment
 {
     use ByIdCommonTrait;
     use CreateTrait;
     use MassDeleteTrait;
 
-    public const SEGMENT = Segment::RETURNTOCOMMISSIONERPOSITIONS;
+    public const SEGMENT = Segment::MATERIALS;
 }

@@ -14,6 +14,8 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPositionMaterialCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPositionResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ReturnToCommissionerPositionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
@@ -30,6 +32,8 @@ use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPositionMaterial;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPositionResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ReturnToCommissionerPosition;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\TrackingCode;
@@ -59,6 +63,8 @@ class AbstractNestedObjectTest extends KnownObjectTestCase
             Type::CUSTOMTEMPLATE => [CustomTemplate::class, CustomTemplateCollection::class, Counterparty::make($ms)],
             Type::ACCOUNT => [Account::class, AccountCollection::class, Counterparty::make($ms)],
             Type::RETURNTOCOMMISSIONERPOSITION => [ReturnToCommissionerPosition::class, ReturnToCommissionerPositionCollection::class, ['entity', 'commissionreportin', '7944ef04-f831-11e5-7a69-971500188b19']],
+            Type::PROCESSINGPOSITIONMATERIAL => [ProcessingPositionMaterial::class, ProcessingPositionMaterialCollection::class, ['entity', 'processing', '7944ef04-f831-11e5-7a69-971500188b19']],
+            Type::PROCESSINGPOSITIONRESULT => [ProcessingPositionResult::class, ProcessingPositionResultCollection::class, ['entity', 'processing', '7944ef04-f831-11e5-7a69-971500188b19']],
         ];
     }
 }

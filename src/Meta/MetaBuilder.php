@@ -847,4 +847,24 @@ class MetaBuilder
     {
         return Meta::processing($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Позиции возврата на склад комиссионера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera-pozicii-wozwrata-na-sklad-komissionera
+     */
+    public function processingpositionmaterial(ObjectInterface|array|string $parent, string $guid)
+    {
+        return Meta::processingpositionmaterial($parent, $guid, $this->formatter);
+    }
+
+    /**
+     * Метаданные Позиции возврата на склад комиссионера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera-pozicii-wozwrata-na-sklad-komissionera
+     */
+    public function processingpositionresult(ObjectInterface|array|string $parent, string $guid)
+    {
+        return Meta::processingpositionresult($parent, $guid, $this->formatter);
+    }
 }

@@ -86,6 +86,8 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPositionMaterialCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPositionResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ReturnToCommissionerPositionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
@@ -1100,5 +1102,29 @@ class CollectionBuilder extends AbstractBuilder
     public function processing(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::PROCESSING);
+    }
+
+    /**
+     * Коллекция Материалов Техоперации
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-tehoperaciq-material-tehoperacii
+     *
+     * @return ProcessingPositionMaterialCollection
+     */
+    public function processingpositionmaterial(ObjectInterface|array|string $parent): AbstractNestedCollection
+    {
+        return $this->resolveNestedCollection(Type::PROCESSINGPOSITIONMATERIAL, $parent);
+    }
+
+    /**
+     * Коллекция Продуктов Техоперации
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-tehoperaciq-produkty-tehoperacii
+     *
+     * @return ProcessingPositionResultCollection
+     */
+    public function processingpositionresult(ObjectInterface|array|string $parent): AbstractNestedCollection
+    {
+        return $this->resolveNestedCollection(Type::PROCESSINGPOSITIONRESULT, $parent);
     }
 }

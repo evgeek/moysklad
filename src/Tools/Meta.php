@@ -84,6 +84,8 @@ use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPositionMaterial;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPositionResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ReturnToCommissionerPosition;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
 use Evgeek\Moysklad\Api\Record\Objects\ObjectInterface;
@@ -919,6 +921,26 @@ class Meta
     public static function processing(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...Processing::PATH, $guid], Processing::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Позиции возврата на склад комиссионера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera-pozicii-wozwrata-na-sklad-komissionera
+     */
+    public static function processingpositionmaterial(ObjectInterface|array|string $parent, string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::createNested($parent, [...ProcessingPositionMaterial::PATH, $guid], ProcessingPositionMaterial::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Позиции возврата на склад комиссионера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-poluchennyj-otchet-komissionera-pozicii-wozwrata-na-sklad-komissionera
+     */
+    public static function processingpositionresult(ObjectInterface|array|string $parent, string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::createNested($parent, [...ProcessingPositionResult::PATH, $guid], ProcessingPositionResult::TYPE, $formatter);
     }
 
 

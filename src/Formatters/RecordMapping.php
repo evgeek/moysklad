@@ -88,6 +88,8 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPositionMaterialCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPositionResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ReturnToCommissionerPositionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
@@ -177,6 +179,8 @@ use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPositionMaterial;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPositionResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ReturnToCommissionerPosition;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\TrackingCode;
@@ -274,6 +278,8 @@ class RecordMapping
         Type::FACTUREOUT => FactureOut::class,
         Type::FACTUREIN => FactureIn::class,
         Type::PROCESSING => Processing::class,
+        Type::PROCESSINGPOSITIONMATERIAL => ProcessingPositionMaterial::class,
+        Type::PROCESSINGPOSITIONRESULT => ProcessingPositionResult::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Type::ASSORTMENT => AssortmentCollection::class,
@@ -359,6 +365,8 @@ class RecordMapping
         Type::FACTUREOUT => FactureOutCollection::class,
         Type::FACTUREIN => FactureInCollection::class,
         Type::PROCESSING => ProcessingCollection::class,
+        Type::PROCESSINGPOSITIONMATERIAL => ProcessingPositionMaterialCollection::class,
+        Type::PROCESSINGPOSITIONRESULT => ProcessingPositionResultCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;

@@ -86,6 +86,8 @@ use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPositionMaterial;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPositionResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ReturnToCommissionerPosition;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\TrackingCode;
@@ -239,6 +241,8 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::FACTUREOUT => ['factureout', FactureOut::class],
             Type::FACTUREIN => ['facturein', FactureIn::class],
             Type::PROCESSING => ['processing', Processing::class],
+            Type::PROCESSINGPOSITIONMATERIAL => ['processingpositionmaterial', ProcessingPositionMaterial::class, true],
+            Type::PROCESSINGPOSITIONRESULT => ['processingpositionresult', ProcessingPositionResult::class, true],
         ];
     }
 }

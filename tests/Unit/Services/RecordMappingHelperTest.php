@@ -82,6 +82,8 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPositionMaterialCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPositionResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ReturnToCommissionerPositionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
@@ -168,6 +170,8 @@ use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPositionMaterial;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPositionResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ReturnToCommissionerPosition;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\TrackingCode;
@@ -376,6 +380,8 @@ class RecordMappingHelperTest extends TestCase
             Type::FACTUREOUT => [Type::FACTUREOUT, FactureOut::class, FactureOutCollection::class],
             Type::FACTUREIN => [Type::FACTUREIN, FactureIn::class, FactureInCollection::class],
             Type::PROCESSING => [Type::PROCESSING, Processing::class, ProcessingCollection::class],
+            Type::PROCESSINGPOSITIONMATERIAL => [Type::PROCESSINGPOSITIONMATERIAL, ProcessingPositionMaterial::class, ProcessingPositionMaterialCollection::class, Processing::class],
+            Type::PROCESSINGPOSITIONRESULT => [Type::PROCESSINGPOSITIONRESULT, ProcessingPositionResult::class, ProcessingPositionResultCollection::class, Processing::class],
         ];
     }
 

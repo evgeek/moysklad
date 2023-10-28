@@ -79,6 +79,8 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\FilesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ImagesSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\MaterialsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\NamedFilterSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ProcessingPositionMaterialSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ProcessingPositionResultSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ProductsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\ReturnToCommissionerPositionsSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Nested\StagesSegment;
@@ -178,6 +180,8 @@ class EntitySegmentTest extends SegmentTestCase
             Type::FACTUREOUT => ['factureout', Segment::FACTUREOUT, FactureOutSegment::class],
             Type::FACTUREIN => ['facturein', Segment::FACTUREIN, FactureInSegment::class],
             Type::PROCESSING => ['processing', Segment::PROCESSING, ProcessingSegment::class],
+            Type::PROCESSINGPOSITIONMATERIAL => ['materials', Segment::MATERIALS, ProcessingPositionMaterialSegment::class, ['processing', 'ea05e0c9-8667-11e7-8a7f-40d000000060']],
+            Type::PROCESSINGPOSITIONRESULT => ['products', Segment::PRODUCTS, ProcessingPositionResultSegment::class, ['processing', 'ea05e0c9-8667-11e7-8a7f-40d000000060']],
         ];
     }
 }

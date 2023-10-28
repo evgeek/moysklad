@@ -85,6 +85,8 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\NamedFilterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanMaterialCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPlanStagesCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPositionMaterialCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Nested\ProcessingPositionResultCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\ReturnToCommissionerPositionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
@@ -238,6 +240,8 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::FACTUREOUT => ['factureout', FactureOutCollection::class],
             Type::FACTUREIN => ['facturein', FactureInCollection::class],
             Type::PROCESSING => ['processing', ProcessingCollection::class],
+            Type::PROCESSINGPOSITIONMATERIAL => ['processingpositionmaterial', ProcessingPositionMaterialCollection::class, true],
+            Type::PROCESSINGPOSITIONRESULT => ['processingpositionresult', ProcessingPositionResultCollection::class, true],
         ];
     }
 }

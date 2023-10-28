@@ -87,6 +87,8 @@ use Evgeek\Moysklad\Api\Record\Objects\Nested\NamedFilter;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanMaterial;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPlanStages;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPositionMaterial;
+use Evgeek\Moysklad\Api\Record\Objects\Nested\ProcessingPositionResult;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\ReturnToCommissionerPosition;
 use Evgeek\Moysklad\Api\Record\Objects\Nested\State;
 use Evgeek\Moysklad\Api\Record\Objects\ObjectInterface;
@@ -1103,5 +1105,29 @@ class ObjectBuilder extends AbstractBuilder
     public function processing(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::PROCESSING, $content);
+    }
+
+    /**
+     * Материал Техоперации
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-tehoperaciq-material-tehoperacii
+     *
+     * @return ProcessingPositionMaterial
+     */
+    public function processingpositionmaterial(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::PROCESSINGPOSITIONMATERIAL, $parent, $content);
+    }
+
+    /**
+     * Продукт Техоперации
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-tehoperaciq-produkty-tehoperacii
+     *
+     * @return ProcessingPositionResult
+     */
+    public function processingpositionresult(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
+    {
+        return $this->resolveNestedObject(Type::PROCESSINGPOSITIONRESULT, $parent, $content);
     }
 }

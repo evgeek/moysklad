@@ -3,6 +3,7 @@
 namespace Evgeek\Tests\Unit\Tools;
 
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Processing;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Counterparty;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Organization;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\ProcessingPlan;
@@ -202,6 +203,8 @@ class MetaTest extends TestCase
             Type::FACTUREOUT => ['factureout', 'entity/factureout', 'factureout'],
             Type::FACTUREIN => ['facturein', 'entity/facturein', 'facturein'],
             Type::PROCESSING => ['processing', 'entity/processing', 'processing'],
+            Type::PROCESSINGPOSITIONMATERIAL => ['processingpositionmaterial', 'entity/processing/' . self::GUID1 . '/materials', 'processingpositionmaterial', true, Processing::make($ms, ['id' => self::GUID1])],
+            Type::PROCESSINGPOSITIONRESULT => ['processingpositionresult', 'entity/processing/' . self::GUID1 . '/products', 'processingpositionresult', true, Processing::make($ms, ['id' => self::GUID1])],
         ];
     }
 
