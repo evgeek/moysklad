@@ -747,4 +747,14 @@ class MetaBuilder
     {
         return Meta::cashin($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Расходного ордера
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-rashodnyj-order
+     */
+    public function cashout(string $guid)
+    {
+        return Meta::cashout($guid, $this->formatter);
+    }
 }

@@ -13,7 +13,7 @@ use Evgeek\Moysklad\Api\Query\Traits\Segments\ById\ByIdWithPositionsTrait;
 use Evgeek\Moysklad\Api\Query\Traits\Segments\MetadataTrait;
 use Evgeek\Moysklad\Dictionaries\Segment;
 
-class CashInSegment extends AbstractDocumentSegment
+class CashOutSegment extends AbstractDocumentSegment
 {
     use ByIdCommonTrait;
     use CreateTrait;
@@ -21,5 +21,5 @@ class CashInSegment extends AbstractDocumentSegment
     use MassDeleteTrait;
     use MetadataTrait;
 
-    public const SEGMENT = Segment::CASHIN;
+    public const SEGMENT = Segment::CASHOUT;
 }

@@ -4,6 +4,7 @@ namespace Evgeek\Tests\Unit\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\Endpoints\EntitySegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CashInSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CashOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CounterpartyAdjustmentSegment;
@@ -158,6 +159,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::PREPAYMENT => ['prepayment', Segment::PREPAYMENT, PrepaymentSegment::class],
             Type::SUPPLY => ['supply', Segment::SUPPLY, SupplySegment::class],
             Type::CASHIN => ['cashin', Segment::CASHIN, CashInSegment::class],
+            Type::CASHOUT => ['cashout', Segment::CASHOUT, CashOutSegment::class],
         ];
     }
 }

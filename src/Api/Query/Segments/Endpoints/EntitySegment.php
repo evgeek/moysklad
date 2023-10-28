@@ -6,6 +6,7 @@ namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CashInSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CashOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PriceListSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportInSegment;
@@ -1056,5 +1057,22 @@ class EntitySegment extends AbstractNamedSegment
     public function cashin(): CashInSegment
     {
         return $this->resolveNamedBuilder(CashInSegment::class);
+    }
+
+    /**
+     * Расходный ордер
+     *
+     * <code>
+     * $cashOut = $ms->query()
+     *  ->entity()
+     *  ->cashout()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-rashodnyj-order
+     */
+    public function cashout(): CashOutSegment
+    {
+        return $this->resolveNamedBuilder(CashOutSegment::class);
     }
 }

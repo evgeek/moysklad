@@ -87,4 +87,5 @@ class Type
     public const PREPAYMENT = 'prepayment';
     public const SUPPLY = 'supply';
     public const CASHIN = 'cashin';
+    public const CASHOUT = 'cashout';
 }

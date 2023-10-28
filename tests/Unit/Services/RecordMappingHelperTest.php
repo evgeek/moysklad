@@ -3,6 +3,7 @@
 namespace Evgeek\Tests\Unit\Services;
 
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CashInCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CashOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
@@ -76,6 +77,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Nested\ReturnToCommissionerPositionCo
 use Evgeek\Moysklad\Api\Record\Collections\Nested\StateCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Nested\TrackingCodeCollection;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CashIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
@@ -346,6 +348,7 @@ class RecordMappingHelperTest extends TestCase
             Type::PREPAYMENT => [Type::PREPAYMENT, Prepayment::class, PrepaymentCollection::class],
             Type::SUPPLY => [Type::SUPPLY, Supply::class, SupplyCollection::class],
             Type::CASHIN => [Type::CASHIN, CashIn::class, CashInCollection::class],
+            Type::CASHOUT => [Type::CASHOUT, CashOut::class, CashOutCollection::class],
         ];
     }
 

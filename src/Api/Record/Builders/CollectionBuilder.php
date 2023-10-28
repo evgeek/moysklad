@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractConcreteCollection;
 use Evgeek\Moysklad\Api\Record\Collections\AbstractNestedCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CashInCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\CashOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CommissionReportOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\CounterpartyAdjustmentCollection;
@@ -970,5 +971,17 @@ class CollectionBuilder extends AbstractBuilder
     public function cashin(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::CASHIN);
+    }
+
+    /**
+     * Коллекция Расходных ордеров
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-rashodnyj-order
+     *
+     * @return CashOutCollection
+     */
+    public function cashout(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::CASHOUT);
     }
 }

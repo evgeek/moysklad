@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Api\Record\Builders;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CashIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
@@ -973,5 +974,17 @@ class ObjectBuilder extends AbstractBuilder
     public function cashin(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::CASHIN, $content);
+    }
+
+    /**
+     * Расходный ордер
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-rashodnyj-order
+     *
+     * @return CashOut
+     */
+    public function cashout(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::CASHOUT, $content);
     }
 }

@@ -6,6 +6,7 @@ use Evgeek\Moysklad\Api\Record\Builders\ObjectBuilder;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractConcreteObject;
 use Evgeek\Moysklad\Api\Record\Objects\AbstractNestedObject;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CashIn;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\CashOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CommissionReportOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\CounterpartyAdjustment;
@@ -219,6 +220,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::PREPAYMENT => ['prepayment', Prepayment::class],
             Type::SUPPLY => ['supply', Supply::class],
             Type::CASHIN => ['cashin', CashIn::class],
+            Type::CASHOUT => ['cashout', CashOut::class],
         ];
     }
 }
