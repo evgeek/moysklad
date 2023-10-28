@@ -27,6 +27,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PriceListCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
@@ -1087,5 +1088,17 @@ class CollectionBuilder extends AbstractBuilder
     public function facturein(): AbstractConcreteCollection
     {
         return $this->resolveCollection(Type::FACTUREIN);
+    }
+
+    /**
+     * Коллекция Техопераций
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-tehoperaciq
+     *
+     * @return ProcessingCollection
+     */
+    public function processing(): AbstractConcreteCollection
+    {
+        return $this->resolveCollection(Type::PROCESSING);
     }
 }

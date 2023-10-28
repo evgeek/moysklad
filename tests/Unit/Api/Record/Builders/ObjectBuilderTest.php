@@ -26,6 +26,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Prepayment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Processing;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
@@ -237,6 +238,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::INVOICEIN => ['invoicein', InvoiceIn::class],
             Type::FACTUREOUT => ['factureout', FactureOut::class],
             Type::FACTUREIN => ['facturein', FactureIn::class],
+            Type::PROCESSING => ['processing', Processing::class],
         ];
     }
 }

@@ -25,6 +25,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Prepayment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Processing;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
@@ -908,6 +909,16 @@ class Meta
     public static function facturein(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...FactureIn::PATH, $guid], FactureIn::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Техоперации
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-tehoperaciq
+     */
+    public static function processing(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...Processing::PATH, $guid], Processing::TYPE, $formatter);
     }
 
 

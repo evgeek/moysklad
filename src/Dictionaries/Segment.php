@@ -111,4 +111,5 @@ class Segment
     public const INVOICEIN = 'invoicein';
     public const FACTUREOUT = 'factureout';
     public const FACTUREIN = 'facturein';
+    public const PROCESSING = 'processing';
 }

@@ -201,6 +201,7 @@ class MetaTest extends TestCase
             Type::INVOICEIN => ['invoicein', 'entity/invoicein', 'invoicein'],
             Type::FACTUREOUT => ['factureout', 'entity/factureout', 'factureout'],
             Type::FACTUREIN => ['facturein', 'entity/facturein', 'facturein'],
+            Type::PROCESSING => ['processing', 'entity/processing', 'processing'],
         ];
     }
 

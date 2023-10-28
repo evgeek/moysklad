@@ -837,4 +837,14 @@ class MetaBuilder
     {
         return Meta::facturein($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Техоперации
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-tehoperaciq
+     */
+    public function processing(string $guid)
+    {
+        return Meta::processing($guid, $this->formatter);
+    }
 }

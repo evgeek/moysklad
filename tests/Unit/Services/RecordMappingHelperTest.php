@@ -23,6 +23,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PriceListCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
@@ -105,6 +106,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Prepayment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Processing;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
@@ -373,6 +375,7 @@ class RecordMappingHelperTest extends TestCase
             Type::INVOICEIN => [Type::INVOICEIN, InvoiceIn::class, InvoiceInCollection::class],
             Type::FACTUREOUT => [Type::FACTUREOUT, FactureOut::class, FactureOutCollection::class],
             Type::FACTUREIN => [Type::FACTUREIN, FactureIn::class, FactureInCollection::class],
+            Type::PROCESSING => [Type::PROCESSING, Processing::class, ProcessingCollection::class],
         ];
     }
 

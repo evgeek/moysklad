@@ -25,6 +25,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PriceListSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDemandSegment;
@@ -176,6 +177,7 @@ class EntitySegmentTest extends SegmentTestCase
             Type::INVOICEIN => ['invoicein', Segment::INVOICEIN, InvoiceInSegment::class],
             Type::FACTUREOUT => ['factureout', Segment::FACTUREOUT, FactureOutSegment::class],
             Type::FACTUREIN => ['facturein', Segment::FACTUREIN, FactureInSegment::class],
+            Type::PROCESSING => ['processing', Segment::PROCESSING, ProcessingSegment::class],
         ];
     }
 }

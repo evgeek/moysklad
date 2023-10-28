@@ -128,6 +128,7 @@ class MetaBuilderTest extends TestCase
             Type::INVOICEIN => ['invoicein', [self::GUID1], '/entity/invoicein/' . self::GUID1, 'invoicein'],
             Type::FACTUREOUT => ['factureout', [self::GUID1], '/entity/factureout/' . self::GUID1, 'factureout'],
             Type::FACTUREIN => ['facturein', [self::GUID1], '/entity/facturein/' . self::GUID1, 'facturein'],
+            Type::PROCESSING => ['processing', [self::GUID1], '/entity/processing/' . self::GUID1, 'processing'],
         ];
     }
 }

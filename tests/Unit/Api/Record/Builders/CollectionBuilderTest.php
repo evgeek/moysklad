@@ -26,6 +26,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PriceListCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
@@ -236,6 +237,7 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::INVOICEIN => ['invoicein', InvoiceInCollection::class],
             Type::FACTUREOUT => ['factureout', FactureOutCollection::class],
             Type::FACTUREIN => ['facturein', FactureInCollection::class],
+            Type::PROCESSING => ['processing', ProcessingCollection::class],
         ];
     }
 }

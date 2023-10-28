@@ -27,6 +27,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Prepayment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Processing;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
@@ -1090,5 +1091,17 @@ class ObjectBuilder extends AbstractBuilder
     public function facturein(mixed $content = []): AbstractConcreteObject
     {
         return $this->resolveObject(Type::FACTUREIN, $content);
+    }
+
+    /**
+     * Техоперация
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-tehoperaciq
+     *
+     * @return Processing
+     */
+    public function processing(mixed $content = []): AbstractConcreteObject
+    {
+        return $this->resolveObject(Type::PROCESSING, $content);
     }
 }

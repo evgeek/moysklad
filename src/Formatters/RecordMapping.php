@@ -29,6 +29,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PrepaymentReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PriceListCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\ProcessingOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PurchaseReturnCollection;
@@ -114,6 +115,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Prepayment;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PrepaymentReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PriceList;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Processing;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\ProcessingOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PurchaseReturn;
@@ -271,6 +273,7 @@ class RecordMapping
         Type::INVOICEIN => InvoiceIn::class,
         Type::FACTUREOUT => FactureOut::class,
         Type::FACTUREIN => FactureIn::class,
+        Type::PROCESSING => Processing::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Type::ASSORTMENT => AssortmentCollection::class,
@@ -355,6 +358,7 @@ class RecordMapping
         Type::INVOICEIN => InvoiceInCollection::class,
         Type::FACTUREOUT => FactureOutCollection::class,
         Type::FACTUREIN => FactureInCollection::class,
+        Type::PROCESSING => ProcessingCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;

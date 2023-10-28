@@ -27,6 +27,7 @@ use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PaymentOutSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingOrderSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\ProcessingSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseOrderSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PurchaseReturnSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\RetailDemandSegment;
@@ -1219,5 +1220,22 @@ class EntitySegment extends AbstractNamedSegment
     public function facturein(): FactureInSegment
     {
         return $this->resolveNamedBuilder(FactureInSegment::class);
+    }
+
+    /**
+     * Техоперация
+     *
+     * <code>
+     * $processings = $ms->query()
+     *  ->entity()
+     *  ->processing()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-tehoperaciq
+     */
+    public function processing(): ProcessingSegment
+    {
+        return $this->resolveNamedBuilder(ProcessingSegment::class);
     }
 }
