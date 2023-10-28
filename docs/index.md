@@ -13,6 +13,7 @@
     * [Общая информация](/docs/active_record.md#общая-информация)
     * [Объекты](/docs/active_record.md#объекты)
     * [Коллекции](/docs/active_record.md#коллекции)
+    * [Вложенные сущности](/docs/active_record.md#вложенные-сущности)
     * [Универсальные методы](/docs/active_record.md#универсальные-методы)
     * [Расширяемость](/docs/active_record.md#расширяемость)
 * [Форматтеры](/docs/formatters.md)
