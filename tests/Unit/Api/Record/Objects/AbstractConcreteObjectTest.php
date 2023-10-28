@@ -14,6 +14,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\LossCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
@@ -79,6 +80,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Loss;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
@@ -214,6 +216,7 @@ class AbstractConcreteObjectTest extends KnownObjectTestCase
             Type::RETAILDEMAND => [RetailDemand::class, RetailDemandCollection::class],
             Type::RETAILSHIFT => [RetailShift::class, RetailShiftCollection::class],
             Type::RETAILSALESRETURN => [RetailSalesReturn::class, RetailSalesReturnCollection::class],
+            Type::LOSS => [Loss::class, LossCollection::class],
         ];
     }
 }

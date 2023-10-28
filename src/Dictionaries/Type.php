@@ -91,4 +91,5 @@ class Type
     public const RETAILDEMAND = 'retaildemand';
     public const RETAILSHIFT = 'retailshift';
     public const RETAILSALESRETURN = 'retailsalesreturn';
+    public const LOSS = 'loss';
 }

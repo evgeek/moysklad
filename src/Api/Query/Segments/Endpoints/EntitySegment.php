@@ -7,6 +7,7 @@ namespace Evgeek\Moysklad\Api\Query\Segments\Endpoints;
 use Evgeek\Moysklad\Api\Query\Segments\AbstractNamedSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CashInSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CashOutSegment;
+use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\LossSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PrepaymentSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\PriceListSegment;
 use Evgeek\Moysklad\Api\Query\Segments\Methods\Documents\CommissionReportInSegment;
@@ -1129,5 +1130,22 @@ class EntitySegment extends AbstractNamedSegment
     public function retailsalesreturn(): RetailSalesReturnSegment
     {
         return $this->resolveNamedBuilder(RetailSalesReturnSegment::class);
+    }
+
+    /**
+     * Списание
+     *
+     * <code>
+     * $losses = $ms->query()
+     *  ->entity()
+     *  ->loss()
+     *  ->get();
+     * </code>
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-spisanie
+     */
+    public function loss(): LossSegment
+    {
+        return $this->resolveNamedBuilder(LossSegment::class);
     }
 }

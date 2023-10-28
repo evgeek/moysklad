@@ -787,4 +787,14 @@ class MetaBuilder
     {
         return Meta::retailsalesreturn($guid, $this->formatter);
     }
+
+    /**
+     * Метаданные Списания
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-spisanie
+     */
+    public function loss(string $guid)
+    {
+        return Meta::loss($guid, $this->formatter);
+    }
 }

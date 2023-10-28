@@ -15,6 +15,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Loss;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
@@ -227,6 +228,7 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::RETAILDEMAND => ['retaildemand', RetailDemand::class],
             Type::RETAILSHIFT => ['retailshift', RetailShift::class],
             Type::RETAILSALESRETURN => ['retailsalesreturn', RetailSalesReturn::class],
+            Type::LOSS => ['loss', Loss::class],
         ];
     }
 }

@@ -14,6 +14,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Loss;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
@@ -853,6 +854,16 @@ class Meta
     public static function retailsalesreturn(string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::create([...RetailSalesReturn::PATH, $guid], RetailSalesReturn::TYPE, $formatter);
+    }
+
+    /**
+     * Метаданные Списания
+     *
+     * @see https://dev.moysklad.ru/doc/api/remap/1.2/documents/#dokumenty-spisanie
+     */
+    public static function loss(string $guid, JsonFormatterInterface $formatter = null)
+    {
+        return static::create([...Loss::PATH, $guid], Loss::TYPE, $formatter);
     }
 
 

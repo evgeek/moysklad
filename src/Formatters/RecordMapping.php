@@ -18,6 +18,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\DemandCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\EnterCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InternalOrderCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\InventoryCollection;
+use Evgeek\Moysklad\Api\Record\Collections\Documents\LossCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\MoveCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentInCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\PaymentOutCollection;
@@ -98,6 +99,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\Demand;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Enter;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\InternalOrder;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Inventory;
+use Evgeek\Moysklad\Api\Record\Objects\Documents\Loss;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Move;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentIn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\PaymentOut;
@@ -256,6 +258,7 @@ class RecordMapping
         Type::RETAILDEMAND => RetailDemand::class,
         Type::RETAILSHIFT => RetailShift::class,
         Type::RETAILSALESRETURN => RetailSalesReturn::class,
+        Type::LOSS => Loss::class,
     ];
     protected const DEFAULT_MAPPING_COLLECTIONS = [
         Type::ASSORTMENT => AssortmentCollection::class,
@@ -335,6 +338,7 @@ class RecordMapping
         Type::RETAILDEMAND => RetailDemandCollection::class,
         Type::RETAILSHIFT => RetailShiftCollection::class,
         Type::RETAILSALESRETURN => RetailSalesReturnCollection::class,
+        Type::LOSS => LossCollection::class,
     ];
 
     protected array $objects = self::DEFAULT_MAPPING_OBJECTS;

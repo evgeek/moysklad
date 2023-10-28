@@ -123,6 +123,7 @@ class MetaBuilderTest extends TestCase
             Type::RETAILDEMAND => ['retaildemand', [self::GUID1], '/entity/retaildemand/' . self::GUID1, 'retaildemand'],
             Type::RETAILSHIFT => ['retailshift', [self::GUID1], '/entity/retailshift/' . self::GUID1, 'retailshift'],
             Type::RETAILSALESRETURN => ['retailsalesreturn', [self::GUID1], '/entity/retailsalesreturn/' . self::GUID1, 'retailsalesreturn'],
+            Type::LOSS => ['loss', [self::GUID1], '/entity/loss/' . self::GUID1, 'loss'],
         ];
     }
 }
