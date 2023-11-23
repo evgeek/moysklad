@@ -11,7 +11,7 @@ use Evgeek\Moysklad\Api\Query\Traits\Segments\ById\ByIdCommonTrait;
 
 abstract class AbstractByIdSegment extends AbstractCommonSegment
 {
+    use ByIdCommonTrait;
     use DeleteTrait;
     use UpdateTrait;
-    use ByIdCommonTrait;
 }
