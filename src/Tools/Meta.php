@@ -37,7 +37,6 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailShift;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Supply;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusTransaction;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Bundle;
@@ -531,16 +530,6 @@ class Meta
     public static function files(ObjectInterface|array|string $parent, string $guid, JsonFormatterInterface $formatter = null)
     {
         return static::createNested($parent, [...Files::PATH, $guid], Files::TYPE, $formatter);
-    }
-
-    /**
-     * Метаданные Характеристики модификации
-     *
-     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-harakteristiki-modifikacij
-     */
-    public static function attributemetadata(string $guid, JsonFormatterInterface $formatter = null)
-    {
-        return static::create([...AttributeMetadata::PATH, $guid], AttributeMetadata::TYPE, $formatter);
     }
 
     /**

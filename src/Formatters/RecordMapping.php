@@ -42,7 +42,6 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SupplyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\BonusProgramCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\BonusTransactionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\BundleCollection;
@@ -130,7 +129,6 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Supply;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Assortment;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusTransaction;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Bundle;
@@ -239,7 +237,6 @@ class RecordMapping
         Type::RETAILSTORE => RetailStore::class,
         Type::SERVICE => Service::class,
         Type::FILES => Files::class,
-        Type::ATTRIBUTEMETADATA => AttributeMetadata::class,
         Type::EMBEDDEDTEMPLATE => EmbeddedTemplate::class,
         Type::CUSTOMTEMPLATE => CustomTemplate::class,
         Type::ORGANIZATION => Organization::class,
@@ -326,7 +323,6 @@ class RecordMapping
         Type::RETAILSTORE => RetailStoreCollection::class,
         Type::SERVICE => ServiceCollection::class,
         Type::FILES => FilesCollection::class,
-        Type::ATTRIBUTEMETADATA => AttributeMetadataCollection::class,
         Type::EMBEDDEDTEMPLATE => EmbeddedTemplateCollection::class,
         Type::CUSTOMTEMPLATE => CustomTemplateCollection::class,
         Type::ORGANIZATION => OrganizationCollection::class,

@@ -40,7 +40,6 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SupplyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\BonusProgramCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\BonusTransactionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\BundleCollection;
@@ -635,18 +634,6 @@ class CollectionBuilder extends AbstractBuilder
     public function files(ObjectInterface|array|string $parent): AbstractNestedCollection
     {
         return $this->resolveNestedCollection(Type::FILES, $parent);
-    }
-
-    /**
-     * Коллекция Характеристик модификации
-     *
-     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-harakteristiki-modifikacij
-     *
-     * @return AttributeMetadataCollection
-     */
-    public function attributemetadata(): AbstractConcreteCollection
-    {
-        return $this->resolveCollection(Type::ATTRIBUTEMETADATA);
     }
 
     /**

@@ -91,7 +91,6 @@ class MetaBuilderTest extends TestCase
             Type::RETAILSTORE => ['retailstore', [self::GUID1], '/entity/retailstore/' . self::GUID1, 'retailstore'],
             Type::SERVICE => ['service', [self::GUID1], '/entity/service/' . self::GUID1, 'service'],
             Type::FILES => ['files', [$parentCounterparty, self::GUID2], '/entity/counterparty/' . self::GUID1 . '/files/' . self::GUID2, 'files'],
-            Type::ATTRIBUTEMETADATA => ['attributemetadata', [self::GUID1], '/entity/variant/metadata/characteristics/' . self::GUID1, 'attributemetadata'],
             Type::EMBEDDEDTEMPLATE => ['embeddedtemplate', [Counterparty::make($ms), self::GUID2], '/entity/counterparty/metadata/embeddedtemplate/' . self::GUID2, 'embeddedtemplate'],
             Type::CUSTOMTEMPLATE => ['customtemplate', [Counterparty::make($ms), self::GUID2], '/entity/counterparty/metadata/customtemplate/' . self::GUID2, 'customtemplate'],
             Type::ORGANIZATION => ['organization', [self::GUID1], '/entity/organization/' . self::GUID1, 'organization'],
