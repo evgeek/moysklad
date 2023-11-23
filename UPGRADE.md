@@ -1,5 +1,17 @@
 # Upgrade guide
 
+## v0.11.0 [[Changelog](/CHANGELOG.md#v0110-upgrade-guide)]
+
+### Удалён класс `AttributeMetadata` и связанные с ним хелперы.
+
+Для работы с `attributemetadata` используйте конструктор запросов. 
+
+До:
+
+```php
+
+```
+
 ## v0.10.0 [[Changelog](/CHANGELOG.md#v0100-upgrade-guide)]
 
 ### Имена классов Query и Record приведены к PascalCase. 
