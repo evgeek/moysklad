@@ -39,7 +39,6 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SupplyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\BonusProgramCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\BonusTransactionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\BundleCollection;
@@ -201,7 +200,6 @@ class CollectionBuilderTest extends RecordResolversTestCase
             Type::RETAILSTORE => ['retailstore', RetailStoreCollection::class],
             Type::SERVICE => ['service', ServiceCollection::class],
             Type::FILES => ['files', FilesCollection::class, true],
-            Type::ATTRIBUTEMETADATA => ['attributemetadata', AttributeMetadataCollection::class],
             Type::EMBEDDEDTEMPLATE => ['embeddedtemplate', EmbeddedTemplateCollection::class, true],
             Type::CUSTOMTEMPLATE => ['customtemplate', CustomTemplateCollection::class, true],
             Type::ORGANIZATION => ['organization', OrganizationCollection::class],

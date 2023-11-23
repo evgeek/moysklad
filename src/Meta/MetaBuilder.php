@@ -459,16 +459,6 @@ class MetaBuilder
     }
 
     /**
-     * Метаданные Характеристики модификации
-     *
-     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-harakteristiki-modifikacij
-     */
-    public function attributemetadata(string $guid)
-    {
-        return Meta::attributemetadata($guid, $this->formatter);
-    }
-
-    /**
      * Метаданные Стандартного шаблона
      *
      * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-shablon-pechatnoj-formy-spisok-standartnyh-shablonow

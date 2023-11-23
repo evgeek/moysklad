@@ -38,7 +38,6 @@ use Evgeek\Moysklad\Api\Record\Collections\Documents\SalesReturnCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Documents\SupplyCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AccumulationDiscountCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\AssortmentCollection;
-use Evgeek\Moysklad\Api\Record\Collections\Entities\AttributeMetadataCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\BonusProgramCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\BonusTransactionCollection;
 use Evgeek\Moysklad\Api\Record\Collections\Entities\BundleCollection;
@@ -108,7 +107,6 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Supply;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Assortment;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusTransaction;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Bundle;
@@ -195,7 +193,6 @@ class AbstractConcreteObjectTest extends KnownObjectTestCase
             Type::PRODUCT => [Product::class, ProductCollection::class],
             Type::RETAILSTORE => [RetailStore::class, RetailStoreCollection::class],
             Type::SERVICE => [Service::class, ServiceCollection::class],
-            Type::ATTRIBUTEMETADATA => [AttributeMetadata::class, AttributeMetadataCollection::class],
             Type::ORGANIZATION => [Organization::class, OrganizationCollection::class],
             Type::PROCESSINGSTAGE => [ProcessingStage::class, ProcessingStageCollection::class],
             Type::RETAILDRAWERCASHIN => [RetailDrawerCashIn::class, RetailDrawerCashInCollection::class],

@@ -39,7 +39,6 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailShift;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Supply;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusTransaction;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Bundle;
@@ -637,18 +636,6 @@ class ObjectBuilder extends AbstractBuilder
     public function files(ObjectInterface|array|string $parent, mixed $content = []): AbstractNestedObject
     {
         return $this->resolveNestedObject(Type::FILES, $parent, $content);
-    }
-
-    /**
-     * Характеристика модификации
-     *
-     * @see https://dev.moysklad.ru/doc/api/remap/1.2/dictionaries/#suschnosti-harakteristiki-modifikacij
-     *
-     * @return AttributeMetadata
-     */
-    public function attributemetadata(mixed $content = []): AbstractConcreteObject
-    {
-        return $this->resolveObject(Type::ATTRIBUTEMETADATA, $content);
     }
 
     /**

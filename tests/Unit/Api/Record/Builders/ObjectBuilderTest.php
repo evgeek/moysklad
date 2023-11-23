@@ -38,7 +38,6 @@ use Evgeek\Moysklad\Api\Record\Objects\Documents\RetailShift;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\SalesReturn;
 use Evgeek\Moysklad\Api\Record\Objects\Documents\Supply;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\AccumulationDiscount;
-use Evgeek\Moysklad\Api\Record\Objects\Entities\AttributeMetadata;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusProgram;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\BonusTransaction;
 use Evgeek\Moysklad\Api\Record\Objects\Entities\Bundle;
@@ -201,7 +200,6 @@ class ObjectBuilderTest extends RecordResolversTestCase
             Type::RETAILSTORE => ['retailstore', RetailStore::class],
             Type::SERVICE => ['service', Service::class],
             Type::FILES => ['files', Files::class, true],
-            Type::ATTRIBUTEMETADATA => ['attributemetadata', AttributeMetadata::class],
             Type::EMBEDDEDTEMPLATE => ['embeddedtemplate', EmbeddedTemplate::class, true],
             Type::CUSTOMTEMPLATE => ['customtemplate', CustomTemplate::class, true],
             Type::ORGANIZATION => ['organization', Organization::class],

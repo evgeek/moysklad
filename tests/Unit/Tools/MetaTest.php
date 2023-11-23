@@ -163,7 +163,6 @@ class MetaTest extends TestCase
             Type::RETAILSTORE => ['retailstore', 'entity/retailstore', 'retailstore'],
             Type::SERVICE => ['service', 'entity/service', 'service'],
             Type::FILES => ['files', 'entity/counterparty/' . self::GUID1 . '/files', 'files', true, $parentCounterparty],
-            Type::ATTRIBUTEMETADATA => ['attributemetadata', 'entity/variant/metadata/characteristics', 'attributemetadata'],
             Type::EMBEDDEDTEMPLATE => ['embeddedtemplate', 'entity/counterparty/metadata/embeddedtemplate', 'embeddedtemplate', true, Counterparty::make($ms)],
             Type::CUSTOMTEMPLATE => ['customtemplate', 'entity/counterparty/metadata/customtemplate', 'customtemplate', true, Counterparty::make($ms)],
             Type::ORGANIZATION => ['organization', 'entity/organization', 'organization'],

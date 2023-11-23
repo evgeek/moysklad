@@ -1,5 +1,41 @@
 # Upgrade guide
 
+## v0.11.0 [[Changelog](/CHANGELOG.md#v0110-upgrade-guide)]
+
+### Удалён класс `AttributeMetadata` и связанные с ним хелперы.
+
+Для работы с `attributemetadata` используйте конструктор запросов. 
+
+До:
+
+```php
+$attribute = AttributeMetadata::make($ms, ['id' => 'cb26a487-0f3a-11ee-0a80-060300137dbf'])->get();
+$attributeList = AttributeMetadata::collection($ms)->get()->rows;
+$meta = Meta::attributemetadata('cb26a487-0f3a-11ee-0a80-060300137dbf');
+```
+
+После:
+
+```php
+$attribute = $ms->query()
+    ->entity()
+    ->variant()
+    ->metadata()
+    ->characteristics()
+    ->byId('cb26a487-0f3a-11ee-0a80-060300137dbf')
+    ->get();
+$attributeList = $ms->query()
+    ->entity()
+    ->variant()
+    ->metadata()
+    ->get()
+    ->characteristics;
+$meta = Meta::create(
+    ['entity', 'variant', 'metadata', 'characteristics', 'cb26a487-0f3a-11ee-0a80-060300137dbf'],
+    'attributemetadata',
+);
+```
+
 ## v0.10.0 [[Changelog](/CHANGELOG.md#v0100-upgrade-guide)]
 
 ### Имена классов Query и Record приведены к PascalCase. 
