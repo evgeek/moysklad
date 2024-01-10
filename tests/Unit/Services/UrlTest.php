@@ -131,6 +131,17 @@ class UrlTest extends TestCase
                     'filter' => 'aa=bb;cc!=d\;d',
                 ],
             ],
+            [
+                URL::API . '/segment5/segment6?operation.id=a&b = c',
+                [
+                    'segment5',
+                    'segment6',
+                ],
+                [
+                    'operation.id' => 'a',
+                    'b ' => ' c',
+                ],
+            ],
         ];
     }
 

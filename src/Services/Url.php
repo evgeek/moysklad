@@ -42,7 +42,7 @@ final class Url
         $params = [];
         $paramsString = parse_url($url)['query'] ?? null;
         if ($paramsString) {
-            parse_str($paramsString, $params);
+            $params = self::parseStr($paramsString);
             $pathString = str_replace("?$paramsString", '', $pathString);
         }
 
@@ -78,5 +78,19 @@ final class Url
         $paramsString = http_build_query($params);
 
         return $paramsString === '' ? '' : "?$paramsString";
+    }
+
+    /** @return array<int|string, string> */
+    private static function parseStr(string $query): array
+    {
+        $data = preg_replace_callback(
+            '/(?:^|(?<=&))[^=[]+/',
+            static fn ($match) => bin2hex(urldecode($match[0])),
+            $query
+        );
+
+        parse_str($data, $values);
+
+        return array_combine(array_map('hex2bin', array_keys($values)), $values);
     }
 }
