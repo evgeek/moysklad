@@ -2,6 +2,16 @@
 
 Все существенные изменения в проекте будут задокументированы в этом файле. Формат основан на [Keep a Changelog](https://keepachangelog.com/), и этот проект придерживается семантического версионирования ([semver](https://semver.org/)).
 
+## v0.12.0[[Upgrade guide](/UPGRADE.md#v0120-changelog)]
+
+### Added
+
+* В `GuzzleSender` при помощи параметра `$requestOptions` можно задавать параметры запросов по умолчанию - допустим, таймаут. Полный список параметров можно найти в [документации Guzzle](https://docs.guzzlephp.org/en/stable/request-options.html).
+
+### Fixed
+
+* Поправлен баг, из-за которого в Record-коллекциях пустое свойство rows конвертировалось в stdClass. Теперь оно остаётся пустым массивом. 
+
 ## v0.11.1
 
 ### Fixed
