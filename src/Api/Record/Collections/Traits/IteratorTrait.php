@@ -35,6 +35,6 @@ trait IteratorTrait
 
     private function getRows(): array
     {
-        return $this->rows ?? [];
+        return ($this->meta->size > 0 && $this->rows) ? $this->rows : [];
     }
 }
