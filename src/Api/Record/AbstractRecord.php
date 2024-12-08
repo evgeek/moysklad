@@ -28,7 +28,7 @@ abstract class AbstractRecord extends stdClass
     public function __set(string $name, mixed $value)
     {
         if (
-            !is_array($value)
+            (!is_array($value) || $value === [])
             && !(is_a($value, stdClass::class) && !is_a($value, self::class))
             && !(is_string($value) && AbstractMultiDecoder::checkStringIsValidJson($value))
         ) {

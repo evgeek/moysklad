@@ -10,7 +10,7 @@ trait FillMetaObjectTrait
 {
     protected function fillMeta(array $path, string $type): void
     {
-        if ($this->meta) {
+        if ($this->meta !== null) {
             return;
         }
 

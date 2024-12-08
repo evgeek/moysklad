@@ -1,5 +1,29 @@
 # Upgrade guide
 
+## v0.12.0 [[Changelog](/CHANGELOG.md#v0120-upgrade-guide)]
+
+### Поправлен баг, из-за которого в Record-коллекциях пустое свойство rows конвертировалось в stdClass. Теперь оно остаётся пустым массивом.
+
+В большинстве случаев, обратная совместимость не нарушится. Однако, если у вас по какой-то причине присуствует логика, по которой пустая коллекция определяется по типу свойства `rows` - этот подход придётся пересмотреть.
+
+До:
+
+```php
+$collection = Product::collection($ms)->get();
+if (is_a($collection->rows, stdClass::class)) {
+    echo 'Коллекция пустая';
+}
+```
+
+После:
+
+```php
+$collection = Product::collection($ms)->get();
+if (count($collection->rows) === 0) {
+    echo 'Коллекция пустая';
+}
+```
+
 ## v0.11.0 [[Changelog](/CHANGELOG.md#v0110-upgrade-guide)]
 
 ### Удалён класс `AttributeMetadata` и связанные с ним хелперы.

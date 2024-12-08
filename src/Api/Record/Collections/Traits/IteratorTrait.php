@@ -10,7 +10,7 @@ trait IteratorTrait
 
     public function current(): mixed
     {
-        return $this->getRows()[$this->iteratorKey];
+        return $this->getRows()[$this->iteratorKey] ?? null;
     }
 
     public function next(): void

@@ -23,6 +23,8 @@ abstract class MultiDecoderTestCase extends TestCase
     protected const NULL_JSON_STRING = 'null';
     protected const FALSE_JSON_STRING = 'false';
 
+    protected const SKIP_TEST = 'SKIP_TEST';
+
     /** @var class-string<JsonFormatterInterface> */
     protected const FORMATTER = AbstractMultiDecoder::class;
     protected JsonFormatterInterface $formatter;
@@ -75,6 +77,10 @@ abstract class MultiDecoderTestCase extends TestCase
     /** @dataProvider invalidJsonTypesDataProvider */
     public function testEncodeUnexpectedDataType(string $jsonString): void
     {
+        if ($jsonString === self::SKIP_TEST) {
+            $this->markTestSkipped();
+        }
+
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Passed content is not valid json.');
 
@@ -92,6 +98,10 @@ abstract class MultiDecoderTestCase extends TestCase
     /** @dataProvider invalidJsonTypesDataProvider */
     public function testDecodeInvalidString(string $jsonString): void
     {
+        if ($jsonString === self::SKIP_TEST) {
+            $this->markTestSkipped();
+        }
+
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Passed content is not valid json.');
 

@@ -19,9 +19,9 @@ class GuzzleSenderFactory implements RequestSenderFactoryInterface
     /**
      * Стандартная фабрика Guzzle.
      *
-     * @param int $retries             количество повторных попыток отправки запроса в случае неудачи
-     * @param int $exceptionTruncateAt максимальный размер сообщения об ошибке
-     * @param array $requestOptions    https://docs.guzzlephp.org/en/stable/request-options.html
+     * @param int   $retries             количество повторных попыток отправки запроса в случае неудачи
+     * @param int   $exceptionTruncateAt максимальный размер сообщения об ошибке
+     * @param array $requestOptions      параметры запросов по умолчанию (https://docs.guzzlephp.org/en/stable/request-options.html)
      */
     public function __construct(
         private readonly int $retries = 0,
