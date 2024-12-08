@@ -14,7 +14,7 @@ class StringFormatTest extends MultiDecoderTestCase
 
     public static function invalidJsonTypesDataProvider(): array
     {
-        return [];
+        return [[self::SKIP_TEST]];
     }
 
     protected static function getEncodedObject(): string
