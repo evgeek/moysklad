@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 
 class GuzzleSender implements RequestSenderInterface
 {
-    public function __construct(private readonly Client $client)
+    public function __construct(private readonly Client $client, private readonly array $requestOptions = [])
     {
     }
 
@@ -20,6 +20,6 @@ class GuzzleSender implements RequestSenderInterface
      */
     public function send(RequestInterface $request): ResponseInterface
     {
-        return $this->client->send($request);
+        return $this->client->send($request, $this->requestOptions);
     }
 }

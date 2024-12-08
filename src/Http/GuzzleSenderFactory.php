@@ -21,10 +21,12 @@ class GuzzleSenderFactory implements RequestSenderFactoryInterface
      *
      * @param int $retries             количество повторных попыток отправки запроса в случае неудачи
      * @param int $exceptionTruncateAt максимальный размер сообщения об ошибке
+     * @param array $requestOptions    https://docs.guzzlephp.org/en/stable/request-options.html
      */
     public function __construct(
         private readonly int $retries = 0,
-        private readonly int $exceptionTruncateAt = 4000
+        private readonly int $exceptionTruncateAt = 4000,
+        private readonly array $requestOptions = []
     ) {
     }
 
@@ -38,7 +40,7 @@ class GuzzleSenderFactory implements RequestSenderFactoryInterface
         $handlerStack = HandlerStack::create($handler);
         $client = $this->createClient($handlerStack);
 
-        return new GuzzleSender($client);
+        return new GuzzleSender($client, $this->requestOptions);
     }
 
     protected function createClient(HandlerStack $handlerStack): Client
