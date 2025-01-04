@@ -30,7 +30,7 @@ class Type
     public const COUNTERPARTY = 'counterparty';
     public const GROUP = 'group';
     public const SUBSCRIPTION = 'subscription';
-    public const CUSTOMROLE = 'customrole';
+    public const CUSTOMROLE = 'role';
     public const CUSTOMENTITY = 'customentity';
     public const PROJECT = 'project';
     public const REGION = 'region';
