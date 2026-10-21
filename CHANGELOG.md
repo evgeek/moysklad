@@ -2,6 +2,12 @@
 
 Все существенные изменения в проекте будут задокументированы в этом файле. Формат основан на [Keep a Changelog](https://keepachangelog.com/), и этот проект придерживается семантического версионирования ([semver](https://semver.org/)).
 
+## v0.12.1
+
+### Fixed
+
+* Поправлены сигнатуры nullable-параметров - добавлен явный null в связи с deprecation в PHP 8.4.
+
 ## v0.12.0[[Upgrade guide](/UPGRADE.md#v0120-changelog)]
 
 ### Added
