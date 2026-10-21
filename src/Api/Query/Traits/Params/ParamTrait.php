@@ -24,7 +24,7 @@ trait ParamTrait
      *  ->get();
      * </code>
      */
-    public function param(array|string $key, string|int|float|bool $value = null): static
+    public function param(array|string $key, string|int|float|bool|null $value = null): static
     {
         $this->params = QueryParams::setParam($this->params, $key, $value);
 

@@ -17,8 +17,8 @@ abstract class RecordResolversTestCase extends TestCase
     protected function assertObjectResolvedWithExpectedMetaAndContent(
         AbstractRecord $object,
         string $expectedObjectClass,
-        array $path = null,
-        string $type = null,
+        ?array $path = null,
+        ?string $type = null,
     ): void {
         $this->assertInstanceOf($expectedObjectClass, $object);
 
