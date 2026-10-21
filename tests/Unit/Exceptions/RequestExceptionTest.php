@@ -94,7 +94,7 @@ class RequestExceptionTest extends TestCase
         $this->assertSame(json_encode($content), json_encode($exception->getContent()));
     }
 
-    private function makeCorrectWithResponseException(string $body = null): RequestException
+    private function makeCorrectWithResponseException(?string $body = null): RequestException
     {
         $exception = new class($body) extends Exception {
             public function __construct(private readonly ?string $body, string $message = '', int $code = 0, ?Throwable $previous = null)
