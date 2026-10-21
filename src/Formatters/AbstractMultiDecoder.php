@@ -90,6 +90,10 @@ abstract class AbstractMultiDecoder implements JsonFormatterInterface
 
     protected function contentIsEmpty(mixed $content): bool
     {
+        if (is_float($content) && is_nan($content)) {
+            return false;
+        }
+
         return !$content || (is_object($content) && (array) $content === []);
     }
 }
