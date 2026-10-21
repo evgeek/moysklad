@@ -31,8 +31,8 @@ trait FilterTrait
      */
     public function filter(
         array|string $key,
-        FilterSign|string|int|float|bool $sign = null,
-        string|int|float|bool $value = null
+        FilterSign|string|int|float|bool|null $sign = null,
+        string|int|float|bool|null $value = null
     ): static {
         $this->params = QueryParams::setFilter($this->params, $key, $sign, $value);
 

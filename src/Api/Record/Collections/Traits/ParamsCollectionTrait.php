@@ -54,8 +54,8 @@ trait ParamsCollectionTrait
      */
     public function filter(
         array|string $key,
-        FilterSign|string|int|float|bool $sign = null,
-        string|int|float|bool $value = null
+        FilterSign|string|int|float|bool|null $sign = null,
+        string|int|float|bool|null $value = null
     ): static {
         [$path, $params] = Url::parsePathAndParams($this->meta->href);
         $params = QueryParams::setFilter($params, $key, $sign, $value);
@@ -162,7 +162,7 @@ trait ParamsCollectionTrait
      *  ->get();
      * </code>
      */
-    public function param(array|string $key, string|int|float|bool $value = null): static
+    public function param(array|string $key, string|int|float|bool|null $value = null): static
     {
         [$path, $params] = Url::parsePathAndParams($this->meta->href);
         $params = QueryParams::setParam($params, $key, $value);

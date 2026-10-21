@@ -47,7 +47,7 @@ trait ParamsObjectTrait
      * ->get();
      * </code>
      */
-    public function param(array|string $key, string|int|float|bool $value = null): static
+    public function param(array|string $key, string|int|float|bool|null $value = null): static
     {
         [$path, $params] = Url::parsePathAndParams($this->meta->href);
         $params = QueryParams::setParam($params, $key, $value);

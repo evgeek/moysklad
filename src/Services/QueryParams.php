@@ -41,8 +41,8 @@ final class QueryParams
     public static function setFilter(
         array $params,
         array|string $key,
-        FilterSign|string|int|float|bool $sign = null,
-        string|int|float|bool $value = null
+        FilterSign|string|int|float|bool|null $sign = null,
+        string|int|float|bool|null $value = null
     ): array {
         if (is_array($key)) {
             return self::handleArrayOfFilters($params, $key);
