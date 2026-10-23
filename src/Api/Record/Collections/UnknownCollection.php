@@ -12,6 +12,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Traits\IterateCollectionTrait;
 use Evgeek\Moysklad\Api\Record\Collections\Traits\IteratorTrait;
 use Evgeek\Moysklad\Api\Record\Collections\Traits\ParamsCollectionTrait;
 use Evgeek\Moysklad\Api\Record\Objects\UnknownObject;
+use Evgeek\Moysklad\Api\Record\Traits\DebugRecordTrait;
 use Iterator;
 use stdClass;
 
@@ -24,6 +25,7 @@ use stdClass;
  */
 class UnknownCollection extends AbstractUnknownRecord implements CollectionInterface, Iterator
 {
+    use DebugRecordTrait;
     use CrudCollectionTrait;
     use FillMetaCollectionTrait;
     use IterateCollectionTrait;

@@ -10,6 +10,7 @@ use Evgeek\Moysklad\Api\Record\Objects\Traits\CrudObjectTrait;
 use Evgeek\Moysklad\Api\Record\Objects\Traits\FillMetaObjectTrait;
 use Evgeek\Moysklad\Api\Record\Objects\Traits\ParamsObjectTrait;
 use Evgeek\Moysklad\Api\Record\Objects\Traits\SetIdInMetaHrefTrait;
+use Evgeek\Moysklad\Api\Record\Traits\DebugRecordTrait;
 use Evgeek\Moysklad\MoySklad;
 use Evgeek\Moysklad\Services\RecordMappingHelper;
 
@@ -18,6 +19,7 @@ use Evgeek\Moysklad\Services\RecordMappingHelper;
  */
 abstract class AbstractNestedObject extends AbstractNestedRecord implements ObjectInterface
 {
+    use DebugRecordTrait;
     use CrudObjectTrait;
     use FillMetaObjectTrait;
     use ParamsObjectTrait;

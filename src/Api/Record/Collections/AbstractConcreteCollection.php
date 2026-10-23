@@ -11,6 +11,7 @@ use Evgeek\Moysklad\Api\Record\Collections\Traits\FillMetaCollectionTrait;
 use Evgeek\Moysklad\Api\Record\Collections\Traits\IterateCollectionTrait;
 use Evgeek\Moysklad\Api\Record\Collections\Traits\IteratorTrait;
 use Evgeek\Moysklad\Api\Record\Collections\Traits\ParamsCollectionTrait;
+use Evgeek\Moysklad\Api\Record\Traits\DebugRecordTrait;
 use Iterator;
 use stdClass;
 
@@ -23,6 +24,7 @@ use stdClass;
  */
 abstract class AbstractConcreteCollection extends AbstractConcreteRecord implements CollectionInterface, Iterator
 {
+    use DebugRecordTrait;
     use CrudCollectionTrait;
     use FillMetaCollectionTrait;
     use IterateCollectionTrait;
